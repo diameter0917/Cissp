@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 78</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 78 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D8-3</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 8 · 軟體開發安全 &nbsp;|&nbsp; 權重 10%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">注入/XSS/CSRF 與安全編碼深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Injection/XSS/CSRF &amp; Secure Coding</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:65.0%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D8：常見漏洞與安全編碼深入</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>注入(SQLi/命令)、XSS、CSRF</strong> 的機制與防禦,以及<strong>安全編碼原則</strong>:輸入驗證、輸出編碼、參數化、最小權限。理解攻擊原理才知道為何這些防禦有效。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>:注入(SQLi/命令) → XSS 三型 → CSRF → 安全編碼黃金原則。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 注入攻擊</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>SQL Injection</strong>:輸入被當 SQL 執行→繞登入/匯出資料庫;防:<strong>參數化查詢/預備語句</strong>＋輸入驗證＋DB 最小權限</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Command Injection</strong>:輸入被當 OS 指令;防:避免呼叫 shell、白名單、參數化 API</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>共通根因</strong>:把『資料』當成『指令/程式』執行——讓資料永遠是資料即可根除</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — XSS 三型與 CSRF</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">漏洞</td><td style="padding:8px 10px;">本質</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">防禦</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Stored XSS</strong></td><td style="padding:9px 10px; vertical-align:top;">惡意腳本存進 DB,他人瀏覽時執行</td><td style="padding:9px 10px; vertical-align:top;">輸出編碼＋CSP</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Reflected XSS</strong></td><td style="padding:9px 10px; vertical-align:top;">腳本經 URL 反射執行</td><td style="padding:9px 10px; vertical-align:top;">輸出編碼＋輸入驗證</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>DOM XSS</strong></td><td style="padding:9px 10px; vertical-align:top;">前端 JS 不安全處理 DOM</td><td style="padding:9px 10px; vertical-align:top;">安全 DOM API、避免 innerHTML</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>CSRF</strong></td><td style="padding:9px 10px; vertical-align:top;">冒用已登入身分送請求</td><td style="padding:9px 10px; vertical-align:top;">CSRF token＋SameSite cookie</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 一句話:<strong>XSS＝在受害者瀏覽器執行攻擊者腳本</strong>(利用網站對使用者輸出的信任);<strong>CSRF＝冒用使用者身分送請求</strong>(利用網站對使用者 cookie 的信任)。防法不同。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 安全編碼黃金原則</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>不信任任何輸入</strong>:白名單驗證(validate)優於黑名單</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>參數化</strong>:讓資料不被當指令(擋注入)</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>輸出編碼</strong>:依情境(HTML/JS/URL/SQL)編碼(擋 XSS)</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>最小權限＋失敗安全(fail securely)＋深度防禦＋避免明文機密</strong></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SQL Injection</strong>（SQL 注入）— <span style="color:#5B6675;">輸入被當 SQL 執行。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Command Injection</strong>（命令注入）— <span style="color:#5B6675;">輸入被當 OS 指令執行。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">XSS</strong>（跨站腳本）— <span style="color:#5B6675;">在他人瀏覽器執行腳本。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CSRF</strong>（跨站請求偽造）— <span style="color:#5B6675;">冒用已登入身分送請求。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Input Validation</strong>（輸入驗證）— <span style="color:#5B6675;">白名單檢核輸入。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Output Encoding</strong>（輸出編碼）— <span style="color:#5B6675;">依情境編碼中和腳本。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CSP</strong>（內容安全政策）— <span style="color:#5B6675;">限制可載入的腳本來源(緩解 XSS)。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Parameterized Query</strong>（參數化查詢）— <span style="color:#5B6675;">資料與指令分離,根除注入。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>XSS vs CSRF</strong>:XSS 在<strong>受害者瀏覽器執行腳本</strong>(竊 cookie/session);CSRF <strong>冒用身分送請求</strong>(改密碼/轉帳)。XSS 靠輸出編碼/CSP、CSRF 靠 token/SameSite。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>輸入驗證 vs 輸出編碼</strong>:驗證擋不合法輸入;編碼讓資料在<strong>呈現/使用時</strong>不被當程式。兩者都要,不可互相取代。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>黑名單 vs 白名單</strong>:黑名單(禁特定壞字)易繞過;<strong>白名單(只允許已知好)</strong>較可靠。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>OWASP Top 10 / ASVS / Cheat Sheets</strong>、<strong>CWE</strong>(弱點分類)、<strong>SEI CERT 安全編碼標準</strong>。CSP=W3C;SameSite cookie 已成預設防 CSRF 基線。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：XSS 竊取 session</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 一段腳本,接管你的帳號</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;"><strong>Stored XSS</strong> 經典危害:攻擊者把惡意腳本存入留言/個資欄位,當其他使用者(含管理員)瀏覽時,腳本在<strong>他們的瀏覽器執行</strong>,竊取 <strong>session cookie</strong> 傳給攻擊者→<strong>接管帳號</strong>(無需密碼)。多起社群/論壇平台曾因此被蠕蟲式擴散。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓:<strong>輸出編碼＋CSP＋HttpOnly cookie(讓 JS 讀不到 session)＋輸入驗證</strong>多層防禦。HttpOnly 讓即使有 XSS 也偷不到 session cookie,是重要的縱深控制。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：為何輸入驗證不足以擋 XSS</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">只在輸入端驗證不夠:同一份資料可能用在<strong>多種輸出情境</strong>(HTML body、屬性、JS、URL),每種需<strong>不同編碼</strong>。且資料可能來自<strong>其他來源</strong>(DB、API)未經你的輸入驗證。故防 XSS 的<strong>主力是『在輸出時依情境編碼』</strong>,輸入驗證為輔。這是常見觀念錯誤。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『防 SQLi 最根本』→ 參數化查詢;『防 XSS 主力』→ 輸出編碼(＋CSP/HttpOnly);『防 CSRF』→ token/SameSite;『輸入驗證用』→ 白名單。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>XSS(執行腳本) vs CSRF(冒用請求)防法不同;輸出編碼是防 XSS 主力(非僅輸入驗證);黑名單不可靠。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>注入靠參數化(資料≠指令)、XSS 靠輸出編碼＋CSP＋HttpOnly、CSRF 靠 token＋SameSite;輸入用白名單驗證、輸出依情境編碼。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 防 XSS 的主力控制是什麼、為何不只靠輸入驗證？<br><span style="color:#0A5A59;">→ 依情境的輸出編碼;同資料用於多輸出情境且可能來自其他來源,輸入驗證為輔。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . XSS 與 CSRF 的防禦分別是？<br><span style="color:#0A5A59;">→ XSS:輸出編碼/CSP/HttpOnly;CSRF:CSRF token/SameSite cookie。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . HttpOnly cookie 如何降低 XSS 危害？<br><span style="color:#0A5A59;">→ 讓 JavaScript 讀不到 session cookie,即使有 XSS 也難竊取 session。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/fS5WWjuyFmQ" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/vg-o5lKcwsA?t=6567" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 8<span class="ts-note">（從約 109:27 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 78 / 120 · P2-D8-3</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

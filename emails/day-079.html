@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 79</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 79 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D8-4</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 8 · 軟體開發安全 &nbsp;|&nbsp; 權重 10%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">SAST/DAST/SCA 與 API 深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">SAST/DAST/SCA &amp; API Deep Dive</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:65.83%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D8：測試工具與開源/ API 風險</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>SAST/DAST/IAST 三種掃描的互補</strong>、<strong>SCA 與開源相依風險</strong>、<strong>API 安全</strong>與<strong>資料庫程式安全</strong>。現代應用大半是『組裝』而非『手寫』,相依與 API 是主要攻擊面。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>:SAST/DAST/IAST 互補 → SCA/SBOM/開源風險 → API 安全(OWASP API) → 資料庫程式安全。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 三種掃描互補</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">工具</td><td style="padding:8px 10px;">找什麼</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">盲點</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>SAST</strong></td><td style="padding:9px 10px; vertical-align:top;">你寫的程式碼漏洞(早期)</td><td style="padding:9px 10px; vertical-align:top;">誤報多、不見執行期</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>DAST</strong></td><td style="padding:9px 10px; vertical-align:top;">執行中應用漏洞(近真實)</td><td style="padding:9px 10px; vertical-align:top;">較晚、難定位根因</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>IAST</strong></td><td style="padding:9px 10px; vertical-align:top;">執行中插樁(較準)</td><td style="padding:9px 10px; vertical-align:top;">需植入探針</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>SCA</strong></td><td style="padding:9px 10px; vertical-align:top;"><strong>引入的</strong>第三方/開源相依漏洞</td><td style="padding:9px 10px; vertical-align:top;">不看你自己的碼</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 分工:SAST/DAST 找<strong>你寫的</strong>漏洞;<strong>SCA 找你引入的</strong>第三方相依漏洞——現代應用後者占大宗。四者組合才完整,各補盲點。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 開源相依風險與 SBOM</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>相依的相依(transitive)</strong>:你直接引一個套件,它又引十個,風險藏在深處</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>SBOM</strong>:維護完整相依清單,漏洞爆發時<strong>快速定位是否受影響</strong></td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>惡意套件</strong>:typosquatting、被劫持的維護者帳號→投毒;用鎖定版本、簽章、私有 registry、SCA</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>授權合規</strong>:開源授權(GPL 等)義務也需管理</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — API 與資料庫安全</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>API 安全(OWASP API Top 10)</strong>核心:<strong>BOLA(物件層級越權)</strong>、broken auth、過度資料暴露、<strong>速率限制</strong>。每個物件存取都要<strong>伺服器端授權檢查</strong>。<strong>資料庫程式安全</strong>:預備語句、最小權限帳號、敏感欄位加密/代碼化、稽核存取。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SAST/DAST/IAST</strong>（靜/動/互動測試）— <span style="color:#5B6675;">讀碼/打站/插樁,互補。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SCA</strong>（軟體組成分析）— <span style="color:#5B6675;">掃描第三方相依已知漏洞。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SBOM</strong>（軟體物料清單）— <span style="color:#5B6675;">列出所有相依元件。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Transitive Dependency</strong>（相依的相依）— <span style="color:#5B6675;">間接引入的套件。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">BOLA</strong>（物件層級越權）— <span style="color:#5B6675;">API 最常見漏洞(改 ID 讀他人資料)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Rate Limiting</strong>（速率限制）— <span style="color:#5B6675;">防濫用/暴力/DoS。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Typosquatting</strong>（拼字搶註）— <span style="color:#5B6675;">以近似名的惡意套件投毒。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>自寫 vs 引入的漏洞</strong>:SAST/DAST 找<strong>你寫的</strong>;<strong>SCA 找你引入的</strong>第三方相依。Log4Shell 那類靠 SCA＋SBOM 才查得到。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>SAST vs DAST</strong>:SAST 不執行、看原始碼(早期、誤報多);DAST 打執行中應用(近真實、較晚)。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>API 授權</strong>:必須<strong>伺服器端、每物件</strong>驗;前端隱藏按鈕<strong>不是</strong>授權控制(BOLA 根因)。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>OWASP API Security Top 10 / SCVS / Dependency-Track</strong>、<strong>NIST SSDF</strong>、<strong>SLSA</strong>、<strong>CISA/NTIA SBOM</strong>。Log4Shell 後 SBOM＋SCA 成相依風險管理標配。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：Log4Shell 開源相依</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 一個日誌套件,全球救火</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">2021 <strong>Log4Shell(CVE-2021-44228)</strong>:極廣泛使用的 Java 日誌套件 Log4j 存在遠端程式碼執行漏洞。無數應用<strong>因『相依的相依』受影響卻不自知</strong>,全球連夜盤點修補。沒有 <strong>SBOM</strong> 的組織連『有沒有用到 Log4j』都答不出來。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓:<strong>你引入的開源就是你的攻擊面</strong>;<strong>SBOM＋SCA＋快速修補能力</strong>是相依風險管理的基石。供應鏈安全(D1)在軟體層的具體展現——透明度是前提。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：API 成為頭號攻擊面</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">微服務與行動後端讓 <strong>API 數量爆炸</strong>,常有<strong>影子 API/殭屍 API</strong>(未納管、舊版未下線)。攻擊者直接打 API 繞過前端。對策:<strong>API 盤點與閘道(API gateway)、一致的認證授權、速率限制、結構描述驗證(schema validation)、監控異常呼叫</strong>。把 API 當第一線攻擊面治理,而非附屬於前端。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『管理開源相依漏洞』→ SCA＋SBOM;『API 改 ID 讀他人資料』→ BOLA(伺服器端每物件授權);『早期看碼找漏洞』→ SAST;『近真實打站』→ DAST。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>自寫漏洞用 SAST/DAST、引入相依用 SCA;API 授權要伺服器端每物件;相依的相依藏風險,靠 SBOM 透明化。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>SAST/DAST/IAST 找自寫漏洞、SCA 找引入相依漏洞(配 SBOM);API 防 BOLA(伺服器端每物件授權)＋速率限制;Log4Shell 是相依透明度的警鐘。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 管理第三方/開源套件已知漏洞用什麼、配合什麼？<br><span style="color:#0A5A59;">→ SCA(軟體組成分析),配合 SBOM 追蹤所有相依。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . API 最常見的 BOLA 漏洞根因與對策？<br><span style="color:#0A5A59;">→ 缺伺服器端每物件授權檢查(只靠前端隱藏);對策是後端逐物件驗授權。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . Log4Shell 為何難盤點影響範圍？<br><span style="color:#0A5A59;">→ Log4j 常是『相依的相依』,無 SBOM 難知哪些應用受影響。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/fS5WWjuyFmQ" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/vg-o5lKcwsA?t=6310" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 8<span class="ts-note">（從約 105:10 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 79 / 120 · P2-D8-4</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
