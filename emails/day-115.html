@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 115</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 115 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#B45309; padding:4px 9px; border-radius:5px;">P3-D7-5</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">後期 · 考試重點 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">考點：D7 綜合 + 刷題</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Exam: D7 Integration + Practice</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:95.83%; background-color:#B45309;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 考前重點濃縮 + D7 綜合</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">D7 後期收尾:<strong>SIEM/修補綜合</strong>,並做 D7 綜合刷題。搭配 practice 影片刷 D7。</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>SIEM 關聯告警;UEBA 抓內部威脅;出向監控防外傳</strong>。</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>修補依風險排序(CVSS+暴露+KEV)</strong>;無法即時修補用補償控制。</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>抗勒索:離線/不可變備份+還原演練+分段</strong>。</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 核心速記</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">主題</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">SIEM</td><td style="padding:9px 10px; vertical-align:top;">關聯多源日誌告警</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">UEBA</td><td style="padding:9px 10px; vertical-align:top;">行為基線抓內部威脅</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">修補排序</td><td style="padding:9px 10px; vertical-align:top;">CVSS+暴露+在野利用</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">抗勒索</td><td style="padding:9px 10px; vertical-align:top;">離線/不可變備份+演練</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 關鍵名詞（中英）</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SIEM</strong>（安全資訊事件管理）— <span style="color:#5B6675;">關聯日誌告警。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">UEBA</strong>（行為分析）— <span style="color:#5B6675;">抓內部威脅/帳號盜用。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Compensating Control</strong>（補償控制）— <span style="color:#5B6675;">無法修補時的替代。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Immutable Backup</strong>（不可變備份）— <span style="color:#5B6675;">抗勒索。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Patch Prioritization</strong>（修補排序）— <span style="color:#5B6675;">依風險決定先後。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 常見陷阱</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>CVSS 高不必然最先修</strong>(還看暴露/在野利用)。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>線上備份會被勒索一起加密</strong>;需離線/不可變。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>SIEM(規則) vs UEBA(行為)</strong> 互補。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 🎯 實戰考題</div>
+    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">A high-CVSS vulnerability exists on an internal system not reachable from the internet, while a medium-CVSS flaw is on an internet-facing server being actively exploited in the wild. Which should be patched FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一個高 CVSS 弱點位於無法從網際網路觸及的內部系統;另一個中 CVSS 弱點位於對外伺服器且正被在野利用。應『先』修補哪個?）</p>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> The high-CVSS internal one 高 CVSS 的內部那個</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> The medium-CVSS internet-facing, actively-exploited one 中 CVSS、對外且在野利用的那個</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> Neither 都不修</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> Both can wait 都可以等</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：B</strong>。修補優先序不只看 CVSS,還要看<strong>暴露面與是否在野利用</strong>。對外、可達、正被利用(KEV)的弱點風險最高,應<strong>優先</strong>。</p>
+        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：內部不可達的高 CVSS 實際可利用性低,排序在後。</li><li style="margin-bottom:3px;">C／D：正被利用的對外弱點不可拖延。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">Which tool is BEST suited to detect an insider misusing valid credentials to access data abnormally?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪個工具最適合偵測『內部人用合法憑證異常存取資料』?）</p>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> Antivirus 防毒</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> UEBA 使用者實體行為分析</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> Firewall 防火牆</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> Vulnerability scanner 弱點掃描器</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：B</strong>。內部人憑證合法,傳統規則抓不到;<strong>UEBA</strong> 以行為基線偵測異常(如異常時段/大量存取他部門資料)。</p>
+        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：防毒抓惡意程式,非行為異常。</li><li style="margin-bottom:3px;">C：防火牆控網路連線,非帳號行為。</li><li style="margin-bottom:3px;">D：掃描器找弱點,非偵測異常存取。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">Which backup characteristic is MOST important for recovering from a ransomware attack?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（對於從勒索軟體攻擊中復原,哪個備份特性最重要?）</p>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> Backups are stored online for speed 線上儲存以求快</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> Backups are offline/immutable and tested 離線/不可變且經測試</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> Backups are compressed 經壓縮</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> Backups are stored on the same server 存於同一伺服器</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：B</strong>。勒索會加密<strong>連網/線上</strong>的備份;唯有<strong>離線/不可變(immutable)且經還原測試</strong>的備份才能可靠復原。</p>
+        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A／D：線上/同伺服器備份會被一起加密。</li><li style="margin-bottom:3px;">C：壓縮與抗勒索無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — (ISC)² 選最佳答案思路</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>修補排序</strong>:對外+在野利用優先(非只看 CVSS);<strong>內部威脅</strong>→UEBA;<strong>抗勒索</strong>→離線/不可變備份+演練。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;">SIEM 關聯、出向監控防外傳;無法修補用補償控制。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>修補依風險(暴露+在野利用,非只 CVSS);UEBA 抓內部威脅;抗勒索靠離線/不可變備份+演練;SIEM 關聯告警。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 高 CVSS 內部 vs 中 CVSS 對外在野利用,先修哪個？<br><span style="color:#0A5A59;">→ 對外且在野利用的(暴露+利用優先)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 偵測合法憑證的異常存取用什麼？<br><span style="color:#0A5A59;">→ UEBA(行為分析)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 抗勒索最重要的備份特性？<br><span style="color:#0A5A59;">→ 離線/不可變且經還原測試。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/xX4U6Lz82Bk" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 7 Review / Mind Map (4 of 6) | Patching & Change Management ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/8zM89KMRniM?t=2796" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 46:36 開始）</span> ↗</a>
+      </div>
+      <div style="margin-top:11px;">
+        <div style="font-size:12px; color:#B45309; font-weight:700; margin-bottom:2px;">📝 考題練習（刷題）</div>
+        <a href="https://youtu.be/jzNSkJ2ZZ-c" style="font-size:14px; font-weight:700; color:#B45309; text-decoration:none;">50 CISSP Practice Questions and Answers 2026 | CISSP Domain 7 Prep ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 115 / 120 · P3-D7-5</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
