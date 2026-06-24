@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 72</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 72 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D7-2</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">SIEM/威脅情報/UEBA 深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">SIEM/TI/UEBA Deep Dive</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:60.0%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D7：偵測的進階武器</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>SIEM 關聯分析</strong>、<strong>威脅情報(IOC/TTP)</strong>、<strong>出向(egress)監控</strong>與 <strong>UEBA 內部威脅偵測</strong>。從『記錄』走向『主動發現攻擊』，尤其是難抓的內部威脅與資料外傳。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：SIEM 關聯 → 威脅情報 IOC/TTP → 出向監控/DLP → UEBA 內部威脅 → SOAR。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — SIEM 與威脅情報</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>SIEM</strong>：集中蒐集→正規化→<strong>關聯(correlation)</strong>多來源→告警;單一日誌無意義,關聯出攻擊鏈</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>IOC(入侵指標)</strong>：已知壞東西(惡意 IP/網域/檔案雜湊)——比對快但易過時</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>TTP(戰術技術程序)</strong>：攻擊者<strong>行為模式</strong>(MITRE ATT&CK)——較難偽裝,偵測更持久</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;">金字塔(Pyramid of Pain)：擋 TTP 比擋 IOC 讓攻擊者更痛</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 出向監控與內部威脅</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">多數監控盯<strong>入向</strong>,但<strong>資料外洩發生在出向(egress)</strong>。<strong>出向監控＋DLP</strong>偵測異常外傳(大量資料到陌生目的、非工時外傳、DNS 隧道)。<strong>UEBA</strong> 以<strong>行為基線</strong>偵測偏離(如某帳號突然存取大量他部門檔案)——專剋<strong>內部威脅與帳號盜用</strong>,因為它們『憑證合法但行為異常』。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — SOAR 自動化</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>SOAR</strong>(安全協調自動化回應)用 playbook <strong>自動處理</strong>重複性告警(封鎖 IP、隔離主機、開工單),讓分析師聚焦高階研判——對抗告警疲勞、縮短回應時間(MTTR)。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SIEM</strong>（安全資訊事件管理）— <span style="color:#5B6675;">集中關聯日誌並告警。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">IOC</strong>（入侵指標）— <span style="color:#5B6675;">已知惡意 IP/雜湊/網域。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">TTP</strong>（戰術技術程序）— <span style="color:#5B6675;">攻擊行為模式(ATT&CK)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">UEBA</strong>（使用者實體行為分析）— <span style="color:#5B6675;">行為基線偵測異常/內部威脅。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Egress Monitoring</strong>（出向監控）— <span style="color:#5B6675;">偵測異常資料外傳。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Threat Hunting</strong>（威脅獵捕）— <span style="color:#5B6675;">主動假設驅動搜尋潛伏威脅。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SOAR</strong>（協調自動化回應）— <span style="color:#5B6675;">playbook 自動化告警處理。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Exfiltration</strong>（資料外傳）— <span style="color:#5B6675;">攻擊者把資料偷出組織。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>IOC vs TTP</strong>：IOC 是『<strong>已知壞指標</strong>』(易變、易繞過);TTP 是『<strong>行為模式</strong>』(難偽裝、偵測更持久)。成熟偵測重 TTP(ATT&CK)。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>SIEM vs UEBA</strong>：SIEM 多靠<strong>規則/關聯</strong>抓已知;UEBA 靠<strong>行為基線</strong>抓未知異常(內部威脅)。互補。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Threat Hunting vs 告警回應</strong>：獵捕是<strong>主動假設</strong>(假設已被入侵,主動找證據);告警回應是<strong>被動</strong>等系統告警。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>MITRE ATT&CK</strong>(TTP 通用語)、<strong>NIST SP 800-92(日誌)/800-137(ISCM)</strong>、<strong>STIX/TAXII</strong>(威脅情報交換)。內部威脅計畫對應 <strong>NIST SP 800-53 提及的 insider threat program</strong>。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：資料外傳偵測</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 從異常外傳抓出內鬼</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">內部人或被盜帳號竊密時,<strong>憑證是合法的</strong>,傳統規則抓不到。但 <strong>UEBA＋出向監控</strong>能發現異常模式:某員工帳號在<strong>離職前夕</strong>大量下載/外傳超出職務範圍的檔案、在<strong>異常時段</strong>連到個人雲端、或 <strong>DNS 隧道</strong>偷渡資料。許多智財竊取與內部洩密正是靠行為異常被揪出。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>內部威脅靠『行為』而非『特徵』偵測</strong>;結合 UEBA、出向 DLP、離職前監控與最小權限,把『合法憑證的異常行為』攔下。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：告警分級與 SOC 成熟度</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">SOC 處理告警分 <strong>Tier 1(分流)→Tier 2(調查)→Tier 3(獵捕/鑑識)</strong>。成熟度提升的關鍵是<strong>降噪(調規則/UEBA)＋自動化(SOAR)＋從被動告警走向主動獵捕</strong>。衡量指標:MTTD(偵測)、MTTR(回應)、誤報率、ATT&CK 偵測涵蓋率。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『關聯多源日誌找攻擊鏈』→ SIEM;『憑證合法但行為異常/內部威脅』→ UEBA;『偵測資料外傳』→ 出向監控＋DLP;『主動假設找潛伏威脅』→ threat hunting。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>IOC(指標,易變) vs TTP(行為,持久);監控別只看入向(外洩在出向);內部威脅靠行為不靠特徵。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>SIEM 關聯告警、IOC(指標)/TTP(行為)、UEBA 抓行為異常與內部威脅、出向監控防外傳、SOAR 自動化、威脅獵捕主動找。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 偵測『憑證合法但行為異常』的內部威脅用什麼？<br><span style="color:#0A5A59;">→ UEBA(使用者實體行為分析,行為基線)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . IOC 與 TTP 何者偵測更持久、為什麼？<br><span style="color:#0A5A59;">→ TTP——是行為模式,難偽裝;IOC 指標易變易繞過。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 為何要做出向(egress)監控？<br><span style="color:#0A5A59;">→ 資料外洩發生在出向;入向監控抓不到資料被偷傳出去。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/Urev5cZgny8" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 7 Review / Mind Map (1 of 6) | Investigations ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/8zM89KMRniM?t=202" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 03:22 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 72 / 120 · P2-D7-2</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
