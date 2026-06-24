@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 27</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 27 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D6-2</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 6 · 安全評估與測試 &nbsp;|&nbsp; 權重 12%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">弱點評估與滲透測試</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Vuln Assessment &amp; Pentest</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:22.5%; background-color:#0E7C7B;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 弱點評估 vs 滲透測試</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">這是 Domain 6 最高頻的對比題。<strong>弱點評估（Vulnerability Assessment）</strong>＝<strong>找出</strong>並列出弱點（廣、自動化）；<strong>滲透測試（Penetration Test）</strong>＝<strong>實際利用</strong>弱點證明可被攻破（深、模擬攻擊）。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：弱點掃描 vs 滲透測試 → 黑/白/灰箱 → 滲透測試階段 → 授權與範圍。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 兩者對照</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">面向</td><td style="padding:8px 10px;">弱點評估</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">滲透測試</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">目的</td><td style="padding:9px 10px; vertical-align:top;">找出&列出弱點</td><td style="padding:9px 10px; vertical-align:top;">實際利用、證明可被攻破</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">深度</td><td style="padding:9px 10px; vertical-align:top;">廣、表面</td><td style="padding:9px 10px; vertical-align:top;">深、針對性</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">方式</td><td style="padding:9px 10px; vertical-align:top;">多為自動掃描</td><td style="padding:9px 10px; vertical-align:top;">人工＋工具、模擬真實攻擊</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">產出</td><td style="padding:9px 10px; vertical-align:top;">弱點清單+風險分級</td><td style="padding:9px 10px; vertical-align:top;">攻擊路徑+實證+建議</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 一句話：<strong>弱點評估告訴你『門沒鎖』，滲透測試直接『開門進去』證明給你看。</strong></p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 黑/白/灰箱</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Black box 黑箱</strong>：測試者無內部資訊，模擬外部攻擊者</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>White box 白箱</strong>：完全掌握架構/原始碼，最徹底</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Gray box 灰箱</strong>：部分資訊，平衡真實性與效率</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Vulnerability Assessment</strong>（弱點評估）— <span style="color:#5B6675;">系統化找出並分級弱點（多為掃描）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Penetration Test</strong>（滲透測試）— <span style="color:#5B6675;">實際利用弱點以證明可被攻破。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Black/White/Gray box</strong>（黑/白/灰箱）— <span style="color:#5B6675;">測試者掌握資訊的多寡。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ROE</strong>（交戰規則）— <span style="color:#5B6675;">Rules of Engagement，界定範圍/時間/限制/授權。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Scope</strong>（範圍）— <span style="color:#5B6675;">明確界定可測的系統與邊界。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Red/Blue/Purple Team</strong>（紅/藍/紫隊）— <span style="color:#5B6675;">攻擊/防守/協作演練角色。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>弱點評估 vs 滲透測試</strong>：評估＝<strong>找</strong>（廣、不利用）；滲透＝<strong>打</strong>（深、實際利用）。預算有限先做弱點評估；要證明真實風險才做滲透。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>授權是底線</strong>：未經書面授權的滲透測試＝非法入侵。必須先有<strong>ROE＋範圍＋授權書</strong>。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-115</strong>、<strong>PTES</strong>、<strong>OSSTMM</strong> 是測試方法論；合規（如 PCI DSS）常<strong>強制</strong>定期弱點掃描與滲透測試。滲透測試前務必取得<strong>書面授權（get-out-of-jail letter）</strong>。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：未修補被攻破</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 掃到了卻沒修</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">許多重大入侵的弱點其實<strong>早被掃描器發現</strong>，卻因『修補影響營運』或排程延宕而<strong>未修補</strong>，最終被攻擊者利用（如未修補的對外服務漏洞）。弱點評估的價值，取決於後續的<strong>修補管理</strong>是否落實。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：評估只是第一步；<strong>依風險排序修補（risk-based patching）</strong>並追蹤到關閉，才真正降低風險。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>『找出並列出弱點』→ 弱點評估；『實際利用證明可被攻破』→ 滲透測試。『無任何內部資訊』→ 黑箱。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>滲透測試<strong>必須先授權</strong>；弱點掃描≠滲透測試（一個找、一個打）。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>弱點評估找弱點（廣）、滲透測試利用弱點證明風險（深）；黑/白/灰箱看資訊多寡；測試前須授權，評估後須修補。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 『實際利用弱點證明可入侵』是哪種測試？<br><span style="color:#0A5A59;">→ 滲透測試（penetration test）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 模擬無內部資訊的外部攻擊者屬哪種箱型？<br><span style="color:#0A5A59;">→ 黑箱（black box）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 進行滲透測試前最重要的前置是什麼？<br><span style="color:#0A5A59;">→ 書面授權與 ROE/範圍界定。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/vZ0S8GdWiIk" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 6 Review / Mind Map (2 of 3) | Vulnerability Assessment and Penetration Testing ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/lt_-KqplT5o?t=584" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 6<span class="ts-note">（從約 09:44 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="index.html" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 27 / 120 · P1-D6-2</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
