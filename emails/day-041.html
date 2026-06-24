@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 41</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 41 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D1-1</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 1 · 安全與風險管理 &nbsp;|&nbsp; 權重 16%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">治理文件層級與框架</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Governance Documents &amp; Frameworks</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:34.17%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期開始：把 D1 的骨架填滿血肉</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">歡迎進入<strong>中期（Deep Dive）</strong>。初期我們建立了八大 Domain 的輪廓；接下來八週要回到每個 Domain<strong>深入名詞、條文與案例</strong>。今天從 D1 的<strong>治理文件層級</strong>與<strong>主流框架選型</strong>開始——這是把『治理』從口號變成可落地文件體系的關鍵。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週（Domain 1 · 中期）</strong>：①治理文件與框架 → ②定量風險計算 → ③控制功能類別與風險框架 → ④智財/跨境/隱私法條 → ⑤BCP/BIA/SCRM/威脅建模。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 治理文件層級（由上而下）</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">文件</td><td style="padding:8px 10px;">強制力</td><td style="padding:8px 10px;">內容</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">例子</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Policy 政策</strong></td><td style="padding:9px 10px; vertical-align:top;">強制（高層核准）</td><td style="padding:9px 10px; vertical-align:top;">為什麼、做什麼的方向</td><td style="padding:9px 10px; vertical-align:top;">『資料須分類保護』</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Standard 標準</strong></td><td style="padding:9px 10px; vertical-align:top;">強制</td><td style="padding:9px 10px; vertical-align:top;">具體必須遵守的要求</td><td style="padding:9px 10px; vertical-align:top;">『一律用 AES-256』</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Baseline 基準</strong></td><td style="padding:9px 10px; vertical-align:top;">強制</td><td style="padding:9px 10px; vertical-align:top;">最低安全設定</td><td style="padding:9px 10px; vertical-align:top;">『伺服器強化基準』</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Procedure 程序</strong></td><td style="padding:9px 10px; vertical-align:top;">強制</td><td style="padding:9px 10px; vertical-align:top;">逐步怎麼做（SOP）</td><td style="padding:9px 10px; vertical-align:top;">『如何設定加密』</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Guideline 指引</strong></td><td style="padding:9px 10px; vertical-align:top;"><strong>建議</strong>（非強制）</td><td style="padding:9px 10px; vertical-align:top;">最佳實務參考</td><td style="padding:9px 10px; vertical-align:top;">『建議的密碼樣式』</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 關鍵區別：<strong>只有 Guideline 是『建議』，其餘皆『強制』</strong>。考試常問哪個是 optional → Guideline。Policy 最上位、最少變動；Procedure 最細、最常更新。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 主流治理框架選型</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">框架</td><td style="padding:8px 10px;">定位</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">適用</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>ISO/IEC 27001</strong></td><td style="padding:9px 10px; vertical-align:top;">資安管理系統(ISMS)＋可認證</td><td style="padding:9px 10px; vertical-align:top;">建立並認證整體 ISMS</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>NIST CSF</strong></td><td style="padding:9px 10px; vertical-align:top;">Govern/Identify/Protect/Detect/Respond/Recover</td><td style="padding:9px 10px; vertical-align:top;">風險導向、彈性框架</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>COBIT</strong></td><td style="padding:9px 10px; vertical-align:top;">IT 治理、與企業目標對齊</td><td style="padding:9px 10px; vertical-align:top;">IT 治理與稽核</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>NIST 800-53</strong></td><td style="padding:9px 10px; vertical-align:top;">詳細控制目錄</td><td style="padding:9px 10px; vertical-align:top;">美政府/控制清單來源</td></tr>
+    </table>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">選型沒有標準答案：要<strong>對外認證</strong>選 ISO 27001；要<strong>風險導向的彈性框架</strong>選 NIST CSF；談<strong>IT 治理與企業對齊</strong>選 COBIT。多數企業混用——以 CSF 規劃、用 800-53/27001 控制落地。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Policy</strong>（政策）— <span style="color:#5B6675;">高層核准的方向性強制文件。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Standard</strong>（標準）— <span style="color:#5B6675;">具體必遵的要求（如演算法、版本）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Baseline</strong>（基準）— <span style="color:#5B6675;">一致的最低安全設定。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Procedure</strong>（程序）— <span style="color:#5B6675;">逐步操作說明（SOP），最細。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Guideline</strong>（指引）— <span style="color:#5B6675;">非強制的最佳實務建議。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ISMS</strong>（資安管理系統）— <span style="color:#5B6675;">ISO 27001 的管理體系，含 PDCA 持續改善。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">NIST CSF</strong>（網路安全框架）— <span style="color:#5B6675;">六功能的風險導向框架（含 2.0 的 Govern）。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Standard vs Baseline vs Procedure</strong>：Standard 規定『<strong>必須符合什麼</strong>』（AES-256）；Baseline 是『<strong>最低起點設定</strong>』（強化範本）；Procedure 是『<strong>逐步怎麼做</strong>』。三者皆強制，層次不同。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Guideline 是唯一非強制</strong>：考題問『哪個是 recommended/optional』→ Guideline。其餘違反可究責。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>ISO 27001 vs 27002</strong>：27001 是<strong>可認證的要求</strong>；27002 是<strong>控制實作指引</strong>（非認證）。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>ISO/IEC 27001:2022</strong>（ISMS 要求）、<strong>27002</strong>（控制指引）、<strong>NIST CSF 2.0</strong>（2024 新增 Govern 功能）、<strong>COBIT 2019</strong>、<strong>NIST SP 800-53 Rev.5</strong>。台灣金融業另有 <strong>金管會</strong>資安規範與 ISMS 要求。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：政策與實務脫節</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 寫了一櫃子政策，沒人照做</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">稽核中極常見的發現：組織有完整的<strong>政策文件</strong>，但<strong>程序未落實或員工不知情</strong>——例如政策要求季度存取審查，實際從未執行。這種『<strong>紙上合規（paper compliance）</strong>』在稽核或事故時暴露，反而成為『明知卻未做』的加重因素（呼應 due care）。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：文件層級要<strong>上下一致且可稽核</strong>——政策有對應的標準/程序、有執行證據、有定期審查。文件不是給稽核看的擺設。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>『哪份文件是<strong>非強制/建議</strong>』→ <strong>Guideline</strong>；『規定必須用某演算法』→ Standard；『逐步操作』→ Procedure；『要對外認證 ISMS』→ ISO 27001。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>選最佳答案：</strong>文件由上而下推導——先有 Policy（為什麼/做什麼），才有 Standard/Baseline/Procedure（怎麼符合）。Policy 應由<strong>高階管理層</strong>核准（呼應 D1 治理）。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>治理文件：Policy（方向）→ Standard（必遵要求）→ Baseline（最低設定）→ Procedure（逐步），只有 Guideline 非強制；框架 ISO 27001 認證、NIST CSF 風險導向、COBIT 治理。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 五類治理文件中哪個是非強制？<br><span style="color:#0A5A59;">→ Guideline（指引，建議性質）；其餘皆強制。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 『一律使用 AES-256』屬於哪類文件？<br><span style="color:#0A5A59;">→ Standard（標準，具體必遵要求）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 要建立並對外認證 ISMS 用哪個標準？<br><span style="color:#0A5A59;">→ ISO/IEC 27001。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/hf5NwUSEkwA" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">Alignment of Security Function MindMap (1 of 3) | CISSP Domain 1 ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/J-su239XmCE?t=1803" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 1<span class="ts-note">（從約 30:03 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 41 / 120 · P2-D1-1</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
