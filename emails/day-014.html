@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 14</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 14 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D3-4</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 3 · 安全架構與工程 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">系統與雲端架構弱點</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">System &amp; Cloud Architecture Weaknesses</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:11.67%; background-color:#0E7C7B;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 系統與雲端：弱點藏在哪</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">有了原則、模型、密碼，今天看它們<strong>落到真實系統</strong>時的弱點：硬體信任根（TPM/HSM）、主從與分散式架構、<strong>雲端三模型與共同責任</strong>、以及 IoT/ICS。初期抓「<strong>不同架構各有什麼典型弱點</strong>」即可。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：TPM/HSM → 分散式弱點 → 雲端 IaaS/PaaS/SaaS 共同責任 → IoT/ICS。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 雲端三模型與共同責任</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">模型</td><td style="padding:8px 10px;">你管什麼</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">供應商管什麼</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>IaaS</strong></td><td style="padding:9px 10px; vertical-align:top;">OS、應用、資料、設定</td><td style="padding:9px 10px; vertical-align:top;">實體、虛擬化、網路</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>PaaS</strong></td><td style="padding:9px 10px; vertical-align:top;">應用、資料</td><td style="padding:9px 10px; vertical-align:top;">OS、執行環境以下</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>SaaS</strong></td><td style="padding:9px 10px; vertical-align:top;">資料與存取設定</td><td style="padding:9px 10px; vertical-align:top;">幾乎全部其餘</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 <strong>共同責任模型（Shared Responsibility）</strong>：越往 SaaS，供應商扛越多，但「<strong>資料與身分權限</strong>」永遠是<strong>你的</strong>責任——多數雲端外洩都出在客戶端的設定錯誤。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 硬體信任根與架構弱點</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>TPM</strong>（主機板上的安全晶片）：儲存金鑰、支援全磁碟加密（如 BitLocker）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>HSM</strong>（專用硬體模組）：高強度金鑰保護與加密運算</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>分散式/主從</strong>：攻擊面變大、資料一致性與通道安全是弱點</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>IoT / ICS-SCADA</strong>：常用預設密碼、難修補、生命週期長，是高風險地帶</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Shared Responsibility</strong>（共同責任）— <span style="color:#5B6675;">雲端中客戶與供應商各管一部分；資料/身分恆為客戶責任。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">TPM</strong>（信賴平台模組）— <span style="color:#5B6675;">主機板安全晶片，保管金鑰、支援磁碟加密。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">HSM</strong>（硬體安全模組）— <span style="color:#5B6675;">專用金鑰保護與加密運算硬體。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">IaaS/PaaS/SaaS</strong>（雲端三模型）— <span style="color:#5B6675;">基礎設施/平台/軟體即服務，責任界線不同。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ICS / SCADA</strong>（工業控制系統）— <span style="color:#5B6675;">工控與監控系統，難修補、生命週期長、風險高。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Side-channel</strong>（旁通道）— <span style="color:#5B6675;">由功耗/時間/電磁等間接洩漏資訊的攻擊。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>TPM vs HSM</strong>：TPM 是<strong>內建在單機</strong>主機板、綁定該平台；HSM 是<strong>獨立、高強度</strong>的金鑰管理設備（常用於 CA、資料中心）。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>雲端責任</strong>：用 SaaS 不代表「安全都外包了」——<strong>誰存取、資料怎麼設權限</strong>仍是你的責任。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-145</strong> 定義雲端服務模型；<strong>CSA</strong> 的雲端控制矩陣（CCM）與<strong>共同責任模型</strong>是雲端安全基準；工控有 <strong>NIST SP 800-82</strong>（ICS 安全）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：Capital One 2019 雲端設定錯誤</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 一個設錯的權限，1 億筆資料外洩</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">2019 年 <strong>Capital One</strong> 約 <strong>1 億筆</strong>客戶資料外洩，根因是雲端環境中一個<strong>設定錯誤的 WAF/IAM 角色權限</strong>被利用（SSRF），讀取了 S3 中的資料。問題不在雲供應商，而在<strong>客戶端的設定與權限管理</strong>——正是共同責任模型中「你的那一半」。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：上雲不等於更安全；<strong>身分權限與設定</strong>是雲端時代最關鍵也最常出包的控制。呼應最小權限（Day 11）。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>雲端外洩「誰之過」→ 看<strong>共同責任模型</strong>：資料與存取設定錯通常是<strong>客戶</strong>責任。SaaS/PaaS/IaaS 的責任界線要記。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>把 TPM 與 HSM 混用；以為 SaaS 就「全交給供應商」。IoT/ICS 的弱點是「<strong>難修補＋預設密碼</strong>」。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>不同架構各有典型弱點；雲端用共同責任模型劃分，資料與身分權限永遠是客戶責任，設定錯誤是雲端外洩主因。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . SaaS 下，客戶仍要負責什麼？<br><span style="color:#0A5A59;">→ 資料本身與存取權限設定（身分管理）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . TPM 與 HSM 差別？<br><span style="color:#0A5A59;">→ TPM 內建單機主機板綁平台；HSM 為獨立高強度金鑰設備。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . Capital One 2019 外洩的根因類型？<br><span style="color:#0A5A59;">→ 客戶端雲端設定/權限錯誤（共同責任中客戶的部分）。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/-rWQ7YuxiLY" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 3 Review / Mind Map (5 of 9) | Cloud ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/P5So8_NKxz4?t=1810" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 3<span class="ts-note">（從約 30:10 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 14 / 120 · P1-D3-4</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

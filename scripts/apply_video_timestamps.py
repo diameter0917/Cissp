@@ -36,6 +36,9 @@ SCHEDULE = ROOT / "schedule.json"
 STOP = {
     "domain", "big", "picture", "overview", "the", "and", "of", "in", "to", "a",
     "&", "deep", "dive", "exam", "amp", "vs", "or", "for", "with",
+    # 課程通用高頻詞：在 intro/議程密集出現，會誤導定位，故排除
+    "security", "secure", "system", "systems", "data", "management",
+    "cissp", "controls", "control", "review",
 }
 
 # 可選的精選關鍵字覆蓋（命中率較高的主題詞，依 unit code）
@@ -91,7 +94,7 @@ def keywords_for(code, title_en):
     return out
 
 
-INTRO_SKIP = 120     # 跳過開場前 120 秒的議程/名詞 name-drop
+INTRO_SKIP = 180     # 跳過開場前 180 秒的議程/名詞 name-drop（長課程議程較長）
 WINDOW = 120         # 密度視窗（秒）：找關鍵字最密集的時段＝主題真正開講處
 
 
