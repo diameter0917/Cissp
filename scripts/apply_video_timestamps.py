@@ -91,17 +91,43 @@ def keywords_for(code, title_en):
     return out
 
 
+INTRO_SKIP = 120     # 跳過開場前 120 秒的議程/名詞 name-drop
+WINDOW = 120         # 密度視窗（秒）：找關鍵字最密集的時段＝主題真正開講處
+
+
+def _cue_score(text, keywords):
+    """該 cue 命中的關鍵字加權分數：多詞片語權重高於單字（精準＞泛詞）。"""
+    score = 0
+    for kw in keywords:
+        if kw.lower() in text:
+            score += len(kw.split())   # "risk management"=2、"risk"=1
+    return score
+
+
 def find_timestamp(cues, keywords):
-    """回傳最早命中關鍵字的秒數；沒命中回 None。先比長片語。"""
-    best = None
-    for kw in sorted(keywords, key=lambda k: -len(k)):
-        k = kw.lower()
-        for start, text in cues:
-            if k in text:
-                if best is None or start < best:
-                    best = start
-                break  # 該關鍵字最早一次即可
-    return best
+    """密度定位：跳過 intro，找關鍵字最密集的視窗，回傳該段最早命中的秒數。
+
+    步驟：
+      1. 算每個 cue 的關鍵字加權分數（多詞片語權重較高）。
+      2. 以每個「有分數且過了 intro」的 cue 為視窗起點，加總 [t, t+WINDOW] 內分數。
+      3. 取總分最高的視窗（同分取較早），回傳該視窗內第一個有分數 cue 的起始秒數。
+      4. 全部落在 intro / 完全沒命中時，退回「首次出現」(含 intro)；再無則回 None。
+    """
+    scored = [(start, _cue_score(text, keywords)) for start, text in cues]
+    hits = [(s, sc) for s, sc in scored if sc > 0]
+    if not hits:
+        return None
+
+    main_hits = [(s, sc) for s, sc in hits if s >= INTRO_SKIP]
+    pool = main_hits if main_hits else hits   # 全在 intro 就退回全體
+
+    best_total, best_start = -1, None
+    for i, (t0, _) in enumerate(pool):
+        total = sum(sc for s, sc in pool if t0 <= s <= t0 + WINDOW)
+        if total > best_total:
+            best_total, best_start = total, t0
+    return best_start
+
 
 
 def mmss(sec):
