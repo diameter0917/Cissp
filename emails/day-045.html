@@ -23,9 +23,11 @@
   <div style="padding:24px 24px 8px;">
 
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 深入 BCP/BIA、供應鏈與威脅建模</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">D1 中期收尾，深入四個主題：<strong>BIA 流程與 MTD/RTO/RPO 的關係</strong>、<strong>人員安全控制</strong>、<strong>供應鏈風險管理（SCRM）</strong>、與<strong>威脅建模方法（STRIDE/PASTA/DREAD）</strong>。把 D1 的『管理＋風險』面向補到最完整。</p>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">D1 中期收尾，深入四個主題：<strong>BIA 流程與 MTD/RTO/RPO 的關係</strong>、<strong>人員安全控制</strong>、<strong>供應鏈風險管理（SCRM）</strong>、與<strong>威脅建模方法（STRIDE/PASTA/DREAD）</strong>。把 D1 的『管理＋風險』面向補到最完整，並串起前面所學。</p>
     <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週回顧</strong>：①治理文件 → ②定量風險 → ③控制分類 → ④法條 → ⑤<strong>今天：BCP/BIA/SCRM/威脅建模</strong>。下週進入 Domain 2 中期。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — BIA 與關鍵指標關係</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — BCP 與 BIA 的關係</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>BCP（營運持續計畫）</strong>的起點永遠是 <strong>BIA（營運衝擊分析）</strong>：辨識關鍵業務流程、評估中斷衝擊（財務/法規/商譽）、決定優先順序與復原指標。BIA <strong>先於</strong>策略選擇——沒有 BIA 就不知道該優先救什麼、能容忍多久。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — BIA 關鍵指標關係</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
       <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">指標</td><td style="padding:8px 10px;">意義</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">關係</td></tr>
       <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>MTD/MTPD</strong></td><td style="padding:9px 10px; vertical-align:top;">最大可容忍中斷時間</td><td style="padding:9px 10px; vertical-align:top;">上限——超過組織就垮</td></tr>
@@ -33,44 +35,58 @@
       <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>RPO</strong></td><td style="padding:9px 10px; vertical-align:top;">可容忍資料遺失量</td><td style="padding:9px 10px; vertical-align:top;">決定備份頻率</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>WRT</strong></td><td style="padding:9px 10px; vertical-align:top;">工作復原時間</td><td style="padding:9px 10px; vertical-align:top;">RTO 後驗證/恢復作業的時間</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 鐵則：<strong>RTO ＋ WRT ≤ MTD</strong>。RTO 是『系統多快回來』，RPO 是『能丟多少資料』；兩者一個看時間軸前段（資料）、一個看後段（復原）。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 威脅建模方法</div>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 鐵則：<strong>RTO ＋ WRT ≤ MTD</strong>。RTO 是『系統多快回來』（時間軸往未來）；RPO 是『能丟多少資料』（時間軸往過去，最後一次好備份）。RPO 1 小時＝至少每小時備份。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 人員安全與供應鏈</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>人員安全控制</strong>：任用前背景查核/NDA、在職最小權限/SoD/輪調/強制休假、離職即時撤銷（呼應 D5/D7）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>SCRM 供應鏈風險管理</strong>：簽約前盡職調查、合約載安全要求與稽核權、要求 SOC 2/SBOM、持續監控</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>第四方風險</strong>：你的供應商的供應商也是風險（如 SolarWinds 的下游）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>退出策略</strong>：避免供應商鎖定（lock-in），資料可攜與終止條款要先談</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 威脅建模方法</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
       <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">方法</td><td style="padding:8px 10px;">取向</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
       <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>STRIDE</strong></td><td style="padding:9px 10px; vertical-align:top;">威脅分類</td><td style="padding:9px 10px; vertical-align:top;">Spoofing/Tampering/Repudiation/Info disclosure/DoS/Elevation</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>PASTA</strong></td><td style="padding:9px 10px; vertical-align:top;">風險/攻擊者導向</td><td style="padding:9px 10px; vertical-align:top;">七階段、以攻擊模擬與業務影響為核心</td></tr>
       <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>DREAD</strong></td><td style="padding:9px 10px; vertical-align:top;">風險評分</td><td style="padding:9px 10px; vertical-align:top;">Damage/Reproducibility/Exploitability/Affected/Discoverability</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>STRIDE</strong> 的六類正好對應安全目標：Spoofing↔真實性、Tampering↔完整性、Repudiation↔不可否認、Info disclosure↔機密性、DoS↔可用性、Elevation↔授權。記住這個對應，設計期就能系統化找威脅。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">BIA</strong>（營運衝擊分析）— <span style="color:#5B6675;">找關鍵流程、定 MTD/RTO/RPO。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">BIA</strong>（營運衝擊分析）— <span style="color:#5B6675;">找關鍵流程、定 MTD/RTO/RPO，BCP 第一步。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">MTD</strong>（最大可容忍中斷）— <span style="color:#5B6675;">業務能撐的最長中斷時間（RTO 上限）。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RTO / RPO</strong>（復原時間/復原點）— <span style="color:#5B6675;">多快救回 / 可丟多少資料。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">WRT</strong>（工作復原時間）— <span style="color:#5B6675;">RTO 後恢復作業所需時間。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SCRM</strong>（供應鏈風險管理）— <span style="color:#5B6675;">評估與監控第三方/相依風險。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">STRIDE</strong>（威脅分類法）— <span style="color:#5B6675;">六類威脅，設計期威脅建模常用。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Threat Modeling</strong>（威脅建模）— <span style="color:#5B6675;">系統化辨識威脅與對策。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">PASTA/DREAD</strong>（攻擊模擬/風險評分）— <span style="color:#5B6675;">以攻擊者視角分析、以分數排序威脅。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Threat Modeling</strong>（威脅建模）— <span style="color:#5B6675;">系統化辨識威脅與對策（設計左移）。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 易混淆釐清</div>
     <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>RTO vs RPO</strong>（再強化）：RTO 看『<strong>停多久</strong>』（時間軸往未來，恢復速度）；RPO 看『<strong>丟多少</strong>』（時間軸往過去，最後一次好備份）。RPO 1 小時＝至少每小時備份。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>MTD vs RTO</strong>：MTD 是<strong>上限</strong>（超過就垮）；RTO 是<strong>目標</strong>且必須小於 MTD。RTO ≥ MTD 是設計錯誤。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>STRIDE vs DREAD</strong>：STRIDE <strong>分類威脅</strong>（找有哪些）；DREAD <strong>評分風險</strong>（排優先序）。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>RTO vs RPO</strong>：RTO 看『<strong>停多久</strong>』（恢復速度）；RPO 看『<strong>丟多少</strong>』（最後一次好備份）。兩者一個看時間軸未來、一個看過去。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>MTD vs RTO</strong>：MTD 是<strong>上限</strong>（超過就垮）；RTO 是<strong>目標</strong>且必須 ≤ MTD。RTO ≥ MTD 是設計錯誤。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>STRIDE vs DREAD</strong>：STRIDE <strong>分類威脅</strong>（找有哪些）；DREAD <strong>評分風險</strong>（排優先序）。兩者常搭配使用。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>BCP vs DRP</strong>：BCP 是整個業務持續（含人員/流程/溝通）；DRP 是其中 IT 系統復原的子集。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-34</strong>（應變計畫，含 BIA）、<strong>ISO 22301</strong>（營運持續）、<strong>NIST SP 800-161 / ISO 28000</strong>（供應鏈）。威脅建模有 <strong>Microsoft STRIDE</strong>、<strong>OWASP Threat Modeling</strong>。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：SolarWinds 2020 供應鏈</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-34</strong>（應變計畫，含 BIA）、<strong>ISO 22301</strong>（營運持續管理系統）、<strong>NIST SP 800-161 / ISO 28000</strong>（供應鏈）。威脅建模有 <strong>Microsoft STRIDE</strong>、<strong>OWASP Threat Modeling</strong>、<strong>MITRE ATT&amp;CK</strong>（TTP 對照）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — 真實事件：SolarWinds 2020 供應鏈</div>
     <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 從受信任的更新長驅直入</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">2020 年 <strong>SolarWinds</strong> 的 Orion 網管軟體<strong>建置流程被植入後門（SUNBURST）</strong>，隨正常更新散布到約 1.8 萬客戶（含多個美國政府機關與大型企業）。攻擊者因產物『官方簽署』而長期潛伏。這是<strong>供應鏈風險</strong>最具代表性的事件。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：SCRM 必須涵蓋<strong>供應商的開發/建置安全</strong>，而非只看合約；對關鍵供應商要求 SBOM、完整性驗證與持續監控（呼應 D8）。同時凸顯威脅建模中『信任邊界』的重要。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">2020 年 <strong>SolarWinds</strong> 的 Orion 網管軟體<strong>建置流程被植入後門（SUNBURST）</strong>，隨正常更新散布到約 1.8 萬客戶（含多個美國政府機關與大型企業）。攻擊者因產物『官方簽署』而長期潛伏。這是<strong>供應鏈風險</strong>最具代表性的事件，也凸顯第三方/第四方風險之深。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：SCRM 必須涵蓋<strong>供應商的開發/建置安全</strong>，而非只看合約；對關鍵供應商要求 SBOM、完整性驗證與持續監控（呼應 D8）。威脅建模中『<strong>信任邊界</strong>』的假設必須被質疑。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：BIA 常見錯誤</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">BIA 實務常見三個錯誤：①只問 IT 不問<strong>業務單位</strong>（真正知道流程關鍵性的是業務）；②把<strong>所有系統都標『最關鍵』</strong>（失去優先排序意義）；③只算直接中斷成本、漏掉<strong>法規罰款/商譽/連鎖效應</strong>。好的 BIA 由業務主導、誠實排序、納入間接衝擊。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">10 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>必考關係：</strong><strong>RTO ≤ MTD</strong>；RPO 決定備份頻率。『系統多快回來』＝RTO，『能丟多少資料』＝RPO。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>選最佳答案：</strong>『設計期系統化找威脅分類』→ STRIDE；『評分排優先序』→ DREAD；『BCP 第一步』→ <strong>BIA</strong>；供應鏈後門→ 強化 SCRM＋完整性驗證。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>必考關係：</strong><strong>RTO ≤ MTD</strong>；RPO 決定備份頻率。『系統多快回來』＝RTO，『能丟多少資料』＝RPO。『BCP 第一步』＝<strong>BIA</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>選最佳答案：</strong>『設計期系統化找威脅分類』→ STRIDE；『評分排優先序』→ DREAD；供應鏈後門→ 強化 SCRM＋完整性驗證；BIA 應由<strong>業務</strong>主導排序。</p>
     </div>
     <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
       <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>BIA 定 MTD/RTO/RPO（RTO≤MTD、RPO 定備份頻率）；SCRM 管供應鏈；STRIDE 分類威脅、DREAD 評分；SolarWinds 是供應鏈警鐘。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>BIA 是 BCP 第一步、定 MTD/RTO/RPO（RTO≤MTD、RPO 定備份頻率）；SCRM 管供應鏈(含第四方)；STRIDE 分類威脅、DREAD 評分；SolarWinds 是供應鏈警鐘。</p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . RTO 與 MTD 的必然關係？<br><span style="color:#0A5A59;">→ RTO 必須 ≤ MTD（且 RTO+WRT ≤ MTD）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . RPO 主要決定什麼？<br><span style="color:#0A5A59;">→ 可容忍資料遺失量 → 備份頻率（RPO 1hr 即至少每小時備份）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . STRIDE 與 DREAD 的分工？<br><span style="color:#0A5A59;">→ STRIDE 分類威脅（找）；DREAD 評分風險（排序）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . STRIDE 的 Tampering 對應哪個安全目標？<br><span style="color:#0A5A59;">→ 完整性 Integrity（Spoofing↔真實性、DoS↔可用性…）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . BIA 應由誰主導排序關鍵流程？<br><span style="color:#0A5A59;">→ 業務單位（最了解流程關鍵性），非只由 IT 決定。</span></p>
     </details>
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>

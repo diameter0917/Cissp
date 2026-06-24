@@ -23,61 +23,70 @@
   <div style="padding:24px 24px 8px;">
 
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 深入法條：智財、跨境與隱私</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">初期我們概覽了智財四類與 GDPR；中期要深入<strong>條文細節</strong>：智財各自的保護要件、<strong>跨境資料傳輸</strong>機制、GDPR 重點條文與<strong>台灣個資法</strong>的對應。這是 D1 法遵題的深水區。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：智財四類深入 → 跨境傳輸與在地化 → GDPR 重點條文 → 台灣個資法對應。</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">初期我們概覽了智財四類與 GDPR；中期要深入<strong>條文細節</strong>：智財各自的保護要件與侵權、<strong>跨境資料傳輸</strong>機制、GDPR 重點條文與<strong>台灣個資法</strong>的對應。這是 D1 法遵題的深水區，也是你隱私本業的延伸。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：智財四類深入 → 跨境傳輸與在地化/主權 → GDPR 重點條文 → 台灣個資法對應。</div>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 智財四類（深入）</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
       <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">類型</td><td style="padding:8px 10px;">保護要件/期限</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">侵權重點</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Patent</strong></td><td style="padding:9px 10px; vertical-align:top;">新穎/進步/可用；約 20 年；須公開</td><td style="padding:9px 10px; vertical-align:top;">未授權製造/使用</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Patent</strong></td><td style="padding:9px 10px; vertical-align:top;">新穎/進步/可用；約 20 年；須公開</td><td style="padding:9px 10px; vertical-align:top;">未授權製造/使用/販售</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Trademark</strong></td><td style="padding:9px 10px; vertical-align:top;">識別性；可續展近乎無限</td><td style="padding:9px 10px; vertical-align:top;">混淆來源、仿冒</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Copyright</strong></td><td style="padding:9px 10px; vertical-align:top;">原創表達；作者終身+70 年</td><td style="padding:9px 10px; vertical-align:top;">重製/散布表達</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Copyright</strong></td><td style="padding:9px 10px; vertical-align:top;">原創表達；作者終身+70 年</td><td style="padding:9px 10px; vertical-align:top;">重製/散布表達（非概念）</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Trade Secret</strong></td><td style="padding:9px 10px; vertical-align:top;">祕密性+經濟價值+合理保密措施；保密即永久</td><td style="padding:9px 10px; vertical-align:top;">不正當取得/洩漏</td></tr>
     </table>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">資安人最相關的是<strong>營業秘密</strong>：法律要保護它，前提是你<strong>採取了合理保密措施</strong>（存取控制、NDA、加密、標示）——若公司自己沒保護好，法院可能認定它不構成營業秘密。<strong>資安控制本身就是營業秘密的法律要件</strong>。</p>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 跨境資料傳輸</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>資料在地化（Data Localization）</strong>：某些國家要求個資留在境內</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>GDPR 跨境機制</strong>：傳到歐盟外需<strong>充足性認定（adequacy）</strong>、<strong>SCC 標準契約條款</strong>或 BCR</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>資料主權（Data Sovereignty）</strong>：資料受其<strong>所在地</strong>法律管轄——雲端跨區須留意</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>資料在地化（Data Localization）</strong>：某些國家要求個資留在境內（如中國、俄羅斯）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>GDPR 跨境機制</strong>：傳到歐盟外需<strong>充足性認定（adequacy）</strong>、<strong>SCC 標準契約條款</strong>或 <strong>BCR 企業約束規則</strong></td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>資料主權（Data Sovereignty）</strong>：資料受其<strong>所在地</strong>法律管轄——雲端跨區須留意供應商母國法令</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Residency vs Sovereignty</strong>：存放地 ≠ 管轄權；存在 A 國的雲仍可能受供應商母國（如美國 CLOUD Act）影響</td></tr>
     </table>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — GDPR 重點條文</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
       <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">條文</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Art. 5</td><td style="padding:9px 10px; vertical-align:top;">處理原則：合法/最小化/限期/正確</td></tr>
-      <tr><td style="padding:9px 10px; vertical-align:top;">Art. 6 / 9</td><td style="padding:9px 10px; vertical-align:top;">合法性基礎；特種個資加嚴</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Art. 17</td><td style="padding:9px 10px; vertical-align:top;">被遺忘權（刪除）</td></tr>
-      <tr><td style="padding:9px 10px; vertical-align:top;">Art. 25</td><td style="padding:9px 10px; vertical-align:top;">Privacy by Design & by Default</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Art. 33/34</td><td style="padding:9px 10px; vertical-align:top;">72 小時內通報主管機關</td></tr>
-      <tr><td style="padding:9px 10px; vertical-align:top;">Art. 83</td><td style="padding:9px 10px; vertical-align:top;">罰則：最高全球營收 4% 或 €2,000 萬</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Art. 5</td><td style="padding:9px 10px; vertical-align:top;">處理原則：合法/公平/透明、最小化、限期、正確、完整性</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">Art. 6 / 9</td><td style="padding:9px 10px; vertical-align:top;">合法性基礎（同意/契約/法律義務…）；特種個資加嚴</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Art. 15-22</td><td style="padding:9px 10px; vertical-align:top;">當事人權利：查詢、更正、刪除、可攜、反對</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">Art. 17</td><td style="padding:9px 10px; vertical-align:top;">被遺忘權（刪除權）</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Art. 25</td><td style="padding:9px 10px; vertical-align:top;">Privacy by Design & by Default</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">Art. 33/34</td><td style="padding:9px 10px; vertical-align:top;">72 小時內通報主管機關、必要時通知當事人</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Art. 83</td><td style="padding:9px 10px; vertical-align:top;">罰則：最高全球年營收 4% 或 €2,000 萬（取高）</td></tr>
     </table>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Trade Secret</strong>（營業秘密）— <span style="color:#5B6675;">祕密+價值+合理保密措施，保密即永久。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Localization</strong>（資料在地化）— <span style="color:#5B6675;">法規要求個資留境內。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Sovereignty</strong>（資料主權）— <span style="color:#5B6675;">資料受所在地法律管轄。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Residency</strong>（資料存放地）— <span style="color:#5B6675;">資料實際儲存的地理位置。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Sovereignty</strong>（資料主權）— <span style="color:#5B6675;">資料受所在地（及供應商母國）法律管轄。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Adequacy Decision</strong>（充足性認定）— <span style="color:#5B6675;">歐盟認可某國保護水準等同，可自由傳輸。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SCC</strong>（標準契約條款）— <span style="color:#5B6675;">跨境傳輸的合約保障機制。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Breach Notification</strong>（外洩通報）— <span style="color:#5B6675;">GDPR 要求 72 小時內通報主管機關。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SCC / BCR</strong>（標準契約條款/企業約束規則）— <span style="color:#5B6675;">跨境傳輸的合約/內規保障機制。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Breach Notification</strong>（外洩通報）— <span style="color:#5B6675;">GDPR 要求 72 小時內通報主管機關。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DPO</strong>（資料保護長）— <span style="color:#5B6675;">特定情形須設置，監督個資法遵。</span></td></tr>
     </table>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
     <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Patent vs Trade Secret</strong>：專利<strong>公開換 20 年獨佔</strong>；營業祕密<strong>保密換無限期</strong>但一旦洩漏即失保護。可口可樂配方選營業祕密、藥廠分子選專利。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Data Residency vs Sovereignty</strong>：Residency＝資料<strong>實際存放地</strong>；Sovereignty＝資料受<strong>哪國法律</strong>管轄。存在 A 國的雲，可能仍受供應商母國法律影響。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Patent vs Trade Secret</strong>：專利<strong>公開換 20 年獨佔</strong>；營業祕密<strong>保密換無限期</strong>但一旦洩漏即失保護。可口可樂配方選營業祕密、藥廠分子選專利。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Copyright 保護表達非概念</strong>：著作權保護『程式碼這段表達』，不保護其背後『演算法概念』（概念可能用專利或營業祕密）。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Residency vs Sovereignty</strong>：Residency＝資料<strong>實際存放地</strong>；Sovereignty＝資料受<strong>哪國法律</strong>管轄。存在歐盟的美商雲，仍可能受美國法令觸及。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Controller vs Processor</strong>（再提醒）：決定目的＝Controller、照做＝Processor；跨境責任主要在 Controller。</p>
     </div>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>GDPR</strong>（歐盟 2016/679）、<strong>台灣個資法（PDPA）</strong>（告知同意、特定目的、特種個資、當事人權利、外洩通報）、<strong>ISO/IEC 27701</strong>（隱私資訊管理）。台灣個資法精神近 GDPR 但罰則與細節不同——考試若問台灣情境，套個資法原則。</p>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>GDPR</strong>（歐盟 2016/679）、<strong>台灣個資法（PDPA）</strong>（告知同意、特定目的、特種個資、當事人權利、外洩通報）、<strong>ISO/IEC 27701</strong>（隱私資訊管理 PIMS，擴充 27001）。台灣個資法精神近 GDPR 但罰則與細節不同——考試若問台灣情境，套個資法原則；問國際/歐盟用 GDPR。</p>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：跨境資料傳輸爭議</div>
     <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 Schrems II 與跨大西洋傳輸</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">歐洲法院 <strong>Schrems II（2020）</strong>判決推翻歐美『Privacy Shield』，理由是美國監控法令使歐盟個資保護不足，導致大量企業必須改用 <strong>SCC＋補充措施</strong>才能合法把歐盟個資傳美。2023 年 Meta 因此類傳輸違規被罰 <strong>€12 億</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>跨境傳輸不是技術問題而是法律問題</strong>——資料『去哪裡、受誰管轄』必須先確認合法機制（adequacy/SCC/BCR），否則面臨天價罰款。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">歐洲法院 <strong>Schrems II（2020）</strong>判決推翻歐美『Privacy Shield』，理由是美國監控法令使歐盟個資保護不足，導致大量企業必須改用 <strong>SCC＋補充措施</strong>才能合法把歐盟個資傳美。2023 年 Meta 因此類傳輸違規被罰 <strong>€12 億</strong>（GDPR 紀錄）。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>跨境傳輸不是技術問題而是法律問題</strong>——資料『去哪裡、受誰管轄』必須先確認合法機制（adequacy/SCC/BCR），否則面臨天價罰款。雲端選區（region）因此也是法遵決策。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：台灣個資法的特種個資</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">台灣個資法對<strong>特種個資</strong>（病歷、醫療、基因、性生活、健康檢查、犯罪前科）原則<strong>禁止蒐集處理</strong>，僅在法定例外（法律明文、當事人公開、公益統計等）下才可。這對應 GDPR Art. 9 的特種個資加嚴。處理這類資料時，分類等級與控制都要拉到最高（呼應 D2 分類）。</p>
     </div>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『保護不公開的配方/演算法』→ 營業祕密；『把歐盟個資傳到無充足性認定國家』→ 需 <strong>SCC/BCR</strong>；『外洩後 72 小時內』→ GDPR 通報義務。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>專利要公開、營業祕密要保密；GDPR 有域外效力（看資料對象是否歐盟居民）；台灣情境用個資法。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『保護不公開的配方/演算法』→ 營業祕密；『把歐盟個資傳到無充足性認定國家』→ 需 <strong>SCC/BCR</strong>；『外洩後 72 小時內』→ GDPR 通報義務；『資料受哪國法律管轄』→ 資料主權。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>專利要公開、營業祕密要保密；著作權保護表達非概念；GDPR 有域外效力（看資料對象是否歐盟居民）；台灣情境用個資法。</p>
     </div>
     <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
       <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>智財四類各有要件（專利公開20年、營業祕密保密永久）；跨境傳輸需 adequacy/SCC/BCR；GDPR 72 小時通報、罰至全球營收 4%；台灣套個資法。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 不公開的核心配方該用哪種智財保護？<br><span style="color:#0A5A59;">→ 營業祕密（trade secret，保密即永久）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 把歐盟個資傳到無充足性認定的國家需要什麼？<br><span style="color:#0A5A59;">→ 標準契約條款 SCC（或 BCR）＋補充措施。</span></p>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>智財四類各有要件（專利公開20年、營業祕密保密永久且需合理保密措施）；跨境需 adequacy/SCC/BCR；GDPR 72 小時通報、罰至全球營收 4%；台灣套個資法、特種個資加嚴。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 營業秘密要受法律保護的前提是什麼？<br><span style="color:#0A5A59;">→ 採取合理保密措施（存取控制/NDA/加密）——資安控制本身是法律要件。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 把歐盟個資傳到無充足性認定的國家需要什麼？<br><span style="color:#0A5A59;">→ SCC 標準契約條款（或 BCR）＋補充措施。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . GDPR 要求外洩後多久內通報主管機關？<br><span style="color:#0A5A59;">→ 72 小時內（Art. 33）。</span></p>
     </details>
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">

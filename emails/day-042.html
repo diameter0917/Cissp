@@ -23,8 +23,8 @@
   <div style="padding:24px 24px 8px;">
 
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 定量風險：把風險換算成金額</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">初期我們知道風險回應四選項；中期要會<strong>算</strong>。<strong>定量風險分析（Quantitative）</strong>用金額表達風險，讓『該不該花這筆錢買控制』有客觀依據。今天把 <strong>AV→EF→SLE→ARO→ALE</strong> 的公式與算例徹底走一遍——這是 D1 必考的計算題。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：五個公式 → 完整算例 → 定性 vs 定量 → 控制划不划算（ROSI）。</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">初期我們知道風險回應四選項；中期要會<strong>算</strong>。<strong>定量風險分析（Quantitative）</strong>用金額表達風險，讓『該不該花這筆錢買控制』有客觀依據、能向管理層辯護。今天把 <strong>AV→EF→SLE→ARO→ALE</strong> 的公式與算例徹底走一遍，並談定性/定量取捨——這是 D1 必考的計算題型。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：五個公式 → 完整算例 → 控制成本效益(ROSI) → 定性 vs 定量 → 風險矩陣。</div>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 五個核心公式</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
       <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">符號</td><td style="padding:8px 10px;">名稱</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">公式/意義</td></tr>
@@ -36,47 +36,57 @@
     </table>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 完整算例</div>
     <div style="background-color:#EEF1F8; border-left:3px solid #3D52A0; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.85; margin:0; color:#2A3340;">某客戶資料庫 <strong>AV = $500,000</strong>；一次外洩預估損失 <strong>50%（EF = 0.5）</strong>。<br>→ <strong>SLE = AV × EF = 500,000 × 0.5 = $250,000</strong>（單次損失）<br>若評估<strong>每 2 年</strong>發生一次 → <strong>ARO = 0.5</strong>（一年 0.5 次）<br>→ <strong>ALE = SLE × ARO = 250,000 × 0.5 = $125,000／年</strong>。<br>若一套防護方案<strong>每年成本 $40,000</strong>、可把 ARO 降到 0.1：新 ALE = 250,000 × 0.1 = $25,000；<strong>每年省下 100,000 − 控制 40,000 = 淨效益 $60,000</strong> → 值得投資。</p>
+      <p style="font-size:14.5px; line-height:1.85; margin:0; color:#2A3340;">某客戶資料庫 <strong>AV = $500,000</strong>；一次外洩預估損失 <strong>50%（EF = 0.5）</strong>。<br>→ <strong>SLE = AV × EF = 500,000 × 0.5 = $250,000</strong>（單次損失）<br>若評估<strong>每 2 年</strong>發生一次 → <strong>ARO = 0.5</strong>（一年 0.5 次）<br>→ <strong>ALE = SLE × ARO = 250,000 × 0.5 = $125,000／年</strong>。</p>
     </div>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 解題口訣：<strong>SLE 先算（AV×EF），再乘 ARO 得 ALE</strong>。控制是否值得＝『ALE 降低額』是否 &gt;『控制成本』。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 定性 vs 定量</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>成本效益決策：</strong>若一套防護方案<strong>每年成本 $40,000</strong>、可把 ARO 降到 0.1：新 ALE = 250,000 × 0.1 = $25,000／年；<strong>每年省下 100,000 − 控制 40,000 = 淨效益 $60,000</strong> → 值得投資。反之，若控制年成本 $120,000 卻只省 $100,000，則<strong>不划算</strong>，理性選擇可能是<strong>接受（accept）</strong>剩餘風險。</p>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 解題口訣：<strong>SLE 先算（AV×EF），再乘 ARO 得 ALE</strong>。控制是否值得＝『ALE 降低額』是否 &gt;『控制年成本』。控制成本 &gt; 風險損失時，正解常是 Accept。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — ROSI 與保險（風險轉移）</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>ROSI（Return on Security Investment）</strong>＝(降低的 ALE − 控制成本) / 控制成本，量化資安投資報酬。若選擇<strong>轉移（保險）</strong>：保費應低於<strong>ALE</strong> 才合理；保險不消除風險，而是把<strong>財務衝擊</strong>移轉，剩餘的營運/商譽風險仍在。定量分析正是比較『自建控制 vs 買保險 vs 接受』的共同尺。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 定性 vs 定量</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
       <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">面向</td><td style="padding:8px 10px;">定性 Qualitative</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">定量 Quantitative</td></tr>
       <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">表達</td><td style="padding:9px 10px; vertical-align:top;">高/中/低、風險矩陣</td><td style="padding:9px 10px; vertical-align:top;">金額（$）</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;">優點</td><td style="padding:9px 10px; vertical-align:top;">快、不需精確數據</td><td style="padding:9px 10px; vertical-align:top;">客觀、可做成本效益</td></tr>
       <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">缺點</td><td style="padding:9px 10px; vertical-align:top;">主觀</td><td style="padding:9px 10px; vertical-align:top;">需大量可靠數據、耗時</td></tr>
-      <tr><td style="padding:9px 10px; vertical-align:top;">常見</td><td style="padding:9px 10px; vertical-align:top;">多數組織日常</td><td style="padding:9px 10px; vertical-align:top;">重大投資決策/法遵</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">常見</td><td style="padding:9px 10px; vertical-align:top;">多數組織日常排序</td><td style="padding:9px 10px; vertical-align:top;">重大投資/法遵決策</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">實務常<strong>混合</strong>：先用定性風險矩陣（可能性 × 衝擊）快速排序，對<strong>高風險項</strong>再做定量深入。純定量需可靠的 ARO/EF 數據，數據不足時定量反而『看似精確、實則臆測』。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SLE</strong>（單一損失期望）— <span style="color:#5B6675;">AV × EF，一次事件的損失金額。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">EF</strong>（暴露係數）— <span style="color:#5B6675;">單次事件造成資產損失的百分比。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ARO</strong>（年化發生率）— <span style="color:#5B6675;">一年預期發生次數（可為小數）。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ALE</strong>（年化損失期望）— <span style="color:#5B6675;">SLE × ARO，每年預期損失。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ROSI</strong>（資安投資報酬）— <span style="color:#5B6675;">(降低的 ALE − 控制成本) / 控制成本。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Qualitative/Quantitative</strong>（定性/定量）— <span style="color:#5B6675;">等級式 vs 金額式風險分析。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ROSI</strong>（資安投資報酬）— <span style="color:#5B6675;">(降低的 ALE − 控制成本)/控制成本。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Risk Matrix</strong>（風險矩陣）— <span style="color:#5B6675;">可能性 × 衝擊的定性排序工具。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Residual Risk</strong>（剩餘風險）— <span style="color:#5B6675;">控制後仍存在、由管理層接受的風險。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Risk Appetite/Tolerance</strong>（風險胃納/容忍度）— <span style="color:#5B6675;">組織願意承擔的風險水準與偏差範圍。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 易混淆釐清</div>
     <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>SLE vs ALE</strong>：SLE 是『<strong>一次</strong>』損失；ALE 是『<strong>一年</strong>』預期損失（SLE×ARO）。題目問年度預算/比較控制時用 ALE。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>EF vs ARO</strong>：EF 是<strong>損失比例</strong>（%）；ARO 是<strong>頻率</strong>（次/年）。別把兩者代錯位置。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>控制值不值得</strong>：比較『<strong>ALE 下降額</strong>』與『控制年成本』，而非只看絕對風險。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>SLE vs ALE</strong>：SLE 是『<strong>一次</strong>』損失；ALE 是『<strong>一年</strong>』預期損失（SLE×ARO）。題目問年度預算/比較控制時用 ALE。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>EF vs ARO</strong>：EF 是<strong>損失比例</strong>（%）；ARO 是<strong>頻率</strong>（次/年）。別把兩者代錯位置。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>控制值不值得</strong>：比較『<strong>ALE 下降額</strong>』與『控制年成本』，而非只看絕對風險大小。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>風險胃納 vs 容忍度</strong>：胃納（appetite）是整體願承擔的<strong>方向性</strong>水準；容忍度（tolerance）是個別風險可接受的<strong>具體偏差範圍</strong>。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-30</strong>（風險評鑑）涵蓋定性與定量方法；<strong>FAIR</strong>（Factor Analysis of Information Risk）是廣用的定量風險量化模型。考試以 ALE 計算與『定性/定量何時用』為核心。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：用真實事件估算 ALE</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-30</strong>（風險評鑑）涵蓋定性與定量方法；<strong>FAIR</strong>（Factor Analysis of Information Risk）是廣用的定量風險量化模型，把『可能性』再拆成威脅頻率與弱點等因子。<strong>ISO 27005</strong> 為資安風險管理流程。考試以 ALE 計算與『定性/定量何時用』為核心。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — 真實事件：用真實事件估算 ALE</div>
     <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 把外洩換算成數字來決策</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">面對『要不要花 X 萬買 DLP/加密』，成熟組織會<strong>用定量分析</strong>：估算資料庫 AV、外洩 EF、歷史與同業 ARO，算出 ALE，再比較控制成本。若某控制能把 ALE 從 $125,000 降到 $25,000、年成本僅 $40,000，投資決策一目了然——這讓資安預算<strong>從『憑感覺』變成『可辯護的商業決策』</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">注意：ARO/EF 的估計品質決定結果可信度；數據不足時退回<strong>定性</strong>或混合分析。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">面對『要不要花 X 萬買 DLP/加密』，成熟組織會<strong>用定量分析</strong>：估算資料庫 AV、外洩 EF、依歷史與同業資料定 ARO，算出 ALE，再比較控制成本。若某控制能把 ALE 從 $125,000 降到 $25,000、年成本僅 $40,000，投資決策一目了然——這讓資安預算<strong>從『憑感覺』變成『可辯護的商業決策』</strong>，也是 CISO 向董事會溝通的語言。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">注意：ARO/EF 的估計品質決定結果可信度；『垃圾進、垃圾出』。數據不足時退回<strong>定性</strong>或混合分析，並標註假設。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：別忽略間接成本</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">ALE 容易只算<strong>直接損失</strong>（修復、賠償），卻低估<strong>間接成本</strong>：商譽受損、客戶流失、股價、法遵罰款、事後監控成本。許多外洩的<strong>真實總成本</strong>遠高於初估，定量分析應盡量納入這些『隱形』項目，否則會低估風險、做出錯誤的『接受』決策。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">10 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>必考計算：</strong>先 <strong>SLE = AV × EF</strong>，再 <strong>ALE = SLE × ARO</strong>。看到『每幾年一次』記得換算 ARO（每 4 年＝0.25）。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>選最佳答案：</strong>『控制是否值得』→ 比較 ALE 降低額 vs 成本；『缺乏可靠數據時』→ 用<strong>定性</strong>分析。別把 EF（%）與 ARO（次數）代錯。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>必考計算：</strong>先 <strong>SLE = AV × EF</strong>，再 <strong>ALE = SLE × ARO</strong>。看到『每幾年一次』記得換算 ARO（每 4 年＝0.25）。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>選最佳答案：</strong>『控制是否值得』→ 比較 ALE 降低額 vs 成本；『控制比損失還貴』→ 多半 <strong>Accept</strong>；『缺乏可靠數據時』→ 用<strong>定性</strong>。別把 EF（%）與 ARO（次數）代錯。</p>
     </div>
     <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
       <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>SLE=AV×EF（單次）、ALE=SLE×ARO（年度）；控制值不值得看 ALE 降低額 vs 成本；數據不足用定性。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>SLE=AV×EF（單次）、ALE=SLE×ARO（年度）；控制值不值得看 ALE 降低額 vs 成本，貴於損失就 Accept；數據不足用定性；ALE 別漏間接成本。</p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . AV=$200k、EF=0.25、每 5 年一次，ALE 是多少？<br><span style="color:#0A5A59;">→ SLE=200k×0.25=50k；ARO=0.2；ALE=50k×0.2=$10,000/年。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . SLE 與 ALE 的差別？<br><span style="color:#0A5A59;">→ SLE 是單次損失；ALE 是年度預期損失（SLE×ARO）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 何時選定性而非定量分析？<br><span style="color:#0A5A59;">→ 缺乏可靠量化數據、需快速評估時用定性。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 控制年成本高於其能降低的 ALE，應如何？<br><span style="color:#0A5A59;">→ 通常選擇接受（accept）剩餘風險——資安要划算。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 何時選定性而非定量分析？<br><span style="color:#0A5A59;">→ 缺乏可靠量化數據、需快速排序時用定性（或混合）。</span></p>
     </details>
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
