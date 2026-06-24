@@ -48,6 +48,8 @@ TOPIC = {
     "P1-D2-2": ["privacy"],
     "P1-D2-5": ["privacy"],
     "P3-D2-4": ["privacy"],
+    "P2-D3-4": ["cryptanalysis"],
+    "P3-D3-4": ["cryptanalysis", "physical security"],
     # D5
     "P1-D5-3": ["single sign", "federated", "federation"],
     "P1-D5-4": ["single sign", "federated", "federation"],
