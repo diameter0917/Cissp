@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 16</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 16 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D4-1</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 4 · 通訊與網路安全 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">Domain 4 全景與 OSI/TCP-IP</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Domain 4 Big Picture &amp; OSI/TCP-IP</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:13.33%; background-color:#0E7C7B;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — Domain 4 與 OSI 七層</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">Domain 4（<strong>Communication and Network Security，通訊與網路安全</strong>）佔 <strong>13%</strong>。它的「世界地圖」就是 <strong>OSI 七層模型</strong>——CISSP 要你能把<strong>協定、設備、攻擊</strong>歸到正確的層，再依層思考防禦。今天先建立分層思維與 OSI↔TCP/IP 對應。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週（Domain 4 · 初期）路線</strong>：①今天 OSI/TCP-IP → ②核心與安全協定 → ③網路設備與防禦 → ④無線/行動/遠端 → ⑤郵件安全與網路攻擊。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — OSI 七層（由上而下）</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">層</td><td style="padding:8px 10px;">名稱</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">代表協定/單位</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">7</td><td style="padding:9px 10px; vertical-align:top;">Application 應用</td><td style="padding:9px 10px; vertical-align:top;">HTTP, DNS, SMTP</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">6</td><td style="padding:9px 10px; vertical-align:top;">Presentation 表現</td><td style="padding:9px 10px; vertical-align:top;">TLS/SSL, 編碼, 加密</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">5</td><td style="padding:9px 10px; vertical-align:top;">Session 會議</td><td style="padding:9px 10px; vertical-align:top;">RPC, 會話建立</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">4</td><td style="padding:9px 10px; vertical-align:top;">Transport 傳輸</td><td style="padding:9px 10px; vertical-align:top;">TCP / UDP（段 segment）</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">3</td><td style="padding:9px 10px; vertical-align:top;">Network 網路</td><td style="padding:9px 10px; vertical-align:top;">IP, ICMP, 路由（封包 packet）</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">2</td><td style="padding:9px 10px; vertical-align:top;">Data Link 資料連結</td><td style="padding:9px 10px; vertical-align:top;">MAC, ARP, 交換器（訊框 frame）</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">1</td><td style="padding:9px 10px; vertical-align:top;">Physical 實體</td><td style="padding:9px 10px; vertical-align:top;">纜線, 電氣訊號（位元 bit）</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 記憶法：<strong>All People Seem To Need Data Processing</strong>（7→1：Application…Physical）。考試常考「某協定/設備/攻擊在第幾層」。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — OSI ↔ TCP/IP</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">實務的 <strong>TCP/IP（DoD）模型</strong>把 OSI 簡化為四層：<strong>Application（含 OSI 5-7）／Transport／Internet（OSI 3）／Link（OSI 1-2）</strong>。安全防禦也分層佈署：實體門禁（L1）、交換器埠安全（L2）、防火牆/路由 ACL（L3-4）、TLS（L6）、WAF（L7）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">OSI Model</strong>（開放系統互連模型）— <span style="color:#5B6675;">七層參考模型，將通訊分層。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Encapsulation</strong>（封裝）— <span style="color:#5B6675;">每下一層加上自己的標頭/標尾。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">PDU</strong>（協定資料單元）— <span style="color:#5B6675;">各層的資料單位：bit/frame/packet/segment。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">TCP</strong>（傳輸控制協定）— <span style="color:#5B6675;">可靠、連線導向、三向交握。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">UDP</strong>（使用者資料報協定）— <span style="color:#5B6675;">快、無連線、無保證（DNS/VoIP）。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">MAC / IP</strong>（實體位址/邏輯位址）— <span style="color:#5B6675;">L2 用 MAC、L3 用 IP。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>TCP vs UDP</strong>：TCP 可靠、有交握與重送（網頁、檔案）；UDP 快但不保證（DNS 查詢、串流、VoIP）。考題問「即時/低延遲」多半 UDP。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>L2 vs L3 位址</strong>：MAC 是同網段內的硬體位址（L2）；IP 是跨網段的邏輯位址（L3）。<strong>ARP</strong> 負責 IP→MAC 解析，屬 L2。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">OSI 為 <strong>ISO/IEC 7498</strong>；TCP/IP 由 IETF <strong>RFC</strong> 規範。安全分層概念也是<strong>縱深防禦</strong>（Domain 3）在網路上的展現——每層都有對應控制。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：依層分析攻擊</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 把攻擊歸層，就知道怎麼防</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">同樣是「網路攻擊」，分層思考能對症下藥：<strong>ARP 欺騙</strong>在 L2（用埠安全/DAI 防）、<strong>IP 欺騙/ICMP 洪水</strong>在 L3（用 ACL/過濾）、<strong>SYN flood</strong>在 L4（用 SYN cookie）、<strong>SQL 注入/XSS</strong>在 L7（用 WAF）。把事件定位到層，防禦選擇就清楚了。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">這正是 Domain 4 的核心技能，也是大量考題的解法：<strong>先問『這是第幾層的問題』</strong>。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>把協定/設備/攻擊<strong>歸到正確 OSI 層</strong>——交換器 L2、路由器 L3、TCP/UDP L4、TLS L6（有時題目歸 L5-6）、HTTP/DNS L7。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>ARP 屬 <strong>L2</strong>（非 L3）；防火牆依類型橫跨 L3-L7。先背 7 層口訣與代表項就能解多數題。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>OSI 七層是 Domain 4 地圖：先把協定/設備/攻擊歸層，再依層佈署縱深防禦；TCP 可靠、UDP 快。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 交換器與路由器分別在 OSI 第幾層？<br><span style="color:#0A5A59;">→ 交換器 L2（Data Link）、路由器 L3（Network）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . DNS 查詢通常用 TCP 還 UDP？<br><span style="color:#0A5A59;">→ UDP（快、無連線）；區域傳送等才用 TCP。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . ARP 欺騙屬於哪一層的攻擊？<br><span style="color:#0A5A59;">→ L2（Data Link），以埠安全/動態 ARP 檢測防禦。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/6X4A6B94vmw" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 4 Review |  Mind Map (1 of 4) | OSI Model ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/tQCgAteRyIo?t=2289" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 4<span class="ts-note">（從約 38:09 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 16 / 120 · P1-D4-1</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
