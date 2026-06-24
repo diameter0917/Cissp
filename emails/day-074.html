@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 74</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 74 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D7-4</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">維運基礎與偵測措施深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Ops Foundations &amp; Detective Measures</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:61.67%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D7：維運控制與主動偵測</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>防舞弊人事控制</strong>(SoD/輪調/強制休假)的機制,以及<strong>主動偵測措施</strong>:<strong>沙箱、蜜罐/蜜網、EDR/XDR</strong>。把『預防』與『偵測』在維運層做深。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>:SoD/輪調/休假/雙人控制 → 沙箱 → 蜜罐/蜜網/欺敵 → EDR/XDR。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 防舞弊人事控制(深入)</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">控制</td><td style="padding:8px 10px;">防什麼</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">型</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>SoD 職責分離</strong></td><td style="padding:9px 10px; vertical-align:top;">單人獨力完成關鍵交易</td><td style="padding:9px 10px; vertical-align:top;">預防</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Job Rotation 輪調</strong></td><td style="padding:9px 10px; vertical-align:top;">長期藏匿舞弊</td><td style="padding:9px 10px; vertical-align:top;">偵測/嚇阻</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Mandatory Vacation</strong></td><td style="padding:9px 10px; vertical-align:top;">持續維護的舞弊</td><td style="padding:9px 10px; vertical-align:top;">偵測</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Dual Control 雙人控制</strong></td><td style="padding:9px 10px; vertical-align:top;">單人執行高敏感動作</td><td style="padding:9px 10px; vertical-align:top;">預防</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Least Privilege/Need to Know</strong></td><td style="padding:9px 10px; vertical-align:top;">過度存取</td><td style="padding:9px 10px; vertical-align:top;">預防</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 偵測措施：沙箱與欺敵</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Sandbox 沙箱</strong>:在隔離環境引爆可疑檔案觀察行為(動態分析惡意程式)</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Honeypot 蜜罐</strong>:刻意誘餌系統,任何存取都可疑→早期偵測與情蒐</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Honeynet 蜜網</strong>:多個蜜罐組成的誘捕網路</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Honeytoken</strong>:假帳號/假檔/假金鑰,被觸碰即告警(偵測內部威脅與外洩)</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — EDR / XDR</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>EDR(端點偵測與回應)</strong>:在端點持續監測行為、偵測可疑活動、可<strong>遠端隔離與回應</strong>(取代傳統特徵式防毒)。<strong>XDR</strong> 跨端點/網路/雲/郵件整合關聯,提供更全面的偵測與自動回應。是現代偵測的核心武器。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Separation of Duties</strong>（職責分離）— <span style="color:#5B6675;">拆關鍵任務防單人舞弊。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Mandatory Vacation</strong>（強制休假）— <span style="color:#5B6675;">他人接手揭弊。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Dual Control</strong>（雙人控制）— <span style="color:#5B6675;">高敏感動作需兩人。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Sandbox</strong>（沙箱）— <span style="color:#5B6675;">隔離引爆觀察惡意行為。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Honeypot/Honeynet</strong>（蜜罐/蜜網）— <span style="color:#5B6675;">誘餌系統,早期偵測與情蒐。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Honeytoken</strong>（蜜餌標記）— <span style="color:#5B6675;">假資產被觸即告警。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">EDR/XDR</strong>（端點/延伸偵測回應）— <span style="color:#5B6675;">行為偵測＋遠端回應。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>SoD vs Dual Control</strong>:SoD 把<strong>不同步驟</strong>分給不同人(請款≠核款);Dual Control 是<strong>同一動作</strong>需兩人同時(雙鑰)。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Honeypot vs Sandbox</strong>:蜜罐是<strong>誘餌</strong>引攻擊者上鉤(偵測/情蒐);沙箱是<strong>分析</strong>環境引爆可疑檔(動態分析)。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>蜜罐的法律風險</strong>:可能涉<strong>誘捕(entrapment)</strong>爭議與被攻擊者反利用;部署需法務評估、隔離良好,不可放真實資料。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>EDR vs 傳統防毒</strong>:防毒靠<strong>特徵</strong>抓已知;EDR 靠<strong>行為</strong>抓未知並能回應。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-53(AC/PS 控制)</strong>、SOX(SoD)、<strong>MITRE Engage</strong>(欺敵防禦)、<strong>MITRE ATT&CK</strong>(EDR 偵測對照)。蜜罐屬欺敵技術,需配合法務與隔離。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：蜜罐誘捕</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 引君入甕,早期預警</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">組織在內網部署<strong>蜜罐與 honeytoken</strong>(假的『財務資料庫』、假管理員憑證):由於正常業務<strong>不會碰它們</strong>,<strong>任何存取都是高可信告警</strong>。許多橫向移動中的攻擊者(或內部窺探者)因觸碰誘餌而<strong>提早曝光</strong>,讓藍隊在資料真正被竊前介入。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓:<strong>欺敵防禦提供高訊噪比的早期偵測</strong>——誘餌沒有正常用途,觸碰即異常。搭配 UEBA 與分段,大幅壓縮攻擊者潛伏空間。但需妥善隔離、勿放真資料、評估法律風險。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：內部威脅計畫</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">完整的<strong>內部威脅(insider threat)計畫</strong>結合:<strong>人事控制</strong>(背景查核、SoD、離職流程)、<strong>技術偵測</strong>(UEBA、出向 DLP、honeytoken)、<strong>流程</strong>(離職前監控、檢舉管道)、與<strong>文化</strong>(意識、公平待遇降低動機)。內部威脅含<strong>惡意、疏忽、被脅迫</strong>三類,防禦要兼顧技術與人因,且注意員工隱私與比例原則。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『揭發長期藏匿舞弊』→ 強制休假/輪調;『隔離引爆可疑檔分析』→ 沙箱;『誘餌早期偵測』→ honeypot/honeytoken;『端點行為偵測＋遠端隔離』→ EDR。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>SoD(分步驟) vs dual control(同動作兩人);honeypot(誘餌) vs sandbox(分析);蜜罐有法律風險;EDR 靠行為非特徵。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>SoD/輪調/強制休假/雙人控制防舞弊;沙箱分析惡意程式、蜜罐/honeytoken 早期偵測、EDR/XDR 行為偵測＋回應。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 蜜罐(honeypot)與沙箱(sandbox)的用途差別？<br><span style="color:#0A5A59;">→ 蜜罐是誘餌引攻擊者上鉤(偵測/情蒐);沙箱是隔離引爆可疑檔做動態分析。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . honeytoken 為何是高訊噪比的偵測？<br><span style="color:#0A5A59;">→ 假資產無正常用途,被觸碰即代表異常,告警可信度高。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . EDR 相較傳統防毒的優勢？<br><span style="color:#0A5A59;">→ 靠行為偵測未知威脅並能遠端隔離回應,非僅靠已知特徵。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/PwxFwndQ7Jk" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/8zM89KMRniM?t=3842" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 64:02 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 74 / 120 · P2-D7-4</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

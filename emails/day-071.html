@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 71</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 71 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D7-1</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">調查類型與數位鑑識深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Investigations &amp; Forensics Deep Dive</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:59.17%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D7：調查與鑑識的法律嚴謹度</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">Domain 7（13%）中期深入<strong>調查類型的證據標準</strong>、<strong>數位鑑識流程</strong>、與<strong>證據可採性/最佳證據法則</strong>。資安事件常牽涉法律後果，鑑識做得對不對，決定能否究責或求償。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週（Domain 7 · 中期）</strong>：①調查與鑑識 → ②SIEM/TI/UEBA → ③組態/變更/修補 → ④維運與偵測措施 → ⑤事件管理與 DR。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 調查類型與舉證標準</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">類型</td><td style="padding:8px 10px;">舉證標準</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Criminal</strong> 刑事</td><td style="padding:9px 10px; vertical-align:top;">beyond reasonable doubt(最高)</td><td style="padding:9px 10px; vertical-align:top;">國家起訴、可能刑責</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Civil</strong> 民事</td><td style="padding:9px 10px; vertical-align:top;">preponderance(優勢證據)</td><td style="padding:9px 10px; vertical-align:top;">賠償/契約</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Administrative</strong> 行政</td><td style="padding:9px 10px; vertical-align:top;">內部/最低標準</td><td style="padding:9px 10px; vertical-align:top;">公司處分</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Regulatory</strong> 法規</td><td style="padding:9px 10px; vertical-align:top;">依主管機關</td><td style="padding:9px 10px; vertical-align:top;">合規裁罰</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 鑑識流程與證據處理</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>辨識 → 保全(收集) → 檢驗 → 分析 → 呈現</strong></td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>製作鑑識複本</strong>(逐位元)＋<strong>雜湊</strong>驗證，分析在複本上做</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>揮發順序(order of volatility)</strong>：記憶體/快取/網路連線 → 磁碟 → 備份</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>監管鏈(chain of custody)</strong>全程記錄，斷鏈則證據失效</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 證據可採性與類型</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">概念</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>可採性 Admissibility</strong></td><td style="padding:9px 10px; vertical-align:top;">相關、可靠、合法取得</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Best Evidence Rule</strong></td><td style="padding:9px 10px; vertical-align:top;">優先原件;數位以鑑識複本＋雜湊佐證</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Hearsay 傳聞</strong></td><td style="padding:9px 10px; vertical-align:top;">原則排除;商業紀錄例外(日誌)</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>證據類型</strong></td><td style="padding:9px 10px; vertical-align:top;">直接/間接(情況)/佐證/實物</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 數位證據要可採：<strong>合法取得(授權/令狀)＋完整保全(複本+雜湊)＋監管鏈完整</strong>。任何一環斷裂，再有力的證據也可能被排除。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Chain of Custody</strong>（監管鏈）— <span style="color:#5B6675;">記錄證物經手以確保可採性。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Forensic Image</strong>（鑑識複本）— <span style="color:#5B6675;">逐位元複製，分析用、保留原件。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Order of Volatility</strong>（揮發順序）— <span style="color:#5B6675;">先採易消失證據(記憶體優先)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Admissibility</strong>（可採性）— <span style="color:#5B6675;">相關/可靠/合法取得才被採納。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Best Evidence Rule</strong>（最佳證據法則）— <span style="color:#5B6675;">優先原件;數位用複本＋雜湊。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Hearsay</strong>（傳聞證據）— <span style="color:#5B6675;">原則排除;商業紀錄為例外。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">eDiscovery</strong>（電子蒐證）— <span style="color:#5B6675;">法律程序中蒐集電子證據。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>刑事 vs 民事</strong>：刑事『超越合理懷疑』(最嚴);民事『優勢證據』(較低)。標準不同影響鑑識嚴謹度與舉證責任。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>絕不動原件</strong>：一律對<strong>鑑識複本</strong>分析，雜湊證明一致;直接在原始磁碟操作會破壞可採性。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Hearsay 例外</strong>：日誌等<strong>例行商業紀錄</strong>常可作為傳聞例外被採納——前提是日誌系統可靠、流程一致。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-86</strong>（鑑識整合）、<strong>ISO/IEC 27037</strong>（數位證據處理）、<strong>ISO 27041/27042/27043</strong>（鑑識調查）。可採性與證據法則對應各國訴訟法(D1 法律基礎)。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：監管鏈斷裂致無效</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 有證據卻不能用</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">企業抓到內部人竊密的證據，卻因<strong>第一線 IT 直接在原機操作、未做複本與雜湊、未記錄誰何時經手</strong>，導致<strong>監管鏈斷裂、可採性受質疑</strong>，在訴訟/仲裁中無法有效採用，最終無法究責或求償。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：發現事件<strong>先保全再分析</strong>——複本＋雜湊＋監管鏈＋避免污染。事件回應團隊與法務/鑑識應預先協調流程，第一反應的動作決定證據命運。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：實況 vs 死後鑑識</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;"><strong>Live forensics（實況鑑識）</strong>：在系統<strong>運行中</strong>採集易揮發證據(記憶體、連線、執行程序)，因關機會丟失;適合抓記憶體常駐的無檔案惡意程式。<strong>Dead/Static（死後鑑識）</strong>：關機後對磁碟映像分析，可重複、較穩。現代調查兩者並用——先採揮發、再做磁碟映像，順序對應 order of volatility。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『確保證據可採』→ 監管鏈＋鑑識複本＋雜湊＋合法取得;『先採哪種證據』→ 揮發順序(記憶體先);『刑事舉證』→ 超越合理懷疑。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>不在原件上分析;刑事標準最高;日誌可作傳聞例外;先保全再分析。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>調查分刑事/民事/行政/法規(標準不同);鑑識先保全(複本+雜湊+監管鏈)、依揮發順序採;可採性要合法/可靠/完整;日誌為傳聞例外。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 數位證據要被法庭採納的三大要件？<br><span style="color:#0A5A59;">→ 合法取得、可靠(完整保全/複本+雜湊)、監管鏈完整。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 為何要做實況(live)鑑識？<br><span style="color:#0A5A59;">→ 記憶體/連線等易揮發證據關機即失,需運行中採集(如無檔案惡意程式)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 日誌為何常可作為證據？<br><span style="color:#0A5A59;">→ 屬例行商業紀錄,為傳聞證據的例外(前提:系統可靠、流程一致)。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/Urev5cZgny8" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 7 Review / Mind Map (1 of 6) | Investigations ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/8zM89KMRniM?t=254" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 04:14 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 71 / 120 · P2-D7-1</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

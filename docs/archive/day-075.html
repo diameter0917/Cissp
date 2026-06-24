@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 75</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 75 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D7-5</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">事件管理與 DR 深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Incident Mgmt &amp; DR Deep Dive</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:62.5%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D7 收尾：事件回應與災難復原</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">D7 中期收尾,深入<strong>事件回應生命週期</strong>每階段的細節、<strong>RTO/RPO 與站點選擇</strong>、與 <strong>BCP/DR 測試</strong>。當預防失敗,回應與復原的成熟度決定損失大小。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週回顧</strong>:①調查鑑識 → ②SIEM/TI/UEBA → ③組態/變更/修補 → ④維運/偵測 → ⑤<strong>今天:事件管理與 DR</strong>。下週進入 Domain 8 中期。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 事件回應生命週期(NIST)</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:4px 0;">
+      <tr><td style="text-align:center; background-color:#3D52A0; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">準備</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#5A6CB0; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">偵測分析</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#8A97C8; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">遏制</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#B7C0DF; color:#15233B; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">根除</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#B7C0DF; color:#15233B; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">復原</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#B7C0DF; color:#15233B; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">事後檢討</td></tr>
+    </table>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Preparation</strong>:計畫、團隊(CSIRT)、工具、演練——平時做好決定戰時成敗</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Containment</strong>:先止血(短期隔離)再長期遏制;保全證據(呼應鑑識)</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Eradication</strong>:清除病灶(惡意碼/後門/被建帳號)、找根因</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Recovery</strong>:還原並<strong>加強監控</strong>確認未復發;<strong>Lessons Learned</strong> 轉成改善</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 站點與復原指標</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">站點</td><td style="padding:8px 10px;">就緒</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">成本/速度</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Hot 熱站</td><td style="padding:9px 10px; vertical-align:top;">設備+資料即時</td><td style="padding:9px 10px; vertical-align:top;">最貴/分鐘級</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">Warm 溫站</td><td style="padding:9px 10px; vertical-align:top;">設備就緒、資料需載入</td><td style="padding:9px 10px; vertical-align:top;">中/小時級</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Cold 冷站</td><td style="padding:9px 10px; vertical-align:top;">僅空間設施</td><td style="padding:9px 10px; vertical-align:top;">最便宜/天級</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">Cloud/DRaaS</td><td style="padding:9px 10px; vertical-align:top;">彈性、按需</td><td style="padding:9px 10px; vertical-align:top;">依設計,常具彈性</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 <strong>RTO≤MTD</strong>;RPO 決定備份頻率。站點選擇是 RTO 與成本的取捨。<strong>異地、離線/不可變備份</strong>是抗勒索關鍵(線上備份會一起被加密)。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — BCP/DR 測試與抗勒索</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>測試類型</strong>(由淺到深):checklist→tabletop→walkthrough→parallel→full interruption(呼應 D6)</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>抗勒索</strong>:3-2-1 備份＋<strong>離線/不可變(immutable)</strong>副本＋定期還原演練＋分段限制擴散</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>事件溝通</strong>:對內、對客戶、對主管機關(法遵通報時限)、對媒體——預先備腳本</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>決策權責</strong>:誰能決定停機/付贖/通報——事前明定(避免臨場混亂)</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CSIRT</strong>（資安事件回應團隊）— <span style="color:#5B6675;">負責事件回應的編組。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Containment</strong>（遏制）— <span style="color:#5B6675;">限制事件擴散、止血。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Eradication</strong>（根除）— <span style="color:#5B6675;">清除病灶與根因。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RTO/RPO</strong>（復原時間/復原點）— <span style="color:#5B6675;">多快救回/可丟多少資料。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Hot/Warm/Cold Site</strong>（備援站點）— <span style="color:#5B6675;">就緒度與成本取捨。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Immutable Backup</strong>（不可變備份）— <span style="color:#5B6675;">寫入後不可改/刪,抗勒索。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Lessons Learned</strong>（事後檢討）— <span style="color:#5B6675;">回饋改善的最後階段。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>遏制 vs 根除</strong>:先<strong>遏制</strong>(隔離止血)再<strong>根除</strong>(清病灶)。順序錯(未根除就復原)會再次淪陷。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>RTO vs RPO</strong>:RTO『多快救回服務』(時間);RPO『可丟多少資料』(備份頻率)。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>BCP vs DRP</strong>:BCP 整個業務持續(人/流程/溝通);DRP 是其中 IT 復原子集。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>線上備份的陷阱</strong>:勒索會加密連網的備份;必須有<strong>離線/不可變</strong>副本且<strong>實測還原</strong>。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-61(事件處理)/800-34(應變計畫)/800-84(測試)</strong>、<strong>ISO 22301(BC)/27035(事件管理)</strong>。法遵通報時限(如 GDPR 72 小時)影響回應流程設計(D1)。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：Maersk / NotPetya 2017</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 十分鐘癱瘓全球航運</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">2017 <strong>NotPetya</strong>(偽裝勒索的破壞性 wiper,經烏克蘭會計軟體更新供應鏈散布)在數十分鐘內<strong>癱瘓航運巨頭 Maersk</strong> 約 4,000 台伺服器、4.5 萬台 PC,全球貨運停擺,損失約 <strong>3 億美元</strong>。Maersk 幾乎所有網域控制器被毀,<strong>靠一台在迦納因斷電而離線、倖存的 DC 備份</strong>才得以重建——近乎奇蹟。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓:<strong>離線/異地備份是最後防線</strong>(線上的都被毀);供應鏈攻擊(D1)可瞬間全域擴散,<strong>分段</strong>限制爆炸半徑至關重要;DR 計畫必須假設『核心基礎設施全毀』並演練重建。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：勒索事件的決策困境</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">勒索事件常面臨<strong>付不付贖</strong>的兩難:付款<strong>不保證</strong>能還原、<strong>助長犯罪</strong>、且可能<strong>違反制裁法規</strong>(付給受制裁實體違法);不付則面臨資料公開與停機。正解是<strong>事前避免被逼到此處</strong>——可靠的離線備份＋還原演練讓組織有『不付款也能復原』的底氣。決策權責、法務、保險、執法聯繫都應事前規劃。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>必考:</strong>事件回應<strong>順序</strong>(準備→偵測→遏制→根除→復原→經驗);先<strong>遏制</strong>再根除;<strong>RTO≤MTD</strong>;抗勒索靠<strong>離線/不可變備份＋還原演練</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>選最佳答案:</strong>『先止血防擴散』→ containment;『選備援站』→ 依 RTO/成本;『核心全毀仍能復原』→ 異地離線備份＋分段。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>事件回應:準備→偵測→遏制→根除→復原→經驗(先遏制再根除);RTO≤MTD、RPO 定備份頻率、熱溫冷站;抗勒索靠離線/不可變備份＋演練;NotPetya 示警供應鏈與分段。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 事件回應為何要先遏制再根除？<br><span style="color:#0A5A59;">→ 先止血防擴散,再清除病灶;順序錯(未根除就復原)會再次淪陷。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 為何線上備份不足以抗勒索？<br><span style="color:#0A5A59;">→ 勒索會加密連網備份;需離線/不可變副本且實測還原。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . NotPetya 中 Maersk 靠什麼重建？<br><span style="color:#0A5A59;">→ 一台因斷電離線而倖存的網域控制器備份(凸顯離線/異地備份的關鍵)。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/PwxFwndQ7Jk" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/8zM89KMRniM?t=3517" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 58:37 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 75 / 120 · P2-D7-5</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
