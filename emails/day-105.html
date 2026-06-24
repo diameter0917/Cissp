@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 105</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 105 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#B45309; padding:4px 9px; border-radius:5px;">P3-D5-5</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">後期 · 考試重點 &nbsp;|&nbsp; Domain 5 · 身分與存取管理 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">考點：D5 綜合 + 刷題</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Exam: D5 Integration + Practice</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:87.5%; background-color:#B45309;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 考前重點濃縮 + D5 綜合</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">D5 後期收尾:<strong>PAM/最小權限綜合</strong>,並做 D5 綜合刷題。搭配 practice 影片刷 D5。</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>最小權限＋需知</strong>;特權用 <strong>PAM(vault/JIT/錄製/零常駐特權)</strong>。</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>SSO 便利但單點失效</strong>;IdP 須最高保護。</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>MFA(抗釣魚)</strong> 是防帳號接管最有效控制。</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 核心速記</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">概念</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">最小權限</td><td style="padding:9px 10px; vertical-align:top;">只給所需權限</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">PAM</td><td style="padding:9px 10px; vertical-align:top;">管特權:vault/JIT/錄製</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">JIT</td><td style="padding:9px 10px; vertical-align:top;">需要時才給、用完即收</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">SSO</td><td style="padding:9px 10px; vertical-align:top;">便利但單點失效</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 關鍵名詞（中英）</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Least Privilege</strong>（最小權限）— <span style="color:#5B6675;">只給完成工作所需。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">PAM</strong>（特權存取管理）— <span style="color:#5B6675;">管控高權限帳號。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">JIT</strong>（即時提權）— <span style="color:#5B6675;">需要時才授予。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SSO</strong>（單一登入）— <span style="color:#5B6675;">一次登入存取多服務。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Zero Standing Privilege</strong>（零常駐特權）— <span style="color:#5B6675;">平時無特權、按需授予。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 常見陷阱</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>SSO 是單點失效</strong>:IdP 被破則全失;需 MFA＋監控＋高可用。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>PAM 核心是零常駐特權</strong>(按需 JIT)。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>最小權限 vs 需知</strong>:權限 vs 資訊。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 🎯 實戰考題</div>
+    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">What is the PRIMARY security drawback of Single Sign-On (SSO)?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（單一登入(SSO)的主要安全缺點是什麼?）</p>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> It requires many passwords 需要很多密碼</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> It creates a single point of failure 形成單點失效</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> It cannot be used with MFA 無法搭配 MFA</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> It slows down login 拖慢登入</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：B</strong>。SSO 集中身分,一旦 IdP 被攻破或當機,<strong>所有依賴它的服務都受影響</strong>＝單點失效;故 IdP 需最高保護與 MFA。</p>
+        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：SSO 正是減少密碼數量。</li><li style="margin-bottom:3px;">C：SSO 可且應搭配 MFA。</li><li style="margin-bottom:3px;">D：SSO 通常加快而非拖慢登入。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">Which approach BEST reduces the risk of standing privileged access being abused?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪種做法最能降低『常駐特權存取』被濫用的風險?）</p>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> Give all admins permanent root access 給所有管理員永久 root</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> Just-in-time (JIT) privileged access 即時(JIT)特權存取</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> Share one admin account 共用一個管理員帳號</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> Disable logging 關閉日誌</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：B</strong>。<strong>JIT 特權存取</strong>:平時零常駐特權,需要時才臨時授予、用完即收,大幅縮小被濫用的窗口(PAM 核心)。</p>
+        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：永久 root 擴大風險,與目標相反。</li><li style="margin-bottom:3px;">C：共用帳號破壞可歸責,更危險。</li><li style="margin-bottom:3px;">D：關閉日誌會喪失可歸責與偵測。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">Following the principle of least privilege, a new employee should be granted:</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（依最小權限原則,新進員工應被授予:）</p>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> All permissions, then remove unused ones 全部權限再移除不用的</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> Only the permissions needed to perform their job 僅執行工作所需的權限</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> The same access as their manager 與主管相同的存取</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> Administrator rights for convenience 為方便給管理員權限</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：B</strong>。最小權限＝<strong>只給完成工作所需的最少權限</strong>,之後依需要再增加。</p>
+        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：先給全部違反最小權限,且易遺留多餘權限。</li><li style="margin-bottom:3px;">C：與主管相同通常過大。</li><li style="margin-bottom:3px;">D：為方便給管理員權限是嚴重違反最小權限。</li></ul></div>
+      </details>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — (ISC)² 選最佳答案思路</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>SSO 缺點=單點失效</strong>;特權濫用→JIT/PAM/零常駐特權;新人→只給所需(最小權限)。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;">防帳號接管最有效=MFA(抗釣魚);共享帳號破壞可歸責。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>最小權限只給所需;PAM/JIT/零常駐特權管特權;SSO 便利但單點失效;MFA 防接管最有效。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . SSO 的主要安全缺點？<br><span style="color:#0A5A59;">→ 單點失效(IdP 被破則全失);需 MFA＋高可用。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 降低常駐特權被濫用最佳做法？<br><span style="color:#0A5A59;">→ JIT 即時特權(零常駐特權)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 新進員工依最小權限應給多少權限？<br><span style="color:#0A5A59;">→ 僅執行工作所需的最少權限。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/BUcoABZzeQ4" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/VknzQFVUfIc?t=3902" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 5<span class="ts-note">（從約 65:02 開始）</span> ↗</a>
+      </div>
+      <div style="margin-top:11px;">
+        <div style="font-size:12px; color:#B45309; font-weight:700; margin-bottom:2px;">📝 考題練習（刷題）</div>
+        <a href="https://youtu.be/UAS7CIylezg" style="font-size:14px; font-weight:700; color:#B45309; text-decoration:none;">50 CISSP Practice Questions and Answers 2026 | CISSP Domain 5 Prep ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 105 / 120 · P3-D5-5</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
