@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 10</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <!-- 報頭 -->
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 10 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D2-5</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 2 · 資產安全 &nbsp;|&nbsp; 權重 10%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">資料保護技術與基準</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Data Protection Tech &amp; Baselines</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:8.33%; background-color:#0E7C7B;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 把分類變成實際的「自動防護」</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">這是 Domain 2 初期的收尾。前四封我們分類、定角色、看生命週期與銷毀；今天補上<strong>把這些落實成技術控制</strong>的工具：<strong>DLP、DRM、CASB</strong>，以及如何用<strong>安全基準（Baseline）</strong>＋<strong>scoping / tailoring</strong> 依分類套對控制。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週回顧</strong>：①分類 → ②角色 → ③生命週期/狀態 → ④保存/銷毀 → ⑤<strong>今天：保護技術與基準</strong>。下週進入 Domain 3（安全架構與工程）。</div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 三個資料保護技術</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;">
+        <td style="padding:8px 10px; border-radius:6px 0 0 0;">技術</td>
+        <td style="padding:8px 10px;">做什麼</td>
+        <td style="padding:8px 10px; border-radius:0 6px 0 0;">典型場景</td>
+      </tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>DLP</strong><br><span style="color:#5B6675;">資料外洩防護</span></td><td style="padding:9px 10px; vertical-align:top;">偵測/阻擋敏感資料外流</td><td style="padding:9px 10px; vertical-align:top;">擋夾帶信用卡號的郵件/上傳</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>DRM</strong><br><span style="color:#5B6675;">數位版權管理</span></td><td style="padding:9px 10px; vertical-align:top;">控制檔案被開啟/複製/列印</td><td style="padding:9px 10px; vertical-align:top;">文件外寄後仍限制存取</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>CASB</strong><br><span style="color:#5B6675;">雲端存取安全代理</span></td><td style="padding:9px 10px; vertical-align:top;">在使用者與雲端服務間做可視化與管控</td><td style="padding:9px 10px; vertical-align:top;">管理員工使用各 SaaS 的資料行為</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 三者常搭配：CASB 看見雲端的資料流、DLP 判斷敏感與否並阻擋、DRM 讓檔案「離開組織後仍受控」。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 基準、Scoping 與 Tailoring</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Baseline 安全基準</strong>　一組依分類等級預設的最低控制集</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Scoping 範圍裁定</strong>　從基準中「挑出適用」於本系統的控制</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Tailoring 客製調整</strong>　依實際風險微調/補強控制</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">流程是：依資料<strong>分類</strong>挑對應的<strong>基準</strong> → <strong>scoping</strong> 去掉不適用者 → <strong>tailoring</strong> 補強。這把 Day 6 的「分類驅動控制」變成可操作的方法。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DLP</strong>（資料外洩防護）— <span style="color:#5B6675;">Data Loss Prevention，偵測並阻擋敏感資料外流。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DRM</strong>（數位版權管理）— <span style="color:#5B6675;">Digital Rights Management，控制檔案的開啟/複製/列印。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CASB</strong>（雲端存取安全代理）— <span style="color:#5B6675;">Cloud Access Security Broker，雲端資料可視化與管控。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Baseline</strong>（安全基準）— <span style="color:#5B6675;">依分類預設的一組最低控制。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Scoping</strong>（範圍裁定）— <span style="color:#5B6675;">從基準挑出適用本系統的控制。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Tailoring</strong>（客製調整）— <span style="color:#5B6675;">依風險微調或補強控制。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Tokenization</strong>（代碼化）— <span style="color:#5B6675;">以無意義代碼替換敏感值，降低暴露面（如付款）。</span></td></tr>
+    </table>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>DLP vs DRM</strong>：DLP 著重「<strong>阻止外流</strong>」（出口把關）；DRM 著重「<strong>檔案到哪都受控</strong>」（持續權限）。資料外寄後還要管＝DRM；防它寄出去＝DLP。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Scoping vs Tailoring</strong>：Scoping 是「<strong>選用/排除</strong>」哪些控制適用；Tailoring 是「<strong>調整參數/補強</strong>」已選的控制。先 scope、再 tailor。</p>
+    </div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-53</strong> 提供控制基準與 <strong>tailoring</strong> 指引；其<strong>隱私控制</strong>與 <strong>ISO/IEC 27701</strong> 支持「<strong>Privacy by Design（隱私設計）</strong>」——把隱私內建到系統，而非事後補。<strong>GDPR 第 25 條</strong>明文要求 Privacy by Design 與 by Default（預設最隱私）。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：DLP 攔截外洩</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 出口的最後一道防線</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">在許多內部威脅或誤觸情境中，員工（無論惡意或不慎）試圖把含 <strong>PII</strong> 或營業祕密的檔案寄到私人信箱、上傳到個人雲端——<strong>DLP</strong> 依預設規則（如偵測信用卡號、身分證格式）即時<strong>攔截並告警</strong>，阻止資料離開組織。搭配 <strong>CASB</strong> 還能管到員工在各 SaaS 的影子 IT 行為。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：分類（Day 6）若有確實標記，DLP 就能精準辨識該擋什麼。<strong>分類是大腦、DLP 是手</strong>——兩者配合才有效，這也收束了整個 Domain 2 的脈絡。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「防止員工把敏感檔<strong>外傳</strong>」→ <strong>DLP</strong>；「檔案外寄後仍要限制開啟/列印」→ <strong>DRM</strong>；「看見並管控員工用的各種雲端 SaaS」→ <strong>CASB</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>scoping 與 tailoring 別反——先 <strong>scoping</strong>（選/排除控制）再 <strong>tailoring</strong>（調整）。基準是「起點」不是「終點」，要依風險裁修。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>DLP 擋外流、DRM 讓檔案到哪都受控、CASB 管雲端；依分類挑基準，再 scoping→tailoring 套對控制，並落實 Privacy by Design。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 防止敏感檔被外傳到私人信箱用什麼？<br><span style="color:#0A5A59;">→ DLP（資料外洩防護）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . Scoping 與 Tailoring 的先後與差別？<br><span style="color:#0A5A59;">→ 先 Scoping（選/排除適用控制）再 Tailoring（依風險調整補強）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . GDPR 第 25 條要求的兩個設計原則？<br><span style="color:#0A5A59;">→ Privacy by Design 與 Privacy by Default（預設最隱私）。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/lrI4QIa8S2I" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 2 Review / Mind Map (2 of 2) | Privacy ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/dNIcfKYeJI8?t=301" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 2<span class="ts-note">（從約 05:01 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- 今日時事 -->
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 10 / 120 · P1-D2-5</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

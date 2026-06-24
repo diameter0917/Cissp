@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 8</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <!-- 報頭 -->
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 8 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D2-3</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 2 · 資產安全 &nbsp;|&nbsp; 權重 10%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">資料生命週期與狀態</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Data Lifecycle &amp; States</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:6.67%; background-color:#0E7C7B;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 資料會「動」，保護方式也要跟著動</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">資料不是靜止的——它被<strong>建立、使用、分享、保存、最後銷毀</strong>，一路上還會處在不同<strong>狀態</strong>。今天看兩個框架：<strong>資料生命週期（Data Lifecycle）</strong>與<strong>資料三狀態（Three States）</strong>。記住一句話：<strong>不同階段、不同狀態，要用不同的控制</strong>。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：生命週期六階段 → 三狀態（at rest / in transit / in use）→ 各狀態怎麼保護 → 落差在哪。</div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 資料生命週期</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>① Create／Collect 建立蒐集</strong>　最小化蒐集、當下即分類</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>② Store 儲存</strong>　加密、存取控制、備份</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>③ Use 使用</strong>　最小權限、稽核、防外洩（in use 最難保護）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>④ Share 分享</strong>　傳輸加密、DLP、權限管控</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>⑤ Archive 保存</strong>　依保存政策、仍需加密</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>⑥ Destroy 銷毀</strong>　依介質選對銷毀法、確保不可復原</td></tr>
+    </table>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 資料三狀態與保護</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;">
+        <td style="padding:8px 10px; border-radius:6px 0 0 0;">狀態</td>
+        <td style="padding:8px 10px;">情境</td>
+        <td style="padding:8px 10px; border-radius:0 6px 0 0;">主要保護</td>
+      </tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>At Rest</strong><br><span style="color:#5B6675;">靜止</span></td><td style="padding:9px 10px; vertical-align:top;">存在磁碟/資料庫/備份</td><td style="padding:9px 10px; vertical-align:top;">儲存加密（AES）、全磁碟加密、存取控制</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>In Transit</strong><br><span style="color:#5B6675;">傳輸中</span></td><td style="padding:9px 10px; vertical-align:top;">在網路上移動</td><td style="padding:9px 10px; vertical-align:top;">傳輸加密（TLS / IPsec / VPN）</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>In Use</strong><br><span style="color:#5B6675;">使用中</span></td><td style="padding:9px 10px; vertical-align:top;">在記憶體被處理</td><td style="padding:9px 10px; vertical-align:top;">最難——存取控制、機密運算（enclave）、安全編碼</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 <strong>In Use 最難保護</strong>：資料要被運算就得在記憶體中「解開」。新興的<strong>機密運算（Confidential Computing）</strong>用硬體 enclave 在使用中也保持加密，正是為了補這個落差。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data at Rest</strong>（靜止資料）— <span style="color:#5B6675;">儲存中的資料，靠儲存加密與存取控制保護。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data in Transit</strong>（傳輸中資料）— <span style="color:#5B6675;">網路傳送中的資料，靠 TLS/IPsec/VPN 保護。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data in Use</strong>（使用中資料）— <span style="color:#5B6675;">記憶體中被處理的資料，最難保護。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Lifecycle</strong>（資料生命週期）— <span style="color:#5B6675;">從建立到銷毀的各階段，每階段控制不同。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Minimization</strong>（資料最小化）— <span style="color:#5B6675;">只蒐集必要資料，從源頭降低風險（隱私原則）。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Confidential Computing</strong>（機密運算）— <span style="color:#5B6675;">用硬體 enclave 讓 in-use 資料也維持加密。</span></td></tr>
+    </table>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>生命週期 vs 三狀態</strong>：生命週期是<strong>時間軸</strong>（建立→銷毀）；三狀態是<strong>當下的存在形式</strong>（rest/transit/use）。同一階段可橫跨多狀態（例如「使用」時資料同時 in use 與 in transit）。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>At Rest 加密 ≠ 全都安全</strong>：只加密 at rest，資料一旦被解密進入 in use 或經未加密通道 in transit 仍會外洩。三狀態要<strong>各自</strong>對應控制，不能只做一種。</p>
+    </div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>GDPR 第 32 條</strong>明文要求對個資在「傳輸與儲存」時採適當加密；<strong>PCI DSS</strong> 要求持卡人資料 at rest 與 in transit 都加密；<strong>NIST SP 800-111</strong> 提供儲存加密指引。三狀態的觀念幾乎是所有資料保護法規的共同骨架。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：各狀態保護落差</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 只鎖了一道門</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">許多外洩的共同模式是「<strong>只保護了一種狀態</strong>」：資料庫 at rest 有加密，但備份檔沒加密被偷走；或網站用了 TLS（in transit 安全），後端資料庫卻明文儲存。攻擊者永遠挑<strong>沒上鎖的那一面</strong>下手。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：保護資料要<strong>三狀態通盤檢視</strong>——靜止、傳輸、使用各有對策，缺一面就是破口。這正是縱深防禦（Domain 1）在資料層的具體展現。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>題目問「保護 <strong>data in transit</strong> 用什麼」→ <strong>TLS／IPsec／VPN</strong>（傳輸加密）；問「data at rest」→ <strong>儲存／磁碟加密</strong>。別把兩者對調。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>「哪個狀態最難保護？」→ <strong>In Use</strong>（資料必須解密才能運算）。記住三狀態各自的代表控制就能秒答多數題。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>資料沿生命週期流動、並在 rest／transit／use 三狀態間切換；每個狀態要對應不同控制，三面都顧才安全。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 保護 data in transit 的主要手段？<br><span style="color:#0A5A59;">→ 傳輸加密：TLS、IPsec、VPN。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 三狀態中哪個最難保護、為什麼？<br><span style="color:#0A5A59;">→ In Use；資料須在記憶體解密才能運算，故最難。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 只對資料庫做 at-rest 加密，足夠嗎？<br><span style="color:#0A5A59;">→ 不足；備份、傳輸、使用中仍可能外洩，需三狀態各自保護。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/aN9zkmzYTmQ" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/dNIcfKYeJI8?t=1200" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 2<span class="ts-note">（從約 20:00 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- 今日時事 -->
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="index.html" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 8 / 120 · P1-D2-3</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

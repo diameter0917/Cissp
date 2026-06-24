@@ -44,6 +44,10 @@ TOPIC = {
     "P3-D1-3": ["risk management", "controls"],
     "P3-D1-4": ["privacy", "intellectual property"],
     "P3-D1-5": ["risk management", "business continuity"],
+    # D2 — 只有 3 支 mindmap，角色/隱私相關導向 Privacy 那支
+    "P1-D2-2": ["privacy"],
+    "P1-D2-5": ["privacy"],
+    "P3-D2-4": ["privacy"],
     # D5
     "P1-D5-3": ["single sign", "federated", "federation"],
     "P1-D5-4": ["single sign", "federated", "federation"],
