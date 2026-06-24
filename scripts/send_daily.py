@@ -185,9 +185,8 @@ def main():
     log(f"主旨：{subject}")
 
     if os.environ.get("DRY_RUN") == "1":
-        log("DRY_RUN=1：不實際寄信。")
+        log("DRY_RUN=1：不實際寄信、不回寫 sent_log（純測試流程）。")
         log(f"純文字 fallback 預覽（前 200 字）：\n{html_to_text(html)[:200]}")
-        update_sent_log(item)
         return
 
     gmail_user = os.environ.get("GMAIL_USER")
