@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 76</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 76 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D8-1</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 8 · 軟體開發安全 &nbsp;|&nbsp; 權重 10%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">SDLC 模型與成熟度深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">SDLC Models &amp; Maturity Deep Dive</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:63.33%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D8：SDLC 模型與安全成熟度</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">Domain 8(10%)中期深入<strong>SDLC 開發模型</strong>(瀑布/敏捷/螺旋/DevOps)、<strong>安全 SDLC</strong>的嵌入,與<strong>軟體安全成熟度模型(SAMM/BSIMM)</strong>。理解不同模型如何影響安全活動的安排。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週(Domain 8 · 中期)</strong>:①SDLC 模型與成熟度 → ②DevSecOps/環境控制 → ③注入/XSS/CSRF/安全編碼 → ④SAST/DAST/SCA/API → ⑤外購軟體與惡意程式。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — SDLC 模型比較</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">模型</td><td style="padding:8px 10px;">特性</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">安全嵌入</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Waterfall</strong> 瀑布</td><td style="padding:9px 10px; vertical-align:top;">循序、文件重、變更難</td><td style="padding:9px 10px; vertical-align:top;">各階段門檻審查</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Agile</strong> 敏捷</td><td style="padding:9px 10px; vertical-align:top;">迭代、快速、彈性</td><td style="padding:9px 10px; vertical-align:top;">每 sprint 融入安全(security in DoD)</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Spiral</strong> 螺旋</td><td style="padding:9px 10px; vertical-align:top;">迭代＋<strong>每圈做風險分析</strong></td><td style="padding:9px 10px; vertical-align:top;">風險驅動,適高風險專案</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>DevOps</strong></td><td style="padding:9px 10px; vertical-align:top;">持續整合交付</td><td style="padding:9px 10px; vertical-align:top;">DevSecOps 自動化安全</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 安全 SDLC 各階段活動</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>需求</strong>:安全/隱私需求、濫用案例;<strong>設計</strong>:威脅建模(STRIDE)、安全架構審查</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>開發</strong>:安全編碼標準、SAST、同儕審查;<strong>測試</strong>:DAST、滲透、誤用案例</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>部署</strong>:安全組態、祕密管理;<strong>維運</strong>:監控、修補、回應</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>變更管理</strong>貫穿:程式碼版控、審查、可追溯</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 成熟度模型</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>SAMM(OWASP)</strong>與 <strong>BSIMM</strong> 用來評估與提升軟體安全成熟度:<strong>SAMM</strong> 是<strong>規範性</strong>(給你該做什麼的藍圖);<strong>BSIMM</strong> 是<strong>描述性</strong>(觀察眾多企業實際在做什麼的標竿)。<strong>CMMI</strong> 則衡量流程成熟度等級。用來定位現況、規劃改善路徑。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SDLC</strong>（軟體開發生命週期）— <span style="color:#5B6675;">需求→設計→開發→測試→部署→維運。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Waterfall/Agile/Spiral</strong>（瀑布/敏捷/螺旋）— <span style="color:#5B6675;">循序/迭代/風險驅動。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Secure SDLC</strong>（安全 SDLC）— <span style="color:#5B6675;">各階段嵌入安全活動。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Threat Modeling</strong>（威脅建模）— <span style="color:#5B6675;">設計期系統化找威脅。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SAMM</strong>（軟體保證成熟度模型）— <span style="color:#5B6675;">OWASP 規範性框架。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">BSIMM</strong>（建構安全成熟度模型）— <span style="color:#5B6675;">描述性、觀察業界實作。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CMMI</strong>（能力成熟度整合）— <span style="color:#5B6675;">流程成熟度分級。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Waterfall vs Agile</strong>:瀑布循序、變更成本高、安全易擠到最後;敏捷迭代,安全要<strong>內建每個 sprint</strong>(納入 Definition of Done)。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Spiral 的特色</strong>:每一圈都做<strong>風險分析</strong>——適合高風險/不確定專案;與單純迭代不同在『風險驅動』。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>SAMM vs BSIMM</strong>:SAMM <strong>規範性</strong>(你『該』做什麼);BSIMM <strong>描述性</strong>(業界『實際』做什麼,當標竿)。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SSDF(SP 800-218)</strong>、<strong>Microsoft SDL</strong>、<strong>OWASP SAMM</strong>、<strong>BSIMM</strong>、<strong>ISO/IEC 27034</strong>(應用安全)。威脅建模常用 STRIDE(D1)。成熟度評估驅動安全投資優先序。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：成熟度評估</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 先量現況,再規劃改善</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">組織導入安全開發時,常先用 <strong>BSIMM/SAMM 評估</strong>定位現況:發現雖有滲透測試(後期),卻缺<strong>設計期威脅建模、安全需求、開發者訓練</strong>(前期左移不足)。評估讓改善<strong>有依據、可衡量、可向管理層溝通投資</strong>,而非憑感覺東補西補。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓:<strong>軟體安全是『流程能力』而非單一工具</strong>;用成熟度模型建立基線與路線圖,優先補最弱、最高風險的環節(常是左移的設計與訓練)。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：左移與右移並重</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;"><strong>Shift Left</strong>(設計/開發期安全)固然重要,但現代也談 <strong>Shift Right</strong>:在<strong>正式環境</strong>持續驗證(BAS、混沌工程、執行期保護 RASP、可觀測性)。因為有些問題只在真實負載/環境下浮現。理想是<strong>左右並重</strong>——早期預防＋執行期偵測回應,涵蓋軟體全生命週期。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『每圈做風險分析的模型』→ Spiral;『敏捷如何確保安全』→ 內建每個 sprint;『評估軟體安全成熟度』→ SAMM/BSIMM;『設計期找威脅』→ 威脅建模。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>SAMM(規範) vs BSIMM(描述);敏捷不是『沒安全』而是融入迭代;安全是流程能力非單一工具。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>SDLC 模型(瀑布/敏捷/螺旋/DevOps)影響安全活動安排;安全 SDLC 各階段嵌入(威脅建模/SAST/DAST);SAMM(規範)/BSIMM(描述)評估成熟度。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 哪個 SDLC 模型每次迭代都做風險分析？<br><span style="color:#0A5A59;">→ Spiral(螺旋模型,風險驅動)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . SAMM 與 BSIMM 的差別？<br><span style="color:#0A5A59;">→ SAMM 規範性(該做什麼);BSIMM 描述性(業界實際在做什麼,當標竿)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 敏捷開發如何確保安全不被犧牲？<br><span style="color:#0A5A59;">→ 把安全活動內建每個 sprint(納入 Definition of Done),而非最後補。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/fS5WWjuyFmQ" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/vg-o5lKcwsA?t=1350" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 8<span class="ts-note">（從約 22:30 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 76 / 120 · P2-D8-1</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
