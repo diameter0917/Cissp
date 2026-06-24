@@ -17,7 +17,19 @@
       "title_en": "Domain 1 Big Picture & the CIA Triad",
       "email_file": "emails/day-001.html",
       "archive_url": "archive/day-001.html",
-      "video_url": "https://youtu.be/J-su239XmCE"
+      "video_url": "https://youtu.be/geGALIfOxtI",
+      "video_primary": {
+        "id": "geGALIfOxtI",
+        "title": "CISSP Domain 1 Review / Mind Map",
+        "url": "https://youtu.be/geGALIfOxtI",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      }
     },
     {
       "date": "2026-06-26",
@@ -32,7 +44,19 @@
       "title_en": "Security Governance & Roles",
       "email_file": "emails/day-002.html",
       "archive_url": "archive/day-002.html",
-      "video_url": "https://youtu.be/J-su239XmCE"
+      "video_url": "https://youtu.be/hf5NwUSEkwA",
+      "video_primary": {
+        "id": "hf5NwUSEkwA",
+        "title": "Alignment of Security Function MindMap (1 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/hf5NwUSEkwA",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      }
     },
     {
       "date": "2026-06-29",
@@ -47,7 +71,19 @@
       "title_en": "Risk Management Overview",
       "email_file": "emails/day-003.html",
       "archive_url": "archive/day-003.html",
-      "video_url": "https://youtu.be/J-su239XmCE"
+      "video_url": "https://youtu.be/_ksPu19kkCI",
+      "video_primary": {
+        "id": "_ksPu19kkCI",
+        "title": "Risk Management MindMap (3 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/_ksPu19kkCI",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      }
     },
     {
       "date": "2026-06-30",
@@ -62,7 +98,19 @@
       "title_en": "Legal, Compliance, Privacy & Ethics Overview",
       "email_file": "emails/day-004.html",
       "archive_url": "archive/day-004.html",
-      "video_url": "https://youtu.be/J-su239XmCE"
+      "video_url": "https://youtu.be/7rhz3jv_yAc",
+      "video_primary": {
+        "id": "7rhz3jv_yAc",
+        "title": "Privacy & Intellectual Property MindMap (2 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/7rhz3jv_yAc",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-01",
@@ -77,7 +125,19 @@
       "title_en": "BCP, Personnel, Supply Chain & Awareness",
       "email_file": "emails/day-005.html",
       "archive_url": "archive/day-005.html",
-      "video_url": "https://youtu.be/J-su239XmCE"
+      "video_url": "https://youtu.be/_ksPu19kkCI",
+      "video_primary": {
+        "id": "_ksPu19kkCI",
+        "title": "Risk Management MindMap (3 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/_ksPu19kkCI",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-02",
@@ -92,7 +152,19 @@
       "title_en": "Domain 2 Big Picture & Data Classification",
       "email_file": "emails/day-006.html",
       "archive_url": "archive/day-006.html",
-      "video_url": "https://youtu.be/dNIcfKYeJI8"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-03",
@@ -107,7 +179,19 @@
       "title_en": "Data Roles & Ownership",
       "email_file": "emails/day-007.html",
       "archive_url": "archive/day-007.html",
-      "video_url": "https://youtu.be/dNIcfKYeJI8"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-06",
@@ -122,7 +206,19 @@
       "title_en": "Data Lifecycle & States",
       "email_file": "emails/day-008.html",
       "archive_url": "archive/day-008.html",
-      "video_url": "https://youtu.be/dNIcfKYeJI8"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-07",
@@ -137,7 +233,19 @@
       "title_en": "Retention, Destruction & Remanence",
       "email_file": "emails/day-009.html",
       "archive_url": "archive/day-009.html",
-      "video_url": "https://youtu.be/dNIcfKYeJI8"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-08",
@@ -152,7 +260,19 @@
       "title_en": "Data Protection Tech & Baselines",
       "email_file": "emails/day-010.html",
       "archive_url": "archive/day-010.html",
-      "video_url": "https://youtu.be/dNIcfKYeJI8"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-09",
@@ -167,7 +287,19 @@
       "title_en": "Domain 3 Big Picture & Secure Design Principles",
       "email_file": "emails/day-011.html",
       "archive_url": "archive/day-011.html",
-      "video_url": "https://youtu.be/P5So8_NKxz4"
+      "video_url": "https://youtu.be/qZB6_lp9M30",
+      "video_primary": {
+        "id": "qZB6_lp9M30",
+        "title": "CISSP Domain 3 Review / Mind Map (1 of 9) | Models and Frameworks",
+        "url": "https://youtu.be/qZB6_lp9M30",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-10",
@@ -182,7 +314,19 @@
       "title_en": "Security Models Overview",
       "email_file": "emails/day-012.html",
       "archive_url": "archive/day-012.html",
-      "video_url": "https://youtu.be/P5So8_NKxz4"
+      "video_url": "https://youtu.be/qZB6_lp9M30",
+      "video_primary": {
+        "id": "qZB6_lp9M30",
+        "title": "CISSP Domain 3 Review / Mind Map (1 of 9) | Models and Frameworks",
+        "url": "https://youtu.be/qZB6_lp9M30",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-13",
@@ -197,7 +341,19 @@
       "title_en": "Cryptography Overview",
       "email_file": "emails/day-013.html",
       "archive_url": "archive/day-013.html",
-      "video_url": "https://youtu.be/P5So8_NKxz4"
+      "video_url": "https://youtu.be/LLRaa0kOMDM",
+      "video_primary": {
+        "id": "LLRaa0kOMDM",
+        "title": "CISSP Domain 3 Review / Mind Map (6 of 9) | Cryptography",
+        "url": "https://youtu.be/LLRaa0kOMDM",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-14",
@@ -212,7 +368,19 @@
       "title_en": "System & Cloud Architecture Weaknesses",
       "email_file": "emails/day-014.html",
       "archive_url": "archive/day-014.html",
-      "video_url": "https://youtu.be/P5So8_NKxz4"
+      "video_url": "https://youtu.be/-rWQ7YuxiLY",
+      "video_primary": {
+        "id": "-rWQ7YuxiLY",
+        "title": "CISSP Domain 3 Review / Mind Map (5 of 9) | Cloud",
+        "url": "https://youtu.be/-rWQ7YuxiLY",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-15",
@@ -227,7 +395,19 @@
       "title_en": "Physical & Site Security",
       "email_file": "emails/day-015.html",
       "archive_url": "archive/day-015.html",
-      "video_url": "https://youtu.be/P5So8_NKxz4"
+      "video_url": "https://youtu.be/7ESQwNJ9HXU",
+      "video_primary": {
+        "id": "7ESQwNJ9HXU",
+        "title": "CISSP Domain 3 Review | Mind Map (9 of 9) | Physical Security",
+        "url": "https://youtu.be/7ESQwNJ9HXU",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-16",
@@ -242,7 +422,19 @@
       "title_en": "Domain 4 Big Picture & OSI/TCP-IP",
       "email_file": "emails/day-016.html",
       "archive_url": "archive/day-016.html",
-      "video_url": "https://youtu.be/tQCgAteRyIo"
+      "video_url": "https://youtu.be/6X4A6B94vmw",
+      "video_primary": {
+        "id": "6X4A6B94vmw",
+        "title": "CISSP Domain 4 Review |  Mind Map (1 of 4) | OSI Model",
+        "url": "https://youtu.be/6X4A6B94vmw",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-17",
@@ -257,7 +449,19 @@
       "title_en": "Core & Secure Protocols",
       "email_file": "emails/day-017.html",
       "archive_url": "archive/day-017.html",
-      "video_url": "https://youtu.be/tQCgAteRyIo"
+      "video_url": "https://youtu.be/EW0iBXHVqB0",
+      "video_primary": {
+        "id": "EW0iBXHVqB0",
+        "title": "CISSP Domain 4 Review / Mind Map (2 of 4) | Networking",
+        "url": "https://youtu.be/EW0iBXHVqB0",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-20",
@@ -272,7 +476,19 @@
       "title_en": "Network Devices & Defenses",
       "email_file": "emails/day-018.html",
       "archive_url": "archive/day-018.html",
-      "video_url": "https://youtu.be/tQCgAteRyIo"
+      "video_url": "https://youtu.be/G_5FCCyHgJo",
+      "video_primary": {
+        "id": "G_5FCCyHgJo",
+        "title": "CISSP Domain 4 Review | Mind Map (3 of 4) | Network Defense",
+        "url": "https://youtu.be/G_5FCCyHgJo",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-21",
@@ -287,7 +503,19 @@
       "title_en": "Wireless, Mobile & Remote",
       "email_file": "emails/day-019.html",
       "archive_url": "archive/day-019.html",
-      "video_url": "https://youtu.be/tQCgAteRyIo"
+      "video_url": "https://youtu.be/lecByuUuzXw",
+      "video_primary": {
+        "id": "lecByuUuzXw",
+        "title": "CISSP Domain 4 Review | Mind Map (4 of 4) | Remote Access",
+        "url": "https://youtu.be/lecByuUuzXw",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-22",
@@ -302,7 +530,19 @@
       "title_en": "Email Security & Network Attacks",
       "email_file": "emails/day-020.html",
       "archive_url": "archive/day-020.html",
-      "video_url": "https://youtu.be/tQCgAteRyIo"
+      "video_url": "https://youtu.be/EW0iBXHVqB0",
+      "video_primary": {
+        "id": "EW0iBXHVqB0",
+        "title": "CISSP Domain 4 Review / Mind Map (2 of 4) | Networking",
+        "url": "https://youtu.be/EW0iBXHVqB0",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-23",
@@ -317,7 +557,19 @@
       "title_en": "Domain 5 Big Picture & AAA",
       "email_file": "emails/day-021.html",
       "archive_url": "archive/day-021.html",
-      "video_url": "https://youtu.be/VknzQFVUfIc"
+      "video_url": "https://youtu.be/BUcoABZzeQ4",
+      "video_primary": {
+        "id": "BUcoABZzeQ4",
+        "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+        "url": "https://youtu.be/BUcoABZzeQ4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-24",
@@ -332,7 +584,19 @@
       "title_en": "Authentication Factors & MFA",
       "email_file": "emails/day-022.html",
       "archive_url": "archive/day-022.html",
-      "video_url": "https://youtu.be/VknzQFVUfIc"
+      "video_url": "https://youtu.be/BUcoABZzeQ4",
+      "video_primary": {
+        "id": "BUcoABZzeQ4",
+        "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+        "url": "https://youtu.be/BUcoABZzeQ4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-27",
@@ -347,7 +611,19 @@
       "title_en": "Identity Lifecycle & Federation",
       "email_file": "emails/day-023.html",
       "archive_url": "archive/day-023.html",
-      "video_url": "https://youtu.be/VknzQFVUfIc"
+      "video_url": "https://youtu.be/_U4QMIxVk8M",
+      "video_primary": {
+        "id": "_U4QMIxVk8M",
+        "title": "CISSP Domain 5 Review / Mind Map (2 of 2) | Single Sign-on and Federated Identity Management",
+        "url": "https://youtu.be/_U4QMIxVk8M",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-28",
@@ -362,7 +638,19 @@
       "title_en": "Federation Protocols Overview",
       "email_file": "emails/day-024.html",
       "archive_url": "archive/day-024.html",
-      "video_url": "https://youtu.be/VknzQFVUfIc"
+      "video_url": "https://youtu.be/-zyg9n0xwgM",
+      "video_primary": {
+        "id": "-zyg9n0xwgM",
+        "title": "Single Sign-on / Federated Access MindMap (2 of 2) | CISSP Domain 5",
+        "url": "https://youtu.be/-zyg9n0xwgM",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-29",
@@ -377,7 +665,19 @@
       "title_en": "Access Control Models & PAM",
       "email_file": "emails/day-025.html",
       "archive_url": "archive/day-025.html",
-      "video_url": "https://youtu.be/VknzQFVUfIc"
+      "video_url": "https://youtu.be/BUcoABZzeQ4",
+      "video_primary": {
+        "id": "BUcoABZzeQ4",
+        "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+        "url": "https://youtu.be/BUcoABZzeQ4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-30",
@@ -392,7 +692,19 @@
       "title_en": "Domain 6 Big Picture & Assessment Strategy",
       "email_file": "emails/day-026.html",
       "archive_url": "archive/day-026.html",
-      "video_url": "https://youtu.be/lt_-KqplT5o"
+      "video_url": "https://youtu.be/eDVZvw5NziA",
+      "video_primary": {
+        "id": "eDVZvw5NziA",
+        "title": "CISSP Domain 6 Review / Mind Map (1 of 3) | Security Assessment and Testing Overview",
+        "url": "https://youtu.be/eDVZvw5NziA",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      }
     },
     {
       "date": "2026-07-31",
@@ -407,7 +719,19 @@
       "title_en": "Vuln Assessment & Pentest",
       "email_file": "emails/day-027.html",
       "archive_url": "archive/day-027.html",
-      "video_url": "https://youtu.be/lt_-KqplT5o"
+      "video_url": "https://youtu.be/vZ0S8GdWiIk",
+      "video_primary": {
+        "id": "vZ0S8GdWiIk",
+        "title": "CISSP Domain 6 Review / Mind Map (2 of 3) | Vulnerability Assessment and Penetration Testing",
+        "url": "https://youtu.be/vZ0S8GdWiIk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-03",
@@ -422,7 +746,19 @@
       "title_en": "Testing Techniques Overview",
       "email_file": "emails/day-028.html",
       "archive_url": "archive/day-028.html",
-      "video_url": "https://youtu.be/lt_-KqplT5o"
+      "video_url": "https://youtu.be/vZ0S8GdWiIk",
+      "video_primary": {
+        "id": "vZ0S8GdWiIk",
+        "title": "CISSP Domain 6 Review / Mind Map (2 of 3) | Vulnerability Assessment and Penetration Testing",
+        "url": "https://youtu.be/vZ0S8GdWiIk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-04",
@@ -437,7 +773,19 @@
       "title_en": "Audits & Reports",
       "email_file": "emails/day-029.html",
       "archive_url": "archive/day-029.html",
-      "video_url": "https://youtu.be/lt_-KqplT5o"
+      "video_url": "https://youtu.be/A-aNmhB_WjM",
+      "video_primary": {
+        "id": "A-aNmhB_WjM",
+        "title": "Security Assessment and Testing MindMap (1 of 3) | CISSP Domain 6",
+        "url": "https://youtu.be/A-aNmhB_WjM",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-05",
@@ -452,7 +800,19 @@
       "title_en": "Management Review & Metrics",
       "email_file": "emails/day-030.html",
       "archive_url": "archive/day-030.html",
-      "video_url": "https://youtu.be/lt_-KqplT5o"
+      "video_url": "https://youtu.be/eDVZvw5NziA",
+      "video_primary": {
+        "id": "eDVZvw5NziA",
+        "title": "CISSP Domain 6 Review / Mind Map (1 of 3) | Security Assessment and Testing Overview",
+        "url": "https://youtu.be/eDVZvw5NziA",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-06",
@@ -467,7 +827,19 @@
       "title_en": "Domain 7 Big Picture & Investigations",
       "email_file": "emails/day-031.html",
       "archive_url": "archive/day-031.html",
-      "video_url": "https://youtu.be/8zM89KMRniM"
+      "video_url": "https://youtu.be/Urev5cZgny8",
+      "video_primary": {
+        "id": "Urev5cZgny8",
+        "title": "CISSP Domain 7 Review / Mind Map (1 of 6) | Investigations",
+        "url": "https://youtu.be/Urev5cZgny8",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-07",
@@ -482,7 +854,19 @@
       "title_en": "Logging, Monitoring & SIEM",
       "email_file": "emails/day-032.html",
       "archive_url": "archive/day-032.html",
-      "video_url": "https://youtu.be/8zM89KMRniM"
+      "video_url": "https://youtu.be/PwxFwndQ7Jk",
+      "video_primary": {
+        "id": "PwxFwndQ7Jk",
+        "title": "CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response",
+        "url": "https://youtu.be/PwxFwndQ7Jk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-10",
@@ -497,7 +881,19 @@
       "title_en": "Config/Change/Patch Management",
       "email_file": "emails/day-033.html",
       "archive_url": "archive/day-033.html",
-      "video_url": "https://youtu.be/8zM89KMRniM"
+      "video_url": "https://youtu.be/xX4U6Lz82Bk",
+      "video_primary": {
+        "id": "xX4U6Lz82Bk",
+        "title": "CISSP Domain 7 Review / Mind Map (4 of 6) | Patching & Change Management",
+        "url": "https://youtu.be/xX4U6Lz82Bk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-11",
@@ -512,7 +908,19 @@
       "title_en": "Ops Foundations & Privilege",
       "email_file": "emails/day-034.html",
       "archive_url": "archive/day-034.html",
-      "video_url": "https://youtu.be/8zM89KMRniM"
+      "video_url": "https://youtu.be/PwxFwndQ7Jk",
+      "video_primary": {
+        "id": "PwxFwndQ7Jk",
+        "title": "CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response",
+        "url": "https://youtu.be/PwxFwndQ7Jk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-12",
@@ -527,7 +935,19 @@
       "title_en": "Incident Management & DR",
       "email_file": "emails/day-035.html",
       "archive_url": "archive/day-035.html",
-      "video_url": "https://youtu.be/8zM89KMRniM"
+      "video_url": "https://youtu.be/PwxFwndQ7Jk",
+      "video_primary": {
+        "id": "PwxFwndQ7Jk",
+        "title": "CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response",
+        "url": "https://youtu.be/PwxFwndQ7Jk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-13",
@@ -542,7 +962,19 @@
       "title_en": "Domain 8 Big Picture & SDLC",
       "email_file": "emails/day-036.html",
       "archive_url": "archive/day-036.html",
-      "video_url": "https://youtu.be/vg-o5lKcwsA"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-14",
@@ -557,7 +989,19 @@
       "title_en": "DevSecOps & CI/CD Security",
       "email_file": "emails/day-037.html",
       "archive_url": "archive/day-037.html",
-      "video_url": "https://youtu.be/vg-o5lKcwsA"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-17",
@@ -572,7 +1016,19 @@
       "title_en": "OWASP & Common Vulns",
       "email_file": "emails/day-038.html",
       "archive_url": "archive/day-038.html",
-      "video_url": "https://youtu.be/vg-o5lKcwsA"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-18",
@@ -587,7 +1043,19 @@
       "title_en": "Security Testing & Open-Source Risk",
       "email_file": "emails/day-039.html",
       "archive_url": "archive/day-039.html",
-      "video_url": "https://youtu.be/vg-o5lKcwsA"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-19",
@@ -602,7 +1070,19 @@
       "title_en": "Acquired Software & Malware",
       "email_file": "emails/day-040.html",
       "archive_url": "archive/day-040.html",
-      "video_url": "https://youtu.be/vg-o5lKcwsA"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-20",
@@ -617,7 +1097,19 @@
       "title_en": "Governance Documents & Frameworks",
       "email_file": "emails/day-041.html",
       "archive_url": "archive/day-041.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/hf5NwUSEkwA",
+      "video_primary": {
+        "id": "hf5NwUSEkwA",
+        "title": "Alignment of Security Function MindMap (1 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/hf5NwUSEkwA",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-21",
@@ -632,7 +1124,19 @@
       "title_en": "Quantitative Risk Math",
       "email_file": "emails/day-042.html",
       "archive_url": "archive/day-042.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/_ksPu19kkCI",
+      "video_primary": {
+        "id": "_ksPu19kkCI",
+        "title": "Risk Management MindMap (3 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/_ksPu19kkCI",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-24",
@@ -647,7 +1151,19 @@
       "title_en": "Control Types & Risk Frameworks",
       "email_file": "emails/day-043.html",
       "archive_url": "archive/day-043.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/_ksPu19kkCI",
+      "video_primary": {
+        "id": "_ksPu19kkCI",
+        "title": "Risk Management MindMap (3 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/_ksPu19kkCI",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-25",
@@ -662,7 +1178,19 @@
       "title_en": "IP, Transborder Data & Privacy Law",
       "email_file": "emails/day-044.html",
       "archive_url": "archive/day-044.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/7rhz3jv_yAc",
+      "video_primary": {
+        "id": "7rhz3jv_yAc",
+        "title": "Privacy & Intellectual Property MindMap (2 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/7rhz3jv_yAc",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-26",
@@ -677,7 +1205,19 @@
       "title_en": "BCP/BIA, Personnel, Supply Chain, Threat Modeling",
       "email_file": "emails/day-045.html",
       "archive_url": "archive/day-045.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/_ksPu19kkCI",
+      "video_primary": {
+        "id": "_ksPu19kkCI",
+        "title": "Risk Management MindMap (3 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/_ksPu19kkCI",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-27",
@@ -692,7 +1232,19 @@
       "title_en": "Designing Classification Schemes",
       "email_file": "emails/day-046.html",
       "archive_url": "archive/day-046.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-28",
@@ -707,7 +1259,19 @@
       "title_en": "Data Roles Deep Dive",
       "email_file": "emails/day-047.html",
       "archive_url": "archive/day-047.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/lrI4QIa8S2I",
+      "video_primary": {
+        "id": "lrI4QIa8S2I",
+        "title": "CISSP Domain 2 Review / Mind Map (2 of 2) | Privacy",
+        "url": "https://youtu.be/lrI4QIa8S2I",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      }
     },
     {
       "date": "2026-08-31",
@@ -722,7 +1286,19 @@
       "title_en": "Lifecycle, Sovereignty & Residency",
       "email_file": "emails/day-048.html",
       "archive_url": "archive/day-048.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-01",
@@ -737,7 +1313,19 @@
       "title_en": "Remanence, Destruction Standards & Media",
       "email_file": "emails/day-049.html",
       "archive_url": "archive/day-049.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-02",
@@ -752,7 +1340,19 @@
       "title_en": "DLP/DRM/CASB & Privacy by Design",
       "email_file": "emails/day-050.html",
       "archive_url": "archive/day-050.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/lrI4QIa8S2I",
+      "video_primary": {
+        "id": "lrI4QIa8S2I",
+        "title": "CISSP Domain 2 Review / Mind Map (2 of 2) | Privacy",
+        "url": "https://youtu.be/lrI4QIa8S2I",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-03",
@@ -767,7 +1367,19 @@
       "title_en": "Security Models & Evaluation Deep Dive",
       "email_file": "emails/day-051.html",
       "archive_url": "archive/day-051.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/qZB6_lp9M30",
+      "video_primary": {
+        "id": "qZB6_lp9M30",
+        "title": "CISSP Domain 3 Review / Mind Map (1 of 9) | Models and Frameworks",
+        "url": "https://youtu.be/qZB6_lp9M30",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-04",
@@ -782,7 +1394,19 @@
       "title_en": "Symmetric & Asymmetric Crypto",
       "email_file": "emails/day-052.html",
       "archive_url": "archive/day-052.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/LLRaa0kOMDM",
+      "video_primary": {
+        "id": "LLRaa0kOMDM",
+        "title": "CISSP Domain 3 Review / Mind Map (6 of 9) | Cryptography",
+        "url": "https://youtu.be/LLRaa0kOMDM",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-07",
@@ -797,7 +1421,19 @@
       "title_en": "Hashing, Signatures & Key Management",
       "email_file": "emails/day-053.html",
       "archive_url": "archive/day-053.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/cDP-PhlrNGo",
+      "video_primary": {
+        "id": "cDP-PhlrNGo",
+        "title": "Digital Signatures & Certificates MindMap (7 of 9) | CISSP Domain 3",
+        "url": "https://youtu.be/cDP-PhlrNGo",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-08",
@@ -812,7 +1448,19 @@
       "title_en": "Cryptanalytic Attacks & IoT/ICS",
       "email_file": "emails/day-054.html",
       "archive_url": "archive/day-054.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/qZB6_lp9M30",
+      "video_primary": {
+        "id": "qZB6_lp9M30",
+        "title": "CISSP Domain 3 Review / Mind Map (1 of 9) | Models and Frameworks",
+        "url": "https://youtu.be/qZB6_lp9M30",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-09",
@@ -827,7 +1475,19 @@
       "title_en": "Physical Controls & Database Security",
       "email_file": "emails/day-055.html",
       "archive_url": "archive/day-055.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/7ESQwNJ9HXU",
+      "video_primary": {
+        "id": "7ESQwNJ9HXU",
+        "title": "CISSP Domain 3 Review | Mind Map (9 of 9) | Physical Security",
+        "url": "https://youtu.be/7ESQwNJ9HXU",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-10",
@@ -842,7 +1502,19 @@
       "title_en": "OSI Layers & Encapsulation Deep Dive",
       "email_file": "emails/day-056.html",
       "archive_url": "archive/day-056.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/6X4A6B94vmw",
+      "video_primary": {
+        "id": "6X4A6B94vmw",
+        "title": "CISSP Domain 4 Review |  Mind Map (1 of 4) | OSI Model",
+        "url": "https://youtu.be/6X4A6B94vmw",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-11",
@@ -857,7 +1529,19 @@
       "title_en": "Secure Protocols & DNS Deep Dive",
       "email_file": "emails/day-057.html",
       "archive_url": "archive/day-057.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/EW0iBXHVqB0",
+      "video_primary": {
+        "id": "EW0iBXHVqB0",
+        "title": "CISSP Domain 4 Review / Mind Map (2 of 4) | Networking",
+        "url": "https://youtu.be/EW0iBXHVqB0",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-14",
@@ -872,7 +1556,19 @@
       "title_en": "Firewalls/IDS/Segmentation Deep Dive",
       "email_file": "emails/day-058.html",
       "archive_url": "archive/day-058.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/8wQT7or1ZlA",
+      "video_primary": {
+        "id": "8wQT7or1ZlA",
+        "title": "Network Defense MindMap (3 of 4) | CISSP Domain 4",
+        "url": "https://youtu.be/8wQT7or1ZlA",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-15",
@@ -887,7 +1583,19 @@
       "title_en": "Wireless/VPN/NAC Deep Dive",
       "email_file": "emails/day-059.html",
       "archive_url": "archive/day-059.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/lecByuUuzXw",
+      "video_primary": {
+        "id": "lecByuUuzXw",
+        "title": "CISSP Domain 4 Review | Mind Map (4 of 4) | Remote Access",
+        "url": "https://youtu.be/lecByuUuzXw",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-16",
@@ -902,7 +1610,19 @@
       "title_en": "Email Auth & Network Attacks Deep Dive",
       "email_file": "emails/day-060.html",
       "archive_url": "archive/day-060.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/EW0iBXHVqB0",
+      "video_primary": {
+        "id": "EW0iBXHVqB0",
+        "title": "CISSP Domain 4 Review / Mind Map (2 of 4) | Networking",
+        "url": "https://youtu.be/EW0iBXHVqB0",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-17",
@@ -917,7 +1637,19 @@
       "title_en": "AAA & Auth Factors Deep Dive",
       "email_file": "emails/day-061.html",
       "archive_url": "archive/day-061.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/BUcoABZzeQ4",
+      "video_primary": {
+        "id": "BUcoABZzeQ4",
+        "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+        "url": "https://youtu.be/BUcoABZzeQ4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-18",
@@ -932,7 +1664,19 @@
       "title_en": "Lifecycle & Proofing Deep Dive",
       "email_file": "emails/day-062.html",
       "archive_url": "archive/day-062.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/BUcoABZzeQ4",
+      "video_primary": {
+        "id": "BUcoABZzeQ4",
+        "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+        "url": "https://youtu.be/BUcoABZzeQ4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-21",
@@ -947,7 +1691,19 @@
       "title_en": "SAML/OAuth/OIDC Deep Dive",
       "email_file": "emails/day-063.html",
       "archive_url": "archive/day-063.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/-zyg9n0xwgM",
+      "video_primary": {
+        "id": "-zyg9n0xwgM",
+        "title": "Single Sign-on / Federated Access MindMap (2 of 2) | CISSP Domain 5",
+        "url": "https://youtu.be/-zyg9n0xwgM",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-22",
@@ -962,7 +1718,19 @@
       "title_en": "Kerberos & Directory Deep Dive",
       "email_file": "emails/day-064.html",
       "archive_url": "archive/day-064.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/_U4QMIxVk8M",
+      "video_primary": {
+        "id": "_U4QMIxVk8M",
+        "title": "CISSP Domain 5 Review / Mind Map (2 of 2) | Single Sign-on and Federated Identity Management",
+        "url": "https://youtu.be/_U4QMIxVk8M",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-23",
@@ -977,7 +1745,19 @@
       "title_en": "Access Models & PAM Deep Dive",
       "email_file": "emails/day-065.html",
       "archive_url": "archive/day-065.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/BUcoABZzeQ4",
+      "video_primary": {
+        "id": "BUcoABZzeQ4",
+        "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+        "url": "https://youtu.be/BUcoABZzeQ4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-24",
@@ -992,7 +1772,19 @@
       "title_en": "Vuln & Pentest Deep Dive",
       "email_file": "emails/day-066.html",
       "archive_url": "archive/day-066.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/vZ0S8GdWiIk",
+      "video_primary": {
+        "id": "vZ0S8GdWiIk",
+        "title": "CISSP Domain 6 Review / Mind Map (2 of 3) | Vulnerability Assessment and Penetration Testing",
+        "url": "https://youtu.be/vZ0S8GdWiIk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-25",
@@ -1007,7 +1799,19 @@
       "title_en": "Dynamic/Static/Interface Testing",
       "email_file": "emails/day-067.html",
       "archive_url": "archive/day-067.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/eDVZvw5NziA",
+      "video_primary": {
+        "id": "eDVZvw5NziA",
+        "title": "CISSP Domain 6 Review / Mind Map (1 of 3) | Security Assessment and Testing Overview",
+        "url": "https://youtu.be/eDVZvw5NziA",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-28",
@@ -1022,7 +1826,19 @@
       "title_en": "Logging/Synthetic Monitoring & BAS",
       "email_file": "emails/day-068.html",
       "archive_url": "archive/day-068.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/cwcARccyWyY",
+      "video_primary": {
+        "id": "cwcARccyWyY",
+        "title": "CISSP Domain 6 Review / Mind Map (3 of 3) | Logging & Monitoring",
+        "url": "https://youtu.be/cwcARccyWyY",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-29",
@@ -1037,7 +1853,19 @@
       "title_en": "Audit Types & SOC Reports",
       "email_file": "emails/day-069.html",
       "archive_url": "archive/day-069.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/eDVZvw5NziA",
+      "video_primary": {
+        "id": "eDVZvw5NziA",
+        "title": "CISSP Domain 6 Review / Mind Map (1 of 3) | Security Assessment and Testing Overview",
+        "url": "https://youtu.be/eDVZvw5NziA",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      }
     },
     {
       "date": "2026-09-30",
@@ -1052,7 +1880,19 @@
       "title_en": "KPI/KRI & Plan Assessment",
       "email_file": "emails/day-070.html",
       "archive_url": "archive/day-070.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/A-aNmhB_WjM",
+      "video_primary": {
+        "id": "A-aNmhB_WjM",
+        "title": "Security Assessment and Testing MindMap (1 of 3) | CISSP Domain 6",
+        "url": "https://youtu.be/A-aNmhB_WjM",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-01",
@@ -1067,7 +1907,19 @@
       "title_en": "Investigations & Forensics Deep Dive",
       "email_file": "emails/day-071.html",
       "archive_url": "archive/day-071.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/Urev5cZgny8",
+      "video_primary": {
+        "id": "Urev5cZgny8",
+        "title": "CISSP Domain 7 Review / Mind Map (1 of 6) | Investigations",
+        "url": "https://youtu.be/Urev5cZgny8",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-02",
@@ -1082,7 +1934,19 @@
       "title_en": "SIEM/TI/UEBA Deep Dive",
       "email_file": "emails/day-072.html",
       "archive_url": "archive/day-072.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/Urev5cZgny8",
+      "video_primary": {
+        "id": "Urev5cZgny8",
+        "title": "CISSP Domain 7 Review / Mind Map (1 of 6) | Investigations",
+        "url": "https://youtu.be/Urev5cZgny8",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-05",
@@ -1097,7 +1961,19 @@
       "title_en": "Config/Change/Patch Deep Dive",
       "email_file": "emails/day-073.html",
       "archive_url": "archive/day-073.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/xX4U6Lz82Bk",
+      "video_primary": {
+        "id": "xX4U6Lz82Bk",
+        "title": "CISSP Domain 7 Review / Mind Map (4 of 6) | Patching & Change Management",
+        "url": "https://youtu.be/xX4U6Lz82Bk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-06",
@@ -1112,7 +1988,19 @@
       "title_en": "Ops Foundations & Detective Measures",
       "email_file": "emails/day-074.html",
       "archive_url": "archive/day-074.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/PwxFwndQ7Jk",
+      "video_primary": {
+        "id": "PwxFwndQ7Jk",
+        "title": "CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response",
+        "url": "https://youtu.be/PwxFwndQ7Jk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-07",
@@ -1127,7 +2015,19 @@
       "title_en": "Incident Mgmt & DR Deep Dive",
       "email_file": "emails/day-075.html",
       "archive_url": "archive/day-075.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/PwxFwndQ7Jk",
+      "video_primary": {
+        "id": "PwxFwndQ7Jk",
+        "title": "CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response",
+        "url": "https://youtu.be/PwxFwndQ7Jk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-08",
@@ -1142,7 +2042,19 @@
       "title_en": "SDLC Models & Maturity Deep Dive",
       "email_file": "emails/day-076.html",
       "archive_url": "archive/day-076.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-09",
@@ -1157,7 +2069,19 @@
       "title_en": "DevSecOps & Env Controls Deep Dive",
       "email_file": "emails/day-077.html",
       "archive_url": "archive/day-077.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-12",
@@ -1172,7 +2096,19 @@
       "title_en": "Injection/XSS/CSRF & Secure Coding",
       "email_file": "emails/day-078.html",
       "archive_url": "archive/day-078.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-13",
@@ -1187,7 +2123,19 @@
       "title_en": "SAST/DAST/SCA & API Deep Dive",
       "email_file": "emails/day-079.html",
       "archive_url": "archive/day-079.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-14",
@@ -1202,7 +2150,19 @@
       "title_en": "Acquired Software & Malware Deep Dive",
       "email_file": "emails/day-080.html",
       "archive_url": "archive/day-080.html",
-      "video_url": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      }
     },
     {
       "date": "2026-10-15",
@@ -1217,7 +2177,25 @@
       "title_en": "Exam: Due Care/Diligence & Ethics Canons",
       "email_file": "emails/day-081.html",
       "archive_url": "archive/day-081.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/hf5NwUSEkwA",
+      "video_primary": {
+        "id": "hf5NwUSEkwA",
+        "title": "Alignment of Security Function MindMap (1 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/hf5NwUSEkwA",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "Toay1Y0XZAI",
+        "title": "CISSP Exam Questions and Answers -  Domain 1",
+        "url": "https://youtu.be/Toay1Y0XZAI",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-16",
@@ -1232,7 +2210,25 @@
       "title_en": "Exam: Quantitative Risk Questions",
       "email_file": "emails/day-082.html",
       "archive_url": "archive/day-082.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/_ksPu19kkCI",
+      "video_primary": {
+        "id": "_ksPu19kkCI",
+        "title": "Risk Management MindMap (3 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/_ksPu19kkCI",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "Toay1Y0XZAI",
+        "title": "CISSP Exam Questions and Answers -  Domain 1",
+        "url": "https://youtu.be/Toay1Y0XZAI",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-19",
@@ -1247,7 +2243,25 @@
       "title_en": "Exam: Control Classification & Risk Response",
       "email_file": "emails/day-083.html",
       "archive_url": "archive/day-083.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/_ksPu19kkCI",
+      "video_primary": {
+        "id": "_ksPu19kkCI",
+        "title": "Risk Management MindMap (3 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/_ksPu19kkCI",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "Toay1Y0XZAI",
+        "title": "CISSP Exam Questions and Answers -  Domain 1",
+        "url": "https://youtu.be/Toay1Y0XZAI",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-20",
@@ -1262,7 +2276,25 @@
       "title_en": "Exam: Compliance & Privacy Scenarios",
       "email_file": "emails/day-084.html",
       "archive_url": "archive/day-084.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/7rhz3jv_yAc",
+      "video_primary": {
+        "id": "7rhz3jv_yAc",
+        "title": "Privacy & Intellectual Property MindMap (2 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/7rhz3jv_yAc",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "mvHzhuBMXXc",
+        "title": "50 CISSP Practice Questions and Answers | CISSP Domain 1 Prep",
+        "url": "https://youtu.be/mvHzhuBMXXc",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-21",
@@ -1277,7 +2309,25 @@
       "title_en": "Exam: BCP/BIA & Threat Modeling + Practice",
       "email_file": "emails/day-085.html",
       "archive_url": "archive/day-085.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/_ksPu19kkCI",
+      "video_primary": {
+        "id": "_ksPu19kkCI",
+        "title": "Risk Management MindMap (3 of 3) | CISSP Domain 1",
+        "url": "https://youtu.be/_ksPu19kkCI",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "J-su239XmCE",
+        "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+        "url": "https://youtu.be/J-su239XmCE",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "mvHzhuBMXXc",
+        "title": "50 CISSP Practice Questions and Answers | CISSP Domain 1 Prep",
+        "url": "https://youtu.be/mvHzhuBMXXc",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-22",
@@ -1292,7 +2342,25 @@
       "title_en": "Exam: Classification & Roles",
       "email_file": "emails/day-086.html",
       "archive_url": "archive/day-086.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "3c_8vZGuAxA",
+        "title": "CISSP Exam Questions and Answers -  Domain 2: Asset Security",
+        "url": "https://youtu.be/3c_8vZGuAxA",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-23",
@@ -1307,7 +2375,25 @@
       "title_en": "Exam: Remanence & Destruction Methods",
       "email_file": "emails/day-087.html",
       "archive_url": "archive/day-087.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "3c_8vZGuAxA",
+        "title": "CISSP Exam Questions and Answers -  Domain 2: Asset Security",
+        "url": "https://youtu.be/3c_8vZGuAxA",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-26",
@@ -1322,7 +2408,25 @@
       "title_en": "Exam: Data States & Protection",
       "email_file": "emails/day-088.html",
       "archive_url": "archive/day-088.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "3c_8vZGuAxA",
+        "title": "CISSP Exam Questions and Answers -  Domain 2: Asset Security",
+        "url": "https://youtu.be/3c_8vZGuAxA",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-27",
@@ -1337,7 +2441,25 @@
       "title_en": "Exam: Sovereignty & Retention",
       "email_file": "emails/day-089.html",
       "archive_url": "archive/day-089.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "9Ok33J2om6Y",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 2 Prep",
+        "url": "https://youtu.be/9Ok33J2om6Y",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-28",
@@ -1352,7 +2474,25 @@
       "title_en": "Exam: D2 Integration + Practice",
       "email_file": "emails/day-090.html",
       "archive_url": "archive/day-090.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/aN9zkmzYTmQ",
+      "video_primary": {
+        "id": "aN9zkmzYTmQ",
+        "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+        "url": "https://youtu.be/aN9zkmzYTmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "dNIcfKYeJI8",
+        "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
+        "url": "https://youtu.be/dNIcfKYeJI8",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "9Ok33J2om6Y",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 2 Prep",
+        "url": "https://youtu.be/9Ok33J2om6Y",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-29",
@@ -1367,7 +2507,25 @@
       "title_en": "Exam: Security Model Rules",
       "email_file": "emails/day-091.html",
       "archive_url": "archive/day-091.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/qZB6_lp9M30",
+      "video_primary": {
+        "id": "qZB6_lp9M30",
+        "title": "CISSP Domain 3 Review / Mind Map (1 of 9) | Models and Frameworks",
+        "url": "https://youtu.be/qZB6_lp9M30",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "YO2iKH3d5eI",
+        "title": "CISSP Exam Questions and Answers -  Domain 3: Security Engineering",
+        "url": "https://youtu.be/YO2iKH3d5eI",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-10-30",
@@ -1382,7 +2540,25 @@
       "title_en": "Exam: Symmetric vs Asymmetric Selection",
       "email_file": "emails/day-092.html",
       "archive_url": "archive/day-092.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/qZB6_lp9M30",
+      "video_primary": {
+        "id": "qZB6_lp9M30",
+        "title": "CISSP Domain 3 Review / Mind Map (1 of 9) | Models and Frameworks",
+        "url": "https://youtu.be/qZB6_lp9M30",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "tvmY91uHAJ0",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 3 Prep",
+        "url": "https://youtu.be/tvmY91uHAJ0",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-02",
@@ -1397,7 +2573,25 @@
       "title_en": "Exam: Hashing & PKI",
       "email_file": "emails/day-093.html",
       "archive_url": "archive/day-093.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/8XKdFSG3ua4",
+      "video_primary": {
+        "id": "8XKdFSG3ua4",
+        "title": "CISSP Domain 3 Review / Mind Map (7 of 9) | Digital Certificates, Digital Signatures & PKI",
+        "url": "https://youtu.be/8XKdFSG3ua4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "tvmY91uHAJ0",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 3 Prep",
+        "url": "https://youtu.be/tvmY91uHAJ0",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-03",
@@ -1412,7 +2606,25 @@
       "title_en": "Exam: Crypto Attacks & Physical",
       "email_file": "emails/day-094.html",
       "archive_url": "archive/day-094.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/7ESQwNJ9HXU",
+      "video_primary": {
+        "id": "7ESQwNJ9HXU",
+        "title": "CISSP Domain 3 Review | Mind Map (9 of 9) | Physical Security",
+        "url": "https://youtu.be/7ESQwNJ9HXU",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "YO2iKH3d5eI",
+        "title": "CISSP Exam Questions and Answers -  Domain 3: Security Engineering",
+        "url": "https://youtu.be/YO2iKH3d5eI",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-04",
@@ -1427,7 +2639,25 @@
       "title_en": "Exam: D3 Integration + Practice",
       "email_file": "emails/day-095.html",
       "archive_url": "archive/day-095.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/-rWQ7YuxiLY",
+      "video_primary": {
+        "id": "-rWQ7YuxiLY",
+        "title": "CISSP Domain 3 Review / Mind Map (5 of 9) | Cloud",
+        "url": "https://youtu.be/-rWQ7YuxiLY",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "P5So8_NKxz4",
+        "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
+        "url": "https://youtu.be/P5So8_NKxz4",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "tvmY91uHAJ0",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 3 Prep",
+        "url": "https://youtu.be/tvmY91uHAJ0",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-05",
@@ -1442,7 +2672,25 @@
       "title_en": "Exam: OSI Layer Identification",
       "email_file": "emails/day-096.html",
       "archive_url": "archive/day-096.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/6X4A6B94vmw",
+      "video_primary": {
+        "id": "6X4A6B94vmw",
+        "title": "CISSP Domain 4 Review |  Mind Map (1 of 4) | OSI Model",
+        "url": "https://youtu.be/6X4A6B94vmw",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "ymnhmszWzkE",
+        "title": "CISSP Exam Questions and Answers -  Domain 4: Communication and Network Security",
+        "url": "https://youtu.be/ymnhmszWzkE",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-06",
@@ -1457,7 +2705,25 @@
       "title_en": "Exam: Secure Protocol Selection",
       "email_file": "emails/day-097.html",
       "archive_url": "archive/day-097.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/EW0iBXHVqB0",
+      "video_primary": {
+        "id": "EW0iBXHVqB0",
+        "title": "CISSP Domain 4 Review / Mind Map (2 of 4) | Networking",
+        "url": "https://youtu.be/EW0iBXHVqB0",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "ymnhmszWzkE",
+        "title": "CISSP Exam Questions and Answers -  Domain 4: Communication and Network Security",
+        "url": "https://youtu.be/ymnhmszWzkE",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-09",
@@ -1472,7 +2738,25 @@
       "title_en": "Exam: Firewalls & IDS",
       "email_file": "emails/day-098.html",
       "archive_url": "archive/day-098.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/G_5FCCyHgJo",
+      "video_primary": {
+        "id": "G_5FCCyHgJo",
+        "title": "CISSP Domain 4 Review | Mind Map (3 of 4) | Network Defense",
+        "url": "https://youtu.be/G_5FCCyHgJo",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "ymnhmszWzkE",
+        "title": "CISSP Exam Questions and Answers -  Domain 4: Communication and Network Security",
+        "url": "https://youtu.be/ymnhmszWzkE",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-10",
@@ -1487,7 +2771,25 @@
       "title_en": "Exam: Wireless & Email Security",
       "email_file": "emails/day-099.html",
       "archive_url": "archive/day-099.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/lecByuUuzXw",
+      "video_primary": {
+        "id": "lecByuUuzXw",
+        "title": "CISSP Domain 4 Review | Mind Map (4 of 4) | Remote Access",
+        "url": "https://youtu.be/lecByuUuzXw",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "ymnhmszWzkE",
+        "title": "CISSP Exam Questions and Answers -  Domain 4: Communication and Network Security",
+        "url": "https://youtu.be/ymnhmszWzkE",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-11",
@@ -1502,7 +2804,25 @@
       "title_en": "Exam: D4 Integration + Practice",
       "email_file": "emails/day-100.html",
       "archive_url": "archive/day-100.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/6X4A6B94vmw",
+      "video_primary": {
+        "id": "6X4A6B94vmw",
+        "title": "CISSP Domain 4 Review |  Mind Map (1 of 4) | OSI Model",
+        "url": "https://youtu.be/6X4A6B94vmw",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "tQCgAteRyIo",
+        "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
+        "url": "https://youtu.be/tQCgAteRyIo",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "tz5c582d_MI",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 4 Prep",
+        "url": "https://youtu.be/tz5c582d_MI",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-12",
@@ -1517,7 +2837,25 @@
       "title_en": "Exam: AAA & Factor Classification",
       "email_file": "emails/day-101.html",
       "archive_url": "archive/day-101.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/BUcoABZzeQ4",
+      "video_primary": {
+        "id": "BUcoABZzeQ4",
+        "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+        "url": "https://youtu.be/BUcoABZzeQ4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "taaNGQ78i7I",
+        "title": "CISSP Exam Questions and Answers -  Domain 5: Identity and Access Management",
+        "url": "https://youtu.be/taaNGQ78i7I",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-13",
@@ -1532,7 +2870,25 @@
       "title_en": "Exam: Access Control Models",
       "email_file": "emails/day-102.html",
       "archive_url": "archive/day-102.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/BUcoABZzeQ4",
+      "video_primary": {
+        "id": "BUcoABZzeQ4",
+        "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+        "url": "https://youtu.be/BUcoABZzeQ4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "taaNGQ78i7I",
+        "title": "CISSP Exam Questions and Answers -  Domain 5: Identity and Access Management",
+        "url": "https://youtu.be/taaNGQ78i7I",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-16",
@@ -1547,7 +2903,25 @@
       "title_en": "Exam: Federation Protocols",
       "email_file": "emails/day-103.html",
       "archive_url": "archive/day-103.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/-zyg9n0xwgM",
+      "video_primary": {
+        "id": "-zyg9n0xwgM",
+        "title": "Single Sign-on / Federated Access MindMap (2 of 2) | CISSP Domain 5",
+        "url": "https://youtu.be/-zyg9n0xwgM",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "UAS7CIylezg",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 5 Prep",
+        "url": "https://youtu.be/UAS7CIylezg",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-17",
@@ -1562,7 +2936,25 @@
       "title_en": "Exam: Biometrics & Lifecycle",
       "email_file": "emails/day-104.html",
       "archive_url": "archive/day-104.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/BUcoABZzeQ4",
+      "video_primary": {
+        "id": "BUcoABZzeQ4",
+        "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+        "url": "https://youtu.be/BUcoABZzeQ4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "UAS7CIylezg",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 5 Prep",
+        "url": "https://youtu.be/UAS7CIylezg",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-18",
@@ -1577,7 +2969,25 @@
       "title_en": "Exam: D5 Integration + Practice",
       "email_file": "emails/day-105.html",
       "archive_url": "archive/day-105.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/BUcoABZzeQ4",
+      "video_primary": {
+        "id": "BUcoABZzeQ4",
+        "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+        "url": "https://youtu.be/BUcoABZzeQ4",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "VknzQFVUfIc",
+        "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
+        "url": "https://youtu.be/VknzQFVUfIc",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "UAS7CIylezg",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 5 Prep",
+        "url": "https://youtu.be/UAS7CIylezg",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-19",
@@ -1592,7 +3002,25 @@
       "title_en": "Exam: Vuln vs Pentest",
       "email_file": "emails/day-106.html",
       "archive_url": "archive/day-106.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/vZ0S8GdWiIk",
+      "video_primary": {
+        "id": "vZ0S8GdWiIk",
+        "title": "CISSP Domain 6 Review / Mind Map (2 of 3) | Vulnerability Assessment and Penetration Testing",
+        "url": "https://youtu.be/vZ0S8GdWiIk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "UTKzm2c5SmM",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 6 Prep",
+        "url": "https://youtu.be/UTKzm2c5SmM",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-20",
@@ -1607,7 +3035,25 @@
       "title_en": "Exam: Test Technique Selection",
       "email_file": "emails/day-107.html",
       "archive_url": "archive/day-107.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/vZ0S8GdWiIk",
+      "video_primary": {
+        "id": "vZ0S8GdWiIk",
+        "title": "CISSP Domain 6 Review / Mind Map (2 of 3) | Vulnerability Assessment and Penetration Testing",
+        "url": "https://youtu.be/vZ0S8GdWiIk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "UTKzm2c5SmM",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 6 Prep",
+        "url": "https://youtu.be/UTKzm2c5SmM",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-23",
@@ -1622,7 +3068,25 @@
       "title_en": "Exam: SOC Report Identification",
       "email_file": "emails/day-108.html",
       "archive_url": "archive/day-108.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/SlaA35-Ch4E",
+      "video_primary": {
+        "id": "SlaA35-Ch4E",
+        "title": "Log Review & Analysis MindMap (3 of 3) | CISSP Domain 6",
+        "url": "https://youtu.be/SlaA35-Ch4E",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "UTKzm2c5SmM",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 6 Prep",
+        "url": "https://youtu.be/UTKzm2c5SmM",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-24",
@@ -1637,7 +3101,25 @@
       "title_en": "Exam: Audit Independence & Metrics",
       "email_file": "emails/day-109.html",
       "archive_url": "archive/day-109.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/eDVZvw5NziA",
+      "video_primary": {
+        "id": "eDVZvw5NziA",
+        "title": "CISSP Domain 6 Review / Mind Map (1 of 3) | Security Assessment and Testing Overview",
+        "url": "https://youtu.be/eDVZvw5NziA",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "UTKzm2c5SmM",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 6 Prep",
+        "url": "https://youtu.be/UTKzm2c5SmM",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-25",
@@ -1652,7 +3134,25 @@
       "title_en": "Exam: D6 Integration + Practice",
       "email_file": "emails/day-110.html",
       "archive_url": "archive/day-110.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/eDVZvw5NziA",
+      "video_primary": {
+        "id": "eDVZvw5NziA",
+        "title": "CISSP Domain 6 Review / Mind Map (1 of 3) | Security Assessment and Testing Overview",
+        "url": "https://youtu.be/eDVZvw5NziA",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "lt_-KqplT5o",
+        "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
+        "url": "https://youtu.be/lt_-KqplT5o",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "UTKzm2c5SmM",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 6 Prep",
+        "url": "https://youtu.be/UTKzm2c5SmM",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-26",
@@ -1667,7 +3167,25 @@
       "title_en": "Exam: Incident Management Sequence",
       "email_file": "emails/day-111.html",
       "archive_url": "archive/day-111.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/PwxFwndQ7Jk",
+      "video_primary": {
+        "id": "PwxFwndQ7Jk",
+        "title": "CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response",
+        "url": "https://youtu.be/PwxFwndQ7Jk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "rAtpKkkof4c",
+        "title": "CISSP Domain 7: Security Operations - Exam questions and answers",
+        "url": "https://youtu.be/rAtpKkkof4c",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-27",
@@ -1682,7 +3200,25 @@
       "title_en": "Exam: Forensics & Evidence",
       "email_file": "emails/day-112.html",
       "archive_url": "archive/day-112.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/Urev5cZgny8",
+      "video_primary": {
+        "id": "Urev5cZgny8",
+        "title": "CISSP Domain 7 Review / Mind Map (1 of 6) | Investigations",
+        "url": "https://youtu.be/Urev5cZgny8",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "jzNSkJ2ZZ-c",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 7 Prep",
+        "url": "https://youtu.be/jzNSkJ2ZZ-c",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-11-30",
@@ -1697,7 +3233,25 @@
       "title_en": "Exam: DR & RTO/RPO",
       "email_file": "emails/day-113.html",
       "archive_url": "archive/day-113.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/aT8r3vxPkmk",
+      "video_primary": {
+        "id": "aT8r3vxPkmk",
+        "title": "Business Continuity Management (BCM) MindMap (6 of 6) | CISSP Domain 7",
+        "url": "https://youtu.be/aT8r3vxPkmk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "rAtpKkkof4c",
+        "title": "CISSP Domain 7: Security Operations - Exam questions and answers",
+        "url": "https://youtu.be/rAtpKkkof4c",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-12-01",
@@ -1712,7 +3266,25 @@
       "title_en": "Exam: Ops Controls & Privilege",
       "email_file": "emails/day-114.html",
       "archive_url": "archive/day-114.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/PwxFwndQ7Jk",
+      "video_primary": {
+        "id": "PwxFwndQ7Jk",
+        "title": "CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response",
+        "url": "https://youtu.be/PwxFwndQ7Jk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "jzNSkJ2ZZ-c",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 7 Prep",
+        "url": "https://youtu.be/jzNSkJ2ZZ-c",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-12-02",
@@ -1727,7 +3299,25 @@
       "title_en": "Exam: D7 Integration + Practice",
       "email_file": "emails/day-115.html",
       "archive_url": "archive/day-115.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/xX4U6Lz82Bk",
+      "video_primary": {
+        "id": "xX4U6Lz82Bk",
+        "title": "CISSP Domain 7 Review / Mind Map (4 of 6) | Patching & Change Management",
+        "url": "https://youtu.be/xX4U6Lz82Bk",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "8zM89KMRniM",
+        "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
+        "url": "https://youtu.be/8zM89KMRniM",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "jzNSkJ2ZZ-c",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 7 Prep",
+        "url": "https://youtu.be/jzNSkJ2ZZ-c",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-12-03",
@@ -1742,7 +3332,25 @@
       "title_en": "Exam: SDLC & Security Activities",
       "email_file": "emails/day-116.html",
       "archive_url": "archive/day-116.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "zGj-nCZStTs",
+        "title": "CISSP Domain 8: Software Dev Security - Exam questions and answers",
+        "url": "https://youtu.be/zGj-nCZStTs",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-12-04",
@@ -1757,7 +3365,25 @@
       "title_en": "Exam: OWASP Vuln Identification",
       "email_file": "emails/day-117.html",
       "archive_url": "archive/day-117.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "zGj-nCZStTs",
+        "title": "CISSP Domain 8: Software Dev Security - Exam questions and answers",
+        "url": "https://youtu.be/zGj-nCZStTs",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-12-07",
@@ -1772,7 +3398,25 @@
       "title_en": "Exam: Testing Method Selection",
       "email_file": "emails/day-118.html",
       "archive_url": "archive/day-118.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "zGj-nCZStTs",
+        "title": "CISSP Domain 8: Software Dev Security - Exam questions and answers",
+        "url": "https://youtu.be/zGj-nCZStTs",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-12-08",
@@ -1787,7 +3431,25 @@
       "title_en": "Exam: CI/CD & Open-Source Risk",
       "email_file": "emails/day-119.html",
       "archive_url": "archive/day-119.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "zGj-nCZStTs",
+        "title": "CISSP Domain 8: Software Dev Security - Exam questions and answers",
+        "url": "https://youtu.be/zGj-nCZStTs",
+        "category": "practice"
+      }
     },
     {
       "date": "2026-12-09",
@@ -1802,7 +3464,25 @@
       "title_en": "Exam: D8 Integration + Full Review + Practice",
       "email_file": "emails/day-120.html",
       "archive_url": "archive/day-120.html",
-      "video_url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      "video_url": "https://youtu.be/fS5WWjuyFmQ",
+      "video_primary": {
+        "id": "fS5WWjuyFmQ",
+        "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+        "url": "https://youtu.be/fS5WWjuyFmQ",
+        "category": "mindmap"
+      },
+      "video_course": {
+        "id": "vg-o5lKcwsA",
+        "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
+        "url": "https://youtu.be/vg-o5lKcwsA",
+        "category": "course"
+      },
+      "video_practice": {
+        "id": "h6_zRQBMkjM",
+        "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 8 Prep",
+        "url": "https://youtu.be/h6_zRQBMkjM",
+        "category": "practice"
+      }
     }
   ]
 }

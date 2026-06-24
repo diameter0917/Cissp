@@ -67,23 +67,23 @@ def build_video_lookup(curriculum):
             if v.get("category") == "course" and v.get("domain"):
                 course_index[v["domain"]] = v["url"]
 
-    def pick(phase, domain):
-        if phase == "P1":
-            return course_index.get(domain) or course_by_domain.get(domain) \
-                or domains[domain].get("course_video_2026")
-        if phase == "P2":
-            return mindmap_playlist
-        if phase == "P3":
-            return practice_playlist
-        return domains[domain].get("course_video_2026")
+    def fallback_course(domain):
+        return course_index.get(domain) or course_by_domain.get(domain) \
+            or domains[domain].get("course_video_2026")
 
-    return pick
+    return fallback_course, mindmap_playlist, practice_playlist
 
 
 def main():
     curriculum = load_json(CURRICULUM)
     domains = {d["id"]: d for d in curriculum["domains"]}
-    pick_video = build_video_lookup(curriculum)
+    fallback_course, mindmap_playlist, practice_playlist = build_video_lookup(curriculum)
+
+    # 影片配對（match_videos.py 產生）：每單元的 primary/course/practice
+    video_map = {}
+    vmap_path = ROOT / "video_map.json"
+    if vmap_path.exists():
+        video_map = load_json(vmap_path)
 
     start = resolve_start_date()
     cur = next_weekday(start)
@@ -93,7 +93,11 @@ def main():
         cur = next_weekday(cur)
         seq = unit["seq"]
         dom = domains[unit["domain"]]
-        items.append({
+        vm = video_map.get(unit["code"], {})
+        primary = vm.get("primary")
+        course = vm.get("course") or {"url": fallback_course(unit["domain"])}
+        practice = vm.get("practice")
+        item = {
             "date": cur.isoformat(),
             "seq": seq,
             "phase": unit["phase"],
@@ -106,8 +110,14 @@ def main():
             "title_en": unit["title_en"],
             "email_file": f"emails/day-{seq:03d}.html",
             "archive_url": f"archive/day-{seq:03d}.html",
-            "video_url": pick_video(unit["phase"], unit["domain"]),
-        })
+            # 主連結＝重點短片（對不到才退回 course）；另存兩/三支供信件使用
+            "video_url": (primary or course).get("url"),
+            "video_primary": primary,
+            "video_course": course,
+        }
+        if unit["phase"] == "P3":
+            item["video_practice"] = practice or {"url": practice_playlist}
+        items.append(item)
         cur += timedelta(days=1)  # 推進到隔天，next_weekday 會跳過週末
 
     schedule = {

@@ -1,103 +1,1025 @@
 {
   "videos": [
     {
-      "id": "J-su239XmCE",
-      "title": "CISSP Full Course 2026 – D1 Security and Risk Management",
-      "url": "https://youtu.be/J-su239XmCE",
+      "id": "hf5NwUSEkwA",
+      "title": "Alignment of Security Function MindMap (1 of 3) | CISSP Domain 1",
+      "url": "https://youtu.be/hf5NwUSEkwA",
       "playlists": [
         "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D1",
+      "transcript_chars": null
+    },
+    {
+      "id": "7rhz3jv_yAc",
+      "title": "Privacy & Intellectual Property MindMap (2 of 3) | CISSP Domain 1",
+      "url": "https://youtu.be/7rhz3jv_yAc",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D1",
+      "transcript_chars": null
+    },
+    {
+      "id": "_ksPu19kkCI",
+      "title": "Risk Management MindMap (3 of 3) | CISSP Domain 1",
+      "url": "https://youtu.be/_ksPu19kkCI",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D1",
+      "transcript_chars": null
+    },
+    {
+      "id": "WBlQQ6qTlGI",
+      "title": "Asset Classification MindMap (1 of 1) | CISSP Domain 2",
+      "url": "https://youtu.be/WBlQQ6qTlGI",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D2",
+      "transcript_chars": null
+    },
+    {
+      "id": "TreDxg9Y3yo",
+      "title": "Models & Frameworks MindMap (1 of 9) | CISSP Domain 3",
+      "url": "https://youtu.be/TreDxg9Y3yo",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "hYfhV4N13SI",
+      "title": "Evaluation Criteria MindMap (2 of 9) | CISSP Domain 3",
+      "url": "https://youtu.be/hYfhV4N13SI",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "N4bZSoV2yis",
+      "title": "Trusted Computing Base MindMap (3 of 9) | CISSP Domain 3",
+      "url": "https://youtu.be/N4bZSoV2yis",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "-GikeG2OFmA",
+      "title": "Vulnerabilities in Systems MindMap (4 of 9) | CISSP Domain 3",
+      "url": "https://youtu.be/-GikeG2OFmA",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "kwXpG8JnYmU",
+      "title": "Cloud Computing MindMap (5 of 9) | CISSP Domain 3",
+      "url": "https://youtu.be/kwXpG8JnYmU",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": 0
+    },
+    {
+      "id": "Zg1BHC4qubM",
+      "title": "Cryptography MindMap (6 of 9) | CISSP Domain 3",
+      "url": "https://youtu.be/Zg1BHC4qubM",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "cDP-PhlrNGo",
+      "title": "Digital Signatures & Certificates MindMap (7 of 9) | CISSP Domain 3",
+      "url": "https://youtu.be/cDP-PhlrNGo",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "D0UID7wz7ZQ",
+      "title": "Cryptanalysis MindMap (8 of 9) | CISSP Domain 3",
+      "url": "https://youtu.be/D0UID7wz7ZQ",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "Fg24T6Dc5nA",
+      "title": "Physical Security MindMap (9 of 9) | CISSP Domain 3",
+      "url": "https://youtu.be/Fg24T6Dc5nA",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "KpULwJNlX9g",
+      "title": "OSI Model MindMap (1 of 4) | CISSP Domain 4",
+      "url": "https://youtu.be/KpULwJNlX9g",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D4",
+      "transcript_chars": null
+    },
+    {
+      "id": "c96HOfjddsw",
+      "title": "Networking MindMap (2 of 4) | CISSP Domain 4",
+      "url": "https://youtu.be/c96HOfjddsw",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D4",
+      "transcript_chars": null
+    },
+    {
+      "id": "8wQT7or1ZlA",
+      "title": "Network Defense MindMap (3 of 4) | CISSP Domain 4",
+      "url": "https://youtu.be/8wQT7or1ZlA",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D4",
+      "transcript_chars": null
+    },
+    {
+      "id": "Y-b7movU3RQ",
+      "title": "Remote Access MindMap (4 of 4) | CISSP Domain 4",
+      "url": "https://youtu.be/Y-b7movU3RQ",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D4",
+      "transcript_chars": null
+    },
+    {
+      "id": "s4XdPctitiM",
+      "title": "Access Control MindMap (1 of 2) | CISSP Domain 5",
+      "url": "https://youtu.be/s4XdPctitiM",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D5",
+      "transcript_chars": null
+    },
+    {
+      "id": "-zyg9n0xwgM",
+      "title": "Single Sign-on / Federated Access MindMap (2 of 2) | CISSP Domain 5",
+      "url": "https://youtu.be/-zyg9n0xwgM",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D5",
+      "transcript_chars": null
+    },
+    {
+      "id": "A-aNmhB_WjM",
+      "title": "Security Assessment and Testing MindMap (1 of 3) | CISSP Domain 6",
+      "url": "https://youtu.be/A-aNmhB_WjM",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D6",
+      "transcript_chars": null
+    },
+    {
+      "id": "EgU3dLB2O0M",
+      "title": "Identifying Vulnerabilities (2 of 3) | CISSP Domain 6",
+      "url": "https://youtu.be/EgU3dLB2O0M",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "other",
+      "domain": "D6",
+      "transcript_chars": null
+    },
+    {
+      "id": "SlaA35-Ch4E",
+      "title": "Log Review & Analysis MindMap (3 of 3) | CISSP Domain 6",
+      "url": "https://youtu.be/SlaA35-Ch4E",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D6",
+      "transcript_chars": null
+    },
+    {
+      "id": "ECUnAw3uDLY",
+      "title": "Investigations MindMap (1 of 6) | CISSP Domain 7",
+      "url": "https://youtu.be/ECUnAw3uDLY",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "5a5ZscedRYE",
+      "title": "Incident Response MindMap (2 of 6) | CISSP Domain 7",
+      "url": "https://youtu.be/5a5ZscedRYE",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "D_s5ciIWb-k",
+      "title": "Malware MindMap (3 of 6) | CISSP Domain 7",
+      "url": "https://youtu.be/D_s5ciIWb-k",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "yTylLQBF6CQ",
+      "title": "Patching & Change Management MindMap (4 of 6) | CISSP Domain 7",
+      "url": "https://youtu.be/yTylLQBF6CQ",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "upbyxBDWIC0",
+      "title": "Recovery Strategies MindMap (5 of 6) | CISSP Domain 7",
+      "url": "https://youtu.be/upbyxBDWIC0",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "aT8r3vxPkmk",
+      "title": "Business Continuity Management (BCM) MindMap (6 of 6) | CISSP Domain 7",
+      "url": "https://youtu.be/aT8r3vxPkmk",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "t-CXqjxJn_I",
+      "title": "Secure Software Development MindMap (1 of 2) | CISSP Domain 8",
+      "url": "https://youtu.be/t-CXqjxJn_I",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D8",
+      "transcript_chars": null
+    },
+    {
+      "id": "0HKJr1hIv14",
+      "title": "Databases MindMap (2 of 2) | CISSP Domain 8",
+      "url": "https://youtu.be/0HKJr1hIv14",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "mindmap",
+      "domain": "D8",
+      "transcript_chars": null
+    },
+    {
+      "id": "aN9zkmzYTmQ",
+      "title": "CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification",
+      "url": "https://youtu.be/aN9zkmzYTmQ",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D2",
+      "transcript_chars": null
+    },
+    {
+      "id": "lrI4QIa8S2I",
+      "title": "CISSP Domain 2 Review / Mind Map (2 of 2) | Privacy",
+      "url": "https://youtu.be/lrI4QIa8S2I",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D2",
+      "transcript_chars": null
+    },
+    {
+      "id": "qZB6_lp9M30",
+      "title": "CISSP Domain 3 Review / Mind Map (1 of 9) | Models and Frameworks",
+      "url": "https://youtu.be/qZB6_lp9M30",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "WqHmDL7YAvw",
+      "title": "CISSP Domain 3 Review / Mind Map (2 of 9) | Evaluation Criteria",
+      "url": "https://youtu.be/WqHmDL7YAvw",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "fwU7n_3h058",
+      "title": "CISSP Domain 3 Review / Mind Map (3 of 9) | Trusted Computing Base",
+      "url": "https://youtu.be/fwU7n_3h058",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "fPUypU7ysMw",
+      "title": "CISSP Domain 3 Review / Mind Map (4 of 9) | Vulnerabilities in Systems",
+      "url": "https://youtu.be/fPUypU7ysMw",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "-rWQ7YuxiLY",
+      "title": "CISSP Domain 3 Review / Mind Map (5 of 9) | Cloud",
+      "url": "https://youtu.be/-rWQ7YuxiLY",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "LLRaa0kOMDM",
+      "title": "CISSP Domain 3 Review / Mind Map (6 of 9) | Cryptography",
+      "url": "https://youtu.be/LLRaa0kOMDM",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "8XKdFSG3ua4",
+      "title": "CISSP Domain 3 Review / Mind Map (7 of 9) | Digital Certificates, Digital Signatures & PKI",
+      "url": "https://youtu.be/8XKdFSG3ua4",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "pnITDgs63M4",
+      "title": "CISSP Domain 3 Review / Mind Map (8 of 9) | Cryptanalysis",
+      "url": "https://youtu.be/pnITDgs63M4",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "7ESQwNJ9HXU",
+      "title": "CISSP Domain 3 Review | Mind Map (9 of 9) | Physical Security",
+      "url": "https://youtu.be/7ESQwNJ9HXU",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "6X4A6B94vmw",
+      "title": "CISSP Domain 4 Review |  Mind Map (1 of 4) | OSI Model",
+      "url": "https://youtu.be/6X4A6B94vmw",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D4",
+      "transcript_chars": null
+    },
+    {
+      "id": "EW0iBXHVqB0",
+      "title": "CISSP Domain 4 Review / Mind Map (2 of 4) | Networking",
+      "url": "https://youtu.be/EW0iBXHVqB0",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D4",
+      "transcript_chars": null
+    },
+    {
+      "id": "G_5FCCyHgJo",
+      "title": "CISSP Domain 4 Review | Mind Map (3 of 4) | Network Defense",
+      "url": "https://youtu.be/G_5FCCyHgJo",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D4",
+      "transcript_chars": null
+    },
+    {
+      "id": "lecByuUuzXw",
+      "title": "CISSP Domain 4 Review | Mind Map (4 of 4) | Remote Access",
+      "url": "https://youtu.be/lecByuUuzXw",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D4",
+      "transcript_chars": null
+    },
+    {
+      "id": "BUcoABZzeQ4",
+      "title": "CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview",
+      "url": "https://youtu.be/BUcoABZzeQ4",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D5",
+      "transcript_chars": null
+    },
+    {
+      "id": "_U4QMIxVk8M",
+      "title": "CISSP Domain 5 Review / Mind Map (2 of 2) | Single Sign-on and Federated Identity Management",
+      "url": "https://youtu.be/_U4QMIxVk8M",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D5",
+      "transcript_chars": null
+    },
+    {
+      "id": "eDVZvw5NziA",
+      "title": "CISSP Domain 6 Review / Mind Map (1 of 3) | Security Assessment and Testing Overview",
+      "url": "https://youtu.be/eDVZvw5NziA",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D6",
+      "transcript_chars": null
+    },
+    {
+      "id": "vZ0S8GdWiIk",
+      "title": "CISSP Domain 6 Review / Mind Map (2 of 3) | Vulnerability Assessment and Penetration Testing",
+      "url": "https://youtu.be/vZ0S8GdWiIk",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D6",
+      "transcript_chars": null
+    },
+    {
+      "id": "cwcARccyWyY",
+      "title": "CISSP Domain 6 Review / Mind Map (3 of 3) | Logging & Monitoring",
+      "url": "https://youtu.be/cwcARccyWyY",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D6",
+      "transcript_chars": null
+    },
+    {
+      "id": "Urev5cZgny8",
+      "title": "CISSP Domain 7 Review / Mind Map (1 of 6) | Investigations",
+      "url": "https://youtu.be/Urev5cZgny8",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "PwxFwndQ7Jk",
+      "title": "CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response",
+      "url": "https://youtu.be/PwxFwndQ7Jk",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "SVbrRozyIpo",
+      "title": "CISSP Domain 7 Review / Mind Map (3 of 6) | Malware",
+      "url": "https://youtu.be/SVbrRozyIpo",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "xX4U6Lz82Bk",
+      "title": "CISSP Domain 7 Review / Mind Map (4 of 6) | Patching & Change Management",
+      "url": "https://youtu.be/xX4U6Lz82Bk",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "DrrfrJBnx28",
+      "title": "CISSP Domain 7 Review / Mind Map (5 of 6) | Recovery Strategies",
+      "url": "https://youtu.be/DrrfrJBnx28",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "oAjNL3I_3-E",
+      "title": "CISSP Domain 7 Review / Mind Map (6 of 6) | Business Continuity Management (BCM)",
+      "url": "https://youtu.be/oAjNL3I_3-E",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "geGALIfOxtI",
+      "title": "CISSP Domain 1 Review / Mind Map",
+      "url": "https://youtu.be/geGALIfOxtI",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D1",
+      "transcript_chars": null
+    },
+    {
+      "id": "fS5WWjuyFmQ",
+      "title": "CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development",
+      "url": "https://youtu.be/fS5WWjuyFmQ",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D8",
+      "transcript_chars": null
+    },
+    {
+      "id": "-70DBd6cNDw",
+      "title": "CISSP Domain 8 Review / Mind Map (2 of 2) | Databases",
+      "url": "https://youtu.be/-70DBd6cNDw",
+      "playlists": [
+        "mindmap"
+      ],
+      "category": "mindmap",
+      "domain": "D8",
+      "transcript_chars": null
+    },
+    {
+      "id": "mvHzhuBMXXc",
+      "title": "50 CISSP Practice Questions and Answers | CISSP Domain 1 Prep",
+      "url": "https://youtu.be/mvHzhuBMXXc",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D1",
+      "transcript_chars": null
+    },
+    {
+      "id": "9Ok33J2om6Y",
+      "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 2 Prep",
+      "url": "https://youtu.be/9Ok33J2om6Y",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D2",
+      "transcript_chars": null
+    },
+    {
+      "id": "tvmY91uHAJ0",
+      "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 3 Prep",
+      "url": "https://youtu.be/tvmY91uHAJ0",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "tz5c582d_MI",
+      "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 4 Prep",
+      "url": "https://youtu.be/tz5c582d_MI",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D4",
+      "transcript_chars": null
+    },
+    {
+      "id": "UAS7CIylezg",
+      "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 5 Prep",
+      "url": "https://youtu.be/UAS7CIylezg",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D5",
+      "transcript_chars": null
+    },
+    {
+      "id": "UTKzm2c5SmM",
+      "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 6 Prep",
+      "url": "https://youtu.be/UTKzm2c5SmM",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D6",
+      "transcript_chars": null
+    },
+    {
+      "id": "jzNSkJ2ZZ-c",
+      "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 7 Prep",
+      "url": "https://youtu.be/jzNSkJ2ZZ-c",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D7",
+      "transcript_chars": null
+    },
+    {
+      "id": "h6_zRQBMkjM",
+      "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 8 Prep",
+      "url": "https://youtu.be/h6_zRQBMkjM",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D8",
+      "transcript_chars": null
+    },
+    {
+      "id": "J-su239XmCE",
+      "title": "CISSP Domain 1: Security and Risk Management - FULL COURSE 2026",
+      "url": "https://youtu.be/J-su239XmCE",
+      "playlists": [
+        "practice"
       ],
       "category": "course",
       "domain": "D1",
-      "transcript_chars": 68982,
-      "transcript_file": "transcripts/J-su239XmCE.txt"
+      "transcript_chars": null
     },
     {
       "id": "dNIcfKYeJI8",
-      "title": "CISSP Full Course 2026 – D2 Asset Security",
+      "title": "CISSP Domain 2 : Asset Security – CISSP Full Course 2026",
       "url": "https://youtu.be/dNIcfKYeJI8",
       "playlists": [
-        "course_2026"
+        "practice"
       ],
       "category": "course",
       "domain": "D2",
-      "transcript_chars": 41695,
-      "transcript_file": "transcripts/dNIcfKYeJI8.txt"
+      "transcript_chars": null
     },
     {
       "id": "P5So8_NKxz4",
-      "title": "CISSP Full Course 2026 – D3 Security Architecture and Engineering",
+      "title": "CISSP Domain 3:Security Architecure and Engineering – CISSP Full Course 2026",
       "url": "https://youtu.be/P5So8_NKxz4",
       "playlists": [
-        "course_2026"
+        "practice"
       ],
       "category": "course",
       "domain": "D3",
-      "transcript_chars": 107698,
-      "transcript_file": "transcripts/P5So8_NKxz4.txt"
+      "transcript_chars": null
     },
     {
       "id": "tQCgAteRyIo",
-      "title": "CISSP Full Course 2026 – D4 Communication and Network Security",
+      "title": "CISSP Domain 4: Communication and Network Security - FULL COURSE 2026",
       "url": "https://youtu.be/tQCgAteRyIo",
       "playlists": [
-        "course_2026"
+        "practice"
       ],
       "category": "course",
       "domain": "D4",
-      "transcript_chars": 105397,
-      "transcript_file": "transcripts/tQCgAteRyIo.txt"
+      "transcript_chars": null
     },
     {
       "id": "VknzQFVUfIc",
-      "title": "CISSP Full Course 2026 – D5 Identity and Access Management (IAM)",
+      "title": "CISSP Domain 5: Identity and Access Management - FULL COURSE 2026",
       "url": "https://youtu.be/VknzQFVUfIc",
       "playlists": [
-        "course_2026"
+        "practice"
       ],
       "category": "course",
       "domain": "D5",
-      "transcript_chars": 75035,
-      "transcript_file": "transcripts/VknzQFVUfIc.txt"
+      "transcript_chars": null
     },
     {
       "id": "lt_-KqplT5o",
-      "title": "CISSP Full Course 2026 – D6 Security Assessment and Testing",
+      "title": "CISSP Domain 6: Security Assessment and Testing - FULL COURSE 2026",
       "url": "https://youtu.be/lt_-KqplT5o",
       "playlists": [
-        "course_2026"
+        "practice"
       ],
       "category": "course",
       "domain": "D6",
-      "transcript_chars": 40704,
-      "transcript_file": "transcripts/lt_-KqplT5o.txt"
+      "transcript_chars": null
     },
     {
       "id": "8zM89KMRniM",
-      "title": "CISSP Full Course 2026 – D7 Security Operations",
+      "title": "CISSP Domain 7: Security Operations - FULL COURSE 2026",
       "url": "https://youtu.be/8zM89KMRniM",
       "playlists": [
-        "course_2026"
+        "practice"
       ],
       "category": "course",
       "domain": "D7",
-      "transcript_chars": 74430,
-      "transcript_file": "transcripts/8zM89KMRniM.txt"
+      "transcript_chars": null
     },
     {
       "id": "vg-o5lKcwsA",
-      "title": "CISSP Full Course 2026 – D8 Software Development Security",
+      "title": "CISSP Domain 8: Software Development Security - FULL COURSE 2026",
       "url": "https://youtu.be/vg-o5lKcwsA",
       "playlists": [
-        "course_2026"
+        "practice"
       ],
       "category": "course",
       "domain": "D8",
-      "transcript_chars": 65507,
-      "transcript_file": "transcripts/vg-o5lKcwsA.txt"
+      "transcript_chars": null
+    },
+    {
+      "id": "jz3Hi-kJ5Jk",
+      "title": "Network Ports & Protocols Explained | Must-Know for CompTIA Security+, Network+, and A+ Exams!",
+      "url": "https://youtu.be/jz3Hi-kJ5Jk",
+      "playlists": [
+        "practice"
+      ],
+      "category": "other",
+      "domain": null,
+      "transcript_chars": null
+    },
+    {
+      "id": "Toay1Y0XZAI",
+      "title": "CISSP Exam Questions and Answers -  Domain 1",
+      "url": "https://youtu.be/Toay1Y0XZAI",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D1",
+      "transcript_chars": null
+    },
+    {
+      "id": "3c_8vZGuAxA",
+      "title": "CISSP Exam Questions and Answers -  Domain 2: Asset Security",
+      "url": "https://youtu.be/3c_8vZGuAxA",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D2",
+      "transcript_chars": null
+    },
+    {
+      "id": "YO2iKH3d5eI",
+      "title": "CISSP Exam Questions and Answers -  Domain 3: Security Engineering",
+      "url": "https://youtu.be/YO2iKH3d5eI",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D3",
+      "transcript_chars": null
+    },
+    {
+      "id": "ymnhmszWzkE",
+      "title": "CISSP Exam Questions and Answers -  Domain 4: Communication and Network Security",
+      "url": "https://youtu.be/ymnhmszWzkE",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D4",
+      "transcript_chars": null
+    },
+    {
+      "id": "taaNGQ78i7I",
+      "title": "CISSP Exam Questions and Answers -  Domain 5: Identity and Access Management",
+      "url": "https://youtu.be/taaNGQ78i7I",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D5",
+      "transcript_chars": null
+    },
+    {
+      "id": "jfE1YNvyIAA",
+      "title": "",
+      "url": "https://youtu.be/jfE1YNvyIAA",
+      "playlists": [
+        "practice"
+      ],
+      "category": "other",
+      "domain": null,
+      "transcript_chars": 0
+    },
+    {
+      "id": "rAtpKkkof4c",
+      "title": "CISSP Domain 7: Security Operations - Exam questions and answers",
+      "url": "https://youtu.be/rAtpKkkof4c",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D7",
+      "transcript_chars": 7229
+    },
+    {
+      "id": "zGj-nCZStTs",
+      "title": "CISSP Domain 8: Software Dev Security - Exam questions and answers",
+      "url": "https://youtu.be/zGj-nCZStTs",
+      "playlists": [
+        "practice"
+      ],
+      "category": "practice",
+      "domain": "D8",
+      "transcript_chars": 5323
+    },
+    {
+      "id": "VOmBKTnVPWw",
+      "title": "Cybersecurity Career Roadmap 2026 | How to Go From Zero to Hired + Best Certs & Study Plan",
+      "url": "https://youtu.be/VOmBKTnVPWw",
+      "playlists": [
+        "practice"
+      ],
+      "category": "other",
+      "domain": null,
+      "transcript_chars": 17076
     }
   ],
   "by_category": {
+    "mindmap": [
+      "hf5NwUSEkwA",
+      "7rhz3jv_yAc",
+      "_ksPu19kkCI",
+      "WBlQQ6qTlGI",
+      "TreDxg9Y3yo",
+      "hYfhV4N13SI",
+      "N4bZSoV2yis",
+      "-GikeG2OFmA",
+      "kwXpG8JnYmU",
+      "Zg1BHC4qubM",
+      "cDP-PhlrNGo",
+      "D0UID7wz7ZQ",
+      "Fg24T6Dc5nA",
+      "KpULwJNlX9g",
+      "c96HOfjddsw",
+      "8wQT7or1ZlA",
+      "Y-b7movU3RQ",
+      "s4XdPctitiM",
+      "-zyg9n0xwgM",
+      "A-aNmhB_WjM",
+      "SlaA35-Ch4E",
+      "ECUnAw3uDLY",
+      "5a5ZscedRYE",
+      "D_s5ciIWb-k",
+      "yTylLQBF6CQ",
+      "upbyxBDWIC0",
+      "aT8r3vxPkmk",
+      "t-CXqjxJn_I",
+      "0HKJr1hIv14",
+      "aN9zkmzYTmQ",
+      "lrI4QIa8S2I",
+      "qZB6_lp9M30",
+      "WqHmDL7YAvw",
+      "fwU7n_3h058",
+      "fPUypU7ysMw",
+      "-rWQ7YuxiLY",
+      "LLRaa0kOMDM",
+      "8XKdFSG3ua4",
+      "pnITDgs63M4",
+      "7ESQwNJ9HXU",
+      "6X4A6B94vmw",
+      "EW0iBXHVqB0",
+      "G_5FCCyHgJo",
+      "lecByuUuzXw",
+      "BUcoABZzeQ4",
+      "_U4QMIxVk8M",
+      "eDVZvw5NziA",
+      "vZ0S8GdWiIk",
+      "cwcARccyWyY",
+      "Urev5cZgny8",
+      "PwxFwndQ7Jk",
+      "SVbrRozyIpo",
+      "xX4U6Lz82Bk",
+      "DrrfrJBnx28",
+      "oAjNL3I_3-E",
+      "geGALIfOxtI",
+      "fS5WWjuyFmQ",
+      "-70DBd6cNDw"
+    ],
+    "other": [
+      "EgU3dLB2O0M",
+      "jz3Hi-kJ5Jk",
+      "jfE1YNvyIAA",
+      "VOmBKTnVPWw"
+    ],
+    "practice": [
+      "mvHzhuBMXXc",
+      "9Ok33J2om6Y",
+      "tvmY91uHAJ0",
+      "tz5c582d_MI",
+      "UAS7CIylezg",
+      "UTKzm2c5SmM",
+      "jzNSkJ2ZZ-c",
+      "h6_zRQBMkjM",
+      "Toay1Y0XZAI",
+      "3c_8vZGuAxA",
+      "YO2iKH3d5eI",
+      "ymnhmszWzkE",
+      "taaNGQ78i7I",
+      "rAtpKkkof4c",
+      "zGj-nCZStTs"
+    ],
     "course": [
       "J-su239XmCE",
       "dNIcfKYeJI8",
@@ -107,10 +1029,7 @@
       "lt_-KqplT5o",
       "8zM89KMRniM",
       "vg-o5lKcwsA"
-    ],
-    "mindmap": [],
-    "practice": [],
-    "other": []
+    ]
   },
   "domain_chapters": {
     "D1": {
@@ -146,10 +1065,5 @@
       "chapters": []
     }
   },
-  "playlists": {
-    "course_2026": "https://youtube.com/playlist?list=PLZKdGEfEyJhLd-pJhAD7dNbJyUgpqI4pu",
-    "mindmap": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW",
-    "practice": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
-  },
-  "note": "course 8 支已確定登記（ID 已知、有字幕）；mindmap/practice 缺逐片標題，生成時退回對應 playlist URL（大綱備援路徑）。category 依影片內容判定。"
+  "note": "category 由影片內容判定，與 playlists（來源清單）無關；transcripts/<id>.txt 為各影片字幕。"
 }

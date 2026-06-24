@@ -28,6 +28,17 @@ DOMAIN_VIDEOS = {
 
 
 def main():
+    # 安全防護：若已有「真實」video_index.json（含 mindmap/practice），不要覆蓋成只有 8 支 course 的備援版
+    out = ROOT / "video_index.json"
+    if out.exists():
+        try:
+            existing = json.loads(out.read_text(encoding="utf-8"))
+            if any(v.get("category") in ("mindmap", "practice") for v in existing.get("videos", [])):
+                print("⏭ 已存在含 mindmap/practice 的 video_index.json，不覆蓋（這支只是備援）。")
+                return
+        except json.JSONDecodeError:
+            pass
+
     curriculum = json.loads(CURRICULUM.read_text(encoding="utf-8"))
     domains = {d["id"]: d for d in curriculum["domains"]}
 

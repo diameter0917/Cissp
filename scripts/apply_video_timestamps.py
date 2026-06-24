@@ -170,17 +170,17 @@ def main():
 
     has_timed = TIMED.exists() and any(TIMED.glob("*.vtt"))
     if not has_timed:
-        print("ℹ️ 無 transcripts/_timed/*.vtt：所有 P1 影片連開頭、時間碼留空（優雅降級）。")
+        print("ℹ️ 無 transcripts/_timed/*.vtt：所有完整課程影片連開頭、時間碼留空（優雅降級）。")
 
     vtt_cache = {}
     hit = miss = 0
     for item in schedule["items"]:
-        if item["phase"] != "P1":
-            continue
         email = ROOT / item["email_file"]
         if not email.exists():
             continue
-        vid = video_id(item["video_url"])
+        # 時間碼套在「② 完整課程」連結（course 影片）；重點短片不需時間軸
+        course = item.get("video_course") or {}
+        vid = video_id(course.get("url") or item.get("video_url"))
         if not vid:
             continue
 
