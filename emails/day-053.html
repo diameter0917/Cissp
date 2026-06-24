@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 53</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 53 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D3-3</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 3 · 安全架構與工程 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">雜湊、簽章與金鑰管理</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Hashing, Signatures &amp; Key Management</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:44.17%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D3：完整性與信任的機制</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>雜湊（hashing）</strong>、<strong>數位簽章</strong>與<strong>金鑰管理生命週期</strong>。雜湊保完整性、簽章保完整性＋不可否認、金鑰管理則是『加密強不強，最後看金鑰管得好不好』。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：雜湊特性與碰撞 → HMAC → 數位簽章流程 → 憑證與撤銷 → 金鑰生命週期。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 雜湊與數位簽章</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>雜湊特性</strong>：單向、定長輸出、雪崩效應、<strong>抗碰撞</strong>；驗『完整性』非機密性</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>MD5/SHA-1 已不安全</strong>（可碰撞），用 <strong>SHA-256/SHA-3</strong></td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>HMAC</strong>：雜湊＋密鑰，提供完整性＋來源鑑別（防竄改＋驗證發送者）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>數位簽章</strong>：對訊息雜湊『用<strong>私鑰</strong>簽』；驗證方用『<strong>公鑰</strong>驗』→ 完整性＋不可否認＋真實性</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 憑證與撤銷</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">項目</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">作用</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>X.509 憑證</strong></td><td style="padding:9px 10px; vertical-align:top;">綁定身分↔公鑰，由 CA 簽發</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>CRL</strong></td><td style="padding:9px 10px; vertical-align:top;">撤銷清單（定期發布、較舊）</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>OCSP</strong></td><td style="padding:9px 10px; vertical-align:top;">即時查詢憑證狀態（即時、較佳）</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>OCSP Stapling</strong></td><td style="padding:9px 10px; vertical-align:top;">伺服器附上 OCSP 回應，省查詢、護隱私</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 金鑰管理生命週期</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>生成→分發→儲存→使用→輪替→撤銷/銷毀</strong>，全程保護金鑰</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>金鑰儲存</strong>：用 <strong>HSM</strong>（硬體安全模組）或 KMS，避免明文落地</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>金鑰輪替（rotation）</strong>與<strong>分割知識/雙人控制</strong>降低單點風險</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>金鑰託管（escrow）</strong>：合法復原需要，但增加風險，須嚴管</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Hashing</strong>（雜湊）— <span style="color:#5B6675;">單向定長摘要，驗完整性。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Collision</strong>（碰撞）— <span style="color:#5B6675;">兩不同輸入得相同雜湊；MD5/SHA-1 已破。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">HMAC</strong>（雜湊訊息鑑別碼）— <span style="color:#5B6675;">雜湊＋密鑰，完整性＋來源鑑別。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Digital Signature</strong>（數位簽章）— <span style="color:#5B6675;">私鑰簽、公鑰驗；完整性＋不可否認。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">X.509</strong>（憑證標準）— <span style="color:#5B6675;">綁定身分與公鑰。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CRL / OCSP</strong>（撤銷清單/線上狀態）— <span style="color:#5B6675;">查憑證是否被撤銷。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">HSM</strong>（硬體安全模組）— <span style="color:#5B6675;">安全生成/儲存金鑰的硬體。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Key Escrow</strong>（金鑰託管）— <span style="color:#5B6675;">第三方保管金鑰以便合法復原。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>雜湊 vs 加密</strong>：雜湊<strong>單向不可逆</strong>（驗完整性，如密碼存 hash）；加密<strong>可逆</strong>（保機密性）。密碼應<strong>雜湊加鹽（salt）</strong>儲存，不是加密。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>簽章的鑰方向</strong>：<strong>私鑰簽、公鑰驗</strong>（與加密相反：公鑰加、私鑰解）。簽章提供不可否認，加密提供機密性。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>HMAC vs 數位簽章</strong>：HMAC 用<strong>共享密鑰</strong>（雙方都能產生，<strong>無</strong>不可否認）；數位簽章用<strong>私鑰</strong>（只有持有者能簽，<strong>有</strong>不可否認）。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>CRL vs OCSP</strong>：CRL 是清單(較舊/延遲)；OCSP 即時查單張憑證狀態。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>FIPS 180/202（SHA-2/SHA-3）</strong>、<strong>FIPS 186（DSA/ECDSA）</strong>、<strong>NIST SP 800-57（金鑰管理）</strong>、<strong>FIPS 140-2/3</strong>（密碼模組/HSM 驗證）。密碼存儲用 <strong>bcrypt/scrypt/Argon2</strong> 等慢雜湊＋鹽。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：MD5 碰撞偽造憑證</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 用碰撞偽造『合法』憑證</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">研究者與後來的 <strong>Flame 惡意程式（2012）</strong>利用 <strong>MD5 碰撞</strong>偽造出看似由合法 CA 簽發的憑證，讓惡意程式偽裝成『微軟簽署的更新』散布。根因是 MD5 的抗碰撞性早已被攻破卻仍被使用。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>弱雜湊會直接瓦解簽章與 PKI 的信任</strong>。MD5/SHA-1 必須淘汰；雜湊演算法的選擇是信任體系的地基。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：為什麼密碼要『加鹽』</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">若直接存密碼的雜湊，相同密碼會有相同 hash，攻擊者可用<strong>彩虹表（rainbow table）</strong>預先破解。<strong>加鹽（salt）</strong>為每個密碼加上隨機值再雜湊，使彩虹表失效、相同密碼也有不同 hash。再搭配<strong>慢雜湊（bcrypt/Argon2）</strong>拖慢暴力破解。這是 D5 認證的基礎。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『驗證檔案未被竄改』→ 雜湊；『完整性＋不可否認』→ 數位簽章（私鑰簽）；『儲存密碼』→ 加鹽慢雜湊（非加密）；『即時查憑證撤銷』→ OCSP。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>簽章私鑰簽/公鑰驗；HMAC 無不可否認；密碼用雜湊不用加密；MD5/SHA-1 不可用。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>雜湊驗完整性(單向)、HMAC 加來源鑑別、數位簽章(私鑰簽公鑰驗)加不可否認；金鑰全生命週期用 HSM 保護；MD5/SHA-1 已破。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 數位簽章用哪把鑰簽、哪把鑰驗？<br><span style="color:#0A5A59;">→ 自己私鑰簽、對方用你的公鑰驗。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . HMAC 與數位簽章在不可否認上的差別？<br><span style="color:#0A5A59;">→ HMAC 用共享密鑰、無不可否認；簽章用私鑰、有不可否認。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 為何密碼儲存要加鹽？<br><span style="color:#0A5A59;">→ 防彩虹表、使相同密碼有不同雜湊；搭配慢雜湊更佳。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/cDP-PhlrNGo" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">Digital Signatures & Certificates MindMap (7 of 9) | CISSP Domain 3 ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/P5So8_NKxz4?t=6507" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 3<span class="ts-note">（從約 108:27 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 53 / 120 · P2-D3-3</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

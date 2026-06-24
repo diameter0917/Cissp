@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 54</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 54 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D3-4</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 3 · 安全架構與工程 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">密碼分析攻擊與 IoT/ICS</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Cryptanalytic Attacks &amp; IoT/ICS</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:45.0%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D3：攻擊密碼學與嵌入式系統</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天兩個主題：<strong>密碼分析攻擊（cryptanalytic attacks）</strong>——攻擊者怎麼破密；以及 <strong>IoT/ICS（工控）</strong>嵌入式系統的特殊風險。理解攻擊面，才知道為何前幾天的選擇（金鑰長度、PFS、慢雜湊）如此重要。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：暴力/字典/生日攻擊 → 旁通道 → 已知/選擇明文 → IoT/ICS 風險與 Stuxnet。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 常見密碼分析攻擊</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">攻擊</td><td style="padding:8px 10px;">原理</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">對策</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Brute Force</strong> 暴力</td><td style="padding:9px 10px; vertical-align:top;">試遍所有金鑰</td><td style="padding:9px 10px; vertical-align:top;">夠長的金鑰、限速/鎖定</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Dictionary/Rainbow</strong></td><td style="padding:9px 10px; vertical-align:top;">常見密碼/預算雜湊表</td><td style="padding:9px 10px; vertical-align:top;">加鹽、慢雜湊</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Birthday</strong> 生日攻擊</td><td style="padding:9px 10px; vertical-align:top;">利用碰撞機率找雜湊碰撞</td><td style="padding:9px 10px; vertical-align:top;">夠長雜湊(SHA-256+)</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Side-channel</strong> 旁通道</td><td style="padding:9px 10px; vertical-align:top;">測時間/功耗/電磁推金鑰</td><td style="padding:9px 10px; vertical-align:top;">常數時間實作、屏蔽</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Known/Chosen Plaintext</strong></td><td style="padding:9px 10px; vertical-align:top;">用已知/選擇明文密文對</td><td style="padding:9px 10px; vertical-align:top;">強演算法、隨機化(IV)</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 旁通道與實作弱點</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>旁通道攻擊</strong>不打數學、而打<strong>實作</strong>：量測加密運算的<strong>時間、功耗、電磁輻射、甚至聲音</strong>來推金鑰（如 timing attack、Spectre/Meltdown 屬 CPU 旁通道）。對策是<strong>常數時間演算法</strong>、加入雜訊/屏蔽。再強的演算法，實作不當仍會洩密。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — IoT/ICS 嵌入式風險</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>特性</strong>：算力/記憶體有限、難更新、生命週期長、預設密碼、實體可接觸</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>ICS/SCADA</strong>：工控系統重<strong>可用性與安全(safety)</strong>，常用老舊協定、不易停機修補</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>對策</strong>：網路分段（IT/OT 隔離）、最小化對外、安全開機、韌體簽章、預設密碼管理</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>IT vs OT 優先序</strong>：IT 重 CIA(機密優先)，OT 重 <strong>AIC（可用/安全優先）</strong></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Brute Force</strong>（暴力攻擊）— <span style="color:#5B6675;">窮舉金鑰；長金鑰可抵抗。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Birthday Attack</strong>（生日攻擊）— <span style="color:#5B6675;">利用碰撞機率攻擊雜湊。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Side-channel</strong>（旁通道）— <span style="color:#5B6675;">由時間/功耗/電磁推測密鑰。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Known/Chosen Plaintext</strong>（已知/選擇明文）— <span style="color:#5B6675;">以明密文對分析演算法。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ICS/SCADA</strong>（工業控制系統）— <span style="color:#5B6675;">控制實體流程，重可用與安全。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">OT</strong>（營運技術）— <span style="color:#5B6675;">Operational Technology，與 IT 對應。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Air Gap</strong>（實體隔離）— <span style="color:#5B6675;">網路完全隔絕（Stuxnet 證明非萬靈）。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>暴力 vs 字典 vs 生日</strong>：暴力＝試所有可能；字典＝試常見值；生日＝攻擊<strong>雜湊碰撞</strong>（利用機率，所需嘗試遠少於暴力）。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>旁通道打『實作』非『數學』</strong>：演算法理論安全，但實作洩漏時間/功耗仍可被破。對策是常數時間實作。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>IT 的 CIA vs OT 的優先序</strong>：IT 常以<strong>機密性</strong>優先；OT/ICS 以<strong>可用性與人身安全(safety)</strong>優先——停機或誤動作可能危及生命。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-82</strong>（ICS 安全）、<strong>IEC 62443</strong>（工控資安）、<strong>NIST SP 800-57</strong>（金鑰長度建議以抵抗暴力）。後量子密碼（PQC）因應量子電腦對 RSA/ECC 的威脅，NIST 2024 起發布標準（如 ML-KEM）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：Stuxnet 2010</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 跨越 air gap 的工控攻擊</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;"><strong>Stuxnet（2010）</strong>是針對伊朗核設施<strong>ICS/SCADA</strong>的精密惡意程式：透過 USB <strong>跨越實體隔離（air gap）</strong>，利用多個零時差漏洞，悄悄竄改離心機 PLC 的轉速使其損壞、同時對監控畫面回報『正常』。它證明了<strong>air gap 不是萬靈丹</strong>，且 OT 攻擊可造成<strong>實體破壞</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：OT/ICS 安全攸關<strong>人身與實體安全</strong>；需縱深防禦（分段、USB 管控、韌體完整性、行為監控），不能只靠隔離。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：為什麼 IoT 這麼難防</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">IoT 裝置常<strong>預設弱密碼、無法更新、長期在線</strong>，成為殭屍網路溫床。<strong>Mirai（2016）</strong>就是掃描預設密碼的 IoT（攝影機/路由器）組成大型 DDoS（呼應 D4）。防禦要從<strong>採購要求（可更新/不可預設密碼）、網路分段、最小對外</strong>著手——把 IoT 當『不可信端點』隔離。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『量測加密時間/功耗破金鑰』→ 旁通道；『攻擊雜湊碰撞』→ 生日攻擊；『ICS 最該優先保護』→ <strong>可用性/安全(safety)</strong>；『跨 air gap』→ Stuxnet/USB。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>air gap 非絕對安全；OT 與 IT 的 CIA 優先序不同；旁通道打實作不打數學。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>密碼分析含暴力/字典/生日/旁通道/明文攻擊；旁通道打實作；IoT/ICS 重可用與 safety、需分段與完整性；Stuxnet 證明 air gap 非萬靈。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 量測功耗/時間推測金鑰是什麼攻擊？<br><span style="color:#0A5A59;">→ 旁通道攻擊（side-channel），打實作非數學。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . ICS/OT 系統的安全優先序與一般 IT 有何不同？<br><span style="color:#0A5A59;">→ OT 以可用性與人身安全(safety)優先；IT 常以機密性優先。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . Stuxnet 證明了什麼防禦迷思？<br><span style="color:#0A5A59;">→ air gap（實體隔離）並非絕對安全（可經 USB 跨越）。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/pnITDgs63M4" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 3 Review / Mind Map (8 of 9) | Cryptanalysis ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/P5So8_NKxz4?t=6902" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 3<span class="ts-note">（從約 115:02 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 54 / 120 · P2-D3-4</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

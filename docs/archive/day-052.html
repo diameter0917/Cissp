@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 52</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 52 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D3-2</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 3 · 安全架構與工程 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">對稱與非對稱密碼學</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Symmetric &amp; Asymmetric Crypto</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:43.33%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D3：密碼學的兩大家族</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">密碼學是 D3 的重頭戲。今天深入<strong>對稱（symmetric）</strong>與<strong>非對稱（asymmetric）</strong>加密：演算法、區塊 vs 串流、金鑰數量問題、混合加密與 <strong>PKI 信任鏈</strong>。理解『各自解決什麼問題、為何要混用』是關鍵。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：對稱(AES/區塊模式) → 非對稱(RSA/ECC) → 金鑰數量 → 混合加密 → PKI 信任鏈。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 對稱 vs 非對稱</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">面向</td><td style="padding:8px 10px;">對稱 Symmetric</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">非對稱 Asymmetric</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">金鑰</td><td style="padding:9px 10px; vertical-align:top;">單一共享金鑰</td><td style="padding:9px 10px; vertical-align:top;">公鑰/私鑰成對</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">速度</td><td style="padding:9px 10px; vertical-align:top;"><strong>快</strong>（適合大量資料）</td><td style="padding:9px 10px; vertical-align:top;">慢（適合小量/金鑰交換）</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">提供</td><td style="padding:9px 10px; vertical-align:top;">機密性</td><td style="padding:9px 10px; vertical-align:top;">機密性+不可否認+金鑰交換</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">演算法</td><td style="padding:9px 10px; vertical-align:top;">AES、3DES、ChaCha20</td><td style="padding:9px 10px; vertical-align:top;">RSA、ECC、Diffie-Hellman</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">挑戰</td><td style="padding:9px 10px; vertical-align:top;">金鑰分發難</td><td style="padding:9px 10px; vertical-align:top;">運算昂貴</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 區塊 vs 串流；金鑰數量</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Block cipher 區塊</strong>（AES）：固定區塊加密，搭配模式（<strong>ECB 不安全/CBC/CTR/GCM 含完整性</strong>）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Stream cipher 串流</strong>（ChaCha20）：逐位元/位元組，適合即時串流</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>對稱金鑰數量</strong>：n 人兩兩通訊需 <strong>n(n-1)/2</strong> 把金鑰（增長快，分發難）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>非對稱</strong>：n 人只需 n 對金鑰，解決分發但慢</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 混合加密（TLS 即如此）：用<strong>非對稱</strong>安全交換一把<strong>對稱</strong>會談金鑰，之後用對稱加密大量資料——<strong>兼得安全與速度</strong>。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — PKI 信任鏈</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>PKI（公開金鑰基礎建設）</strong>解決『公鑰是誰的』：<strong>CA（憑證機構）</strong>簽發數位憑證綁定身分與公鑰，形成<strong>信任鏈（root CA → intermediate → 終端憑證）</strong>。撤銷用 <strong>CRL</strong> 或 <strong>OCSP</strong>。信任根是預載的 root CA。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Symmetric Encryption</strong>（對稱加密）— <span style="color:#5B6675;">單一共享金鑰、快，提供機密性。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Asymmetric Encryption</strong>（非對稱加密）— <span style="color:#5B6675;">公私鑰對，慢，含金鑰交換/簽章。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">AES</strong>（進階加密標準）— <span style="color:#5B6675;">現行對稱標準（128/192/256）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RSA / ECC</strong>（非對稱演算法）— <span style="color:#5B6675;">RSA 經典；ECC 同強度金鑰更短、更省。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Block/Stream Cipher</strong>（區塊/串流加密）— <span style="color:#5B6675;">固定區塊 vs 逐位元。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Mode of Operation</strong>（運作模式）— <span style="color:#5B6675;">ECB/CBC/CTR/GCM；GCM 含完整性。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">PKI</strong>（公鑰基礎建設）— <span style="color:#5B6675;">以 CA/憑證建立公鑰信任。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Hybrid Encryption</strong>（混合加密）— <span style="color:#5B6675;">非對稱換金鑰＋對稱加資料（TLS）。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>對稱 vs 非對稱用途</strong>：對稱<strong>快</strong>→加密大量資料；非對稱<strong>慢</strong>→金鑰交換與數位簽章。實務<strong>混用</strong>（TLS）。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>加密 vs 簽章用的鑰</strong>：要<strong>機密性</strong>用<strong>對方公鑰</strong>加密（只有對方私鑰能解）；要<strong>簽章</strong>用<strong>自己私鑰</strong>簽（眾人用你公鑰驗）。方向常考且易錯。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>ECB 不要用</strong>：ECB 模式相同明文產生相同密文、洩漏樣式；改用 CBC/CTR/<strong>GCM（含驗證）</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>ECC vs RSA</strong>：ECC 以更短金鑰達同等強度（256-bit ECC ≈ 3072-bit RSA），適合行動/IoT。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST FIPS 197（AES）</strong>、<strong>SP 800-38</strong>（區塊模式）、<strong>SP 800-57</strong>（金鑰管理）、<strong>FIPS 186</strong>（數位簽章）。<strong>3DES 已於 2023 後被 NIST 棄用</strong>，AES 為主流；後量子密碼（PQC）標準 2024 起陸續發布。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：DES 退役</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 金鑰太短，終被算力淘汰</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;"><strong>DES</strong>（56-bit 金鑰）在 1990 年代末被專用硬體與分散式運算<strong>暴力破解</strong>（數小時內），證明金鑰長度不足。過渡方案 <strong>3DES</strong> 雖延長壽命但慢且區塊偏小，最終 <strong>AES</strong>（2001 標準化）取而代之；NIST 也已正式棄用 3DES。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>密碼強度會隨算力衰退</strong>——演算法與金鑰長度需與時俱進（crypto-agility）；今日要前瞻<strong>後量子密碼</strong>對 RSA/ECC 的威脅。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：Diffie-Hellman 與完美前向保密</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;"><strong>Diffie-Hellman</strong> 讓雙方在不安全通道上<strong>協商出共享對稱金鑰</strong>而不傳輸金鑰本身。搭配<strong>臨時金鑰（ephemeral, DHE/ECDHE）</strong>可達<strong>完美前向保密（PFS）</strong>：即使日後私鑰外洩，過去的會談也無法被解密——現代 TLS 預設採用。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『加密大量資料』→ 對稱(AES)；『安全交換金鑰』→ 非對稱/DH；『確保機密性寄給某人』→ 用<strong>對方公鑰</strong>加密；『數位簽章』→ 用<strong>自己私鑰</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>加密用對方公鑰、簽章用自己私鑰（方向別反）；ECB 不安全；3DES/DES 已過時用 AES。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>對稱快(加資料)、非對稱慢(換金鑰/簽章)，混合加密兼得；加密用對方公鑰、簽章用自己私鑰；ECB 不用、DES/3DES 已退、AES 主流。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 要把機密訊息加密寄給 Alice，用誰的鑰？<br><span style="color:#0A5A59;">→ Alice 的公鑰（只有她的私鑰能解）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . n 人兩兩對稱通訊需要幾把金鑰？<br><span style="color:#0A5A59;">→ n(n-1)/2 把（增長快、分發困難）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 為何 TLS 採混合加密？<br><span style="color:#0A5A59;">→ 非對稱安全交換對稱會談金鑰，再用對稱加密大量資料，兼得安全與速度。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/LLRaa0kOMDM" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 3 Review / Mind Map (6 of 9) | Cryptography ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/P5So8_NKxz4?t=5650" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 3<span class="ts-note">（從約 94:10 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 52 / 120 · P2-D3-2</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
