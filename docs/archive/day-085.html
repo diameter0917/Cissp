@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 85</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 85 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#B45309; padding:4px 9px; border-radius:5px;">P3-D1-5</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">後期 · 考試重點 &nbsp;|&nbsp; Domain 1 · 安全與風險管理 &nbsp;|&nbsp; 權重 16%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">考點：BCP/BIA 與威脅建模 + 刷題</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Exam: BCP/BIA &amp; Threat Modeling + Practice</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:70.83%; background-color:#B45309;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 考前重點濃縮 + D1 綜合</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">D1 後期收尾:<strong>BIA 步驟順序、MTD/RTO/RPO 關係、STRIDE 對應</strong>,並做 D1 綜合刷題。搭配本日 practice 影片繼續刷 D1 題。</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>BCP 第一步＝BIA</strong>;BIA 定 MTD/RTO/RPO。<strong>RTO ≤ MTD</strong>;RPO 決定備份頻率。</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>STRIDE</strong> 對應安全目標:Spoofing↔真實性、Tampering↔完整性、Repudiation↔不可否認、Info disclosure↔機密性、DoS↔可用性、Elevation↔授權。</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;">風險接受由<strong>管理層</strong>簽署;BIA 由<strong>業務</strong>主導排序。</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 核心考點速記</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">概念</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">BCP 第一步</td><td style="padding:9px 10px; vertical-align:top;">BIA</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">RTO vs MTD</td><td style="padding:9px 10px; vertical-align:top;">RTO ≤ MTD</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">RPO</td><td style="padding:9px 10px; vertical-align:top;">決定備份頻率</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">STRIDE Tampering</td><td style="padding:9px 10px; vertical-align:top;">完整性</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">接受剩餘風險</td><td style="padding:9px 10px; vertical-align:top;">管理層簽署</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 關鍵名詞（中英）</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">BIA</strong>（營運衝擊分析）— <span style="color:#5B6675;">BCP 第一步,定 MTD/RTO/RPO。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">MTD</strong>（最大可容忍中斷）— <span style="color:#5B6675;">RTO 上限。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RTO/RPO</strong>（復原時間/復原點）— <span style="color:#5B6675;">多快救回/可丟多少。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">STRIDE</strong>（威脅分類法）— <span style="color:#5B6675;">六類對應安全目標。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Residual Risk</strong>（剩餘風險）— <span style="color:#5B6675;">管理層接受。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 常見陷阱</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>BCP 第一步不是買設備</strong>,是 BIA(先知道救什麼、容忍多久)。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>RTO 與 RPO 對調</strong>:RTO＝時間(多快回來)、RPO＝資料量(能丟多少)。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>RTO ≥ MTD 是設計錯誤</strong>(RTO 必須小於等於 MTD)。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 🎯 實戰考題</div>
+    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">What is the FIRST step when developing a Business Continuity Plan (BCP)?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（制定營運持續計畫(BCP)的第一步是什麼?）</p>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> Select an alternate site 選擇備援站點</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> Conduct a Business Impact Analysis 進行營運衝擊分析</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> Purchase insurance 購買保險</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> Write recovery procedures 撰寫復原程序</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：B</strong>。BCP 必須先做 <strong>BIA</strong>:辨識關鍵流程、評估中斷衝擊、決定 MTD/RTO/RPO——它驅動後續所有策略選擇。</p>
+        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：站點選擇是 BIA 定出 RTO/成本需求『之後』的決策。</li><li style="margin-bottom:3px;">C：保險是風險轉移手段,非 BCP 第一步。</li><li style="margin-bottom:3px;">D：復原程序在策略確定後才撰寫。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">Which relationship between Recovery Time Objective (RTO) and Maximum Tolerable Downtime (MTD) must always hold?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（復原時間目標(RTO)與最大可容忍中斷(MTD)之間,必須恆成立的關係為何?）</p>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> RTO must be greater than MTD</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> RTO must equal RPO</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> RTO must be less than or equal to MTD</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> RTO is unrelated to MTD</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：C</strong>。MTD 是業務能撐的<strong>上限</strong>,RTO 是復原<strong>目標</strong>,必須 <strong>RTO ≤ MTD</strong>(且 RTO+WRT ≤ MTD),否則尚未復原業務就已垮。</p>
+        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：RTO 大於 MTD 代表復原太慢、業務已撐不住,屬設計錯誤。</li><li style="margin-bottom:3px;">B：RTO(時間)與 RPO(資料量)是不同維度,不需相等。</li><li style="margin-bottom:3px;">D：兩者高度相關,RTO 受 MTD 約束。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">In STRIDE threat modeling, a 'Tampering' threat most directly violates which security goal?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（在 STRIDE 威脅建模中,『Tampering(竄改)』威脅最直接違反哪個安全目標?）</p>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> Confidentiality 機密性</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> Integrity 完整性</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> Availability 可用性</div>
+        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> Non-repudiation 不可否認</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：B</strong>。STRIDE 中 <strong>Tampering↔Integrity(完整性)</strong>。其餘對應:Spoofing↔真實性、Info disclosure↔機密性、DoS↔可用性、Repudiation↔不可否認、Elevation↔授權。</p>
+        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：機密性對應 Information Disclosure。</li><li style="margin-bottom:3px;">C：可用性對應 Denial of Service。</li><li style="margin-bottom:3px;">D：不可否認對應 Repudiation。</li></ul></div>
+      </details>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — (ISC)² 選最佳答案思路</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>順序題</strong>:BCP→先 BIA;事件回應→先 Containment。看到『第一步』先想『先了解/先止血』。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>關係題</strong>:RTO ≤ MTD;RPO 定備份頻率。<strong>STRIDE</strong> 六對應要背熟(Tampering=完整性)。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>BCP 先 BIA、RTO≤MTD、RPO 定備份頻率;STRIDE 六類對應安全目標(Tampering=完整性);剩餘風險管理層接受。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . BCP 的第一步？<br><span style="color:#0A5A59;">→ 進行 BIA(營運衝擊分析)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . RTO 與 MTD 的必然關係？<br><span style="color:#0A5A59;">→ RTO ≤ MTD。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . STRIDE 的 Spoofing 對應哪個安全目標？<br><span style="color:#0A5A59;">→ 真實性(Authenticity)。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/_ksPu19kkCI" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">Risk Management MindMap (3 of 3) | CISSP Domain 1 ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/J-su239XmCE?t=5012" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 1<span class="ts-note">（從約 83:32 開始）</span> ↗</a>
+      </div>
+      <div style="margin-top:11px;">
+        <div style="font-size:12px; color:#B45309; font-weight:700; margin-bottom:2px;">📝 考題練習（刷題）</div>
+        <a href="https://youtu.be/mvHzhuBMXXc" style="font-size:14px; font-weight:700; color:#B45309; text-decoration:none;">50 CISSP Practice Questions and Answers | CISSP Domain 1 Prep ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 85 / 120 · P3-D1-5</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
