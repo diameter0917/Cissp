@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 47</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 47 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D2-2</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 2 · 資產安全 &nbsp;|&nbsp; 權重 10%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">資料角色與責任深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Data Roles Deep Dive</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:39.17%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 深入資料角色的法律與營運責任</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">初期我們認識了 owner/custodian/controller/processor/subject；中期深入各角色的<strong>法律與營運責任</strong>、用 <strong>RACI</strong> 釐清權責、處理 <strong>joint controllers（共同控管者）</strong> 與 <strong>DPO</strong>，並把這些角色與隱私法的義務銜接。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：角色法律/營運責任 → RACI → joint controller/DPO → 與 GDPR/個資法銜接 → 責任歸屬。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 角色責任（深入）</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">角色</td><td style="padding:8px 10px;">營運責任</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">法律責任重點</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Data Owner</strong></td><td style="padding:9px 10px; vertical-align:top;">分類、定義保護需求、核准存取</td><td style="padding:9px 10px; vertical-align:top;">對資料保護當責（內部）</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Data Controller</strong></td><td style="padding:9px 10px; vertical-align:top;">決定處理目的與方式</td><td style="padding:9px 10px; vertical-align:top;">GDPR 主要義務：合法性、告知、回應當事人</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Data Processor</strong></td><td style="padding:9px 10px; vertical-align:top;">依指示處理</td><td style="padding:9px 10px; vertical-align:top;">須依 DPA、落實安全、協助 Controller、通報</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Data Custodian</strong></td><td style="padding:9px 10px; vertical-align:top;">執行技術保護</td><td style="padding:9px 10px; vertical-align:top;">依 Owner 要求落實，無決策權</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Data Subject</strong></td><td style="padding:9px 10px; vertical-align:top;">—</td><td style="padding:9px 10px; vertical-align:top;">享查詢/更正/刪除/可攜/反對等權利</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — RACI 釐清權責</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>RACI</strong>（Responsible 執行／Accountable 當責／Consulted 諮詢／Informed 告知）是釐清『誰做、誰扛、誰問、誰知』的工具。資安治理常見錯誤是『<strong>多個 A</strong>』或『<strong>沒有 A</strong>』——當責必須<strong>唯一且明確</strong>（呼應 D1：accountability 不可下授、不可分散）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — Joint Controller 與 DPO</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Joint Controllers 共同控管者</strong>：兩方<strong>共同決定</strong>處理目的與方式（如合作行銷），須以協議劃分各自責任</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Controller–Processor</strong>：一方決定、一方執行，須簽 <strong>DPA</strong>（GDPR Art.28）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>DPO 資料保護長</strong>：GDPR 特定情形（大規模特種個資/系統性監控/公務機關）須設置，<strong>獨立</strong>監督法遵、為當事人與主管機關聯絡窗口</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Controller</strong>（控管者）— <span style="color:#5B6675;">決定個資處理目的與方式（法律主體）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Processor</strong>（處理者）— <span style="color:#5B6675;">代控管者處理，依 DPA 與指示。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Joint Controllers</strong>（共同控管者）— <span style="color:#5B6675;">共同決定目的方式，需協議分責。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DPO</strong>（資料保護長）— <span style="color:#5B6675;">獨立監督個資法遵的職位。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RACI</strong>（權責矩陣）— <span style="color:#5B6675;">Responsible/Accountable/Consulted/Informed。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DPA</strong>（資料處理協議）— <span style="color:#5B6675;">Controller-Processor 間的合約義務。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Liability</strong>（法律責任）— <span style="color:#5B6675;">未善盡義務需承擔的賠償責任。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Responsible vs Accountable</strong>（RACI）：Responsible 是<strong>實際做的人</strong>（可多人）；Accountable 是<strong>最終扛責的人</strong>（必須唯一）。對應 D1：責任可分、當責不可。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Joint Controllers vs Controller-Processor</strong>：前者<strong>都在決定目的</strong>（平行）；後者一方決定、一方執行（上下）。判準是『<strong>誰決定為何處理</strong>』。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Owner vs Controller</strong>：Owner 是組織<strong>內部</strong>角色；Controller 是<strong>法律</strong>主體（常是組織本身）。內控語境用 Owner，法遵語境用 Controller。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>GDPR Art.4/24/26/28/37-39</strong>（角色定義、Controller 責任、Joint Controller、Processor、DPO）；<strong>台灣個資法</strong>以公務/非公務機關為責任主體、課保護義務；<strong>ISO/IEC 27701</strong> 把角色責任制度化（PII Controller/Processor）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：角色責任爭議</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 外包出包，互踢皮球</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">個資外洩後，企業（Controller）與外包商（Processor）常<strong>互推責任</strong>：企業說『是廠商系統的漏洞』，廠商說『我們只是照指示做』。GDPR 的設計讓<strong>兩者都可能被追責</strong>——Controller 因選任監督不周、Processor 因未落實約定安全。關鍵證據是<strong>DPA 有沒有簽、責任有沒有寫清楚</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：角色與責任要<strong>事前以合約（DPA）＋RACI 釐清</strong>，而非事後爭論。Controller 無法靠『外包』卸責。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：員工是什麼角色？</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">常見混淆：一般員工存取個資時是什麼角色？員工是代表組織（Controller）處理資料的<strong>授權使用者（user）</strong>，<strong>不是</strong>獨立的 Controller/Processor。責任歸於組織。但員工<strong>逾越授權</strong>濫用個資（如偷查名人病歷），則可能自負個人法律責任。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『兩公司共同決定處理目的』→ Joint Controllers；『RACI 中誰必須唯一』→ Accountable；『Controller 與 Processor 間必備文件』→ DPA。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>Controller 不能靠外包卸責；Owner(內部) vs Controller(法律) 別混；Responsible 可多人、Accountable 唯一。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>角色各有營運/法律責任；RACI 釐清權責（A 唯一）；共同決定目的＝Joint Controller、決定vs執行＝Controller/Processor 需 DPA；DPO 獨立監督。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . RACI 中哪個角色必須唯一？<br><span style="color:#0A5A59;">→ Accountable（當責，不可分散/下授）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 兩家公司共同決定個資處理目的，是什麼關係？<br><span style="color:#0A5A59;">→ Joint Controllers（共同控管者），需協議分責。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . Controller 能否藉由外包把責任完全轉給 Processor？<br><span style="color:#0A5A59;">→ 不能；Controller 仍負選任監督等主要義務。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/lrI4QIa8S2I" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 2 Review / Mind Map (2 of 2) | Privacy ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/dNIcfKYeJI8?t=1025" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 2<span class="ts-note">（從約 17:05 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 47 / 120 · P2-D2-2</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

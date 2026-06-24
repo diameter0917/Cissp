@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 46</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 46 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D2-1</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 2 · 資產安全 &nbsp;|&nbsp; 權重 10%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">分類分級制度設計</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Designing Classification Schemes</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:38.33%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D2：把分類做成一套制度</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">初期我們知道『分類驅動控制』；中期要會<strong>設計一套分類分級制度</strong>：分幾級、各級定義、誰來分、怎麼標示、分類後對應什麼控制。制度設計不良會導致『過度分類』（成本暴增）或『分類不足』（保護不夠）。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週（Domain 2 · 中期）</strong>：①分類制度設計 → ②資料角色責任深入 → ③生命週期與資料主權 → ④殘留/銷毀標準/媒體 → ⑤DLP/DRM/CASB 與隱私設計。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 政府 vs 商業分級（深入）</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">政府/軍方</td><td style="padding:8px 10px;">商業</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">外洩衝擊</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Top Secret 絕對機密</td><td style="padding:9px 10px; vertical-align:top;">Confidential/Proprietary</td><td style="padding:9px 10px; vertical-align:top;">exceptionally grave damage</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">Secret 機密</td><td style="padding:9px 10px; vertical-align:top;">Private（員工個資）</td><td style="padding:9px 10px; vertical-align:top;">serious damage</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Confidential 密</td><td style="padding:9px 10px; vertical-align:top;">Sensitive</td><td style="padding:9px 10px; vertical-align:top;">damage</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">Unclassified 非機密</td><td style="padding:9px 10px; vertical-align:top;">Public</td><td style="padding:9px 10px; vertical-align:top;">無/極低</td></tr>
+    </table>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">分級數量不是越多越好——<strong>每多一級就多一套控制、訓練與標示成本</strong>。多數商業組織採 <strong>3–4 級</strong>。關鍵是每級都要有<strong>明確的判定準則</strong>與<strong>對應控制清單</strong>，否則分類會淪為主觀。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 標示、標記與處理</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Labeling 標示</strong>：系統可讀的分類標記（metadata/tag），供 DLP 等自動執行</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Marking 標記</strong>：人可讀的標註（文件頁首頁尾『機密』）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Handling 處理要求</strong>：各級的儲存/傳輸/銷毀/存取規定（分類→控制的橋）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Declassification 解密降級</strong>：敏感度隨時間下降時，依程序降級以免過度保護</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 聚合與推論風險</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>聚合（Aggregation）</strong>：多筆低敏感資料合在一起，整體敏感度升高（如單筆訂單 vs 全公司客戶清單）；<strong>推論（Inference）</strong>：由可存取資料推導出更敏感資訊。制度設計須考慮『<strong>整體</strong>』而非只看單筆——這也影響分類等級的判定。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Classification Scheme</strong>（分類制度）— <span style="color:#5B6675;">分幾級、各級定義與判定準則。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Labeling</strong>（標示）— <span style="color:#5B6675;">系統可讀的分類標記（供自動執行）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Marking</strong>（標記）— <span style="color:#5B6675;">人可讀的分類標註。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Handling Requirements</strong>（處理要求）— <span style="color:#5B6675;">各級的儲存/傳輸/銷毀規定。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Declassification</strong>（解密降級）— <span style="color:#5B6675;">依程序降低分類等級。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Aggregation</strong>（聚合）— <span style="color:#5B6675;">多筆資料合併致整體敏感度升高。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Inference</strong>（推論）— <span style="color:#5B6675;">由可得資料推導更敏感資訊。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Categorization</strong>（資料分類(衝擊)）— <span style="color:#5B6675;">NIST 依衝擊 Low/Mod/High 定級。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Labeling vs Marking</strong>：Labeling 給<strong>機器</strong>讀（tag/metadata，DLP 據以執行）；Marking 給<strong>人</strong>讀（頁面標註）。考試問『供系統自動執行的分類』→ Labeling。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Classification vs Categorization</strong>：Classification 依<strong>敏感度</strong>分級（軍/商）；Categorization（NIST FIPS 199）依<strong>C/I/A 衝擊</strong>定 Low/Mod/High。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>過度分類 vs 分類不足</strong>：過度→成本與摩擦暴增、人們開始繞過；不足→保護不夠致外洩。兩者都是制度設計失敗。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-60</strong>（資訊類型對應衝擊）、<strong>FIPS 199</strong>（系統定級）、<strong>ISO/IEC 27001 附錄 A.5.12-13</strong>（資訊分類與標示）。政府另有行政命令層級的分類規範。分類制度需由<strong>Data Owner</strong> 主導、定期審查。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：標示不當洩漏</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 沒標好，就保護錯</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">當機密文件<strong>未被正確標示/標記</strong>，下游的人與系統就<strong>不知道要套高保護</strong>——機密簡報被當一般檔案寄出、含 PII 的匯出檔未被 DLP 辨識而外流。根因是『分類制度有、但標示沒落實到資料本身』，導致自動控制（DLP）無從判斷。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：分類要<strong>黏在資料上（標示）</strong>、且讓自動控制讀得懂；制度只停在政策層、未落到每筆資料，等於沒有。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：過度分類的反效果</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">把什麼都標『機密』看似安全，實則有害：人們對標示<strong>麻木</strong>、開始繞過繁瑣控制、真正機密反而藏在雜訊裡（如同告警疲勞）。過度分類也推高加密/存取/稽核成本。好制度要<strong>誠實分級</strong>，把最強控制留給真正最敏感的少數資料。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『供系統自動執行的分類資訊』→ Labeling；『多筆低敏資料合併致更敏感』→ Aggregation；『決定分類等級的人』→ Data Owner。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>標示(機器) vs 標記(人) 別反；過度分類也是失敗；分類後一定要對應 handling 控制才有意義。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>分類制度＝分級+判定準則+標示/標記+處理要求；Owner 主導、3-4 級為宜；注意聚合/推論；過度與不足都是失敗。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 供 DLP 等系統自動執行的分類標記叫什麼？<br><span style="color:#0A5A59;">→ Labeling（系統可讀）；Marking 是給人讀的標註。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 多筆低敏感資料合在一起變更敏感，這是什麼風險？<br><span style="color:#0A5A59;">→ 聚合（Aggregation）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 商業組織通常分幾級較實際、為何不是越多越好？<br><span style="color:#0A5A59;">→ 3–4 級；級數越多控制/訓練/標示成本越高、易被繞過。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/aN9zkmzYTmQ" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/dNIcfKYeJI8?t=719" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 2<span class="ts-note">（從約 11:59 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 46 / 120 · P2-D2-1</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
