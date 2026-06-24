@@ -67,7 +67,7 @@
 
 三個 playlist 的網址都已寫進 `cissp_curriculum.json`。**影片資料由你在本機跑 `prepare_youtube.py` 一次抓好**（用 yt-dlp，不需 YouTube API 金鑰），產生 `video_index.json`(全部影片清單+依內容分類+字幕長度+章節)與 `transcripts/`(各影片字幕)，commit 進 repo。Claude Code 之後直接讀這些現成檔案、把對應主題的具體影片連進每封信（例如 Domain 5 存取控制那封 → 「Access Control MindMap｜Domain 5」），**完全不必自己連 YouTube**。
 
-**三類影片各對一階段**：初期=該 Domain 的 course 完整影片、中期=最相符的 mindmap、後期=該 Domain 的 practice 考題；三類都已涵蓋全部 8 個 Domain。
+**每封信固定放兩支影片**：① 與本單元主題最相符的**重點短片**（「Domain N Review / Mind Map」分集或主題 MindMap，聚焦單一子主題，最適合每日一主題，也用來對齊教材）；② 保留該 Domain 的 **course 完整課程**影片當「看全貌」。後期 P3 可再加該 Domain 的 practice 考題影片。三類影片都已涵蓋全部 8 個 Domain。
 
 **教材對齊影片**：生成教材時參照對應影片的字幕**對齊結構與涵蓋範圍**，讓「看影片 + 讀信」是同一條脈絡、並可延伸補充影片提到的點。重要原則：**以官方 CISSP 大綱為正確性錨點**，字幕只當對齊與延伸參考（自動字幕對技術名詞常有錯，不當事實來源），用自己的話寫。
 

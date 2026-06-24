@@ -39,7 +39,7 @@
 
 依 `cissp_curriculum.json` 每個單元的 `focus_zh`（內容大綱）、`suggested_case`（案例）生成一封 HTML 電子報。每封含以下區塊，**繁中說明 + 英文術語並列**：
 
-> **內容來源原則（重要）**：以**官方 CISSP 大綱為正確性錨點**（名詞、條文以官方為準）。同時**依階段對齊對應影片的字幕**（初期=該 Domain 的 course 影片、中期=最相符的 mindmap、後期=該 Domain 的 practice；字幕在 `transcripts/<video_id>.txt`，見「影片資料」一節），讓「看影片 + 讀信」對得起來，並可在信中延伸補充影片提到的點。字幕僅作對齊與延伸參考——**自動字幕對技術名詞常有錯，不可當作事實來源**；一律用自己的話寫，不照抄字幕字句。抓不到字幕時退回純大綱生成。
+> **內容來源原則（重要）**：以**官方 CISSP 大綱為正確性錨點**（名詞、條文以官方為準）。教材**優先對齊「與本單元主題最相符的短片」字幕**——該 Domain 的「Domain N Review / Mind Map」分集或主題 MindMap（字幕在 `transcripts/<video_id>.txt`）；這些短片逐一對應子主題，最貼合每日一個主題的信。該 Domain 的 course 完整影片字幕可當補充。讓「看影片 + 讀信」對得起來，並可在信中延伸補充影片提到的點。字幕僅作對齊與延伸參考——**自動字幕對技術名詞常有錯，不可當作事實來源**；用自己的話寫，不照抄字幕字句。抓不到字幕時退回純大綱生成。
 
 1. **本日主題 + Domain + 階段標記**：如 `D1 · 初期 · 16% · P1-D1-2`，顯示 Domain 名稱、權重、階段。
 2. **深入淺出講解**：**依階段調整深度** —
@@ -51,11 +51,11 @@
 5. **真實事件案例討論**：用該單元 `suggested_case` 指定的教科書級事件串起概念。
 6. **CISSP 考點提醒**：**後期 P3 以此為主軸**；說明常見陷阱與 (ISC)² 「選最佳答案」的思路。
 7. **一句話總結 + 1–2 題自我檢測**（附解答，可用 `<details>` 收合）。
-8. **📺 本日對應影片**：依階段從 `video_index.json` 選對應影片（詳見「影片資料」一節）：
-   - 初期 P1 → 該 Domain 的 **course** 影片；若能從 `transcripts/_timed/<id>.vtt` 定位到主題時間碼，用深連結 `https://youtu.be/<id>?t=<秒數>` 並標「從約 mm:ss 開始」，否則連影片開頭。
-   - 中期 P2 → 該 Domain 中標題與本單元主題最相符的 **mindmap** 影片。
-   - 後期 P3 → 該 Domain 的 **practice** 考題影片。
-   - 對不到夠精準的就退回連該 Domain 的 course 影片或對應 playlist。
+8. **📺 本日對應影片（固定放兩支）**：
+   - **① 重點短片（聚焦本主題）**：該 Domain 中與本單元主題最相符的 **mindmap** 短片（「Domain N Review / Mind Map」分集或主題 MindMap），每支聚焦單一子主題，最適合每日一主題。
+   - **② 完整課程（看全貌）**：保留該 Domain 的 **course** 完整影片；若能從 `transcripts/_timed/<id>.vtt` 定位主題時間碼，用 `https://youtu.be/<id>?t=<秒數>` 標「從約 mm:ss」，否則連開頭。
+   - **後期 P3** 可再加 **③** 該 Domain 的 **practice** 考題影片（刷題）。
+   - 兩支各有清楚標籤、都是正式連結（不要把完整課程做成不起眼的小附註）。①若對不到夠精準的短片，退回連 course 或對應 playlist（此時可能只剩一支）。
 9. **🗞️ 今日時事延伸（此區塊由每日 Routine 動態填入，非預生成）**：在教材本文末預留一個明確的占位標記 `<!-- TODAY_NEWS -->`。每日 Routine 會把當天與本主題相關的最新資安新聞（約 3 點）寫進這個位置；寄信時若該段存在就合併、不存在就照常只寄教材本文（見第六節與附錄）。
 
 **呈現方式（重要）：不要只用文字敘述。** 凡是有結構的內容都盡量視覺化，幫助理解與記憶：
@@ -131,13 +131,13 @@ cissp/
 - 字幕在 `transcripts/<video_id>.txt`（純文字）；8 支 course 影片另有帶時間碼字幕 `transcripts/_timed/<video_id>.vtt`。
 - 少數影片 `transcript_chars` 為 0（無字幕）或歸 other——略過即可。
 
-**各階段如何選影片與對齊字幕**（呼應第三節第 8 點與「內容來源原則」）：
-- **初期 P1** → 取 `category=="course"` 且 `domain==該Domain` 的那支；用其 `transcripts/<id>.txt` 對齊教材結構與涵蓋。
-- **中期 P2** → 在 `category=="mindmap"` 且 `domain==該Domain` 的影片中，挑**標題與本單元主題最相符**的一支（例如 D5 存取控制單元 → 「Access Control MindMap | Domain 5」）；用其字幕對齊。
-- **後期 P3** → 取 `category=="practice"` 且 `domain==該Domain` 的影片；用其字幕對齊（這類是考題影片，正好支援考點與刷題）。
-- 對不到夠精準的影片時，退回連該 Domain 的 course 影片或對應 playlist。
+**怎麼選影片與對齊字幕（每封固定放兩支）**（呼應第三節第 8 點與「內容來源原則」）：
+- **① 重點短片（主要、用於對齊）**：在 `category=="mindmap"` 且 `domain==該Domain` 的短片中，挑**標題/主題與本單元最相符**的一支（例如 D5 存取控制單元 → 「Access Control MindMap | Domain 5」或「Domain 5 Review (1 of 2) | Access Control」）。用其 `transcripts/<id>.txt` 對齊教材，並當作信裡的第一個影片連結。
+- **② 完整課程（保留）**：該 Domain 的 `category=="course"` 完整影片，當第二個連結；其 `_timed/<id>.vtt` 可帶近似 `?t=` 時間碼。
+- **後期 P3 額外**：再附 `category=="practice"` 該 Domain 考題影片（刷題）。
+- ①對不到夠精準的短片時，退回 course 影片或對應 playlist。
 
-**影片時間軸（僅初期 P1，近似定位）**：這些 course 影片**沒有章節**（`chapters` 皆為空），所以改用 `transcripts/_timed/<id>.vtt`，搜尋當天主題英文關鍵字首次出現的時間碼，當作深連結 `https://youtu.be/<id>?t=<秒數>` 的起點，文案標「從約 mm:ss 開始」。定位不到就連影片開頭。中期/後期影片是單一主題短片，不需時間軸。
+**影片時間軸（用於 course「完整版」次要連結，近似定位）**：course 影片**沒有章節**（`chapters` 皆為空）。若要在「完整版」連結帶上時間碼，就用 `transcripts/_timed/<id>.vtt` 搜尋當天主題英文關鍵字首次出現的時間碼，組成 `https://youtu.be/<id>?t=<秒數>`、標「完整版・從約 mm:ss」。定位不到就連完整影片開頭。**主要連結用的短片本身已聚焦單一主題，不需時間軸。**
 
 **僅當 `video_index.json` 或 `transcripts/` 不存在時**（尚未 commit）：才退回「影片連結用 `cissp_curriculum.json` 的 `video_resources` playlist URL、教材純大綱生成」，**仍不要自己跑 yt-dlp**。
 - 生成各封信時，用 `video_index.json` 把該單元主題對應到**最相符的單支影片**（Domain + 主題關鍵字比對），對不上才用 playlist URL。
