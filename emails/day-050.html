@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 50</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 50 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D2-5</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 2 · 資產安全 &nbsp;|&nbsp; 權重 10%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">DLP/DRM/CASB 與隱私設計</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">DLP/DRM/CASB &amp; Privacy by Design</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:41.67%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 深入資料保護技術與隱私設計</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">D2 中期收尾，深入三大技術的<strong>運作模式與適用</strong>（DLP/DRM/CASB），並把 <strong>Privacy by Design（隱私設計）</strong>七原則與<strong>去識別化技術</strong>（匿名/假名/代碼化）講透——這是把『保護資料』從工具層提升到設計層。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週回顧</strong>：①分類制度 → ②角色責任 → ③生命週期/主權 → ④殘留/銷毀 → ⑤<strong>今天：DLP/DRM/CASB 與 PbD</strong>。下週進入 Domain 3 中期。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — DLP 的三種部署</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">DLP 類型</td><td style="padding:8px 10px;">位置</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">攔什麼</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Network DLP</strong></td><td style="padding:9px 10px; vertical-align:top;">網路出口</td><td style="padding:9px 10px; vertical-align:top;">外送的郵件/上傳（in transit）</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Endpoint DLP</strong></td><td style="padding:9px 10px; vertical-align:top;">端點</td><td style="padding:9px 10px; vertical-align:top;">USB 複製、列印、剪貼（in use）</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Storage/Discovery DLP</strong></td><td style="padding:9px 10px; vertical-align:top;">儲存庫</td><td style="padding:9px 10px; vertical-align:top;">掃描靜止資料找未受保護的敏感檔（at rest）</td></tr>
+    </table>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">DLP 依<strong>分類標示</strong>與內容比對（regex/指紋/機器學習）判斷敏感與否——<strong>分類做得好，DLP 才準</strong>（呼應 Day 46）。三種部署正好對應資料三狀態。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — CASB 四支柱與 DRM/IRM</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>CASB 四支柱</strong>：可視化（Visibility，含影子 IT 發現）、合規（Compliance）、資料安全（DLP/加密）、威脅防護（Threat Protection）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>DRM/IRM</strong>：把保護<strong>綁在檔案本身</strong>（加密＋使用權限），檔案離開組織仍受控（可限開啟/複製/列印/期限）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;">差異：DLP 在<strong>出口</strong>攔截；DRM 讓檔案<strong>到哪都受控</strong>；CASB 管<strong>雲端</strong>的整體可視與管控</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — Privacy by Design 與去識別化</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>Privacy by Design（PbD）</strong>七原則核心：主動非被動、<strong>預設即隱私（by default）</strong>、內建到設計、正和（不犧牲功能換隱私）、全生命週期保護、透明、尊重使用者。去識別化技術：</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">技術</td><td style="padding:8px 10px;">作法</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">可逆?</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Anonymization</strong> 匿名化</td><td style="padding:9px 10px; vertical-align:top;">永久移除可識別性</td><td style="padding:9px 10px; vertical-align:top;">不可逆</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Pseudonymization</strong> 假名化</td><td style="padding:9px 10px; vertical-align:top;">以代號替換、金鑰可還原</td><td style="padding:9px 10px; vertical-align:top;">可逆(持金鑰)</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Tokenization</strong> 代碼化</td><td style="padding:9px 10px; vertical-align:top;">以無意義 token 替換敏感值</td><td style="padding:9px 10px; vertical-align:top;">可逆(查表)</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DLP</strong>（資料外洩防護）— <span style="color:#5B6675;">網路/端點/儲存三種部署，依分類攔截。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CASB</strong>（雲端存取安全代理）— <span style="color:#5B6675;">可視化/合規/資料安全/威脅防護四支柱。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DRM/IRM</strong>（數位/資訊版權管理）— <span style="color:#5B6675;">保護綁在檔案上，離開組織仍受控。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Privacy by Design</strong>（隱私設計）— <span style="color:#5B6675;">設計階段即內建隱私、預設最隱私。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Anonymization</strong>（匿名化）— <span style="color:#5B6675;">永久不可逆地移除可識別性。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Pseudonymization</strong>（假名化）— <span style="color:#5B6675;">可逆替換，GDPR 認可的降風險措施。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Tokenization</strong>（代碼化）— <span style="color:#5B6675;">以 token 替敏感值（如付款）。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>DLP vs DRM</strong>：DLP 著重『<strong>阻止外流</strong>』（出口把關）；DRM 著重『<strong>檔案到哪都受控</strong>』（持續權限）。外寄後仍要管＝DRM；防它寄出去＝DLP。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Anonymization vs Pseudonymization</strong>：匿名化<strong>不可逆</strong>、脫離個資範疇；假名化<strong>可逆</strong>（持金鑰可還原）、<strong>仍屬個資</strong>受 GDPR 規範。考試常考此差異。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Tokenization vs Encryption</strong>：加密以<strong>演算法＋金鑰</strong>轉換（數學可逆）；代碼化以<strong>查表</strong>替換（token 與原值無數學關係），常用於降 PCI 範圍。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>GDPR Art.25</strong>（Privacy by Design & by Default）、<strong>Art.4(5)</strong>（假名化定義）；<strong>ISO/IEC 27701</strong>（PIMS）、<strong>ISO/IEC 29100</strong>（隱私框架）。PCI DSS 鼓勵<strong>代碼化</strong>以縮小持卡資料範圍。PbD 由 Ann Cavoukian 提出、被 GDPR 法制化。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：PbD 落實 vs 事後補救</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 把隱私內建，而非事後道歉</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">許多產品在出事後才『加上隱私設定』，預設卻是<strong>最大蒐集、最公開</strong>，引發監管與信任危機。反例是落實 <strong>Privacy by Default</strong> 的服務：新帳號預設<strong>最小蒐集、最嚴privacy 設定</strong>，使用者要主動放寬才分享更多。GDPR Art.25 正是把這從『好意』變成『法律義務』。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：隱私若是<strong>設計階段內建（左移）</strong>，成本低且建立信任；若事後補，代價是罰款、重構與商譽。呼應 D8 的安全左移。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：假名化在分析場景</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">企業想用客戶資料做分析又要降風險，常用<strong>假名化</strong>：把姓名/ID 換成代號、金鑰另存隔離，分析團隊只見假名資料。但要注意：假名化<strong>仍是個資</strong>（可還原），且若分析結果＋其他資料可<strong>重新識別（re-identification）</strong>，風險依舊。真正脫離 GDPR 需<strong>匿名化（不可逆且無法重識別）</strong>。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『防敏感檔外傳』→ DLP；『檔案外寄後仍限制開啟/列印』→ DRM；『管雲端 SaaS 與影子 IT』→ CASB；『可逆、仍屬個資的降風險替換』→ 假名化；『不可逆、脫離個資』→ 匿名化。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>匿名(不可逆/非個資) vs 假名(可逆/仍個資) 別反；PbD 的精髓是『<strong>預設即隱私</strong>』與『內建非事後』。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>DLP(網路/端點/儲存)擋外流、DRM 讓檔案到哪都受控、CASB 管雲端四支柱；PbD 預設即隱私、內建非事後；匿名不可逆/假名可逆仍個資。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 匿名化與假名化最大差異？<br><span style="color:#0A5A59;">→ 匿名不可逆、脫離個資；假名可逆(持金鑰)、仍屬個資受 GDPR。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 要讓檔案外寄後仍限制開啟與列印，用什麼？<br><span style="color:#0A5A59;">→ DRM/IRM（保護綁在檔案上）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . Privacy by Design 的核心預設原則是什麼？<br><span style="color:#0A5A59;">→ Privacy by Default——預設即最小蒐集、最嚴隱私設定。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/lrI4QIa8S2I" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 2 Review / Mind Map (2 of 2) | Privacy ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/dNIcfKYeJI8?t=2126" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 2<span class="ts-note">（從約 35:26 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 50 / 120 · P2-D2-5</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
