@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 64</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 64 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D5-4</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 5 · 身分與存取管理 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">Kerberos 與目錄服務深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Kerberos &amp; Directory Deep Dive</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:53.33%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D5：Kerberos 與目錄服務</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">企業內網最核心的認證機制是 <strong>Kerberos</strong>（AD 的基礎）與 <strong>LDAP 目錄</strong>。今天深入 <strong>Kerberos 票證流程</strong>、AD/LDAP 角色，以及著名攻擊（<strong>Golden Ticket、Pass-the-Hash</strong>）。理解票證流程才懂這些攻擊為何可行。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：Kerberos 元件與票證流程 → AD/LDAP → Kerberos 攻擊(Golden Ticket/Kerberoasting)。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — Kerberos 元件與流程</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>元件</strong>：KDC（含 AS 鑑別伺服器＋TGS 票證授予伺服器）、Client、Service</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;">①Client 向 <strong>AS</strong> 認證 → 取得 <strong>TGT（票證授予票證）</strong></td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;">②持 TGT 向 <strong>TGS</strong> 要求 → 取得存取特定服務的 <strong>Service Ticket</strong></td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;">③持 Service Ticket 存取服務；全程用<strong>對稱金鑰＋時間戳</strong>(防重放，故需時間同步)</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 Kerberos 是<strong>SSO 的內網實作</strong>：一次認證取得 TGT，之後換各服務票證、<strong>不再重送密碼</strong>。依賴<strong>時間同步（時戳防重放）</strong>——時鐘差太多會認證失敗。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — AD / LDAP</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">項目</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">角色</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Active Directory</strong></td><td style="padding:9px 10px; vertical-align:top;">微軟目錄服務，整合 Kerberos/LDAP/DNS</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>LDAP</strong></td><td style="padding:9px 10px; vertical-align:top;">目錄查詢協定(使用者/群組/資源)</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Domain Controller</strong></td><td style="padding:9px 10px; vertical-align:top;">執行 AD/KDC 的伺服器(高價值目標)</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>krbtgt 帳號</strong></td><td style="padding:9px 10px; vertical-align:top;">簽 TGT 的金鑰來源(被盜即可偽造 TGT)</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — Kerberos 攻擊</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Golden Ticket</strong>：竊得 <strong>krbtgt</strong> 雜湊→偽造任意 TGT，等同網域萬能鑰匙</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Silver Ticket</strong>：偽造特定服務票證</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Pass-the-Hash</strong>：用竊得的密碼雜湊直接認證(無需明文密碼)</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Kerberoasting</strong>：索取服務票證離線破解服務帳號密碼</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Kerberos</strong>（票證式認證協定）— <span style="color:#5B6675;">KDC 發票證、對稱金鑰、時戳防重放。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">KDC / TGT</strong>（金鑰分發中心/票證授予票證）— <span style="color:#5B6675;">AS+TGS；TGT 換服務票證。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Active Directory</strong>（活動目錄）— <span style="color:#5B6675;">微軟目錄服務(Kerberos/LDAP)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">LDAP</strong>（輕量目錄存取協定）— <span style="color:#5B6675;">查詢目錄物件。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Golden Ticket</strong>（黃金票證）— <span style="color:#5B6675;">偽造 TGT 的網域接管攻擊。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Pass-the-Hash</strong>（傳遞雜湊）— <span style="color:#5B6675;">用密碼雜湊直接認證。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Kerberoasting</strong>（服務票證破解）— <span style="color:#5B6675;">離線破服務帳號密碼。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>TGT vs Service Ticket</strong>：TGT 是『<strong>身分證明</strong>』(向 TGS 證明你已認證)；Service Ticket 是『<strong>存取特定服務的票</strong>』。先有 TGT 才換 Service Ticket。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Golden vs Silver Ticket</strong>：Golden 偽造 <strong>TGT</strong>(krbtgt 金鑰，全網域)；Silver 偽造<strong>單一服務</strong>票證(該服務金鑰，範圍小)。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>為何 Kerberos 需時間同步</strong>：票證含<strong>時戳防重放</strong>，client 與 KDC 時鐘差超過容許值即失敗(預設約 5 分鐘)。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>Kerberos＝RFC 4120</strong>（MIT 開發）、<strong>LDAP＝RFC 4511</strong>。防護對應 <strong>PAM、分層管理(tiered admin)、保護 krbtgt、限制特權登入</strong>。MITRE ATT&CK 收錄上述憑證攻擊技術。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：Golden Ticket 攻擊</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 偽造萬能票證，潛伏網域</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">攻擊者一旦取得網域控制器上的 <strong>krbtgt 帳號雜湊</strong>，即可離線<strong>偽造任意使用者的 TGT（Golden Ticket）</strong>——包含網域管理員，且可設超長有效期，等於<strong>網域的萬能鑰匙</strong>，能長期潛伏存取任何資源、極難偵測。許多 APT 攻擊的『持續駐留』階段即用此技術。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：保護<strong>網域控制器與 krbtgt</strong> 是 AD 安全的核心；對策含<strong>定期輪替 krbtgt(兩次)、分層管理、限制 DA 登入一般主機、特權帳號 PAM、異常票證偵測</strong>。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：為何 Pass-the-Hash 可行</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">Windows 認證常用密碼<strong>雜湊</strong>而非明文，攻擊者只要竊得記憶體中的雜湊(如用 Mimikatz)，就能<strong>直接拿雜湊認證</strong>而不需破解出明文密碼。對策：<strong>限制本機管理員重用、LSASS 保護(Credential Guard)、最小權限、分層管理</strong>，避免高權限憑證落在低信任主機。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『偽造 TGT 接管網域』→ Golden Ticket(保護 krbtgt)；『用雜湊免密碼認證』→ Pass-the-Hash；『Kerberos 為何需時間同步』→ 時戳防重放。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>TGT(身分) vs Service Ticket(存取服務)；Golden(TGT/全域) vs Silver(單服務)；保護網域控制器是 AD 安全核心。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>Kerberos：AS 發 TGT、TGS 換服務票證、時戳防重放(需時間同步)；AD/LDAP 為目錄；Golden Ticket(krbtgt)接管網域、Pass-the-Hash 用雜湊認證。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . Kerberos 為何依賴時間同步？<br><span style="color:#0A5A59;">→ 票證含時戳防重放，client 與 KDC 時鐘差過大會認證失敗。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . Golden Ticket 攻擊偽造什麼、根源是竊得什麼？<br><span style="color:#0A5A59;">→ 偽造 TGT；根源是竊得 krbtgt 帳號雜湊(等於網域萬能鑰匙)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . TGT 與 Service Ticket 的關係？<br><span style="color:#0A5A59;">→ 先取得 TGT(身分證明)，再向 TGS 換取存取特定服務的 Service Ticket。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/_U4QMIxVk8M" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 5 Review / Mind Map (2 of 2) | Single Sign-on and Federated Identity Management ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/VknzQFVUfIc?t=4319" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 5<span class="ts-note">（從約 71:59 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 64 / 120 · P2-D5-4</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

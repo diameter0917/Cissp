@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 63</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 63 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D5-3</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 5 · 身分與存取管理 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">SAML/OAuth/OIDC 深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">SAML/OAuth/OIDC Deep Dive</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:52.5%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D5：聯合身分三大協定</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入聯合身分(federation)的三大協定：<strong>SAML</strong>（企業 SSO）、<strong>OAuth 2.0</strong>（授權）、<strong>OIDC</strong>（OAuth 之上的身分層）。釐清『誰負責鑑別、誰負責授權、token 怎麼流』，是 D5 高頻且易混的考點。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：SAML 斷言流程 → OAuth 授權碼流程 → OIDC → token 安全。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 三者定位</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">協定</td><td style="padding:8px 10px;">用途</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">格式</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>SAML 2.0</strong></td><td style="padding:9px 10px; vertical-align:top;">企業 Web SSO(鑑別)</td><td style="padding:9px 10px; vertical-align:top;">XML 斷言</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>OAuth 2.0</strong></td><td style="padding:9px 10px; vertical-align:top;"><strong>授權</strong>(委派存取，非鑑別)</td><td style="padding:9px 10px; vertical-align:top;">access token</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>OIDC</strong></td><td style="padding:9px 10px; vertical-align:top;">OAuth 之上的<strong>鑑別</strong>層</td><td style="padding:9px 10px; vertical-align:top;">ID token(JWT)</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 一句話：<strong>OAuth 是『授權』（給 App 存取你資源的權限），不是『鑑別』</strong>；要『證明你是誰』要用 <strong>OIDC</strong>（建於 OAuth 之上）。SAML 則是企業界的 SSO 老將。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 角色與流程</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>SAML</strong>：使用者→SP(服務提供者)→重導到 <strong>IdP(身分提供者)</strong> 鑑別→IdP 發 <strong>SAML 斷言</strong>→SP 信任放行</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>OAuth 授權碼流程</strong>：使用者同意→授權伺服器發 <strong>code</strong>→App 用 code 換 <strong>access token</strong>→持 token 存取 API</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>為何用授權碼＋PKCE</strong>：避免 token 暴露於瀏覽器；PKCE 防授權碼攔截(行動/SPA 必備)</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — Token 安全</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>JWT</strong>（JSON Web Token）常作 access/ID token：須<strong>驗簽章、驗發行者(iss)、受眾(aud)、過期(exp)</strong>。風險：token 竊取（replay）、過長壽命、未驗簽。對策：<strong>短壽命 access token＋refresh token、HTTPS、適當 scope、token 綁定</strong>。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SAML</strong>（安全斷言標記語言）— <span style="color:#5B6675;">XML 斷言，企業 Web SSO。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">OAuth 2.0</strong>（開放授權）— <span style="color:#5B6675;">委派存取的授權框架(非鑑別)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">OIDC</strong>（OpenID Connect）— <span style="color:#5B6675;">OAuth 上的鑑別層，發 ID token。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">IdP / SP</strong>（身分/服務提供者）— <span style="color:#5B6675;">發身分 vs 信任身分的一方。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Assertion</strong>（斷言）— <span style="color:#5B6675;">IdP 對使用者身分/屬性的聲明。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Access/ID Token</strong>（存取/身分令牌）— <span style="color:#5B6675;">授權憑證 vs 身分憑證。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">PKCE</strong>（授權碼交換證明）— <span style="color:#5B6675;">防授權碼攔截(行動/SPA)。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">JWT</strong>（JSON Web Token）— <span style="color:#5B6675;">含簽章的 token 格式。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>OAuth vs OIDC（最常考）</strong>：OAuth＝<strong>授權</strong>（App 能存取什麼資源）；OIDC＝<strong>鑑別</strong>（你是誰，發 ID token）。用 OAuth 當登入是常見<strong>錯誤</strong>，應用 OIDC。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>SAML vs OIDC</strong>：兩者都能 SSO/鑑別。SAML 用 <strong>XML</strong>、偏<strong>企業 Web</strong>；OIDC 用 <strong>JSON/JWT</strong>、偏<strong>行動/API/現代 App</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>IdP vs SP</strong>：IdP <strong>發行</strong>身分（鑑別使用者）；SP <strong>信任</strong>並消費身分（提供服務）。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>SAML 2.0（OASIS）</strong>、<strong>OAuth 2.0＝RFC 6749、PKCE＝RFC 7636</strong>、<strong>OIDC（OpenID Foundation）</strong>、<strong>JWT＝RFC 7519</strong>。OAuth 2.1 草案整併最佳實務(強制 PKCE、棄用 implicit flow)。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：OAuth token 竊取</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 拿到 token，就拿到你的資料</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;"><strong>OAuth token 竊取/濫用</strong>常見於：惡意第三方 App 誘導使用者授權過大 scope、或 token 經不安全管道(URL/log)外洩後被<strong>重放(replay)</strong>存取 API。也有攻擊濫用 <strong>OAuth 同意畫面</strong>（consent phishing）誘騙授權，繞過密碼與 MFA——因為拿的是『授權』而非『密碼』。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>最小 scope、短壽命 token、嚴格 redirect URI 白名單、PKCE、監控異常授權</strong>；使用者要警覺第三方 App 的授權請求。token 等同鑰匙，需妥善保護與輪替。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：SSO 的單點失效與便利風險</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">SSO 提升便利與集中管控(一處停用即全斷)，但也是<strong>單點失效</strong>：IdP 一旦被攻破或當機，<strong>所有</strong>依賴它的服務都受影響。因此 IdP 需<strong>最高等級保護（MFA、監控、高可用）</strong>。便利與風險的權衡，是聯合身分的核心取捨。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『委派 App 存取資源(授權)』→ OAuth；『證明使用者身分(鑑別)』→ OIDC；『企業 XML Web SSO』→ SAML；『行動 App 防授權碼攔截』→ PKCE。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>OAuth 是授權<strong>不是</strong>鑑別(登入用 OIDC)；IdP 發身分/SP 消費；token 要短命、最小 scope、驗簽章。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>SAML(XML 企業 SSO)、OAuth(授權非鑑別)、OIDC(OAuth 上的鑑別層發 ID token)；token 要短命/最小 scope/驗簽；IdP 發身分、SP 信任。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . OAuth 與 OIDC 的根本差別？<br><span style="color:#0A5A59;">→ OAuth 是授權(存取資源)；OIDC 是鑑別(證明你是誰，發 ID token)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . SAML 中發行身分斷言的一方叫什麼？<br><span style="color:#0A5A59;">→ IdP(身分提供者)；SP(服務提供者)信任並消費。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 行動/SPA 防止授權碼被攔截用什麼？<br><span style="color:#0A5A59;">→ PKCE(授權碼交換證明)。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/-zyg9n0xwgM" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">Single Sign-on / Federated Access MindMap (2 of 2) | CISSP Domain 5 ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/VknzQFVUfIc?t=5828" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 5<span class="ts-note">（從約 97:08 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 63 / 120 · P2-D5-3</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 62</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 62 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D5-2</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 5 · 身分與存取管理 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">身分生命週期與證明深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Lifecycle &amp; Proofing Deep Dive</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:51.67%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D5：身分的生與滅</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">帳號從<strong>建立到撤銷</strong>的全生命週期管理，是 IAM 的根基。今天深入 <strong>provisioning 自動化</strong>、<strong>身分證明（identity proofing）</strong>、NIST 的 <strong>IAL/AAL/FAL</strong> 保證等級、與<strong>定期再認證（recertification）</strong>。殭屍帳號與權限蔓延正是這環失守的後果。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：身分生命週期 → 身分證明與 IAL/AAL/FAL → provisioning 自動化 → recertification → 殭屍帳號。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 身分生命週期</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Provisioning 建立</strong>：依角色給最小必要權限（與 HR 系統連動）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>修改</strong>：轉調時<strong>權限應隨之調整</strong>（防 privilege creep 權限蔓延）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Review/Recertification 定期審查</strong>：主管定期確認權限仍必要</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>De-provisioning 撤銷</strong>：離職/轉調<strong>即時</strong>停用，防殭屍帳號</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — NIST 800-63 三個保證等級</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">等級</td><td style="padding:8px 10px;">管什麼</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">越高越嚴</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>IAL</strong> 身分保證</td><td style="padding:9px 10px; vertical-align:top;">身分證明的嚴謹度(你真的是這人)</td><td style="padding:9px 10px; vertical-align:top;">IAL1→3</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>AAL</strong> 鑑別保證</td><td style="padding:9px 10px; vertical-align:top;">鑑別強度(MFA/抗釣魚)</td><td style="padding:9px 10px; vertical-align:top;">AAL1→3</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>FAL</strong> 聯合保證</td><td style="padding:9px 10px; vertical-align:top;">聯合斷言的安全強度</td><td style="padding:9px 10px; vertical-align:top;">FAL1→3</td></tr>
+    </table>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>身分證明（identity proofing）</strong>是『註冊時確認此人真實身分』（IAL）；<strong>鑑別</strong>是『日後每次登入確認是同一人』（AAL）。兩者不同階段、不同保證軸。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — Provisioning 自動化</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">以 <strong>SCIM</strong> 標準與 HR 系統連動，達成<strong>自動 onboarding/offboarding</strong>：入職自動開帳號與角色、離職自動撤銷。自動化降低人為延遲（殭屍帳號）與錯誤。<strong>RBAC＋角色定義</strong>讓 provisioning 一致可審。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Provisioning</strong>（佈建）— <span style="color:#5B6675;">建立帳號與權限。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">De-provisioning</strong>（撤銷）— <span style="color:#5B6675;">離職/轉調即時停用帳號。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Identity Proofing</strong>（身分證明）— <span style="color:#5B6675;">註冊時確認真實身分(IAL)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">IAL/AAL/FAL</strong>（身分/鑑別/聯合保證等級）— <span style="color:#5B6675;">NIST 800-63 三軸。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Recertification</strong>（再認證）— <span style="color:#5B6675;">定期複核權限仍必要。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Privilege Creep</strong>（權限蔓延）— <span style="color:#5B6675;">轉調未回收致權限累積。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SCIM</strong>（跨網域身分管理系統）— <span style="color:#5B6675;">自動化身分佈建標準。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Orphan/Zombie Account</strong>（孤兒/殭屍帳號）— <span style="color:#5B6675;">離職未撤銷的殘留帳號。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Identity Proofing vs Authentication</strong>：證明是『<strong>註冊時</strong>確認真實身分』(IAL)；鑑別是『<strong>每次登入</strong>確認是同一人』(AAL)。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>IAL vs AAL</strong>：IAL 管『你<strong>是不是</strong>這個人』(身分證明嚴謹度)；AAL 管『<strong>怎麼證明</strong>是你』(鑑別強度/MFA)。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Privilege Creep</strong>：轉調後舊權限未回收、不斷累積——違反最小權限。對策是<strong>定期 recertification</strong> 與轉調連動。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-63（-63A 身分證明/IAL、-63B 鑑別/AAL、-63C 聯合/FAL）</strong>、<strong>SCIM＝RFC 7643/7644</strong>、<strong>ISO/IEC 24760</strong>（身分管理框架）。SOX/法遵常要求定期<strong>存取再認證</strong>留存證據。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：殭屍帳號殘留</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 離職了，帳號還活著</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">外洩調查常發現：<strong>離職員工或停用承包商的帳號仍可登入</strong>（de-provisioning 未落實），被攻擊者或前員工利用。或轉調多次的員工<strong>累積了跨部門權限（privilege creep）</strong>，一旦帳號被盜，攻擊面極大。根因是身分生命週期『建立勤快、撤銷鬆散』。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>自動化撤銷（與 HR 連動）＋定期存取審查</strong>是關鍵；離職撤銷要『即時』而非批次。最小權限要靠 recertification 持續維持。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：服務帳號與非人類身分</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">常被忽略：<strong>服務帳號、API key、機器人、雲端工作負載身分</strong>等『非人類身分』數量遠超人類帳號，卻常<strong>權限過大、密碼永不過期、無人負責</strong>。它們同樣需要生命週期管理、最小權限、輪替與盤點——是現代 IAM 的重大盲點。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『確認註冊者真實身分』→ identity proofing(IAL)；『防權限蔓延』→ 定期 recertification＋轉調連動；『防殭屍帳號』→ 自動化即時 de-provisioning。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>IAL(身分證明) vs AAL(鑑別強度) 別混；撤銷要即時；服務帳號也要納管。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>身分生命週期：佈建→修改(防蔓延)→定期審查→即時撤銷；IAL 身分證明、AAL 鑑別、FAL 聯合；自動化(SCIM)防殭屍帳號。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . IAL 與 AAL 各管什麼？<br><span style="color:#0A5A59;">→ IAL 管身分證明嚴謹度(你是不是這人)；AAL 管鑑別強度(怎麼證明)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 轉調未回收舊權限導致的問題叫什麼？<br><span style="color:#0A5A59;">→ 權限蔓延(privilege creep)，靠 recertification 矯正。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 防止離職員工帳號被濫用的關鍵控制？<br><span style="color:#0A5A59;">→ 即時自動化 de-provisioning(與 HR 連動)。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/BUcoABZzeQ4" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/VknzQFVUfIc?t=3210" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 5<span class="ts-note">（從約 53:30 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 62 / 120 · P2-D5-2</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
