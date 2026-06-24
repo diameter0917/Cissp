@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 3</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <!-- 報頭 -->
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 3 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D1-3</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 1 · 安全與風險管理 &nbsp;|&nbsp; 權重 16%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">風險管理輪廓</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Risk Management Overview</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:2.5%; background-color:#0E7C7B;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <!-- 01 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700;">01 — 風險是整個 CISSP 的引擎</div>
+    <p style="font-size:15.5px; line-height:1.85; margin:10px 0 14px;">
+      如果 CIA 是目標、治理是誰負責，那<strong>風險管理（Risk Management）</strong>就是「<strong>怎麼決定先做什麼</strong>」的引擎。資安資源永遠有限，不可能把所有東西都保護到滿——所以我們用風險把威脅排序、把錢花在刀口上。CISSP 的標準答案幾乎都圍繞一句話：<strong>所有安全決策都應以風險為基礎（risk-based）</strong>。今天先把風險的零件與流程攤開。
+    </p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">
+      🗺️ <strong style="color:#15233B;">今天的地圖</strong>：風險方程式（資產×威脅×弱點）→ 評鑑流程 → 風險回應四選項 → 控制類型全貌。這是 D1 的心臟。
+    </div>
+
+    <!-- 02 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 風險的零件（box-and-arrow）</div>
+    <!-- 示意圖：風險方程式 -->
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:4px 0;">
+      <tr>
+        <td style="text-align:center; background-color:#0E7C7B; color:#FFFFFF; padding:12px 4px; border-radius:6px; font-size:12.5px; vertical-align:middle;">威脅<br>Threat</td>
+        <td style="text-align:center; color:#5B6675; font-size:18px; font-weight:700;">×</td>
+        <td style="text-align:center; background-color:#0E7C7B; color:#FFFFFF; padding:12px 4px; border-radius:6px; font-size:12.5px; vertical-align:middle;">弱點<br>Vulnerability</td>
+        <td style="text-align:center; color:#5B6675; font-size:18px; font-weight:700;">→</td>
+        <td style="text-align:center; background-color:#15233B; color:#FFFFFF; padding:12px 4px; border-radius:6px; font-size:12.5px; vertical-align:middle;">風險<br>Risk</td>
+      </tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">
+      💡 一句話串起來：<strong>威脅（壞事）利用弱點（破口），作用在有價值的資產上，造成的可能損失就是風險</strong>。三者缺一，風險就降到很低——沒有弱點可利用，再強的威脅也打不進來；沒有資產價值，被打中也不痛。
+    </p>
+
+    <!-- 03 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 風險評鑑流程</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>① 辨識資產</strong>　盤點要保護的東西並估其價值</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>② 辨識威脅與弱點</strong>　誰會攻、從哪個破口</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>③ 分析可能性 × 衝擊</strong>　定性或定量評估</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>④ 決定風險回應</strong>　四選項擇一（見下）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>⑤ 監控與檢討</strong>　風險會變，持續循環</td></tr>
+    </table>
+    <p style="font-size:13.5px; line-height:1.7; color:#5B6675; margin:6px 0 4px;">（定量公式 SLE/ARO/ALE 屬「中期」深入主題，初期先記流程順序即可。）</p>
+
+    <!-- 04 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 風險回應的四個選項</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;">
+        <td style="padding:8px 10px; border-radius:6px 0 0 0;">選項</td>
+        <td style="padding:8px 10px;">做法</td>
+        <td style="padding:8px 10px; border-radius:0 6px 0 0;">例子</td>
+      </tr>
+      <tr style="background-color:#F6F8FA;">
+        <td style="padding:9px 10px; vertical-align:top;"><strong>Mitigate</strong><br><span style="color:#5B6675;">降低/緩解</span></td>
+        <td style="padding:9px 10px; vertical-align:top;">部署控制把風險降到可接受</td>
+        <td style="padding:9px 10px; vertical-align:top;">裝防火牆、打修補</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 10px; vertical-align:top;"><strong>Transfer</strong><br><span style="color:#5B6675;">轉移</span></td>
+        <td style="padding:9px 10px; vertical-align:top;">把損失轉給第三方</td>
+        <td style="padding:9px 10px; vertical-align:top;">買資安保險、外包</td>
+      </tr>
+      <tr style="background-color:#F6F8FA;">
+        <td style="padding:9px 10px; vertical-align:top;"><strong>Avoid</strong><br><span style="color:#5B6675;">規避</span></td>
+        <td style="padding:9px 10px; vertical-align:top;">不做這件事，消除風險來源</td>
+        <td style="padding:9px 10px; vertical-align:top;">停掉高風險業務</td>
+      </tr>
+      <tr>
+        <td style="padding:9px 10px; vertical-align:top;"><strong>Accept</strong><br><span style="color:#5B6675;">接受</span></td>
+        <td style="padding:9px 10px; vertical-align:top;">在風險胃納內，知情後承擔</td>
+        <td style="padding:9px 10px; vertical-align:top;">管理層簽署接受</td>
+      </tr>
+    </table>
+    <p style="font-size:14px; line-height:1.7; color:#5B6675; margin:6px 0 4px;">控制後仍留下的，叫<strong>剩餘風險（Residual Risk）</strong>；接受它的必須是<strong>管理層</strong>。</p>
+
+    <!-- 05 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 控制類型全貌（功能 × 性質）</div>
+    <p style="font-size:14.5px; line-height:1.8; margin:10px 0 6px;">控制可從<strong>功能</strong>（做什麼）與<strong>性質</strong>（用什麼）兩個軸看：</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:6px 0 4px; border-collapse:collapse; font-size:13px;">
+      <tr style="background-color:#F6F8FA;">
+        <td style="padding:8px 10px; border:1px solid #E6E9ED;"><strong>功能（6）</strong></td>
+        <td style="padding:8px 10px; border:1px solid #E6E9ED;">嚇阻 Deterrent · 預防 Preventive · 偵測 Detective · 矯正 Corrective · 復原 Recovery · 補償 Compensating</td>
+      </tr>
+      <tr>
+        <td style="padding:8px 10px; border:1px solid #E6E9ED;"><strong>性質（3）</strong></td>
+        <td style="padding:8px 10px; border:1px solid #E6E9ED;">管理 Administrative（政策/訓練）· 技術 Technical（防火牆/加密）· 實體 Physical（門禁/圍籬）</td>
+      </tr>
+    </table>
+    <p style="font-size:13.5px; line-height:1.7; color:#5B6675; margin:6px 0 4px;">（完整的 6×3 對照與情境歸類在「中期 P2-D1-3」深入，初期先有全貌即可。）</p>
+
+    <!-- 06 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Asset</strong>（資產）— <span style="color:#5B6675;">任何有價值、值得保護的事物（資料、系統、人員、商譽）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Threat</strong>（威脅）— <span style="color:#5B6675;">可能造成損害的潛在事件或來源。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Vulnerability</strong>（弱點）— <span style="color:#5B6675;">可被威脅利用的缺陷或破口。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Exposure</strong>（暴露）— <span style="color:#5B6675;">弱點被威脅利用而造成損失的情形。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Residual Risk</strong>（剩餘風險）— <span style="color:#5B6675;">部署控制後仍存在的風險。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Risk Appetite</strong>（風險胃納）— <span style="color:#5B6675;">組織願意承擔的風險水準。</span></td></tr>
+    </table>
+
+    <!-- 07 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Threat vs Vulnerability</strong>：威脅是「外部的壞事」（你管不到，如駭客、地震）；弱點是「自己的破口」（你能修，如未打的修補）。控制主要在「補弱點」。</p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Transfer vs Avoid</strong>：轉移＝風險還在、損失由保險/外包承擔；規避＝乾脆不做、風險源頭消失。買保險不等於規避。</p>
+    </div>
+
+    <!-- 08 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">
+      風險管理有專門框架：<strong>NIST SP 800-37（RMF，風險管理框架）</strong>與 <strong>NIST SP 800-30（風險評鑑指南）</strong>是美國政府基準；<strong>ISO/IEC 27005</strong> 是資安風險管理的國際標準；企業整體層級則有 <strong>ISO 31000</strong> 與 <strong>COSO ERM</strong>。它們細節不同，但骨架一致：辨識 → 評估 → 回應 → 監控。
+    </p>
+
+    <!-- 09 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — 真實事件：把零件拆給你看</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 用一個外洩拆解風險要素</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">
+        以「未修補的 Web 伺服器被入侵、客戶資料外洩」為例：<strong>資產</strong>＝客戶個資與商譽；<strong>威脅</strong>＝外部攻擊者；<strong>弱點</strong>＝未套用的安全修補；<strong>暴露</strong>＝資料外洩事件本身；<strong>風險</strong>＝外洩造成的罰款＋商譽＋訴訟損失。對策若是「建立修補管理流程」＝Mitigate；若再「投保資安險」＝Transfer 剩餘風險。把任何事件套進這個框，你就能在考試裡快速定位每個名詞。
+      </p>
+    </div>
+
+    <!-- 10 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">10 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;">
+        <strong>選最佳答案：</strong>面對「該怎麼處理這個風險」的題目，先看<strong>剩餘風險是否在風險胃納內</strong>。若控制成本 &gt; 潛在損失，正解往往是 <strong>Accept</strong>，而不是再砸錢 Mitigate——資安要划算，不是零風險。
+      </p>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;">
+        <strong>常見陷阱：</strong>「接受風險」必須由<strong>管理層</strong>正式簽署，不是工程師自己決定；買保險是 Transfer 不是 Avoid。
+      </p>
+    </div>
+
+    <!-- 11 -->
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>風險＝威脅利用弱點作用於資產的可能損失；回應四選項 Mitigate/Transfer/Avoid/Accept，控制後的剩餘風險由管理層接受。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1.</strong> 公司把資料中心搬離淹水區以消除水患風險，屬於哪種回應？<br><span style="color:#0A5A59;">→ Avoid（規避：消除風險源）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2.</strong> 部署控制後仍存在的風險叫什麼？誰來接受？<br><span style="color:#0A5A59;">→ 剩餘風險 Residual Risk；由 Senior management 接受。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0; color:#2A3340;"><strong>Q3.</strong> 「外部勒索軟體集團」是威脅還是弱點？「員工未鎖螢幕」呢？<br><span style="color:#0A5A59;">→ 前者威脅 Threat；後者弱點 Vulnerability。</span></p>
+    </details>
+
+    <!-- 12 -->
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/_ksPu19kkCI" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">Risk Management MindMap (3 of 3) ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/J-su239XmCE?t=3841" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 1<span class="ts-note">（從約 64:01 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- 13 今日時事 -->
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="index.html" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 3 / 120 · P1-D1-3</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

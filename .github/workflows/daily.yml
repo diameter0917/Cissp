@@ -1,0 +1,57 @@
+name: CISSP Daily Newsletter
+
+# 台灣平日早上 7 點寄信。台北 07:00 = 前一天 UTC 23:00；
+# 台北週一～週五 對應 UTC 週日～週四，故 0-4。
+on:
+  schedule:
+    - cron: '0 23 * * 0-4'
+  workflow_dispatch:        # 手動測試用
+    inputs:
+      send_date:
+        description: '覆蓋寄送日期 (YYYY-MM-DD，留空=今天/台北)'
+        required: false
+        default: ''
+      dry_run:
+        description: 'DRY_RUN（1=不實際寄信，只測試流程）'
+        required: false
+        default: '0'
+
+permissions:
+  contents: write           # 用內建 GITHUB_TOKEN 把 sent_log.json push 回去
+
+concurrency:
+  group: cissp-daily
+  cancel-in-progress: false
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout (最新，含時事 Routine commit)
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Send daily newsletter
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          RECIPIENT_EMAIL: ${{ secrets.RECIPIENT_EMAIL }}
+          SEND_DATE: ${{ github.event.inputs.send_date }}
+          DRY_RUN: ${{ github.event.inputs.dry_run }}
+        run: python scripts/send_daily.py
+
+      - name: Commit sent log (若有變更)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -n "$(git status --porcelain sent_log.json docs/sent_log.json)" ]; then
+            git add sent_log.json docs/sent_log.json
+            git commit -m "chore: update sent log [skip ci]"
+            git push
+          else
+            echo "無寄送狀態變更，略過 commit。"
+          fi
