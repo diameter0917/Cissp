@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 15</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 15 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D3-5</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 3 · 安全架構與工程 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">實體與場所安全</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Physical &amp; Site Security</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:12.5%; background-color:#0E7C7B;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 別忘了實體世界</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">再強的加密也擋不住「有人把伺服器搬走」或「機房淹水斷電」。<strong>實體與場所安全（Physical Security）</strong>是 Domain 3 的收尾，也是常被技術人輕忽的考點。今天看<strong>場所設計（CPTED）、電力、環境/空調、滅火、機房分級</strong>。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週回顧</strong>：①設計原則 → ②安全模型 → ③密碼學 → ④系統/雲端弱點 → ⑤<strong>今天：實體與場所安全</strong>。下週進入 Domain 4（通訊與網路安全）。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — CPTED 與分層實體防護</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>CPTED（Crime Prevention Through Environmental Design，以環境設計預防犯罪）</strong>透過三概念降低犯罪：<strong>自然監視</strong>（視線開闊）、<strong>自然存取控制</strong>（動線引導）、<strong>領域感</strong>（明確界線）。實體防護同樣採縱深：<strong>圍籬 → 門禁 → 警衛/CCTV → 上鎖機櫃</strong>層層套疊。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 電力與環境</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>電力</strong>：UPS 撐短時間、發電機撐長時間；認識 brownout（持續低電壓）/ blackout（停電）/ surge（突波）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>環境/空調（HVAC）</strong>：控溫控濕；機房常用<strong>正壓</strong>防塵、冷熱通道（hot/cold aisle）配置散熱</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>偵測</strong>：煙霧/溫度/漏水感測，及早告警</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 滅火系統</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">類型</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">適用/重點</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Wet pipe</strong> 濕管</td><td style="padding:9px 10px; vertical-align:top;">管內常存水，最常見；但機房漏水風險</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Dry pipe / Pre-action</strong> 乾管/預動</td><td style="padding:9px 10px; vertical-align:top;">平時無水，降低誤觸漏水，適合機房</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Gas（如 FM-200）</strong> 氣體</td><td style="padding:9px 10px; vertical-align:top;">不傷設備、適合機房；須注意人員氧氣</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Class 分級</strong></td><td style="padding:9px 10px; vertical-align:top;">電器火災屬 <strong>Class C</strong>（美），須用不導電滅火劑</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 機房滅火優先考量「<strong>不傷設備＋人員安全</strong>」：常用氣體系統或預動式；電器火災不可用水或一般泡沫。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CPTED</strong>（環境設計預防犯罪）— <span style="color:#5B6675;">自然監視/存取控制/領域感降低犯罪。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">UPS</strong>（不斷電系統）— <span style="color:#5B6675;">停電時短時供電，配合發電機。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Brownout</strong>（持續低電壓）— <span style="color:#5B6675;">電壓不足，可能損壞設備。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Hot/Cold Aisle</strong>（冷熱通道）— <span style="color:#5B6675;">機房散熱配置，提升冷卻效率。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Mantrap / Access Control Vestibule</strong>（雙門互鎖）— <span style="color:#5B6675;">一次一人通過，防尾隨（tailgating）。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Fire Suppression</strong>（滅火系統）— <span style="color:#5B6675;">濕管/乾管/氣體；機房重視不傷設備與人安。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Fail-safe vs Fail-secure（門禁）</strong>：火災等<strong>人命</strong>情境，門應 fail-<strong>safe</strong>（斷電即<strong>開</strong>讓人逃生）；高安全資產區可能要 fail-<strong>secure</strong>（斷電即<strong>鎖</strong>）。看『保命 vs 保資產』取捨。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Blackout vs Brownout</strong>：blackout＝完全停電；brownout＝持續電壓不足。兩者都靠 UPS/發電機緩解。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">機房可參考 <strong>Uptime Institute Tier I–IV</strong> 分級（冗餘度遞增）；<strong>NIST SP 800-53</strong> 的 PE（Physical &amp; Environmental）控制族涵蓋實體與環境要求；消防分級參考 NFPA。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：機房火災/斷電</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 雲端也怕火與電</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">2021 年某大型歐洲資料中心發生<strong>嚴重火災</strong>，導致大量客戶網站與資料中斷，部分<strong>未異地備份</strong>的客戶永久失去資料——再次證明<strong>可用性（A）與實體/環境控制</strong>是真實風險，不是紙上談兵。電力與冷卻一旦失效，整個機房可在數分鐘內停擺。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：實體安全＝CIA 的<strong>可用性</strong>地基；異地備份、冗餘電力/冷卻、滅火設計缺一不可。呼應 Domain 1 的 BCP/DR。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「防尾隨進入機房」→ <strong>mantrap/雙門互鎖</strong>；「機房滅火不傷設備」→ <strong>氣體系統</strong>；「停電維持運作」→ <strong>UPS＋發電機</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>涉及人命時門禁應 <strong>fail-safe（開門逃生）</strong>而非鎖死；電器火災（Class C）不可用水。實體控制常是『最佳答案』裡被忽略的那個。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>實體安全守 CIA 的可用性：CPTED 設計、分層門禁、UPS/發電機、HVAC 與冷熱通道、機房用氣體/預動滅火，並異地備份。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 防尾隨（tailgating）最有效的實體控制？<br><span style="color:#0A5A59;">→ Mantrap／雙門互鎖（access control vestibule）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 機房滅火為何偏好氣體系統？<br><span style="color:#0A5A59;">→ 不傷電子設備、滅火快；但須注意人員氧氣。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 火災時資料中心大門該 fail-safe 還 fail-secure？<br><span style="color:#0A5A59;">→ Fail-safe（斷電開門）以保人命逃生。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/7ESQwNJ9HXU" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 3 Review | Mind Map (9 of 9) | Physical Security ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/P5So8_NKxz4?t=8398" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 3<span class="ts-note">（從約 139:58 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 15 / 120 · P1-D3-5</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

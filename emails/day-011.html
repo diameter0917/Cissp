@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 11</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 11 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D3-1</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 3 · 安全架構與工程 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">Domain 3 全景與安全設計原則</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Domain 3 Big Picture &amp; Secure Design Principles</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:9.17%; background-color:#0E7C7B;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — Domain 3 在講什麼</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">Domain 3（<strong>Security Architecture and Engineering，安全架構與工程</strong>）佔 <strong>13%</strong>，是技術含量最高的章之一：從<strong>安全設計原則</strong>、<strong>安全模型</strong>、<strong>密碼學</strong>到<strong>系統/雲端/實體</strong>。初期先把這張大地圖建起來——今天從貫穿全章的<strong>安全設計原則（Secure Design Principles）</strong>開始，它們是後面所有技術的「設計哲學」。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週（Domain 3 · 初期）路線</strong>：①今天 設計原則 → ②安全模型 → ③密碼學輪廓 → ④系統與雲端弱點 → ⑤實體與場所安全。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 核心安全設計原則</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">原則</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">一句話</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Least Privilege</strong><br><span style='color:#5B6675;'>最小權限</span></td><td style="padding:9px 10px; vertical-align:top;">只給完成工作所需的最小權限</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Defense in Depth</strong><br><span style='color:#5B6675;'>縱深防禦</span></td><td style="padding:9px 10px; vertical-align:top;">多層控制，單點失效不致全破</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Separation of Duties</strong><br><span style='color:#5B6675;'>職責分離</span></td><td style="padding:9px 10px; vertical-align:top;">關鍵任務拆給多人，防舞弊</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Fail-Safe / Fail-Secure</strong><br><span style='color:#5B6675;'>失效安全</span></td><td style="padding:9px 10px; vertical-align:top;">出錯時預設拒絕、保持安全狀態</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Secure Defaults</strong><br><span style='color:#5B6675;'>安全預設</span></td><td style="padding:9px 10px; vertical-align:top;">預設最嚴，按需放寬</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Keep It Simple</strong><br><span style='color:#5B6675;'>簡化</span></td><td style="padding:9px 10px; vertical-align:top;">越複雜越多漏洞（economy of mechanism）</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 零信任（Zero Trust）</div>
+    <div style="border-left:3px solid #0E7C7B; padding:2px 0 2px 14px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.7; margin:0;">傳統「城牆內就信任」已不適用。<strong>Zero Trust（零信任）</strong>的核心是 <strong>“never trust, always verify”</strong>——不論在不在內網，每次存取都要驗證身分、裝置與情境，並落實最小權限與微分段（micro-segmentation）。NIST SP 800-207 是其權威框架。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Least Privilege</strong>（最小權限）— <span style="color:#5B6675;">只授予完成任務所需的最低存取。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Defense in Depth</strong>（縱深防禦）— <span style="color:#5B6675;">多層、重疊的控制，避免單點突破。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Trust but Verify → Zero Trust</strong>（零信任）— <span style="color:#5B6675;">不預設信任，每次存取都驗證。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Fail-Secure</strong>（失效安全）— <span style="color:#5B6675;">系統失效時預設進入安全（拒絕）狀態。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Attack Surface</strong>（攻擊面）— <span style="color:#5B6675;">可被攻擊的入口總和，應盡量縮小。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Threat Modeling</strong>（威脅建模）— <span style="color:#5B6675;">系統化找出威脅（STRIDE 等），設計階段即用。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Fail-Safe vs Fail-Secure</strong>：兩詞在 CISSP 常交替使用，重點是「失效時偏向<strong>安全</strong>（拒絕存取）」。但<strong>涉及人命</strong>時（如門禁火災）可能要 fail-<strong>safe</strong>＝開門保命——看情境取捨『安全 vs 生命』。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Defense in Depth vs Layered Defense</strong>：幾乎同義；重點是「<strong>多樣且重疊</strong>」的控制，不是單靠一道強牆。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">經典的 <strong>Saltzer &amp; Schroeder</strong> 設計原則（least privilege、economy of mechanism、fail-safe defaults、complete mediation 等）是本章思想源頭；<strong>NIST SP 800-160</strong> 談安全系統工程；<strong>NIST SP 800-207</strong> 定義零信任架構（ZTA）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：缺縱深防禦，單點突破</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 一道牆破了，全部淪陷</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">許多重大入侵的共通點，是組織把資源全押在「<strong>邊界防火牆</strong>」這一道牆上——一旦攻擊者透過釣魚或漏洞進到內網，內部<strong>缺乏分段、缺乏內部驗證</strong>，便能長驅直入、橫向移動到核心系統。這正是<strong>缺乏縱深防禦</strong>與<strong>過度信任內網</strong>的後果。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">對策呼應今天的原則：<strong>多層控制＋最小權限＋零信任的微分段</strong>，讓單一控制失效不會直接等於全面淪陷。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「降低單點失效風險」→ <strong>Defense in Depth</strong>；「防內部舞弊」→ <strong>Separation of Duties</strong>；「員工只能存取自己工作所需」→ <strong>Least Privilege</strong>。把原則對應到情境關鍵字。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>Security through obscurity（靠隱匿求安全）<strong>不是</strong>有效原則，常是錯誤選項。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>Domain 3 從安全設計原則起步：最小權限、縱深防禦、職責分離、安全預設、零信任——它們是後續模型/密碼/架構的設計哲學。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 「不論內外網，每次存取都驗證」是什麼概念？<br><span style="color:#0A5A59;">→ Zero Trust 零信任（never trust, always verify）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 防止單點失效導致全面淪陷的原則？<br><span style="color:#0A5A59;">→ Defense in Depth 縱深防禦（多層重疊控制）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 「靠隱藏實作細節來求安全」可靠嗎？<br><span style="color:#0A5A59;">→ 不可靠；security through obscurity 不應作為主要控制。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/qZB6_lp9M30" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 3 Review / Mind Map (1 of 9) | Models and Frameworks ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/P5So8_NKxz4?t=184" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 3<span class="ts-note">（從約 03:04 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 11 / 120 · P1-D3-1</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

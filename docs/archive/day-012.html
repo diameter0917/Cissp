@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 12</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 12 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D3-2</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 3 · 安全架構與工程 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">安全模型輪廓</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Security Models Overview</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:10.0%; background-color:#0E7C7B;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 安全模型：把安全規則「數學化」</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;"><strong>安全模型（Security Models）</strong>把抽象的安全政策變成可驗證的規則。初期不必記死每條公理，先抓「<strong>每個模型在保護 C 還是 I</strong>、它的招牌規則是什麼」。考試最愛問「no read up / no write down」這類規則歸屬。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：Bell-LaPadula（機密）→ Biba（完整）→ Clark-Wilson（完整/交易）→ Brewer-Nash（利益衝突）。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 三大模型一覽</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">模型</td><td style="padding:8px 10px;">保護</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">招牌規則</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Bell-LaPadula</strong></td><td style="padding:9px 10px; vertical-align:top;">機密性 C</td><td style="padding:9px 10px; vertical-align:top;"><strong>no read up</strong>（不可讀更高密級）<br><strong>no write down</strong>（*-property）</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Biba</strong></td><td style="padding:9px 10px; vertical-align:top;">完整性 I</td><td style="padding:9px 10px; vertical-align:top;"><strong>no read down</strong><br><strong>no write up</strong></td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Clark-Wilson</strong></td><td style="padding:9px 10px; vertical-align:top;">完整性 I</td><td style="padding:9px 10px; vertical-align:top;">well-formed transactions、職責分離、需經程式（不可直接動資料）</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Brewer-Nash</strong><br><span style='color:#5B6675;'>Chinese Wall</span></td><td style="padding:9px 10px; vertical-align:top;">利益衝突</td><td style="padding:9px 10px; vertical-align:top;">依存取歷史動態阻擋競爭對手資料</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 記憶法：<strong>BLP 顧機密（怕往下洩）→ no write down</strong>；<strong>Biba 顧完整（怕往上汙染）→ no write up</strong>。兩者規則正好相反。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — Bell-LaPadula 的兩條 + 一條</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Simple Security Property</strong>：no read up（不能讀比自己高的密級）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>* (star) Property</strong>：no write down（不能寫到比自己低的密級，防洩漏）</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Strong * Property</strong>：只能在同級讀寫</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Bell-LaPadula (BLP)</strong>（機密性模型）— <span style="color:#5B6675;">no read up / no write down，軍方分級系統基礎。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Biba</strong>（完整性模型）— <span style="color:#5B6675;">no read down / no write up，防完整性被低可信來源污染。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Clark-Wilson</strong>（完整性模型）— <span style="color:#5B6675;">透過 well-formed transaction 與職責分離保完整。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Brewer-Nash</strong>（利益衝突模型）— <span style="color:#5B6675;">Chinese Wall，依歷史動態隔離競爭資料。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Reference Monitor</strong>（參考監視器）— <span style="color:#5B6675;">所有存取的仲裁者，須 tamperproof、always invoked、verifiable。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Security Kernel</strong>（安全核心）— <span style="color:#5B6675;">實作 reference monitor 的硬/韌/軟體核心。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>BLP vs Biba</strong>：BLP＝<strong>機密</strong>（防往下洩漏，no write down）；Biba＝<strong>完整</strong>（防往上污染，no write up）。看到「保密/分級」想 BLP，看到「資料正確性/防竄改」想 Biba。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>模型 vs 標準</strong>：模型（BLP/Biba）是<strong>理論規則</strong>；Common Criteria/EAL 是<strong>評估產品</strong>的標準（中期深入）。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">這些模型源於 1970–80 年代美國國防研究；現代產品安全性則用 <strong>Common Criteria（ISO/IEC 15408）</strong>以 <strong>EAL1–7</strong> 評級（中期 P2-D3-1 深入）。<strong>Reference Monitor</strong> 概念仍是作業系統存取控制設計的基石。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：軍事分級系統</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 為什麼軍方要 no write down</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">在多密級（multilevel）系統中，一名持有 Top Secret 權限的人員若能把資料「寫到」Unclassified 區，就可能（無論有意或惡意程式所為）把機密<strong>降級洩漏</strong>。<strong>Bell-LaPadula 的 no write down（*-property）</strong>正是為防這種洩漏而生——這也是它成為軍事分級系統理論基礎的原因。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">反過來，銀行帳務系統更怕「資料被錯誤寫入污染」，那是 <strong>Biba</strong> 與 <strong>Clark-Wilson</strong> 的守備範圍。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>給規則問模型——「no write down」→ <strong>BLP</strong>（機密）；「no write up」→ <strong>Biba</strong>（完整）。先判斷題目在乎 C 還是 I 就能秒選。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>把 BLP 與 Biba 規則對調是最常見錯誤；Clark-Wilson 的重點是「<strong>使用者不能直接改資料，須透過程式</strong>」＋職責分離。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>BLP 顧機密（no read up / no write down）、Biba 顧完整（no read down / no write up）、Clark-Wilson 用交易與職責分離保完整、Brewer-Nash 擋利益衝突。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 「no write down」屬於哪個模型？保護什麼？<br><span style="color:#0A5A59;">→ Bell-LaPadula；保護機密性 Confidentiality。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 想防止低可信來源污染高完整資料，用哪個模型？<br><span style="color:#0A5A59;">→ Biba（no write up / no read down）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . Clark-Wilson 的核心機制？<br><span style="color:#0A5A59;">→ Well-formed transactions ＋ 職責分離；使用者須透過程式存取資料。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/qZB6_lp9M30" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 3 Review / Mind Map (1 of 9) | Models and Frameworks ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/P5So8_NKxz4?t=2548" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 3<span class="ts-note">（從約 42:28 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="index.html" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 12 / 120 · P1-D3-2</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
