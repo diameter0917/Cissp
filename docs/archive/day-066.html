@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 66</title>
+</head>
+<body style="margin:0; padding:0; background-color:#ECEFF3;">
+<div style="background-color:#ECEFF3; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+
+  <div style="background-color:#15233B; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 66 / 120</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D6-1</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 6 · 安全評估與測試 &nbsp;|&nbsp; 權重 12%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">弱點評估與滲透測試深入</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Vuln &amp; Pentest Deep Dive</div>
+  </div>
+  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:55.0%; background-color:#3D52A0;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D6：把測試做到位</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">Domain 6（12%）中期深入<strong>弱點掃描器運作</strong>、<strong>滲透測試的階段</strong>與<strong>ROE/scope</strong> 的重要性。初期我們知道『找 vs 打』，中期要懂『怎麼打得安全、合法、有結構』。</p>
+    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週（Domain 6 · 中期）</strong>：①弱點/滲透深入 → ②靜態/動態/介面測試 → ③日誌/合成監控/BAS → ④稽核與 SOC → ⑤KPI/KRI 與計畫評估。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 掃描器運作與類型</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>弱點掃描</strong>：比對已知弱點資料庫(CVE)；分<strong>已認證(credentialed)</strong>(登入掃，更準) vs <strong>未認證</strong></td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>主動 vs 被動</strong>：主動發送探測(可能影響系統) vs 被動觀測流量</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>誤報需人工驗證</strong>；結果以 <strong>CVSS</strong> 分級排序</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>合規掃描</strong>：對照基準(如 CIS Benchmark)檢查設定</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 滲透測試階段</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;">①<strong>Planning/ROE</strong> 規劃與交戰規則 → ②<strong>Recon</strong> 偵察 → ③<strong>Scanning/Enumeration</strong> 掃描列舉</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;">④<strong>Exploitation</strong> 利用 → ⑤<strong>Post-exploitation</strong> 後滲透(橫向/提權) → ⑥<strong>Reporting</strong> 報告</td></tr>
+      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>ROE(Rules of Engagement)</strong>：界定範圍、時間、可用手段、禁區、聯絡人、授權書</td></tr>
+    </table>
+    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 <strong>授權書(get-out-of-jail letter)＋ROE 是合法前提</strong>。未授權＝非法入侵。範圍(scope)界定不清是滲透測試最常見的糾紛來源。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 紅/藍/紫隊</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
+      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">隊</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">角色</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Red Team</strong> 紅隊</td><td style="padding:9px 10px; vertical-align:top;">模擬真實對手、目標導向(可含社交工程/實體)</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Blue Team</strong> 藍隊</td><td style="padding:9px 10px; vertical-align:top;">防守、偵測與回應</td></tr>
+      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Purple Team</strong> 紫隊</td><td style="padding:9px 10px; vertical-align:top;">紅藍協作、即時回饋改善偵測</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>White Team</strong></td><td style="padding:9px 10px; vertical-align:top;">裁判/協調，制定規則</td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Vulnerability Scanning</strong>（弱點掃描）— <span style="color:#5B6675;">比對已知弱點(CVE)、自動化。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Credentialed Scan</strong>（已認證掃描）— <span style="color:#5B6675;">登入掃描，結果更完整準確。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Penetration Test</strong>（滲透測試）— <span style="color:#5B6675;">實際利用弱點驗證可被攻破。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ROE</strong>（交戰規則）— <span style="color:#5B6675;">界定範圍/時間/手段/授權。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Scope</strong>（範圍）— <span style="color:#5B6675;">明確界定可測邊界。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Red/Blue/Purple Team</strong>（紅/藍/紫隊）— <span style="color:#5B6675;">攻擊/防守/協作。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CVSS</strong>（通用弱點評分）— <span style="color:#5B6675;">量化嚴重度以排序。</span></td></tr>
+    </table>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>弱點評估 vs 滲透測試</strong>：評估＝<strong>廣度找弱點</strong>(不利用)；滲透＝<strong>深度利用</strong>(證明風險)。預算/時間有限先做評估。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Red Team vs Pentest</strong>：滲透測試聚焦<strong>找漏洞</strong>(範圍內、時間短)；紅隊是<strong>目標導向的對抗演練</strong>(模擬真實 APT、測整體偵測回應、含社交/實體)，更全面隱蔽。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Credentialed vs Uncredentialed</strong>：登入掃更完整(看到內部弱點)；未登入模擬外部視角。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-115</strong>（技術評估）、<strong>PTES</strong>、<strong>OSSTMM</strong>、<strong>OWASP Testing Guide</strong>；CVSS 由 FIRST 維護。合規(PCI DSS)強制定期掃描與滲透測試。滲透測試前必備<strong>書面授權與 ROE</strong>。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：紅隊演練</div>
+    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 不只找漏洞，更測『你抓不抓得到』</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">成熟組織會做<strong>紅隊演練</strong>：一支團隊在受控授權下模擬真實對手(釣魚取得立足點→橫向移動→提權→達成目標如取得皇冠資料)，<strong>同時測試藍隊的偵測與回應能力</strong>。常見發現是：技術控制不差，但<strong>偵測盲點與回應流程</strong>讓攻擊者長驅直入而未被察覺。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>紅隊測的是『整體韌性』而非單一漏洞</strong>；紫隊協作把演練發現轉化為偵測規則與流程改善，形成持續精進的循環。</p>
+    </div>
+    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：bug bounty 與漏洞揭露</div>
+      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">除內部測試，許多組織開<strong>漏洞獎勵(bug bounty)</strong>與<strong>協調揭露政策(CVD/security.txt)</strong>，讓外部研究者合法回報漏洞。重點是建立<strong>安全港(safe harbor)</strong>條款保護善意研究者，並有流程接收、驗證、修補與致謝。這把『不可控的外部探測』導向『可控的協作』。</p>
+    </div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『滲透測試的合法前提』→ 書面授權＋ROE/scope；『測整體偵測回應、模擬真實對手』→ 紅隊；『更完整的內部弱點視角』→ credentialed scan。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>未授權滲透＝犯法；弱點評估(找)≠滲透(打)≠紅隊(對抗演練)；scope 界定不清是糾紛源。</p>
+    </div>
+    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>弱點掃描比對 CVE(credentialed 更準)；滲透測試六階段、需 ROE/授權；紅隊測整體偵測回應、紫隊協作改善。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 進行滲透測試前不可或缺的兩項？<br><span style="color:#0A5A59;">→ 書面授權(get-out-of-jail letter)與 ROE/scope 界定。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 紅隊演練與一般滲透測試的差別？<br><span style="color:#0A5A59;">→ 紅隊目標導向、模擬真實對手、測整體偵測回應(含社交/實體)；滲透聚焦找漏洞。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 為何用 credentialed scan？<br><span style="color:#0A5A59;">→ 登入掃描能看到內部弱點，結果更完整準確。</span></p>
+    </details>
+    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/vZ0S8GdWiIk" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 6 Review / Mind Map (2 of 3) | Vulnerability Assessment and Penetration Testing ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/lt_-KqplT5o?t=1033" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 6<span class="ts-note">（從約 17:13 開始）</span> ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 66 / 120 · P2-D6-1</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>
