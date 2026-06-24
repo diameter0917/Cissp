@@ -1,0 +1,155 @@
+{
+  "videos": [
+    {
+      "id": "J-su239XmCE",
+      "title": "CISSP Full Course 2026 – D1 Security and Risk Management",
+      "url": "https://youtu.be/J-su239XmCE",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "course",
+      "domain": "D1",
+      "transcript_chars": 68982,
+      "transcript_file": "transcripts/J-su239XmCE.txt"
+    },
+    {
+      "id": "dNIcfKYeJI8",
+      "title": "CISSP Full Course 2026 – D2 Asset Security",
+      "url": "https://youtu.be/dNIcfKYeJI8",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "course",
+      "domain": "D2",
+      "transcript_chars": 41695,
+      "transcript_file": "transcripts/dNIcfKYeJI8.txt"
+    },
+    {
+      "id": "P5So8_NKxz4",
+      "title": "CISSP Full Course 2026 – D3 Security Architecture and Engineering",
+      "url": "https://youtu.be/P5So8_NKxz4",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "course",
+      "domain": "D3",
+      "transcript_chars": 107698,
+      "transcript_file": "transcripts/P5So8_NKxz4.txt"
+    },
+    {
+      "id": "tQCgAteRyIo",
+      "title": "CISSP Full Course 2026 – D4 Communication and Network Security",
+      "url": "https://youtu.be/tQCgAteRyIo",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "course",
+      "domain": "D4",
+      "transcript_chars": 105397,
+      "transcript_file": "transcripts/tQCgAteRyIo.txt"
+    },
+    {
+      "id": "VknzQFVUfIc",
+      "title": "CISSP Full Course 2026 – D5 Identity and Access Management (IAM)",
+      "url": "https://youtu.be/VknzQFVUfIc",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "course",
+      "domain": "D5",
+      "transcript_chars": 75035,
+      "transcript_file": "transcripts/VknzQFVUfIc.txt"
+    },
+    {
+      "id": "lt_-KqplT5o",
+      "title": "CISSP Full Course 2026 – D6 Security Assessment and Testing",
+      "url": "https://youtu.be/lt_-KqplT5o",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "course",
+      "domain": "D6",
+      "transcript_chars": 40704,
+      "transcript_file": "transcripts/lt_-KqplT5o.txt"
+    },
+    {
+      "id": "8zM89KMRniM",
+      "title": "CISSP Full Course 2026 – D7 Security Operations",
+      "url": "https://youtu.be/8zM89KMRniM",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "course",
+      "domain": "D7",
+      "transcript_chars": 74430,
+      "transcript_file": "transcripts/8zM89KMRniM.txt"
+    },
+    {
+      "id": "vg-o5lKcwsA",
+      "title": "CISSP Full Course 2026 – D8 Software Development Security",
+      "url": "https://youtu.be/vg-o5lKcwsA",
+      "playlists": [
+        "course_2026"
+      ],
+      "category": "course",
+      "domain": "D8",
+      "transcript_chars": 65507,
+      "transcript_file": "transcripts/vg-o5lKcwsA.txt"
+    }
+  ],
+  "by_category": {
+    "course": [
+      "J-su239XmCE",
+      "dNIcfKYeJI8",
+      "P5So8_NKxz4",
+      "tQCgAteRyIo",
+      "VknzQFVUfIc",
+      "lt_-KqplT5o",
+      "8zM89KMRniM",
+      "vg-o5lKcwsA"
+    ],
+    "mindmap": [],
+    "practice": [],
+    "other": []
+  },
+  "domain_chapters": {
+    "D1": {
+      "video_id": "J-su239XmCE",
+      "chapters": []
+    },
+    "D2": {
+      "video_id": "dNIcfKYeJI8",
+      "chapters": []
+    },
+    "D3": {
+      "video_id": "P5So8_NKxz4",
+      "chapters": []
+    },
+    "D4": {
+      "video_id": "tQCgAteRyIo",
+      "chapters": []
+    },
+    "D5": {
+      "video_id": "VknzQFVUfIc",
+      "chapters": []
+    },
+    "D6": {
+      "video_id": "lt_-KqplT5o",
+      "chapters": []
+    },
+    "D7": {
+      "video_id": "8zM89KMRniM",
+      "chapters": []
+    },
+    "D8": {
+      "video_id": "vg-o5lKcwsA",
+      "chapters": []
+    }
+  },
+  "playlists": {
+    "course_2026": "https://youtube.com/playlist?list=PLZKdGEfEyJhLd-pJhAD7dNbJyUgpqI4pu",
+    "mindmap": "https://youtube.com/playlist?list=PLZKdGEfEyJhKWyryIvx_jm1jn6ZMTi7gW",
+    "practice": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+  },
+  "note": "course 8 支已確定登記（ID 已知、有字幕）；mindmap/practice 缺逐片標題，生成時退回對應 playlist URL（大綱備援路徑）。category 依影片內容判定。"
+}
