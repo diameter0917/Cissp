@@ -69,6 +69,44 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 為什麼『有備份』還不夠？<br><span style="color:#0A5A59;">→ 未經還原測試的備份可能不可用；需定期還原演練。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 定期複核並移除多餘權限的活動？<br><span style="color:#0A5A59;">→ 存取審查／recertification。</span></p>
     </details>
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.3 安全流程資料與度量）</div>
+<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍管理審查與度量</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">Management review 管理審查＝高層核可安全計畫。<strong>KPI 關鍵績效指標</strong>＝<strong>回顧型</strong>（已開弱點數、修補時間、重複稽核發現）；<strong>KRI 關鍵風險指標</strong>＝<strong>前瞻型</strong>（EOL 系統比例、未評估的第三方數）。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍其他流程資料</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;">Backup verification（查日誌/雜湊/實際還原）、訓練意識（釣魚演練點擊率）、DR/BC 定期測試。</p>
+      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §6.3 安全流程資料與度量。</p>
+      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §6.3 安全流程資料（KPI/KRI）。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.3.3 Key performance and risk indicators</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Key Performance Indicators (KPIs)</strong>: measures that provide significance of showing the performance of an ISMS compared to stated goals; KPIs are backward looking</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Choose the factors that can show the state of security</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Define baselines for some (or better yet all) of the factors</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Develop a plan for periodically capturing factor values (use automation!)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Analyze and interpret the data and report the results</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Key metrics or KPIs that should be monitored by security managers may vary from org to org, but could include:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• number of open vulns</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• time to resolve vulns</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• vulnerability/defect recurrence</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• number of compromised accounts</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• number of software flaws detected in pre-production scanning</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• repeat audit findings</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• user attempts to visit known malicious sites</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Develop a dashboard of metrics and track them</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Key Risk Indicators (KRIs)</strong>: indicate the level of exposure to operational risk; they help monitor potential future shifts in risk conditions or emerging risks; KRIs are forward-looking; example KRIs might include:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• percentage of systems running unsupported/EOL software</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• number of third-party vendors without current security assessments</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• volume of unencrypted sensitive data transmissions</div>
+<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.3.2 Management review and approval</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Account management reviews ensure that users only retain authorized permissions and that unauthorized modifications do not occur</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Full review of accounts: time-consuming to review all, and often done only for highly privileged accounts</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Organizations that don’t have time to conduct a full review process may use sampling, but only if sampling is truly random</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Adding accounts: should be a well-defined process, and users should sign an AUP</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Adding, removing, and modifying accounts and permissions should be carefully controlled and documented</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Accounts that are no longer needed should be suspended</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• ISO 9000 standards use a Plan-Do-Check-Act loop</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• plan: foundation of everything in the ISMS, determines goals and drives policies</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• do: security operations</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• check: security assessment and testing (this objective)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• act: formally do the management review</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    </div>
+    <!-- /09b -->
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">

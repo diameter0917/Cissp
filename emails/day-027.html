@@ -71,6 +71,90 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 模擬無內部資訊的外部攻擊者屬哪種箱型？<br><span style="color:#0A5A59;">→ 黑箱（black box）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 進行滲透測試前最重要的前置是什麼？<br><span style="color:#0A5A59;">→ 書面授權與 ROE/範圍界定。</span></p>
     </details>
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.1 弱點 / §6.2.2 滲透）</div>
+<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍弱點評估 vs 滲透測試</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>Vulnerability Assessment</strong>：找弱點、<strong>不實際利用</strong>、多自動化、快。<strong>Penetration Test</strong>：<strong>實際嘗試利用</strong>（exploit）、需明確授權與 rules of engagement。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍SCAP 與測試視角</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>SCAP</strong> 標準化：<strong>CVE</strong>（命名）、<strong>CVSS</strong>（評分）、CCE/CPE/OVAL。測試視角：<strong>white-box</strong>（已知/含原始碼）／gray-box（部分）／<strong>black-box</strong>（未知/模擬外部）。<strong>Red 攻／Blue 守／Purple 協作</strong>。</p>
+      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §6.2.1 弱點 / §6.2.2 滲透。</p>
+      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §6.2.1 弱點評估、§6.2.2 滲透測試。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.2.1 Vulnerability assessment</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Vulnerabilities</strong>: weaknesses in systems and security controls that might be exploited by a threat</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Vulnerability assessments</strong>: examining systems for these weaknesses; steps in the assessment:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Reconnaissance: passively gather publicly available info</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Enumeration: active network discovery (i.e. find target IP address and ports)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Vulnerability Analysis: Identify potential vulns to be exploited</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Execution: attempt to exploit vulns; applies only if you are doing a penetration test</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Document Findings: reporting on findings and severity</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• The goal of a vulnerability assessment is to identify elements in an environment that are not adequately protected -- and not necessarily from a technical perspective; you can also assess the vulnerability of physical security or the external reliance on power, for instance</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• can include personnel testing, physical testing, system and network testing, and other facilities tests</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Vulnerability assessments are some of the most important testing tools in the information security professional’s toolkit</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Security Content Automation Protocol (SCAP)</strong>: provides a common framework and suite of specifications that standardize how software flaws and security configuration is communicated both to machines and humans; provides discussion and facilitation of automation of interactions between different security systems (see <a href='https://csrc.nist.gov/pubs/sp/800/126/r3/final' style='color:#8A6D1E;'>NIST 800-126</a>)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• SCAP components related to vulnerability assessments:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Common Vulnerabilities and Exposures (CVE)</strong>: provides a naming system for describing security vulnerabilities</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Common Vulnerability Scoring Systems (CVSS)</strong>: provides a standardized scoring system for describing the severity of security vulnerabilities; it includes metrics and calc tools for exploitability, impact, how mature exploit code is, and how vulnerabilities can be remediated, and a means to score vulns against users&#x27; unique requirements</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Common Configuration Enumeration (CCE)</strong>: provides a naming system for system config issues</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Common Platform Enumeration (CPE)</strong>: provides a naming system for operating systems, applications, and devices</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>eXtensible Configuration Checklist Description Format (XCCDF)</strong>: provides a language for specifying security checklists</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Open Vulnerability and Assessment Language (OVAL)</strong>: provides a language for describing security testing procedures; used to describe the security condition of a system</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Vulnerability scans automatically probe systems, applications, and networks looking for weaknesses that could be exploited by an attacker</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• flaws may include missing patches, misconfigurations, or faulty code</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Four main categories of vulnerability scans:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• network discovery scans</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• network vulnerability scans</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• web application vulnerability scans</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• database vulnerability scans</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Authenticated scans</strong>: (AKA credentialed security scan) involves conducting vulnerability assessments and security checks on a network, system, or application using valid credentials; this approach enables the scanner to simulate the actions of an authenticated user, allowing it to access deeper layers of the target system, gather more information, and provide a more accurate assessment of vulnerabilities; often uses a read-only account to access configuration files</div>
+<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.2.2 Penetration testing (e.g., red, blue, and/or purple team exercises)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Penetration tests go beyond vulnerability testing techniques because they attempt to exploit systems</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Vulnerability management</strong>: the cyclical process of identifying, classifying, prioritizing, and mitigating vulnerabilities; programs take the results of the tests as inputs and then implement a risk management process for identified vulnerabilities, with the following steps:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Asset inventory</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Identifying the value of each asset</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Identifying the vulnerabilities for each asset</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Ongoing review and assessment</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Testing stages: see steps in the assessment in 6.2.1 above</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• NIST defines the penetration testing process as consisting of four phases:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>planning</strong>: includes agreement on the scope of the test and the rules of engagement</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• ensures that both the testing team and management are in agreement about the nature of the test and that it is explicitly authorized</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>information gathering and discovery</strong>: uses manual and automated tools to collect information about the target environment</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• basic reconnaissance (website mapping)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• network discovery</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• testers probe for system weaknesses using network, web and db vuln scans</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>attack</strong>: seeks to use manual and automated exploit tools to attempt to defeat system security</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• step where pen testing goes beyond vuln scanning as vuln scans don’t attempt to actually exploit detected vulns</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>reporting</strong>: summarizes the results of the pen testing and makes recommendations for improvements to system security</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• tests are normally categorized into three groups:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>white-box penetration test</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• AKA &quot;<strong>known environment tests</strong>&quot;</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• white box provides the attackers with <strong>detailed information</strong> about the systems they target</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• this bypasses many of the reconnaissance steps that normally precede attacks, shortening the time of the attack and increasing the likelihood that it will find security flaws</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• in white-box testing, the tester has access to the source code and performs testing from a developer&#x27;s perspective</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>gray-box penetration test</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• AKA <strong>partial knowledge tests</strong>, these are sometimes chosen to balance the advantages and disadvantages of white- and black-box penetration tests</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• this is particularly common when black-box results are desired but costs or time constraints mean that some knowledge is needed to complete the testing</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• these tests are sometimes called &quot;<strong>partially known environment</strong>&quot; tests</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• in gray-box testing, the tester evaluates software from a user perspective but has access to the source code</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>black-box penetration test</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• AKA &quot;<strong>unknown environment tests</strong>&quot;</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• does not provide attackers with any information prior to the attack</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• this simulates an external attacker trying to gain access to information about the business and technical environment before engaging in an attack</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Differences between vulnerability assessments and pen tests: vuln assessments are usually more automated, can be performed quickly, and no attempt is made to exploit vulns</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Red, blue and purple teams have been around for a long time, and are becoming more popular</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Red team: this is the in-house offensive security team, they are the simulated hackers or the threat providing:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• offensive security</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• ethical hacking</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• penetration testing</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• social engineering</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• threat intelligence</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Blue team: the blue team is the in-house defensive team, working to stop the threat:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• defensive security</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• security monitoring</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• incident response</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• digital forensics</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• security operations</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Purple: not a separate team, but purple represents the collaboration between the red and blue teams:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• red and blue teams working together</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• providing information sharing and healthy competition</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    </div>
+    <!-- /09b -->
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
