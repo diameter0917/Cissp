@@ -78,6 +78,25 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 雲端共同責任模型下，資料分類與加密金鑰通常誰負責？<br><span style="color:#0A5A59;">→ 客戶（in the cloud 的安全）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 法定最低保存年限與個資最小化刪除衝突時怎麼辦？<br><span style="color:#0A5A59;">→ 依資料類別分別訂定保存政策，不可一刀切。</span></p>
     </details>
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.4.3 位置 / §2.4.5 保存 / 主權）</div>
+<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍資料位置與保存</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">備份<strong>同時保留 on-site 與 off-site</strong>，並考量兩地距離以分散同時受損風險。保存三問：<strong>如何存／存多久（商業資料一般 7 年）／存什麼</strong>。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍資料主權 Data Sovereignty</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;">資料受<strong>所在國法律</strong>管轄；GDPR 限制資料傳出 EU，違者重罰；落地（data localization）與跨境傳輸是設計重點。</p>
+      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §2.4.3 位置 / §2.4.5 保存 / 主權。</p>
+      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §2.4.3 位置、§2.4.5 保存與資料主權。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§2.4.3 Data location</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Data location</strong>: in this context, refers to the location of data backups or data copies</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• If a company&#x27;s system is on-prem, keeps data on-site, but regularly backs up data, best practice is to keep a backup copy on-site and off-site</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Consider distance between data/storage locations to mitigate potential mutual (primary and backup) damage risk</div>
+<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§2.4.5 Data retention</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Retention requirements apply to data or records, media holding sensitive data, systems that process sensitive data, and personnel who have access to sensitive data</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>record retention</strong>: retaining and maintaining info as long as it is needed, and destroying it when it&#x27;s no longer needed</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• note: a current trend in many orgs is to reduce legal liabilities by implementing short retention policies with email</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Three fundamental retention policy questions:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>how to retain</strong>: data should be kept in a manner that makes it accessible whenever required; take taxonomy (or the scheme for data classification) into account</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>how long to retain data</strong>: general guidelines for business data is 7 years (but can vary by country/region/regulation)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>what data</strong>: retain per org requirements</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    </div>
+    <!-- /09b -->
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">

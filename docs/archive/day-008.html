@@ -78,6 +78,20 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 三狀態中哪個最難保護、為什麼？<br><span style="color:#0A5A59;">→ In Use；資料須在記憶體解密才能運算，故最難。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 只對資料庫做 at-rest 加密，足夠嗎？<br><span style="color:#0A5A59;">→ 不足；備份、傳輸、使用中仍可能外洩，需三狀態各自保護。</span></p>
     </details>
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.4 生命週期 / §2.6.1 資料三態）</div>
+<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍資料生命週期</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">Create 建立 → Classify &amp; Store 分類儲存 → Use 使用 → Archive 封存 → <strong>Destroy 銷毀</strong>（cradle-to-grave 全程保護）。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍資料三態 Data States</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>At Rest 靜止</strong>（硬碟/媒體，加密）、<strong>In Transit 傳輸中</strong>（網路，加密）、<strong>In Use 使用中</strong>（記憶體，最難保護→修補/防毒/標準化）。</p>
+      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §2.4 生命週期 / §2.6.1 資料三態。</p>
+      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §2.4 生命週期與 §2.6.1 資料三態。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§2.6.1 Data states (e.g., in use, in transit, at rest)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• The three data states are at rest, in transit, and in use</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Data at rest</strong>: any data stored on media such as hard drives or external media</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Data in transit</strong>: AKA data in motion; any data transmitted over a network</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• encryption methods protect data at rest and in transit</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Data in use</strong>: data in memory and used by an application</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• applications should flush memory buffers to remove data after it is no longer needed</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    </div>
+    <!-- /09b -->
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
