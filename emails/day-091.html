@@ -103,6 +103,76 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 『no read down / no write up』保護什麼、是哪個模型？<br><span style="color:#0A5A59;">→ 完整性;Biba 模型。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 存取權依『已看過什麼』動態變化的模型？<br><span style="color:#0A5A59;">→ Brewer-Nash(Chinese Wall)。</span></p>
     </details>
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.2 模型規則（考點））</div>
+<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍規則速記</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>BLP（機密）</strong>：No Read Up／No Write Down。<strong>Biba（完整）</strong>：No Read Down／No Write Up。記法：保密怕「往上讀、往下寫」；完整怕「往下讀、往上寫」。</p><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;">情境題給「讀/寫＋上/下」判斷違反哪個模型哪條性質；Clark-Wilson 看到「中介程式保護完整性」即選它。</p>
+      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §3.2 模型規則（考點）。</p>
+      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §3.2 模型規則（考點）。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§Understand the fundamental concepts of security models (e.g. Biba, Star Model, Bell-LaPadula) (OSG-10 Chpt 8)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Security models:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Intended to provide an explicit set of rules that a computer can follow to implement the fundamental security concepts, processes, and procedures of a security policy</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Provide a way for a designer to map abstract statements into a security policy prescribing the algorithms and data structures necessary to build hardware and software</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Enable people to access only the data classified for their clearance level</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>State machine model</strong>: ensures that all instances of subjects accessing objects are secure</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Information flow model</strong>: designed to prevent unauthorized, insecure, or restricted information flow; the Information Flow model is an extension of the state machine concept and serves as the basis of design for both the Biba and Bell-LaPadula models</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Noninterference model</strong>: a Non-Interference Security Model ensures that actions taken at a higher security level do not influence or interfere with the observable behavior at a lower security level; prevents the actions of one subject from affecting the system state or actions of another subject</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Bell-LaPadula</strong>: Model was established in 1973; the goal is to ensure that information is exposed only to those with the right level of classification</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Focus is on *confidentiality*</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Simple property</strong>: &quot;No read up&quot;</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• **Star (*) property**: &quot;No write down&quot; (AKA confinement property)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Strong Star Security Property</strong>: subject can read/write only in their own layer of secrecy</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Discretionary Security Property</strong>: uses an access matrix (need to know in order to access)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Doesn&#x27;t address covert channels</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Biba</strong>: Released in 1977, this model was created to supplement Bell-LaPadula</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Focus is on *integrity*</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Simple Integrity Property</strong>: &quot;No read down&quot; (for example, users with a Top Secret clearance can’t read data classified as Secret)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• **Star (*) Integrity Property**: &quot;No write up&quot; (for example, a user with a high integrity clearance can’t write data to files classified as low integrity)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Invocation Property</strong>: prohibits subject at one level of integrity from invoking a subject at a higher level of integrity</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Lipner implementation</strong>: by combining Biba and Bell-LaPadula, you get both confidentiality and integrity</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Biba uses a lattice to control access and is a form of mandatory access control (MAC) model</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Take-Grant</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Take-grant is a confidentiality-based model that supports four basic operations: take, grant, create, and revoke; it employs a directed graph to dictate how rights can be passed from one subject to another, or from a subject to an object</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Take rule</strong>: allows a subject to take rights over an object</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Grant rule</strong>: allows a subject to grant rights to an object</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Create rule</strong>: allows a subject to create new rights</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Remove rule</strong>: allows a subject to remove rights it has</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Clark-Wilson</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Designed to protect integrity using the access control triplet (subject/program/object)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Clark-Wilson has three rules of integrity:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• well-formed transactions (transactions must follow specific rules)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• certification rule (processes must be certified as meeting the model&#x27;s requirements)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• enforcement rule (the system must enforce the certification rule)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• A program interface is used to limit what is done by a subject; if the focus of an intermediary program between subject and object is to protect integrity, then it is an implementation of the Clark-Wilson model</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Uses security labels to grant access to objects via transformation procedures and a restricted interface model</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• The Clark-Wilson Model enforces the concept of separation of duties</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Three parts of the Clark-Wilson model are: subject, object, and program (or interface)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Clark-Wilson components:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Users</strong>: (AKA active agents) the subjects which will access the objects</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Transformation Procedures (TPs)</strong>: operations the subject is trying to perform (read, write, modify)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Constrained Data Items (CDIs)</strong>: objects at a higher-level of protection; CDIs can only be manipulated by a TP</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Unconstrained Data Items (UDIs)</strong>: can be accessed directly by the subject, and do not need to go through a intermediary like a TP</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Integrity Verification Procedures (IVPs)</strong>: a way to audit the TP, checking for internal and external consistency</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Brewer and Nash Model</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• AKA &quot;ethical wall&quot;, and &quot;cone of silence&quot;</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Primarily used to prevent conflicts of interest, by restricting access to information that could create a conflict; created to permit access controls that change dynamically based on a user&#x27;s previous activity</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Goguen-Meseguer Model</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• An integrity model</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Foundation of noninterference conceptual theories</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Sutherland Model</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Focuses on preventing interference in support of integrity; might be used to prevent covert channel attacks</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Graham-Denning Model</strong></div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Graham-Denning is primarily an access control model; focused on the secure creation and deletion of both subjects and objects</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• 8 primary protection rules or actions</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• 1-4: securely create/delete a subject/object</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• 5-8: securely provide the read/grant/delete/transfer access right</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Harrison-Ruzzo-Ullman Model</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Focuses on the assignment of object access rights to subjects as well as the resilience of those assigned rights</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• HRU is an extension of Graham-Denning model</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Star Model</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Not an official model, but name refers to using asterisks (stars) to dictate whether a person at a specific level of confidentiality is allowed to write data to a lower level of confidentiality</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Also determines whether a person can read or write to a higher or lower level of confidentiality</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    </div>
+    <!-- /09b -->
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
