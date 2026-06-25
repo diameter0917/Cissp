@@ -102,6 +102,50 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 從安全看哪種生物錯誤最嚴重？<br><span style="color:#0A5A59;">→ FAR(誤接受,放冒充者進來)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 員工資遣時最重要的存取動作？<br><span style="color:#0A5A59;">→ 立即停用/撤銷帳號(deprovisioning)。</span></p>
     </details>
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.2.4 生物特徵 / §5.5 生命週期（考點））</div>
+<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍生物特徵錯誤率</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>Type I 錯誤＝FRR 誤拒率</strong>（真人被拒，影響便利）；<strong>Type II 錯誤＝FAR 誤受率</strong>（冒充者被接受，<strong>安全風險較大</strong>）；<strong>CER/EER 交叉錯誤率</strong>＝FAR=FRR 之點，<strong>越低越準</strong>。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍生命週期時機</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;">離職須<strong>即時 deprovision</strong>（exit interview 前/當下停權）；換崗要重檢權限防 creep。</p>
+      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §5.2.4 生物特徵 / §5.5 生命週期（考點）。</p>
+      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §5.2.4 身分證明、§5.5 生命週期（考點）。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§5.2.4 Registration, proofing, and establishment of identity</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Within an organization, new employees prove their identity with appropriate documentation during the hiring process</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• in-person identity proofing includes things like passport, DL, birth cert etc</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Online orgs often use <strong>knowledge-based authentication (KBA)</strong> for identity-proofing of someone new (e.g. a new customer creating a new bank/savings account)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• example questions include past vehicle purchases, amount of mortgage payment, previous addresses, DL numbers</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• they then query authoritative information (e.g. credit bureaus or gov agencies) for matches</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Cognitive Passwords</strong>: security questions that are gathered during account creation, which are later used as questions for authentication (e.g. name of pet, color of first car etc)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• one of the flaws associated with cognitive passwords is that the information is often available on social media sites or general internet searches</div>
+<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§5.5.2 Provisioning and deprovisioning (e.g., on/off boarding and transfers)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Identity and access provisioning lifecycle refers to the creation, management, and deletion of accounts</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• this lifecycle is important because without properly defined and maintained user accounts, a system is unable to establish accurate identity, perform authentication, provide authorization, and track accountability</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Privileged Access Management (PAM)</strong>: a critical component of the identity and access provisioning lifecycle; PAM solutions manage, monitor, and audit privileged account access and include features like session recording, credential vaulting, and just-in-time privileged access</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Provisioning/Onboarding</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• provisioning ensures that accounts have appropriate privileges based on task requirements and employees receive needed hardware; said another way, includes the creation, maintenance, and removal of user objects from apps, systems, and directories</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• proper user account creation, or provisioning, ensures that personnel follow specific procedures when creating accounts</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• new-user account creation is AKA enrollment or registration</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>automated provisioning</strong>: information is provided to an app, that then creates the accounts via pre-defined rules (assigning to appropriate groups based on roles)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• automated provisioning systems create accounts consistently</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>workflow provisioning</strong>: provisioning that occurs through an established workflow, like an HR process</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• provisioning also includes issuing hardware, tokens, smartcards etc to employees</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• it’s important to keep accurate records when issuing hardware to employees</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• after provisioning, an org can follow up with onboarding processes, including:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• the employee reads and signs the acceptable use policy (AUP)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• explaining security best practices (like infected emails)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• reviewing the mobile device policy</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• ensuring the employee’s computer is operational, and they can log in</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• configure a password manager</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• explaining how to access help desk</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• show how to access, share and save resources</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Deprovisioning/Offboarding</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• deprovisioning processes disable or delete an account when employees leave, and offboarding processes ensure that employees return all hardware the org issued them</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• deprovisioning/offboarding occurs when an employee leaves the organization or is transferred to a different department</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>account revocation</strong>: deleting an account is the easiest way to deprovision</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• an employee&#x27;s account is usually first disabled</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• supervisors can then review the user’s data and determine if anything is needed</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• note: if terminated employee retains access to a user account after the exit interview, the risk for sabotage is very high</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• deprovisioning includes collecting any hardware issued to an employee such as laptops, mobile devices and auth tokens</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    </div>
+    <!-- /09b -->
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
