@@ -141,13 +141,28 @@
     </details>
 
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives 速記 · §1.2）</div>
-      <p style="font-size:14px; line-height:1.8; margin:0 0 8px; color:#3A3220;"><strong>五大支柱（5 Pillars）</strong>：除了 CIA，官方考綱把<strong>真實性（Authenticity）</strong>與<strong>不可否認性（Non-repudiation）</strong>並列為資安五大支柱——記憶口訣可串成「<strong>機密 → 完整 → 可用 → 真實 → 不可否認</strong>」。</p>
-      <p style="font-size:14px; line-height:1.8; margin:0 0 8px; color:#3A3220;"><strong>機密性 ≠ 保密（Confidentiality ≠ Secrecy）</strong>：機密性是「保護資產不被未授權揭露」，即使資料本身不是秘密（如 PII 個資）也要保護——這是常見的陷阱選項。</p>
-      <p style="font-size:14px; line-height:1.8; margin:0 0 8px; color:#3A3220;"><strong>不可否認性怎麼達成</strong>：靠<strong>識別＋鑑別＋授權＋當責＋稽核</strong>（Identification + Authentication + Authorization + Accountability + Auditing）五者共同支撐，而非單一機制。</p>
-      <p style="font-size:14px; line-height:1.8; margin:0; color:#3A3220;"><strong>AAA 不只兩個 A</strong>：考綱的 AAA Services 實為 <strong>Identification（識別）→ Authentication（鑑別）→ Authorization（授權）→ Auditing（稽核）→ Accountability（當責）</strong>；高可用（Availability）常考技術：failover clustering、load balancing、redundancy、fault tolerance。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §1.2 Security Concepts。</p>
+    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:4px;">📑 官方考綱對照重點（Official Objectives · §1.2 Security Concepts）</div>
+      <p style="font-size:12.5px; line-height:1.65; margin:0 0 12px; color:#9A8456;">以下對齊官方 2024 考綱逐條重點，補足本日 CIA 主題的完整輪廓。</p>
+
+      <div style="font-size:13px; font-weight:700; color:#8A6D1E; margin:0 0 6px;">▍五大支柱（5 Pillars of Information Security）</div>
+      <p style="font-size:13.5px; line-height:1.75; margin:0 0 5px; color:#3A3220;"><strong>① 機密性（Confidentiality）</strong>：確保物件不被未授權主體揭露；保護資料、物件與資源的祕密性。<strong>機密性 ≠ 保密（Secrecy）</strong>——即使資料本身不是秘密（如 PII 個人識別資訊），只要需要被保護就屬機密性範疇。</p>
+      <p style="font-size:13.5px; line-height:1.75; margin:0 0 5px; color:#3A3220;"><strong>② 完整性（Integrity）</strong>：確保物件保有真確性，且只能由授權主體「有意」修改；防止未授權變更／破壞，並維持資料的<strong>內部與外部一致性</strong>；本身即涵蓋不可否認性與真實性。</p>
+      <p style="font-size:13.5px; line-height:1.75; margin:0 0 5px; color:#3A3220;"><strong>③ 可用性（Availability）</strong>：授權主體可<strong>即時且不中斷</strong>地存取物件。常考高可用技術：failover clustering（故障移轉叢集）、site resiliency（站台韌性）、load balancing（負載平衡）、redundancy（冗餘）、fault tolerance（容錯）。</p>
+      <p style="font-size:13.5px; line-height:1.75; margin:0 0 5px; color:#3A3220;"><strong>④ 真實性（Authenticity）</strong>：確保一筆傳輸、訊息或寄件者是<strong>合法（legitimate）</strong>的。</p>
+      <p style="font-size:13.5px; line-height:1.75; margin:0 0 12px; color:#3A3220;"><strong>⑤ 不可否認性（Non-repudiation）</strong>：確保事件的行為主體<strong>無法否認</strong>該事件曾發生；它由「識別＋鑑別＋授權＋當責＋稽核」共同支撐，而非單一機制。</p>
+
+      <div style="font-size:13px; font-weight:700; color:#8A6D1E; margin:0 0 6px;">▍AAA Services（不只兩個 A，實為五項）</div>
+      <p style="font-size:13.5px; line-height:1.75; margin:0 0 4px; color:#3A3220;"><strong>Identification 識別</strong>：主張一個身分（claim）。｜<strong>Authentication 鑑別</strong>：以知識／擁有／特徵（something you know / have / are）證明該身分。</p>
+      <p style="font-size:13.5px; line-height:1.75; margin:0 0 4px; color:#3A3220;"><strong>Authorization 授權</strong>：定義特定主體對資源／物件的權限（允許或拒絕）。｜<strong>Auditing 稽核</strong>：記錄系統與主體相關事件的日誌。</p>
+      <p style="font-size:13.5px; line-height:1.75; margin:0 0 12px; color:#3A3220;"><strong>Accountability 當責</strong>：把正確的識別、鑑別、授權加以記錄與監控，藉由檢視日誌讓主體為其行為（尤其是違反安全政策者）負責。</p>
+
+      <div style="font-size:13px; font-weight:700; color:#8A6D1E; margin:0 0 6px;">▍考點提醒（Exam Cues）</div>
+      <p style="font-size:13.5px; line-height:1.75; margin:0 0 3px; color:#3A3220;">• CIA 的反面是 <strong>DAD</strong>：Disclosure（揭露）→ 破壞機密性、Alteration（竄改）→ 破壞完整性、Destruction（破壞）→ 破壞可用性。</p>
+      <p style="font-size:13.5px; line-height:1.75; margin:0 0 3px; color:#3A3220;">• 「<strong>機密性 ≠ 保密</strong>」「<strong>真實性與不可否認性也是支柱</strong>」是常見陷阱選項，務必分清。</p>
+      <p style="font-size:13.5px; line-height:1.75; margin:0; color:#3A3220;">• 不可否認性在技術上常由<strong>數位簽章</strong>佐證，但概念上仰賴完整的 AAA 鏈。</p>
+
+      <p style="font-size:11px; color:#A0895A; margin:12px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §1.2 Security Concepts。</p>
     </div>
 
     <!-- 10 -->
