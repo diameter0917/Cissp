@@ -140,32 +140,43 @@
       <p style="font-size:14px; line-height:1.7; margin:0; color:#2A3340;"><strong>Q3.</strong> 員工把機密檔案轉寄到私人信箱，破壞了哪一項？<br><span style="color:#0A5A59;">→ 機密性 Confidentiality（DAD 的 Disclosure）。</span></p>
     </details>
 
+    <!-- 10 -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:4px;">📑 官方考綱對照重點（Official Objectives · §1.2 Security Concepts）</div>
-      <p style="font-size:12.5px; line-height:1.65; margin:0 0 12px; color:#9A8456;">以下對齊官方 2024 考綱逐條重點，補足本日 CIA 主題的完整輪廓。</p>
-
-      <div style="font-size:13px; font-weight:700; color:#8A6D1E; margin:0 0 6px;">▍五大支柱（5 Pillars of Information Security）</div>
-      <p style="font-size:13.5px; line-height:1.75; margin:0 0 5px; color:#3A3220;"><strong>① 機密性（Confidentiality）</strong>：確保物件不被未授權主體揭露；保護資料、物件與資源的祕密性。<strong>機密性 ≠ 保密（Secrecy）</strong>——即使資料本身不是秘密（如 PII 個人識別資訊），只要需要被保護就屬機密性範疇。</p>
-      <p style="font-size:13.5px; line-height:1.75; margin:0 0 5px; color:#3A3220;"><strong>② 完整性（Integrity）</strong>：確保物件保有真確性，且只能由授權主體「有意」修改；防止未授權變更／破壞，並維持資料的<strong>內部與外部一致性</strong>；本身即涵蓋不可否認性與真實性。</p>
-      <p style="font-size:13.5px; line-height:1.75; margin:0 0 5px; color:#3A3220;"><strong>③ 可用性（Availability）</strong>：授權主體可<strong>即時且不中斷</strong>地存取物件。常考高可用技術：failover clustering（故障移轉叢集）、site resiliency（站台韌性）、load balancing（負載平衡）、redundancy（冗餘）、fault tolerance（容錯）。</p>
-      <p style="font-size:13.5px; line-height:1.75; margin:0 0 5px; color:#3A3220;"><strong>④ 真實性（Authenticity）</strong>：確保一筆傳輸、訊息或寄件者是<strong>合法（legitimate）</strong>的。</p>
-      <p style="font-size:13.5px; line-height:1.75; margin:0 0 12px; color:#3A3220;"><strong>⑤ 不可否認性（Non-repudiation）</strong>：確保事件的行為主體<strong>無法否認</strong>該事件曾發生；它由「識別＋鑑別＋授權＋當責＋稽核」共同支撐，而非單一機制。</p>
-
-      <div style="font-size:13px; font-weight:700; color:#8A6D1E; margin:0 0 6px;">▍AAA Services（不只兩個 A，實為五項）</div>
-      <p style="font-size:13.5px; line-height:1.75; margin:0 0 4px; color:#3A3220;"><strong>Identification 識別</strong>：主張一個身分（claim）。｜<strong>Authentication 鑑別</strong>：以知識／擁有／特徵（something you know / have / are）證明該身分。</p>
-      <p style="font-size:13.5px; line-height:1.75; margin:0 0 4px; color:#3A3220;"><strong>Authorization 授權</strong>：定義特定主體對資源／物件的權限（允許或拒絕）。｜<strong>Auditing 稽核</strong>：記錄系統與主體相關事件的日誌。</p>
-      <p style="font-size:13.5px; line-height:1.75; margin:0 0 12px; color:#3A3220;"><strong>Accountability 當責</strong>：把正確的識別、鑑別、授權加以記錄與監控，藉由檢視日誌讓主體為其行為（尤其是違反安全政策者）負責。</p>
-
-      <div style="font-size:13px; font-weight:700; color:#8A6D1E; margin:0 0 6px;">▍考點提醒（Exam Cues）</div>
-      <p style="font-size:13.5px; line-height:1.75; margin:0 0 3px; color:#3A3220;">• CIA 的反面是 <strong>DAD</strong>：Disclosure（揭露）→ 破壞機密性、Alteration（竄改）→ 破壞完整性、Destruction（破壞）→ 破壞可用性。</p>
-      <p style="font-size:13.5px; line-height:1.75; margin:0 0 3px; color:#3A3220;">• 「<strong>機密性 ≠ 保密</strong>」「<strong>真實性與不可否認性也是支柱</strong>」是常見陷阱選項，務必分清。</p>
-      <p style="font-size:13.5px; line-height:1.75; margin:0; color:#3A3220;">• 不可否認性在技術上常由<strong>數位簽章</strong>佐證，但概念上仰賴完整的 AAA 鏈。</p>
-
-      <p style="font-size:11px; color:#A0895A; margin:12px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §1.2 Security Concepts。</p>
+      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §1.2 Security Concepts）</div>
+<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍五大支柱（5 Pillars）</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>① 機密性 Confidentiality</strong>：物件不被未授權主體揭露。<strong>機密性 ≠ 保密（Secrecy）</strong>——即使非秘密（如 PII 個資）只要需保護就屬之。</p><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>② 完整性 Integrity</strong>：只由授權主體「有意」修改，維持內外一致性。</p><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>③ 可用性 Availability</strong>：授權者即時不中斷存取；技術 failover clustering／load balancing／redundancy／fault tolerance。</p><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>④ 真實性 Authenticity</strong>：傳輸／訊息／寄件者合法。<strong>⑤ 不可否認性 Non-repudiation</strong>：行為主體無法否認，靠完整 AAA 鏈支撐。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍AAA Services（五項）</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;">Identification 識別 → Authentication 鑑別（know／have／are）→ Authorization 授權 → Auditing 稽核 → Accountability 當責。</p>
+      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §1.2 Security Concepts。</p>
+      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>本日 CIA 主題對應官方 §1.2 Security Concepts。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§Understand and apply security concepts (OSG-10 Chpt 1)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 1.2.1 Confidentiality, integrity, and availability, authenticity and nonrepudiation (5 Pillars of Information Security)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Confidentiality</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Principle that objects are not disclosed to unauthorized subjects</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Concept of measures used to ensure the protection of the secrecy of data, objects, and resources</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Confidentiality protections prevent disclosure while protecting authorized access</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Preserving authorized restrictions on information access and disclosure, including the means for protecting personal privacy and proprietary information</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Sensitive data, including personally identifiable information (PII) must be kept confidential; confidentiality is different from secrecy</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Preserving confidentiality means protecting an asset or data, even if it&#x27;s not a secret</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Integrity</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Principle that objects retain their veracity and are intentionally modified only by authorized subjects</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Concept of protecting the reliability and correctness of data; guarding against improper info modification/destruction; includes ensuring non-repudiation and authenticity</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Integrity protection prevents unauthorized alterations of data</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Preventing authorized subjects from making unauthorized modifications, such as mistakes</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Maintaining the internal and external consistency of objects</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Availability</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Principle that authorized subjects are granted timely and uninterrupted access to objects</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• To ensure high availability of services and data, use techniques like failover clustering, site resiliency, automatic failover, load balancing, redundancy of hardware and software components, and fault tolerance</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Authenticity</strong>: ensuring a transmission, message or sender is legitimate</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• See the NIST glossary for examples: &lt;https://csrc.nist.gov/glossary/term/authenticity&gt;</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Nonrepudiation</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Ensures that the subject of activity or who caused an event cannot deny that the event occurred</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Nonrepudiation is made possible through identification, authentication, authorization, accountability, and auditing</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>AAA Services</strong>:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Identification: assertion of a user&#x27;s identity; claiming to be an identity when attempting to access a secured area or system</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Authentication: proving that you are that claimed identity via one or more factors of knowledge, ownership, or characteristic (something you know, something you have, something you are)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Authorization: defining the needed resources, permissions (i.e. allow/grant and/or deny) to a resource, and object access for a specific identity or subject</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Auditing: recording a log of the events and activities related to the system and subjects</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Accountability (aka accounting, aka principle of access control): proper identification, authentication, and authorization that is logged and monitored; access control process which records info about attempts by all entities to access resources; reviewing log files to check for compliance and violations in order to hold subjects accountable for their actions, especially violations of organizational security policy</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
-
-    <!-- 10 -->
+    <!-- /09b -->
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
