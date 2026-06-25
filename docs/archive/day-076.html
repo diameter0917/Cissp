@@ -78,6 +78,89 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . SAMM 與 BSIMM 的差別？<br><span style="color:#0A5A59;">→ SAMM 規範性(該做什麼);BSIMM 描述性(業界實際在做什麼,當標竿)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 敏捷開發如何確保安全不被犧牲？<br><span style="color:#0A5A59;">→ 把安全活動內建每個 sprint(納入 Definition of Done),而非最後補。</span></p>
     </details>
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.1.2 成熟度模型（深入））</div>
+<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍SW-CMM 五級</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>1 Initial 初始</strong>（混亂/臨時）→ <strong>2 Repeatable 可重複</strong>（基本專案管理）→ <strong>3 Defined 已定義</strong>（正式文件化流程）→ <strong>4 Managed 已管理</strong>（量化度量）→ <strong>5 Optimizing 最佳化</strong>（持續改善）。CMM <strong>不含安全</strong>。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍SAMM 與 IDEAL</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>SAMM</strong>（OWASP）五大業務功能：Governance/Design/Implementation/Verification/Operations。<strong>IDEAL</strong>＝改善模型（怎麼改），CMM＝評估模型（現在在哪）。</p>
+      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §8.1.2 成熟度模型（深入）。</p>
+      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §8.1.2 成熟度模型。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§8.1.2 Maturity models (e.g., Capability Maturity Model (CMM), Software Assurance Maturity Model (SAMM))</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Maturity models help organizations move from inconsistent, unstructured software processes to more reliable and well-managed ones</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• NOTE: be able to describe the SW-CMM, IDEAL, and SAMM models</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Software Engineering Institute (SEI) (Carnegie Mellon University) created the Capability Maturity Model for Software (AKA Software Capability Maturity Model, abbreviated SW-CMM, CMM, or SCMM)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>SW-CMM</strong>: a management process to foster the ongoing and continuous improvement of an org&#x27;s processes and workflows for developing, maintaining and using software</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• all software development moves through a set of maturity phases in sequential fashion, and CMM describes the principles and practices underlying software process maturity, intended to help improve the maturity and quality of software processes</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• note that CMM doesn&#x27;t explicitly address security</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• stages of the CMM:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Level 1: Initial</strong>: process is disorganized; usually little or no defined software development process</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• no KPIs</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• processes are ad-hoc, and immature</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• no basis for predicting project quality, time to completion etc</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• limited project management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• limited software dev tools or automation</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• highly dependent on individual&#x27;s skills and knowledge</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Level 2: Repeatable</strong>: in this phase, basic lifecycle management processes are introduced</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• focus on establishing basic project management policies</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• project planning</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• configuration management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• requirements management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• sub-contract management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• software quality assurance</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Level 3: Defined</strong>: in this phase, software devs operate according to a set of formal, documented software development processes; marked by the presence of basic lifecycle management processes and reuse of code; includes the use of requirements management, software project planning, quality assurance, and configuration management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• documentation of standard guidelines and procedures takes place</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• peer reviews</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• intergroup coordination</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• org process definition</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• org process focus</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• training programs</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Level 4: Managed</strong>: in this phase, there is better management of the software process; characterized by the use of quantitative software development measures</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• quantitative goals are set for software products and process</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• software quality management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• quantitative management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Level 5: Optimizing</strong>: in this phase continuous improvement occurs</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• process change management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• technology change management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• defect prevention</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Software Assurance Maturity Model (SAMM)</strong>: an open source project maintained by the Open Web Application Security Project (OWASP)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• provides a framework for integrating security into the software development and maintenance processes and provides orgs with the ability to assess their maturity</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• SAMM associates software development with 5 business functions:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Governance: the activities needed to manage software development processes</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• this function includes practices for:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• strategy</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• metrics</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• policy</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• compliance</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• education</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• guidance</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Design: process used to define software requirements and develop software</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• this function includes practices for:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• threat modeling</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• threat assessment</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• security requirements</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• security architecture</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Implementation: process of building and deploying software components and managing flaws</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• this function includes:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• secure build</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• secure deployment</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• defect management practices</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Verification: activities undertaken to confirm code meets business and security requirements</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• this function includes:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• architecture assessment</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• requirements-driven testing</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• security testing</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Operations: actions taken to maintain security throughout the software lifecycle after code is released</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• function includes:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• incident management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• environment management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• operational management</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>IDEAL Model</strong>: developed by SEI, a model for software development that uses many of the SW-CMM attributes, using 5 phases:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Initiating: business reasons for the change are outlined, support is built, and applicable infrastructure is allocated</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Diagnosing: in this phase, engineers analyze the current state of the org and make general recommendations for change</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Establishing: development of a specific plan of action based on the diagnosing phase recommendations</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Acting: in this phase, the org develops solutions and then tests, refines, and implements them</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Learning: continuously analyze efforts to achieve these goals, and propose new actions as required</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• IDEAL vs SW-CMM: remember that IDEAL is a process improvement model (how to improve), while SW-CMM is a maturity assessment model (where you currently are); the table below shows approximate conceptual alignment</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    </div>
+    <!-- /09b -->
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
