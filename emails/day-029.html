@@ -69,6 +69,29 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . SOC Type I 與 Type II 差別？<br><span style="color:#0A5A59;">→ I=某時間點設計；II=一段期間運作有效性。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . SOC 1 報告的重點是什麼？<br><span style="color:#0A5A59;">→ 與財務報表相關的內部控制（非資安）。</span></p>
     </details>
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.5 稽核 / §6.4 報告）</div>
+<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍稽核與 SOC 報告</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">執行方：internal／external／third-party。<strong>SOC 報告</strong>（SSAE 18）：<strong>SOC 1</strong>（財報內控）／<strong>SOC 2</strong>（資安信任服務準則，多為機密）／<strong>SOC 3</strong>（公開摘要）。<strong>Type I＝某時點設計</strong>、<strong>Type II＝一段期間運作有效性</strong>。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍報告與揭露</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;">Remediation 修補／Exception handling（無法即時修補→<strong>補償控制</strong>＋記錄例外）／<strong>Ethical disclosure 道德揭露</strong>（先私下通知廠商、給合理時間，未修才公開）。</p>
+      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §6.5 稽核 / §6.4 報告。</p>
+      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §6.5 稽核、§6.4 報告（SOC 報告為策展補充）。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.5.1 Internal</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Having an internal team conduct security audits has several advantages:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• understanding the internal environment reduces time</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• an internal team can delve into all parts of systems, because they have insider knowledge</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• internal auditors can be more agile in adapting to changing needs, rescheduling failed assessment components quickly</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Disadvantages of using an internal team to conduct security audits:</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• the team may have limited exposure to new/other methodologies (e.g. the team may have depth but not breadth of experience and knowledge)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• potential conflicts of interest (e.g. reluctance to throw other teams under the bus and accurately report their findings)</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• audit team members may start with an agenda (say to secure funding) and overstate faults, or have interpersonal motives</div>
+<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.4.2 Exception handling</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Exception handling</strong>: the process of handling unexpected activity, since software should never depend on users behaving properly</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• &quot;expect the unexpected&quot;, gracefully handle invalid input and improperly sequenced activity etc</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Sometimes vulns can&#x27;t be patched in a timely manner (e.g. medical devices needing re-accreditation) and the solution is to implement compensatory controls, document the exception and decision, and revisit</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>compensatory controls</strong>: measures taken to address any weaknesses of existing controls or to compensate for the inability to meet specific security requirements due to various different constraints</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• e.g. micro-segmentation of device, access restrictions, monitoring etc</div>
+<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Exception handling may be required due to system crash as the result of patching (requiring roll-back)</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    </div>
+    <!-- /09b -->
     <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
       <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
