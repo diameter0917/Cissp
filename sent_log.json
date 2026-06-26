@@ -7,5 +7,14 @@
     "title_zh": "Domain 1 全景與 CIA 鐵三角",
     "sent_at_utc": "2026-06-25T00:04:05Z",
     "status": "sent"
+  },
+  {
+    "seq": 2,
+    "date": "2026-06-26",
+    "code": "P1-D1-2",
+    "phase": "P1",
+    "title_zh": "安全治理與角色權責",
+    "sent_at_utc": "2026-06-26T00:05:29Z",
+    "status": "sent"
   }
 ]
