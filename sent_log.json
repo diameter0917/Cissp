@@ -25,5 +25,14 @@
     "title_zh": "風險管理輪廓",
     "sent_at_utc": "2026-06-29T00:03:35Z",
     "status": "sent"
+  },
+  {
+    "seq": 4,
+    "date": "2026-06-30",
+    "code": "P1-D1-4",
+    "phase": "P1",
+    "title_zh": "法律、合規、隱私與倫理輪廓",
+    "sent_at_utc": "2026-06-29T23:58:03Z",
+    "status": "sent"
   }
 ]
