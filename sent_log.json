@@ -16,5 +16,14 @@
     "title_zh": "安全治理與角色權責",
     "sent_at_utc": "2026-06-26T00:05:29Z",
     "status": "sent"
+  },
+  {
+    "seq": 3,
+    "date": "2026-06-29",
+    "code": "P1-D1-3",
+    "phase": "P1",
+    "title_zh": "風險管理輪廓",
+    "sent_at_utc": "2026-06-29T00:03:35Z",
+    "status": "sent"
   }
 ]
