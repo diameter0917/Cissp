@@ -15,17 +15,17 @@
       <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P2-D6-2</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 6 · 安全評估與測試 &nbsp;|&nbsp; 權重 12%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">動態/靜態/介面測試深入</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">動態/靜態/介面測試深入</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Dynamic/Static/Interface Testing</div>
   </div>
   <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:55.83%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 中期 D6：軟體測試技術深入</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入軟體安全測試：<strong>SAST(靜態)、DAST(動態)、IAST</strong> 的互補，<strong>介面/API 測試</strong>，以及<strong>誤用案例與負向測試</strong>。與 D8 相通，但 D6 從『評估與測試』角度看。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 中期 D6：軟體測試技術深入</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">今天深入軟體安全測試：<strong>SAST(靜態)、DAST(動態)、IAST</strong> 的互補，<strong>介面/API 測試</strong>，以及<strong>誤用案例與負向測試</strong>。與 D8 相通，但 D6 從『評估與測試』角度看。</p>
     <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：SAST vs DAST vs IAST → fuzzing → 介面/API 測試 → 正向 vs 負向/誤用案例。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 測試技術比較</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 測試技術比較</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
       <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">技術</td><td style="padding:8px 10px;">視角</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">特點</td></tr>
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>SAST</strong> 靜態</td><td style="padding:9px 10px; vertical-align:top;">看原始碼(白箱)</td><td style="padding:9px 10px; vertical-align:top;">早期、找根因；誤報多</td></tr>
@@ -33,52 +33,52 @@
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>IAST</strong> 互動</td><td style="padding:9px 10px; vertical-align:top;">執行中插樁</td><td style="padding:9px 10px; vertical-align:top;">結合兩者、較準</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Fuzzing</strong> 模糊測試</td><td style="padding:9px 10px; vertical-align:top;">餵異常輸入</td><td style="padding:9px 10px; vertical-align:top;">找未處理的崩潰/邊界漏洞</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 介面與 API 測試</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 介面與 API 測試</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>介面測試</strong>：驗系統間/模組間介面的輸入處理與錯誤處理</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>API 測試</strong>：驗授權(防越權 BOLA)、輸入驗證、速率限制、錯誤訊息不洩資訊</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>API 是現代主要攻擊面</strong>(微服務/行動後端)，須納入測試範圍</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 正向 vs 負向/誤用案例</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>正向測試</strong>驗『正常輸入功能正常』；<strong>負向/誤用案例測試</strong>從<strong>攻擊者視角</strong>驗『惡意/異常輸入會不會被擋』。只做正向會放過安全漏洞——<strong>安全 bug 往往藏在沒人測的異常路徑</strong>。<strong>fuzzing</strong> 是自動化的負向測試。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 正向 vs 負向/誤用案例</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>正向測試</strong>驗『正常輸入功能正常』；<strong>負向/誤用案例測試</strong>從<strong>攻擊者視角</strong>驗『惡意/異常輸入會不會被擋』。只做正向會放過安全漏洞——<strong>安全 bug 往往藏在沒人測的異常路徑</strong>。<strong>fuzzing</strong> 是自動化的負向測試。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">SAST</strong>（靜態應用測試）— <span style="color:#5B6675;">分析原始碼找漏洞(早期、白箱)。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">DAST</strong>（動態應用測試）— <span style="color:#5B6675;">攻擊執行中應用(黑箱)。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">IAST</strong>（互動式測試）— <span style="color:#5B6675;">執行中插樁、結合靜動態。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Fuzzing</strong>（模糊測試）— <span style="color:#5B6675;">餵大量異常輸入找崩潰/漏洞。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Misuse Case</strong>（誤用案例）— <span style="color:#5B6675;">攻擊者視角的負向測試。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">API Testing</strong>（API 測試）— <span style="color:#5B6675;">驗授權/輸入/速率/錯誤處理。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Negative Testing</strong>（負向測試）— <span style="color:#5B6675;">驗異常/惡意輸入被正確拒絕。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SAST</strong>（靜態應用測試）— <span style="color:#5B6675;">分析原始碼找漏洞(早期、白箱)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">DAST</strong>（動態應用測試）— <span style="color:#5B6675;">攻擊執行中應用(黑箱)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">IAST</strong>（互動式測試）— <span style="color:#5B6675;">執行中插樁、結合靜動態。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Fuzzing</strong>（模糊測試）— <span style="color:#5B6675;">餵大量異常輸入找崩潰/漏洞。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Misuse Case</strong>（誤用案例）— <span style="color:#5B6675;">攻擊者視角的負向測試。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">API Testing</strong>（API 測試）— <span style="color:#5B6675;">驗授權/輸入/速率/錯誤處理。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Negative Testing</strong>（負向測試）— <span style="color:#5B6675;">驗異常/惡意輸入被正確拒絕。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 易混淆釐清</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 易混淆釐清</div>
     <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>SAST vs DAST</strong>：SAST <strong>不執行</strong>、看原始碼(找得到行號、誤報多)；DAST <strong>不看碼</strong>、打執行中應用(近真實、難定位根因)。互補非互斥。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>正向 vs 負向</strong>：正向驗功能、負向(誤用/fuzzing)驗安全。只做正向會漏安全漏洞。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>Fuzzing</strong>：自動化餵<strong>畸形/隨機</strong>輸入找未處理的例外與記憶體錯誤，特別擅長找<strong>未知</strong>邊界漏洞。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>SAST vs DAST</strong>：SAST <strong>不執行</strong>、看原始碼(找得到行號、誤報多)；DAST <strong>不看碼</strong>、打執行中應用(近真實、難定位根因)。互補非互斥。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>正向 vs 負向</strong>：正向驗功能、負向(誤用/fuzzing)驗安全。只做正向會漏安全漏洞。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>Fuzzing</strong>：自動化餵<strong>畸形/隨機</strong>輸入找未處理的例外與記憶體錯誤，特別擅長找<strong>未知</strong>邊界漏洞。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>OWASP Testing Guide / ASVS / API Security Top 10</strong>、<strong>NIST SP 800-115</strong>。SAST/DAST/IAST/SCA 應整合進 CI/CD(D8 DevSecOps)，未過關卡不得部署。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — 真實事件：API 未測漏洞</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>OWASP Testing Guide / ASVS / API Security Top 10</strong>、<strong>NIST SP 800-115</strong>。SAST/DAST/IAST/SCA 應整合進 CI/CD(D8 DevSecOps)，未過關卡不得部署。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — 真實事件：API 未測漏洞</div>
     <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 前端沒給的，後端 API 卻給</div>
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">常見漏洞：前端 UI 限制了，但<strong>API 未做伺服器端授權檢查</strong>——攻擊者直接呼叫 API、改一個 ID 就讀到別人的資料（<strong>BOLA/越權物件存取</strong>，OWASP API #1）。根因是<strong>API 未被獨立、負向地測試授權</strong>，只測了『正常使用』。多起行動 App 外洩源於此。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">教訓：<strong>授權必須在伺服器端、每個物件都驗</strong>；API 要做<strong>負向/越權測試</strong>，不能假設前端會擋。前端限制不是安全控制。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;">常見漏洞：前端 UI 限制了，但<strong>API 未做伺服器端授權檢查</strong>——攻擊者直接呼叫 API、改一個 ID 就讀到別人的資料（<strong>BOLA/越權物件存取</strong>，OWASP API #1）。根因是<strong>API 未被獨立、負向地測試授權</strong>，只測了『正常使用』。多起行動 App 外洩源於此。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">教訓：<strong>授權必須在伺服器端、每個物件都驗</strong>；API 要做<strong>負向/越權測試</strong>，不能假設前端會擋。前端限制不是安全控制。</p>
     </div>
     <div style="background-color:#F1F5F9; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">📌 延伸：為何 SAST 誤報多卻仍重要</div>
-      <p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">SAST 因缺乏執行期上下文常<strong>誤報(把不可達的路徑也報)</strong>，需人工分流。但它的價值在<strong>最早期、在開發者寫碼當下</strong>就抓到根因(行號)，修復成本最低(shift left)。實務是 SAST(早期廣篩)＋DAST(後期實證)＋人工審查＋SCA(相依)組合，各補盲點。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">SAST 因缺乏執行期上下文常<strong>誤報(把不可達的路徑也報)</strong>，需人工分流。但它的價值在<strong>最早期、在開發者寫碼當下</strong>就抓到根因(行號)，修復成本最低(shift left)。實務是 SAST(早期廣篩)＋DAST(後期實證)＋人工審查＋SCA(相依)組合，各補盲點。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">09 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『不執行、看原始碼』→ SAST；『打執行中應用』→ DAST；『餵異常輸入找崩潰』→ fuzzing；『驗惡意輸入被擋』→ 負向/誤用案例；『API 越權』→ 伺服器端授權＋負向測試。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>只做正向測試漏安全；前端限制非安全控制；SAST≠DAST(讀碼 vs 打站)。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『不執行、看原始碼』→ SAST；『打執行中應用』→ DAST；『餵異常輸入找崩潰』→ fuzzing；『驗惡意輸入被擋』→ 負向/誤用案例；『API 越權』→ 伺服器端授權＋負向測試。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>只做正向測試漏安全；前端限制非安全控制；SAST≠DAST(讀碼 vs 打站)。</p>
     </div>
-    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
       <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>SAST 讀碼(早期)、DAST 打站、IAST 插樁、fuzzing 餵異常；API 要負向測授權(防 BOLA)；正向驗功能、負向驗安全。</p>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>SAST 讀碼(早期)、DAST 打站、IAST 插樁、fuzzing 餵異常；API 要負向測授權(防 BOLA)；正向驗功能、負向驗安全。</p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 自動餵畸形輸入找未處理崩潰的測試？<br><span style="color:#0A6160;">→ Fuzzing(模糊測試)，屬負向測試。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 前端限制了但 API 仍可越權讀資料，根因？<br><span style="color:#0A6160;">→ API 未做伺服器端授權/未做負向測試(BOLA)；前端非安全控制。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . SAST 與 DAST 為何要併用？<br><span style="color:#0A6160;">→ SAST 早期看碼找根因(誤報多)、DAST 後期實證執行期漏洞，互補盲點。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.5/6.2.7/6.2.8 測試技術（深入））</div>
 <div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍覆蓋率分析 Coverage</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>Test coverage＝已測案例 / 總案例</strong>。五準則：<strong>branch（IF/ELSE）／condition（邏輯測試）／function（每函式）／loop（迴圈）／statement（每行）</strong>。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍介面與濫用案例</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;">Interface testing 三型：<strong>API／UI／physical</strong>。<strong>Misuse/abuse case testing</strong>＝列舉非預期行為再嘗試利用。IAST＝SAST+DAST 執行期內部分析。</p>
       <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §6.2.5/6.2.7/6.2.8 測試技術（深入）。</p>
@@ -106,7 +106,7 @@
 <div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Also see <a href='https://owasp.org/www-project-api-security/' style='color:#0A6160;'>OWASP API security</a></div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
       <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
         <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>

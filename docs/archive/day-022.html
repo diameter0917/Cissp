@@ -15,63 +15,63 @@
       <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D5-2</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 5 · 身分與存取管理 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">鑑別因子與 MFA</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">鑑別因子與 MFA</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Authentication Factors &amp; MFA</div>
   </div>
   <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:18.33%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 鑑別因子與 MFA</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">鑑別的強度取決於<strong>因子（factors）</strong>。今天看三類因子、<strong>多因子鑑別（MFA）</strong>，以及生物特徵的效能指標 <strong>FAR/FRR/CER</strong>。重點：<strong>不同類</strong>因子組合才算真 MFA。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 鑑別因子與 MFA</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">鑑別的強度取決於<strong>因子（factors）</strong>。今天看三類因子、<strong>多因子鑑別（MFA）</strong>，以及生物特徵的效能指標 <strong>FAR/FRR/CER</strong>。重點：<strong>不同類</strong>因子組合才算真 MFA。</p>
     <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：三類因子 → 何謂真 MFA → 生物特徵 FAR/FRR/CER → MFA 疲勞攻擊。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 三類鑑別因子</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 三類鑑別因子</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
       <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">類型</td><td style="padding:8px 10px;">Type</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">例子</td></tr>
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">所知 Something you know</td><td style="padding:9px 10px; vertical-align:top;">Type 1</td><td style="padding:9px 10px; vertical-align:top;">密碼、PIN、密語</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;">所有 Something you have</td><td style="padding:9px 10px; vertical-align:top;">Type 2</td><td style="padding:9px 10px; vertical-align:top;">OTP token、手機、智慧卡</td></tr>
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">所是 Something you are</td><td style="padding:9px 10px; vertical-align:top;">Type 3</td><td style="padding:9px 10px; vertical-align:top;">指紋、臉、虹膜（生物特徵）</td></tr>
     </table>
-    <p style="font-size:15px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 真 <strong>MFA</strong> 要<strong>跨類別</strong>：密碼＋OTP（知＋有）才算；密碼＋安全問題（都是『知』）<strong>不算</strong> MFA。另有『所在 somewhere you are』『所為 something you do』補充因子。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 生物特徵指標</div>
+    <p style="font-size:16px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 真 <strong>MFA</strong> 要<strong>跨類別</strong>：密碼＋OTP（知＋有）才算；密碼＋安全問題（都是『知』）<strong>不算</strong> MFA。另有『所在 somewhere you are』『所為 something you do』補充因子。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 生物特徵指標</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>FAR（False Acceptance Rate）</strong>：把<strong>冒充者誤接受</strong>的比率——越低越安全（最危險的錯誤）</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>FRR（False Rejection Rate）</strong>：把<strong>本人誤拒絕</strong>的比率——太高很惱人</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>CER（Crossover Error Rate）</strong>：FAR＝FRR 的交叉點，<strong>CER 越低代表系統越準</strong></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">MFA</strong>（多因子鑑別）— <span style="color:#5B6675;">跨類別組合多個因子，大幅提升強度。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">OTP</strong>（一次性密碼）— <span style="color:#5B6675;">限時有效的動態碼（TOTP/HOTP）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">FAR</strong>（誤接受率）— <span style="color:#5B6675;">冒充者被接受的比率（安全性最關鍵）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">FRR</strong>（誤拒絕率）— <span style="color:#5B6675;">合法者被拒的比率（影響可用性）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">CER</strong>（交叉錯誤率）— <span style="color:#5B6675;">FAR＝FRR 之點，越低越準。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">FIDO2 / Passkey</strong>（無密碼鑑別）— <span style="color:#5B6675;">以公鑰加密取代密碼，抗釣魚。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">MFA</strong>（多因子鑑別）— <span style="color:#5B6675;">跨類別組合多個因子，大幅提升強度。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">OTP</strong>（一次性密碼）— <span style="color:#5B6675;">限時有效的動態碼（TOTP/HOTP）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">FAR</strong>（誤接受率）— <span style="color:#5B6675;">冒充者被接受的比率（安全性最關鍵）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">FRR</strong>（誤拒絕率）— <span style="color:#5B6675;">合法者被拒的比率（影響可用性）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">CER</strong>（交叉錯誤率）— <span style="color:#5B6675;">FAR＝FRR 之點，越低越準。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">FIDO2 / Passkey</strong>（無密碼鑑別）— <span style="color:#5B6675;">以公鑰加密取代密碼，抗釣魚。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 易混淆釐清</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 易混淆釐清</div>
     <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>真 MFA vs 假 MFA</strong>：必須<strong>不同類別</strong>。密碼＋安全問題（皆 Type 1）不是 MFA；密碼＋手機 OTP（Type 1＋2）才是。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>FAR vs FRR</strong>：FAR 是<strong>安全</strong>風險（放壞人進來）；FRR 是<strong>可用性</strong>困擾（擋住本人）。調靈敏度會此消彼長，CER 衡量整體準度。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>真 MFA vs 假 MFA</strong>：必須<strong>不同類別</strong>。密碼＋安全問題（皆 Type 1）不是 MFA；密碼＋手機 OTP（Type 1＋2）才是。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>FAR vs FRR</strong>：FAR 是<strong>安全</strong>風險（放壞人進來）；FRR 是<strong>可用性</strong>困擾（擋住本人）。調靈敏度會此消彼長，CER 衡量整體準度。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-63B</strong> 定義 AAL（鑑別保證等級）；現代趨勢是<strong>無密碼/FIDO2</strong>（抗釣魚）。簡訊 OTP 因可被 SIM 交換/攔截，已被 NIST 列為較弱方式。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 真實事件：MFA 疲勞轟炸（Uber 2022）</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-63B</strong> 定義 AAL（鑑別保證等級）；現代趨勢是<strong>無密碼/FIDO2</strong>（抗釣魚）。簡訊 OTP 因可被 SIM 交換/攔截，已被 NIST 列為較弱方式。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 真實事件：MFA 疲勞轟炸（Uber 2022）</div>
     <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 用『煩』突破 MFA</div>
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">2022 年 <strong>Uber</strong> 遭入侵，攻擊者取得員工密碼後，<strong>連續發送大量 MFA 推播</strong>（push bombing / MFA fatigue），再冒充 IT 誘導員工按下『允許』，繞過了 MFA。這顯示 MFA 並非萬靈丹，<strong>推播式同意</strong>有社交工程弱點。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">對策：改用<strong>數字配對（number matching）</strong>、FIDO2 抗釣魚金鑰、限制推播次數，並加強意識訓練（Domain 1）。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;">2022 年 <strong>Uber</strong> 遭入侵，攻擊者取得員工密碼後，<strong>連續發送大量 MFA 推播</strong>（push bombing / MFA fatigue），再冒充 IT 誘導員工按下『允許』，繞過了 MFA。這顯示 MFA 並非萬靈丹，<strong>推播式同意</strong>有社交工程弱點。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">對策：改用<strong>數字配對（number matching）</strong>、FIDO2 抗釣魚金鑰、限制推播次數，並加強意識訓練（Domain 1）。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「最強鑑別」→ 跨類別 MFA（尤其 FIDO2）；「生物系統哪個指標代表準度」→ <strong>CER（越低越好）</strong>；「最危險的生物錯誤」→ <strong>FAR</strong>（放冒充者進來）。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>密碼＋安全問題不是 MFA；簡訊 OTP 較弱；別把 FAR/FRR 搞反。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「最強鑑別」→ 跨類別 MFA（尤其 FIDO2）；「生物系統哪個指標代表準度」→ <strong>CER（越低越好）</strong>；「最危險的生物錯誤」→ <strong>FAR</strong>（放冒充者進來）。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>密碼＋安全問題不是 MFA；簡訊 OTP 較弱；別把 FAR/FRR 搞反。</p>
     </div>
-    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
       <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>三類因子（知/有/是），真 MFA 要跨類別；生物特徵看 CER（越低越準），FAR 是最危險的錯誤；推播式 MFA 有疲勞攻擊風險。</p>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>三類因子（知/有/是），真 MFA 要跨類別；生物特徵看 CER（越低越準），FAR 是最危險的錯誤；推播式 MFA 有疲勞攻擊風險。</p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 密碼＋安全問題算 MFA 嗎？<br><span style="color:#0A6160;">→ 不算；兩者皆 Type 1（所知），未跨類別。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 生物辨識系統準確度用哪個指標、方向？<br><span style="color:#0A6160;">→ CER（交叉錯誤率），越低越準。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Uber 2022 如何繞過 MFA？<br><span style="color:#0A6160;">→ MFA 疲勞轟炸（push bombing）＋社交工程誘導同意。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.2.2 鑑別因子與 MFA）</div>
 <div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍MFA 判斷（高頻陷阱）</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>MFA＝兩種以上「不同類型」因子</strong>。密碼＋PIN <strong>不是 MFA</strong>（兩者都是知識）；密碼＋手機 OTP 才是。2FA 是 MFA 的子集。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍一次性密碼</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>HOTP</strong>（HMAC 計數器型）／<strong>TOTP</strong>（時間型，30–60 秒）。<strong>SMS 已被 NIST SP 800-63B 列為不建議</strong>（可被攔截/SIM 交換）。</p>
       <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §5.2.2 鑑別因子與 MFA。</p>
@@ -110,7 +110,7 @@
 <div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• implementation costs associated with additional hardware devices etc</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
       <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
         <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>

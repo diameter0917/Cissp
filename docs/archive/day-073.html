@@ -15,70 +15,70 @@
       <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P2-D7-3</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">組態/變更/修補深入</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">組態/變更/修補深入</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Config/Change/Patch Deep Dive</div>
   </div>
   <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:60.83%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 中期 D7：維運紀律的深化</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>組態基準管理</strong>、<strong>正式變更管理流程</strong>、<strong>修補生命週期</strong>與<strong>弱點優先排序</strong>。初期我們知道三者重要,中期要懂『流程怎麼跑、優先序怎麼定』。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 中期 D7：維運紀律的深化</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>組態基準管理</strong>、<strong>正式變更管理流程</strong>、<strong>修補生命週期</strong>與<strong>弱點優先排序</strong>。初期我們知道三者重要,中期要懂『流程怎麼跑、優先序怎麼定』。</p>
     <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：baseline/CMDB → 變更管理流程(含緊急變更) → 修補生命週期 → 風險導向優先排序。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 組態管理深入</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 組態管理深入</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Baseline 基準</strong>＋<strong>CMDB(組態管理資料庫)</strong>記錄已知良好狀態與資產關係</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>偵測組態漂移</strong>:自動比對實際 vs 基準,告警偏離</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>IaC(基礎設施即程式碼)</strong>:組態版本控管、可審查、可重現(現代雲端做法)</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>硬化基準</strong>:依 CIS Benchmark / STIG 強化設定</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 變更管理流程</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 變更管理流程</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>申請 → 評估(風險/影響) → CAB 核准 → 測試 → 排程實施 → 驗證 → 回顧</strong></td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>緊急變更(emergency change)</strong>:可走快速通道,但<strong>事後須補審</strong></td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;">每個變更要有<strong>回退計畫(rollback)</strong>;高風險變更避開營運尖峰</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>變更與事件關聯</strong>:多數中斷源於未受控變更,變更紀錄是事故根因分析的關鍵</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 修補生命週期與優先排序</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">修補流程:<strong>盤點→評估(適用性/風險)→測試→部署→驗證</strong>。優先序<strong>不只看 CVSS</strong>,要綜合 <strong>是否對外暴露、是否已被利用(KEV)、資產關鍵性、補償控制有無</strong>。對外、可遠端、已有 exploit 的弱點<strong>最優先</strong>;無法即時修補用<strong>補償控制(隔離/虛擬修補/WAF 規則)</strong>。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 修補生命週期與優先排序</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;">修補流程:<strong>盤點→評估(適用性/風險)→測試→部署→驗證</strong>。優先序<strong>不只看 CVSS</strong>,要綜合 <strong>是否對外暴露、是否已被利用(KEV)、資產關鍵性、補償控制有無</strong>。對外、可遠端、已有 exploit 的弱點<strong>最優先</strong>;無法即時修補用<strong>補償控制(隔離/虛擬修補/WAF 規則)</strong>。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Baseline / CMDB</strong>（基準/組態庫）— <span style="color:#5B6675;">已知良好狀態與資產關係。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Configuration Drift</strong>（組態漂移）— <span style="color:#5B6675;">實際偏離基準,累積風險。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Change Advisory Board</strong>（變更顧問委員會）— <span style="color:#5B6675;">評估與核准變更。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Emergency Change</strong>（緊急變更）— <span style="color:#5B6675;">快速通道,事後補審。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Patch Lifecycle</strong>（修補生命週期）— <span style="color:#5B6675;">盤點→測試→部署→驗證。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">CVSS / KEV</strong>（評分/已知被利用）— <span style="color:#5B6675;">量化嚴重度;KEV 表示在野利用。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">IaC</strong>（基礎設施即程式碼）— <span style="color:#5B6675;">可版控/審查/重現的組態。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Baseline / CMDB</strong>（基準/組態庫）— <span style="color:#5B6675;">已知良好狀態與資產關係。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Configuration Drift</strong>（組態漂移）— <span style="color:#5B6675;">實際偏離基準,累積風險。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Change Advisory Board</strong>（變更顧問委員會）— <span style="color:#5B6675;">評估與核准變更。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Emergency Change</strong>（緊急變更）— <span style="color:#5B6675;">快速通道,事後補審。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Patch Lifecycle</strong>（修補生命週期）— <span style="color:#5B6675;">盤點→測試→部署→驗證。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">CVSS / KEV</strong>（評分/已知被利用）— <span style="color:#5B6675;">量化嚴重度;KEV 表示在野利用。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">IaC</strong>（基礎設施即程式碼）— <span style="color:#5B6675;">可版控/審查/重現的組態。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 易混淆釐清</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 易混淆釐清</div>
     <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>組態 vs 變更管理</strong>:組態管理維持『<strong>現在的標準狀態</strong>』;變更管理控制『<strong>狀態如何被改</strong>』。互補。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>CVSS 高 ≠ 最該先修</strong>:還要看<strong>是否對外暴露、是否已被利用(KEV)、資產重要性</strong>。內網、不可達的高 CVSS 可能排在對外低 CVSS 之後。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>緊急變更不是『免審』</strong>:可走快速通道,但<strong>事後必須補審與記錄</strong>,否則變成繞過控制的後門。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>組態 vs 變更管理</strong>:組態管理維持『<strong>現在的標準狀態</strong>』;變更管理控制『<strong>狀態如何被改</strong>』。互補。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>CVSS 高 ≠ 最該先修</strong>:還要看<strong>是否對外暴露、是否已被利用(KEV)、資產重要性</strong>。內網、不可達的高 CVSS 可能排在對外低 CVSS 之後。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>緊急變更不是『免審』</strong>:可走快速通道,但<strong>事後必須補審與記錄</strong>,否則變成繞過控制的後門。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-128(組態)/800-40(修補)/800-53 CM 控制族</strong>、<strong>ITIL</strong> 變更管理、<strong>CIS Benchmarks / DISA STIG</strong>(硬化)、<strong>CISA KEV</strong> 目錄(優先修補在野利用弱點)。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — 真實事件：WannaCry MS17-010</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-128(組態)/800-40(修補)/800-53 CM 控制族</strong>、<strong>ITIL</strong> 變更管理、<strong>CIS Benchmarks / DISA STIG</strong>(硬化)、<strong>CISA KEV</strong> 目錄(優先修補在野利用弱點)。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — 真實事件：WannaCry MS17-010</div>
     <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 補丁早有,流程沒跟上</div>
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">2017 <strong>WannaCry</strong> 利用 <strong>MS17-010(SMB)</strong> 漏洞橫掃全球。微軟<strong>事前約兩個月已釋出修補</strong>,但大量組織因<strong>修補流程緩慢、變更顧慮、或仍用過時系統</strong>而未部署,釀成大規模災情。這是『有補丁但沒打』的修補管理失敗。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">教訓:<strong>修補要有流程、依風險排序、處理難修補的舊系統(隔離/補償控制)</strong>;對外可遠端利用的弱點要走<strong>緊急修補通道</strong>。掃到(D6)還要修到(D7)才真正降風險。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;">2017 <strong>WannaCry</strong> 利用 <strong>MS17-010(SMB)</strong> 漏洞橫掃全球。微軟<strong>事前約兩個月已釋出修補</strong>,但大量組織因<strong>修補流程緩慢、變更顧慮、或仍用過時系統</strong>而未部署,釀成大規模災情。這是『有補丁但沒打』的修補管理失敗。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">教訓:<strong>修補要有流程、依風險排序、處理難修補的舊系統(隔離/補償控制)</strong>;對外可遠端利用的弱點要走<strong>緊急修補通道</strong>。掃到(D6)還要修到(D7)才真正降風險。</p>
     </div>
     <div style="background-color:#F1F5F9; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">📌 延伸：修補與穩定的兩難</div>
-      <p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">修補可能引入<strong>相容性問題甚至大規模故障</strong>(曾有安全更新導致全球當機事件)。故修補要<strong>分環試→分批部署(canary/ring)→監控→可回退</strong>,在『快速修漏洞』與『避免自我中斷』間平衡。緊急高危漏洞(在野利用)則須加速,接受較高的部署風險。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">修補可能引入<strong>相容性問題甚至大規模故障</strong>(曾有安全更新導致全球當機事件)。故修補要<strong>分環試→分批部署(canary/ring)→監控→可回退</strong>,在『快速修漏洞』與『避免自我中斷』間平衡。緊急高危漏洞(在野利用)則須加速,接受較高的部署風險。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">09 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『防未經核准變更釀事故』→ 變更管理(CAB/回退);『高危無法即時修補』→ 補償控制;『弱點優先序』→ 綜合 CVSS＋暴露＋是否在野利用(KEV)＋資產重要性。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>CVSS 高不必然最先修;緊急變更要事後補審;修補前要測試與可回退;組態(維持) vs 變更(控制改動)。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『防未經核准變更釀事故』→ 變更管理(CAB/回退);『高危無法即時修補』→ 補償控制;『弱點優先序』→ 綜合 CVSS＋暴露＋是否在野利用(KEV)＋資產重要性。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>CVSS 高不必然最先修;緊急變更要事後補審;修補前要測試與可回退;組態(維持) vs 變更(控制改動)。</p>
     </div>
-    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
       <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>組態管理維持基準(CMDB/IaC/防漂移)、變更管理受控(CAB/回退/緊急補審)、修補依風險排序(CVSS+暴露+KEV);WannaCry 是流程失敗。</p>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>組態管理維持基準(CMDB/IaC/防漂移)、變更管理受控(CAB/回退/緊急補審)、修補依風險排序(CVSS+暴露+KEV);WannaCry 是流程失敗。</p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 弱點修補優先序除 CVSS 外還要看什麼？<br><span style="color:#0A6160;">→ 是否對外暴露、是否已在野被利用(KEV)、資產關鍵性、補償控制有無。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 緊急變更可否略過審核？<br><span style="color:#0A6160;">→ 可走快速通道但事後必須補審與記錄,否則成繞過控制的後門。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 組態管理與變更管理的分工？<br><span style="color:#0A6160;">→ 組態管理維持已知良好基準;變更管理控制狀態如何被改動。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.3 組態 / §7.8 修補 / §7.9 變更（深入））</div>
 <div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍強化與映像</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;">依 <strong>CIS benchmark</strong> 強化；<strong>baseline image</strong> 確保安全設定一致、加速部署。Provisioning＝把基準複製進環境。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍修補與變更</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;">Patch management 修補管理：測試→部署→驗證。變更管理三元件（request/change/release control），緊急變更也須事後補審核與文件。</p>
       <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §7.3 組態 / §7.8 修補 / §7.9 變更（深入）。</p>
@@ -118,7 +118,7 @@
 <div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Change management control is a mandatory element for some security assurance requirements (SARs) in the ISO Common Criteria</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
       <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
         <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>

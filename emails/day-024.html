@@ -15,17 +15,17 @@
       <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D5-4</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 5 · 身分與存取管理 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">聯合協定輪廓</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">聯合協定輪廓</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Federation Protocols Overview</div>
   </div>
   <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:20.0%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 聯合協定：誰負責什麼</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">聯合身分背後是一組協定，CISSP 常考「<strong>哪個協定做什麼</strong>」。今天區分 <strong>SAML / OAuth / OIDC / Kerberos / RADIUS</strong> 的用途。一句話定錨：<strong>SAML 與 OIDC 管登入（鑑別）、OAuth 管授權、Kerberos 管內網票證、RADIUS 管網路存取</strong>。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 聯合協定：誰負責什麼</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">聯合身分背後是一組協定，CISSP 常考「<strong>哪個協定做什麼</strong>」。今天區分 <strong>SAML / OAuth / OIDC / Kerberos / RADIUS</strong> 的用途。一句話定錨：<strong>SAML 與 OIDC 管登入（鑑別）、OAuth 管授權、Kerberos 管內網票證、RADIUS 管網路存取</strong>。</p>
     <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：SAML vs OAuth vs OIDC → Kerberos 票證 → RADIUS/TACACS+ → 用途速判。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 協定用途速覽</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 協定用途速覽</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
       <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">協定</td><td style="padding:8px 10px;">主要用途</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">場景</td></tr>
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>SAML</strong></td><td style="padding:9px 10px; vertical-align:top;">聯合<strong>鑑別</strong>（XML 斷言）</td><td style="padding:9px 10px; vertical-align:top;">企業 SSO 登入 SaaS</td></tr>
@@ -34,44 +34,44 @@
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Kerberos</strong></td><td style="padding:9px 10px; vertical-align:top;">內網票證式 SSO</td><td style="padding:9px 10px; vertical-align:top;">AD 網域登入（KDC/TGT）</td></tr>
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>RADIUS/TACACS+</strong></td><td style="padding:9px 10px; vertical-align:top;">網路存取 AAA</td><td style="padding:9px 10px; vertical-align:top;">VPN/Wi-Fi/設備登入</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — Kerberos 三角</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — Kerberos 三角</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:4px 0;">
-      <tr><td style="text-align:center; background-color:#0A6160; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">使用者</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#3E9A99; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">KDC 發 TGT</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#6FB8B7; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">以 TGT 換服務票</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#0F1B2D; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">存取服務</td></tr>
+      <tr><td style="text-align:center; background-color:#0A6160; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">使用者</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#3E9A99; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">KDC 發 TGT</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#6FB8B7; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">以 TGT 換服務票</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#0F1B2D; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">存取服務</td></tr>
     </table>
-    <p style="font-size:15px; line-height:1.8; margin:8px 0 4px; color:#5B6675;"><strong>Kerberos</strong> 用 <strong>KDC</strong> 發票證、避免到處傳密碼；但 KDC 是<strong>單點要害</strong>，且有 Golden Ticket 等攻擊（中期深入）。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 關鍵名詞速查</div>
+    <p style="font-size:16px; line-height:1.8; margin:8px 0 4px; color:#5B6675;"><strong>Kerberos</strong> 用 <strong>KDC</strong> 發票證、避免到處傳密碼；但 KDC 是<strong>單點要害</strong>，且有 Golden Ticket 等攻擊（中期深入）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">SAML</strong>（安全斷言標記語言）— <span style="color:#5B6675;">XML 斷言實現聯合鑑別/SSO。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">OAuth 2.0</strong>（開放授權）— <span style="color:#5B6675;">委派授權、發 access token；非鑑別協定。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">OIDC</strong>（OpenID Connect）— <span style="color:#5B6675;">在 OAuth 上加身分層做鑑別（ID token）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Kerberos</strong>（票證式鑑別）— <span style="color:#5B6675;">KDC 發 TGT/服務票，內網 SSO（AD）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">RADIUS</strong>（遠端撥入使用者驗證）— <span style="color:#5B6675;">網路存取 AAA（VPN/Wi-Fi/802.1X）。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">TACACS+</strong>（思科 AAA 協定）— <span style="color:#5B6675;">設備管理 AAA，分離認證/授權/記帳、全加密。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SAML</strong>（安全斷言標記語言）— <span style="color:#5B6675;">XML 斷言實現聯合鑑別/SSO。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">OAuth 2.0</strong>（開放授權）— <span style="color:#5B6675;">委派授權、發 access token；非鑑別協定。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">OIDC</strong>（OpenID Connect）— <span style="color:#5B6675;">在 OAuth 上加身分層做鑑別（ID token）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Kerberos</strong>（票證式鑑別）— <span style="color:#5B6675;">KDC 發 TGT/服務票，內網 SSO（AD）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">RADIUS</strong>（遠端撥入使用者驗證）— <span style="color:#5B6675;">網路存取 AAA（VPN/Wi-Fi/802.1X）。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">TACACS+</strong>（思科 AAA 協定）— <span style="color:#5B6675;">設備管理 AAA，分離認證/授權/記帳、全加密。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 易混淆釐清</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 易混淆釐清</div>
     <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>OAuth vs OIDC</strong>：OAuth 是<strong>授權</strong>（給 token 存取資源），<strong>不是登入</strong>用；OIDC 在 OAuth 之上加 ID token 做<strong>鑑別</strong>（『用 Google 登入』）。把 OAuth 當登入是常見錯誤。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>SAML vs OIDC</strong>：兩者都做聯合<strong>鑑別</strong>，SAML 用 XML（偏企業）、OIDC 用 JSON/JWT（偏現代/行動）。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>RADIUS vs TACACS+</strong>：RADIUS 偏網路接入、僅加密密碼；TACACS+ 偏設備管理、<strong>全程加密</strong>且 AAA 分離。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>OAuth vs OIDC</strong>：OAuth 是<strong>授權</strong>（給 token 存取資源），<strong>不是登入</strong>用；OIDC 在 OAuth 之上加 ID token 做<strong>鑑別</strong>（『用 Google 登入』）。把 OAuth 當登入是常見錯誤。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>SAML vs OIDC</strong>：兩者都做聯合<strong>鑑別</strong>，SAML 用 XML（偏企業）、OIDC 用 JSON/JWT（偏現代/行動）。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>RADIUS vs TACACS+</strong>：RADIUS 偏網路接入、僅加密密碼；TACACS+ 偏設備管理、<strong>全程加密</strong>且 AAA 分離。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">SAML 2.0（OASIS）、OAuth 2.0（RFC 6749）、OIDC（OpenID Foundation）、Kerberos（RFC 4120）、RADIUS（RFC 2865）。考試重在<strong>用途判別</strong>而非協定細節。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 真實事件：SSO 單點失效</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;">SAML 2.0（OASIS）、OAuth 2.0（RFC 6749）、OIDC（OpenID Foundation）、Kerberos（RFC 4120）、RADIUS（RFC 2865）。考試重在<strong>用途判別</strong>而非協定細節。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 真實事件：SSO 單點失效</div>
     <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 身分中樞掛了，全公司進不去</div>
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">當企業把所有應用都接到單一 <strong>IdP/SSO</strong>，一旦該身分服務<strong>中斷或被攻破</strong>，影響範圍是<strong>全公司</strong>——服務中斷時人人無法登入（可用性），被攻破時攻擊者一次拿到所有應用（機密性）。這是聯合身分『便利』的另一面。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">對策：IdP <strong>高可用部署</strong>、強 MFA 保護 IdP、條件式存取與監控；呼應 Domain 1 的單點失效思維。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;">當企業把所有應用都接到單一 <strong>IdP/SSO</strong>，一旦該身分服務<strong>中斷或被攻破</strong>，影響範圍是<strong>全公司</strong>——服務中斷時人人無法登入（可用性），被攻破時攻擊者一次拿到所有應用（機密性）。這是聯合身分『便利』的另一面。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">對策：IdP <strong>高可用部署</strong>、強 MFA 保護 IdP、條件式存取與監控；呼應 Domain 1 的單點失效思維。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『用 Google 登入網站』→ <strong>OIDC</strong>；『授權 App 讀我的資料』→ <strong>OAuth</strong>；『企業 SSO 登入 SaaS』→ <strong>SAML</strong>；『AD 內網登入』→ <strong>Kerberos</strong>；『VPN/Wi-Fi 驗證』→ <strong>RADIUS</strong>。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>OAuth 是授權不是鑑別；別把 SAML/OIDC（登入）與 OAuth（授權）混用。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『用 Google 登入網站』→ <strong>OIDC</strong>；『授權 App 讀我的資料』→ <strong>OAuth</strong>；『企業 SSO 登入 SaaS』→ <strong>SAML</strong>；『AD 內網登入』→ <strong>Kerberos</strong>；『VPN/Wi-Fi 驗證』→ <strong>RADIUS</strong>。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>OAuth 是授權不是鑑別；別把 SAML/OIDC（登入）與 OAuth（授權）混用。</p>
     </div>
-    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
       <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>SAML/OIDC 管登入、OAuth 管授權、Kerberos 內網票證、RADIUS/TACACS+ 管網路與設備存取；SSO/IdP 是單點要害需高可用＋MFA。</p>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>SAML/OIDC 管登入、OAuth 管授權、Kerberos 內網票證、RADIUS/TACACS+ 管網路與設備存取；SSO/IdP 是單點要害需高可用＋MFA。</p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 「用 Google 帳號登入第三方網站」用哪個協定？<br><span style="color:#0A6160;">→ OIDC（OpenID Connect，鑑別）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . OAuth 2.0 解決的是鑑別還是授權？<br><span style="color:#0A6160;">→ 授權（委派存取、發 token），非鑑別。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . AD 內網的票證式 SSO 機制？<br><span style="color:#0A6160;">→ Kerberos（KDC 發 TGT 與服務票）。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.6 聯合協定 / §5.2.5 FIM）</div>
 <div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍三大聯合協定</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>SAML</strong>：XML、交換鑑別＋授權斷言、瀏覽器 SSO（企業常用）。<strong>OAuth 2.0</strong>：<strong>授權</strong>（委派存取，RFC 6749/IETF）。<strong>OIDC</strong>：建在 OAuth 上的<strong>鑑別</strong>層、用 JWT（消費級登入常用）。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍FIM vs SSO</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>SSO</strong>＝單一組織內一次登入存取多系統；<strong>FIM</strong>＝跨組織信任、一次登入存取內外多系統。</p>
       <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §5.6 聯合協定 / §5.2.5 FIM。</p>
@@ -187,7 +187,7 @@
 <div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Federated identity management systems can be hosted on-premises, in the cloud, or in a combination of the two as a hybrid system</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
       <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
         <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>

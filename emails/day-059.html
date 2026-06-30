@@ -15,17 +15,17 @@
       <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P2-D4-4</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 4 · 通訊與網路安全 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">無線/VPN/NAC 深入</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">無線/VPN/NAC 深入</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Wireless/VPN/NAC Deep Dive</div>
   </div>
   <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:49.17%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 中期 D4：無線、遠端與接入控制</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>無線安全（WPA2/WPA3、Evil Twin）</strong>、<strong>VPN 類型</strong>、<strong>NAC/802.1X</strong> 與 <strong>SDN</strong>。無線與遠端把網路邊界『打開』，接入控制（NAC）則確保『只有合規的裝置與身分能進來』。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 中期 D4：無線、遠端與接入控制</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>無線安全（WPA2/WPA3、Evil Twin）</strong>、<strong>VPN 類型</strong>、<strong>NAC/802.1X</strong> 與 <strong>SDN</strong>。無線與遠端把網路邊界『打開』，接入控制（NAC）則確保『只有合規的裝置與身分能進來』。</p>
     <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：WPA2 vs WPA3、無線攻擊 → VPN 類型 → 802.1X/NAC → SDN。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 無線安全演進</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 無線安全演進</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
       <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">標準</td><td style="padding:8px 10px;">重點</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">狀態</td></tr>
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">WEP</td><td style="padding:9px 10px; vertical-align:top;">RC4，易破</td><td style="padding:9px 10px; vertical-align:top;">淘汰</td></tr>
@@ -33,55 +33,55 @@
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>WPA3</strong></td><td style="padding:9px 10px; vertical-align:top;">SAE 握手、前向保密、防離線破解</td><td style="padding:9px 10px; vertical-align:top;">現行最佳</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;">Enterprise</td><td style="padding:9px 10px; vertical-align:top;"><strong>802.1X＋RADIUS</strong> 個別認證</td><td style="padding:9px 10px; vertical-align:top;">企業建議</td></tr>
     </table>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>WPA2-Personal</strong> 用共享密碼（PSK），易被離線字典攻擊；<strong>WPA3-SAE</strong> 抵抗離線破解、提供前向保密。企業環境應用 <strong>WPA2/3-Enterprise（802.1X）</strong>讓每人獨立認證。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 無線攻擊與 VPN</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>WPA2-Personal</strong> 用共享密碼（PSK），易被離線字典攻擊；<strong>WPA3-SAE</strong> 抵抗離線破解、提供前向保密。企業環境應用 <strong>WPA2/3-Enterprise（802.1X）</strong>讓每人獨立認證。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 無線攻擊與 VPN</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Evil Twin / Rogue AP</strong>：架設同名假熱點誘騙連線做 MITM</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Deauth 攻擊</strong>：強制斷線以捕捉握手或迫使連假 AP</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>VPN 類型</strong>：<strong>Remote-access</strong>（個人連公司）vs <strong>Site-to-site</strong>（站對站）；<strong>SSL/TLS VPN</strong>（瀏覽器友善）vs <strong>IPsec VPN</strong>（L3 整包）</td></tr>
       <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Split vs Full tunnel</strong>：分流(部分走 VPN) vs 全流量走 VPN(較安全可控)</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — NAC / 802.1X / SDN</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>802.1X</strong> 是埠級存取控制：裝置連網前須經 <strong>supplicant–authenticator–RADIUS</strong> 認證才放行。<strong>NAC（網路存取控制）</strong>更進一步檢查<strong>裝置合規態勢</strong>（修補/防毒/設定），不合規者隔離或限制。<strong>SDN</strong> 把網路控制面與資料面分離，集中可程式化管理（利於微分段與動態策略）。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — NAC / 802.1X / SDN</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>802.1X</strong> 是埠級存取控制：裝置連網前須經 <strong>supplicant–authenticator–RADIUS</strong> 認證才放行。<strong>NAC（網路存取控制）</strong>更進一步檢查<strong>裝置合規態勢</strong>（修補/防毒/設定），不合規者隔離或限制。<strong>SDN</strong> 把網路控制面與資料面分離，集中可程式化管理（利於微分段與動態策略）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">WPA3</strong>（Wi-Fi 保護存取 3）— <span style="color:#5B6675;">SAE 握手、前向保密、抗離線破解。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Evil Twin</strong>（邪惡雙生）— <span style="color:#5B6675;">偽冒同名 AP 做 MITM。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">802.1X</strong>（埠級存取控制）— <span style="color:#5B6675;">連網前認證（supplicant/RADIUS）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">NAC</strong>（網路存取控制）— <span style="color:#5B6675;">檢查裝置合規態勢再放行。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">RADIUS</strong>（遠端認證撥入服務）— <span style="color:#5B6675;">集中認證/授權/計費(AAA)。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">VPN</strong>（虛擬私人網路）— <span style="color:#5B6675;">加密通道，遠端/站對站。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Split Tunnel</strong>（分流通道）— <span style="color:#5B6675;">僅部分流量走 VPN。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">SDN</strong>（軟體定義網路）— <span style="color:#5B6675;">控制面/資料面分離、可程式化。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">WPA3</strong>（Wi-Fi 保護存取 3）— <span style="color:#5B6675;">SAE 握手、前向保密、抗離線破解。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Evil Twin</strong>（邪惡雙生）— <span style="color:#5B6675;">偽冒同名 AP 做 MITM。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">802.1X</strong>（埠級存取控制）— <span style="color:#5B6675;">連網前認證（supplicant/RADIUS）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">NAC</strong>（網路存取控制）— <span style="color:#5B6675;">檢查裝置合規態勢再放行。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">RADIUS</strong>（遠端認證撥入服務）— <span style="color:#5B6675;">集中認證/授權/計費(AAA)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">VPN</strong>（虛擬私人網路）— <span style="color:#5B6675;">加密通道，遠端/站對站。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Split Tunnel</strong>（分流通道）— <span style="color:#5B6675;">僅部分流量走 VPN。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SDN</strong>（軟體定義網路）— <span style="color:#5B6675;">控制面/資料面分離、可程式化。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 易混淆釐清</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 易混淆釐清</div>
     <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>WPA2 vs WPA3</strong>：WPA2-PSK 易離線字典破（KRACK）；WPA3-SAE 抗離線破解＋前向保密。企業用 802.1X 個別認證優於共享 PSK。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>Remote-access vs Site-to-site VPN</strong>：前者個人裝置連公司；後者兩個網段間（閘道對閘道）。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>802.1X vs NAC</strong>：802.1X 驗『<strong>身分</strong>』（能否連）；NAC 再驗『<strong>裝置合規態勢</strong>』（修補/防毒）。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>Split vs Full tunnel</strong>：分流方便但繞過企業檢查；全通道較安全可控。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>WPA2 vs WPA3</strong>：WPA2-PSK 易離線字典破（KRACK）；WPA3-SAE 抗離線破解＋前向保密。企業用 802.1X 個別認證優於共享 PSK。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>Remote-access vs Site-to-site VPN</strong>：前者個人裝置連公司；後者兩個網段間（閘道對閘道）。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>802.1X vs NAC</strong>：802.1X 驗『<strong>身分</strong>』（能否連）；NAC 再驗『<strong>裝置合規態勢</strong>』（修補/防毒）。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>Split vs Full tunnel</strong>：分流方便但繞過企業檢查；全通道較安全可控。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>IEEE 802.11i（WPA2）、802.11（WPA3）、802.1X</strong>；<strong>RADIUS＝RFC 2865</strong>；<strong>NIST SP 800-77（VPN）、SP 800-46（遠端工作）、SP 800-153（無線）</strong>。零信任常以 NAC＋身分為接入基礎。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — 真實事件：VPN 漏洞利用</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>IEEE 802.11i（WPA2）、802.11（WPA3）、802.1X</strong>；<strong>RADIUS＝RFC 2865</strong>；<strong>NIST SP 800-77（VPN）、SP 800-46（遠端工作）、SP 800-153（無線）</strong>。零信任常以 NAC＋身分為接入基礎。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — 真實事件：VPN 漏洞利用</div>
     <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 遠端入口成了破口</div>
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">疫情遠端工作激增後，多家企業的 <strong>VPN/遠端存取閘道未修補的漏洞</strong>被攻擊者利用，取得內網立足點（如多起勒索事件起於未修補的 VPN 設備或無 MFA 的遠端帳號，呼應 Colonial Pipeline）。VPN 把『內網入口』暴露於外，一旦有漏洞或弱認證即被長驅直入。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">教訓：遠端入口需<strong>及時修補＋強制 MFA＋最小權限＋NAC 合規檢查＋監控</strong>；別把 VPN 當『連上就完全信任』，應結合零信任持續驗證。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;">疫情遠端工作激增後，多家企業的 <strong>VPN/遠端存取閘道未修補的漏洞</strong>被攻擊者利用，取得內網立足點（如多起勒索事件起於未修補的 VPN 設備或無 MFA 的遠端帳號，呼應 Colonial Pipeline）。VPN 把『內網入口』暴露於外，一旦有漏洞或弱認證即被長驅直入。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">教訓：遠端入口需<strong>及時修補＋強制 MFA＋最小權限＋NAC 合規檢查＋監控</strong>；別把 VPN 當『連上就完全信任』，應結合零信任持續驗證。</p>
     </div>
     <div style="background-color:#F1F5F9; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">📌 延伸：BYOD 與行動裝置管理</div>
-      <p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;"><strong>BYOD（自帶裝置）</strong>讓不受控的個人裝置接入企業資源，風險高。對策：<strong>MDM/MAM（行動裝置/應用管理）</strong>強制加密、遠端抹除、容器化隔離公私資料；搭配 <strong>NAC</strong> 檢查合規態勢。核心是『把不可信端點納管或隔離』。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;"><strong>BYOD（自帶裝置）</strong>讓不受控的個人裝置接入企業資源，風險高。對策：<strong>MDM/MAM（行動裝置/應用管理）</strong>強制加密、遠端抹除、容器化隔離公私資料；搭配 <strong>NAC</strong> 檢查合規態勢。核心是『把不可信端點納管或隔離』。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">09 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『最安全的無線』→ WPA3／WPA2-Enterprise(802.1X)；『假冒同名熱點』→ Evil Twin；『連網前檢查裝置合規』→ NAC；『遠端入口』→ VPN＋MFA。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>WPA2-PSK 可離線破；802.1X(身分) vs NAC(裝置態勢)；VPN 連上不等於可信(結合零信任)。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『最安全的無線』→ WPA3／WPA2-Enterprise(802.1X)；『假冒同名熱點』→ Evil Twin；『連網前檢查裝置合規』→ NAC；『遠端入口』→ VPN＋MFA。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>WPA2-PSK 可離線破；802.1X(身分) vs NAC(裝置態勢)；VPN 連上不等於可信(結合零信任)。</p>
     </div>
-    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
       <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>WPA3 抗離線破解、企業用 802.1X；VPN 分遠端/站對站、需 MFA 與修補；NAC 檢查裝置合規；SDN 可程式化利於微分段。</p>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>WPA3 抗離線破解、企業用 802.1X；VPN 分遠端/站對站、需 MFA 與修補；NAC 檢查裝置合規；SDN 可程式化利於微分段。</p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . WPA2-Personal 的主要弱點？<br><span style="color:#0A6160;">→ 共享 PSK 易被離線字典/KRACK 攻擊；應用 WPA3 或 802.1X。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 802.1X 與 NAC 各驗證什麼？<br><span style="color:#0A6160;">→ 802.1X 驗身分(能否連)；NAC 再驗裝置合規態勢(修補/防毒)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 偽冒同名 Wi-Fi 熱點誘騙連線叫什麼？<br><span style="color:#0A6160;">→ Evil Twin（邪惡雙生）。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.13 無線 / §4.2.3 NAC（深入））</div>
 <div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍EAP 方法與 VPN</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>EAP-TLS</strong>（雙向憑證，最佳）；PEAP（TLS 通道內包 EAP）；避免 EAP-MD5/LEAP。WPA3-SAE＝Dragonfly。VPN：IPSec／WireGuard／L2TP（配 IPSec）；<strong>PPTP 已淘汰、無加密</strong>。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍NAC 部署</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;">Agent-based（深度姿態檢查、可續監、可補救）vs Agentless（免裝、相容 IoT、僅基本檢查）。RADIUS(UDP 1812)／TACACS+(TCP 49)。</p>
       <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §4.1.13 無線 / §4.2.3 NAC（深入）。</p>
@@ -194,7 +194,7 @@
 <div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>nontransparent proxy</strong>: requires explicit configuration on the client side and may modify traffic to enforce policies, such as restricting access or logging user activities</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
       <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
         <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>

@@ -15,17 +15,17 @@
       <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D4-2</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 4 · 通訊與網路安全 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">核心協定與安全協定</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">核心協定與安全協定</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Core &amp; Secure Protocols</div>
   </div>
   <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:14.17%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 協定：網路的共同語言</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天認識<strong>核心協定</strong>（TCP/UDP/ICMP）與<strong>安全協定</strong>（TLS/IPsec/SSH），以及最關鍵的 <strong>DNS 與 DNSSEC</strong>。初期抓「每個協定解什麼問題、安全版本是哪個」。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 協定：網路的共同語言</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">今天認識<strong>核心協定</strong>（TCP/UDP/ICMP）與<strong>安全協定</strong>（TLS/IPsec/SSH），以及最關鍵的 <strong>DNS 與 DNSSEC</strong>。初期抓「每個協定解什麼問題、安全版本是哪個」。</p>
     <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：TCP 三向交握 → 安全協定 TLS/IPsec/SSH → DNS 與 DNSSEC → 常見埠。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 安全協定速覽</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 安全協定速覽</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
       <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">協定</td><td style="padding:8px 10px;">用途</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">取代/強化</td></tr>
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>TLS</strong></td><td style="padding:9px 10px; vertical-align:top;">加密傳輸（HTTPS）</td><td style="padding:9px 10px; vertical-align:top;">取代 SSL；保 in-transit</td></tr>
@@ -33,45 +33,45 @@
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>SSH</strong></td><td style="padding:9px 10px; vertical-align:top;">加密遠端登入/傳檔</td><td style="padding:9px 10px; vertical-align:top;">取代 Telnet/FTP</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>DNSSEC</strong></td><td style="padding:9px 10px; vertical-align:top;">為 DNS 回應加簽章</td><td style="padding:9px 10px; vertical-align:top;">防 DNS 偽造/快取污染</td></tr>
     </table>
-    <p style="font-size:15px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 不安全→安全對照：<strong>Telnet→SSH、FTP→SFTP/FTPS、HTTP→HTTPS、SNMPv1/2→SNMPv3、DNS→DNSSEC</strong>。考題愛問「該換成什麼」。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — TCP 三向交握</div>
+    <p style="font-size:16px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 不安全→安全對照：<strong>Telnet→SSH、FTP→SFTP/FTPS、HTTP→HTTPS、SNMPv1/2→SNMPv3、DNS→DNSSEC</strong>。考題愛問「該換成什麼」。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — TCP 三向交握</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:4px 0;">
-      <tr><td style="text-align:center; background-color:#0A6160; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">SYN</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#3E9A99; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">SYN-ACK</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#6FB8B7; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">ACK</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#0F1B2D; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">連線建立</td></tr>
+      <tr><td style="text-align:center; background-color:#0A6160; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">SYN</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#3E9A99; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">SYN-ACK</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#6FB8B7; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">ACK</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#0F1B2D; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">連線建立</td></tr>
     </table>
-    <p style="font-size:15px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">三向交握建立可靠連線；<strong>SYN flood</strong> 即濫發 SYN 不回 ACK 耗盡資源（L4 DoS），以 SYN cookie 緩解。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 關鍵名詞速查</div>
+    <p style="font-size:16px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">三向交握建立可靠連線；<strong>SYN flood</strong> 即濫發 SYN 不回 ACK 耗盡資源（L4 DoS），以 SYN cookie 緩解。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">TLS</strong>（傳輸層安全）— <span style="color:#5B6675;">加密與驗證傳輸，HTTPS 基礎（埠 443）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">IPsec</strong>（IP 安全）— <span style="color:#5B6675;">L3 加密；AH 驗完整、ESP 加密＋驗。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">SSH</strong>（安全外殼）— <span style="color:#5B6675;">加密遠端管理與傳檔（埠 22）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">DNS</strong>（網域名稱系統）— <span style="color:#5B6675;">名稱↔IP 解析（埠 53）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">DNSSEC</strong>（DNS 安全擴充）— <span style="color:#5B6675;">以數位簽章驗 DNS 回應真實性與完整性。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">ICMP</strong>（網際控制訊息）— <span style="color:#5B6675;">診斷/錯誤回報（ping）；常被濫用於掃描/洪水。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">TLS</strong>（傳輸層安全）— <span style="color:#5B6675;">加密與驗證傳輸，HTTPS 基礎（埠 443）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">IPsec</strong>（IP 安全）— <span style="color:#5B6675;">L3 加密；AH 驗完整、ESP 加密＋驗。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SSH</strong>（安全外殼）— <span style="color:#5B6675;">加密遠端管理與傳檔（埠 22）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">DNS</strong>（網域名稱系統）— <span style="color:#5B6675;">名稱↔IP 解析（埠 53）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">DNSSEC</strong>（DNS 安全擴充）— <span style="color:#5B6675;">以數位簽章驗 DNS 回應真實性與完整性。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">ICMP</strong>（網際控制訊息）— <span style="color:#5B6675;">診斷/錯誤回報（ping）；常被濫用於掃描/洪水。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 易混淆釐清</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 易混淆釐清</div>
     <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>IPsec AH vs ESP</strong>：<strong>AH</strong> 只提供完整性/驗證（不加密）；<strong>ESP</strong> 提供加密＋完整性。需機密性就用 ESP。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>DNSSEC 不等於加密</strong>：DNSSEC 提供<strong>真實性/完整性</strong>（防偽造），<strong>不</strong>加密查詢內容；要加密查詢是 DoH/DoT。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>IPsec AH vs ESP</strong>：<strong>AH</strong> 只提供完整性/驗證（不加密）；<strong>ESP</strong> 提供加密＋完整性。需機密性就用 ESP。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>DNSSEC 不等於加密</strong>：DNSSEC 提供<strong>真實性/完整性</strong>（防偽造），<strong>不</strong>加密查詢內容；要加密查詢是 DoH/DoT。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">TLS（IETF RFC 8446＝TLS 1.3）、IPsec（RFC 4301）、SSH（RFC 4251）、DNSSEC（RFC 4033+）。常見埠：HTTP 80 / HTTPS 443 / SSH 22 / DNS 53 / SMTP 25 / RDP 3389——考題常考埠對應。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 真實事件：DNS 劫持</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;">TLS（IETF RFC 8446＝TLS 1.3）、IPsec（RFC 4301）、SSH（RFC 4251）、DNSSEC（RFC 4033+）。常見埠：HTTP 80 / HTTPS 443 / SSH 22 / DNS 53 / SMTP 25 / RDP 3389——考題常考埠對應。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 真實事件：DNS 劫持</div>
     <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 把你導到假網站</div>
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;"><strong>DNS 劫持／快取污染（cache poisoning）</strong>讓使用者輸入正確網址，卻被解析到攻擊者的假伺服器，進而竊取憑證或植入惡意程式。根因是傳統 DNS 回應<strong>未經驗證</strong>。<strong>DNSSEC</strong> 以簽章讓解析器能驗證回應真偽，正是對策。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">對照 Domain 1 的真實性（Authenticity）：DNSSEC 解決的是「我連到的真的是它嗎」。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;"><strong>DNS 劫持／快取污染（cache poisoning）</strong>讓使用者輸入正確網址，卻被解析到攻擊者的假伺服器，進而竊取憑證或植入惡意程式。根因是傳統 DNS 回應<strong>未經驗證</strong>。<strong>DNSSEC</strong> 以簽章讓解析器能驗證回應真偽，正是對策。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">對照 Domain 1 的真實性（Authenticity）：DNSSEC 解決的是「我連到的真的是它嗎」。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「加密遠端管理」→ SSH；「站對站 VPN」→ IPsec；「防 DNS 偽造」→ DNSSEC；「保網頁傳輸」→ TLS。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>AH 不加密（只 ESP 加密）；DNSSEC 不加密內容。Telnet/FTP/HTTP 為明文，應換安全版。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「加密遠端管理」→ SSH；「站對站 VPN」→ IPsec；「防 DNS 偽造」→ DNSSEC；「保網頁傳輸」→ TLS。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>AH 不加密（只 ESP 加密）；DNSSEC 不加密內容。Telnet/FTP/HTTP 為明文，應換安全版。</p>
     </div>
-    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
       <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>核心協定 TCP（可靠）/UDP（快）/ICMP（診斷）；安全協定 TLS/IPsec/SSH 各有戰場；DNSSEC 用簽章防 DNS 偽造但不加密。</p>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>核心協定 TCP（可靠）/UDP（快）/ICMP（診斷）；安全協定 TLS/IPsec/SSH 各有戰場；DNSSEC 用簽章防 DNS 偽造但不加密。</p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . IPsec 的 ESP 與 AH 差別？<br><span style="color:#0A6160;">→ ESP 加密＋完整性；AH 只完整性/驗證、不加密。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . DNSSEC 提供加密嗎？<br><span style="color:#0A6160;">→ 否；提供真實性/完整性（防偽造），加密查詢需 DoH/DoT。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 取代明文 Telnet 的安全協定？<br><span style="color:#0A6160;">→ SSH（埠 22）。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.2 IP / §4.1.3 安全協定）</div>
 <div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍IP 與位址</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>IPv4 32-bit／IPv6 128-bit</strong>（原設計強制 IPSec，後改建議）。傳輸型態：<strong>Unicast 一對一／Broadcast 一對全／Multicast 一對群／Anycast 最近最佳</strong>（CDN 常用）。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍安全協定</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>IPSec</strong>：AH（認證/完整/不可否認，<strong>不加密</strong>）＋ESP（加密=機密性）；<strong>transport 模式</strong>只加密 payload、<strong>tunnel 模式</strong>整包加密。<strong>SSH</strong>（遠端管理）、<strong>SFTP</strong>（加密傳檔）、<strong>TLS</strong>（混合式：非對稱換對稱會談金鑰）。</p>
       <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §4.1.2 IP / §4.1.3 安全協定。</p>
@@ -143,7 +143,7 @@
 <div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>WireGuard</strong>: a modern, open-source VPN protocol designed to be faster, simpler, and more secure than traditional protocols; uses a lean codebase and operates at the kernel level for high performance</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
       <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
         <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>

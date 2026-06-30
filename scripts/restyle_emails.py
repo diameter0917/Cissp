@@ -81,6 +81,28 @@ SIZE_MAP = {
 # ── 圓角：卡片外框柔化 ────────────────────────────────────────────────
 RADIUS_MAP = {"14px": "16px"}
 
+# ── 外觀刷新（--refresh）：依 skill「Editorial / Exaggerated Minimalism」建議 ──
+#   更大內文（16px，符合 UX High-severity「mobile 內文最小 16px」）、更大標題、
+#   更寬鬆的區段留白。單次掃描對應，避免級聯（15→16 與 16→17 不互相疊加）。
+REFRESH_FONT = {"15": "16", "16": "17", "22": "26"}          # 內文 / 導讀 / h1
+REFRESH_MARGIN_TOP = {"24px": "28px"}                         # 區段間距更寬鬆
+
+
+def editorial_refresh(text: str):
+    n = 0
+    def _fs(m):
+        nonlocal n
+        v = m.group(1)
+        if v in REFRESH_FONT:
+            n += 1
+            return f"font-size:{REFRESH_FONT[v]}px"
+        return m.group(0)
+    text = re.sub(r"font-size:(\d+)px", _fs, text)            # 單次掃描，無級聯
+    for old, new in REFRESH_MARGIN_TOP.items():
+        text, c = re.subn(rf"margin-top:{old}", f"margin-top:{new}", text)
+        n += c
+    return text, n
+
 
 def restyle(text: str):
     n = 0
@@ -125,6 +147,8 @@ def collect(args):
 if __name__ == "__main__":
     args = sys.argv[1:]
     check = "--check" in args
+    refresh = "--refresh" in args      # 套用外觀刷新（型號/留白），而非色盤收斂
+    transform = editorial_refresh if refresh else restyle
     outdir = None
     if "--out" in args:
         i = args.index("--out")
@@ -141,7 +165,7 @@ if __name__ == "__main__":
     for f in files:
         src = Path(f)
         text = src.read_text(encoding="utf-8")
-        new, n = restyle(text)
+        new, n = transform(text)
         total += n
         if check:
             print(f"  {src.name}: {n} 處可改")
