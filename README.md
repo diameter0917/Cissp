@@ -22,6 +22,30 @@
 
 ---
 
+## 設計系統與 UI/UX Skill
+
+信件版型已導入統一設計系統 **CISSP Swiss**（Swiss Modernism / Minimalism：單一強調色、
+8px 間距、模組化字級、WCAG 對比），把過往漂移出的「金/棕考綱副色盤」與「靛藍副強調」
+收斂回 navy 墨色 + 單一 deep-teal 強調 + slate 中性灰 + amber 考點警示。
+
+| 檔案 | 用途 |
+|---|---|
+| `templates/DESIGN_SYSTEM.md` | 設計系統規格（色彩 token / 字級 / 間距 / email 限制） |
+| `templates/master.html` | **可重用主版型**（placeholder 化，撰寫新信件用） |
+| `scripts/restyle_emails.py` | 把既有信件批次收斂到設計系統（純 token 取代，不動文字） |
+| `templates/preview/` | 改版前後預覽樣張 |
+| `.claude/skills/ui-ux-pro-max/` | 內嵌的 **ui-ux-pro-max** UI/UX skill（見其 `UPSTREAM.md`） |
+
+```bash
+# 用 skill 引擎產生設計建議
+python3 .claude/skills/ui-ux-pro-max/scripts/search.py "<query>" --design-system
+# 撰寫新信件：複製 templates/master.html，替換 {{PLACEHOLDER}}
+# 既有信件批次套用設計系統
+python3 scripts/restyle_emails.py --all
+```
+
+---
+
 ## 檔案結構
 
 ```
