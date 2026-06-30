@@ -5,118 +5,118 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 21</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 21 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D5-1</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D5-1</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 5 · 身分與存取管理 &nbsp;|&nbsp; 權重 13%</span>
     </div>
     <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">Domain 5 全景與 AAA</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Domain 5 Big Picture &amp; AAA</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:17.5%; background-color:#0E7C7B;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:17.5%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — Domain 5 與 AAA</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — Domain 5 與 AAA</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">Domain 5（<strong>Identity and Access Management，身分與存取管理</strong>）佔 <strong>13%</strong>，是<strong>第一道防線</strong>——絕大多數入侵都從「身分被冒用」開始。核心框架是 <strong>IAAA</strong>：識別、鑑別、授權、可歸責。今天先把這四個動作分清楚。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週（Domain 5 · 初期）路線</strong>：①今天 AAA 全景 → ②鑑別因子與 MFA → ③身分生命週期與聯合 → ④聯合協定 → ⑤存取控制模型與 PAM。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — IAAA 四步驟</div>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">本週（Domain 5 · 初期）路線</strong>：①今天 AAA 全景 → ②鑑別因子與 MFA → ③身分生命週期與聯合 → ④聯合協定 → ⑤存取控制模型與 PAM。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — IAAA 四步驟</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:4px 0;">
-      <tr><td style="text-align:center; background-color:#0E7C7B; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">Identification 識別</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#3E9A99; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">Authentication 鑑別</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#6FB8B7; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">Authorization 授權</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#15233B; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">Accountability 可歸責</td></tr>
+      <tr><td style="text-align:center; background-color:#0A6160; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">Identification 識別</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#3E9A99; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">Authentication 鑑別</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#6FB8B7; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">Authorization 授權</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#0F1B2D; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">Accountability 可歸責</td></tr>
     </table>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">步驟</td><td style="padding:8px 10px;">回答的問題</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">例子</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Identification</strong> 識別</td><td style="padding:9px 10px; vertical-align:top;">你宣稱是誰？</td><td style="padding:9px 10px; vertical-align:top;">輸入帳號/使用者名稱</td></tr>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">步驟</td><td style="padding:8px 10px;">回答的問題</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">例子</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Identification</strong> 識別</td><td style="padding:9px 10px; vertical-align:top;">你宣稱是誰？</td><td style="padding:9px 10px; vertical-align:top;">輸入帳號/使用者名稱</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Authentication</strong> 鑑別</td><td style="padding:9px 10px; vertical-align:top;">你能證明嗎？</td><td style="padding:9px 10px; vertical-align:top;">密碼/OTP/指紋</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Authorization</strong> 授權</td><td style="padding:9px 10px; vertical-align:top;">你可以做什麼？</td><td style="padding:9px 10px; vertical-align:top;">依角色/權限決定可存取資源</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Authorization</strong> 授權</td><td style="padding:9px 10px; vertical-align:top;">你可以做什麼？</td><td style="padding:9px 10px; vertical-align:top;">依角色/權限決定可存取資源</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Accountability</strong> 可歸責</td><td style="padding:9px 10px; vertical-align:top;">誰做了什麼？</td><td style="padding:9px 10px; vertical-align:top;">稽核日誌可追溯到個人</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 可歸責的前提是「<strong>每人唯一身分＋完整日誌</strong>」。共用帳號＝無法歸責，是常見稽核缺失。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 關鍵名詞速查</div>
+    <p style="font-size:15px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 可歸責的前提是「<strong>每人唯一身分＋完整日誌</strong>」。共用帳號＝無法歸責，是常見稽核缺失。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Identification</strong>（識別）— <span style="color:#5B6675;">宣稱身分（提供 identifier，如帳號）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Authentication</strong>（鑑別）— <span style="color:#5B6675;">證明身分（提供 factor，如密碼）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Authorization</strong>（授權）— <span style="color:#5B6675;">決定身分可存取哪些資源與動作。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Accountability</strong>（可歸責）— <span style="color:#5B6675;">行為可追溯到特定個人（靠唯一身分＋日誌）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">IAM</strong>（身分與存取管理）— <span style="color:#5B6675;">管理身分生命週期與存取的整體框架。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Non-repudiation</strong>（不可否認）— <span style="color:#5B6675;">結合鑑別與日誌，使行為人無法否認其作為。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Identification</strong>（識別）— <span style="color:#5B6675;">宣稱身分（提供 identifier，如帳號）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Authentication</strong>（鑑別）— <span style="color:#5B6675;">證明身分（提供 factor，如密碼）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Authorization</strong>（授權）— <span style="color:#5B6675;">決定身分可存取哪些資源與動作。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Accountability</strong>（可歸責）— <span style="color:#5B6675;">行為可追溯到特定個人（靠唯一身分＋日誌）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">IAM</strong>（身分與存取管理）— <span style="color:#5B6675;">管理身分生命週期與存取的整體框架。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Non-repudiation</strong>（不可否認）— <span style="color:#5B6675;">結合鑑別與日誌，使行為人無法否認其作為。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Identification vs Authentication</strong>：識別是「<strong>宣稱</strong>我是誰」（帳號）；鑑別是「<strong>證明</strong>」（密碼/生物特徵）。帳號本身不是祕密、不算鑑別。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Authentication vs Authorization</strong>：鑑別＝<strong>你是誰</strong>；授權＝<strong>你能做什麼</strong>。通過鑑別不代表有權限。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>Identification vs Authentication</strong>：識別是「<strong>宣稱</strong>我是誰」（帳號）；鑑別是「<strong>證明</strong>」（密碼/生物特徵）。帳號本身不是祕密、不算鑑別。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>Authentication vs Authorization</strong>：鑑別＝<strong>你是誰</strong>；授權＝<strong>你能做什麼</strong>。通過鑑別不代表有權限。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 條文與標準</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 條文與標準</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-63</strong>（Digital Identity）是身分鑑別的權威，定義 IAL/AAL/FAL 等級（中期深入）。可歸責也是各稽核框架（ISO 27001、SOC 2）的基本要求。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 真實事件：缺可歸責，無法追責</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 共用帳號的代價</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">當團隊共用一組管理員帳號（如 admin/root），一旦發生誤刪或惡意操作，日誌只顯示「admin 做的」——<strong>無法追溯到實際個人</strong>，調查與究責全部卡住。這是稽核中極常見的缺失，也讓<strong>不可否認性</strong>蕩然無存。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">對策：<strong>每人唯一身分</strong>、特權操作走 PAM（Day 25）、完整且受保護的稽核日誌。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 真實事件：缺可歸責，無法追責</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 共用帳號的代價</div>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">當團隊共用一組管理員帳號（如 admin/root），一旦發生誤刪或惡意操作，日誌只顯示「admin 做的」——<strong>無法追溯到實際個人</strong>，調查與究責全部卡住。這是稽核中極常見的缺失，也讓<strong>不可否認性</strong>蕩然無存。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">對策：<strong>每人唯一身分</strong>、特權操作走 PAM（Day 25）、完整且受保護的稽核日誌。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「輸入帳號」＝Identification；「輸入密碼/指紋」＝Authentication；「能否存取某檔」＝Authorization；「追溯誰做的」＝Accountability。把動作對應到 IAAA。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>共用帳號破壞可歸責；識別（帳號）不是鑑別。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「輸入帳號」＝Identification；「輸入密碼/指紋」＝Authentication；「能否存取某檔」＝Authorization；「追溯誰做的」＝Accountability。把動作對應到 IAAA。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>共用帳號破壞可歸責；識別（帳號）不是鑑別。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>IAM 是第一道防線；IAAA＝識別→鑑別→授權→可歸責，可歸責需唯一身分＋日誌。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 輸入使用者名稱屬於 IAAA 哪一步？<br><span style="color:#0A5A59;">→ Identification 識別（宣稱身分）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 為何共用帳號是稽核缺失？<br><span style="color:#0A5A59;">→ 破壞 Accountability，無法追溯到個人、喪失不可否認性。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 通過鑑別就等於有權限嗎？<br><span style="color:#0A5A59;">→ 否；授權（Authorization）另外決定能做什麼。</span></p>
+    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>IAM 是第一道防線；IAAA＝識別→鑑別→授權→可歸責，可歸責需唯一身分＋日誌。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 輸入使用者名稱屬於 IAAA 哪一步？<br><span style="color:#0A6160;">→ Identification 識別（宣稱身分）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 為何共用帳號是稽核缺失？<br><span style="color:#0A6160;">→ 破壞 Accountability，無法追溯到個人、喪失不可否認性。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 通過鑑別就等於有權限嗎？<br><span style="color:#0A6160;">→ 否；授權（Authorization）另外決定能做什麼。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.2.2 AAA）</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍四大存取控制服務</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>Identification 識別</strong>（主張身分）→ <strong>Authentication 鑑別</strong>（驗證身分）→ <strong>Authorization 授權</strong>（定義存取）→ <strong>Accountability 當責</strong>（靠 Auditing 稽核達成）。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍三大鑑別因子</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>知識 something you know</strong>（密碼）／<strong>持有 something you have</strong>（token）／<strong>特徵 something you are</strong>（生物特徵）。MFA 須<strong>不同類型</strong>因子；FIDO2/WebAuthn＝防釣魚的無密碼鑑別。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §5.2.2 AAA。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §5.2.2 AAA 與 MFA。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§5.2.2 Authentication, Authorization and Accounting (AAA) (e.g., multi-factor authentication (MFA), password-less authentication)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• The four key access control services: Identification (assertion of identity), Authentication (verification of identity), Authorization (definition of access), Accountability (responsibility of actions)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Note that AAA is the same principles of Authentication, Authorization, and using the word Accounting instead of Accountability (but it&#x27;s the same principle)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• and remember that the three factors of authentication that you need to understand is knowledge, ownership, and characteristic (see above)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Two important security elements in an access control system are authorization and accountability</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Authorization</strong>: subjects are granted access to objects based on proven identities; the level of access defined for the identified and authenticated user or process</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Accountability AKA Principle of Access Control</strong>: proper identification, authentication, and authorization that is logged and monitored; users and other subjects can be held accountable for their actions when auditing is implemented; accountability is maintained for individual subjects through the use of auditing; logs record user activities and users can be held accountable for their logged actions; this encourages good user behavior and compliance with the org&#x27;s security policy; also see definitions/interpolations in Domain 2, and above</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Auditing</strong>: tracks subjects and records when they access objects, creating an audit trail in one or more audit logs</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Auditing provides accountability</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• FIDO2 and WebAuthn are related technical standards that enable phishing-resistant, passwordless authentication across the internet</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>FIDO2 (Fast IDentity Online 2)</strong>: an overarching project and set of specifications developed by the FIDO Alliance designed to replace passwords with cryptographic keys</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>WebAuthn (Web Authentication)</strong>: a specific web API standard developed by the World Wide Web Consortium (W3C) in collaboration with FIDO that allows websites (known as &quot;Relying Parties&quot;) to communicate directly with a user’s browser to perform secure authentication</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Single-factor authentication</strong>: any authentication using only one proof of identity</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Two-factor authentication (2FA)</strong>: requires two different proofs of identity</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Multifactor authentication (MFA)</strong>: any authentication using two or more factors</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• multifactor auth must use multiple types or factors, such as something you know and something you have</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• note: requiring users to enter a password and a PIN is NOT multifactor (both are something you know)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Two-factor methods:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Hash Message Authentication Code (HMAC)</strong>: includes a hash function used by the HMAC-based One-Time Password (HOTP) standard to create onetime passwords</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Time-based One-Time Password (TOTP)</strong>: similar to HOTP, but uses a timestamp and remains valid for a certain time frame (e.g. 30 or 60 seconds)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• e.g. phone-based authenticator app, where your phone is mimicking a hardware TOTP token (combined with userid/password is considered two-factor or two-step authentication)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Email challenge</strong>: popular method, used by websites, sending the user an email with a PIN</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Short Message Service (SMS): to send users a text with a PIN is another 2-factor method; note that NIST SP 800-63B points out vulnerabilities, and deprecates use of SMS as a two-factor method for federal agencies</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Password-less authentication</strong>: a method of verifying a user&#x27;s identity without requiring them to enter a password; uses alternate verification forms like biometrics, security tokens, or mobile device</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• this is an important topic, because password use (and misuse) provide many security headaches and problems</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Advantages of password-less auth include:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• increased security</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• improved user convenience</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• reduction risk of phishing: if attacker gains access to a password, but password-less auth makes it much more difficult for the attacker to access the associated device (say if password-less auth is via mobile device)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Disadvantages of password-less auth:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• dependency on devices (e.g. if via mobile phone, that device is required for access)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• biometric issues associated with reliability and privacy</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• implementation costs associated with additional hardware devices etc</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.2.2 AAA）</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍四大存取控制服務</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>Identification 識別</strong>（主張身分）→ <strong>Authentication 鑑別</strong>（驗證身分）→ <strong>Authorization 授權</strong>（定義存取）→ <strong>Accountability 當責</strong>（靠 Auditing 稽核達成）。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍三大鑑別因子</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>知識 something you know</strong>（密碼）／<strong>持有 something you have</strong>（token）／<strong>特徵 something you are</strong>（生物特徵）。MFA 須<strong>不同類型</strong>因子；FIDO2/WebAuthn＝防釣魚的無密碼鑑別。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §5.2.2 AAA。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §5.2.2 AAA 與 MFA。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§5.2.2 Authentication, Authorization and Accounting (AAA) (e.g., multi-factor authentication (MFA), password-less authentication)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• The four key access control services: Identification (assertion of identity), Authentication (verification of identity), Authorization (definition of access), Accountability (responsibility of actions)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Note that AAA is the same principles of Authentication, Authorization, and using the word Accounting instead of Accountability (but it&#x27;s the same principle)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• and remember that the three factors of authentication that you need to understand is knowledge, ownership, and characteristic (see above)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Two important security elements in an access control system are authorization and accountability</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Authorization</strong>: subjects are granted access to objects based on proven identities; the level of access defined for the identified and authenticated user or process</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Accountability AKA Principle of Access Control</strong>: proper identification, authentication, and authorization that is logged and monitored; users and other subjects can be held accountable for their actions when auditing is implemented; accountability is maintained for individual subjects through the use of auditing; logs record user activities and users can be held accountable for their logged actions; this encourages good user behavior and compliance with the org&#x27;s security policy; also see definitions/interpolations in Domain 2, and above</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Auditing</strong>: tracks subjects and records when they access objects, creating an audit trail in one or more audit logs</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Auditing provides accountability</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• FIDO2 and WebAuthn are related technical standards that enable phishing-resistant, passwordless authentication across the internet</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>FIDO2 (Fast IDentity Online 2)</strong>: an overarching project and set of specifications developed by the FIDO Alliance designed to replace passwords with cryptographic keys</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>WebAuthn (Web Authentication)</strong>: a specific web API standard developed by the World Wide Web Consortium (W3C) in collaboration with FIDO that allows websites (known as &quot;Relying Parties&quot;) to communicate directly with a user’s browser to perform secure authentication</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Single-factor authentication</strong>: any authentication using only one proof of identity</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Two-factor authentication (2FA)</strong>: requires two different proofs of identity</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Multifactor authentication (MFA)</strong>: any authentication using two or more factors</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• multifactor auth must use multiple types or factors, such as something you know and something you have</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• note: requiring users to enter a password and a PIN is NOT multifactor (both are something you know)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Two-factor methods:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Hash Message Authentication Code (HMAC)</strong>: includes a hash function used by the HMAC-based One-Time Password (HOTP) standard to create onetime passwords</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Time-based One-Time Password (TOTP)</strong>: similar to HOTP, but uses a timestamp and remains valid for a certain time frame (e.g. 30 or 60 seconds)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• e.g. phone-based authenticator app, where your phone is mimicking a hardware TOTP token (combined with userid/password is considered two-factor or two-step authentication)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Email challenge</strong>: popular method, used by websites, sending the user an email with a PIN</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Short Message Service (SMS): to send users a text with a PIN is another 2-factor method; note that NIST SP 800-63B points out vulnerabilities, and deprecates use of SMS as a two-factor method for federal agencies</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Password-less authentication</strong>: a method of verifying a user&#x27;s identity without requiring them to enter a password; uses alternate verification forms like biometrics, security tokens, or mobile device</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• this is an important topic, because password use (and misuse) provide many security headaches and problems</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Advantages of password-less auth include:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• increased security</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• improved user convenience</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• reduction risk of phishing: if attacker gains access to a password, but password-less auth makes it much more difficult for the attacker to access the associated device (say if password-less auth is via mobile device)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Disadvantages of password-less auth:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• dependency on devices (e.g. if via mobile phone, that device is required for access)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• biometric issues associated with reliability and privacy</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• implementation costs associated with additional hardware devices etc</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/BUcoABZzeQ4" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/BUcoABZzeQ4" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/VknzQFVUfIc?t=4705" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 5<span class="ts-note">（從約 78:25 開始）</span> ↗</a>
+        <a href="https://youtu.be/VknzQFVUfIc?t=4705" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 5<span class="ts-note">（從約 78:25 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -124,8 +124,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 21 / 120 · P1-D5-1</span>
   </div>
 

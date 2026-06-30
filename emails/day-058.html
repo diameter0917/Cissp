@@ -5,131 +5,131 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 58</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 58 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D4-3</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P2-D4-3</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 4 · 通訊與網路安全 &nbsp;|&nbsp; 權重 13%</span>
     </div>
     <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">防火牆/IDS/分段深入</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Firewalls/IDS/Segmentation Deep Dive</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:48.33%; background-color:#3D52A0;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:48.33%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D4：邊界與內部防禦</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 中期 D4：邊界與內部防禦</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>防火牆世代</strong>、<strong>IDS/IPS</strong>的偵測方式與誤報漏報、以及<strong>網路分段與零信任</strong>。重點：邊界防禦會被突破，<strong>內部分段</strong>才能限制橫向移動。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：防火牆世代/WAF → IDS vs IPS、特徵 vs 異常 → 誤報漏報 → 分段/微分段/零信任。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 防火牆世代</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">世代</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">檢視層級</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Packet Filter</strong></td><td style="padding:9px 10px; vertical-align:top;">L3/L4 標頭（IP/埠），無狀態</td></tr>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：防火牆世代/WAF → IDS vs IPS、特徵 vs 異常 → 誤報漏報 → 分段/微分段/零信任。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 防火牆世代</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">世代</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">檢視層級</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Packet Filter</strong></td><td style="padding:9px 10px; vertical-align:top;">L3/L4 標頭（IP/埠），無狀態</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Stateful</strong></td><td style="padding:9px 10px; vertical-align:top;">追蹤連線狀態（state table）</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Proxy/ALG</strong></td><td style="padding:9px 10px; vertical-align:top;">L7 代理，內容檢視</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Proxy/ALG</strong></td><td style="padding:9px 10px; vertical-align:top;">L7 代理，內容檢視</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>NGFW</strong></td><td style="padding:9px 10px; vertical-align:top;">整合 IPS/應用辨識/使用者身分</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>WAF</strong></td><td style="padding:9px 10px; vertical-align:top;">專護 Web 應用（L7，擋 SQLi/XSS）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>WAF</strong></td><td style="padding:9px 10px; vertical-align:top;">專護 Web 應用（L7，擋 SQLi/XSS）</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — IDS / IPS</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — IDS / IPS</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>IDS</strong> 偵測並告警（旁路、被動）；<strong>IPS</strong> 偵測並<strong>阻擋</strong>（在線、主動）</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Signature-based</strong> 特徵比對：準、但抓不到未知（zero-day）</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Anomaly/Behavior-based</strong> 異常偵測：能抓未知、但<strong>誤報多</strong></td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>False Positive</strong>（誤報，正常被當攻擊）vs <strong>False Negative</strong>（漏報，攻擊沒抓到，更危險）</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>IDS</strong> 偵測並告警（旁路、被動）；<strong>IPS</strong> 偵測並<strong>阻擋</strong>（在線、主動）</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Signature-based</strong> 特徵比對：準、但抓不到未知（zero-day）</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Anomaly/Behavior-based</strong> 異常偵測：能抓未知、但<strong>誤報多</strong></td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>False Positive</strong>（誤報，正常被當攻擊）vs <strong>False Negative</strong>（漏報，攻擊沒抓到，更危險）</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 IPS 在線可擋但<strong>誤報會擋到正常流量</strong>（影響可用性）；IDS 旁路只告警不影響流量。漏報(false negative)比誤報更危險——真攻擊溜過去。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 分段與零信任</div>
+    <p style="font-size:15px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 IPS 在線可擋但<strong>誤報會擋到正常流量</strong>（影響可用性）；IDS 旁路只告警不影響流量。漏報(false negative)比誤報更危險——真攻擊溜過去。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 分段與零信任</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>網路分段</strong>（VLAN/子網/DMZ）限制爆炸半徑；<strong>微分段（micro-segmentation）</strong>細到工作負載層級。<strong>零信任（Zero Trust）</strong>原則：<strong>永不信任、持續驗證</strong>，不因『在內網』就放行——每次存取都驗身分、裝置與情境（呼應最小權限）。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Stateful Firewall</strong>（狀態防火牆）— <span style="color:#5B6675;">追蹤連線狀態做判斷。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">NGFW</strong>（次世代防火牆）— <span style="color:#5B6675;">整合 IPS/應用/身分辨識。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">WAF</strong>（Web 應用防火牆）— <span style="color:#5B6675;">L7 防 SQLi/XSS 等。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">IDS / IPS</strong>（入侵偵測/防禦）— <span style="color:#5B6675;">告警 vs 阻擋。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Signature/Anomaly</strong>（特徵/異常偵測）— <span style="color:#5B6675;">已知準確 vs 抓未知但誤報多。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">False Positive/Negative</strong>（誤報/漏報）— <span style="color:#5B6675;">正常誤判 vs 攻擊漏抓(更危險)。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Micro-segmentation</strong>（微分段）— <span style="color:#5B6675;">工作負載層級的細緻隔離。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Zero Trust</strong>（零信任）— <span style="color:#5B6675;">永不信任、持續驗證。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Stateful Firewall</strong>（狀態防火牆）— <span style="color:#5B6675;">追蹤連線狀態做判斷。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">NGFW</strong>（次世代防火牆）— <span style="color:#5B6675;">整合 IPS/應用/身分辨識。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">WAF</strong>（Web 應用防火牆）— <span style="color:#5B6675;">L7 防 SQLi/XSS 等。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">IDS / IPS</strong>（入侵偵測/防禦）— <span style="color:#5B6675;">告警 vs 阻擋。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Signature/Anomaly</strong>（特徵/異常偵測）— <span style="color:#5B6675;">已知準確 vs 抓未知但誤報多。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">False Positive/Negative</strong>（誤報/漏報）— <span style="color:#5B6675;">正常誤判 vs 攻擊漏抓(更危險)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Micro-segmentation</strong>（微分段）— <span style="color:#5B6675;">工作負載層級的細緻隔離。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Zero Trust</strong>（零信任）— <span style="color:#5B6675;">永不信任、持續驗證。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>IDS vs IPS</strong>：IDS <strong>旁路被動</strong>只告警；IPS <strong>在線主動</strong>可阻擋（但誤報會擋到正常）。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>False Positive vs Negative</strong>：誤報＝正常被當攻擊（擾人、可能擋到業務）；<strong>漏報＝攻擊沒被抓到（最危險）</strong>。調校在兩者間取捨。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Signature vs Anomaly</strong>：特徵抓已知（漏報未知）；異常抓未知（誤報多、需基線）。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Firewall vs WAF</strong>：傳統防火牆看 L3/L4；WAF 看 L7 應用內容（擋注入/XSS）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>IDS vs IPS</strong>：IDS <strong>旁路被動</strong>只告警；IPS <strong>在線主動</strong>可阻擋（但誤報會擋到正常）。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>False Positive vs Negative</strong>：誤報＝正常被當攻擊（擾人、可能擋到業務）；<strong>漏報＝攻擊沒被抓到（最危險）</strong>。調校在兩者間取捨。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>Signature vs Anomaly</strong>：特徵抓已知（漏報未知）；異常抓未知（誤報多、需基線）。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>Firewall vs WAF</strong>：傳統防火牆看 L3/L4；WAF 看 L7 應用內容（擋注入/XSS）。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 條文與標準</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-41</strong>（防火牆）、<strong>SP 800-94</strong>（IDS/IPS）、<strong>SP 800-207（Zero Trust Architecture）</strong>。DMZ、分段、零信任皆為縱深防禦的網路落地。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：防火牆規則錯誤</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 一條規則開錯，門戶大開</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">許多外洩源於<strong>防火牆/雲端安全群組規則設定錯誤</strong>——把『僅限內部』誤設成 0.0.0.0/0（對全世界開放），或規則順序錯誤使預期的拒絕被前面的允許覆蓋。複雜規則庫長期累積、缺審查，是常見破口（呼應 D2 雲端 bucket 公開）。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：防火牆需<strong>最小化規則、定期審查、預設拒絕（default deny）、變更管理</strong>；雲端尤其要自動化檢測公開暴露。規則即程式碼，要審查與測試。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — 真實事件：防火牆規則錯誤</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 一條規則開錯，門戶大開</div>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">許多外洩源於<strong>防火牆/雲端安全群組規則設定錯誤</strong>——把『僅限內部』誤設成 0.0.0.0/0（對全世界開放），或規則順序錯誤使預期的拒絕被前面的允許覆蓋。複雜規則庫長期累積、缺審查，是常見破口（呼應 D2 雲端 bucket 公開）。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">教訓：防火牆需<strong>最小化規則、定期審查、預設拒絕（default deny）、變更管理</strong>；雲端尤其要自動化檢測公開暴露。規則即程式碼，要審查與測試。</p>
     </div>
-    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：DMZ 與堡壘主機</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;"><strong>DMZ（非軍事區）</strong>是放置對外服務（Web/郵件）的隔離網段，介於內網與外網之間，使外部只能觸及 DMZ、碰不到內網核心。<strong>堡壘主機（bastion/jump host）</strong>則是進入內部的單一受控跳板，集中強化與稽核。兩者都是『把信任邊界畫清楚』的經典分段手法。</p>
+    <div style="background-color:#F1F5F9; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">📌 延伸：DMZ 與堡壘主機</div>
+      <p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;"><strong>DMZ（非軍事區）</strong>是放置對外服務（Web/郵件）的隔離網段，介於內網與外網之間，使外部只能觸及 DMZ、碰不到內網核心。<strong>堡壘主機（bastion/jump host）</strong>則是進入內部的單一受控跳板，集中強化與稽核。兩者都是『把信任邊界畫清楚』的經典分段手法。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『偵測並阻擋』→ IPS；『只告警不影響流量』→ IDS；『擋 Web SQLi/XSS』→ WAF；『限制橫向移動』→ 分段/微分段；『不因在內網就信任』→ 零信任。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>漏報比誤報危險；防火牆預設應 default deny；零信任不等於某產品，而是原則。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『偵測並阻擋』→ IPS；『只告警不影響流量』→ IDS；『擋 Web SQLi/XSS』→ WAF；『限制橫向移動』→ 分段/微分段；『不因在內網就信任』→ 零信任。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>漏報比誤報危險；防火牆預設應 default deny；零信任不等於某產品，而是原則。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>防火牆由封包濾→狀態→NGFW/WAF；IDS 告警/IPS 阻擋；特徵抓已知/異常抓未知；分段與零信任限制橫向移動、持續驗證。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . IDS 與 IPS 的關鍵差別？<br><span style="color:#0A5A59;">→ IDS 旁路只告警；IPS 在線可阻擋（誤報會擋到正常流量）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 誤報與漏報哪個更危險、為什麼？<br><span style="color:#0A5A59;">→ 漏報（false negative）——真攻擊沒被抓到。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 零信任的核心原則？<br><span style="color:#0A5A59;">→ 永不信任、持續驗證；不因位於內網就放行。</span></p>
+    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>防火牆由封包濾→狀態→NGFW/WAF；IDS 告警/IPS 阻擋；特徵抓已知/異常抓未知；分段與零信任限制橫向移動、持續驗證。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . IDS 與 IPS 的關鍵差別？<br><span style="color:#0A6160;">→ IDS 旁路只告警；IPS 在線可阻擋（誤報會擋到正常流量）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 誤報與漏報哪個更危險、為什麼？<br><span style="color:#0A6160;">→ 漏報（false negative）——真攻擊沒被抓到。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 零信任的核心原則？<br><span style="color:#0A6160;">→ 永不信任、持續驗證；不因位於內網就放行。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.2.3 防火牆/IDS / §4.1.11 分段）</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍代理類型對照</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">Forward（客戶端、匿名）／Reverse（伺服器前、負載/隱藏）／Transparent（無需設定、攔截）／Nontransparent（需設定）。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍網路分段</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>實體分段</strong>：in-band／out-of-band／<strong>air-gapped 氣隙</strong>。<strong>邏輯分段</strong>：VLAN／VPN／VRF。<strong>Micro-segmentation 微分段</strong>＋零信任＝分散式防火牆/IDS、東西向流量控制。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §4.2.3 防火牆/IDS / §4.1.11 分段。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §4.2.3 設備、§4.1.11 微分段。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§4.2.3 Network Access Control (NAC) systems (e.g., physical, and virtual solutions)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Network Access Control (NAC)</strong>: the concept of controlling access to an environment through strict adherence to and enforcement of security policy</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• NAC is meant to be an automated detection and response system that can react in real time, ensuring all monitored systems are patched/updated and have current security configurations, as well as keep unauthorized devices out of the network</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• NAC goals:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• prevent/reduce known attacks directly (and zero-day indirectly)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• enforce security policy throughout the network</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• use identities to perform access control</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• NAC can be implemented with a preadmission or postadmission philosophy:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>preadmission philosophy</strong>: requires a system to meet all current security requirements (such as patch application and malware scanner updates) before it is allowed to communicate with the network</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>postadmission philosophy</strong>: allows and denies access based on user activity, which is based on a predefined authorization matrix</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Agent-based NAC:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• installed on each management system, checks config files regularly, and can quarantine for non-compliance</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• dissolvable: usually written in a web/mobile language and is executed on each local machine when the specific management web page is accessed (such as captive portal)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• permanent: installed on the monitored system as a persistent background service</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Agentless NAC: no software is installed on the endpoint, instead, the NAC system performs security checks using existing network infrastructure, such as switches, routers, firewalls, and network protocols; it gathers information about the device passively or actively through scans, without requiring direct interaction with the endpoint</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• NAC posture assessment capability determines if a system is sufficiently secure and compliant to connect to the network; this is a form of risk-based access control</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Just as you need to control physical access to equipment and wiring, you need to use logical controls to protect a network; there are a variety of devices that provide this type of protection, including:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• stateful and stateless firewalls can perform inspection of the network packets and use rules, signatures and patterns to determine whether the packet should be delivered</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• reasons for dropping a packet could include addresses that don’t exist on the network, ports or addresses that are blocked, or the content of the packet (e.g. malicious packets blocked by admin policy)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• IDS/IDP devices, which monitor the network for unusual network traffic and MAC or IP address spoofing, and then either alert on or actively stop this type of traffic</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• proxy server information:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>proxy server</strong>: used to mediate between clients and servers, most often in the context of providing clients on a private network with internet access, while protecting the identify of the client</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>forward proxy</strong>: usually used by clients to anonymize their traffic, improve privacy, and cache data; a forward proxy is configured on client-side devices to manage access to external resources</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>reverse proxy</strong>: usually positioned in front of servers to distribute incoming traffic, improve performance through load balancing, and enhance security by hiding the details of backend servers; reverse proxies are often deployed to a perimeter network; they proxy communication from the internet to an internal host, such as a web server</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>transparent proxy</strong>: operates without client configuration and intercepts traffic transparently, often for monitoring or content filtering purposes without altering the client’s perception of the connection</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>nontransparent proxy</strong>: requires explicit configuration on the client side and may modify traffic to enforce policies, such as restricting access or logging user activities</div>
-<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§4.1.11 Micro-segmentation (e.g., network overlays/encapsulation; distributed firewalls, routers, intrusion detection system (IDS)/intrusion prevention system (IPS), zero trust)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Micro-segmentation</strong>: enhances security by minimizing the lateral movement of attackers within a network, effectively creating a segmented, or compartmentalized architecture where each segment may have its own security policies and controls</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Network overlays/encapsulation</strong>: creation of a virtual network that is abstracted or &#x27;overlaid&#x27; on top of the physical network; can be done via SDN</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Distributed firewalls</strong>: rather than routing traffic through a central firewall, security policies are enforced at the virtual network interface level for each virtual machine (VM) or container; essentially distributing virtual firewall rules and building small virtual firewalls, allowing us to achieve micro-segmentation</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Distributed routers</strong>: similar to distributed firewalls, distributed routers operate at the workload-level to control the flow of traffic between segments</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• IDS/IPS: deployed strategically within the network to monitor and protect individual workloads or network segments rather than just at the perimeter</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Zero Trust: you can achieve the &#x27;trust nothing, verify everything&#x27; nature of ZT by using micro-segmentation; each micro-segment is treated as its own secure zone, and access to each zone is given only after the identity and context of the request have been thoroughly verified</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.2.3 防火牆/IDS / §4.1.11 分段）</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍代理類型對照</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;">Forward（客戶端、匿名）／Reverse（伺服器前、負載/隱藏）／Transparent（無需設定、攔截）／Nontransparent（需設定）。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍網路分段</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>實體分段</strong>：in-band／out-of-band／<strong>air-gapped 氣隙</strong>。<strong>邏輯分段</strong>：VLAN／VPN／VRF。<strong>Micro-segmentation 微分段</strong>＋零信任＝分散式防火牆/IDS、東西向流量控制。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §4.2.3 防火牆/IDS / §4.1.11 分段。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §4.2.3 設備、§4.1.11 微分段。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§4.2.3 Network Access Control (NAC) systems (e.g., physical, and virtual solutions)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Network Access Control (NAC)</strong>: the concept of controlling access to an environment through strict adherence to and enforcement of security policy</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• NAC is meant to be an automated detection and response system that can react in real time, ensuring all monitored systems are patched/updated and have current security configurations, as well as keep unauthorized devices out of the network</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• NAC goals:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• prevent/reduce known attacks directly (and zero-day indirectly)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• enforce security policy throughout the network</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• use identities to perform access control</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• NAC can be implemented with a preadmission or postadmission philosophy:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>preadmission philosophy</strong>: requires a system to meet all current security requirements (such as patch application and malware scanner updates) before it is allowed to communicate with the network</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>postadmission philosophy</strong>: allows and denies access based on user activity, which is based on a predefined authorization matrix</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Agent-based NAC:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• installed on each management system, checks config files regularly, and can quarantine for non-compliance</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• dissolvable: usually written in a web/mobile language and is executed on each local machine when the specific management web page is accessed (such as captive portal)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• permanent: installed on the monitored system as a persistent background service</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Agentless NAC: no software is installed on the endpoint, instead, the NAC system performs security checks using existing network infrastructure, such as switches, routers, firewalls, and network protocols; it gathers information about the device passively or actively through scans, without requiring direct interaction with the endpoint</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• NAC posture assessment capability determines if a system is sufficiently secure and compliant to connect to the network; this is a form of risk-based access control</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Just as you need to control physical access to equipment and wiring, you need to use logical controls to protect a network; there are a variety of devices that provide this type of protection, including:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• stateful and stateless firewalls can perform inspection of the network packets and use rules, signatures and patterns to determine whether the packet should be delivered</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• reasons for dropping a packet could include addresses that don’t exist on the network, ports or addresses that are blocked, or the content of the packet (e.g. malicious packets blocked by admin policy)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• IDS/IDP devices, which monitor the network for unusual network traffic and MAC or IP address spoofing, and then either alert on or actively stop this type of traffic</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• proxy server information:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>proxy server</strong>: used to mediate between clients and servers, most often in the context of providing clients on a private network with internet access, while protecting the identify of the client</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>forward proxy</strong>: usually used by clients to anonymize their traffic, improve privacy, and cache data; a forward proxy is configured on client-side devices to manage access to external resources</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>reverse proxy</strong>: usually positioned in front of servers to distribute incoming traffic, improve performance through load balancing, and enhance security by hiding the details of backend servers; reverse proxies are often deployed to a perimeter network; they proxy communication from the internet to an internal host, such as a web server</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>transparent proxy</strong>: operates without client configuration and intercepts traffic transparently, often for monitoring or content filtering purposes without altering the client’s perception of the connection</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>nontransparent proxy</strong>: requires explicit configuration on the client side and may modify traffic to enforce policies, such as restricting access or logging user activities</div>
+<div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§4.1.11 Micro-segmentation (e.g., network overlays/encapsulation; distributed firewalls, routers, intrusion detection system (IDS)/intrusion prevention system (IPS), zero trust)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Micro-segmentation</strong>: enhances security by minimizing the lateral movement of attackers within a network, effectively creating a segmented, or compartmentalized architecture where each segment may have its own security policies and controls</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Network overlays/encapsulation</strong>: creation of a virtual network that is abstracted or &#x27;overlaid&#x27; on top of the physical network; can be done via SDN</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Distributed firewalls</strong>: rather than routing traffic through a central firewall, security policies are enforced at the virtual network interface level for each virtual machine (VM) or container; essentially distributing virtual firewall rules and building small virtual firewalls, allowing us to achieve micro-segmentation</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Distributed routers</strong>: similar to distributed firewalls, distributed routers operate at the workload-level to control the flow of traffic between segments</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• IDS/IPS: deployed strategically within the network to monitor and protect individual workloads or network segments rather than just at the perimeter</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Zero Trust: you can achieve the &#x27;trust nothing, verify everything&#x27; nature of ZT by using micro-segmentation; each micro-segment is treated as its own secure zone, and access to each zone is given only after the identity and context of the request have been thoroughly verified</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/8wQT7or1ZlA" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">Network Defense MindMap (3 of 4) | CISSP Domain 4 ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/8wQT7or1ZlA" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">Network Defense MindMap (3 of 4) | CISSP Domain 4 ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/tQCgAteRyIo?t=6360" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 4<span class="ts-note">（從約 106:00 開始）</span> ↗</a>
+        <a href="https://youtu.be/tQCgAteRyIo?t=6360" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 4<span class="ts-note">（從約 106:00 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -137,8 +137,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 58 / 120 · P2-D4-3</span>
   </div>
 

@@ -5,152 +5,152 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 7</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
   <!-- 報頭 -->
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 7 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D2-2</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D2-2</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 2 · 資產安全 &nbsp;|&nbsp; 權重 10%</span>
     </div>
     <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">資料角色與擁有權</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Data Roles &amp; Ownership</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:5.83%; background-color:#0E7C7B;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:5.83%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 資料的「人」：誰對資料負責</div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 資料的「人」：誰對資料負責</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">昨天我們替資料貼了分類標籤；今天要釐清<strong>圍繞資料的各種角色</strong>——誰決定怎麼用、誰實際保管、誰的資料、誰代為處理。這在 CISSP <strong>極常考</strong>，且與 <strong>GDPR</strong> 的法律角色直接對應。把角色分清楚，責任歸屬與考題就都迎刃而解。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：六個資料角色一句話 → 與 GDPR 對應 → controller vs processor（最常考）→ 責任歸屬。</div>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 資料角色一覽</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;">
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：六個資料角色一句話 → 與 GDPR 對應 → controller vs processor（最常考）→ 責任歸屬。</div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 資料角色一覽</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;">
         <td style="padding:8px 10px; border-radius:6px 0 0 0;">角色</td>
         <td style="padding:8px 10px;">負責什麼</td>
         <td style="padding:8px 10px; border-radius:0 6px 0 0;">GDPR 對應</td>
       </tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Data Owner</strong><br><span style="color:#5B6675;">資料擁有者</span></td><td style="padding:9px 10px; vertical-align:top;">決定分類、定義保護需求與用途（高階）</td><td style="padding:9px 10px; vertical-align:top;">≈ Controller 內部代表</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Data Owner</strong><br><span style="color:#5B6675;">資料擁有者</span></td><td style="padding:9px 10px; vertical-align:top;">決定分類、定義保護需求與用途（高階）</td><td style="padding:9px 10px; vertical-align:top;">≈ Controller 內部代表</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Data Controller</strong><br><span style="color:#5B6675;">資料控管者</span></td><td style="padding:9px 10px; vertical-align:top;">決定「為何、如何」處理個資（法律主體）</td><td style="padding:9px 10px; vertical-align:top;">Controller</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Data Custodian</strong><br><span style="color:#5B6675;">保管者</span></td><td style="padding:9px 10px; vertical-align:top;">依 Owner 要求執行備份、加密、存取設定（IT）</td><td style="padding:9px 10px; vertical-align:top;">—（技術執行）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Data Custodian</strong><br><span style="color:#5B6675;">保管者</span></td><td style="padding:9px 10px; vertical-align:top;">依 Owner 要求執行備份、加密、存取設定（IT）</td><td style="padding:9px 10px; vertical-align:top;">—（技術執行）</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Data Processor</strong><br><span style="color:#5B6675;">處理者</span></td><td style="padding:9px 10px; vertical-align:top;">代 Controller 處理個資（如雲端/外包商）</td><td style="padding:9px 10px; vertical-align:top;">Processor</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Data Subject</strong><br><span style="color:#5B6675;">資料當事人</span></td><td style="padding:9px 10px; vertical-align:top;">資料所描述的本人（享有權利）</td><td style="padding:9px 10px; vertical-align:top;">Data Subject</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Data Subject</strong><br><span style="color:#5B6675;">資料當事人</span></td><td style="padding:9px 10px; vertical-align:top;">資料所描述的本人（享有權利）</td><td style="padding:9px 10px; vertical-align:top;">Data Subject</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Data Steward</strong><br><span style="color:#5B6675;">資料管家</span></td><td style="padding:9px 10px; vertical-align:top;">負責資料品質與意涵（business 面）</td><td style="padding:9px 10px; vertical-align:top;">—</td></tr>
     </table>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 最常考：Controller vs Processor</div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 最常考：Controller vs Processor</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:4px 0;">
       <tr>
-        <td style="text-align:center; background-color:#15233B; color:#FFFFFF; padding:12px 8px; border-radius:6px; font-size:12.5px; vertical-align:middle; width:42%;"><strong>Controller</strong><br>決定「為何/如何」<br>（出題目的的人）</td>
+        <td style="text-align:center; background-color:#0F1B2D; color:#FFFFFF; padding:12px 8px; border-radius:6px; font-size:13px; vertical-align:middle; width:42%;"><strong>Controller</strong><br>決定「為何/如何」<br>（出題目的的人）</td>
         <td style="text-align:center; color:#5B6675; font-size:15px;">委託→</td>
-        <td style="text-align:center; background-color:#0E7C7B; color:#FFFFFF; padding:12px 8px; border-radius:6px; font-size:12.5px; vertical-align:middle; width:42%;"><strong>Processor</strong><br>照指示處理<br>（執行的人）</td>
+        <td style="text-align:center; background-color:#0A6160; color:#FFFFFF; padding:12px 8px; border-radius:6px; font-size:13px; vertical-align:middle; width:42%;"><strong>Processor</strong><br>照指示處理<br>（執行的人）</td>
       </tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">一句話判斷：<strong>決定目的與方式的是 Controller；只是照單執行的是 Processor</strong>。例如一家公司用某雲端 CRM 寄行銷信——公司是 Controller、CRM 廠商是 Processor。GDPR 下兩者<strong>都有責任</strong>，但 Controller 負主要義務（合法性基礎、告知當事人），Processor 須依約處理並協助。</p>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <p style="font-size:15px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">一句話判斷：<strong>決定目的與方式的是 Controller；只是照單執行的是 Processor</strong>。例如一家公司用某雲端 CRM 寄行銷信——公司是 Controller、CRM 廠商是 Processor。GDPR 下兩者<strong>都有責任</strong>，但 Controller 負主要義務（合法性基礎、告知當事人），Processor 須依約處理並協助。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Owner</strong>（資料擁有者）— <span style="color:#5B6675;">通常為業務主管，決定分類與使用，當責不可下授。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Controller</strong>（控管者）— <span style="color:#5B6675;">決定個資處理目的與方式的法律主體。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Processor</strong>（處理者）— <span style="color:#5B6675;">代控管者處理個資者，須依合約與指示。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Custodian</strong>（保管者）— <span style="color:#5B6675;">IT/DBA，依擁有者要求執行技術保護。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Subject</strong>（當事人）— <span style="color:#5B6675;">個資所描述之本人，享查詢/更正/刪除等權利。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DPO</strong>（資料保護長）— <span style="color:#5B6675;">Data Protection Officer，GDPR 特定情形下須設置，監督法遵。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Data Owner</strong>（資料擁有者）— <span style="color:#5B6675;">通常為業務主管，決定分類與使用，當責不可下授。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Data Controller</strong>（控管者）— <span style="color:#5B6675;">決定個資處理目的與方式的法律主體。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Data Processor</strong>（處理者）— <span style="color:#5B6675;">代控管者處理個資者，須依合約與指示。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Data Custodian</strong>（保管者）— <span style="color:#5B6675;">IT/DBA，依擁有者要求執行技術保護。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Data Subject</strong>（當事人）— <span style="color:#5B6675;">個資所描述之本人，享查詢/更正/刪除等權利。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">DPO</strong>（資料保護長）— <span style="color:#5B6675;">Data Protection Officer，GDPR 特定情形下須設置，監督法遵。</span></td></tr>
     </table>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Owner vs Custodian</strong>：Owner <strong>決定</strong>（分類、誰可存取）；Custodian <strong>執行</strong>（備份、加密、設定權限）。Owner 是業務、Custodian 是 IT。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Controller vs Owner</strong>：Owner 是組織<strong>內部</strong>的資料負責角色；Controller 是<strong>法律</strong>上對個資負責的主體（常是整個組織）。考個資法/GDPR 時用 Controller/Processor 語彙，考內控時用 Owner/Custodian。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>Owner vs Custodian</strong>：Owner <strong>決定</strong>（分類、誰可存取）；Custodian <strong>執行</strong>（備份、加密、設定權限）。Owner 是業務、Custodian 是 IT。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>Controller vs Owner</strong>：Owner 是組織<strong>內部</strong>的資料負責角色；Controller 是<strong>法律</strong>上對個資負責的主體（常是整個組織）。考個資法/GDPR 時用 Controller/Processor 語彙，考內控時用 Owner/Custodian。</p>
     </div>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 條文與標準</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>GDPR</strong> 第 4 條定義 controller / processor / data subject；第 28 條要求 Controller 與 Processor 間須簽<strong>資料處理協議（DPA）</strong>。台灣<strong>個資法</strong>區分「公務／非公務機關」為蒐集處理利用之主體，概念與 Controller 相近。<strong>ISO/IEC 27701</strong>（隱私資訊管理）則把這些角色責任制度化。</p>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：Controller vs Processor 的責任</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 外包商出包，誰要負責？</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">當企業（Controller）把個資交給外包商（Processor）處理、外包商因疏失導致外洩時，GDPR 的設計是<strong>兩者都可能被追責</strong>：Controller 因「未善盡選任與監督」、Processor 因「未依約落實安全措施」。這也是為什麼第 28 條強制要簽 <strong>DPA</strong>、載明安全要求與通報義務。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">對照 Domain 1 的供應鏈風險：把資料交出去，責任不會跟著一起交出去。<strong>盡職調查＋合約＋稽核權</strong>是 Controller 自保的關鍵。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 真實事件：Controller vs Processor 的責任</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 外包商出包，誰要負責？</div>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">當企業（Controller）把個資交給外包商（Processor）處理、外包商因疏失導致外洩時，GDPR 的設計是<strong>兩者都可能被追責</strong>：Controller 因「未善盡選任與監督」、Processor 因「未依約落實安全措施」。這也是為什麼第 28 條強制要簽 <strong>DPA</strong>、載明安全要求與通報義務。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">對照 Domain 1 的供應鏈風險：把資料交出去，責任不會跟著一起交出去。<strong>盡職調查＋合約＋稽核權</strong>是 Controller 自保的關鍵。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>情境給「某公司委託 SaaS 廠商處理客戶名單」，問廠商是什麼角色 → <strong>Processor</strong>；公司是 <strong>Controller</strong>。記「決定目的＝Controller、照做＝Processor」。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>別把 Owner（內部、決定分類）和 Custodian（IT、執行）搞反；也別把 Controller 的法律責任推給 Processor——Controller 永遠負主要義務。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>情境給「某公司委託 SaaS 廠商處理客戶名單」，問廠商是什麼角色 → <strong>Processor</strong>；公司是 <strong>Controller</strong>。記「決定目的＝Controller、照做＝Processor」。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>別把 Owner（內部、決定分類）和 Custodian（IT、執行）搞反；也別把 Controller 的法律責任推給 Processor——Controller 永遠負主要義務。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>Owner 決定、Custodian 執行；GDPR 下 Controller 定目的、Processor 照做，兩者皆有責、Controller 負主要義務。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 雲端 CRM 廠商代客戶寄行銷信，廠商是什麼角色？<br><span style="color:#0A5A59;">→ Processor（處理者）；委託它的公司是 Controller。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 決定資料分類的是 Owner 還是 Custodian？<br><span style="color:#0A5A59;">→ Data Owner（業務）；Custodian 只負責技術執行。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . GDPR 要求 Controller 與 Processor 間簽什麼？<br><span style="color:#0A5A59;">→ DPA 資料處理協議（第 28 條），載明安全與通報義務。</span></p>
+    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>Owner 決定、Custodian 執行；GDPR 下 Controller 定目的、Processor 照做，兩者皆有責、Controller 負主要義務。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 雲端 CRM 廠商代客戶寄行銷信，廠商是什麼角色？<br><span style="color:#0A6160;">→ Processor（處理者）；委託它的公司是 Controller。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 決定資料分類的是 Owner 還是 Custodian？<br><span style="color:#0A6160;">→ Data Owner（業務）；Custodian 只負責技術執行。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . GDPR 要求 Controller 與 Processor 間簽什麼？<br><span style="color:#0A6160;">→ DPA 資料處理協議（第 28 條），載明安全與通報義務。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.3 擁有權 / §2.4.1 資料角色）</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍資產擁有權</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>Owner 擁有者</strong>＝對資產保護負最終當責，通常是 Sr. Manager；可委派日常任務但當責不轉移。Tangible 有形 vs Intangible 無形資產（含 IP，美國專利 20 年）。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍Need-to-know vs Least Privilege</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>Need-to-know</strong>＝只給「業務需要」的資料；<strong>Least Privilege</strong>＝只給「完成任務所需」的權限。兩者互補但不同。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §2.3 擁有權 / §2.4.1 資料角色。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §2.3 擁有權與 §2.4.1 資料角色。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§Provision information and assets securely (OSG-10 Chpt 16)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• The primary purpose of security operations practices is to safeguard assets such as information, systems, devices, facilities, and apps; these practices help to identify threats, vulnerabilities, and implement controls to reduce the risk to these assets</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Implementing common security operations concepts, along with performing periodic security audits and reviews demonstrates a level of due care</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Need-to-know</strong>: a principle that imposes the requirement to grant users access only to data or resources they need to perform assigned work tasks; another way of saying this is that need to know means that someone is only given access to an asset if there is an absolute need based on role, function, or specific authorization</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Least privilege</strong>: a principle stating that subjects are granted only the privileges necessary to perform assigned work tasks and no more; a person is given only absolutely needed access, and nothing more</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 2.3.1 Information and asset ownership</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Information and Asset owner</strong>: assigning ownership is a key requirement for protection accountability; the owner is the person or role who has ultimate organizational accountability for protection of the asset; usually a Sr. Manager (CEO,president, dept. head); owners typically delegate data protection tasks to others in the org; the asset owner needs to make sure that appropriate security controls are in place</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 2.3.2 Asset inventory (e.g., tangible, intangible)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Inventory</strong>: complete list of items</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Tangible assets</strong>: include hardware, devices, physical documents etc, owned by the company</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Intangible assets</strong>: things like software, patents, copyrights, a company’s reputation, etc</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• an org should keep track of intangible assets, like intellectual property, patents, trademarks, the company’s reputation, and copyrights to protect them</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• note: patents in the US are valid for 20 years</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 2.3.3 Asset management</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Asset management refers to managing both tangible and intangible assets; this starts with asset inventory, and includes tracking the assets, and taking additional steps to protect them throughout their lifetime</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• The primary goal of asset management is to prevent losses (by tracking and protecting assets)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Hardware assets</strong>: IT resources such as computers, servers, routers, switches, and peripherals</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• use an automated configuration management system (CMS) to help with hardware asset management</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• use barcodes, RFID tags to track hardware assets</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Software assets</strong>: operating systems and applications</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• important to monitor license compliance to avoid legal issues</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• software licensing also refers to ensuring that systems do not have unauthorized software installed</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• To protect intangible inventories (like intellectual property, patents, trademarks, and company’s reputation, and copyrights), they need to be tracked</div>
-<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§2.4.1 Data roles (i.e., owners, controllers, custodians, processors, users/subjects)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>System owner</strong>: controls the computer storing the data; usually includes software and hardware configurations and support services (e.g. cloud implementation)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• system owners are responsible for the systems that process the data</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• system owner is responsible for system operation and maintenance, and associated updating/patching as well as related procurement activities</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• per <a href='https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-18r1.pdf' style='color:#8A6D1E;'>NIST SP 800-18</a>, information <strong>system owner</strong> has the following responsibilities:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• responsible for the security of the system that stores or processes the data</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• develops the system security plan</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• maintains the system security plan and ensures that the system is deployed/operated according to security requirements</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• ensures that system users and support personnel receive the requisite security training</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• updates the system security plan as required</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• assists in the identification, implementation, and assessment of the common security controls</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Data owner</strong>: the person responsible for classifying, categorizing, and permitting access to the data; the data owner is the person who is best familiar with the importance of the data to the business; typically the CEO, president, or department head</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Data controller</strong>: decides what data to process and how to process it</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• the data controller is the person or entity that controls the processing of the data - deciding what data to process, why this data should be processed, and how it is processed</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• e.g. a company that collects personal information on employees for payroll is a data controller (but, if they pass this info to a third-party to process payroll, the payroll company is the data processor, see below)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Data processor</strong>: an entity *working on behalf* (or the direction) of the data controller, that processes PII; they have a responsibility to protect the privacy of the data and not use it for any purpose other than directed by the data controller; generally, a data processor is any system used to process data</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• processing data on behalf of the Data Controller while ensuring quality, validation, and compliance, safe custody, transport, storage of the data and implementation of business rules</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• a controller can hire a third party to process data, and in this context, the third party is the data processor; data processors are often third-party entities that process data for an org at the direction of the data controller</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• note GDPR definition: &quot;a natural or legal person, public authority, agency, or other body, which processes personal data solely on behalf of the data controller&quot;</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• GDPR also restricts data transfers to countries outside EU, with fines for violations</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• many orgs have created dedicated roles to oversee GDPR data laws are followed</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Data Protection Officer (DPO)</strong>: an independent security leadership role responsible for overseeing an org&#x27;s data privacy strategy and ensuring compliance with legal requirements, such as the GDPR</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Data custodian</strong>: a custodian is delegated, from the system owner, day-to-day responsibilities for properly storing and protecting data; responsible for the protection of data through maintenance activities, backing up and archiving, and preventing the loss or corruption and recovering data</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Data steward</strong>: a data steward has business responsibility for data (e.g. data quality, governance, compliance, metadata definition etc)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Security administrator</strong>: responsible for ensuring the overall security of entire infrastructure; they perform tasks that lead to the discovery of vulnerabilities, monitor network traffic and configure tools to protect the network (like firewalls and antivirus software)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• security admins also devise security policies, plans for business continuity and disaster recovery and train staff</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Supervisors</strong>: responsible for overseeing the activities of all the above entities and all support personnel; they ensure team activities are conducted smoothly and that personnel is properly skilled for the tasks assigned</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Users</strong>: any person who accesses data from a computer device or system to accomplish work (think of users as employees or end users)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• users should have access to the data they need to perform tasks; users should have access to data according to their roles and their need to access info</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• must comply with rules, mandatory policies, standards and procedures</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• users fall into the category of subjects, and a subject is any entity that accesses an object such as a file or folder</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• note that subjects can be users, programs, processes, services, computers, or anything else that can access a resource</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.3 擁有權 / §2.4.1 資料角色）</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍資產擁有權</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>Owner 擁有者</strong>＝對資產保護負最終當責，通常是 Sr. Manager；可委派日常任務但當責不轉移。Tangible 有形 vs Intangible 無形資產（含 IP，美國專利 20 年）。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍Need-to-know vs Least Privilege</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>Need-to-know</strong>＝只給「業務需要」的資料；<strong>Least Privilege</strong>＝只給「完成任務所需」的權限。兩者互補但不同。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §2.3 擁有權 / §2.4.1 資料角色。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §2.3 擁有權與 §2.4.1 資料角色。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§Provision information and assets securely (OSG-10 Chpt 16)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• The primary purpose of security operations practices is to safeguard assets such as information, systems, devices, facilities, and apps; these practices help to identify threats, vulnerabilities, and implement controls to reduce the risk to these assets</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Implementing common security operations concepts, along with performing periodic security audits and reviews demonstrates a level of due care</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Need-to-know</strong>: a principle that imposes the requirement to grant users access only to data or resources they need to perform assigned work tasks; another way of saying this is that need to know means that someone is only given access to an asset if there is an absolute need based on role, function, or specific authorization</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Least privilege</strong>: a principle stating that subjects are granted only the privileges necessary to perform assigned work tasks and no more; a person is given only absolutely needed access, and nothing more</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 2.3.1 Information and asset ownership</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Information and Asset owner</strong>: assigning ownership is a key requirement for protection accountability; the owner is the person or role who has ultimate organizational accountability for protection of the asset; usually a Sr. Manager (CEO,president, dept. head); owners typically delegate data protection tasks to others in the org; the asset owner needs to make sure that appropriate security controls are in place</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 2.3.2 Asset inventory (e.g., tangible, intangible)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Inventory</strong>: complete list of items</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Tangible assets</strong>: include hardware, devices, physical documents etc, owned by the company</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Intangible assets</strong>: things like software, patents, copyrights, a company’s reputation, etc</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• an org should keep track of intangible assets, like intellectual property, patents, trademarks, the company’s reputation, and copyrights to protect them</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• note: patents in the US are valid for 20 years</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 2.3.3 Asset management</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Asset management refers to managing both tangible and intangible assets; this starts with asset inventory, and includes tracking the assets, and taking additional steps to protect them throughout their lifetime</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• The primary goal of asset management is to prevent losses (by tracking and protecting assets)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Hardware assets</strong>: IT resources such as computers, servers, routers, switches, and peripherals</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• use an automated configuration management system (CMS) to help with hardware asset management</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• use barcodes, RFID tags to track hardware assets</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Software assets</strong>: operating systems and applications</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• important to monitor license compliance to avoid legal issues</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• software licensing also refers to ensuring that systems do not have unauthorized software installed</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• To protect intangible inventories (like intellectual property, patents, trademarks, and company’s reputation, and copyrights), they need to be tracked</div>
+<div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§2.4.1 Data roles (i.e., owners, controllers, custodians, processors, users/subjects)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>System owner</strong>: controls the computer storing the data; usually includes software and hardware configurations and support services (e.g. cloud implementation)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• system owners are responsible for the systems that process the data</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• system owner is responsible for system operation and maintenance, and associated updating/patching as well as related procurement activities</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• per <a href='https://nvlpubs.nist.gov/nistpubs/Legacy/SP/nistspecialpublication800-18r1.pdf' style='color:#0A6160;'>NIST SP 800-18</a>, information <strong>system owner</strong> has the following responsibilities:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• responsible for the security of the system that stores or processes the data</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• develops the system security plan</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• maintains the system security plan and ensures that the system is deployed/operated according to security requirements</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• ensures that system users and support personnel receive the requisite security training</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• updates the system security plan as required</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• assists in the identification, implementation, and assessment of the common security controls</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Data owner</strong>: the person responsible for classifying, categorizing, and permitting access to the data; the data owner is the person who is best familiar with the importance of the data to the business; typically the CEO, president, or department head</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Data controller</strong>: decides what data to process and how to process it</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• the data controller is the person or entity that controls the processing of the data - deciding what data to process, why this data should be processed, and how it is processed</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• e.g. a company that collects personal information on employees for payroll is a data controller (but, if they pass this info to a third-party to process payroll, the payroll company is the data processor, see below)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Data processor</strong>: an entity *working on behalf* (or the direction) of the data controller, that processes PII; they have a responsibility to protect the privacy of the data and not use it for any purpose other than directed by the data controller; generally, a data processor is any system used to process data</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• processing data on behalf of the Data Controller while ensuring quality, validation, and compliance, safe custody, transport, storage of the data and implementation of business rules</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• a controller can hire a third party to process data, and in this context, the third party is the data processor; data processors are often third-party entities that process data for an org at the direction of the data controller</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• note GDPR definition: &quot;a natural or legal person, public authority, agency, or other body, which processes personal data solely on behalf of the data controller&quot;</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• GDPR also restricts data transfers to countries outside EU, with fines for violations</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• many orgs have created dedicated roles to oversee GDPR data laws are followed</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Data Protection Officer (DPO)</strong>: an independent security leadership role responsible for overseeing an org&#x27;s data privacy strategy and ensuring compliance with legal requirements, such as the GDPR</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Data custodian</strong>: a custodian is delegated, from the system owner, day-to-day responsibilities for properly storing and protecting data; responsible for the protection of data through maintenance activities, backing up and archiving, and preventing the loss or corruption and recovering data</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Data steward</strong>: a data steward has business responsibility for data (e.g. data quality, governance, compliance, metadata definition etc)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Security administrator</strong>: responsible for ensuring the overall security of entire infrastructure; they perform tasks that lead to the discovery of vulnerabilities, monitor network traffic and configure tools to protect the network (like firewalls and antivirus software)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• security admins also devise security policies, plans for business continuity and disaster recovery and train staff</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Supervisors</strong>: responsible for overseeing the activities of all the above entities and all support personnel; they ensure team activities are conducted smoothly and that personnel is properly skilled for the tasks assigned</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Users</strong>: any person who accesses data from a computer device or system to accomplish work (think of users as employees or end users)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• users should have access to the data they need to perform tasks; users should have access to data according to their roles and their need to access info</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• must comply with rules, mandatory policies, standards and procedures</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• users fall into the category of subjects, and a subject is any entity that accesses an object such as a file or folder</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• note that subjects can be users, programs, processes, services, computers, or anything else that can access a resource</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/lrI4QIa8S2I" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 2 Review / Mind Map (2 of 2) | Privacy ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/lrI4QIa8S2I" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 2 Review / Mind Map (2 of 2) | Privacy ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/dNIcfKYeJI8?t=1021" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 2<span class="ts-note">（從約 17:01 開始）</span> ↗</a>
+        <a href="https://youtu.be/dNIcfKYeJI8?t=1021" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 2<span class="ts-note">（從約 17:01 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -159,8 +159,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="index.html" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 7 / 120 · P1-D2-2</span>
   </div>
 

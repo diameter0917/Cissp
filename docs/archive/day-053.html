@@ -5,171 +5,171 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 53</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 53 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D3-3</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P2-D3-3</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 3 · 安全架構與工程 &nbsp;|&nbsp; 權重 13%</span>
     </div>
     <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">雜湊、簽章與金鑰管理</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Hashing, Signatures &amp; Key Management</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:44.17%; background-color:#3D52A0;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:44.17%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D3：完整性與信任的機制</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 中期 D3：完整性與信任的機制</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>雜湊（hashing）</strong>、<strong>數位簽章</strong>與<strong>金鑰管理生命週期</strong>。雜湊保完整性、簽章保完整性＋不可否認、金鑰管理則是『加密強不強，最後看金鑰管得好不好』。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：雜湊特性與碰撞 → HMAC → 數位簽章流程 → 憑證與撤銷 → 金鑰生命週期。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 雜湊與數位簽章</div>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：雜湊特性與碰撞 → HMAC → 數位簽章流程 → 憑證與撤銷 → 金鑰生命週期。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 雜湊與數位簽章</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>雜湊特性</strong>：單向、定長輸出、雪崩效應、<strong>抗碰撞</strong>；驗『完整性』非機密性</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>MD5/SHA-1 已不安全</strong>（可碰撞），用 <strong>SHA-256/SHA-3</strong></td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>HMAC</strong>：雜湊＋密鑰，提供完整性＋來源鑑別（防竄改＋驗證發送者）</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>數位簽章</strong>：對訊息雜湊『用<strong>私鑰</strong>簽』；驗證方用『<strong>公鑰</strong>驗』→ 完整性＋不可否認＋真實性</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>雜湊特性</strong>：單向、定長輸出、雪崩效應、<strong>抗碰撞</strong>；驗『完整性』非機密性</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>MD5/SHA-1 已不安全</strong>（可碰撞），用 <strong>SHA-256/SHA-3</strong></td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>HMAC</strong>：雜湊＋密鑰，提供完整性＋來源鑑別（防竄改＋驗證發送者）</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>數位簽章</strong>：對訊息雜湊『用<strong>私鑰</strong>簽』；驗證方用『<strong>公鑰</strong>驗』→ 完整性＋不可否認＋真實性</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 憑證與撤銷</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">項目</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">作用</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>X.509 憑證</strong></td><td style="padding:9px 10px; vertical-align:top;">綁定身分↔公鑰，由 CA 簽發</td></tr>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 憑證與撤銷</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">項目</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">作用</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>X.509 憑證</strong></td><td style="padding:9px 10px; vertical-align:top;">綁定身分↔公鑰，由 CA 簽發</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>CRL</strong></td><td style="padding:9px 10px; vertical-align:top;">撤銷清單（定期發布、較舊）</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>OCSP</strong></td><td style="padding:9px 10px; vertical-align:top;">即時查詢憑證狀態（即時、較佳）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>OCSP</strong></td><td style="padding:9px 10px; vertical-align:top;">即時查詢憑證狀態（即時、較佳）</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>OCSP Stapling</strong></td><td style="padding:9px 10px; vertical-align:top;">伺服器附上 OCSP 回應，省查詢、護隱私</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 金鑰管理生命週期</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 金鑰管理生命週期</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>生成→分發→儲存→使用→輪替→撤銷/銷毀</strong>，全程保護金鑰</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>金鑰儲存</strong>：用 <strong>HSM</strong>（硬體安全模組）或 KMS，避免明文落地</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>金鑰輪替（rotation）</strong>與<strong>分割知識/雙人控制</strong>降低單點風險</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>金鑰託管（escrow）</strong>：合法復原需要，但增加風險，須嚴管</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>生成→分發→儲存→使用→輪替→撤銷/銷毀</strong>，全程保護金鑰</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>金鑰儲存</strong>：用 <strong>HSM</strong>（硬體安全模組）或 KMS，避免明文落地</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>金鑰輪替（rotation）</strong>與<strong>分割知識/雙人控制</strong>降低單點風險</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>金鑰託管（escrow）</strong>：合法復原需要，但增加風險，須嚴管</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Hashing</strong>（雜湊）— <span style="color:#5B6675;">單向定長摘要，驗完整性。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Collision</strong>（碰撞）— <span style="color:#5B6675;">兩不同輸入得相同雜湊；MD5/SHA-1 已破。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">HMAC</strong>（雜湊訊息鑑別碼）— <span style="color:#5B6675;">雜湊＋密鑰，完整性＋來源鑑別。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Digital Signature</strong>（數位簽章）— <span style="color:#5B6675;">私鑰簽、公鑰驗；完整性＋不可否認。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">X.509</strong>（憑證標準）— <span style="color:#5B6675;">綁定身分與公鑰。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CRL / OCSP</strong>（撤銷清單/線上狀態）— <span style="color:#5B6675;">查憑證是否被撤銷。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">HSM</strong>（硬體安全模組）— <span style="color:#5B6675;">安全生成/儲存金鑰的硬體。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Key Escrow</strong>（金鑰託管）— <span style="color:#5B6675;">第三方保管金鑰以便合法復原。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Hashing</strong>（雜湊）— <span style="color:#5B6675;">單向定長摘要，驗完整性。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Collision</strong>（碰撞）— <span style="color:#5B6675;">兩不同輸入得相同雜湊；MD5/SHA-1 已破。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">HMAC</strong>（雜湊訊息鑑別碼）— <span style="color:#5B6675;">雜湊＋密鑰，完整性＋來源鑑別。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Digital Signature</strong>（數位簽章）— <span style="color:#5B6675;">私鑰簽、公鑰驗；完整性＋不可否認。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">X.509</strong>（憑證標準）— <span style="color:#5B6675;">綁定身分與公鑰。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">CRL / OCSP</strong>（撤銷清單/線上狀態）— <span style="color:#5B6675;">查憑證是否被撤銷。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">HSM</strong>（硬體安全模組）— <span style="color:#5B6675;">安全生成/儲存金鑰的硬體。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Key Escrow</strong>（金鑰託管）— <span style="color:#5B6675;">第三方保管金鑰以便合法復原。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>雜湊 vs 加密</strong>：雜湊<strong>單向不可逆</strong>（驗完整性，如密碼存 hash）；加密<strong>可逆</strong>（保機密性）。密碼應<strong>雜湊加鹽（salt）</strong>儲存，不是加密。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>簽章的鑰方向</strong>：<strong>私鑰簽、公鑰驗</strong>（與加密相反：公鑰加、私鑰解）。簽章提供不可否認，加密提供機密性。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>HMAC vs 數位簽章</strong>：HMAC 用<strong>共享密鑰</strong>（雙方都能產生，<strong>無</strong>不可否認）；數位簽章用<strong>私鑰</strong>（只有持有者能簽，<strong>有</strong>不可否認）。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>CRL vs OCSP</strong>：CRL 是清單(較舊/延遲)；OCSP 即時查單張憑證狀態。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>雜湊 vs 加密</strong>：雜湊<strong>單向不可逆</strong>（驗完整性，如密碼存 hash）；加密<strong>可逆</strong>（保機密性）。密碼應<strong>雜湊加鹽（salt）</strong>儲存，不是加密。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>簽章的鑰方向</strong>：<strong>私鑰簽、公鑰驗</strong>（與加密相反：公鑰加、私鑰解）。簽章提供不可否認，加密提供機密性。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>HMAC vs 數位簽章</strong>：HMAC 用<strong>共享密鑰</strong>（雙方都能產生，<strong>無</strong>不可否認）；數位簽章用<strong>私鑰</strong>（只有持有者能簽，<strong>有</strong>不可否認）。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>CRL vs OCSP</strong>：CRL 是清單(較舊/延遲)；OCSP 即時查單張憑證狀態。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 條文與標準</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>FIPS 180/202（SHA-2/SHA-3）</strong>、<strong>FIPS 186（DSA/ECDSA）</strong>、<strong>NIST SP 800-57（金鑰管理）</strong>、<strong>FIPS 140-2/3</strong>（密碼模組/HSM 驗證）。密碼存儲用 <strong>bcrypt/scrypt/Argon2</strong> 等慢雜湊＋鹽。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：MD5 碰撞偽造憑證</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 用碰撞偽造『合法』憑證</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">研究者與後來的 <strong>Flame 惡意程式（2012）</strong>利用 <strong>MD5 碰撞</strong>偽造出看似由合法 CA 簽發的憑證，讓惡意程式偽裝成『微軟簽署的更新』散布。根因是 MD5 的抗碰撞性早已被攻破卻仍被使用。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>弱雜湊會直接瓦解簽章與 PKI 的信任</strong>。MD5/SHA-1 必須淘汰；雜湊演算法的選擇是信任體系的地基。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — 真實事件：MD5 碰撞偽造憑證</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 用碰撞偽造『合法』憑證</div>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">研究者與後來的 <strong>Flame 惡意程式（2012）</strong>利用 <strong>MD5 碰撞</strong>偽造出看似由合法 CA 簽發的憑證，讓惡意程式偽裝成『微軟簽署的更新』散布。根因是 MD5 的抗碰撞性早已被攻破卻仍被使用。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">教訓：<strong>弱雜湊會直接瓦解簽章與 PKI 的信任</strong>。MD5/SHA-1 必須淘汰；雜湊演算法的選擇是信任體系的地基。</p>
     </div>
-    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：為什麼密碼要『加鹽』</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">若直接存密碼的雜湊，相同密碼會有相同 hash，攻擊者可用<strong>彩虹表（rainbow table）</strong>預先破解。<strong>加鹽（salt）</strong>為每個密碼加上隨機值再雜湊，使彩虹表失效、相同密碼也有不同 hash。再搭配<strong>慢雜湊（bcrypt/Argon2）</strong>拖慢暴力破解。這是 D5 認證的基礎。</p>
+    <div style="background-color:#F1F5F9; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">📌 延伸：為什麼密碼要『加鹽』</div>
+      <p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">若直接存密碼的雜湊，相同密碼會有相同 hash，攻擊者可用<strong>彩虹表（rainbow table）</strong>預先破解。<strong>加鹽（salt）</strong>為每個密碼加上隨機值再雜湊，使彩虹表失效、相同密碼也有不同 hash。再搭配<strong>慢雜湊（bcrypt/Argon2）</strong>拖慢暴力破解。這是 D5 認證的基礎。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『驗證檔案未被竄改』→ 雜湊；『完整性＋不可否認』→ 數位簽章（私鑰簽）；『儲存密碼』→ 加鹽慢雜湊（非加密）；『即時查憑證撤銷』→ OCSP。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>簽章私鑰簽/公鑰驗；HMAC 無不可否認；密碼用雜湊不用加密；MD5/SHA-1 不可用。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『驗證檔案未被竄改』→ 雜湊；『完整性＋不可否認』→ 數位簽章（私鑰簽）；『儲存密碼』→ 加鹽慢雜湊（非加密）；『即時查憑證撤銷』→ OCSP。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>簽章私鑰簽/公鑰驗；HMAC 無不可否認；密碼用雜湊不用加密；MD5/SHA-1 不可用。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>雜湊驗完整性(單向)、HMAC 加來源鑑別、數位簽章(私鑰簽公鑰驗)加不可否認；金鑰全生命週期用 HSM 保護；MD5/SHA-1 已破。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 數位簽章用哪把鑰簽、哪把鑰驗？<br><span style="color:#0A5A59;">→ 自己私鑰簽、對方用你的公鑰驗。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . HMAC 與數位簽章在不可否認上的差別？<br><span style="color:#0A5A59;">→ HMAC 用共享密鑰、無不可否認；簽章用私鑰、有不可否認。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 為何密碼儲存要加鹽？<br><span style="color:#0A5A59;">→ 防彩虹表、使相同密碼有不同雜湊；搭配慢雜湊更佳。</span></p>
+    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>雜湊驗完整性(單向)、HMAC 加來源鑑別、數位簽章(私鑰簽公鑰驗)加不可否認；金鑰全生命週期用 HSM 保護；MD5/SHA-1 已破。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 數位簽章用哪把鑰簽、哪把鑰驗？<br><span style="color:#0A6160;">→ 自己私鑰簽、對方用你的公鑰驗。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . HMAC 與數位簽章在不可否認上的差別？<br><span style="color:#0A6160;">→ HMAC 用共享密鑰、無不可否認；簽章用私鑰、有不可否認。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 為何密碼儲存要加鹽？<br><span style="color:#0A6160;">→ 防彩虹表、使相同密碼有不同雜湊；搭配慢雜湊更佳。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.6.3 雜湊、簽章與 PKI）</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍數位簽章流程</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">簽：先<strong>雜湊</strong>產生摘要 → 用<strong>自己私鑰加密</strong>摘要。驗：用<strong>寄件者公鑰解密</strong>比對摘要。提供<strong>完整性＋鑑別＋不可否認</strong>，<strong>不提供機密性</strong>。DSS：RSA/ECDSA/EdDSA。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍PKI 與金鑰管理</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>CA</strong> 發憑證、<strong>RA</strong> 驗身分、digital cert 綁定身分↔公鑰。<strong>Key escrow 金鑰託管</strong>：m of n 控制、split custody。離線 root CA 越多層越安全但越貴。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §3.6.3 雜湊、簽章與 PKI。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §3.6.3 PKI 與金鑰管理。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§3.6.3 Public Key Infrastructure (PKI) (e.g., quantum key distribution)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Public Key Infrastructure (PKI)</strong>: hierarchy of trust relationships permitting the combination of asymmetric and symmetric cryptography along with hashing and digital certificates (giving us hybrid cryptography)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• A PKI issues certificates to computing devices and users, enabling them to apply cryptography (e.g., to send encrypted email messages, encrypt websites or use IPsec to encrypt data communications)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Many vendors provide PKI services; you can run a PKI privately and solely for your own org, you can acquire certificates from a trusted third-party provider, or you can do both (which is common)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• A PKI is made up of:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>certification authorities (CAs)</strong>: servers that provide one or more PKI functions, such as providing policies or issuing certificates</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>registration authority (RA)</strong>: entity that verifies the identity of the user or device requesting a certificate</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>digital certificates</strong>: The core of PKI, these electronic credentials bind a user’s identity to their public key</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• policies and procedures: such as how the PKI is secured</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• templates: a predefined configuration for specific uses, such as a web server template</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• CAs generate digital certificates containing the public keys of system users; users then distribute these certificates to people with whom they want to communicate; certificate recipients verify a certificate using the CA&#x27;s pubic key</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Quantum key distribution (QKD)</strong>: while traditional methods of securely distributing symmetric keys are via either using an out-of-band channel (some alternate secure communication method), or hybrid method (e.g. asymmetric methods like via Diffie-Hellman), a potentially new secure communication method uses quantum mechanics to exchange encryption keys between two parties, where, assuming Heisenberg&#x27;s Uncertainty Principle, <a href='https://www.youtube.com/watch?v=3h3pwrECbb8' style='color:#8A6D1E;'>measuring a quantum state inherently disrupts it</a>, eavesdropping on a QKD would be detectable (&quot;unconditional security&quot;)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• There are other components and concepts you should know for the exam:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• A PKI can have multiple tiers:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• single tier means you have one or more servers that perform all the functions of a PKI</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• two tiers means there is an offline root CA (a server that issues certificates to the issuing CAs but remains offline most of the time) in one tier, and issuing CAs (the servers that issue certificates to computing devices and users) in the other tier</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• servers in the second tier are often referred to as intermediate CAs or subordinate CAs</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• three tier means you can have CAs that are responsible only for issuing policies (and they represent the second tier in a three-tier hierarchy)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• in such a scenario, the policy CAs should also remain offline and be brought online only as needed</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Generally, the more tiers, the more security (but proper configuration is critical)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• the more tiers you have, the more complex and costly the PKI is to build and maintain</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• A PKI should have a certificate policy and a certificate practice statement (CSP)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• certificate policy: documents how your org handles items like requestor identities, the uses of certificates and storage of private keys</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• CSP: documents the security configuration of your PKI and is usually available to the public</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Besides issuing certificates, a PKI has other duties:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• a PKI needs to be able to provide certificate revocation information to clients</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• if an administrator revokes a certificate that has been issued, clients must be able to get that info from your PKI</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• storage of private keys and info about issued certificates (can be stored in a database or a directory)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• PKI uses LDAP when integrating digital certs into transmissions</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Key management</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Key management</strong>: the full set of processes and procedures for managing cryptographic keys throughout their lifecycle, including generating, distributing, storing, using, rotating, revoking, archiving, and ultimately destroying keys in a secure and controlled manner</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Key management practices</strong>: include safeguards surrounding the creation, distribution, storage, destruction, recovery, and escrow of secret keys</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Cryptography can be used as a security mechanism to provide confidentiality, integrity, and availability only if keys are not compromised</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Three main methods are used to exchange secret keys:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• offline distribution</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• public key encryption, and</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• the Diffie-Hellman key exchange algorithm</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Key management can be difficult with symmetric encryption but is much simpler with asymmetric encryption</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• There are several tasks related to key management:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Key creation</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Key distribution</strong>: the process of sending a key to a user or system; it must be secure and it must be stored in a secure way on the computing device</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• keys are stored before and after distribution; when distributed to a user, it can&#x27;t hang out on a user&#x27;s desktop</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Keys shouldn&#x27;t be in cleartext outside the cryptography device</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Key distribution and maintenance should be automated (and hidden from the user)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Keys should be backed up!</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Key escrow</strong>: process or entity that can recover lost or corrupted cryptographic keys</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>multiparty key recovery</strong>: when two or more entities are required to reconstruct or recover a key</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>m of n control</strong>: you designate a group of (n) people as recovery agents, but only need subset (m) of them for key recovery</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>split custody</strong>: enables two or more people to share access to a key (e.g. for example, two people each hold half the password to the key)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Key rotation: rotate keys (retire old keys, implement new) to reduce the risks of a compromised key having access</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Cryptographic erase</strong>: methods that permanently remove the cryptographic keys</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Key states:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• suspension: temporary hold</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• revocation: permanently revoked</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• expiration</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• destruction</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• See <a href='https://csrc.nist.rip/projects/key-management/key-management-guidelines' style='color:#8A6D1E;'>NIST 800-57, Part 1</a></div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Digital signatures</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Digital signatures</strong>: provide proof that a message originated from a particular user of a cryptosystem, and ensures that the message was not modified while in transit between two parties</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Digital signatures rely on a combination of two major concepts — public key cryptography, and hashing functions</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Digitally signed messages assure the recipient that the message truly came from the claimed sender, enforcing nonrepudiation</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Digitally signed messages assure the recipient that the message was not altered while in transit; protecting against both malicious modification (third party altering message meaning), and unintentional modification (faults in the communication process)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Digital signature process does not provide confidentiality in and of itself (only ensures integrity, authentication, and nonrepudiation)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• To digitally sign a message, first use a hashing function to generate a message digest; then encrypt the digest with your private key</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• To verify a digital signature, decrypt the signature with the sender&#x27;s public key and compare the message digest to the one you generate yourself: if they match, the message is authentic</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <a href='https://csrc.nist.gov/pubs/fips/186-5/final' style='color:#8A6D1E;'>FIPS 186-5</a> Digital Signature Standard (DSS) - specifies three techniques for the generation and verification of digital signatures that can be used for the protection of data:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• the Rivest-Shamir-Adleman Algorithm (RSA)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• the Elliptic Curve Digital Signature Algorithm (ECDSA), and</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• the Edwards-Curve Digital Signature Algorithm (EdDSA)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• NOTE: the Digital Signature Algorithm (DSA) is now to be used only for verifying existing signatures</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.6.3 雜湊、簽章與 PKI）</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍數位簽章流程</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;">簽：先<strong>雜湊</strong>產生摘要 → 用<strong>自己私鑰加密</strong>摘要。驗：用<strong>寄件者公鑰解密</strong>比對摘要。提供<strong>完整性＋鑑別＋不可否認</strong>，<strong>不提供機密性</strong>。DSS：RSA/ECDSA/EdDSA。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍PKI 與金鑰管理</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>CA</strong> 發憑證、<strong>RA</strong> 驗身分、digital cert 綁定身分↔公鑰。<strong>Key escrow 金鑰託管</strong>：m of n 控制、split custody。離線 root CA 越多層越安全但越貴。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §3.6.3 雜湊、簽章與 PKI。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §3.6.3 PKI 與金鑰管理。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§3.6.3 Public Key Infrastructure (PKI) (e.g., quantum key distribution)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Public Key Infrastructure (PKI)</strong>: hierarchy of trust relationships permitting the combination of asymmetric and symmetric cryptography along with hashing and digital certificates (giving us hybrid cryptography)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• A PKI issues certificates to computing devices and users, enabling them to apply cryptography (e.g., to send encrypted email messages, encrypt websites or use IPsec to encrypt data communications)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Many vendors provide PKI services; you can run a PKI privately and solely for your own org, you can acquire certificates from a trusted third-party provider, or you can do both (which is common)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• A PKI is made up of:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>certification authorities (CAs)</strong>: servers that provide one or more PKI functions, such as providing policies or issuing certificates</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>registration authority (RA)</strong>: entity that verifies the identity of the user or device requesting a certificate</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>digital certificates</strong>: The core of PKI, these electronic credentials bind a user’s identity to their public key</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• policies and procedures: such as how the PKI is secured</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• templates: a predefined configuration for specific uses, such as a web server template</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• CAs generate digital certificates containing the public keys of system users; users then distribute these certificates to people with whom they want to communicate; certificate recipients verify a certificate using the CA&#x27;s pubic key</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Quantum key distribution (QKD)</strong>: while traditional methods of securely distributing symmetric keys are via either using an out-of-band channel (some alternate secure communication method), or hybrid method (e.g. asymmetric methods like via Diffie-Hellman), a potentially new secure communication method uses quantum mechanics to exchange encryption keys between two parties, where, assuming Heisenberg&#x27;s Uncertainty Principle, <a href='https://www.youtube.com/watch?v=3h3pwrECbb8' style='color:#0A6160;'>measuring a quantum state inherently disrupts it</a>, eavesdropping on a QKD would be detectable (&quot;unconditional security&quot;)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• There are other components and concepts you should know for the exam:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• A PKI can have multiple tiers:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• single tier means you have one or more servers that perform all the functions of a PKI</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• two tiers means there is an offline root CA (a server that issues certificates to the issuing CAs but remains offline most of the time) in one tier, and issuing CAs (the servers that issue certificates to computing devices and users) in the other tier</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• servers in the second tier are often referred to as intermediate CAs or subordinate CAs</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• three tier means you can have CAs that are responsible only for issuing policies (and they represent the second tier in a three-tier hierarchy)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• in such a scenario, the policy CAs should also remain offline and be brought online only as needed</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Generally, the more tiers, the more security (but proper configuration is critical)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• the more tiers you have, the more complex and costly the PKI is to build and maintain</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• A PKI should have a certificate policy and a certificate practice statement (CSP)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• certificate policy: documents how your org handles items like requestor identities, the uses of certificates and storage of private keys</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• CSP: documents the security configuration of your PKI and is usually available to the public</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Besides issuing certificates, a PKI has other duties:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• a PKI needs to be able to provide certificate revocation information to clients</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• if an administrator revokes a certificate that has been issued, clients must be able to get that info from your PKI</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• storage of private keys and info about issued certificates (can be stored in a database or a directory)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• PKI uses LDAP when integrating digital certs into transmissions</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Key management</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Key management</strong>: the full set of processes and procedures for managing cryptographic keys throughout their lifecycle, including generating, distributing, storing, using, rotating, revoking, archiving, and ultimately destroying keys in a secure and controlled manner</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Key management practices</strong>: include safeguards surrounding the creation, distribution, storage, destruction, recovery, and escrow of secret keys</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Cryptography can be used as a security mechanism to provide confidentiality, integrity, and availability only if keys are not compromised</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Three main methods are used to exchange secret keys:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• offline distribution</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• public key encryption, and</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• the Diffie-Hellman key exchange algorithm</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Key management can be difficult with symmetric encryption but is much simpler with asymmetric encryption</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• There are several tasks related to key management:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Key creation</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>Key distribution</strong>: the process of sending a key to a user or system; it must be secure and it must be stored in a secure way on the computing device</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• keys are stored before and after distribution; when distributed to a user, it can&#x27;t hang out on a user&#x27;s desktop</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Keys shouldn&#x27;t be in cleartext outside the cryptography device</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Key distribution and maintenance should be automated (and hidden from the user)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Keys should be backed up!</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>Key escrow</strong>: process or entity that can recover lost or corrupted cryptographic keys</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>multiparty key recovery</strong>: when two or more entities are required to reconstruct or recover a key</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>m of n control</strong>: you designate a group of (n) people as recovery agents, but only need subset (m) of them for key recovery</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>split custody</strong>: enables two or more people to share access to a key (e.g. for example, two people each hold half the password to the key)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Key rotation: rotate keys (retire old keys, implement new) to reduce the risks of a compromised key having access</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>Cryptographic erase</strong>: methods that permanently remove the cryptographic keys</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Key states:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• suspension: temporary hold</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• revocation: permanently revoked</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• expiration</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• destruction</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• See <a href='https://csrc.nist.rip/projects/key-management/key-management-guidelines' style='color:#0A6160;'>NIST 800-57, Part 1</a></div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Digital signatures</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Digital signatures</strong>: provide proof that a message originated from a particular user of a cryptosystem, and ensures that the message was not modified while in transit between two parties</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Digital signatures rely on a combination of two major concepts — public key cryptography, and hashing functions</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Digitally signed messages assure the recipient that the message truly came from the claimed sender, enforcing nonrepudiation</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Digitally signed messages assure the recipient that the message was not altered while in transit; protecting against both malicious modification (third party altering message meaning), and unintentional modification (faults in the communication process)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Digital signature process does not provide confidentiality in and of itself (only ensures integrity, authentication, and nonrepudiation)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• To digitally sign a message, first use a hashing function to generate a message digest; then encrypt the digest with your private key</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• To verify a digital signature, decrypt the signature with the sender&#x27;s public key and compare the message digest to the one you generate yourself: if they match, the message is authentic</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <a href='https://csrc.nist.gov/pubs/fips/186-5/final' style='color:#0A6160;'>FIPS 186-5</a> Digital Signature Standard (DSS) - specifies three techniques for the generation and verification of digital signatures that can be used for the protection of data:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• the Rivest-Shamir-Adleman Algorithm (RSA)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• the Elliptic Curve Digital Signature Algorithm (ECDSA), and</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• the Edwards-Curve Digital Signature Algorithm (EdDSA)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• NOTE: the Digital Signature Algorithm (DSA) is now to be used only for verifying existing signatures</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/cDP-PhlrNGo" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">Digital Signatures & Certificates MindMap (7 of 9) | CISSP Domain 3 ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/cDP-PhlrNGo" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">Digital Signatures & Certificates MindMap (7 of 9) | CISSP Domain 3 ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/P5So8_NKxz4?t=6507" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 3<span class="ts-note">（從約 108:27 開始）</span> ↗</a>
+        <a href="https://youtu.be/P5So8_NKxz4?t=6507" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 3<span class="ts-note">（從約 108:27 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -177,8 +177,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 53 / 120 · P2-D3-3</span>
   </div>
 

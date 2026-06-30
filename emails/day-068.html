@@ -5,116 +5,116 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 68</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 68 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D6-3</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P2-D6-3</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 6 · 安全評估與測試 &nbsp;|&nbsp; 權重 12%</span>
     </div>
     <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">日誌/合成監控與 BAS</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Logging/Synthetic Monitoring &amp; BAS</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:56.67%; background-color:#3D52A0;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:56.67%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D6：監控與攻擊模擬</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 中期 D6：監控與攻擊模擬</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>日誌審查</strong>(你本業)、<strong>合成交易/RUM 監控</strong>、與<strong>入侵與攻擊模擬(BAS)</strong>。重點：持續驗證『控制是否仍有效、服務是否正常、攻擊能否被偵測』。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：日誌審查與完整性 → 合成交易 vs RUM → BAS 入侵攻擊模擬 → 與 SIEM/紅藍隊的關係。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 日誌審查深入</div>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：日誌審查與完整性 → 合成交易 vs RUM → BAS 入侵攻擊模擬 → 與 SIEM/紅藍隊的關係。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 日誌審查深入</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>集中與正規化</strong>：分散日誌彙整(SIEM)、統一時間(NTP)與格式</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>完整性保護</strong>：write-once、雜湊、權限隔離(防攻擊者刪日誌滅證)</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>保存期限</strong>：依法遵與調查需要(攻擊常潛伏數月，需足夠留存)</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>關聯分析</strong>：單條無意義、跨來源關聯出攻擊鏈</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>集中與正規化</strong>：分散日誌彙整(SIEM)、統一時間(NTP)與格式</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>完整性保護</strong>：write-once、雜湊、權限隔離(防攻擊者刪日誌滅證)</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>保存期限</strong>：依法遵與調查需要(攻擊常潛伏數月，需足夠留存)</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>關聯分析</strong>：單條無意義、跨來源關聯出攻擊鏈</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 合成交易 vs RUM</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">方法</td><td style="padding:8px 10px;">原理</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">用途</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Synthetic Transaction</strong> 合成交易</td><td style="padding:9px 10px; vertical-align:top;">主動模擬使用者操作</td><td style="padding:9px 10px; vertical-align:top;">沒人用時也監測可用性/效能</td></tr>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 合成交易 vs RUM</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">方法</td><td style="padding:8px 10px;">原理</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">用途</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Synthetic Transaction</strong> 合成交易</td><td style="padding:9px 10px; vertical-align:top;">主動模擬使用者操作</td><td style="padding:9px 10px; vertical-align:top;">沒人用時也監測可用性/效能</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>RUM</strong> 真實使用者監測</td><td style="padding:9px 10px; vertical-align:top;">被動觀測真實流量</td><td style="padding:9px 10px; vertical-align:top;">反映真實使用者體驗</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — BAS 入侵與攻擊模擬</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — BAS 入侵與攻擊模擬</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>BAS（Breach and Attack Simulation）</strong>用自動化工具<strong>持續、安全地</strong>模擬攻擊技術(對照 MITRE ATT&CK)，驗證<strong>偵測與控制是否真的會觸發</strong>——介於弱點掃描(找弱點)與紅隊(人工對抗)之間，可<strong>頻繁、自動</strong>地測『偵測涵蓋率』。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Log Review</strong>（日誌審查）— <span style="color:#5B6675;">檢視日誌找異常與入侵。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Log Integrity</strong>（日誌完整性）— <span style="color:#5B6675;">防竄改/刪除(write-once/雜湊)。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Synthetic Transaction</strong>（合成交易）— <span style="color:#5B6675;">主動模擬交易監測服務。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RUM</strong>（真實使用者監測）— <span style="color:#5B6675;">被動觀測真實流量。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">BAS</strong>（入侵與攻擊模擬）— <span style="color:#5B6675;">自動化持續驗證偵測與控制。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">MITRE ATT&CK</strong>（攻擊技術框架）— <span style="color:#5B6675;">TTP 對照，量測偵測涵蓋。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Clipping Level</strong>（裁切門檻）— <span style="color:#5B6675;">觸發告警的閾值(過低吵、過高漏)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Log Review</strong>（日誌審查）— <span style="color:#5B6675;">檢視日誌找異常與入侵。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Log Integrity</strong>（日誌完整性）— <span style="color:#5B6675;">防竄改/刪除(write-once/雜湊)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Synthetic Transaction</strong>（合成交易）— <span style="color:#5B6675;">主動模擬交易監測服務。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">RUM</strong>（真實使用者監測）— <span style="color:#5B6675;">被動觀測真實流量。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">BAS</strong>（入侵與攻擊模擬）— <span style="color:#5B6675;">自動化持續驗證偵測與控制。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">MITRE ATT&CK</strong>（攻擊技術框架）— <span style="color:#5B6675;">TTP 對照，量測偵測涵蓋。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Clipping Level</strong>（裁切門檻）— <span style="color:#5B6675;">觸發告警的閾值(過低吵、過高漏)。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>合成交易 vs RUM</strong>：合成<strong>主動</strong>(可預先發現問題、覆蓋低流量時段)；RUM <strong>被動</strong>(真實體驗、但只反映已發生流量)。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>BAS vs 紅隊 vs 弱點掃描</strong>：弱點掃描<strong>找弱點</strong>；BAS <strong>自動模擬攻擊驗偵測</strong>(頻繁)；紅隊<strong>人工對抗演練</strong>(深入、隱蔽)。三者頻率與深度不同。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>日誌完整性</strong>：攻擊者常刪/改日誌滅證，故日誌須<strong>即時外送、防竄改</strong>，本機日誌不可全信。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>合成交易 vs RUM</strong>：合成<strong>主動</strong>(可預先發現問題、覆蓋低流量時段)；RUM <strong>被動</strong>(真實體驗、但只反映已發生流量)。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>BAS vs 紅隊 vs 弱點掃描</strong>：弱點掃描<strong>找弱點</strong>；BAS <strong>自動模擬攻擊驗偵測</strong>(頻繁)；紅隊<strong>人工對抗演練</strong>(深入、隱蔽)。三者頻率與深度不同。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>日誌完整性</strong>：攻擊者常刪/改日誌滅證，故日誌須<strong>即時外送、防竄改</strong>，本機日誌不可全信。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 條文與標準</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-92</strong>（日誌管理）、<strong>SP 800-137</strong>（持續監控 ISCM）、<strong>MITRE ATT&CK</strong>。合成監控對應 SRE/可用性實務；BAS 屬新興持續驗證工具。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：從日誌追入侵</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 日誌是事後唯一的真相</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">重大入侵的調查幾乎都仰賴<strong>日誌</strong>重建攻擊時間軸：初始入侵點、橫向移動、提權、資料外傳。但常見問題是<strong>日誌沒開、留存太短、或被攻擊者刪除</strong>，導致無法判定影響範圍與根因。反之，完整且防竄改的日誌讓組織能<strong>精準界定外洩範圍</strong>(影響法遵通報義務)。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：日誌的<strong>覆蓋面、留存期、完整性</strong>決定了事後能否查清；搭配 SIEM 關聯(D7)與 UEBA 在事前就偵測。沒有日誌＝盲飛。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — 真實事件：從日誌追入侵</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 日誌是事後唯一的真相</div>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">重大入侵的調查幾乎都仰賴<strong>日誌</strong>重建攻擊時間軸：初始入侵點、橫向移動、提權、資料外傳。但常見問題是<strong>日誌沒開、留存太短、或被攻擊者刪除</strong>，導致無法判定影響範圍與根因。反之，完整且防竄改的日誌讓組織能<strong>精準界定外洩範圍</strong>(影響法遵通報義務)。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">教訓：日誌的<strong>覆蓋面、留存期、完整性</strong>決定了事後能否查清；搭配 SIEM 關聯(D7)與 UEBA 在事前就偵測。沒有日誌＝盲飛。</p>
     </div>
-    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：裁切門檻與告警調校</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;"><strong>Clipping level（裁切門檻）</strong>：設定觸發告警/記錄的閾值(如『5 次失敗登入』)。門檻<strong>太低</strong>→告警洪水(疲勞)；<strong>太高</strong>→漏掉慢速攻擊(如密碼噴灑刻意低於門檻)。調校是持續工程——結合 UEBA 的動態基線比靜態門檻更能抓出『低調』攻擊。</p>
+    <div style="background-color:#F1F5F9; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">📌 延伸：裁切門檻與告警調校</div>
+      <p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;"><strong>Clipping level（裁切門檻）</strong>：設定觸發告警/記錄的閾值(如『5 次失敗登入』)。門檻<strong>太低</strong>→告警洪水(疲勞)；<strong>太高</strong>→漏掉慢速攻擊(如密碼噴灑刻意低於門檻)。調校是持續工程——結合 UEBA 的動態基線比靜態門檻更能抓出『低調』攻擊。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『沒人用時也監測服務』→ 合成交易；『真實使用者體驗』→ RUM；『自動持續驗證偵測涵蓋』→ BAS；『事後追入侵範圍』→ 防竄改的日誌。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>本機日誌可能被刪(需即時外送)；clipping level 過高會漏慢速攻擊；合成(主動) vs RUM(被動)。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『沒人用時也監測服務』→ 合成交易；『真實使用者體驗』→ RUM；『自動持續驗證偵測涵蓋』→ BAS；『事後追入侵範圍』→ 防竄改的日誌。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>本機日誌可能被刪(需即時外送)；clipping level 過高會漏慢速攻擊；合成(主動) vs RUM(被動)。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>日誌要集中/同步/防竄改/夠久；合成交易主動監測、RUM 被動反映體驗；BAS 自動模擬攻擊驗偵測；clipping level 需調校。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 為何日誌要即時外送並防竄改？<br><span style="color:#0A5A59;">→ 攻擊者常刪改本機日誌滅證；外送防竄改才保住事後調查真相。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . BAS 與弱點掃描的差別？<br><span style="color:#0A5A59;">→ 掃描找弱點；BAS 自動模擬攻擊技術驗證偵測與控制是否真會觸發。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . clipping level 設太高的風險？<br><span style="color:#0A5A59;">→ 漏掉刻意低於門檻的慢速攻擊(如密碼噴灑)。</span></p>
+    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>日誌要集中/同步/防竄改/夠久；合成交易主動監測、RUM 被動反映體驗；BAS 自動模擬攻擊驗偵測；clipping level 需調校。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 為何日誌要即時外送並防竄改？<br><span style="color:#0A6160;">→ 攻擊者常刪改本機日誌滅證；外送防竄改才保住事後調查真相。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . BAS 與弱點掃描的差別？<br><span style="color:#0A6160;">→ 掃描找弱點；BAS 自動模擬攻擊技術驗證偵測與控制是否真會觸發。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . clipping level 設太高的風險？<br><span style="color:#0A6160;">→ 漏掉刻意低於門檻的慢速攻擊(如密碼噴灑)。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.3 日誌 / §6.2.9 BAS（深入））</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍SIEM 與日誌</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>SIEM</strong> 能力：aggregation 彙整／normalization／<strong>correlation 關聯</strong>／安全儲存／分析／報告。日誌須<strong>NTP 時間同步</strong>、集中唯讀保存防竄改。NetFlow 對調查事件特別有用。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍BAS 與合成監控</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>BAS（Breach &amp; Attack Simulation）</strong>＝自動化結合 red+blue、模擬 APT、注入威脅指標測控制。參考 MITRE ATT&CK、NIST 800-115、OSSTMM。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §6.2.3 日誌 / §6.2.9 BAS（深入）。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §6.2.3 日誌審查、§6.2.9 BAS。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.2.3 Log reviews</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Security Information and Event Management (SIEM)</strong>: packages that collect information using the syslog functionality present in many devices, operating systems, and applications</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• SIEM capabilities: aggregation, normalization, correlation, secure storage, analysis, reporting</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Log data is recorded in databases; common logs include:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• security, application, firewall, proxy, and change management logs</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Log files should be protected by centrally storing them and using permissions to restrict access, and archived logs should be set to read-only to prevent modification</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Admins may choose to deploy logging policies through Windows Group Policy Objects (GPOs)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Logging systems should also make use of the Network Time Protocol (NTP) to ensure that clocks are synchronized on systems sending log entries to the SIEM as well as the SIEM itself, ensuring info from multiple sources have a consistent timeline</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Information security managers should also periodically conduct log reviews, particularly for sensitive functions, to ensure that privileged users are not abusing their privileges</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Network flow (NetFlow) logs are particularly useful when investigating security incidents</div>
-<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.2.9 Breach attack simulations</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Breach and attack simulation (BAS)</strong>: platforms that automate some aspects of penetration testing</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• The BAS platform helps conduct automated testing of security controls to identify deficiencies</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• A BAS system combines red team (attack) and blue team (defense) techniques together with automation to simulate advanced persistent threats (and other advanced threat actors) running against the environment</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Designed to inject threat indicators onto systems and networks in an effort to trigger other security controls (e.g. place a suspicious file on a server)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• detection and prevention controls should immediately detect and/or block this traffic as potentially malicious</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• See:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• OWASP Web Security Testing Guide</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• OSSTMM (Open Source Security Testing Methodology Manual)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• MITRE ATT&amp;CK framework</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• NIST 800-115</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• FedRAMP Penetration Test Guidance</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• PCI DSS Information Supplemental on Penetration Testing</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.3 日誌 / §6.2.9 BAS（深入））</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍SIEM 與日誌</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>SIEM</strong> 能力：aggregation 彙整／normalization／<strong>correlation 關聯</strong>／安全儲存／分析／報告。日誌須<strong>NTP 時間同步</strong>、集中唯讀保存防竄改。NetFlow 對調查事件特別有用。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍BAS 與合成監控</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>BAS（Breach &amp; Attack Simulation）</strong>＝自動化結合 red+blue、模擬 APT、注入威脅指標測控制。參考 MITRE ATT&CK、NIST 800-115、OSSTMM。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §6.2.3 日誌 / §6.2.9 BAS（深入）。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §6.2.3 日誌審查、§6.2.9 BAS。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§6.2.3 Log reviews</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Security Information and Event Management (SIEM)</strong>: packages that collect information using the syslog functionality present in many devices, operating systems, and applications</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• SIEM capabilities: aggregation, normalization, correlation, secure storage, analysis, reporting</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Log data is recorded in databases; common logs include:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• security, application, firewall, proxy, and change management logs</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Log files should be protected by centrally storing them and using permissions to restrict access, and archived logs should be set to read-only to prevent modification</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Admins may choose to deploy logging policies through Windows Group Policy Objects (GPOs)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Logging systems should also make use of the Network Time Protocol (NTP) to ensure that clocks are synchronized on systems sending log entries to the SIEM as well as the SIEM itself, ensuring info from multiple sources have a consistent timeline</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Information security managers should also periodically conduct log reviews, particularly for sensitive functions, to ensure that privileged users are not abusing their privileges</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Network flow (NetFlow) logs are particularly useful when investigating security incidents</div>
+<div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§6.2.9 Breach attack simulations</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Breach and attack simulation (BAS)</strong>: platforms that automate some aspects of penetration testing</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• The BAS platform helps conduct automated testing of security controls to identify deficiencies</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• A BAS system combines red team (attack) and blue team (defense) techniques together with automation to simulate advanced persistent threats (and other advanced threat actors) running against the environment</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Designed to inject threat indicators onto systems and networks in an effort to trigger other security controls (e.g. place a suspicious file on a server)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• detection and prevention controls should immediately detect and/or block this traffic as potentially malicious</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• See:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• OWASP Web Security Testing Guide</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• OSSTMM (Open Source Security Testing Methodology Manual)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• MITRE ATT&amp;CK framework</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• NIST 800-115</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• FedRAMP Penetration Test Guidance</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• PCI DSS Information Supplemental on Penetration Testing</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/cwcARccyWyY" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 6 Review / Mind Map (3 of 3) | Logging & Monitoring ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/cwcARccyWyY" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 6 Review / Mind Map (3 of 3) | Logging & Monitoring ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/lt_-KqplT5o?t=1633" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 6<span class="ts-note">（從約 27:13 開始）</span> ↗</a>
+        <a href="https://youtu.be/lt_-KqplT5o?t=1633" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 6<span class="ts-note">（從約 27:13 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -122,8 +122,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 68 / 120 · P2-D6-3</span>
   </div>
 

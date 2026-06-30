@@ -5,135 +5,135 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 6</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
   <!-- 報頭 -->
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 6 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D2-1</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D2-1</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 2 · 資產安全 &nbsp;|&nbsp; 權重 10%</span>
     </div>
     <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">Domain 2 全景與資料分類</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Domain 2 Big Picture &amp; Data Classification</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:5.0%; background-color:#0E7C7B;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:5.0%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — Domain 2 在講什麼</div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — Domain 2 在講什麼</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">Domain 2（<strong>Asset Security，資產安全</strong>）佔考試 <strong>10%</strong>，主軸只有一句話：<strong>先搞清楚你有什麼資產、它有多重要，才知道要花多少力氣保護它</strong>。其中最核心的資產就是<strong>資料（Data）</strong>。Domain 1 給了風險思維，Domain 2 把它落到「資料」這個最具體的對象上——而一切的起點，是<strong>資料分類（Data Classification）</strong>。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週（Domain 2 · 初期）路線</strong>：①今天 資料分類全景 → ②資料角色與擁有權 → ③資料生命週期與狀態 → ④保存/銷毀/殘留 → ⑤資料保護技術。</div>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 分類分級：政府 vs 商業</div>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">本週（Domain 2 · 初期）路線</strong>：①今天 資料分類全景 → ②資料角色與擁有權 → ③資料生命週期與狀態 → ④保存/銷毀/殘留 → ⑤資料保護技術。</div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 分類分級：政府 vs 商業</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">分類是依資料的<strong>敏感度</strong>與<strong>外洩衝擊</strong>貼上等級標籤。兩套常見制度：</p>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;">
         <td style="padding:8px 10px; border-radius:6px 0 0 0;">政府／軍方</td>
         <td style="padding:8px 10px; border-radius:0 6px 0 0;">商業</td>
       </tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:8px 10px; vertical-align:top;">Top Secret（絕對機密）</td><td style="padding:8px 10px; vertical-align:top;">Confidential / Proprietary（機密／專有）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:8px 10px; vertical-align:top;">Top Secret（絕對機密）</td><td style="padding:8px 10px; vertical-align:top;">Confidential / Proprietary（機密／專有）</td></tr>
       <tr><td style="padding:8px 10px; vertical-align:top;">Secret（機密）</td><td style="padding:8px 10px; vertical-align:top;">Private（私有，如員工個資）</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:8px 10px; vertical-align:top;">Confidential（密）</td><td style="padding:8px 10px; vertical-align:top;">Sensitive（敏感）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:8px 10px; vertical-align:top;">Confidential（密）</td><td style="padding:8px 10px; vertical-align:top;">Sensitive（敏感）</td></tr>
       <tr><td style="padding:8px 10px; vertical-align:top;">Unclassified（非機密）</td><td style="padding:8px 10px; vertical-align:top;">Public（公開）</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 等級的<strong>數量不是重點</strong>，重點是「<strong>每一級對應什麼保護要求</strong>」。分類太多級會難以執行；通常 3–4 級最實際。</p>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 分類為什麼重要：它驅動一切控制</div>
+    <p style="font-size:15px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 等級的<strong>數量不是重點</strong>，重點是「<strong>每一級對應什麼保護要求</strong>」。分類太多級會難以執行；通常 3–4 級最實際。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 分類為什麼重要：它驅動一切控制</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:4px 0;">
       <tr>
-        <td style="text-align:center; background-color:#0E7C7B; color:#FFFFFF; padding:12px 6px; border-radius:6px; font-size:12.5px; vertical-align:middle;">分類<br>Classify</td>
+        <td style="text-align:center; background-color:#0A6160; color:#FFFFFF; padding:12px 6px; border-radius:6px; font-size:13px; vertical-align:middle;">分類<br>Classify</td>
         <td style="text-align:center; color:#5B6675; font-size:16px;">→</td>
-        <td style="text-align:center; background-color:#3E9A99; color:#FFFFFF; padding:12px 6px; border-radius:6px; font-size:12.5px; vertical-align:middle;">標示<br>Label</td>
+        <td style="text-align:center; background-color:#3E9A99; color:#FFFFFF; padding:12px 6px; border-radius:6px; font-size:13px; vertical-align:middle;">標示<br>Label</td>
         <td style="text-align:center; color:#5B6675; font-size:16px;">→</td>
-        <td style="text-align:center; background-color:#6FB8B7; color:#FFFFFF; padding:12px 6px; border-radius:6px; font-size:12.5px; vertical-align:middle;">依級<br>套控制</td>
+        <td style="text-align:center; background-color:#6FB8B7; color:#FFFFFF; padding:12px 6px; border-radius:6px; font-size:13px; vertical-align:middle;">依級<br>套控制</td>
       </tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">先分類、再依等級決定加密強度、存取權限、保存期限與銷毀方式。<strong>沒有分類，所有控制都是憑感覺</strong>——這就是為什麼 Domain 2 把分類放在最前面。</p>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <p style="font-size:15px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">先分類、再依等級決定加密強度、存取權限、保存期限與銷毀方式。<strong>沒有分類，所有控制都是憑感覺</strong>——這就是為什麼 Domain 2 把分類放在最前面。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Data Classification</strong>（資料分類）— <span style="color:#5B6675;">依敏感度貼等級標籤，驅動後續所有保護控制。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Asset</strong>（資產）— <span style="color:#5B6675;">任何對組織有價值之物：資料、系統、人員、商譽。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Sensitivity</strong>（敏感度）— <span style="color:#5B6675;">資料若外洩造成的潛在傷害程度。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Criticality</strong>（關鍵性）— <span style="color:#5B6675;">資料／系統對營運持續的重要程度（偏可用性）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">PII</strong>（個人可識別資訊）— <span style="color:#5B6675;">Personally Identifiable Information，可識別特定個人之資料。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Labeling vs Marking</strong>（標示 vs 標記）— <span style="color:#5B6675;">Labeling＝系統可讀的分類標記；Marking＝人可讀的標註。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Data Classification</strong>（資料分類）— <span style="color:#5B6675;">依敏感度貼等級標籤，驅動後續所有保護控制。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Asset</strong>（資產）— <span style="color:#5B6675;">任何對組織有價值之物：資料、系統、人員、商譽。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Sensitivity</strong>（敏感度）— <span style="color:#5B6675;">資料若外洩造成的潛在傷害程度。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Criticality</strong>（關鍵性）— <span style="color:#5B6675;">資料／系統對營運持續的重要程度（偏可用性）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">PII</strong>（個人可識別資訊）— <span style="color:#5B6675;">Personally Identifiable Information，可識別特定個人之資料。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Labeling vs Marking</strong>（標示 vs 標記）— <span style="color:#5B6675;">Labeling＝系統可讀的分類標記；Marking＝人可讀的標註。</span></td></tr>
     </table>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Sensitivity vs Criticality</strong>：敏感度看「外洩多嚴重」（偏機密性）；關鍵性看「沒了它營運多痛」（偏可用性）。同一份資料兩者可不同——公開的官網內容敏感度低、但若是金流系統其關鍵性極高。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>Classification vs Categorization</strong>：Classification 依<strong>敏感度</strong>分級（Top Secret…）；Categorization（如 NIST）依<strong>衝擊等級</strong>（Low/Moderate/High）對系統定性。考試兩詞都可能出現。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>Sensitivity vs Criticality</strong>：敏感度看「外洩多嚴重」（偏機密性）；關鍵性看「沒了它營運多痛」（偏可用性）。同一份資料兩者可不同——公開的官網內容敏感度低、但若是金流系統其關鍵性極高。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>Classification vs Categorization</strong>：Classification 依<strong>敏感度</strong>分級（Top Secret…）；Categorization（如 NIST）依<strong>衝擊等級</strong>（Low/Moderate/High）對系統定性。考試兩詞都可能出現。</p>
     </div>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 條文與標準</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-60</strong> 指引如何把資訊類型對應到衝擊等級；<strong>FIPS 199</strong> 以 C/I/A 的 Low/Moderate/High 為系統定級；<strong>ISO/IEC 27001</strong> 要求對資產建立清冊（inventory）並分類。台灣<strong>個資法（PDPA）</strong>對「特種個資」（醫療、基因、性生活、犯罪前科等）有更嚴格要求——本質上就是更高的分類級。</p>
-<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：分級錯誤致過度暴露</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 把機密當公開：雲端儲存桶設定外洩</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">近年最常見的外洩型態之一，是企業把含 <strong>PII</strong> 的資料放進雲端儲存桶（如 S3 bucket），卻<strong>誤把存取權設成「公開」</strong>。根因往往是：這批資料<strong>從一開始就沒被正確分類</strong>——若它被標為 Confidential，對應的控制（預設加密、禁止公開、存取審查）就會擋下這個錯誤。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：分類不是文書作業，它是「自動套用正確保護」的開關。<strong>未分類＝預設裸奔</strong>。這也呼應 Domain 1 的最小權限：資料預設應為最嚴，按需放寬。</p>
+<div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 真實事件：分級錯誤致過度暴露</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 把機密當公開：雲端儲存桶設定外洩</div>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">近年最常見的外洩型態之一，是企業把含 <strong>PII</strong> 的資料放進雲端儲存桶（如 S3 bucket），卻<strong>誤把存取權設成「公開」</strong>。根因往往是：這批資料<strong>從一開始就沒被正確分類</strong>——若它被標為 Confidential，對應的控制（預設加密、禁止公開、存取審查）就會擋下這個錯誤。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">教訓：分類不是文書作業，它是「自動套用正確保護」的開關。<strong>未分類＝預設裸奔</strong>。這也呼應 Domain 1 的最小權限：資料預設應為最嚴，按需放寬。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「保護資料的<strong>第一步</strong>是什麼？」→ 答案是 <strong>分類（Classify／identify &amp; classify assets）</strong>，不是加密、不是存取控制。沒分類就不知道該套多強的控制。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>決定分類等級的是 <strong>Data Owner（業務擁有者）</strong>（Domain 1 已建立），不是 IT。看到「誰決定分類」一律選 Owner。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>「保護資料的<strong>第一步</strong>是什麼？」→ 答案是 <strong>分類（Classify／identify &amp; classify assets）</strong>，不是加密、不是存取控制。沒分類就不知道該套多強的控制。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>決定分類等級的是 <strong>Data Owner（業務擁有者）</strong>（Domain 1 已建立），不是 IT。看到「誰決定分類」一律選 Owner。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>Domain 2 從「資料分類」起步——先依敏感度分級，分類再驅動標示、加密、權限、保存與銷毀等所有控制。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 保護資料資產的第一步是？<br><span style="color:#0A5A59;">→ 資料分類（identify & classify），之後才談加密/存取控制。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 敏感度（sensitivity）與關鍵性（criticality）差在哪？<br><span style="color:#0A5A59;">→ 敏感度＝外洩傷害（機密性面）；關鍵性＝對營運的重要（可用性面）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 誰負責決定一份資料的分類等級？<br><span style="color:#0A5A59;">→ Data Owner（業務擁有者），非 IT/Custodian。</span></p>
+    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>Domain 2 從「資料分類」起步——先依敏感度分級，分類再驅動標示、加密、權限、保存與銷毀等所有控制。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 保護資料資產的第一步是？<br><span style="color:#0A6160;">→ 資料分類（identify & classify），之後才談加密/存取控制。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 敏感度（sensitivity）與關鍵性（criticality）差在哪？<br><span style="color:#0A6160;">→ 敏感度＝外洩傷害（機密性面）；關鍵性＝對營運的重要（可用性面）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 誰負責決定一份資料的分類等級？<br><span style="color:#0A6160;">→ Data Owner（業務擁有者），非 IT/Custodian。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.1 資料與資產分類）</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍分類標籤（必記順序）</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>政府</strong>：Top Secret（極大損害）＞ Secret（嚴重損害）＞ Confidential（損害）＞ Unclassified。</p><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>商業</strong>：Confidential/Proprietary ＞ Private（個資/財務）＞ Sensitive ＞ Public。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍關鍵名詞</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>Categorization 分組</strong>（依敏感度歸類）vs <strong>Classification 分級</strong>（指派等級）；PII 個人識別資訊、PHI 健康資訊（HIPAA）、Proprietary 專有資料。</p><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;">資料三態都要保護：<strong>at rest／in transit／in use</strong>；機密性最佳手段＝強加密。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §2.1 資料與資產分類。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §2.1 資訊與資產分類。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§Identify and classify information and assets (OSG-10 Chpt 5)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 2.1.1 Data classification</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Managing the data lifecycle refers to protecting it from cradle to grave -- steps need to be taken to protect data when it&#x27;s first created until it&#x27;s destroyed</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• One of the first steps in the lifecycle is identifying and classifying information and assets, often within a security policy</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• In this context, assets include sensitive data, the hardware used to process that data, and the media used to store/hold it</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Data categorization</strong>: process of grouping sets of data, info or knowledge that have comparable sensitivities (e.g. impact or loss rating), and have similar law/contract/compliance security needs; the act of assigning a classification level to an asset</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Sensitive data</strong>: any information that isn&#x27;t public or unclassified, and can include anything an org needs to protect due to its value, or to comply with existing laws and regulations</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Personally Identifiable Information (PII)</strong>: any information that can identify an individual</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• more specifically, info about an individual including (1) any info that can be used to distinguish or trace an individual‘s identity, such as name, social security number, date and place of birth, mother‘s maiden name, or biometric records; and (2) any other information that is linked or linkable to an individual, such as medical, educational, financial, and employment information (<a href='https://csrc.nist.gov/publications/detail/sp/800-122/final' style='color:#8A6D1E;'>NIST SP 800-122</a>)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Protected Health Information (PHI)</strong>: any health-related information in any form that can be related to a specific person; note that HIPAA applies to healthcare providers, health insurers, clearinghouses, and any org that handles PHI</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Proprietary data</strong>: any data that helps an organization maintain a competitive edge</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Organizations classify data using labels</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• government classification labels include:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>Top Secret</strong>: if disclosed, could cause massive damage to national security, such as the disclosure of spy satellite information</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>Confidential</strong>: applied to information that if disclosed would likely cause damage to the national security</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>Secret</strong>: if disclosed, can adversely affect national security</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>Unclassified</strong>: not sensitive</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• non-government organizations use labels such as:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>Confidential/Proprietary</strong>: only used within the org and, in the case of unauthorized disclosure, it could suffer serious consequences</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>Private</strong>: may include personal information, such as credit card data and bank accounts; unauthorized disclosure can be disastrous</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>Sensitive</strong>: needs extraordinary precautions to ensure confidentiality and integrity</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>Public</strong>: can be viewed by the general public and, therefore, the disclosure of this data would not cause damage</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• labels can be as granular and custom as required by the org</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• It is important to protect data in all states: at rest, in transit, or in use</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• The best way to protect data confidentiality is via use of strong encryption</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 2.1.2 Asset classification</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• It&#x27;s important to identify and classify assets, such as systems, mobile devices etc.</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Owners are accountable for an asset and protecting its value</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Asset Classification</strong>: assigning assets the level of protection required based on their value to the org; assets require an identified owner to be classified and protected adequately</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• derived from compliance mandates, the process of recognizing organizational impacts if information suffers any security compromise (whether to confidentiality, integrity, availability, non-repudiation, authenticity, privacy, or safety)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Asset classifications should match data classification, i.e. if a computer is processing top secret data, the computer should be classified as a top secret asset</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Clearance</strong>: relates to access of certain classification of data or equipment, and who has access to that level or classification</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• A <strong>formal access approval process</strong> should be used to change user access; the process should involve approval from the data/asset owner, and the user should be informed about rules and limits</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• before a user is granted access they should be educated on working with that level of classification</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Classification levels can be used by businesses during acquisitions, ensuring only personnel who need to know are involved in the assessment or transition</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• In general, classification labels help users use data and assets properly, for instance by restricting dissemination or use of assets by their classification</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Asset classification should include confidentiality (sensitivity), integrity (accuracy), and availability (criticality)</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.1 資料與資產分類）</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍分類標籤（必記順序）</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>政府</strong>：Top Secret（極大損害）＞ Secret（嚴重損害）＞ Confidential（損害）＞ Unclassified。</p><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>商業</strong>：Confidential/Proprietary ＞ Private（個資/財務）＞ Sensitive ＞ Public。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍關鍵名詞</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>Categorization 分組</strong>（依敏感度歸類）vs <strong>Classification 分級</strong>（指派等級）；PII 個人識別資訊、PHI 健康資訊（HIPAA）、Proprietary 專有資料。</p><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;">資料三態都要保護：<strong>at rest／in transit／in use</strong>；機密性最佳手段＝強加密。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §2.1 資料與資產分類。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §2.1 資訊與資產分類。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§Identify and classify information and assets (OSG-10 Chpt 5)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 2.1.1 Data classification</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Managing the data lifecycle refers to protecting it from cradle to grave -- steps need to be taken to protect data when it&#x27;s first created until it&#x27;s destroyed</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• One of the first steps in the lifecycle is identifying and classifying information and assets, often within a security policy</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• In this context, assets include sensitive data, the hardware used to process that data, and the media used to store/hold it</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Data categorization</strong>: process of grouping sets of data, info or knowledge that have comparable sensitivities (e.g. impact or loss rating), and have similar law/contract/compliance security needs; the act of assigning a classification level to an asset</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Sensitive data</strong>: any information that isn&#x27;t public or unclassified, and can include anything an org needs to protect due to its value, or to comply with existing laws and regulations</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Personally Identifiable Information (PII)</strong>: any information that can identify an individual</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• more specifically, info about an individual including (1) any info that can be used to distinguish or trace an individual‘s identity, such as name, social security number, date and place of birth, mother‘s maiden name, or biometric records; and (2) any other information that is linked or linkable to an individual, such as medical, educational, financial, and employment information (<a href='https://csrc.nist.gov/publications/detail/sp/800-122/final' style='color:#0A6160;'>NIST SP 800-122</a>)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Protected Health Information (PHI)</strong>: any health-related information in any form that can be related to a specific person; note that HIPAA applies to healthcare providers, health insurers, clearinghouses, and any org that handles PHI</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Proprietary data</strong>: any data that helps an organization maintain a competitive edge</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Organizations classify data using labels</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• government classification labels include:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>Top Secret</strong>: if disclosed, could cause massive damage to national security, such as the disclosure of spy satellite information</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>Confidential</strong>: applied to information that if disclosed would likely cause damage to the national security</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>Secret</strong>: if disclosed, can adversely affect national security</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>Unclassified</strong>: not sensitive</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• non-government organizations use labels such as:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>Confidential/Proprietary</strong>: only used within the org and, in the case of unauthorized disclosure, it could suffer serious consequences</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>Private</strong>: may include personal information, such as credit card data and bank accounts; unauthorized disclosure can be disastrous</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>Sensitive</strong>: needs extraordinary precautions to ensure confidentiality and integrity</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>Public</strong>: can be viewed by the general public and, therefore, the disclosure of this data would not cause damage</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• labels can be as granular and custom as required by the org</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• It is important to protect data in all states: at rest, in transit, or in use</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• The best way to protect data confidentiality is via use of strong encryption</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 2.1.2 Asset classification</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• It&#x27;s important to identify and classify assets, such as systems, mobile devices etc.</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Owners are accountable for an asset and protecting its value</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Asset Classification</strong>: assigning assets the level of protection required based on their value to the org; assets require an identified owner to be classified and protected adequately</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• derived from compliance mandates, the process of recognizing organizational impacts if information suffers any security compromise (whether to confidentiality, integrity, availability, non-repudiation, authenticity, privacy, or safety)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Asset classifications should match data classification, i.e. if a computer is processing top secret data, the computer should be classified as a top secret asset</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Clearance</strong>: relates to access of certain classification of data or equipment, and who has access to that level or classification</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• A <strong>formal access approval process</strong> should be used to change user access; the process should involve approval from the data/asset owner, and the user should be informed about rules and limits</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• before a user is granted access they should be educated on working with that level of classification</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Classification levels can be used by businesses during acquisitions, ensuring only personnel who need to know are involved in the assessment or transition</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• In general, classification labels help users use data and assets properly, for instance by restricting dissemination or use of assets by their classification</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Asset classification should include confidentiality (sensitivity), integrity (accuracy), and availability (criticality)</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/aN9zkmzYTmQ" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/aN9zkmzYTmQ" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 2 Review / Mind Map (1 of 2) | Asset Classification ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/dNIcfKYeJI8?t=719" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 2<span class="ts-note">（從約 11:59 開始）</span> ↗</a>
+        <a href="https://youtu.be/dNIcfKYeJI8?t=719" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 2<span class="ts-note">（從約 11:59 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -142,8 +142,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="index.html" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 6 / 120 · P1-D2-1</span>
   </div>
 

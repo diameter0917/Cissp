@@ -5,117 +5,117 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 77</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 77 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D8-2</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P2-D8-2</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 8 · 軟體開發安全 &nbsp;|&nbsp; 權重 10%</span>
     </div>
     <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">DevSecOps 與環境控制深入</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">DevSecOps &amp; Env Controls Deep Dive</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:64.17%; background-color:#3D52A0;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:64.17%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D8：DevSecOps 與環境隔離</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 中期 D8：DevSecOps 與環境隔離</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>左移的具體實作</strong>、<strong>CI/CD 管線安全控制</strong>、與<strong>開發/測試/正式環境隔離</strong>。把『安全自動化織入交付』落到工程細節(你熟 GitHub Actions)。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>:DevSecOps 管線關卡 → 祕密/供應鏈完整性 → 環境隔離 → 容器/IaC 安全。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — CI/CD 管線安全關卡</div>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>:DevSecOps 管線關卡 → 祕密/供應鏈完整性 → 環境隔離 → 容器/IaC 安全。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — CI/CD 管線安全關卡</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>提交前</strong>:pre-commit hook、secret scanning、lint</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>建置時</strong>:SAST、SCA(相依漏洞)、IaC 掃描、容器映像掃描;<strong>未過不部署(fail the build)</strong></td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>測試時</strong>:DAST、整合測試;<strong>部署後</strong>:執行期監控、設定基準驗證</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>供應鏈完整性</strong>:artifact 簽章、SBOM、SLSA、來源可驗</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>提交前</strong>:pre-commit hook、secret scanning、lint</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>建置時</strong>:SAST、SCA(相依漏洞)、IaC 掃描、容器映像掃描;<strong>未過不部署(fail the build)</strong></td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>測試時</strong>:DAST、整合測試;<strong>部署後</strong>:執行期監控、設定基準驗證</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>供應鏈完整性</strong>:artifact 簽章、SBOM、SLSA、來源可驗</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 祕密與最小權限</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 祕密與最小權限</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">CI/CD 是高價值目標(能改產物、握憑證)。控制:<strong>祕密用 vault 管理</strong>(不入 repo)、<strong>短期最小權限 token</strong>、<strong>OIDC 聯合身分</strong>(免長期金鑰)、<strong>runner 隔離</strong>(防跨專案污染)、<strong>受保護分支＋審查＋簽章提交</strong>。管線投毒(D1 SolarWinds)的對策核心在此。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 環境隔離</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">環境</td><td style="padding:8px 10px;">用途</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">隔離要點</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Dev</strong> 開發</td><td style="padding:9px 10px; vertical-align:top;">開發測試</td><td style="padding:9px 10px; vertical-align:top;">不得用正式資料(去識別化)</td></tr>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 環境隔離</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">環境</td><td style="padding:8px 10px;">用途</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">隔離要點</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Dev</strong> 開發</td><td style="padding:9px 10px; vertical-align:top;">開發測試</td><td style="padding:9px 10px; vertical-align:top;">不得用正式資料(去識別化)</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Test/Staging</strong></td><td style="padding:9px 10px; vertical-align:top;">測試/驗收</td><td style="padding:9px 10px; vertical-align:top;">近似正式、隔離</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Prod</strong> 正式</td><td style="padding:9px 10px; vertical-align:top;">營運</td><td style="padding:9px 10px; vertical-align:top;">變更受控、最小存取、監控</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Prod</strong> 正式</td><td style="padding:9px 10px; vertical-align:top;">營運</td><td style="padding:9px 10px; vertical-align:top;">變更受控、最小存取、監控</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 鐵則:<strong>開發/測試環境不得使用真實正式資料</strong>(用去識別化/合成資料);職責分離——開發者不應有正式環境的不受控部署權。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <p style="font-size:15px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 鐵則:<strong>開發/測試環境不得使用真實正式資料</strong>(用去識別化/合成資料);職責分離——開發者不應有正式環境的不受控部署權。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DevSecOps</strong>（開發安全維運一體）— <span style="color:#5B6675;">安全自動化織入 CI/CD。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Pipeline Security</strong>（管線安全）— <span style="color:#5B6675;">掃描關卡＋祕密＋簽章。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Secret Management</strong>（祕密管理）— <span style="color:#5B6675;">vault 管理憑證、不入 repo。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SBOM/SLSA</strong>（物料清單/供應鏈等級）— <span style="color:#5B6675;">相依透明與完整性。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Environment Segregation</strong>（環境隔離）— <span style="color:#5B6675;">開發/測試/正式分離。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Container Security</strong>（容器安全）— <span style="color:#5B6675;">映像掃描、最小基底、不可變。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Shift Left</strong>（左移）— <span style="color:#5B6675;">安全提前到開發早期。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">DevSecOps</strong>（開發安全維運一體）— <span style="color:#5B6675;">安全自動化織入 CI/CD。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Pipeline Security</strong>（管線安全）— <span style="color:#5B6675;">掃描關卡＋祕密＋簽章。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Secret Management</strong>（祕密管理）— <span style="color:#5B6675;">vault 管理憑證、不入 repo。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">SBOM/SLSA</strong>（物料清單/供應鏈等級）— <span style="color:#5B6675;">相依透明與完整性。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Environment Segregation</strong>（環境隔離）— <span style="color:#5B6675;">開發/測試/正式分離。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Container Security</strong>（容器安全）— <span style="color:#5B6675;">映像掃描、最小基底、不可變。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Shift Left</strong>（左移）— <span style="color:#5B6675;">安全提前到開發早期。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>DevOps vs DevSecOps</strong>:DevOps 求快與自動化;DevSecOps 在管線<strong>內建安全自動化</strong>(關卡式),安全不是事後手動審。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>環境隔離與資料</strong>:測試/開發<strong>不可用真實個資</strong>(違反最小化且擴大外洩面);用<strong>去識別化或合成資料</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>管線權限</strong>:CI token 過大是常見破口;用<strong>短期、最小、OIDC 聯合</strong>憑證,避免長期硬編金鑰。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>DevOps vs DevSecOps</strong>:DevOps 求快與自動化;DevSecOps 在管線<strong>內建安全自動化</strong>(關卡式),安全不是事後手動審。</p><p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>環境隔離與資料</strong>:測試/開發<strong>不可用真實個資</strong>(違反最小化且擴大外洩面);用<strong>去識別化或合成資料</strong>。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>管線權限</strong>:CI token 過大是常見破口;用<strong>短期、最小、OIDC 聯合</strong>憑證,避免長期硬編金鑰。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 條文與標準</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SSDF(SP 800-218)</strong>、<strong>SLSA</strong>、<strong>OWASP CI/CD Top 10</strong>、<strong>CIS Benchmarks(容器/雲)</strong>、<strong>NIST SP 800-190</strong>(容器安全)。SBOM 受美國 EO 14028 推動。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：管線投毒</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 攻陷一條管線,毒害所有下游</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">攻擊者鎖定 CI/CD 與相依生態:竄改建置流程、植入惡意相依(typosquatting npm/PyPI 套件)、或竊取管線憑證,使<strong>正常簽署的產物夾帶後門</strong>,一次散布到大量下游(SolarWinds 2020)。因產物『看似官方』,極難察覺。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓:<strong>保護建置環境＝保護所有下游</strong>;需 artifact 簽章、SLSA 來源可驗、最小權限 token、SBOM 追蹤相依、受保護分支與審查。把 CI/CD 當<strong>正式環境等級</strong>來防護。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — 真實事件：管線投毒</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 攻陷一條管線,毒害所有下游</div>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">攻擊者鎖定 CI/CD 與相依生態:竄改建置流程、植入惡意相依(typosquatting npm/PyPI 套件)、或竊取管線憑證,使<strong>正常簽署的產物夾帶後門</strong>,一次散布到大量下游(SolarWinds 2020)。因產物『看似官方』,極難察覺。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">教訓:<strong>保護建置環境＝保護所有下游</strong>;需 artifact 簽章、SLSA 來源可驗、最小權限 token、SBOM 追蹤相依、受保護分支與審查。把 CI/CD 當<strong>正式環境等級</strong>來防護。</p>
     </div>
-    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：容器與 IaC 的安全</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">雲原生新增攻擊面:<strong>容器映像</strong>可能含漏洞或惡意層(用最小基底、掃描、簽章、不可變);<strong>IaC(Terraform 等)</strong>若設定錯誤會大規模佈署不安全資源(用 IaC 掃描＋policy as code 在部署前攔截)。把『安全檢查』也<strong>程式碼化、自動化</strong>,在管線中強制執行。</p>
+    <div style="background-color:#F1F5F9; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">📌 延伸：容器與 IaC 的安全</div>
+      <p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">雲原生新增攻擊面:<strong>容器映像</strong>可能含漏洞或惡意層(用最小基底、掃描、簽章、不可變);<strong>IaC(Terraform 等)</strong>若設定錯誤會大規模佈署不安全資源(用 IaC 掃描＋policy as code 在部署前攔截)。把『安全檢查』也<strong>程式碼化、自動化</strong>,在管線中強制執行。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『防 CI 祕密外洩』→ vault＋最小權限 token;『軟體供應鏈透明』→ SBOM;『開發環境資料』→ 去識別化/合成(非真實個資);『防管線投毒』→ 簽章＋SLSA＋最小權限。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>安全是管線內建關卡非事後;測試環境勿用真實個資;CI token 要短期最小;把 CI/CD 當高價值目標防護。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『防 CI 祕密外洩』→ vault＋最小權限 token;『軟體供應鏈透明』→ SBOM;『開發環境資料』→ 去識別化/合成(非真實個資);『防管線投毒』→ 簽章＋SLSA＋最小權限。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>安全是管線內建關卡非事後;測試環境勿用真實個資;CI token 要短期最小;把 CI/CD 當高價值目標防護。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>DevSecOps 在 CI/CD 內建掃描關卡＋祕密管理＋簽章/SBOM;環境隔離(開發勿用真資料);容器/IaC 也要掃描與 policy as code。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 開發/測試環境可否使用正式真實個資？<br><span style="color:#0A5A59;">→ 不可;應用去識別化或合成資料(最小化、降低外洩面)。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 防止 CI/CD 管線投毒的關鍵控制？<br><span style="color:#0A5A59;">→ artifact 簽章、SLSA 來源可驗、最小權限 token、SBOM、受保護分支審查。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . CI 中管理憑證的正確做法？<br><span style="color:#0A5A59;">→ 用祕密庫＋短期最小權限/OIDC 聯合,不硬編入 repo。</span></p>
+    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>DevSecOps 在 CI/CD 內建掃描關卡＋祕密管理＋簽章/SBOM;環境隔離(開發勿用真資料);容器/IaC 也要掃描與 policy as code。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 開發/測試環境可否使用正式真實個資？<br><span style="color:#0A6160;">→ 不可;應用去識別化或合成資料(最小化、降低外洩面)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 防止 CI/CD 管線投毒的關鍵控制？<br><span style="color:#0A6160;">→ artifact 簽章、SLSA 來源可驗、最小權限 token、SBOM、受保護分支審查。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . CI 中管理憑證的正確做法？<br><span style="color:#0A6160;">→ 用祕密庫＋短期最小權限/OIDC 聯合,不硬編入 repo。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.2 DevSecOps 與環境控制（深入））</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍變更與組態</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">變更管理三元件：<strong>Request control 請求 → Change control 變更 → Release control 發行（含驗收測試）</strong>。<strong>SCM 軟體組態管理</strong>＝版本控制、並行管理、可追溯。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍環境與儲存庫</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;">分離 <strong>dev / test / prod</strong> 環境；Code repository（GitHub 等）提供版本控制/bug 追蹤。CI/CD 依賴第三方工具須防其被入侵。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §8.2 DevSecOps 與環境控制（深入）。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §8.2 開發生態系控制。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§8.2.6 Continuous Integration and Continuous Delivery (CI/CD)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Continuous Integration and Continuous Delivery</strong>: workflow automation processes and tools that help reduce, if not eliminate, the need for manual communication and coordination between the steps of a software development process</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Continuous integration (CI)</strong>: all new code is integrated into the rest of the system as soon as the developer writes it, merging it into a shared repo</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• this merge triggers a batch of unit tests</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• if it merges without error, it&#x27;s subjected to integration tests</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• CI improves software development efficiency by identifying errors early and often</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• CI also allows the practice of continuous delivery (CD)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Continuous Delivery (CD)</strong>: incrementally building a software product that can be released at any time; because all processes and tests are automated, code can be released to production daily or more often</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Note that continuous delivery and continuous deployment are both automation-heavy DevOps practices that build on CI; the key difference is in the final step of the release process: human intervention</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Continuous Delivery: code is always in a deployable state, but deployment to production requires a manual approval step</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Continuous Deployment: every change that passes automated testing is automatically deployed to production with no manual intervention</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• CI/CD relies on automation and often third-party tools which can have vulnerabilities or be compromised</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Secure practices such as threat modeling, least privilege, defense in depth, and zero trust can help reduce possible threats to these tools and systems</div>
-<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§8.2.7 Software Configuration Management</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Software Configuration Management (SCM)</strong>: a product that identifies the attributes of software at various points in time and performs methodical change control for the purpose of maintaining software integrity and traceability throughout the SDLC</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• SCM tracks config changes, and verifies that the delivered software includes all approved changes</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• SCM systems manage and track revisions made by multiple people against a single master software repository, providing concurrency management, versioning, and synchronization</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• auditing and logging of software changes mitigates risk to the organization by:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• providing a detailed record of all modifications made to software applications</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• allowing security teams to identify suspicious activity</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• quickly detect unauthorized changes and investigate potential security breaches</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• and take corrective actions, ultimately protecting the integrity and confidentiality of the org&#x27;s data and systems</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.2 DevSecOps 與環境控制（深入））</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍變更與組態</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;">變更管理三元件：<strong>Request control 請求 → Change control 變更 → Release control 發行（含驗收測試）</strong>。<strong>SCM 軟體組態管理</strong>＝版本控制、並行管理、可追溯。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍環境與儲存庫</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;">分離 <strong>dev / test / prod</strong> 環境；Code repository（GitHub 等）提供版本控制/bug 追蹤。CI/CD 依賴第三方工具須防其被入侵。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §8.2 DevSecOps 與環境控制（深入）。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §8.2 開發生態系控制。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§8.2.6 Continuous Integration and Continuous Delivery (CI/CD)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Continuous Integration and Continuous Delivery</strong>: workflow automation processes and tools that help reduce, if not eliminate, the need for manual communication and coordination between the steps of a software development process</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Continuous integration (CI)</strong>: all new code is integrated into the rest of the system as soon as the developer writes it, merging it into a shared repo</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• this merge triggers a batch of unit tests</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• if it merges without error, it&#x27;s subjected to integration tests</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• CI improves software development efficiency by identifying errors early and often</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• CI also allows the practice of continuous delivery (CD)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Continuous Delivery (CD)</strong>: incrementally building a software product that can be released at any time; because all processes and tests are automated, code can be released to production daily or more often</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Note that continuous delivery and continuous deployment are both automation-heavy DevOps practices that build on CI; the key difference is in the final step of the release process: human intervention</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Continuous Delivery: code is always in a deployable state, but deployment to production requires a manual approval step</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Continuous Deployment: every change that passes automated testing is automatically deployed to production with no manual intervention</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• CI/CD relies on automation and often third-party tools which can have vulnerabilities or be compromised</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Secure practices such as threat modeling, least privilege, defense in depth, and zero trust can help reduce possible threats to these tools and systems</div>
+<div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§8.2.7 Software Configuration Management</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Software Configuration Management (SCM)</strong>: a product that identifies the attributes of software at various points in time and performs methodical change control for the purpose of maintaining software integrity and traceability throughout the SDLC</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• SCM tracks config changes, and verifies that the delivered software includes all approved changes</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• SCM systems manage and track revisions made by multiple people against a single master software repository, providing concurrency management, versioning, and synchronization</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• auditing and logging of software changes mitigates risk to the organization by:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• providing a detailed record of all modifications made to software applications</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• allowing security teams to identify suspicious activity</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• quickly detect unauthorized changes and investigate potential security breaches</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• and take corrective actions, ultimately protecting the integrity and confidentiality of the org&#x27;s data and systems</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/fS5WWjuyFmQ" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/fS5WWjuyFmQ" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 8 Review / Mind Map (1 of 2) | Secure Software Development ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/vg-o5lKcwsA?t=4043" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 8<span class="ts-note">（從約 67:23 開始）</span> ↗</a>
+        <a href="https://youtu.be/vg-o5lKcwsA?t=4043" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 8<span class="ts-note">（從約 67:23 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -123,8 +123,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 77 / 120 · P2-D8-2</span>
   </div>
 

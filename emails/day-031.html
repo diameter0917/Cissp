@@ -5,142 +5,142 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 31</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 31 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D7-1</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D7-1</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
     </div>
     <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">Domain 7 全景與調查鑑識</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Domain 7 Big Picture &amp; Investigations</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:25.83%; background-color:#0E7C7B;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:25.83%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — Domain 7 與調查鑑識</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — Domain 7 與調查鑑識</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">Domain 7（<strong>Security Operations，安全維運</strong>）佔 <strong>13%</strong>，是『日常把安全運作起來』的章：監控、修補、事件處理、災難復原、調查鑑識。今天從<strong>調查類型</strong>與<strong>數位鑑識／證物監管鏈</strong>切入。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週（Domain 7 · 初期）路線</strong>：①今天 調查與鑑識 → ②日誌/SIEM → ③組態/變更/修補 → ④維運基礎與特權 → ⑤事件管理與 DR。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 調查類型（證據標準不同）</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">類型</td><td style="padding:8px 10px;">證據標準</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>刑事 Criminal</strong></td><td style="padding:9px 10px; vertical-align:top;">beyond reasonable doubt（最高）</td><td style="padding:9px 10px; vertical-align:top;">可能涉刑責，須嚴謹保全</td></tr>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">本週（Domain 7 · 初期）路線</strong>：①今天 調查與鑑識 → ②日誌/SIEM → ③組態/變更/修補 → ④維運基礎與特權 → ⑤事件管理與 DR。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 調查類型（證據標準不同）</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">類型</td><td style="padding:8px 10px;">證據標準</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>刑事 Criminal</strong></td><td style="padding:9px 10px; vertical-align:top;">beyond reasonable doubt（最高）</td><td style="padding:9px 10px; vertical-align:top;">可能涉刑責，須嚴謹保全</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>民事 Civil</strong></td><td style="padding:9px 10px; vertical-align:top;">preponderance of evidence</td><td style="padding:9px 10px; vertical-align:top;">賠償/契約爭議</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>行政 Administrative</strong></td><td style="padding:9px 10px; vertical-align:top;">內部標準</td><td style="padding:9px 10px; vertical-align:top;">公司內部處分</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>行政 Administrative</strong></td><td style="padding:9px 10px; vertical-align:top;">內部標準</td><td style="padding:9px 10px; vertical-align:top;">公司內部處分</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>法規 Regulatory</strong></td><td style="padding:9px 10px; vertical-align:top;">依主管機關</td><td style="padding:9px 10px; vertical-align:top;">合規調查</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 數位鑑識與監管鏈</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 數位鑑識與監管鏈</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Chain of Custody 證物監管鏈</strong>：完整記錄證物『誰、何時、何地、如何』經手，斷鏈則證據失效</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>順序</strong>：辨識 → 保全（製作鑑識複本、雜湊驗證）→ 分析（在複本上）→ 呈現</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Order of Volatility 揮發順序</strong>：先採最易消失者（記憶體/快取 → 磁碟 → 備份）</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Chain of Custody 證物監管鏈</strong>：完整記錄證物『誰、何時、何地、如何』經手，斷鏈則證據失效</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>順序</strong>：辨識 → 保全（製作鑑識複本、雜湊驗證）→ 分析（在複本上）→ 呈現</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Order of Volatility 揮發順序</strong>：先採最易消失者（記憶體/快取 → 磁碟 → 備份）</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Chain of Custody</strong>（證物監管鏈）— <span style="color:#5B6675;">記錄證物經手歷程，確保可採性。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Forensic Image</strong>（鑑識複本）— <span style="color:#5B6675;">逐位元複製，分析在複本上做、保留原件。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Order of Volatility</strong>（揮發順序）— <span style="color:#5B6675;">先採易消失證據（記憶體優先）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Admissibility</strong>（可採性）— <span style="color:#5B6675;">證據是否被法庭接受（相關、可靠、合法取得）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">eDiscovery</strong>（電子蒐證）— <span style="color:#5B6675;">法律程序中蒐集電子證據。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Hashing(Evidence)</strong>（證據雜湊）— <span style="color:#5B6675;">以雜湊證明證物未被竄改。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Chain of Custody</strong>（證物監管鏈）— <span style="color:#5B6675;">記錄證物經手歷程，確保可採性。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Forensic Image</strong>（鑑識複本）— <span style="color:#5B6675;">逐位元複製，分析在複本上做、保留原件。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Order of Volatility</strong>（揮發順序）— <span style="color:#5B6675;">先採易消失證據（記憶體優先）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Admissibility</strong>（可採性）— <span style="color:#5B6675;">證據是否被法庭接受（相關、可靠、合法取得）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">eDiscovery</strong>（電子蒐證）— <span style="color:#5B6675;">法律程序中蒐集電子證據。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Hashing(Evidence)</strong>（證據雜湊）— <span style="color:#5B6675;">以雜湊證明證物未被竄改。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>刑事 vs 民事舉證</strong>：刑事需『超越合理懷疑』（最嚴）；民事僅需『優勢證據』。標準不同影響鑑識嚴謹度。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>分析絕不動原件</strong>：一律對<strong>鑑識複本</strong>分析，並以<strong>雜湊</strong>證明原件與複本一致——否則破壞可採性。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>刑事 vs 民事舉證</strong>：刑事需『超越合理懷疑』（最嚴）；民事僅需『優勢證據』。標準不同影響鑑識嚴謹度。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>分析絕不動原件</strong>：一律對<strong>鑑識複本</strong>分析，並以<strong>雜湊</strong>證明原件與複本一致——否則破壞可採性。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 條文與標準</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-86</strong>（鑑識整合指南）、ISO/IEC 27037（數位證據處理）。最佳證據法則（best evidence rule）與監管鏈是法庭採證關鍵——呼應 Domain 1 法律基礎。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：監管鏈斷裂</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 證據在，卻不能用</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">在不少案件中，企業<strong>抓到了入侵證據</strong>，卻因處理不當——例如直接在原始硬碟上操作、未記錄經手歷程、未做雜湊——導致<strong>監管鏈斷裂</strong>，證據在法庭上<strong>不被採納</strong>，無法究責或求償。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：發現事件時，<strong>先保全（複本＋雜湊＋記錄監管鏈）再分析</strong>；第一線人員的操作習慣決定證據能否使用。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 真實事件：監管鏈斷裂</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 證據在，卻不能用</div>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">在不少案件中，企業<strong>抓到了入侵證據</strong>，卻因處理不當——例如直接在原始硬碟上操作、未記錄經手歷程、未做雜湊——導致<strong>監管鏈斷裂</strong>，證據在法庭上<strong>不被採納</strong>，無法究責或求償。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">教訓：發現事件時，<strong>先保全（複本＋雜湊＋記錄監管鏈）再分析</strong>；第一線人員的操作習慣決定證據能否使用。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『確保證據法庭可用』→ 維護<strong>監管鏈</strong>＋鑑識複本＋雜湊；『先採哪種證據』→ 依<strong>揮發順序</strong>（記憶體優先）。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>絕不在原件上分析；刑事舉證標準最高。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『確保證據法庭可用』→ 維護<strong>監管鏈</strong>＋鑑識複本＋雜湊；『先採哪種證據』→ 依<strong>揮發順序</strong>（記憶體優先）。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>絕不在原件上分析；刑事舉證標準最高。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>調查分刑事/民事/行政/法規，證據標準不同；鑑識先保全（複本+雜湊+監管鏈）再分析，依揮發順序採證。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 證物經手未完整記錄會怎樣？<br><span style="color:#0A5A59;">→ 監管鏈斷裂，證據可能不被法庭採納。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 鑑識分析應對原件還是複本進行？<br><span style="color:#0A5A59;">→ 複本（forensic image），並以雜湊證明一致。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 刑事案件的舉證標準？<br><span style="color:#0A5A59;">→ Beyond a reasonable doubt（超越合理懷疑，最高）。</span></p>
+    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>調查分刑事/民事/行政/法規，證據標準不同；鑑識先保全（複本+雜湊+監管鏈）再分析，依揮發順序採證。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 證物經手未完整記錄會怎樣？<br><span style="color:#0A6160;">→ 監管鏈斷裂，證據可能不被法庭採納。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 鑑識分析應對原件還是複本進行？<br><span style="color:#0A6160;">→ 複本（forensic image），並以雜湊證明一致。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 刑事案件的舉證標準？<br><span style="color:#0A6160;">→ Beyond a reasonable doubt（超越合理懷疑，最高）。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.1 調查與鑑識）</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍調查類型（與證明門檻）</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>Administrative 行政</strong>（政策違反）／<strong>Criminal 刑事</strong>（執法、beyond a reasonable doubt 排除合理懷疑）／<strong>Civil 民事</strong>（preponponderance 證據優勢，門檻較低）／<strong>Regulatory 法遵</strong>（監管機關發起）。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍證據與監管鏈</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>Chain of custody 監管鏈</strong>＝tag-bag-carry。<strong>Best evidence rule</strong>：法庭採原件優先。<strong>Hearsay 傳聞</strong>（如系統日誌）原則不可採，須系統管理員認證。Locard 交換原則。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §7.1 調查與鑑識。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §7.1 調查與證據處理。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§7.1.1 Evidence collection and handling</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Evidence collection is complex, should be done by professionals, and can be thrown out of court if incorrectly handled</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• It’s important to preserve original evidence; as soon as an incident is discovered, evidence collection should begin, and as much information about the incident as possible should be collected; the evidence can be used in a subsequent legal action or in finding the identity of the attacker; evidence can also assist in determining the extent of damage; because discovery may happen after an incident has occurred, it&#x27;s critical that log files are retained for a reasonable period of time; log files and system status info can be retained either in place or in archives</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>International Organization on Computer Evidence (IOCE) six principles for media, network and software analysis</strong>:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• all general forensic and procedural principles must be applied to digital evidence collection</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• seizing digital evidence shouldn&#x27;t change the evidence</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• accessing original digital evidence should only be done by trained professionals</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• all activity relating to seizure, access, storage, or transfer of digital evidence must be fully documented, preserved, and available for review</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• a person in possession of digital evidence is responsible for all actions taken with respect to that evidence</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• any agency that is responsible for seizing, accessing, storing, or transferring digital evidence is responsible for compliance with these principles</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Scientific Working Group on Digital Evidence (SWGDE) developed principles for standardized recovery of computer-based evidence</strong>:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• legal system consistency</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• use of a common language</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• durability</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• ability to cross international and state boundaries</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• instill confidence in evidence integrity</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• forensic evidence applicability at the individual, agency, and country levels</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>ISO/IEC 27037: Guidelines for Identification, Collection, Acquisition, and Preservation of Digital Evidence</strong>: the international standard on digital evidence handling, with four phases:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• identification</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• collection</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• acquisition</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• preservation</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Types of evidence:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>primary evidence</strong>:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• most reliable and used at trial</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• original documents (e.g. legal contracts), no copies or duplicates</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>secondary evidence</strong>:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• less powerful and reliable than primary evidence (e.g. copies of originals, witness oral evidence etc)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• if primary evidence is available secondary of the same content is not valid</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>best evidence rule</strong>: states that the original evidence should be presented in court, rather than a copy or other secondary evidence</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>circumstantial evidence</strong>: this type of evidence is based on inference and can be used to support a conclusion, but not prove it</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>corroborative evidence</strong>: this type of evidence is used to support other evidence and can be used to strengthen a case</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>demonstrated evidence</strong>: can be objects, pictures, models, displays used in a trial to support facts the party is trying to prove</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>direct evidence</strong>: this type of evidence is based on the observations of a witness or expert opinion and can be used to prove a fact at hand (with backup evidence support)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>hearsay evidence</strong>: type of evidence that is based on statements made by someone outside of court and is generally not admissible; rule says that a witness cannot testify about what someone else told them; courts have applied it such that attorneys may not introduce system logs into evidence unless they are authenticated by a system admin</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>parol evidence rule</strong>: determines whether extra/additional evidence can be used to alter or explain a written contract, stating that a written contract takes precedence over any oral negotiations or stipulations that relate to it; the rule generally prohibits the introduction of parol (extra) evidence that contradicts or varies the contract&#x27;s terms</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>real evidence</strong>: this type of evidence includes physical objects such as computers, hard drives, and other storage devices, that can be brought into a court of law; real evidence must be either uniquely identified by a witness or authenticated through a documented chain of custody</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• It is important to note that evidence should be collected and handled in a forensically sound manner to ensure that it is admissible in court and to avoid any legal issues</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• The <strong>chain of custody</strong>: focuses on having control of the evidence -- who collected and handled what evidence, when, and where</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• think about establishing the chain of custody as:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• tag</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• bag and</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• carry the evidence</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Basic alternatives for confiscating evidence:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• person who owns the evidence voluntarily surrenders it</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• a subpoena is used to compel the subject to surrender the evidence</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• a law enforcement officer while performing a legally permissible duty, and with probable cause to believe is associated with criminal activity seizes visible evidence</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• a search warrant is used to confiscate evidence without giving the subject an opportunity to alter it</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• a law enforcement officer collects evidence when exigent circumstances exist</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Five rules of evidence: five evidence characteristics providing the best chance of surviving legal and other scrutiny:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>authentic</strong>: evidence is not fabricated or planted, and can be proven through crime scene photos, or bit-for-bit copies of storage</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>accurate</strong>: evidence that has integrity (not been modified)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>complete</strong>: evidence must be complete, and all parts available and shared, whether they support the case or not</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>convincing</strong>: evidence must be easy to understand, and convey integrity</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>admissible</strong>: evidence must be accepted as part of a case; admissible evidence must be relevant to a fact at issue in the case, the fact must be material to the case, and the evidence must be competent or legally collected</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.1 調查與鑑識）</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍調查類型（與證明門檻）</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>Administrative 行政</strong>（政策違反）／<strong>Criminal 刑事</strong>（執法、beyond a reasonable doubt 排除合理懷疑）／<strong>Civil 民事</strong>（preponponderance 證據優勢，門檻較低）／<strong>Regulatory 法遵</strong>（監管機關發起）。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍證據與監管鏈</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>Chain of custody 監管鏈</strong>＝tag-bag-carry。<strong>Best evidence rule</strong>：法庭採原件優先。<strong>Hearsay 傳聞</strong>（如系統日誌）原則不可採，須系統管理員認證。Locard 交換原則。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §7.1 調查與鑑識。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §7.1 調查與證據處理。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§7.1.1 Evidence collection and handling</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Evidence collection is complex, should be done by professionals, and can be thrown out of court if incorrectly handled</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• It’s important to preserve original evidence; as soon as an incident is discovered, evidence collection should begin, and as much information about the incident as possible should be collected; the evidence can be used in a subsequent legal action or in finding the identity of the attacker; evidence can also assist in determining the extent of damage; because discovery may happen after an incident has occurred, it&#x27;s critical that log files are retained for a reasonable period of time; log files and system status info can be retained either in place or in archives</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>International Organization on Computer Evidence (IOCE) six principles for media, network and software analysis</strong>:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• all general forensic and procedural principles must be applied to digital evidence collection</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• seizing digital evidence shouldn&#x27;t change the evidence</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• accessing original digital evidence should only be done by trained professionals</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• all activity relating to seizure, access, storage, or transfer of digital evidence must be fully documented, preserved, and available for review</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• a person in possession of digital evidence is responsible for all actions taken with respect to that evidence</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• any agency that is responsible for seizing, accessing, storing, or transferring digital evidence is responsible for compliance with these principles</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Scientific Working Group on Digital Evidence (SWGDE) developed principles for standardized recovery of computer-based evidence</strong>:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• legal system consistency</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• use of a common language</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• durability</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• ability to cross international and state boundaries</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• instill confidence in evidence integrity</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• forensic evidence applicability at the individual, agency, and country levels</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>ISO/IEC 27037: Guidelines for Identification, Collection, Acquisition, and Preservation of Digital Evidence</strong>: the international standard on digital evidence handling, with four phases:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• identification</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• collection</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• acquisition</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• preservation</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Types of evidence:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>primary evidence</strong>:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• most reliable and used at trial</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• original documents (e.g. legal contracts), no copies or duplicates</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>secondary evidence</strong>:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• less powerful and reliable than primary evidence (e.g. copies of originals, witness oral evidence etc)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• if primary evidence is available secondary of the same content is not valid</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>best evidence rule</strong>: states that the original evidence should be presented in court, rather than a copy or other secondary evidence</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>circumstantial evidence</strong>: this type of evidence is based on inference and can be used to support a conclusion, but not prove it</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>corroborative evidence</strong>: this type of evidence is used to support other evidence and can be used to strengthen a case</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>demonstrated evidence</strong>: can be objects, pictures, models, displays used in a trial to support facts the party is trying to prove</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>direct evidence</strong>: this type of evidence is based on the observations of a witness or expert opinion and can be used to prove a fact at hand (with backup evidence support)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>hearsay evidence</strong>: type of evidence that is based on statements made by someone outside of court and is generally not admissible; rule says that a witness cannot testify about what someone else told them; courts have applied it such that attorneys may not introduce system logs into evidence unless they are authenticated by a system admin</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>parol evidence rule</strong>: determines whether extra/additional evidence can be used to alter or explain a written contract, stating that a written contract takes precedence over any oral negotiations or stipulations that relate to it; the rule generally prohibits the introduction of parol (extra) evidence that contradicts or varies the contract&#x27;s terms</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>real evidence</strong>: this type of evidence includes physical objects such as computers, hard drives, and other storage devices, that can be brought into a court of law; real evidence must be either uniquely identified by a witness or authenticated through a documented chain of custody</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• It is important to note that evidence should be collected and handled in a forensically sound manner to ensure that it is admissible in court and to avoid any legal issues</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• The <strong>chain of custody</strong>: focuses on having control of the evidence -- who collected and handled what evidence, when, and where</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• think about establishing the chain of custody as:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• tag</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• bag and</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• carry the evidence</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Basic alternatives for confiscating evidence:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• person who owns the evidence voluntarily surrenders it</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• a subpoena is used to compel the subject to surrender the evidence</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• a law enforcement officer while performing a legally permissible duty, and with probable cause to believe is associated with criminal activity seizes visible evidence</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• a search warrant is used to confiscate evidence without giving the subject an opportunity to alter it</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• a law enforcement officer collects evidence when exigent circumstances exist</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Five rules of evidence: five evidence characteristics providing the best chance of surviving legal and other scrutiny:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>authentic</strong>: evidence is not fabricated or planted, and can be proven through crime scene photos, or bit-for-bit copies of storage</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>accurate</strong>: evidence that has integrity (not been modified)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>complete</strong>: evidence must be complete, and all parts available and shared, whether they support the case or not</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>convincing</strong>: evidence must be easy to understand, and convey integrity</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>admissible</strong>: evidence must be accepted as part of a case; admissible evidence must be relevant to a fact at issue in the case, the fact must be material to the case, and the evidence must be competent or legally collected</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/Urev5cZgny8" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 7 Review / Mind Map (1 of 6) | Investigations ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/Urev5cZgny8" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 7 Review / Mind Map (1 of 6) | Investigations ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/8zM89KMRniM?t=852" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 14:12 開始）</span> ↗</a>
+        <a href="https://youtu.be/8zM89KMRniM?t=852" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 14:12 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -148,8 +148,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 31 / 120 · P1-D7-1</span>
   </div>
 

@@ -5,103 +5,103 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 28</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 28 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D6-3</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D6-3</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 6 · 安全評估與測試 &nbsp;|&nbsp; 權重 12%</span>
     </div>
     <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">測試技術輪廓</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Testing Techniques Overview</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:23.33%; background-color:#0E7C7B;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:23.33%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 測試技術輪廓</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">01 — 測試技術輪廓</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">除了掃描與滲透，還有多種測試技術。今天輪廓化：<strong>日誌審查、合成交易、程式碼審查、誤用案例測試、測試涵蓋率、介面測試</strong>。重點是『<strong>哪個技術驗哪種問題</strong>』。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：log review → 合成交易/RUM → code review（SAST/DAST 預告）→ misuse case → 涵蓋率。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 常見測試技術</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">技術</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">驗什麼</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Log Review</strong> 日誌審查</td><td style="padding:9px 10px; vertical-align:top;">事後從日誌找異常/入侵跡象（你本業熟悉）</td></tr>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：log review → 合成交易/RUM → code review（SAST/DAST 預告）→ misuse case → 涵蓋率。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">02 — 常見測試技術</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">技術</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">驗什麼</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Log Review</strong> 日誌審查</td><td style="padding:9px 10px; vertical-align:top;">事後從日誌找異常/入侵跡象（你本業熟悉）</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Synthetic Transaction</strong> 合成交易</td><td style="padding:9px 10px; vertical-align:top;">主動模擬使用者交易，監測可用性/效能</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Code Review</strong> 程式碼審查</td><td style="padding:9px 10px; vertical-align:top;">人工/工具檢視原始碼找漏洞</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Code Review</strong> 程式碼審查</td><td style="padding:9px 10px; vertical-align:top;">人工/工具檢視原始碼找漏洞</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Misuse Case</strong> 誤用案例</td><td style="padding:9px 10px; vertical-align:top;">從攻擊者角度設計負向測試</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Interface/API Testing</strong></td><td style="padding:9px 10px; vertical-align:top;">測試系統介面與 API 的輸入處理</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Interface/API Testing</strong></td><td style="padding:9px 10px; vertical-align:top;">測試系統介面與 API 的輸入處理</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 測試涵蓋率與正/負向測試</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">03 — 測試涵蓋率與正/負向測試</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>正向測試</strong>：驗『該能用的有用』（正常輸入）</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>負向/誤用測試</strong>：驗『該擋的有擋』（異常/惡意輸入）</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Test Coverage</strong>：涵蓋的需求/程式比例；高涵蓋≠無漏，但低涵蓋必有盲點</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>正向測試</strong>：驗『該能用的有用』（正常輸入）</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>負向/誤用測試</strong>：驗『該擋的有擋』（異常/惡意輸入）</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Test Coverage</strong>：涵蓋的需求/程式比例；高涵蓋≠無漏，但低涵蓋必有盲點</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">04 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Log Review</strong>（日誌審查）— <span style="color:#5B6675;">檢視日誌找異常與入侵跡象。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Synthetic Transaction</strong>（合成交易）— <span style="color:#5B6675;">主動模擬交易監測服務（vs 被動 RUM）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RUM</strong>（真實使用者監測）— <span style="color:#5B6675;">Real User Monitoring，觀測真實流量。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Code Review</strong>（程式碼審查）— <span style="color:#5B6675;">靜態檢視原始碼找漏洞（含同儕審查）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Misuse Case</strong>（誤用案例）— <span style="color:#5B6675;">以攻擊者視角設計的負向測試。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Test Coverage</strong>（測試涵蓋率）— <span style="color:#5B6675;">測試涵蓋需求/程式碼的比例。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Log Review</strong>（日誌審查）— <span style="color:#5B6675;">檢視日誌找異常與入侵跡象。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Synthetic Transaction</strong>（合成交易）— <span style="color:#5B6675;">主動模擬交易監測服務（vs 被動 RUM）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">RUM</strong>（真實使用者監測）— <span style="color:#5B6675;">Real User Monitoring，觀測真實流量。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Code Review</strong>（程式碼審查）— <span style="color:#5B6675;">靜態檢視原始碼找漏洞（含同儕審查）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Misuse Case</strong>（誤用案例）— <span style="color:#5B6675;">以攻擊者視角設計的負向測試。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Test Coverage</strong>（測試涵蓋率）— <span style="color:#5B6675;">測試涵蓋需求/程式碼的比例。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>合成交易 vs RUM</strong>：合成交易是<strong>主動</strong>模擬（可在沒人用時就測）；RUM 是<strong>被動</strong>觀測真實使用者。前者抓問題早、後者反映真實體驗。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>正向 vs 負向測試</strong>：只做正向（功能正常）會漏掉安全漏洞；<strong>誤用案例/負向測試</strong>才驗證『擋得住攻擊』。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>合成交易 vs RUM</strong>：合成交易是<strong>主動</strong>模擬（可在沒人用時就測）；RUM 是<strong>被動</strong>觀測真實使用者。前者抓問題早、後者反映真實體驗。</p><p style="font-size:15px; line-height:1.8; margin:0;"><strong>正向 vs 負向測試</strong>：只做正向（功能正常）會漏掉安全漏洞；<strong>誤用案例/負向測試</strong>才驗證『擋得住攻擊』。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">06 — 條文與標準</div>
     <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-115</strong> 涵蓋技術評估；軟體測試對應 <strong>SAST/DAST/IAST</strong>（Domain 8 深入）。日誌審查與 SIEM 屬 Domain 7，兩章在『監測』上相通。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：從日誌發現入侵</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 答案藏在日誌裡</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">許多入侵是透過<strong>日誌審查</strong>才被發現——異常登入時間、來源 IP、大量失敗後成功、資料外傳跡象。但前提是<strong>日誌有開、有集中、有人看</strong>；很多組織日誌淹沒於雜訊或根本沒留存，錯失早期偵測。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：日誌是事後最重要的證據與偵測來源；搭配 SIEM 關聯（Domain 7）才能在海量日誌中抓出訊號。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:24px;">07 — 真實事件：從日誌發現入侵</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 答案藏在日誌裡</div>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#1E293B;">許多入侵是透過<strong>日誌審查</strong>才被發現——異常登入時間、來源 IP、大量失敗後成功、資料外傳跡象。但前提是<strong>日誌有開、有集中、有人看</strong>；很多組織日誌淹沒於雜訊或根本沒留存，錯失早期偵測。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#1E293B;">教訓：日誌是事後最重要的證據與偵測來源；搭配 SIEM 關聯（Domain 7）才能在海量日誌中抓出訊號。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:24px;">08 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『沒人用時也要監測交易是否正常』→ 合成交易；『驗證系統擋得住惡意輸入』→ 誤用案例/負向測試；『事後找入侵跡象』→ 日誌審查。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>只做正向測試會漏安全漏洞；高測試涵蓋率不保證沒漏洞，但低涵蓋一定有盲點。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『沒人用時也要監測交易是否正常』→ 合成交易；『驗證系統擋得住惡意輸入』→ 誤用案例/負向測試；『事後找入侵跡象』→ 日誌審查。</p><p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>只做正向測試會漏安全漏洞；高測試涵蓋率不保證沒漏洞，但低涵蓋一定有盲點。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>多種測試技術各驗不同面向：日誌審查找入侵、合成交易主動監測、誤用案例做負向測試、涵蓋率衡量完整度。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 主動模擬使用者交易以監測服務的技術？<br><span style="color:#0A5A59;">→ 合成交易（synthetic transaction）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 驗證系統能擋住惡意輸入屬正向還負向測試？<br><span style="color:#0A5A59;">→ 負向/誤用案例測試。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 事後追查入侵最重要的資料來源？<br><span style="color:#0A5A59;">→ 日誌（log review，搭配 SIEM）。</span></p>
+    <details style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:15px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>多種測試技術各驗不同面向：日誌審查找入侵、合成交易主動監測、誤用案例做負向測試、涵蓋率衡量完整度。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 主動模擬使用者交易以監測服務的技術？<br><span style="color:#0A6160;">→ 合成交易（synthetic transaction）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 驗證系統能擋住惡意輸入屬正向還負向測試？<br><span style="color:#0A6160;">→ 負向/誤用案例測試。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 事後追查入侵最重要的資料來源？<br><span style="color:#0A6160;">→ 日誌（log review，搭配 SIEM）。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.5 程式測試 / §6.2.4 合成）</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍靜態 vs 動態</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>SAST 靜態</strong>：<strong>不執行</strong>、分析原始碼（code review 屬之）。<strong>DAST 動態</strong>：<strong>執行期</strong>測試（適合測他人寫的 App）。<strong>IAST 互動</strong>：兩者結合、執行期由內部分析。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍監控與審查</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>Synthetic/Active monitoring</strong>＝腳本化已知結果交易；<strong>RUM/Passive</strong>＝觀察真實使用者。<strong>Fagan inspection</strong>＝最正式程式審查（6 步）。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §6.2.5 程式測試 / §6.2.4 合成。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §6.2.5 程式審查、§6.2.4 合成交易。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.2.5 Code review and testing</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Code review and testing is &quot;one of the most critical components of a software testing program&quot;</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• These procedures provide third-party reviews of the work performed by developers before moving code into a production environment, possibly discovering security, performance, or reliability flaws in apps before they go live and negatively impact business operations</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• In code review, AKA peer review, developers other than the one who wrote the code review it for defects; code review can be a formal or informal validation process</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Fagan inspections</strong>: the most formal code review process follows six steps:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Entry criteria are the criteria or requirements which must be met to enter a specific process</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Exit criteria are the criteria or requirements which must be met to complete a specific process</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Static application security testing (SAST)</strong>: evaluates the security of software without running it by analyzing either the source code or the compiled application; code reviews are an example of static app security testing</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Dynamic application security testing (DAST)</strong>: evaluates the security of software in a runtime environment and is often the only option for organizations deploying applications written by someone else</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Interactive Application Security Testing (IAST)</strong>: combines elements of both SAST and DAST by analyzing code during runtime from within the application, providing more accurate results</div>
-<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.2.4 Synthetic transactions/benchmarks</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Synthetic transactions</strong>: scripted transactions with known expected results</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Synthetic (AKA active) monitoring</strong>: uses emulated or recorded transactions to monitor for performance changes in response time, functionality, or other performance monitors</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Real User Monitoring (RUM)</strong>: observes and captures data from actual users as they interact with an app or website; this is also known as <strong>passive monitoring</strong> because user activity is passively monitored; this is good for identifying specific user issues</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Dynamic testing may include the use of synthetic transactions to verify system performance; synthetic transactions are run against code and compare output to expected state</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:24px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.5 程式測試 / §6.2.4 合成）</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍靜態 vs 動態</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>SAST 靜態</strong>：<strong>不執行</strong>、分析原始碼（code review 屬之）。<strong>DAST 動態</strong>：<strong>執行期</strong>測試（適合測他人寫的 App）。<strong>IAST 互動</strong>：兩者結合、執行期由內部分析。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍監控與審查</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>Synthetic/Active monitoring</strong>＝腳本化已知結果交易；<strong>RUM/Passive</strong>＝觀察真實使用者。<strong>Fagan inspection</strong>＝最正式程式審查（6 步）。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §6.2.5 程式測試 / §6.2.4 合成。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §6.2.5 程式審查、§6.2.4 合成交易。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§6.2.5 Code review and testing</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Code review and testing is &quot;one of the most critical components of a software testing program&quot;</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• These procedures provide third-party reviews of the work performed by developers before moving code into a production environment, possibly discovering security, performance, or reliability flaws in apps before they go live and negatively impact business operations</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• In code review, AKA peer review, developers other than the one who wrote the code review it for defects; code review can be a formal or informal validation process</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Fagan inspections</strong>: the most formal code review process follows six steps:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Entry criteria are the criteria or requirements which must be met to enter a specific process</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Exit criteria are the criteria or requirements which must be met to complete a specific process</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Static application security testing (SAST)</strong>: evaluates the security of software without running it by analyzing either the source code or the compiled application; code reviews are an example of static app security testing</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Dynamic application security testing (DAST)</strong>: evaluates the security of software in a runtime environment and is often the only option for organizations deploying applications written by someone else</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Interactive Application Security Testing (IAST)</strong>: combines elements of both SAST and DAST by analyzing code during runtime from within the application, providing more accurate results</div>
+<div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§6.2.4 Synthetic transactions/benchmarks</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Synthetic transactions</strong>: scripted transactions with known expected results</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Synthetic (AKA active) monitoring</strong>: uses emulated or recorded transactions to monitor for performance changes in response time, functionality, or other performance monitors</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Real User Monitoring (RUM)</strong>: observes and captures data from actual users as they interact with an app or website; this is also known as <strong>passive monitoring</strong> because user activity is passively monitored; this is good for identifying specific user issues</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Dynamic testing may include the use of synthetic transactions to verify system performance; synthetic transactions are run against code and compare output to expected state</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:24px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/vZ0S8GdWiIk" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 6 Review / Mind Map (2 of 3) | Vulnerability Assessment and Penetration Testing ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/vZ0S8GdWiIk" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 6 Review / Mind Map (2 of 3) | Vulnerability Assessment and Penetration Testing ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/lt_-KqplT5o?t=1096" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 6<span class="ts-note">（從約 18:16 開始）</span> ↗</a>
+        <a href="https://youtu.be/lt_-KqplT5o?t=1096" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 6<span class="ts-note">（從約 18:16 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -109,8 +109,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 28 / 120 · P1-D6-3</span>
   </div>
 
