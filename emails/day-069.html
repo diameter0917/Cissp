@@ -5,120 +5,120 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 69</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 69 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D6-4</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P2-D6-4</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 6 · 安全評估與測試 &nbsp;|&nbsp; 權重 12%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">稽核類型與 SOC 報告深入</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">稽核類型與 SOC 報告深入</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Audit Types &amp; SOC Reports</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:57.5%; background-color:#3D52A0;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:57.5%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D6：稽核獨立性與 SOC 報告</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>稽核類型與獨立性</strong>，以及 <strong>SOC 1/2/3 與 Type I/II</strong> 的細節與如何審閱。供應商風險管理(D1 SCRM)與此章在『用報告證明安全』上交會。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：稽核類型與獨立性 → SOC 1/2/3 → Type I vs II → 審閱報告與例外。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 稽核類型與獨立性</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">類型</td><td style="padding:8px 10px;">目的</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">獨立性</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Internal</strong> 內部</td><td style="padding:9px 10px; vertical-align:top;">求改善、向治理層報告</td><td style="padding:9px 10px; vertical-align:top;">部門內、需向董事會直報以保獨立</td></tr>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 中期 D6：稽核獨立性與 SOC 報告</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">今天深入<strong>稽核類型與獨立性</strong>，以及 <strong>SOC 1/2/3 與 Type I/II</strong> 的細節與如何審閱。供應商風險管理(D1 SCRM)與此章在『用報告證明安全』上交會。</p>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：稽核類型與獨立性 → SOC 1/2/3 → Type I vs II → 審閱報告與例外。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 稽核類型與獨立性</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">類型</td><td style="padding:8px 10px;">目的</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">獨立性</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Internal</strong> 內部</td><td style="padding:9px 10px; vertical-align:top;">求改善、向治理層報告</td><td style="padding:9px 10px; vertical-align:top;">部門內、需向董事會直報以保獨立</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>External</strong> 外部</td><td style="padding:9px 10px; vertical-align:top;">法遵/財報、對外公信</td><td style="padding:9px 10px; vertical-align:top;">會計師事務所等第三方</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Third-party</strong> 第三方</td><td style="padding:9px 10px; vertical-align:top;">評估供應商/認證</td><td style="padding:9px 10px; vertical-align:top;">獨立機構</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Third-party</strong> 第三方</td><td style="padding:9px 10px; vertical-align:top;">評估供應商/認證</td><td style="padding:9px 10px; vertical-align:top;">獨立機構</td></tr>
     </table>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>稽核獨立性</strong>核心：<strong>稽核者不得查核自己負責的工作</strong>(職責分離的延伸)；內部稽核應向<strong>審計委員會/董事會</strong>直報，而非受被查單位管轄，以保客觀。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — SOC 報告深入</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">報告</td><td style="padding:8px 10px;">內容</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">對象/公開性</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>SOC 1</strong></td><td style="padding:9px 10px; vertical-align:top;">財報相關內控(ICFR)</td><td style="padding:9px 10px; vertical-align:top;">客戶財務稽核員(保密)</td></tr>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>稽核獨立性</strong>核心：<strong>稽核者不得查核自己負責的工作</strong>(職責分離的延伸)；內部稽核應向<strong>審計委員會/董事會</strong>直報，而非受被查單位管轄，以保客觀。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — SOC 報告深入</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">報告</td><td style="padding:8px 10px;">內容</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">對象/公開性</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>SOC 1</strong></td><td style="padding:9px 10px; vertical-align:top;">財報相關內控(ICFR)</td><td style="padding:9px 10px; vertical-align:top;">客戶財務稽核員(保密)</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>SOC 2</strong></td><td style="padding:9px 10px; vertical-align:top;">信任服務準則(安全/可用/處理完整/機密/隱私)</td><td style="padding:9px 10px; vertical-align:top;">客戶/夥伴(保密)</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>SOC 3</strong></td><td style="padding:9px 10px; vertical-align:top;">SOC 2 公開摘要</td><td style="padding:9px 10px; vertical-align:top;">可公開行銷</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>SOC 3</strong></td><td style="padding:9px 10px; vertical-align:top;">SOC 2 公開摘要</td><td style="padding:9px 10px; vertical-align:top;">可公開行銷</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — Type I vs II 與審閱</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — Type I vs II 與審閱</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Type I</strong>：某<strong>時間點</strong>控制設計是否適當(快照)</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Type II</strong>：一段<strong>期間(6-12 月)</strong>控制是否<strong>持續有效運作</strong>(證據力強)</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;">審閱要點：看<strong>範圍(scope)</strong>是否涵蓋你用到的服務、<strong>例外事項(exceptions)</strong>與<strong>補償控制</strong>、<strong>使用者實體控制(CUEC)</strong>(你自己也要做的部分)</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Type I</strong>：某<strong>時間點</strong>控制設計是否適當(快照)</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Type II</strong>：一段<strong>期間(6-12 月)</strong>控制是否<strong>持續有效運作</strong>(證據力強)</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;">審閱要點：看<strong>範圍(scope)</strong>是否涵蓋你用到的服務、<strong>例外事項(exceptions)</strong>與<strong>補償控制</strong>、<strong>使用者實體控制(CUEC)</strong>(你自己也要做的部分)</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Auditor Independence</strong>（稽核獨立性）— <span style="color:#5B6675;">不查核自己的工作、客觀超然。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Internal/External Audit</strong>（內部/外部稽核）— <span style="color:#5B6675;">求改善 vs 對外公信。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SOC 1/2/3</strong>（服務組織控制報告）— <span style="color:#5B6675;">財報/資安(保密)/公開摘要。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Type I / II</strong>（設計/運作）— <span style="color:#5B6675;">時間點 vs 期間有效性。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Trust Services Criteria</strong>（信任服務準則）— <span style="color:#5B6675;">SOC 2 五準則。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Exceptions</strong>（例外事項）— <span style="color:#5B6675;">稽核發現的控制失效。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">CUEC</strong>（使用者實體控制）— <span style="color:#5B6675;">客戶自身須落實的補充控制。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Auditor Independence</strong>（稽核獨立性）— <span style="color:#5B6675;">不查核自己的工作、客觀超然。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Internal/External Audit</strong>（內部/外部稽核）— <span style="color:#5B6675;">求改善 vs 對外公信。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SOC 1/2/3</strong>（服務組織控制報告）— <span style="color:#5B6675;">財報/資安(保密)/公開摘要。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Type I / II</strong>（設計/運作）— <span style="color:#5B6675;">時間點 vs 期間有效性。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Trust Services Criteria</strong>（信任服務準則）— <span style="color:#5B6675;">SOC 2 五準則。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Exceptions</strong>（例外事項）— <span style="color:#5B6675;">稽核發現的控制失效。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">CUEC</strong>（使用者實體控制）— <span style="color:#5B6675;">客戶自身須落實的補充控制。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>SOC 1 vs SOC 2</strong>：SOC 1＝<strong>財報</strong>內控；SOC 2＝<strong>資安/信任服務</strong>。評估供應商<strong>資安</strong>看 SOC 2。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Type I vs II</strong>：I 只看『某天設計對不對』；II 看『一段期間是否真有效』——<strong>II 證據力遠強</strong>，評估供應商首選 SOC 2 Type II。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>CUEC 易忽略</strong>：SOC 報告常列<strong>客戶自己要做的控制</strong>(如『客戶須管理自己的使用者權限』)——別以為供應商有 SOC 2 你就全免責。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>SOC 1 vs SOC 2</strong>：SOC 1＝<strong>財報</strong>內控；SOC 2＝<strong>資安/信任服務</strong>。評估供應商<strong>資安</strong>看 SOC 2。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>Type I vs II</strong>：I 只看『某天設計對不對』；II 看『一段期間是否真有效』——<strong>II 證據力遠強</strong>，評估供應商首選 SOC 2 Type II。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>CUEC 易忽略</strong>：SOC 報告常列<strong>客戶自己要做的控制</strong>(如『客戶須管理自己的使用者權限』)——別以為供應商有 SOC 2 你就全免責。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>AICPA SSAE 18</strong>（SOC）、<strong>ISAE 3402</strong>（國際）、<strong>ISO 27001 認證</strong>常與 SOC 2 並用。內部稽核準則對應 <strong>IIA</strong>。稽核獨立性是治理(D1)的延伸。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：SOC 2 審閱</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 有報告不等於沒風險</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">企業評估 SaaS 供應商時索取 <strong>SOC 2 Type II</strong>，但常<strong>只看『有沒有』不看『內容』</strong>：忽略報告中的<strong>例外事項(控制曾失效)</strong>、範圍未涵蓋實際使用的服務、或漏看 <strong>CUEC(自己該做的控制)</strong>。結果以為『供應商通過 SOC 2＝安全』，實際風險仍在。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>SOC 2 Type II 要『讀懂』而非『收集』</strong>——檢視範圍、期間、例外、補償控制與 CUEC，並對例外要求改善計畫。報告是起點不是免責金牌。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>AICPA SSAE 18</strong>（SOC）、<strong>ISAE 3402</strong>（國際）、<strong>ISO 27001 認證</strong>常與 SOC 2 並用。內部稽核準則對應 <strong>IIA</strong>。稽核獨立性是治理(D1)的延伸。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — 真實事件：SOC 2 審閱</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 有報告不等於沒風險</div>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;">企業評估 SaaS 供應商時索取 <strong>SOC 2 Type II</strong>，但常<strong>只看『有沒有』不看『內容』</strong>：忽略報告中的<strong>例外事項(控制曾失效)</strong>、範圍未涵蓋實際使用的服務、或漏看 <strong>CUEC(自己該做的控制)</strong>。結果以為『供應商通過 SOC 2＝安全』，實際風險仍在。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">教訓：<strong>SOC 2 Type II 要『讀懂』而非『收集』</strong>——檢視範圍、期間、例外、補償控制與 CUEC，並對例外要求改善計畫。報告是起點不是免責金牌。</p>
     </div>
-    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：稽核 vs 評估 vs 認證</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">三者易混：<strong>評估(assessment)</strong>是內部分析態勢；<strong>稽核(audit)</strong>是依標準的獨立查核出意見；<strong>認證(certification，如 ISO 27001)</strong>是由認證機構確認符合標準並發證。對外證明常需<strong>稽核/認證</strong>(獨立第三方)，內部改善用評估即可。</p>
+    <div style="background-color:#F1F5F9; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">📌 延伸：稽核 vs 評估 vs 認證</div>
+      <p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">三者易混：<strong>評估(assessment)</strong>是內部分析態勢；<strong>稽核(audit)</strong>是依標準的獨立查核出意見；<strong>認證(certification，如 ISO 27001)</strong>是由認證機構確認符合標準並發證。對外證明常需<strong>稽核/認證</strong>(獨立第三方)，內部改善用評估即可。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>評估供應商<strong>資安</strong>→ SOC 2 <strong>Type II</strong>；對外公開摘要→ SOC 3；財報內控→ SOC 1；『稽核者不可查核自己的工作』→ 獨立性。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>SOC 1≠資安；Type I 只是快照；別忽略 CUEC(客戶自身控制)；內部稽核應向董事會直報保獨立。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>評估供應商<strong>資安</strong>→ SOC 2 <strong>Type II</strong>；對外公開摘要→ SOC 3；財報內控→ SOC 1；『稽核者不可查核自己的工作』→ 獨立性。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>SOC 1≠資安；Type I 只是快照；別忽略 CUEC(客戶自身控制)；內部稽核應向董事會直報保獨立。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>稽核重獨立性(不查自己的工作、向董事會直報)；SOC 1 財報/2 資安/3 公開；Type II(期間)>Type I(時間點)；審閱看範圍/例外/CUEC。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 評估雲端供應商資安該看哪份報告、哪型？<br><span style="color:#0A5A59;">→ SOC 2 Type II(一段期間運作有效性)。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . SOC 報告中『CUEC』是什麼，為何重要？<br><span style="color:#0A5A59;">→ 使用者實體控制——客戶自身須落實的控制；有供應商 SOC 2 不代表你全免責。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 稽核獨立性的核心要求？<br><span style="color:#0A5A59;">→ 稽核者不得查核自己負責的工作；內部稽核向治理層直報。</span></p>
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>稽核重獨立性(不查自己的工作、向董事會直報)；SOC 1 財報/2 資安/3 公開；Type II(期間)>Type I(時間點)；審閱看範圍/例外/CUEC。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 評估雲端供應商資安該看哪份報告、哪型？<br><span style="color:#0A6160;">→ SOC 2 Type II(一段期間運作有效性)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . SOC 報告中『CUEC』是什麼，為何重要？<br><span style="color:#0A6160;">→ 使用者實體控制——客戶自身須落實的控制；有供應商 SOC 2 不代表你全免責。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 稽核獨立性的核心要求？<br><span style="color:#0A6160;">→ 稽核者不得查核自己負責的工作；內部稽核向治理層直報。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.5 稽核類型與 SOC 報告（深入））</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍內部 vs 第三方</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">Internal：快、insider 知識，但缺廣度、<strong>利益衝突</strong>。External：合約綁定、僅限合約範圍。Third-party：廣度經驗、<strong>不受內部政治影響</strong>、可展示法遵，但貴。框架：ISO 27001／PCI-DSS／HIPAA。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍SOC 報告對照</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>SOC 1</strong>＝財務內控；<strong>SOC 2</strong>＝五大信任服務準則（安全/可用/處理完整/機密/隱私），給利害關係人；<strong>SOC 3</strong>＝公開版。<strong>Type I 看設計（某時點）、Type II 看運作（一段期間，較有保證）</strong>。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §6.5 稽核類型與 SOC 報告（深入）。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §6.5 稽核（SOC 報告為策展補充）。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.5.1 Internal</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Having an internal team conduct security audits has several advantages:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• understanding the internal environment reduces time</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• an internal team can delve into all parts of systems, because they have insider knowledge</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• internal auditors can be more agile in adapting to changing needs, rescheduling failed assessment components quickly</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Disadvantages of using an internal team to conduct security audits:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• the team may have limited exposure to new/other methodologies (e.g. the team may have depth but not breadth of experience and knowledge)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• potential conflicts of interest (e.g. reluctance to throw other teams under the bus and accurately report their findings)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• audit team members may start with an agenda (say to secure funding) and overstate faults, or have interpersonal motives</div>
-<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§6.5.3 Third-party</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Third-party audits are often needed to demonstrate compliance with some government regulation or industry standard</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Advantages of having a third-party audit an organization:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• they likely have breadth of experience auditing many types of systems, across many types of organizations</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• they are not affected by internal dynamics or org politics</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Disadvantage of using a third-party auditor:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• cost: third-party auditors are going to be much more costly than internal teams; this means that the organization is not likely to conduct audits as frequently</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• internal resources are still required to assist or accompany auditors, to answer questions and guide</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Some common third-party audit frameworks include:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• ISO 27001 (certification audits)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• PCI DSS (for payment card data)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• HIPAA (for healthcare)</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.5 稽核類型與 SOC 報告（深入））</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍內部 vs 第三方</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;">Internal：快、insider 知識，但缺廣度、<strong>利益衝突</strong>。External：合約綁定、僅限合約範圍。Third-party：廣度經驗、<strong>不受內部政治影響</strong>、可展示法遵，但貴。框架：ISO 27001／PCI-DSS／HIPAA。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍SOC 報告對照</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>SOC 1</strong>＝財務內控；<strong>SOC 2</strong>＝五大信任服務準則（安全/可用/處理完整/機密/隱私），給利害關係人；<strong>SOC 3</strong>＝公開版。<strong>Type I 看設計（某時點）、Type II 看運作（一段期間，較有保證）</strong>。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §6.5 稽核類型與 SOC 報告（深入）。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §6.5 稽核（SOC 報告為策展補充）。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§6.5.1 Internal</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Having an internal team conduct security audits has several advantages:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• understanding the internal environment reduces time</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• an internal team can delve into all parts of systems, because they have insider knowledge</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• internal auditors can be more agile in adapting to changing needs, rescheduling failed assessment components quickly</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Disadvantages of using an internal team to conduct security audits:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• the team may have limited exposure to new/other methodologies (e.g. the team may have depth but not breadth of experience and knowledge)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• potential conflicts of interest (e.g. reluctance to throw other teams under the bus and accurately report their findings)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• audit team members may start with an agenda (say to secure funding) and overstate faults, or have interpersonal motives</div>
+<div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§6.5.3 Third-party</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Third-party audits are often needed to demonstrate compliance with some government regulation or industry standard</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Advantages of having a third-party audit an organization:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• they likely have breadth of experience auditing many types of systems, across many types of organizations</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• they are not affected by internal dynamics or org politics</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Disadvantage of using a third-party auditor:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• cost: third-party auditors are going to be much more costly than internal teams; this means that the organization is not likely to conduct audits as frequently</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• internal resources are still required to assist or accompany auditors, to answer questions and guide</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Some common third-party audit frameworks include:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• ISO 27001 (certification audits)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• PCI DSS (for payment card data)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• HIPAA (for healthcare)</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/eDVZvw5NziA" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 6 Review / Mind Map (1 of 3) | Security Assessment and Testing Overview ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/eDVZvw5NziA" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 6 Review / Mind Map (1 of 3) | Security Assessment and Testing Overview ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/lt_-KqplT5o?t=3267" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 6<span class="ts-note">（從約 54:27 開始）</span> ↗</a>
+        <a href="https://youtu.be/lt_-KqplT5o?t=3267" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 6<span class="ts-note">（從約 54:27 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -126,8 +126,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 69 / 120 · P2-D6-4</span>
   </div>
 

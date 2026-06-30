@@ -5,203 +5,203 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 16</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 16 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D4-1</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D4-1</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 4 · 通訊與網路安全 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">Domain 4 全景與 OSI/TCP-IP</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">Domain 4 全景與 OSI/TCP-IP</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Domain 4 Big Picture &amp; OSI/TCP-IP</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:13.33%; background-color:#0E7C7B;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:13.33%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — Domain 4 與 OSI 七層</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">Domain 4（<strong>Communication and Network Security，通訊與網路安全</strong>）佔 <strong>13%</strong>。它的「世界地圖」就是 <strong>OSI 七層模型</strong>——CISSP 要你能把<strong>協定、設備、攻擊</strong>歸到正確的層，再依層思考防禦。今天先建立分層思維與 OSI↔TCP/IP 對應。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週（Domain 4 · 初期）路線</strong>：①今天 OSI/TCP-IP → ②核心與安全協定 → ③網路設備與防禦 → ④無線/行動/遠端 → ⑤郵件安全與網路攻擊。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — OSI 七層（由上而下）</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">層</td><td style="padding:8px 10px;">名稱</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">代表協定/單位</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">7</td><td style="padding:9px 10px; vertical-align:top;">Application 應用</td><td style="padding:9px 10px; vertical-align:top;">HTTP, DNS, SMTP</td></tr>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — Domain 4 與 OSI 七層</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">Domain 4（<strong>Communication and Network Security，通訊與網路安全</strong>）佔 <strong>13%</strong>。它的「世界地圖」就是 <strong>OSI 七層模型</strong>——CISSP 要你能把<strong>協定、設備、攻擊</strong>歸到正確的層，再依層思考防禦。今天先建立分層思維與 OSI↔TCP/IP 對應。</p>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">本週（Domain 4 · 初期）路線</strong>：①今天 OSI/TCP-IP → ②核心與安全協定 → ③網路設備與防禦 → ④無線/行動/遠端 → ⑤郵件安全與網路攻擊。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — OSI 七層（由上而下）</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">層</td><td style="padding:8px 10px;">名稱</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">代表協定/單位</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">7</td><td style="padding:9px 10px; vertical-align:top;">Application 應用</td><td style="padding:9px 10px; vertical-align:top;">HTTP, DNS, SMTP</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;">6</td><td style="padding:9px 10px; vertical-align:top;">Presentation 表現</td><td style="padding:9px 10px; vertical-align:top;">TLS/SSL, 編碼, 加密</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">5</td><td style="padding:9px 10px; vertical-align:top;">Session 會議</td><td style="padding:9px 10px; vertical-align:top;">RPC, 會話建立</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">5</td><td style="padding:9px 10px; vertical-align:top;">Session 會議</td><td style="padding:9px 10px; vertical-align:top;">RPC, 會話建立</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;">4</td><td style="padding:9px 10px; vertical-align:top;">Transport 傳輸</td><td style="padding:9px 10px; vertical-align:top;">TCP / UDP（段 segment）</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">3</td><td style="padding:9px 10px; vertical-align:top;">Network 網路</td><td style="padding:9px 10px; vertical-align:top;">IP, ICMP, 路由（封包 packet）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">3</td><td style="padding:9px 10px; vertical-align:top;">Network 網路</td><td style="padding:9px 10px; vertical-align:top;">IP, ICMP, 路由（封包 packet）</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;">2</td><td style="padding:9px 10px; vertical-align:top;">Data Link 資料連結</td><td style="padding:9px 10px; vertical-align:top;">MAC, ARP, 交換器（訊框 frame）</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">1</td><td style="padding:9px 10px; vertical-align:top;">Physical 實體</td><td style="padding:9px 10px; vertical-align:top;">纜線, 電氣訊號（位元 bit）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">1</td><td style="padding:9px 10px; vertical-align:top;">Physical 實體</td><td style="padding:9px 10px; vertical-align:top;">纜線, 電氣訊號（位元 bit）</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 記憶法：<strong>All People Seem To Need Data Processing</strong>（7→1：Application…Physical）。考試常考「某協定/設備/攻擊在第幾層」。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — OSI ↔ TCP/IP</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">實務的 <strong>TCP/IP（DoD）模型</strong>把 OSI 簡化為四層：<strong>Application（含 OSI 5-7）／Transport／Internet（OSI 3）／Link（OSI 1-2）</strong>。安全防禦也分層佈署：實體門禁（L1）、交換器埠安全（L2）、防火牆/路由 ACL（L3-4）、TLS（L6）、WAF（L7）。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <p style="font-size:16px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 記憶法：<strong>All People Seem To Need Data Processing</strong>（7→1：Application…Physical）。考試常考「某協定/設備/攻擊在第幾層」。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — OSI ↔ TCP/IP</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;">實務的 <strong>TCP/IP（DoD）模型</strong>把 OSI 簡化為四層：<strong>Application（含 OSI 5-7）／Transport／Internet（OSI 3）／Link（OSI 1-2）</strong>。安全防禦也分層佈署：實體門禁（L1）、交換器埠安全（L2）、防火牆/路由 ACL（L3-4）、TLS（L6）、WAF（L7）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">OSI Model</strong>（開放系統互連模型）— <span style="color:#5B6675;">七層參考模型，將通訊分層。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Encapsulation</strong>（封裝）— <span style="color:#5B6675;">每下一層加上自己的標頭/標尾。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">PDU</strong>（協定資料單元）— <span style="color:#5B6675;">各層的資料單位：bit/frame/packet/segment。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">TCP</strong>（傳輸控制協定）— <span style="color:#5B6675;">可靠、連線導向、三向交握。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">UDP</strong>（使用者資料報協定）— <span style="color:#5B6675;">快、無連線、無保證（DNS/VoIP）。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">MAC / IP</strong>（實體位址/邏輯位址）— <span style="color:#5B6675;">L2 用 MAC、L3 用 IP。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">OSI Model</strong>（開放系統互連模型）— <span style="color:#5B6675;">七層參考模型，將通訊分層。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Encapsulation</strong>（封裝）— <span style="color:#5B6675;">每下一層加上自己的標頭/標尾。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">PDU</strong>（協定資料單元）— <span style="color:#5B6675;">各層的資料單位：bit/frame/packet/segment。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">TCP</strong>（傳輸控制協定）— <span style="color:#5B6675;">可靠、連線導向、三向交握。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">UDP</strong>（使用者資料報協定）— <span style="color:#5B6675;">快、無連線、無保證（DNS/VoIP）。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">MAC / IP</strong>（實體位址/邏輯位址）— <span style="color:#5B6675;">L2 用 MAC、L3 用 IP。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>TCP vs UDP</strong>：TCP 可靠、有交握與重送（網頁、檔案）；UDP 快但不保證（DNS 查詢、串流、VoIP）。考題問「即時/低延遲」多半 UDP。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>L2 vs L3 位址</strong>：MAC 是同網段內的硬體位址（L2）；IP 是跨網段的邏輯位址（L3）。<strong>ARP</strong> 負責 IP→MAC 解析，屬 L2。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>TCP vs UDP</strong>：TCP 可靠、有交握與重送（網頁、檔案）；UDP 快但不保證（DNS 查詢、串流、VoIP）。考題問「即時/低延遲」多半 UDP。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>L2 vs L3 位址</strong>：MAC 是同網段內的硬體位址（L2）；IP 是跨網段的邏輯位址（L3）。<strong>ARP</strong> 負責 IP→MAC 解析，屬 L2。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;">OSI 為 <strong>ISO/IEC 7498</strong>；TCP/IP 由 IETF <strong>RFC</strong> 規範。安全分層概念也是<strong>縱深防禦</strong>（Domain 3）在網路上的展現——每層都有對應控制。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：依層分析攻擊</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 把攻擊歸層，就知道怎麼防</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">同樣是「網路攻擊」，分層思考能對症下藥：<strong>ARP 欺騙</strong>在 L2（用埠安全/DAI 防）、<strong>IP 欺騙/ICMP 洪水</strong>在 L3（用 ACL/過濾）、<strong>SYN flood</strong>在 L4（用 SYN cookie）、<strong>SQL 注入/XSS</strong>在 L7（用 WAF）。把事件定位到層，防禦選擇就清楚了。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">這正是 Domain 4 的核心技能，也是大量考題的解法：<strong>先問『這是第幾層的問題』</strong>。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;">OSI 為 <strong>ISO/IEC 7498</strong>；TCP/IP 由 IETF <strong>RFC</strong> 規範。安全分層概念也是<strong>縱深防禦</strong>（Domain 3）在網路上的展現——每層都有對應控制。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 真實事件：依層分析攻擊</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 把攻擊歸層，就知道怎麼防</div>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;">同樣是「網路攻擊」，分層思考能對症下藥：<strong>ARP 欺騙</strong>在 L2（用埠安全/DAI 防）、<strong>IP 欺騙/ICMP 洪水</strong>在 L3（用 ACL/過濾）、<strong>SYN flood</strong>在 L4（用 SYN cookie）、<strong>SQL 注入/XSS</strong>在 L7（用 WAF）。把事件定位到層，防禦選擇就清楚了。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">這正是 Domain 4 的核心技能，也是大量考題的解法：<strong>先問『這是第幾層的問題』</strong>。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>把協定/設備/攻擊<strong>歸到正確 OSI 層</strong>——交換器 L2、路由器 L3、TCP/UDP L4、TLS L6（有時題目歸 L5-6）、HTTP/DNS L7。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>ARP 屬 <strong>L2</strong>（非 L3）；防火牆依類型橫跨 L3-L7。先背 7 層口訣與代表項就能解多數題。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>把協定/設備/攻擊<strong>歸到正確 OSI 層</strong>——交換器 L2、路由器 L3、TCP/UDP L4、TLS L6（有時題目歸 L5-6）、HTTP/DNS L7。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>ARP 屬 <strong>L2</strong>（非 L3）；防火牆依類型橫跨 L3-L7。先背 7 層口訣與代表項就能解多數題。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>OSI 七層是 Domain 4 地圖：先把協定/設備/攻擊歸層，再依層佈署縱深防禦；TCP 可靠、UDP 快。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 交換器與路由器分別在 OSI 第幾層？<br><span style="color:#0A5A59;">→ 交換器 L2（Data Link）、路由器 L3（Network）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . DNS 查詢通常用 TCP 還 UDP？<br><span style="color:#0A5A59;">→ UDP（快、無連線）；區域傳送等才用 TCP。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . ARP 欺騙屬於哪一層的攻擊？<br><span style="color:#0A5A59;">→ L2（Data Link），以埠安全/動態 ARP 檢測防禦。</span></p>
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>OSI 七層是 Domain 4 地圖：先把協定/設備/攻擊歸層，再依層佈署縱深防禦；TCP 可靠、UDP 快。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 交換器與路由器分別在 OSI 第幾層？<br><span style="color:#0A6160;">→ 交換器 L2（Data Link）、路由器 L3（Network）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . DNS 查詢通常用 TCP 還 UDP？<br><span style="color:#0A6160;">→ UDP（快、無連線）；區域傳送等才用 TCP。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . ARP 欺騙屬於哪一層的攻擊？<br><span style="color:#0A6160;">→ L2（Data Link），以埠安全/動態 ARP 檢測防禦。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.1 OSI / TCP-IP）</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍OSI 七層（記憶口訣）</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">由上到下 <strong>All People Seem To Need Delicious Pizza</strong>；由下到上 <strong>Please Do Not Throw Sausage Pizza Away</strong>。</p><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">7 應用／6 表達（加密、JPEG）／5 會談（simplex/half/full-duplex）／4 傳輸（<strong>TCP 連線導向／UDP 非連線</strong>，PDU=Segment/Datagram）／3 網路（IP/路由，PDU=Packet）／2 資料連結（MAC/ARP/交換器，PDU=Frame）／1 實體（bits/hub）。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍封裝</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>Encapsulation 封裝</strong>：每層把上層 header+payload 當作自己的 payload；接收端反向 <strong>de-encapsulation</strong>。TCP/IP 四層：Application／Transport／Internet／Link。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §4.1.1 OSI / TCP-IP。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §4.1.1 OSI 與 TCP/IP 模型。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§4.1.1 Open System Interconnection (OSI) and Transmission Control Protocol/Internet Protocol (TCP/IP) models</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>TCP/IP</strong>: AKA DARPA or DOD model has four layers: Application (AKA Process), Transport (AKA Host-to-Host), Internet (AKA Internetworking), and Link (AKA Network Interface or Network Access)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>OSI</strong>: Open Systems Interconnection (OSI) Reference Model developed by ISO (International Organization for Standardization) to establish a common communication structure or standard for all computer systems; it is an abstract framework</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Communication between layers via <strong>encapsulation</strong> (at each layer, the previous layer&#x27;s header and payload become the payload of the current layer) and <strong>de-encapsulation</strong> (inverse action occurring as data moves up layers)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Mnemonics:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• from top: All People Seem To Need Delicious Pizza</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• from bottom: Please Do Not Throw Sausage Pizza Away</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Application Layer (7)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Responsible for:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• interfacing user applications, network services, or the operating system with the protocol stack</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• identifying and establishing availability of communication partners</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• determining resource availability</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• synchronizing communication</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Protocols at layer 7 include:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>Session Initiation Protocol (SIP)</strong>: signalling protocol used to init, maintain, modify, and terminate real-time communication session between IP devices; used to establish voice and video calls</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Hypertext Transfer Protocol (HTTP)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• BGP: Border Gateway Protocol - used to exchange routing and reachability information between routers (looking at available paths, picking the best)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Uses data streams</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Presentation Layer (6)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Responsible for transforming data into the format that any system following the OSI model can understand</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• JPEG, ASCII, MIDI etc are used at the presentation layer</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Associated tasks:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• data representation</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• character conversion</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• data compression</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• data encryption</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Protocols at layer 6 include:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• TLS/SSL (encryption),</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• MIME (email formatting),</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• XDR (data representation), and</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• encryption standards like JPEG, GIF, and MPEG</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Uses data streams</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Session Layer (5)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Responsible for establishing, maintaining, and terminating communication sessions between two computers</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Three communication session phases:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• connection establishment</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• <strong>simplex</strong>: one-way</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• <strong>half-duplex</strong>: both comm devices can transmit/receive, but not at the same time</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• <strong>full-duplex</strong>: both comm devices can transmit/receive at same time</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• data transfer</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• connection release</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Protocols at layer 5 include NetBIOS, and RPC</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Uses data streams</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Transport Layer (4)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Responsible for managing the integrity of a connection and controlling the session; providing transparent data transport and end-to-end transmission control</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Defines session rules like how much data each segment can contain, how to verify message integrity, and how to determine whether data has been lost</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Protocols that operate at the Transport layer:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Transmission Control Protocol (TCP)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• the major transport protocol in the internet suite of protocols providing reliable, connection-oriented, full-duplex streams</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• emphasizing: full-duplex, connection-oriented protocol</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• uses three-way handshake using following three steps: synchronize (SYN), synchronize-acknowledge (SYN-ACK), and acknowledge (ACK)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• TCP header flags:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:70px;color:#7A6E4E;'>• URG ACK PSH RST SYN FIN (mnemonic: Unskilled Attackers Pester Real Security Folks)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• TCP Packet Header: 10 fields, 160 bits, including source port, destination port, sequence number, acknowledgement number, checksum etc</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• User Datagram Protocol (UDP)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• connectionless protocol that provides fast, best-effort delivery of <strong>datagrams</strong> (self-contained unit of data)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• UDP Datagram Header: 4 fields, 64 bits, including source port, destination port, length of data, checksum</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Transport Layer Security (TLS)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• note: in the OSI model, TLS operates on four layers: Application, Presentation, Session, and Transport; in the TCP/IP model, it operates only on the Transport layer</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Segmentation, sequencing, and error checking occur at the Transport layer</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Network Layer (3)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Responsible for logical addressing, and providing routing or delivery guidance (but not necessarily verifying guaranteed delivery), manages error detection and traffic control</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Internet Control Message Protocol (ICMP)</strong>: allows network devices to send error and control messages and provides Ping and Traceroute utilities</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Internet Group Management Protocol (IGMP)</strong>: allows hosts and adjacent routers on IP networks to establish multicast group memberships</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>routing protocols</strong>: move routed protocol messages across a network</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• includes RIP, OSPF, IS-IS, IGRP, IGMP, and BGP</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• routing protocols are defined at the Network Layer and specify how routers communicate</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• routing protocols can be static or dynamic, and categorized as interior or exterior</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>static routing protocol</strong>: requires an admin to create/update routes on the router</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>dynamic</strong>: can discover routers and determine best route to a given destination; routing table is periodically updated</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>distance-vector</strong>: (interior) makes routing decisions based on distance (e.g. hop count), and vector (router egress interface); examples:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• <strong>Routing Information Protocol (RIP)</strong>: a distance-vector protocol that uses hop count as its routing metric; prevents routing loops by limiting the number of hops allowed by a packet in a path between source to destination; outdated and less scalable than protocols like OSPF</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• Interior Gateway Routing Protocol (IGRP): note that IGRP is proprietary and outdated</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• Enhanced Interior Gateway Routing Protocol (EIGRP)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>link state</strong>: (interior) uses router characteristics (e.g. speed, latency, error rates) to make next hop routing decisions; examples:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• <strong>Open Shortest Path First (OSPF)</strong>: an interior gateway routing protocol developed for IP networks based on shortest path first or link-state algorithm; calculates the shortest route to a destination through a network based on an algorithm</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• Intermediate System to Intermediate System (IS-IS)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>path vector</strong>: (exterior) a type of routing protocol used to determine the best path for data to travel across networks, particularly in scenarios involving multiple autonomous systems (AS); most commonly associated with <strong>Border Gateway Protocol (BGP)</strong>: the primary exterior routing protocol used on the internet</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• interior vs exterior:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• interior routing protocols (&quot;myopic&quot;) make next hop decisions based only on info related to the next immediate hop</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• exterior routing protocols (&quot;far-sighted&quot;) make hop decisions based on the entire remaining path (i.e.) vector</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <a href='https://community.cisco.com/t5/networking-knowledge-base/dynamic-routing-protocols-ospf-eigrp-ripv2-is-is-bgp/ta-p/4511577' style='color:#8A6D1E;'>dive in further</a></div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Routed protocols include Internetwork Package Exchange (IPX) and Internet Protocol (IP)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Data Link Layer (2)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Responsible for formatting a packet for transmission</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Adds the source and destination hardware addresses to the frame</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>Media Access Control (MAC)</strong>: a 6-byte (48-bit) binary address written in hex (hexadecimal notation); AKA hardware, physical, or NIC address</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• first 3b/24-bits: Organizationally Unique Identifier (OUI) which denotes manufacturer</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• last 3b/24-bits: unique to that interface</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• ARP, switches and bridges operate at layer 2</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Bridges: connect two physical network segments together</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Switches: layer 2 switches interconnect multiple devices, forwarding data to intended recipient based on MAC address</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Logical Link Control (LLC) is one of two sublayers that make up the Data Link Layer; provides flow and error control, and interfaces to layer 3</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Protocols:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• 802.1x: used for authenticating network devices to a network (network access control)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• ARP: Address Resolution Protocol - translates a (layer 3) IP address to a MAC address</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• L2F: Layer 2 Forwarding - (Cisco) layer 2 tunneling protocol used to establish VPN connections; doesn&#x27;t provide encryption</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• L2TP: Layer 2 tunneling protocol - used to establish VPN connections</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• PPTP: Point-to-Point Tunneling Protocol - used for creating VPNs; does not include encryption/authentication and considered obsolete</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• PPP: Point-to-Point Protocol - encapsulates IP traffic so that it can be transmitted over analog connections and provides authentication, encryption, and compression; replaced SLIP; authentication protocols include Password Authentication Protocol (PAP), Challenge-Handshake Authentication protocol (CHAP), and Extensible Authentication Protocol (EAP)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• RARP: Reverse Address Resolution Protocol - translates a MAC address to an IP address</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Physical Layer (1)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Converts a frame into bits for transmission/receiving over the physical connection medium</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Network hardware devices that function at layer 1 include NICs, hubs, repeaters, concentrators, amplifiers</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Know four basic network topologies:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>star</strong>: each individual node on the network is directly connected to a switch/hub/concentrator</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>mesh</strong>: all systems are interconnected; partial mesh can be created by adding multiple NICs or server clustering</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>ring</strong>: closed loop that connects end devices in a continuous ring (all communication travels in a single direction around the ring);</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• <strong>Multistation Access Unit</strong> (MSAU or MAU) connects individual devices</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#7A6E4E;'>• used in token ring and FDDI networks</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• <strong>bus</strong>: all devices are connected to a single cable (backbone) terminated on both ends</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Know commonly used twisted-pair cable categories</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Know cable types &amp; characteristics</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Protocols:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• 802.11: a family of protocols for wireless local area networks including 802.11a, b, g, n, ac, ax</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Common TCP Ports</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.1 OSI / TCP-IP）</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍OSI 七層（記憶口訣）</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;">由上到下 <strong>All People Seem To Need Delicious Pizza</strong>；由下到上 <strong>Please Do Not Throw Sausage Pizza Away</strong>。</p><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;">7 應用／6 表達（加密、JPEG）／5 會談（simplex/half/full-duplex）／4 傳輸（<strong>TCP 連線導向／UDP 非連線</strong>，PDU=Segment/Datagram）／3 網路（IP/路由，PDU=Packet）／2 資料連結（MAC/ARP/交換器，PDU=Frame）／1 實體（bits/hub）。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍封裝</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>Encapsulation 封裝</strong>：每層把上層 header+payload 當作自己的 payload；接收端反向 <strong>de-encapsulation</strong>。TCP/IP 四層：Application／Transport／Internet／Link。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §4.1.1 OSI / TCP-IP。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §4.1.1 OSI 與 TCP/IP 模型。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§4.1.1 Open System Interconnection (OSI) and Transmission Control Protocol/Internet Protocol (TCP/IP) models</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>TCP/IP</strong>: AKA DARPA or DOD model has four layers: Application (AKA Process), Transport (AKA Host-to-Host), Internet (AKA Internetworking), and Link (AKA Network Interface or Network Access)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>OSI</strong>: Open Systems Interconnection (OSI) Reference Model developed by ISO (International Organization for Standardization) to establish a common communication structure or standard for all computer systems; it is an abstract framework</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Communication between layers via <strong>encapsulation</strong> (at each layer, the previous layer&#x27;s header and payload become the payload of the current layer) and <strong>de-encapsulation</strong> (inverse action occurring as data moves up layers)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Mnemonics:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• from top: All People Seem To Need Delicious Pizza</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• from bottom: Please Do Not Throw Sausage Pizza Away</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Application Layer (7)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Responsible for:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• interfacing user applications, network services, or the operating system with the protocol stack</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• identifying and establishing availability of communication partners</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• determining resource availability</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• synchronizing communication</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Protocols at layer 7 include:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>Session Initiation Protocol (SIP)</strong>: signalling protocol used to init, maintain, modify, and terminate real-time communication session between IP devices; used to establish voice and video calls</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Hypertext Transfer Protocol (HTTP)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• BGP: Border Gateway Protocol - used to exchange routing and reachability information between routers (looking at available paths, picking the best)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Uses data streams</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Presentation Layer (6)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Responsible for transforming data into the format that any system following the OSI model can understand</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• JPEG, ASCII, MIDI etc are used at the presentation layer</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Associated tasks:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• data representation</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• character conversion</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• data compression</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• data encryption</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Protocols at layer 6 include:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• TLS/SSL (encryption),</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• MIME (email formatting),</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• XDR (data representation), and</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• encryption standards like JPEG, GIF, and MPEG</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Uses data streams</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Session Layer (5)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Responsible for establishing, maintaining, and terminating communication sessions between two computers</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Three communication session phases:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• connection establishment</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• <strong>simplex</strong>: one-way</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• <strong>half-duplex</strong>: both comm devices can transmit/receive, but not at the same time</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• <strong>full-duplex</strong>: both comm devices can transmit/receive at same time</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• data transfer</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• connection release</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Protocols at layer 5 include NetBIOS, and RPC</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Uses data streams</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Transport Layer (4)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Responsible for managing the integrity of a connection and controlling the session; providing transparent data transport and end-to-end transmission control</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Defines session rules like how much data each segment can contain, how to verify message integrity, and how to determine whether data has been lost</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Protocols that operate at the Transport layer:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Transmission Control Protocol (TCP)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• the major transport protocol in the internet suite of protocols providing reliable, connection-oriented, full-duplex streams</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• emphasizing: full-duplex, connection-oriented protocol</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• uses three-way handshake using following three steps: synchronize (SYN), synchronize-acknowledge (SYN-ACK), and acknowledge (ACK)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• TCP header flags:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:70px;color:#334155;'>• URG ACK PSH RST SYN FIN (mnemonic: Unskilled Attackers Pester Real Security Folks)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• TCP Packet Header: 10 fields, 160 bits, including source port, destination port, sequence number, acknowledgement number, checksum etc</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• User Datagram Protocol (UDP)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• connectionless protocol that provides fast, best-effort delivery of <strong>datagrams</strong> (self-contained unit of data)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• UDP Datagram Header: 4 fields, 64 bits, including source port, destination port, length of data, checksum</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Transport Layer Security (TLS)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• note: in the OSI model, TLS operates on four layers: Application, Presentation, Session, and Transport; in the TCP/IP model, it operates only on the Transport layer</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Segmentation, sequencing, and error checking occur at the Transport layer</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Network Layer (3)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Responsible for logical addressing, and providing routing or delivery guidance (but not necessarily verifying guaranteed delivery), manages error detection and traffic control</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>Internet Control Message Protocol (ICMP)</strong>: allows network devices to send error and control messages and provides Ping and Traceroute utilities</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>Internet Group Management Protocol (IGMP)</strong>: allows hosts and adjacent routers on IP networks to establish multicast group memberships</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>routing protocols</strong>: move routed protocol messages across a network</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• includes RIP, OSPF, IS-IS, IGRP, IGMP, and BGP</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• routing protocols are defined at the Network Layer and specify how routers communicate</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• routing protocols can be static or dynamic, and categorized as interior or exterior</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>static routing protocol</strong>: requires an admin to create/update routes on the router</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>dynamic</strong>: can discover routers and determine best route to a given destination; routing table is periodically updated</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>distance-vector</strong>: (interior) makes routing decisions based on distance (e.g. hop count), and vector (router egress interface); examples:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• <strong>Routing Information Protocol (RIP)</strong>: a distance-vector protocol that uses hop count as its routing metric; prevents routing loops by limiting the number of hops allowed by a packet in a path between source to destination; outdated and less scalable than protocols like OSPF</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• Interior Gateway Routing Protocol (IGRP): note that IGRP is proprietary and outdated</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• Enhanced Interior Gateway Routing Protocol (EIGRP)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>link state</strong>: (interior) uses router characteristics (e.g. speed, latency, error rates) to make next hop routing decisions; examples:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• <strong>Open Shortest Path First (OSPF)</strong>: an interior gateway routing protocol developed for IP networks based on shortest path first or link-state algorithm; calculates the shortest route to a destination through a network based on an algorithm</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• Intermediate System to Intermediate System (IS-IS)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>path vector</strong>: (exterior) a type of routing protocol used to determine the best path for data to travel across networks, particularly in scenarios involving multiple autonomous systems (AS); most commonly associated with <strong>Border Gateway Protocol (BGP)</strong>: the primary exterior routing protocol used on the internet</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• interior vs exterior:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• interior routing protocols (&quot;myopic&quot;) make next hop decisions based only on info related to the next immediate hop</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• exterior routing protocols (&quot;far-sighted&quot;) make hop decisions based on the entire remaining path (i.e.) vector</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <a href='https://community.cisco.com/t5/networking-knowledge-base/dynamic-routing-protocols-ospf-eigrp-ripv2-is-is-bgp/ta-p/4511577' style='color:#0A6160;'>dive in further</a></div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Routed protocols include Internetwork Package Exchange (IPX) and Internet Protocol (IP)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Data Link Layer (2)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Responsible for formatting a packet for transmission</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Adds the source and destination hardware addresses to the frame</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>Media Access Control (MAC)</strong>: a 6-byte (48-bit) binary address written in hex (hexadecimal notation); AKA hardware, physical, or NIC address</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• first 3b/24-bits: Organizationally Unique Identifier (OUI) which denotes manufacturer</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• last 3b/24-bits: unique to that interface</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• ARP, switches and bridges operate at layer 2</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Bridges: connect two physical network segments together</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Switches: layer 2 switches interconnect multiple devices, forwarding data to intended recipient based on MAC address</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Logical Link Control (LLC) is one of two sublayers that make up the Data Link Layer; provides flow and error control, and interfaces to layer 3</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Protocols:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• 802.1x: used for authenticating network devices to a network (network access control)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• ARP: Address Resolution Protocol - translates a (layer 3) IP address to a MAC address</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• L2F: Layer 2 Forwarding - (Cisco) layer 2 tunneling protocol used to establish VPN connections; doesn&#x27;t provide encryption</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• L2TP: Layer 2 tunneling protocol - used to establish VPN connections</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• PPTP: Point-to-Point Tunneling Protocol - used for creating VPNs; does not include encryption/authentication and considered obsolete</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• PPP: Point-to-Point Protocol - encapsulates IP traffic so that it can be transmitted over analog connections and provides authentication, encryption, and compression; replaced SLIP; authentication protocols include Password Authentication Protocol (PAP), Challenge-Handshake Authentication protocol (CHAP), and Extensible Authentication Protocol (EAP)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• RARP: Reverse Address Resolution Protocol - translates a MAC address to an IP address</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Physical Layer (1)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Converts a frame into bits for transmission/receiving over the physical connection medium</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Network hardware devices that function at layer 1 include NICs, hubs, repeaters, concentrators, amplifiers</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Know four basic network topologies:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>star</strong>: each individual node on the network is directly connected to a switch/hub/concentrator</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>mesh</strong>: all systems are interconnected; partial mesh can be created by adding multiple NICs or server clustering</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>ring</strong>: closed loop that connects end devices in a continuous ring (all communication travels in a single direction around the ring);</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• <strong>Multistation Access Unit</strong> (MSAU or MAU) connects individual devices</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:56px;color:#334155;'>• used in token ring and FDDI networks</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• <strong>bus</strong>: all devices are connected to a single cable (backbone) terminated on both ends</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Know commonly used twisted-pair cable categories</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Know cable types &amp; characteristics</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Protocols:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• 802.11: a family of protocols for wireless local area networks including 802.11a, b, g, n, ac, ax</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Common TCP Ports</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/6X4A6B94vmw" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 4 Review |  Mind Map (1 of 4) | OSI Model ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/6X4A6B94vmw" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 4 Review |  Mind Map (1 of 4) | OSI Model ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/tQCgAteRyIo?t=2289" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 4<span class="ts-note">（從約 38:09 開始）</span> ↗</a>
+        <a href="https://youtu.be/tQCgAteRyIo?t=2289" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 4<span class="ts-note">（從約 38:09 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -209,8 +209,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="index.html" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 16 / 120 · P1-D4-1</span>
   </div>
 

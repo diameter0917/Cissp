@@ -5,184 +5,184 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 32</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 32 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D7-2</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D7-2</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">日誌監控與 SIEM</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">日誌監控與 SIEM</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Logging, Monitoring &amp; SIEM</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:26.67%; background-color:#0E7C7B;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:26.67%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 日誌、監控與 SIEM</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">『看得見』才防得住。今天看<strong>logging/monitoring、SIEM 關聯分析、威脅情報、UEBA</strong>。核心：把海量日誌變成<strong>可行動的告警</strong>，並對抗『告警疲勞』。這正是你本業的戰場。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">今天重點</strong>：logging vs monitoring → SIEM 關聯 → 威脅情報(IOC/TTP) → UEBA → 告警疲勞。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 核心工具</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">工具</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">做什麼</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Logging</strong></td><td style="padding:9px 10px; vertical-align:top;">記錄事件（誰/何時/做什麼）</td></tr>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 日誌、監控與 SIEM</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">『看得見』才防得住。今天看<strong>logging/monitoring、SIEM 關聯分析、威脅情報、UEBA</strong>。核心：把海量日誌變成<strong>可行動的告警</strong>，並對抗『告警疲勞』。這正是你本業的戰場。</p>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">今天重點</strong>：logging vs monitoring → SIEM 關聯 → 威脅情報(IOC/TTP) → UEBA → 告警疲勞。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 核心工具</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">工具</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">做什麼</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Logging</strong></td><td style="padding:9px 10px; vertical-align:top;">記錄事件（誰/何時/做什麼）</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Monitoring</strong></td><td style="padding:9px 10px; vertical-align:top;">即時觀測並告警</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>SIEM</strong></td><td style="padding:9px 10px; vertical-align:top;">集中蒐集＋<strong>關聯</strong>多來源日誌、產生告警</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>SIEM</strong></td><td style="padding:9px 10px; vertical-align:top;">集中蒐集＋<strong>關聯</strong>多來源日誌、產生告警</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Threat Intelligence</strong></td><td style="padding:9px 10px; vertical-align:top;">已知威脅情報（IOC/TTP）餵入比對</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>UEBA</strong></td><td style="padding:9px 10px; vertical-align:top;">以行為基線偵測異常（內部威脅/帳號盜用）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>UEBA</strong></td><td style="padding:9px 10px; vertical-align:top;">以行為基線偵測異常（內部威脅/帳號盜用）</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 SIEM 的價值在『<strong>關聯</strong>』：單一日誌無意義，跨來源關聯才看出攻擊鏈；UEBA 補上『沒有已知特徵的異常行為』。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 對抗告警疲勞</div>
+    <p style="font-size:16px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 SIEM 的價值在『<strong>關聯</strong>』：單一日誌無意義，跨來源關聯才看出攻擊鏈；UEBA 補上『沒有已知特徵的異常行為』。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 對抗告警疲勞</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>調校規則</strong>降低誤報（false positive），保留高價值告警</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>分級與自動化</strong>：SOAR 自動處理低階、人力聚焦高階</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #0E7C7B; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>日誌完整性</strong>：集中、防竄改（write-once）、時間同步（NTP）</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>調校規則</strong>降低誤報（false positive），保留高價值告警</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>分級與自動化</strong>：SOAR 自動處理低階、人力聚焦高階</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>日誌完整性</strong>：集中、防竄改（write-once）、時間同步（NTP）</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SIEM</strong>（安全資訊與事件管理）— <span style="color:#5B6675;">集中關聯日誌並告警。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">IOC</strong>（入侵指標）— <span style="color:#5B6675;">Indicator of Compromise，如惡意 IP/雜湊。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">TTP</strong>（戰術技術程序）— <span style="color:#5B6675;">攻擊者行為模式（對應 MITRE ATT&CK）。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">UEBA</strong>（使用者與實體行為分析）— <span style="color:#5B6675;">以基線偵測異常行為。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SOAR</strong>（安全協調自動化回應）— <span style="color:#5B6675;">自動化告警處理與回應流程。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Alert Fatigue</strong>（告警疲勞）— <span style="color:#5B6675;">過多誤報導致真告警被忽略。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SIEM</strong>（安全資訊與事件管理）— <span style="color:#5B6675;">集中關聯日誌並告警。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">IOC</strong>（入侵指標）— <span style="color:#5B6675;">Indicator of Compromise，如惡意 IP/雜湊。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">TTP</strong>（戰術技術程序）— <span style="color:#5B6675;">攻擊者行為模式（對應 MITRE ATT&CK）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">UEBA</strong>（使用者與實體行為分析）— <span style="color:#5B6675;">以基線偵測異常行為。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SOAR</strong>（安全協調自動化回應）— <span style="color:#5B6675;">自動化告警處理與回應流程。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Alert Fatigue</strong>（告警疲勞）— <span style="color:#5B6675;">過多誤報導致真告警被忽略。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>Logging vs Monitoring</strong>：logging 是『<strong>記錄</strong>』（事後可查）；monitoring 是『<strong>即時觀測＋告警</strong>』。有日誌沒人看＝沒有監控。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>SIEM vs UEBA</strong>：SIEM 多靠<strong>規則/特徵</strong>關聯已知；UEBA 靠<strong>行為基線</strong>抓未知異常。兩者互補。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>Logging vs Monitoring</strong>：logging 是『<strong>記錄</strong>』（事後可查）；monitoring 是『<strong>即時觀測＋告警</strong>』。有日誌沒人看＝沒有監控。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>SIEM vs UEBA</strong>：SIEM 多靠<strong>規則/特徵</strong>關聯已知；UEBA 靠<strong>行為基線</strong>抓未知異常。兩者互補。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-92</strong>（日誌管理）、<strong>SP 800-137</strong>（持續監控 ISCM）；<strong>MITRE ATT&amp;CK</strong> 是 TTP 的通用語彙。日誌須<strong>時間同步（NTP）與防竄改</strong>，否則調查與監管鏈受影響。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：告警淹沒</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 真告警淹沒在雜訊裡</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">多起重大外洩事後發現：入侵<strong>其實有觸發告警</strong>，但因為<strong>每天數萬筆誤報</strong>，真正的關鍵告警被淹沒、無人跟進（如 Target 2013 的惡意程式告警曾被忽略）。問題不是『沒看到』，而是『看不過來』。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：監控的成敗在<strong>訊噪比</strong>——調校規則、UEBA 降噪、SOAR 自動分流，讓人力聚焦真正重要的告警。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-92</strong>（日誌管理）、<strong>SP 800-137</strong>（持續監控 ISCM）；<strong>MITRE ATT&amp;CK</strong> 是 TTP 的通用語彙。日誌須<strong>時間同步（NTP）與防竄改</strong>，否則調查與監管鏈受影響。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 真實事件：告警淹沒</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 真告警淹沒在雜訊裡</div>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;">多起重大外洩事後發現：入侵<strong>其實有觸發告警</strong>，但因為<strong>每天數萬筆誤報</strong>，真正的關鍵告警被淹沒、無人跟進（如 Target 2013 的惡意程式告警曾被忽略）。問題不是『沒看到』，而是『看不過來』。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">教訓：監控的成敗在<strong>訊噪比</strong>——調校規則、UEBA 降噪、SOAR 自動分流，讓人力聚焦真正重要的告警。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『集中關聯多來源日誌找攻擊』→ SIEM；『偵測沒有已知特徵的異常行為/內部威脅』→ UEBA；『自動化回應降低人力』→ SOAR。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>有日誌≠有監控；日誌須時間同步與防竄改才有調查價值。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『集中關聯多來源日誌找攻擊』→ SIEM；『偵測沒有已知特徵的異常行為/內部威脅』→ UEBA；『自動化回應降低人力』→ SOAR。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>有日誌≠有監控；日誌須時間同步與防竄改才有調查價值。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>Logging 記錄、Monitoring 即時告警、SIEM 關聯、UEBA 抓行為異常、SOAR 自動化；成敗在訊噪比與日誌完整性。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . SIEM 最核心的價值是什麼？<br><span style="color:#0A5A59;">→ 跨來源日誌的關聯分析（看出單一日誌看不出的攻擊）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 偵測無已知特徵的異常行為用什麼？<br><span style="color:#0A5A59;">→ UEBA（行為基線分析）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . 為何日誌需 NTP 時間同步？<br><span style="color:#0A5A59;">→ 跨系統關聯與證據時間軸需一致，否則調查失準。</span></p>
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>Logging 記錄、Monitoring 即時告警、SIEM 關聯、UEBA 抓行為異常、SOAR 自動化；成敗在訊噪比與日誌完整性。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . SIEM 最核心的價值是什麼？<br><span style="color:#0A6160;">→ 跨來源日誌的關聯分析（看出單一日誌看不出的攻擊）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 偵測無已知特徵的異常行為用什麼？<br><span style="color:#0A6160;">→ UEBA（行為基線分析）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 為何日誌需 NTP 時間同步？<br><span style="color:#0A6160;">→ 跨系統關聯與證據時間軸需一致，否則調查失準。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.2 日誌監控 / §7.7.2 IDS）</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍日誌與 SIEM</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>SIEM</strong>：彙整/正規化/<strong>關聯 correlation</strong>/安全儲存/分析/報告。日誌須<strong>NTP 時間同步</strong>、集中唯讀防竄改。Egress monitoring（DLP/浮水印）防外洩。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍入侵偵測</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>IDS 偵測告警 vs IPS 主動阻擋</strong>；<strong>knowledge/signature 特徵式</strong>（抓已知）vs <strong>behavior/anomaly 行為式</strong>（抓未知/零日，需 baseline）。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §7.2 日誌監控 / §7.7.2 IDS。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §7.2 日誌監控、§7.7.2 IDS/IPS。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§Conduct logging and monitoring activities (OSG-10 Chpts 17,21)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.2.1 Intrusion detection and prevention system (IDPS)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Intrusion</strong>: a security event, or a combination of multiple security events that constitutes an incident; occurs when an attacker attempts to bypass or can bypass/thwart security mechanisms and access an organization’s resources without the authority to do so</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Intrusion detection</strong>: a specific form of monitoring events, usually in real time, to detect abnormal activity indicating a potential incident or intrusion</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Intrusion Detection System (IDS)</strong>: (AKA burglar alarms) is a security service that monitors and analyzes network or system events for the purpose of finding/providing realtime/neartime warnings of unauthorized attempts to access system resources; automates the inspection of logs and real-time system events to detect intrusion attempts and system failures</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• an IDS is intended as part of a defense-in-depth security plan</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Intrusion Prevention Systems (IPS)</strong>: an IPS is a security service that uses available info to determine if an attack is underway, alerting and also blocking attacks from reaching intended target; includes detection capabilities, you’ll also see them referred to as intrusion detection and prevention systems (IDPSs)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• an IPS can be a signature-based detection system which matches traffic patterns against a database of known attack signatures; it can be anomaly or behavior-based detection, that starts with a baseline, comparing activity to the baseline to detect abnormal activity; IPS can also be policy-based, comparing activity to predefined security policies, or hybrid of these</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <a href='https://csrc.nist.gov/pubs/sp/800/94/final' style='color:#8A6D1E;'>NIST SP 800-94</a> Guide to Intrusion Detection and Prevention Systems provides comprehensive (albeit outdated) coverage of both IDS and IPS</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.2.2 Security Information and Event Management (SIEM)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Security Information and Event Management (SIEM): systems that ingest logs from multiple sources, compile and analyze log entries, and report relevant information</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• SIEM systems are complex and require expertise to install and tune</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• require a properly trained team that understands how to read and interpret info, and escalation procedures to follow when a legitimate alert is raised</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• SIEM systems represent technology, process, and people, and each is important to overall effectiveness</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• a SIEM includes significant intelligence functionality, allowing large amounts of logged events and analysis and correlation of the same to occur very quickly</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• SIEM solutions enhance threat detection and incident response, provide visibility and compliance management, and with AI and automation improve the security team&#x27;s effectiveness</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Key capabilities include:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Aggregation</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Normalization</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Correlation</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Secure storage</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Analysis</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Reporting</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Security Orchestration, Automation, and Response (SOAR)</strong>: refers to a group of technologies that allow orgs to respond to some incidents automatically; SOAR tech automates responses to incidents; a primary benefit is that this reduces the workload of admins, and it removes/reduces the possibility of human error by having a computer/system respond</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Playbook</strong>: a document or checklist that defines how to respond to an incident</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Runbook</strong>: implementation of the playbook&#x27;s documented processes; implements the playbook&#x27;s content, translating steps into automated actions</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• SOAR allows security admins to define these incidents and the response, typically using playbooks and runbooks</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Both SOAR and SIEM platforms can help detect and, in the case of SOAR, respond to threats against your software development efforts</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• devs can be resistant to anything that slows down the development process, and this is where DevSecOps can help build the right culture, and balance the needs of developers and security</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.2.3 Continuous monitoring and tuning</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Effective continuous monitoring encompasses technology, processes, and people</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Continuous monitoring steps are:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Define</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Establish</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Implement</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Analyze/report</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Respond</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#7A6E4E;'>• Review/update</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Monitoring</strong>: the process of reviewing information logs, looking for something specific</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• necessary to detect malicious actions by subjects as well as attempted intrusions and system failures</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• can help reconstruct events, provide evidence for prosecution, and create reports for analysis</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• continuous monitoring ensures that all events are recorded and can be investigated later if necessary</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• monitoring is a form of auditing that focuses on active review of log file data; it&#x27;s used to hold subjects accountable for their actions and to detect abnormal or malicious activities</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• it is also used to gauge system performance</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• tools like IDSs and SIEMs automate continuous monitoring and provide real-time analysis of events, including monitoring both ingress and egress network traffic</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Log analysis</strong>: a detailed and systematic form of monitoring where logged info is analyzed for trends and patterns as well as abnormal, unauthorized, illegal, and policy-violating activities</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• log analysis isn’t necessarily in response to an incident, it’s a periodic task</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• After a SIEM is set up, configured, tuned, and running, it must be routinely updated and continuously monitored to function effectively</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Tuning</strong>: tuning a SIEM is inherently the process of reducing <strong>false positives</strong> (incorrectly classifying a benign activity, system state, or configuration as malicious or vulnerable), while not incurring <strong>false negatives</strong> (NOT alerting on a true malicious activity or vulnerability); false positives can result in analyst fatigue and reduced efficiency</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.2.4 Egress monitoring</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• It’s important to monitor traffic exiting as well as entering a network, and <strong>Egress monitoring</strong> refers to monitoring outgoing traffic to detect unauthorized data transfer outside the org (AKA data exfiltration)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• Common methods used to detect or prevent data exfiltration are data loss prevention (DLP) techniques and monitoring for steganography</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.2.5 Log management</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Log management</strong>: refers to all the methods used to collect, process, analyze, and protect log entries (see SIEM definition above)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>rollover logging</strong>: allows admins to set a maximum log size, when the log reaches that max, the system begins overwriting the oldest events in the log</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.2.6 Threat intelligence (e.g. threat feeds, threat hunting)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Threat intelligence</strong>: an umbrella term encompassing threat research and analysis and emerging threat trends; gathering data on potential threats, including various sources to get timely info on current threats; information that is aggregated, transformed, analyzed, interpreted, or enriched to provide the necessary context for the decision-making process</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Threat feed</strong>: provide orgs with a steady stream of raw data providing security admins with threat feeds to understand current threats; by using this knowledge to search through the network they can engage in threat hunting looking for signs of these threats</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Structured Threat Information eXpression (STIX)</strong>: a standardized language that uses a JSON-based lexicon to express and share threat intelligence information in a readable and consistent format</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Trusted Automated eXchange of Intelligence Information (TAXII)</strong>: the format through which threat intelligence data is transmitted; TAXII is a transport protocol that supports transferring STIX insights over Hyper Text Transfer Protocol Secure (HTTPS)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Threat hunting</strong>: a proactive search across an org’s network and endpoints to identify malicious activity that has evaded traditional automated security tools; threat hunting assumes an attacker may already be present in the environment</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Kill chain</strong>: military model (used for both offense and defense):</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• find/identify a target through reconnaissance</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• get the target’s location</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• track the target’s movement</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• select a weapon to use on the target</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• engage the target with the selected weapon</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• evaluate the effectiveness of the attack</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Orgs have adapted this model for cybersecurity: Lockheed Martin created the <strong>Cyber Kill Chain</strong> framework including seven ordered stages of an attack:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>reconnaissance</strong>: attackers gather info on the target</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>weaponization</strong>: attackers identify an exploit that the target is vulnerable to, along with methods to send the exploit</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>delivery</strong>: attackers send the weapon to the target via phishing attacks, malicious email attachments, compromised websites, or other common social engineering methods</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>exploitation</strong>: the weapon exploits a vulnerability on the target system</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>installation</strong>: code that exploits the vulnerability then installs malware with a backdoor allowing attacker remote access</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>command and control</strong>: attackers maintain a command and control system, which controls the target and other compromised systems</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• <strong>actions on objectives</strong>: attackers execute their original goals such as theft of money, or data, destruction of assets, or installing additional malicious code (eg. ransomware)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.2.7 User and Entity Behavior Analytics (UEBA)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>UEBA (aka UBA)</strong>: focuses on the analysis of user and entity behavior as a way of detecting inappropriate or unauthorized activity (e.g. fraud, malware, insider attacks etc); analysis engines are typically included with SIEM solutions or may be added via subscription; UEBA tools develop profiles of individual behavior and monitor users for deviations from those profiles that may indicate malicious activity and/or compromised accounts</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Behavior-based detection</strong>: AKA statistical intrusion, anomaly, and heuristics-based detection, starts by creating a baseline of normal activities and events; once enough baseline data has been accumulated to determine normal activity, it can detect abnormal activity (that may indicate a malicious intrusion or event)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Behavior-based IDSs use the baseline, activity statistics, and heuristic evaluation techniques to compare current activity against previous activity to detect potentially malicious events</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Static code scanning techniques</strong>: the scanner scans code in files, similar to white box testing</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Dynamic techniques</strong>: the scanner runs executable files in a sandbox to observe their behavior</div>
-<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§7.7.2 Intrusion Detection Systems (IDS) and Intrusion Prevention Systems (IPS)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Intrusion Detection Systems (IDSs) and Intrusion Prevention Systems (IPSs) are two methods organizations typically implement to detect and prevent attacks</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Intrusion detection</strong>: a specific form of monitoring events, usually in real time, to detect abnormal activity indicating a potential incident or intrusion</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Intrusion Detection System (IDS) automates the inspection of logs and real-time system events to detect intrusion attempts and system failures</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• IDSs are an effective method of detecting many DoS and DDoS attacks</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• an IDS actively watches for suspicious activity by monitoring network traffic and inspecting logs</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• an IDS is intended as part of a defense-in-depth security plan</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>knowledge-based detection</strong>: AKA signature-based or pattern-matching detection, the most common method used by an IDS</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>behavior-based detection</strong>: AKA statistical intrusion, anomaly, and heuristics-based detection; behavior-based IDSs use baseline, activity stats, and heuristic eval techniques to compare current activity against previous activity to detect potentially malicious events</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• An IPS includes detection capabilities, you’ll see them referred to as intrusion detection and prevention systems (IDPSs)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• an IPS includes all the capabilities of an IDS but can also take additional steps to stop or prevent intrusions</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• IDS/IPS should be deployed at strategic network locations to monitor traffic, such as at the perimeters, or between network segments, and should be configured to alert for specific types of scans and traffic patterns</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• See NIST SP 800-94</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.2 日誌監控 / §7.7.2 IDS）</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍日誌與 SIEM</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>SIEM</strong>：彙整/正規化/<strong>關聯 correlation</strong>/安全儲存/分析/報告。日誌須<strong>NTP 時間同步</strong>、集中唯讀防竄改。Egress monitoring（DLP/浮水印）防外洩。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍入侵偵測</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>IDS 偵測告警 vs IPS 主動阻擋</strong>；<strong>knowledge/signature 特徵式</strong>（抓已知）vs <strong>behavior/anomaly 行為式</strong>（抓未知/零日，需 baseline）。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §7.2 日誌監控 / §7.7.2 IDS。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §7.2 日誌監控、§7.7.2 IDS/IPS。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§Conduct logging and monitoring activities (OSG-10 Chpts 17,21)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.2.1 Intrusion detection and prevention system (IDPS)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Intrusion</strong>: a security event, or a combination of multiple security events that constitutes an incident; occurs when an attacker attempts to bypass or can bypass/thwart security mechanisms and access an organization’s resources without the authority to do so</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Intrusion detection</strong>: a specific form of monitoring events, usually in real time, to detect abnormal activity indicating a potential incident or intrusion</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Intrusion Detection System (IDS)</strong>: (AKA burglar alarms) is a security service that monitors and analyzes network or system events for the purpose of finding/providing realtime/neartime warnings of unauthorized attempts to access system resources; automates the inspection of logs and real-time system events to detect intrusion attempts and system failures</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• an IDS is intended as part of a defense-in-depth security plan</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Intrusion Prevention Systems (IPS)</strong>: an IPS is a security service that uses available info to determine if an attack is underway, alerting and also blocking attacks from reaching intended target; includes detection capabilities, you’ll also see them referred to as intrusion detection and prevention systems (IDPSs)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• an IPS can be a signature-based detection system which matches traffic patterns against a database of known attack signatures; it can be anomaly or behavior-based detection, that starts with a baseline, comparing activity to the baseline to detect abnormal activity; IPS can also be policy-based, comparing activity to predefined security policies, or hybrid of these</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <a href='https://csrc.nist.gov/pubs/sp/800/94/final' style='color:#0A6160;'>NIST SP 800-94</a> Guide to Intrusion Detection and Prevention Systems provides comprehensive (albeit outdated) coverage of both IDS and IPS</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.2.2 Security Information and Event Management (SIEM)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Security Information and Event Management (SIEM): systems that ingest logs from multiple sources, compile and analyze log entries, and report relevant information</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• SIEM systems are complex and require expertise to install and tune</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• require a properly trained team that understands how to read and interpret info, and escalation procedures to follow when a legitimate alert is raised</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• SIEM systems represent technology, process, and people, and each is important to overall effectiveness</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• a SIEM includes significant intelligence functionality, allowing large amounts of logged events and analysis and correlation of the same to occur very quickly</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• SIEM solutions enhance threat detection and incident response, provide visibility and compliance management, and with AI and automation improve the security team&#x27;s effectiveness</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Key capabilities include:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Aggregation</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Normalization</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Correlation</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Secure storage</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Analysis</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Reporting</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Security Orchestration, Automation, and Response (SOAR)</strong>: refers to a group of technologies that allow orgs to respond to some incidents automatically; SOAR tech automates responses to incidents; a primary benefit is that this reduces the workload of admins, and it removes/reduces the possibility of human error by having a computer/system respond</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Playbook</strong>: a document or checklist that defines how to respond to an incident</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Runbook</strong>: implementation of the playbook&#x27;s documented processes; implements the playbook&#x27;s content, translating steps into automated actions</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• SOAR allows security admins to define these incidents and the response, typically using playbooks and runbooks</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Both SOAR and SIEM platforms can help detect and, in the case of SOAR, respond to threats against your software development efforts</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• devs can be resistant to anything that slows down the development process, and this is where DevSecOps can help build the right culture, and balance the needs of developers and security</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.2.3 Continuous monitoring and tuning</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Effective continuous monitoring encompasses technology, processes, and people</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Continuous monitoring steps are:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Define</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Establish</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Implement</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Analyze/report</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Respond</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:42px;color:#334155;'>• Review/update</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Monitoring</strong>: the process of reviewing information logs, looking for something specific</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• necessary to detect malicious actions by subjects as well as attempted intrusions and system failures</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• can help reconstruct events, provide evidence for prosecution, and create reports for analysis</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• continuous monitoring ensures that all events are recorded and can be investigated later if necessary</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• monitoring is a form of auditing that focuses on active review of log file data; it&#x27;s used to hold subjects accountable for their actions and to detect abnormal or malicious activities</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• it is also used to gauge system performance</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• tools like IDSs and SIEMs automate continuous monitoring and provide real-time analysis of events, including monitoring both ingress and egress network traffic</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Log analysis</strong>: a detailed and systematic form of monitoring where logged info is analyzed for trends and patterns as well as abnormal, unauthorized, illegal, and policy-violating activities</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• log analysis isn’t necessarily in response to an incident, it’s a periodic task</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• After a SIEM is set up, configured, tuned, and running, it must be routinely updated and continuously monitored to function effectively</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Tuning</strong>: tuning a SIEM is inherently the process of reducing <strong>false positives</strong> (incorrectly classifying a benign activity, system state, or configuration as malicious or vulnerable), while not incurring <strong>false negatives</strong> (NOT alerting on a true malicious activity or vulnerability); false positives can result in analyst fatigue and reduced efficiency</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.2.4 Egress monitoring</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• It’s important to monitor traffic exiting as well as entering a network, and <strong>Egress monitoring</strong> refers to monitoring outgoing traffic to detect unauthorized data transfer outside the org (AKA data exfiltration)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• Common methods used to detect or prevent data exfiltration are data loss prevention (DLP) techniques and monitoring for steganography</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.2.5 Log management</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Log management</strong>: refers to all the methods used to collect, process, analyze, and protect log entries (see SIEM definition above)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>rollover logging</strong>: allows admins to set a maximum log size, when the log reaches that max, the system begins overwriting the oldest events in the log</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.2.6 Threat intelligence (e.g. threat feeds, threat hunting)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Threat intelligence</strong>: an umbrella term encompassing threat research and analysis and emerging threat trends; gathering data on potential threats, including various sources to get timely info on current threats; information that is aggregated, transformed, analyzed, interpreted, or enriched to provide the necessary context for the decision-making process</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Threat feed</strong>: provide orgs with a steady stream of raw data providing security admins with threat feeds to understand current threats; by using this knowledge to search through the network they can engage in threat hunting looking for signs of these threats</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Structured Threat Information eXpression (STIX)</strong>: a standardized language that uses a JSON-based lexicon to express and share threat intelligence information in a readable and consistent format</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Trusted Automated eXchange of Intelligence Information (TAXII)</strong>: the format through which threat intelligence data is transmitted; TAXII is a transport protocol that supports transferring STIX insights over Hyper Text Transfer Protocol Secure (HTTPS)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Threat hunting</strong>: a proactive search across an org’s network and endpoints to identify malicious activity that has evaded traditional automated security tools; threat hunting assumes an attacker may already be present in the environment</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Kill chain</strong>: military model (used for both offense and defense):</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• find/identify a target through reconnaissance</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• get the target’s location</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• track the target’s movement</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• select a weapon to use on the target</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• engage the target with the selected weapon</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• evaluate the effectiveness of the attack</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Orgs have adapted this model for cybersecurity: Lockheed Martin created the <strong>Cyber Kill Chain</strong> framework including seven ordered stages of an attack:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>reconnaissance</strong>: attackers gather info on the target</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>weaponization</strong>: attackers identify an exploit that the target is vulnerable to, along with methods to send the exploit</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>delivery</strong>: attackers send the weapon to the target via phishing attacks, malicious email attachments, compromised websites, or other common social engineering methods</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>exploitation</strong>: the weapon exploits a vulnerability on the target system</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>installation</strong>: code that exploits the vulnerability then installs malware with a backdoor allowing attacker remote access</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>command and control</strong>: attackers maintain a command and control system, which controls the target and other compromised systems</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• <strong>actions on objectives</strong>: attackers execute their original goals such as theft of money, or data, destruction of assets, or installing additional malicious code (eg. ransomware)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.2.7 User and Entity Behavior Analytics (UEBA)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>UEBA (aka UBA)</strong>: focuses on the analysis of user and entity behavior as a way of detecting inappropriate or unauthorized activity (e.g. fraud, malware, insider attacks etc); analysis engines are typically included with SIEM solutions or may be added via subscription; UEBA tools develop profiles of individual behavior and monitor users for deviations from those profiles that may indicate malicious activity and/or compromised accounts</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Behavior-based detection</strong>: AKA statistical intrusion, anomaly, and heuristics-based detection, starts by creating a baseline of normal activities and events; once enough baseline data has been accumulated to determine normal activity, it can detect abnormal activity (that may indicate a malicious intrusion or event)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Behavior-based IDSs use the baseline, activity statistics, and heuristic evaluation techniques to compare current activity against previous activity to detect potentially malicious events</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Static code scanning techniques</strong>: the scanner scans code in files, similar to white box testing</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Dynamic techniques</strong>: the scanner runs executable files in a sandbox to observe their behavior</div>
+<div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§7.7.2 Intrusion Detection Systems (IDS) and Intrusion Prevention Systems (IPS)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Intrusion Detection Systems (IDSs) and Intrusion Prevention Systems (IPSs) are two methods organizations typically implement to detect and prevent attacks</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Intrusion detection</strong>: a specific form of monitoring events, usually in real time, to detect abnormal activity indicating a potential incident or intrusion</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Intrusion Detection System (IDS) automates the inspection of logs and real-time system events to detect intrusion attempts and system failures</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• IDSs are an effective method of detecting many DoS and DDoS attacks</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• an IDS actively watches for suspicious activity by monitoring network traffic and inspecting logs</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• an IDS is intended as part of a defense-in-depth security plan</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>knowledge-based detection</strong>: AKA signature-based or pattern-matching detection, the most common method used by an IDS</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>behavior-based detection</strong>: AKA statistical intrusion, anomaly, and heuristics-based detection; behavior-based IDSs use baseline, activity stats, and heuristic eval techniques to compare current activity against previous activity to detect potentially malicious events</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• An IPS includes detection capabilities, you’ll see them referred to as intrusion detection and prevention systems (IDPSs)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• an IPS includes all the capabilities of an IDS but can also take additional steps to stop or prevent intrusions</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• IDS/IPS should be deployed at strategic network locations to monitor traffic, such as at the perimeters, or between network segments, and should be configured to alert for specific types of scans and traffic patterns</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• See NIST SP 800-94</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/PwxFwndQ7Jk" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/PwxFwndQ7Jk" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/8zM89KMRniM?t=1344" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 22:24 開始）</span> ↗</a>
+        <a href="https://youtu.be/8zM89KMRniM?t=1344" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 22:24 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -190,8 +190,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="index.html" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 32 / 120 · P1-D7-2</span>
   </div>
 

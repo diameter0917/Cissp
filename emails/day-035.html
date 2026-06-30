@@ -5,112 +5,112 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 35</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 35 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0E7C7B; padding:4px 9px; border-radius:5px;">P1-D7-5</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P1-D7-5</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">初期 · 章節輪廓 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">事件管理與災難復原</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">事件管理與災難復原</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Incident Management &amp; DR</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:29.17%; background-color:#0E7C7B;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:29.17%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 事件管理與災難復原</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">Domain 7 收尾：<strong>事件回應生命週期</strong>與<strong>災難復原（DR）</strong>。當預防失敗，能否<strong>快速偵測、回應、復原</strong>決定損失大小。這也呼應 Domain 1 的 BCP。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週回顧</strong>：①調查鑑識 → ②日誌/SIEM → ③組態/變更/修補 → ④維運/特權 → ⑤<strong>今天：事件管理與 DR</strong>。下週進入 Domain 8（軟體開發安全）。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 事件回應生命週期</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 事件管理與災難復原</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">Domain 7 收尾：<strong>事件回應生命週期</strong>與<strong>災難復原（DR）</strong>。當預防失敗，能否<strong>快速偵測、回應、復原</strong>決定損失大小。這也呼應 Domain 1 的 BCP。</p>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">本週回顧</strong>：①調查鑑識 → ②日誌/SIEM → ③組態/變更/修補 → ④維運/特權 → ⑤<strong>今天：事件管理與 DR</strong>。下週進入 Domain 8（軟體開發安全）。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 事件回應生命週期</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:4px 0;">
-      <tr><td style="text-align:center; background-color:#0E7C7B; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">準備</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#3E9A99; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">偵測/分析</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#6FB8B7; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">遏制</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#15233B; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">根除</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#15233B; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">復原</td><td style="text-align:center; color:#5B6675; font-size:16px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#15233B; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">經驗學習</td></tr>
+      <tr><td style="text-align:center; background-color:#0A6160; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">準備</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#3E9A99; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">偵測/分析</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#6FB8B7; color:#FFFFFF; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">遏制</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#0F1B2D; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">根除</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#0F1B2D; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">復原</td><td style="text-align:center; color:#5B6675; font-size:17px;">→</td><td style="text-align:center; background-color:#9CCFCE; color:#0F1B2D; padding:11px 5px; border-radius:6px; font-size:12px; vertical-align:middle;">經驗學習</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;"><strong>Containment（遏制）</strong>先止血、避免擴散；<strong>Eradication（根除）</strong>清除病灶；<strong>Recovery（復原）</strong>回到正常並監看；最後<strong>Lessons Learned</strong> 回饋改善。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 災難復原與備援站點</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">站點</td><td style="padding:8px 10px;">就緒度</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">成本/復原速度</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Hot site</strong> 熱站</td><td style="padding:9px 10px; vertical-align:top;">設備+資料即時就緒</td><td style="padding:9px 10px; vertical-align:top;">最貴/最快</td></tr>
+    <p style="font-size:16px; line-height:1.8; margin:8px 0 4px; color:#5B6675;"><strong>Containment（遏制）</strong>先止血、避免擴散；<strong>Eradication（根除）</strong>清除病灶；<strong>Recovery（復原）</strong>回到正常並監看；最後<strong>Lessons Learned</strong> 回饋改善。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 災難復原與備援站點</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">站點</td><td style="padding:8px 10px;">就緒度</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">成本/復原速度</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Hot site</strong> 熱站</td><td style="padding:9px 10px; vertical-align:top;">設備+資料即時就緒</td><td style="padding:9px 10px; vertical-align:top;">最貴/最快</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Warm site</strong> 溫站</td><td style="padding:9px 10px; vertical-align:top;">設備就緒、資料需載入</td><td style="padding:9px 10px; vertical-align:top;">中/中</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>Cold site</strong> 冷站</td><td style="padding:9px 10px; vertical-align:top;">僅空間與基礎設施</td><td style="padding:9px 10px; vertical-align:top;">最便宜/最慢</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Cold site</strong> 冷站</td><td style="padding:9px 10px; vertical-align:top;">僅空間與基礎設施</td><td style="padding:9px 10px; vertical-align:top;">最便宜/最慢</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 <strong>RTO</strong>（多快救回）與 <strong>RPO</strong>（可容忍丟多少資料）決定該選哪種站點與備份頻率（細節 D7/D1 已鋪陳）。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 關鍵名詞速查</div>
+    <p style="font-size:16px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 <strong>RTO</strong>（多快救回）與 <strong>RPO</strong>（可容忍丟多少資料）決定該選哪種站點與備份頻率（細節 D7/D1 已鋪陳）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Incident Response</strong>（事件回應）— <span style="color:#5B6675;">準備→偵測→遏制→根除→復原→經驗的循環。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Containment</strong>（遏制）— <span style="color:#5B6675;">限制事件擴散、止血。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RTO</strong>（復原時間目標）— <span style="color:#5B6675;">可容忍的最長中斷時間。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RPO</strong>（復原點目標）— <span style="color:#5B6675;">可容忍的最大資料遺失量。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Hot/Warm/Cold Site</strong>（備援站點）— <span style="color:#5B6675;">就緒度與成本/速度的取捨。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">3-2-1 Backup</strong>（備份原則）— <span style="color:#5B6675;">3 份、2 種媒體、1 份異地（離線）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Incident Response</strong>（事件回應）— <span style="color:#5B6675;">準備→偵測→遏制→根除→復原→經驗的循環。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Containment</strong>（遏制）— <span style="color:#5B6675;">限制事件擴散、止血。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">RTO</strong>（復原時間目標）— <span style="color:#5B6675;">可容忍的最長中斷時間。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">RPO</strong>（復原點目標）— <span style="color:#5B6675;">可容忍的最大資料遺失量。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Hot/Warm/Cold Site</strong>（備援站點）— <span style="color:#5B6675;">就緒度與成本/速度的取捨。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">3-2-1 Backup</strong>（備份原則）— <span style="color:#5B6675;">3 份、2 種媒體、1 份異地（離線）。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>RTO vs RPO</strong>：RTO＝『多快要<strong>救回服務</strong>』（時間）；RPO＝『可接受<strong>丟多少資料</strong>』（資料量/備份頻率）。兩者驅動 DR 設計。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>遏制 vs 根除</strong>：先<strong>遏制</strong>（止血、隔離）再<strong>根除</strong>（清除病灶）。順序錯（先重建未根除）會再次淪陷。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>RTO vs RPO</strong>：RTO＝『多快要<strong>救回服務</strong>』（時間）；RPO＝『可接受<strong>丟多少資料</strong>』（資料量/備份頻率）。兩者驅動 DR 設計。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>遏制 vs 根除</strong>：先<strong>遏制</strong>（止血、隔離）再<strong>根除</strong>（清除病灶）。順序錯（先重建未根除）會再次淪陷。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-61</strong>（事件處理指南）定義生命週期；<strong>SP 800-34</strong>（應變計畫）與 <strong>ISO 22301</strong>（營運持續）規範 DR/BC。勒索防禦核心是<strong>離線/不可變備份＋還原演練</strong>（呼應 Domain 6）。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0E7C7B; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 真實事件：Colonial Pipeline 2021</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 一條輸油管，半個美東加油站缺油</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">2021 年美國最大燃油管線 <strong>Colonial Pipeline</strong> 遭 <strong>DarkSide 勒索軟體</strong>攻擊，公司<strong>主動停運</strong>以遏制擴散，造成東岸大規模燃油短缺，最終支付數百萬美元贖金（部分後被追回）。入侵起點是一個<strong>未啟用 MFA 的 VPN 帳號</strong>（呼應 Domain 5）。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：事件回應的<strong>遏制決策</strong>（停運止血）影響巨大；預防面的 MFA、修補、備份缺一不可。可用性中斷可升級為全國級危機。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-61</strong>（事件處理指南）定義生命週期；<strong>SP 800-34</strong>（應變計畫）與 <strong>ISO 22301</strong>（營運持續）規範 DR/BC。勒索防禦核心是<strong>離線/不可變備份＋還原演練</strong>（呼應 Domain 6）。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 真實事件：Colonial Pipeline 2021</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 一條輸油管，半個美東加油站缺油</div>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;">2021 年美國最大燃油管線 <strong>Colonial Pipeline</strong> 遭 <strong>DarkSide 勒索軟體</strong>攻擊，公司<strong>主動停運</strong>以遏制擴散，造成東岸大規模燃油短缺，最終支付數百萬美元贖金（部分後被追回）。入侵起點是一個<strong>未啟用 MFA 的 VPN 帳號</strong>（呼應 Domain 5）。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">教訓：事件回應的<strong>遏制決策</strong>（停運止血）影響巨大；預防面的 MFA、修補、備份缺一不可。可用性中斷可升級為全國級危機。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>事件回應步驟<strong>順序</strong>（準備→偵測→遏制→根除→復原→經驗）；『先止血』＝<strong>Containment</strong>。RTO/RPO 與站點選擇。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>遏制要先於根除/復原；備份要<strong>離線且測過還原</strong>才擋得住勒索。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>高頻考點：</strong>事件回應步驟<strong>順序</strong>（準備→偵測→遏制→根除→復原→經驗）；『先止血』＝<strong>Containment</strong>。RTO/RPO 與站點選擇。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>遏制要先於根除/復原；備份要<strong>離線且測過還原</strong>才擋得住勒索。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>事件回應：準備→偵測→遏制→根除→復原→經驗；DR 用 RTO/RPO 決定熱/溫/冷站與備份；勒索靠離線備份＋還原演練。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 事件回應中『先止血、防擴散』是哪一步？<br><span style="color:#0A5A59;">→ Containment 遏制（在根除與復原之前）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . RTO 與 RPO 分別衡量什麼？<br><span style="color:#0A5A59;">→ RTO＝可容忍中斷時間；RPO＝可容忍資料遺失量。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . Colonial Pipeline 2021 的入侵起點？<br><span style="color:#0A5A59;">→ 一個未啟用 MFA 的 VPN 帳號（勒索軟體）。</span></p>
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>事件回應：準備→偵測→遏制→根除→復原→經驗；DR 用 RTO/RPO 決定熱/溫/冷站與備份；勒索靠離線備份＋還原演練。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 事件回應中『先止血、防擴散』是哪一步？<br><span style="color:#0A6160;">→ Containment 遏制（在根除與復原之前）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . RTO 與 RPO 分別衡量什麼？<br><span style="color:#0A6160;">→ RTO＝可容忍中斷時間；RPO＝可容忍資料遺失量。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Colonial Pipeline 2021 的入侵起點？<br><span style="color:#0A6160;">→ 一個未啟用 MFA 的 VPN 帳號（勒索軟體）。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.6 事件管理 / §7.10 復原）</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍事件回應步驟（DRMRRRL）</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;">Preparation → <strong>Detection 偵測 → Response 回應 → Mitigation 緩解(containment 控制) → Reporting 報告 → Recovery 復原 → Remediation 矯正(根因) → Lessons Learned 教訓</strong>。<strong>緩解＝控制不是修好；不得反擊攻擊者</strong>。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍復原指標</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>RPO</strong>（可容忍資料遺失）／<strong>RTO</strong>（可容忍復原時間）／<strong>WRT</strong>（驗證整合時間）／<strong>MTD</strong>（最大可容忍中斷）。站點：hot/warm/cold。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §7.6 事件管理 / §7.10 復原。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §7.6 事件管理、§7.10 復原策略。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§7.6.1 Detection</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Detection:</strong> the identification of potential security incidents via monitoring and analyzing security logs, threat intelligence, or incident reports; as above, understanding the distinction between an event and an incident, the goal of detection is to identify an adverse event (an incident) and begin dealing with it</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Common methods to detect incidents:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• intrusion detection and prevention systems</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• antimalware</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• automated tools that scan audit logs looking for predefined events</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• end users sometimes detect irregular activity and contact support</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Note: receiving an alert or complaint doesn’t always mean an incident has occurred</div>
-<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§7.10.2 Recovery site strategies (e.g., cold vs. hot, resource capacity agreements)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Non-disaster: service disruption with significant but limited impact</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Disaster</strong>: event that causes an entire site to be unusable for a day or longer (usually requires alternate processing facility)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Natural disaster</strong>: events that commonly threaten orgs including earthquakes, floods, storms, fires, tsunamis, and volcanic eruptions</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Human-caused disasters</strong>: explosions, electrical fires, terrorist acts, power outages and other utility failures, hardware/software failures, labor difficulties, theft, vandalism, etc.</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Catastrophe: major disruption that destroys the facility altogether</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• For disasters and catastrophes, an org has 3 basic options:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• use a dedicated site that the org owns/operates</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• lease a commercial facility (hot, warm, cold site)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• enter into a formal agreement with another facility/org</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• When a disaster interrupts a business, a disaster recovery plan should kick in nearly automatically and begin providing support for recovery operations</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• in addition to improving your response capabilities, purchasing insurance can reduce the impact of financial losses</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Recovery site strategies consider multiple elements of an organization, such as people, data, infrastructure, and cost, as well as factors like availability and location</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• When designing a disaster recovery plan, it’s important to keep your goal in mind — the restoration of workgroups to the point that they can resume their activities in their usual work locations</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• sometimes it&#x27;s best to develop separate recovery facilities for different work groups</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• To recover your business operations with the greatest possible efficiency, you should engineer the disaster recovery plan so that those business units with the highest priority are recovered first</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Mutual Assistance Agreements (MAA)</strong>: provide an inexpensive alternative to disaster recovery sites; *not commonly used* because they are difficult to enforce; orgs participating in an MAA may also be shut down by the same disaster, and MAAs raise confidentiality concerns</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Resource Capacity Agreements</strong>: pre-arranged vendor agreements to secure the necessary resources required after a disruptive event; the goal is to ensure an org has access to resources at a recovery site</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.6 事件管理 / §7.10 復原）</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍事件回應步驟（DRMRRRL）</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;">Preparation → <strong>Detection 偵測 → Response 回應 → Mitigation 緩解(containment 控制) → Reporting 報告 → Recovery 復原 → Remediation 矯正(根因) → Lessons Learned 教訓</strong>。<strong>緩解＝控制不是修好；不得反擊攻擊者</strong>。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍復原指標</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>RPO</strong>（可容忍資料遺失）／<strong>RTO</strong>（可容忍復原時間）／<strong>WRT</strong>（驗證整合時間）／<strong>MTD</strong>（最大可容忍中斷）。站點：hot/warm/cold。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §7.6 事件管理 / §7.10 復原。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §7.6 事件管理、§7.10 復原策略。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§7.6.1 Detection</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Detection:</strong> the identification of potential security incidents via monitoring and analyzing security logs, threat intelligence, or incident reports; as above, understanding the distinction between an event and an incident, the goal of detection is to identify an adverse event (an incident) and begin dealing with it</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Common methods to detect incidents:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• intrusion detection and prevention systems</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• antimalware</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• automated tools that scan audit logs looking for predefined events</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• end users sometimes detect irregular activity and contact support</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Note: receiving an alert or complaint doesn’t always mean an incident has occurred</div>
+<div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§7.10.2 Recovery site strategies (e.g., cold vs. hot, resource capacity agreements)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Non-disaster: service disruption with significant but limited impact</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Disaster</strong>: event that causes an entire site to be unusable for a day or longer (usually requires alternate processing facility)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Natural disaster</strong>: events that commonly threaten orgs including earthquakes, floods, storms, fires, tsunamis, and volcanic eruptions</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Human-caused disasters</strong>: explosions, electrical fires, terrorist acts, power outages and other utility failures, hardware/software failures, labor difficulties, theft, vandalism, etc.</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Catastrophe: major disruption that destroys the facility altogether</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• For disasters and catastrophes, an org has 3 basic options:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• use a dedicated site that the org owns/operates</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• lease a commercial facility (hot, warm, cold site)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• enter into a formal agreement with another facility/org</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• When a disaster interrupts a business, a disaster recovery plan should kick in nearly automatically and begin providing support for recovery operations</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• in addition to improving your response capabilities, purchasing insurance can reduce the impact of financial losses</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Recovery site strategies consider multiple elements of an organization, such as people, data, infrastructure, and cost, as well as factors like availability and location</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• When designing a disaster recovery plan, it’s important to keep your goal in mind — the restoration of workgroups to the point that they can resume their activities in their usual work locations</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• sometimes it&#x27;s best to develop separate recovery facilities for different work groups</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• To recover your business operations with the greatest possible efficiency, you should engineer the disaster recovery plan so that those business units with the highest priority are recovered first</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Mutual Assistance Agreements (MAA)</strong>: provide an inexpensive alternative to disaster recovery sites; *not commonly used* because they are difficult to enforce; orgs participating in an MAA may also be shut down by the same disaster, and MAAs raise confidentiality concerns</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Resource Capacity Agreements</strong>: pre-arranged vendor agreements to secure the necessary resources required after a disruptive event; the goal is to ensure an org has access to resources at a recovery site</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/PwxFwndQ7Jk" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/PwxFwndQ7Jk" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 7 Review / Mind Map (2 of 6) | Incident Response ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/8zM89KMRniM?t=3517" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 58:37 開始）</span> ↗</a>
+        <a href="https://youtu.be/8zM89KMRniM?t=3517" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 58:37 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -118,8 +118,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 35 / 120 · P1-D7-5</span>
   </div>
 

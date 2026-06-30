@@ -5,125 +5,125 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 60</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 60 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D4-5</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P2-D4-5</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 4 · 通訊與網路安全 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">郵件驗證與網路攻擊深入</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">郵件驗證與網路攻擊深入</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Email Auth &amp; Network Attacks Deep Dive</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:50.0%; background-color:#3D52A0;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:50.0%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D4 收尾：郵件驗證與網路攻擊</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">D4 中期收尾，深入你<strong>本業最相關</strong>的主題：<strong>SPF/DKIM/DMARC 郵件驗證</strong>（防冒名釣魚），以及 <strong>DDoS/MITM/ARP</strong> 等網路攻擊與 VoIP 安全。郵件是釣魚與 BEC 詐騙的主要管道，三件套是核心防線。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週回顧</strong>：①OSI/封裝 → ②安全協定/DNS → ③防火牆/IDS/分段 → ④無線/VPN/NAC → ⑤<strong>今天：郵件驗證與網路攻擊</strong>。下週進入 Domain 5 中期。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — SPF / DKIM / DMARC</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">機制</td><td style="padding:8px 10px;">驗什麼</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">原理</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>SPF</strong></td><td style="padding:9px 10px; vertical-align:top;">寄件<strong>來源 IP</strong> 是否獲授權</td><td style="padding:9px 10px; vertical-align:top;">DNS 列出允許寄信的 IP</td></tr>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 中期 D4 收尾：郵件驗證與網路攻擊</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">D4 中期收尾，深入你<strong>本業最相關</strong>的主題：<strong>SPF/DKIM/DMARC 郵件驗證</strong>（防冒名釣魚），以及 <strong>DDoS/MITM/ARP</strong> 等網路攻擊與 VoIP 安全。郵件是釣魚與 BEC 詐騙的主要管道，三件套是核心防線。</p>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">本週回顧</strong>：①OSI/封裝 → ②安全協定/DNS → ③防火牆/IDS/分段 → ④無線/VPN/NAC → ⑤<strong>今天：郵件驗證與網路攻擊</strong>。下週進入 Domain 5 中期。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — SPF / DKIM / DMARC</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">機制</td><td style="padding:8px 10px;">驗什麼</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">原理</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>SPF</strong></td><td style="padding:9px 10px; vertical-align:top;">寄件<strong>來源 IP</strong> 是否獲授權</td><td style="padding:9px 10px; vertical-align:top;">DNS 列出允許寄信的 IP</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>DKIM</strong></td><td style="padding:9px 10px; vertical-align:top;">郵件<strong>內容完整性＋網域</strong></td><td style="padding:9px 10px; vertical-align:top;">以私鑰簽章、公鑰(DNS)驗</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>DMARC</strong></td><td style="padding:9px 10px; vertical-align:top;">對齊 SPF/DKIM 並定<strong>政策</strong></td><td style="padding:9px 10px; vertical-align:top;">fail 時 none/quarantine/reject＋報告</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>DMARC</strong></td><td style="padding:9px 10px; vertical-align:top;">對齊 SPF/DKIM 並定<strong>政策</strong></td><td style="padding:9px 10px; vertical-align:top;">fail 時 none/quarantine/reject＋報告</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 三者<strong>互補</strong>：SPF 驗來源 IP、DKIM 驗內容與網域簽章、DMARC 把關『From 是否對齊』並決定拒收/隔離。完整部署 DMARC <strong>p=reject</strong> 才能有效擋網域冒名。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 常見網路攻擊</div>
+    <p style="font-size:16px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 三者<strong>互補</strong>：SPF 驗來源 IP、DKIM 驗內容與網域簽章、DMARC 把關『From 是否對齊』並決定拒收/隔離。完整部署 DMARC <strong>p=reject</strong> 才能有效擋網域冒名。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 常見網路攻擊</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>DDoS</strong>：分散式阻斷服務（打可用性）；對策 CDN/清洗/速率限制/Anycast</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>MITM</strong>：中間人攔截/竄改；對策 TLS、憑證驗證、HSTS</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>ARP poisoning</strong>：L2 欺騙做 MITM；對策動態 ARP 檢測、靜態綁定</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>DNS spoofing</strong>：導向釣魚站；對策 DNSSEC</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Smurf/Amplification</strong>：放大反射攻擊（利用開放服務）</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>DDoS</strong>：分散式阻斷服務（打可用性）；對策 CDN/清洗/速率限制/Anycast</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>MITM</strong>：中間人攔截/竄改；對策 TLS、憑證驗證、HSTS</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>ARP poisoning</strong>：L2 欺騙做 MITM；對策動態 ARP 檢測、靜態綁定</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>DNS spoofing</strong>：導向釣魚站；對策 DNSSEC</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Smurf/Amplification</strong>：放大反射攻擊（利用開放服務）</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — VoIP 安全</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>VoIP</strong>（語音over IP）面臨竊聽、<strong>Vishing（語音釣魚）</strong>、<strong>SPIT（垃圾語音）</strong>、來電顯示偽冒、SIP 攻擊。對策：<strong>SRTP（加密語音）、TLS 保護 SIP 信令、語音 VLAN 隔離</strong>。把語音與資料分段，並加密信令與媒體流。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — VoIP 安全</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>VoIP</strong>（語音over IP）面臨竊聽、<strong>Vishing（語音釣魚）</strong>、<strong>SPIT（垃圾語音）</strong>、來電顯示偽冒、SIP 攻擊。對策：<strong>SRTP（加密語音）、TLS 保護 SIP 信令、語音 VLAN 隔離</strong>。把語音與資料分段，並加密信令與媒體流。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SPF</strong>（寄件者政策框架）— <span style="color:#5B6675;">DNS 授權寄信 IP 清單。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DKIM</strong>（網域金鑰識別郵件）— <span style="color:#5B6675;">私鑰簽章驗內容與網域。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DMARC</strong>（網域訊息驗證）— <span style="color:#5B6675;">對齊 SPF/DKIM＋政策＋報告。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DDoS</strong>（分散式阻斷服務）— <span style="color:#5B6675;">大量流量癱瘓服務。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">MITM</strong>（中間人攻擊）— <span style="color:#5B6675;">攔截/竄改通訊。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ARP Poisoning</strong>（ARP 毒化）— <span style="color:#5B6675;">L2 欺騙做 MITM。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">BEC</strong>（商業郵件詐騙）— <span style="color:#5B6675;">冒充高層/廠商詐騙匯款。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">SRTP</strong>（安全即時傳輸協定）— <span style="color:#5B6675;">加密 VoIP 媒體流。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SPF</strong>（寄件者政策框架）— <span style="color:#5B6675;">DNS 授權寄信 IP 清單。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">DKIM</strong>（網域金鑰識別郵件）— <span style="color:#5B6675;">私鑰簽章驗內容與網域。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">DMARC</strong>（網域訊息驗證）— <span style="color:#5B6675;">對齊 SPF/DKIM＋政策＋報告。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">DDoS</strong>（分散式阻斷服務）— <span style="color:#5B6675;">大量流量癱瘓服務。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">MITM</strong>（中間人攻擊）— <span style="color:#5B6675;">攔截/竄改通訊。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">ARP Poisoning</strong>（ARP 毒化）— <span style="color:#5B6675;">L2 欺騙做 MITM。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">BEC</strong>（商業郵件詐騙）— <span style="color:#5B6675;">冒充高層/廠商詐騙匯款。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SRTP</strong>（安全即時傳輸協定）— <span style="color:#5B6675;">加密 VoIP 媒體流。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>SPF vs DKIM</strong>：SPF 驗『<strong>來源 IP</strong>』（誰寄的）；DKIM 驗『<strong>內容簽章與網域</strong>』（沒被改、來自該網域）。轉寄會破壞 SPF，DKIM 較耐轉寄。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>DMARC 的角色</strong>：DMARC 不自己驗，而是<strong>要求 From 與 SPF/DKIM 對齊</strong>並定政策（reject/quarantine）＋收報告。沒有 DMARC，SPF/DKIM 仍可能被 From 偽冒繞過。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>DDoS vs DoS</strong>：DoS 單一來源；DDoS <strong>分散多來源</strong>（殭屍網路），更難緩解。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>SPF vs DKIM</strong>：SPF 驗『<strong>來源 IP</strong>』（誰寄的）；DKIM 驗『<strong>內容簽章與網域</strong>』（沒被改、來自該網域）。轉寄會破壞 SPF，DKIM 較耐轉寄。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>DMARC 的角色</strong>：DMARC 不自己驗，而是<strong>要求 From 與 SPF/DKIM 對齊</strong>並定政策（reject/quarantine）＋收報告。沒有 DMARC，SPF/DKIM 仍可能被 From 偽冒繞過。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>DDoS vs DoS</strong>：DoS 單一來源；DDoS <strong>分散多來源</strong>（殭屍網路），更難緩解。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>SPF＝RFC 7208、DKIM＝RFC 6376、DMARC＝RFC 7489</strong>；<strong>NIST SP 800-177（可信郵件）</strong>。VoIP 對應 <strong>SRTP（RFC 3711）、SIP over TLS</strong>。反釣魚與安全意識（D1）是郵件防線的人因部分。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：網域冒名寄信</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 假冒 CEO 的一封信</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;"><strong>BEC（商業郵件詐騙）</strong>常見手法：攻擊者偽冒公司網域或高層寄信，要求財務『緊急匯款』。若公司<strong>未部署 DMARC（p=reject）</strong>，偽冒『From: ceo@company.com』的信就能直送收件匣，造成鉅額損失（全球 BEC 損失以數十億美元計）。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：<strong>SPF＋DKIM＋DMARC（reject）三件套</strong>是擋網域冒名的技術基線；再加<strong>付款雙重驗證流程</strong>（職責分離）與<strong>安全意識訓練</strong>，技術＋流程＋人三管齊下。你本業的釣魚演練正是強化『人』這一環。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>SPF＝RFC 7208、DKIM＝RFC 6376、DMARC＝RFC 7489</strong>；<strong>NIST SP 800-177（可信郵件）</strong>。VoIP 對應 <strong>SRTP（RFC 3711）、SIP over TLS</strong>。反釣魚與安全意識（D1）是郵件防線的人因部分。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — 真實事件：網域冒名寄信</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 假冒 CEO 的一封信</div>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;"><strong>BEC（商業郵件詐騙）</strong>常見手法：攻擊者偽冒公司網域或高層寄信，要求財務『緊急匯款』。若公司<strong>未部署 DMARC（p=reject）</strong>，偽冒『From: ceo@company.com』的信就能直送收件匣，造成鉅額損失（全球 BEC 損失以數十億美元計）。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">教訓：<strong>SPF＋DKIM＋DMARC（reject）三件套</strong>是擋網域冒名的技術基線；再加<strong>付款雙重驗證流程</strong>（職責分離）與<strong>安全意識訓練</strong>，技術＋流程＋人三管齊下。你本業的釣魚演練正是強化『人』這一環。</p>
     </div>
-    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：為何釣魚這麼難純技術擋</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">即使有 DMARC，攻擊者仍可用<strong>近似網域（look-alike domain，如 c0mpany.com）</strong>或<strong>受害者真實帳號被盜</strong>來寄信——這些不違反 SPF/DKIM。因此防線必須含<strong>使用者意識、附件沙箱、連結重寫/掃描、異常登入偵測（UEBA）</strong>。郵件安全是技術與人因的綜合題。</p>
+    <div style="background-color:#F1F5F9; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">📌 延伸：為何釣魚這麼難純技術擋</div>
+      <p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">即使有 DMARC，攻擊者仍可用<strong>近似網域（look-alike domain，如 c0mpany.com）</strong>或<strong>受害者真實帳號被盜</strong>來寄信——這些不違反 SPF/DKIM。因此防線必須含<strong>使用者意識、附件沙箱、連結重寫/掃描、異常登入偵測（UEBA）</strong>。郵件安全是技術與人因的綜合題。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『驗寄件來源 IP』→ SPF；『驗郵件內容簽章與網域』→ DKIM；『定政策擋 From 偽冒並收報告』→ DMARC；『加密 VoIP 語音』→ SRTP。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>SPF(IP) vs DKIM(內容簽章) 別混；只有 DMARC p=reject 才真正擋冒名；DDoS 是分散式、更難擋；BEC 防禦需技術＋流程＋人。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『驗寄件來源 IP』→ SPF；『驗郵件內容簽章與網域』→ DKIM；『定政策擋 From 偽冒並收報告』→ DMARC；『加密 VoIP 語音』→ SRTP。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>SPF(IP) vs DKIM(內容簽章) 別混；只有 DMARC p=reject 才真正擋冒名；DDoS 是分散式、更難擋；BEC 防禦需技術＋流程＋人。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>SPF 驗來源 IP、DKIM 驗內容簽章、DMARC 對齊並定政策(reject)擋冒名；DDoS/MITM/ARP/DNS spoof 各有對策；VoIP 用 SRTP＋SIP-TLS＋語音 VLAN。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . SPF 與 DKIM 各驗證什麼？<br><span style="color:#0A5A59;">→ SPF 驗寄件來源 IP；DKIM 驗郵件內容簽章與網域。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 要真正擋住 From 網域被冒名，關鍵是什麼？<br><span style="color:#0A5A59;">→ 部署 DMARC 並設 p=reject（對齊 SPF/DKIM）。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . BEC 詐騙除技術外還需什麼防線？<br><span style="color:#0A5A59;">→ 付款雙重驗證流程(SoD)＋安全意識訓練/釣魚演練。</span></p>
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>SPF 驗來源 IP、DKIM 驗內容簽章、DMARC 對齊並定政策(reject)擋冒名；DDoS/MITM/ARP/DNS spoof 各有對策；VoIP 用 SRTP＋SIP-TLS＋語音 VLAN。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . SPF 與 DKIM 各驗證什麼？<br><span style="color:#0A6160;">→ SPF 驗寄件來源 IP；DKIM 驗郵件內容簽章與網域。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 要真正擋住 From 網域被冒名，關鍵是什麼？<br><span style="color:#0A6160;">→ 部署 DMARC 並設 p=reject（對齊 SPF/DKIM）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . BEC 詐騙除技術外還需什麼防線？<br><span style="color:#0A6160;">→ 付款雙重驗證流程(SoD)＋安全意識訓練/釣魚演練。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.3 郵件驗證與攻擊（深入））</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍郵件驗證機制</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>SPF</strong>：DNS TXT 列出授權寄件 IP。<strong>DKIM</strong>：寄件網域以私鑰簽章、收件方查 DNS 公鑰驗章。<strong>DMARC</strong>：對齊 SPF/DKIM、定 fail 政策（none/quarantine/reject）＋回報。S/MIME（憑證）vs PGP（信任網）。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍攻擊深入</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;">DDoS（容量型/協定型/應用層）、<strong>DNS 快取毒化</strong>、ARP 欺騙、Session hijacking、SYN flood、Smurf/Fraggle 放大。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §4.1.3 郵件驗證與攻擊（深入）。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §4.1.3 安全協定（郵件加密相關）。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§4.1.3 Secure protocols (e.g., Internet Protocol Security (IPSec), Secure Shell (SSH), Secure Sockets Layer (SSL)/Transport Layer Security (TLS))</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Kerberos</strong>: standards-based network authentication protocol, used in many products (most notably Microsoft Active Directory Domain Services or AD DS)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Kerberos is mostly used on LANs for organization-wide authentication, single sign-on (SSO) and authorization</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• SSL and TLS: data protection; used for protecting website transactions (e.g. banking, e-commerce)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• SSL and TLS both offer data encryption, integrity and authentication</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• TLS has supplanted SSL (the original protocol, considered legacy/insecure)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• TLS was initially introduced in 1999 but didn’t gain widespread use until years later</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• The original versions of TLS (1.0 and 1.1) are considered deprecated and organizations should be relying on TLS 1.2 or 1.3</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• The defacto standard for secure web traffic is HTTP over TLS, which relies on hybrid cryptography: using asymmetric cryptography to exchange an ephemeral session key, which is then used to carry on symmetric cryptography for the remainder of the session</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Secure File Transfer Protocol (SFTP)</strong>: a version of FTP that includes encryption and is used for transferring files between two devices (often a client / server)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Secure Shell (SSH)</strong>: remote management protocol, which operates over TCP/IP</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• all communications are encrypted</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• primarily used by IT administrators to manage devices such as servers and network devices</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Internet Protocol Security (IPSec)</strong>: an IETF standard suite of protocols that is used to connect nodes (e.g. computers or office locations) together</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• IPsec protocol standard provides a common framework for encrypting network traffic and is built into a number of common OSs</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• IPsec establishes a secure channel in either transport or tunnel mode</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• IPsec performs reauthentication of the client system throughout the connected session in order to detect session hijacking</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• IPsec uses two protocols: Authentication Header (AH) and Encapsulating Security Payload (ESP) -- see below</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• widely used in virtual private networks (VPNs)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• IPSec provides encryption, authentication and data integrity</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>transport mode</strong>: only packet payload is encrypted for peer-to-peer communication</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>tunnel mode</strong>: the entire packet (including header) is encrypted for gateway-to-gateway communication</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>security association (SA)</strong>: represents a simplex communication connection/session, recording any config and status info</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>authentication header (AH)</strong>: provides authentication, integrity, and nonrepudiation; provides assurance of message integrity, authentication and access control, preventing replay attacks; does not provide encryption; like an official authentication stamp, but it&#x27;s not encrypted so anyone can read it</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>encapsulating security payload (ESP)</strong>: provides encryption of the payload which provides confidentiality and integrity of packet content; works with tunnel or transport mode; provides limited authentication and preventing replay attacks (not to the degree of AH)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Internet Security Association and Key Management Protocol (ISAKMP)</strong>: an element of IKE used to organize and manage encryption keys generated/exchanged by OAKLEY and SKEME; a security association is the agreed-upon method of auth and encryption used by two entities; ISAKMP&#x27;s use of security associations enables IPsec to support multiple simultaneous VPNs from each host; the Oakley protocol specifies a sequence of key exchanges and describes their services (such as identity protection and authentication); and SKEME specifies the actual method of key exchange</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Internet Key Exchange (IKE)</strong>: a standard protocol used to set up a secure and authenticated communication channel between two parties via a virtual private network (VPN); the protocol ensures security for VPN negotiation, remote host and network access</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>WireGuard</strong>: a modern, open-source VPN protocol designed to be faster, simpler, and more secure than traditional protocols; uses a lean codebase and operates at the kernel level for high performance</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.3 郵件驗證與攻擊（深入））</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍郵件驗證機制</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>SPF</strong>：DNS TXT 列出授權寄件 IP。<strong>DKIM</strong>：寄件網域以私鑰簽章、收件方查 DNS 公鑰驗章。<strong>DMARC</strong>：對齊 SPF/DKIM、定 fail 政策（none/quarantine/reject）＋回報。S/MIME（憑證）vs PGP（信任網）。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍攻擊深入</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;">DDoS（容量型/協定型/應用層）、<strong>DNS 快取毒化</strong>、ARP 欺騙、Session hijacking、SYN flood、Smurf/Fraggle 放大。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §4.1.3 郵件驗證與攻擊（深入）。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §4.1.3 安全協定（郵件加密相關）。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§4.1.3 Secure protocols (e.g., Internet Protocol Security (IPSec), Secure Shell (SSH), Secure Sockets Layer (SSL)/Transport Layer Security (TLS))</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Kerberos</strong>: standards-based network authentication protocol, used in many products (most notably Microsoft Active Directory Domain Services or AD DS)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Kerberos is mostly used on LANs for organization-wide authentication, single sign-on (SSO) and authorization</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• SSL and TLS: data protection; used for protecting website transactions (e.g. banking, e-commerce)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• SSL and TLS both offer data encryption, integrity and authentication</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• TLS has supplanted SSL (the original protocol, considered legacy/insecure)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• TLS was initially introduced in 1999 but didn’t gain widespread use until years later</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• The original versions of TLS (1.0 and 1.1) are considered deprecated and organizations should be relying on TLS 1.2 or 1.3</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• The defacto standard for secure web traffic is HTTP over TLS, which relies on hybrid cryptography: using asymmetric cryptography to exchange an ephemeral session key, which is then used to carry on symmetric cryptography for the remainder of the session</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Secure File Transfer Protocol (SFTP)</strong>: a version of FTP that includes encryption and is used for transferring files between two devices (often a client / server)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Secure Shell (SSH)</strong>: remote management protocol, which operates over TCP/IP</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• all communications are encrypted</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• primarily used by IT administrators to manage devices such as servers and network devices</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Internet Protocol Security (IPSec)</strong>: an IETF standard suite of protocols that is used to connect nodes (e.g. computers or office locations) together</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• IPsec protocol standard provides a common framework for encrypting network traffic and is built into a number of common OSs</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• IPsec establishes a secure channel in either transport or tunnel mode</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• IPsec performs reauthentication of the client system throughout the connected session in order to detect session hijacking</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• IPsec uses two protocols: Authentication Header (AH) and Encapsulating Security Payload (ESP) -- see below</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• widely used in virtual private networks (VPNs)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• IPSec provides encryption, authentication and data integrity</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>transport mode</strong>: only packet payload is encrypted for peer-to-peer communication</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>tunnel mode</strong>: the entire packet (including header) is encrypted for gateway-to-gateway communication</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>security association (SA)</strong>: represents a simplex communication connection/session, recording any config and status info</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>authentication header (AH)</strong>: provides authentication, integrity, and nonrepudiation; provides assurance of message integrity, authentication and access control, preventing replay attacks; does not provide encryption; like an official authentication stamp, but it&#x27;s not encrypted so anyone can read it</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>encapsulating security payload (ESP)</strong>: provides encryption of the payload which provides confidentiality and integrity of packet content; works with tunnel or transport mode; provides limited authentication and preventing replay attacks (not to the degree of AH)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Internet Security Association and Key Management Protocol (ISAKMP)</strong>: an element of IKE used to organize and manage encryption keys generated/exchanged by OAKLEY and SKEME; a security association is the agreed-upon method of auth and encryption used by two entities; ISAKMP&#x27;s use of security associations enables IPsec to support multiple simultaneous VPNs from each host; the Oakley protocol specifies a sequence of key exchanges and describes their services (such as identity protection and authentication); and SKEME specifies the actual method of key exchange</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Internet Key Exchange (IKE)</strong>: a standard protocol used to set up a secure and authenticated communication channel between two parties via a virtual private network (VPN); the protocol ensures security for VPN negotiation, remote host and network access</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>WireGuard</strong>: a modern, open-source VPN protocol designed to be faster, simpler, and more secure than traditional protocols; uses a lean codebase and operates at the kernel level for high performance</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/EW0iBXHVqB0" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 4 Review / Mind Map (2 of 4) | Networking ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/EW0iBXHVqB0" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 4 Review / Mind Map (2 of 4) | Networking ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/tQCgAteRyIo?t=8627" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 4<span class="ts-note">（從約 143:47 開始）</span> ↗</a>
+        <a href="https://youtu.be/tQCgAteRyIo?t=8627" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 4<span class="ts-note">（從約 143:47 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -131,8 +131,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 60 / 120 · P2-D4-5</span>
   </div>
 

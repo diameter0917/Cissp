@@ -5,190 +5,190 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 113</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 113 / 120</div>
     <div style="margin-top:14px;">
       <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#B45309; padding:4px 9px; border-radius:5px;">P3-D7-3</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">後期 · 考試重點 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">考點：DR 與 RTO/RPO</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">考點：DR 與 RTO/RPO</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Exam: DR &amp; RTO/RPO</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:94.17%; background-color:#B45309;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:94.17%; background-color:#B45309;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 考前重點濃縮</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">本封考<strong>RTO/RPO/MTD 關係</strong>、<strong>備援站點選擇</strong>與測試類型。最常見的指標關係題。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 考前重點濃縮</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">本封考<strong>RTO/RPO/MTD 關係</strong>、<strong>備援站點選擇</strong>與測試類型。最常見的指標關係題。</p>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>RTO≤MTD</strong>;<strong>RPO 決定備份頻率</strong>(RPO 1hr=至少每小時備份)。</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Hot(即時/最貴)→Warm→Cold(最便宜/最慢)</strong>;依 RTO 選。</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>RTO=多快救回(時間);RPO=可丟多少資料</strong>。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>RTO≤MTD</strong>;<strong>RPO 決定備份頻率</strong>(RPO 1hr=至少每小時備份)。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Hot(即時/最貴)→Warm→Cold(最便宜/最慢)</strong>;依 RTO 選。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>RTO=多快救回(時間);RPO=可丟多少資料</strong>。</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 核心速記</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">指標/站點</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">RTO</td><td style="padding:9px 10px; vertical-align:top;">可容忍中斷時間;≤MTD</td></tr>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 核心速記</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">指標/站點</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">重點</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">RTO</td><td style="padding:9px 10px; vertical-align:top;">可容忍中斷時間;≤MTD</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;">RPO</td><td style="padding:9px 10px; vertical-align:top;">可容忍資料遺失;定備份頻率</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;">Hot site</td><td style="padding:9px 10px; vertical-align:top;">即時就緒、最貴</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">Hot site</td><td style="padding:9px 10px; vertical-align:top;">即時就緒、最貴</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;">Cold site</td><td style="padding:9px 10px; vertical-align:top;">僅空間、最慢最便宜</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 關鍵名詞（中英）</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 關鍵名詞（中英）</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RTO</strong>（復原時間目標）— <span style="color:#5B6675;">多快救回服務。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RPO</strong>（復原點目標）— <span style="color:#5B6675;">可容忍資料遺失量。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">MTD</strong>（最大可容忍中斷）— <span style="color:#5B6675;">RTO 上限。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Hot/Warm/Cold Site</strong>（備援站點）— <span style="color:#5B6675;">就緒度與成本取捨。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Immutable Backup</strong>（不可變備份）— <span style="color:#5B6675;">抗勒索。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">RTO</strong>（復原時間目標）— <span style="color:#5B6675;">多快救回服務。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">RPO</strong>（復原點目標）— <span style="color:#5B6675;">可容忍資料遺失量。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">MTD</strong>（最大可容忍中斷）— <span style="color:#5B6675;">RTO 上限。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Hot/Warm/Cold Site</strong>（備援站點）— <span style="color:#5B6675;">就緒度與成本取捨。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Immutable Backup</strong>（不可變備份）— <span style="color:#5B6675;">抗勒索。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — 常見陷阱</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>RTO(時間) vs RPO(資料量)</strong>別對調。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>RTO≤MTD</strong>(RTO 大於 MTD 是設計錯誤)。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>需求最快復原→Hot site</strong>(但最貴)。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 常見陷阱</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>RTO(時間) vs RPO(資料量)</strong>別對調。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>RTO≤MTD</strong>(RTO 大於 MTD 是設計錯誤)。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>需求最快復原→Hot site</strong>(但最貴)。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 🎯 實戰考題</div>
-    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 🎯 實戰考題</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
       <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
-      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">A business can tolerate losing at most 15 minutes of data. Which metric does this define, and what does it drive?</p>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A business can tolerate losing at most 15 minutes of data. Which metric does this define, and what does it drive?</p>
       <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某業務最多可容忍丟失 15 分鐘的資料。這定義了哪個指標,並驅動什麼?）</p>
-        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> RTO; it drives staffing 復原時間;驅動人力</div>
-        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> RPO; it drives backup frequency 復原點;驅動備份頻率</div>
-        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> MTD; it drives insurance 最大中斷;驅動保險</div>
-        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> RTO; it drives site selection 復原時間;驅動站點選擇</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> RTO; it drives staffing 復原時間;驅動人力</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> RPO; it drives backup frequency 復原點;驅動備份頻率</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> MTD; it drives insurance 最大中斷;驅動保險</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> RTO; it drives site selection 復原時間;驅動站點選擇</div>
       <details style="margin-top:8px;">
         <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
-        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：B</strong>。『可容忍丟失多少資料』＝<strong>RPO</strong>;RPO 15 分鐘代表<strong>至少每 15 分鐘備份/複寫一次</strong>(驅動備份頻率)。</p>
-        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A／D：RTO 是『多快救回服務』(時間),非資料遺失量。</li><li style="margin-bottom:3px;">C：MTD 是最大可容忍中斷時間,非資料遺失量。</li></ul></div>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。『可容忍丟失多少資料』＝<strong>RPO</strong>;RPO 15 分鐘代表<strong>至少每 15 分鐘備份/複寫一次</strong>(驅動備份頻率)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A／D：RTO 是『多快救回服務』(時間),非資料遺失量。</li><li style="margin-bottom:3px;">C：MTD 是最大可容忍中斷時間,非資料遺失量。</li></ul></div>
       </details>
     </div>
-    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
       <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
-      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">An organization requires recovery within minutes of a disaster. Which recovery site is MOST appropriate?</p>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization requires recovery within minutes of a disaster. Which recovery site is MOST appropriate?</p>
       <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織要求災難後數分鐘內復原。哪種備援站點最適合?）</p>
-        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> Cold site 冷站</div>
-        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> Warm site 溫站</div>
-        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> Hot site 熱站</div>
-        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> No site needed 不需站點</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Cold site 冷站</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Warm site 溫站</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Hot site 熱站</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> No site needed 不需站點</div>
       <details style="margin-top:8px;">
         <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
-        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：C</strong>。要求<strong>數分鐘內</strong>復原(極低 RTO),需<strong>Hot site(設備+資料即時就緒)</strong>,雖成本最高。</p>
-        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：冷站僅空間,復原需數天。</li><li style="margin-bottom:3px;">B：溫站設備就緒但資料需載入,需數小時。</li><li style="margin-bottom:3px;">D：有 DR 需求一定需要備援能力。</li></ul></div>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。要求<strong>數分鐘內</strong>復原(極低 RTO),需<strong>Hot site(設備+資料即時就緒)</strong>,雖成本最高。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：冷站僅空間,復原需數天。</li><li style="margin-bottom:3px;">B：溫站設備就緒但資料需載入,需數小時。</li><li style="margin-bottom:3px;">D：有 DR 需求一定需要備援能力。</li></ul></div>
       </details>
     </div>
-    <div style="border:1px solid #E2E5EA; border-radius:10px; padding:13px 15px; margin:12px 0;">
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
       <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
-      <p style="font-size:14.5px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#15233B;">Which relationship must always be true?</p>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which relationship must always be true?</p>
       <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（下列哪個關係必恆成立?）</p>
-        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>A.</strong> RTO must be greater than MTD</div>
-        <div style="border:1px solid #E6E9ED; background-color:#FBF4E8; border-color:#E8C089; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>B.</strong> RTO must be less than or equal to MTD RTO≤MTD</div>
-        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>C.</strong> RPO must equal RTO</div>
-        <div style="border:1px solid #E6E9ED; background-color:#FAFBFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:13.5px; line-height:1.5;"><strong>D.</strong> MTD must be less than RTO</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> RTO must be greater than MTD</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> RTO must be less than or equal to MTD RTO≤MTD</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> RPO must equal RTO</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> MTD must be less than RTO</div>
       <details style="margin-top:8px;">
         <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
-        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#2A3340;"><strong>正解：B</strong>。MTD 是業務能撐的上限,RTO 是復原目標,<strong>RTO 必須 ≤ MTD</strong>(否則尚未復原業務已垮)。</p>
-        <div style="font-size:13.5px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A／D：RTO 大於 MTD 是設計錯誤。</li><li style="margin-bottom:3px;">C：RTO(時間)與 RPO(資料量)是不同維度,不需相等。</li></ul></div>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。MTD 是業務能撐的上限,RTO 是復原目標,<strong>RTO 必須 ≤ MTD</strong>(否則尚未復原業務已垮)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A／D：RTO 大於 MTD 是設計錯誤。</li><li style="margin-bottom:3px;">C：RTO(時間)與 RPO(資料量)是不同維度,不需相等。</li></ul></div>
       </details>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — (ISC)² 選最佳答案思路</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — (ISC)² 選最佳答案思路</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>RPO=資料量(定備份頻率)、RTO=時間(定站點)、RTO≤MTD</strong>。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;">要求最快復原→Hot site;成本敏感且可慢→Cold site。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>RPO=資料量(定備份頻率)、RTO=時間(定站點)、RTO≤MTD</strong>。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;">要求最快復原→Hot site;成本敏感且可慢→Cold site。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>RTO≤MTD、RPO 定備份頻率;Hot(最快最貴)→Cold(最慢最便宜)依 RTO 選;RTO 時間/RPO 資料量。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 『最多丟 15 分鐘資料』定義哪個指標、驅動什麼？<br><span style="color:#0A5A59;">→ RPO;驅動備份頻率(至少每 15 分鐘)。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 要求數分鐘內復原選哪種站點？<br><span style="color:#0A5A59;">→ Hot site(熱站)。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . RTO 與 MTD 的必然關係？<br><span style="color:#0A5A59;">→ RTO ≤ MTD。</span></p>
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>RTO≤MTD、RPO 定備份頻率;Hot(最快最貴)→Cold(最慢最便宜)依 RTO 選;RTO 時間/RPO 資料量。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 『最多丟 15 分鐘資料』定義哪個指標、驅動什麼？<br><span style="color:#0A6160;">→ RPO;驅動備份頻率(至少每 15 分鐘)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 要求數分鐘內復原選哪種站點？<br><span style="color:#0A6160;">→ Hot site(熱站)。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . RTO 與 MTD 的必然關係？<br><span style="color:#0A6160;">→ RTO ≤ MTD。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.10/§7.11 DR 與 RTO/RPO（考點））</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍BIA 四指標</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>RPO</strong>＝可容忍資料遺失（決定備份頻率）；<strong>RTO</strong>＝可容忍復原時間（須 ≤ MTD）；<strong>WRT</strong>＝驗證時間；<strong>MTD</strong>＝最大可容忍中斷。RTO+WRT ≤ MTD。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍站點與測試</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;">Cold（最便宜/最慢）→ Warm → Hot（訂閱、近即時）→ Redundant（自有、active-active）。DR 測試強度遞增：<strong>read-through → walkthrough → simulation → parallel → full-interruption</strong>。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §7.10/§7.11 DR 與 RTO/RPO（考點）。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §7.11 DR、§7.12 DR 測試（考點）。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§Implement Disaster Recovery (DR) processes (OSG-10 Chpt 18)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Business Continuity Management (BCM)</strong>: the process and function by which an organization is responsible for creating, maintaining, and testing BCP and DRP plans</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Business Continuity Planning (BCP)</strong>: focuses on the survival of the business processes when something unexpected impacts it</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Disaster Recovery Planning (DRP)</strong>: focuses on the recovery of vital technology infrastructure and systems</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• BCM, BCP, and DRP are ultimately used to achieve the same goal: the continuity of the business and its critical and essential functions, processes, and services</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• The key BCP/DRP steps are:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Develop contingency planning policy</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Conduct BIA</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Identify controls</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Create contingency strategies</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Develop contingency plan</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Ensure testing, training, and exercises</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Maintenance</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• As part of the Business Impact Analysis (BIA), four key measurements for BCP and DRP procedures:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>RPO (recovery point objective)</strong>: max tolerable data loss measured in time</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>RTO (recovery time objective)</strong>: max tolerable time to recover systems to a defined service level; specifies the amount of time that business continuity planners find acceptable for the restoration of a service after a disaster</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>WRT (work recovery time)</strong>: max time available to verify system and data integrity as part of the resumption of normal ops</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>MTD (max tolerable downtime)</strong>: max time-critical system, function, or process can be disrupted before unacceptable/irrecoverable consequences to the business</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.11.1 Response</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• A disaster recovery plan should contain simple yet comprehensive instructions for essential personnel to follow immediately upon recognizing that a disaster is in progress or imminent</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Emergency-response plans are often put together in a form of checklists provided to responders; arrange the checklist tasks in order of priority, with the most important task first!</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• The response plan should include clear criteria for activation of the disaster recovery plan, define who has the authority to declare a disaster, and then discuss notification procedures</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.11.2 Personnel</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• A disaster recovery plan should contain a list of personnel to contact in the event of a disaster</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• usually includes key members of the DRP team as well as critical personnel</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Businesses need to make sure employees are trained on DR procedures and that they have the necessary resources to implement the DR plan</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Key activities involved in preparing people and procedures for DR include:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• develop DR training programs</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• conduct regular DR drills</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• provide employees with necessary resources and tools to implement the DR plan</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• communicate the DR plan to all employees</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.11.3 Communications (e.g., methods)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Ensure that response checklists provide first responders with a clear plan to protect life and property and ensure the continuity of operations</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• the notification checklist should be supplied to all personnel who might respond to a disaster</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• the information provided should include alternate means of contact (e.g. mobile or alternate, pagers etc) as well as backup contacts for each role</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.11.4 Assessment</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• When the disaster recovery team arrives, one of their first priorities is to assess the situation; initial responders perform a quick assessment to triage the incident and begin the response, followed by more detailed evaluations to measure effectiveness and prioritize resources as the situation evolves</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.11.5 Restoration</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Note that recovery and restoration are separate concepts</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Restoration</strong>: bringing a business facility and environment back to a workable state</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Recovery</strong>: bringing business operations and processes back to a working state</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• System recovery includes the restoration of all affected files and services actively in use on the system at the time of the failure or crash</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• When designing a disaster recovery plan, it’s important to keep your goal in mind — the restoration of workgroups to the point that they can resume their activities in their usual work locations</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.11.6 Training and awareness</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• As with a business continuity plan, it is essential that you provide training to all personnel who will be involved in the disaster recovery effort</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• When designing a training plan consider the following:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• orientation training for all new employees</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• initial training for employees taking on a new DR role for the first time</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• detailed refresher training for DR team members</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• brief awareness refreshers for all other employees</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 7.11.7 Lessons learned</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• A lessons learned session should be conducted at the conclusion of any disaster recovery operation or other security incident</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• The lessons learned process is designed to provide everyone involved with the incident response effort an opportunity to reflect on their individual roles and the team&#x27;s overall response</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Time is of the essence in conducting a lesson learned, before memories fade</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Usually a lessons learned session is led by trained facilitators</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• NIST SP 800-61 offers a series of questions to use in the lessons learned process:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• exactly what happened and at what times?</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• how well did staff and management perform in dealing with the incident?</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• were documented procedures followed?</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• were the procedures adequate?</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• were any steps or actions taken that might have inhibited the recovery?</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• what would the staff and management do differently the next time a similar incident occurs?</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• how could information sharing with other organizations have been improved?</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• what corrective actions can prevent similar incidents in the future?</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• what precursors or indicators should be watched for in the future to detect similar incidents?</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• what additional tools or resources are needed to detect, analyze, and mitigate future incidents?</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• The team leader to document the lessons learned in a report that includes suggested process improvement actions</div>
-<div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§7.12.1 Read-through/tabletop</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Read-through test</strong>: one of the simplest to conduct, but also one of the most critical; copies of a DR plan are distributed to the members of the DR team for review, accomplishing three goals:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• <strong>Tabletop</strong>: an exercise where disaster recovery team members and key stakeholders gather together and talk through how they would respond to a disaster scenario, without actually disrupting systems or operation</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.10/§7.11 DR 與 RTO/RPO（考點））</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍BIA 四指標</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>RPO</strong>＝可容忍資料遺失（決定備份頻率）；<strong>RTO</strong>＝可容忍復原時間（須 ≤ MTD）；<strong>WRT</strong>＝驗證時間；<strong>MTD</strong>＝最大可容忍中斷。RTO+WRT ≤ MTD。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍站點與測試</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;">Cold（最便宜/最慢）→ Warm → Hot（訂閱、近即時）→ Redundant（自有、active-active）。DR 測試強度遞增：<strong>read-through → walkthrough → simulation → parallel → full-interruption</strong>。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §7.10/§7.11 DR 與 RTO/RPO（考點）。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §7.11 DR、§7.12 DR 測試（考點）。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§Implement Disaster Recovery (DR) processes (OSG-10 Chpt 18)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Business Continuity Management (BCM)</strong>: the process and function by which an organization is responsible for creating, maintaining, and testing BCP and DRP plans</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Business Continuity Planning (BCP)</strong>: focuses on the survival of the business processes when something unexpected impacts it</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Disaster Recovery Planning (DRP)</strong>: focuses on the recovery of vital technology infrastructure and systems</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• BCM, BCP, and DRP are ultimately used to achieve the same goal: the continuity of the business and its critical and essential functions, processes, and services</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• The key BCP/DRP steps are:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Develop contingency planning policy</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Conduct BIA</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Identify controls</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Create contingency strategies</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Develop contingency plan</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Ensure testing, training, and exercises</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Maintenance</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• As part of the Business Impact Analysis (BIA), four key measurements for BCP and DRP procedures:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>RPO (recovery point objective)</strong>: max tolerable data loss measured in time</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>RTO (recovery time objective)</strong>: max tolerable time to recover systems to a defined service level; specifies the amount of time that business continuity planners find acceptable for the restoration of a service after a disaster</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>WRT (work recovery time)</strong>: max time available to verify system and data integrity as part of the resumption of normal ops</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>MTD (max tolerable downtime)</strong>: max time-critical system, function, or process can be disrupted before unacceptable/irrecoverable consequences to the business</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.11.1 Response</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• A disaster recovery plan should contain simple yet comprehensive instructions for essential personnel to follow immediately upon recognizing that a disaster is in progress or imminent</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Emergency-response plans are often put together in a form of checklists provided to responders; arrange the checklist tasks in order of priority, with the most important task first!</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• The response plan should include clear criteria for activation of the disaster recovery plan, define who has the authority to declare a disaster, and then discuss notification procedures</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.11.2 Personnel</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• A disaster recovery plan should contain a list of personnel to contact in the event of a disaster</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• usually includes key members of the DRP team as well as critical personnel</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Businesses need to make sure employees are trained on DR procedures and that they have the necessary resources to implement the DR plan</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Key activities involved in preparing people and procedures for DR include:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• develop DR training programs</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• conduct regular DR drills</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• provide employees with necessary resources and tools to implement the DR plan</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• communicate the DR plan to all employees</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.11.3 Communications (e.g., methods)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Ensure that response checklists provide first responders with a clear plan to protect life and property and ensure the continuity of operations</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• the notification checklist should be supplied to all personnel who might respond to a disaster</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• the information provided should include alternate means of contact (e.g. mobile or alternate, pagers etc) as well as backup contacts for each role</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.11.4 Assessment</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• When the disaster recovery team arrives, one of their first priorities is to assess the situation; initial responders perform a quick assessment to triage the incident and begin the response, followed by more detailed evaluations to measure effectiveness and prioritize resources as the situation evolves</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.11.5 Restoration</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Note that recovery and restoration are separate concepts</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Restoration</strong>: bringing a business facility and environment back to a workable state</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Recovery</strong>: bringing business operations and processes back to a working state</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• System recovery includes the restoration of all affected files and services actively in use on the system at the time of the failure or crash</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• When designing a disaster recovery plan, it’s important to keep your goal in mind — the restoration of workgroups to the point that they can resume their activities in their usual work locations</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.11.6 Training and awareness</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• As with a business continuity plan, it is essential that you provide training to all personnel who will be involved in the disaster recovery effort</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• When designing a training plan consider the following:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• orientation training for all new employees</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• initial training for employees taking on a new DR role for the first time</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• detailed refresher training for DR team members</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• brief awareness refreshers for all other employees</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 7.11.7 Lessons learned</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• A lessons learned session should be conducted at the conclusion of any disaster recovery operation or other security incident</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• The lessons learned process is designed to provide everyone involved with the incident response effort an opportunity to reflect on their individual roles and the team&#x27;s overall response</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Time is of the essence in conducting a lesson learned, before memories fade</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Usually a lessons learned session is led by trained facilitators</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• NIST SP 800-61 offers a series of questions to use in the lessons learned process:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• exactly what happened and at what times?</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• how well did staff and management perform in dealing with the incident?</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• were documented procedures followed?</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• were the procedures adequate?</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• were any steps or actions taken that might have inhibited the recovery?</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• what would the staff and management do differently the next time a similar incident occurs?</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• how could information sharing with other organizations have been improved?</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• what corrective actions can prevent similar incidents in the future?</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• what precursors or indicators should be watched for in the future to detect similar incidents?</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• what additional tools or resources are needed to detect, analyze, and mitigate future incidents?</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• The team leader to document the lessons learned in a report that includes suggested process improvement actions</div>
+<div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§7.12.1 Read-through/tabletop</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Read-through test</strong>: one of the simplest to conduct, but also one of the most critical; copies of a DR plan are distributed to the members of the DR team for review, accomplishing three goals:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• <strong>Tabletop</strong>: an exercise where disaster recovery team members and key stakeholders gather together and talk through how they would respond to a disaster scenario, without actually disrupting systems or operation</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/aT8r3vxPkmk" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">Business Continuity Management (BCM) MindMap (6 of 6) | CISSP Domain 7 ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/aT8r3vxPkmk" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">Business Continuity Management (BCM) MindMap (6 of 6) | CISSP Domain 7 ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/8zM89KMRniM?t=5175" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 86:15 開始）</span> ↗</a>
+        <a href="https://youtu.be/8zM89KMRniM?t=5175" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 7<span class="ts-note">（從約 86:15 開始）</span> ↗</a>
       </div>
       <div style="margin-top:11px;">
         <div style="font-size:12px; color:#B45309; font-weight:700; margin-bottom:2px;">📝 考題練習（刷題）</div>
@@ -200,7 +200,7 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
     <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 113 / 120 · P3-D7-3</span>
   </div>

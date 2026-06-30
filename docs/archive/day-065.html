@@ -5,149 +5,149 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CISSP 每日電子報 · Day 65</title>
 </head>
-<body style="margin:0; padding:0; background-color:#ECEFF3;">
-<div style="background-color:#ECEFF3; padding:20px 12px;">
-<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E5EA; border-radius:14px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#2A3340;">
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
 
-  <div style="background-color:#15233B; padding:22px 24px 20px;">
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 65 / 120</div>
     <div style="margin-top:14px;">
-      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#3D52A0; padding:4px 9px; border-radius:5px;">P2-D5-5</span>
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#0A6160; padding:4px 9px; border-radius:5px;">P2-D5-5</span>
       <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">中期 · 細說內容 &nbsp;|&nbsp; Domain 5 · 身分與存取管理 &nbsp;|&nbsp; 權重 13%</span>
     </div>
-    <h1 style="margin:14px 0 4px; font-size:22px; line-height:1.35; color:#FFFFFF; font-weight:700;">存取控制模型與 PAM 深入</h1>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">存取控制模型與 PAM 深入</h1>
     <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Access Models &amp; PAM Deep Dive</div>
   </div>
-  <div style="height:4px; background-color:#E2E5EA;"><div style="height:4px; width:54.17%; background-color:#3D52A0;"></div></div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:54.17%; background-color:#0A6160;"></div></div>
 
   <div style="padding:24px 24px 8px;">
 
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">01 — 中期 D5 收尾：存取控制模型與特權</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 14px;">D5 中期收尾，深入<strong>四大存取控制模型</strong>（DAC/MAC/RBAC/ABAC）的細節與適用，以及<strong>特權存取管理（PAM）</strong>、<strong>JIT 提權</strong>與<strong>密碼庫風險</strong>。授權做對，才不會給錯人過大權限。</p>
-    <div style="background-color:#F0F4F8; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#15233B;">本週回顧</strong>：①AAA/因子 → ②生命週期/證明 → ③SAML/OAuth/OIDC → ④Kerberos/目錄 → ⑤<strong>今天：存取控制模型與 PAM</strong>。下週進入 Domain 6 中期。</div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">02 — 四大存取控制模型</div>
-    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:13.5px;">
-      <tr style="background-color:#15233B; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">模型</td><td style="padding:8px 10px;">誰決定權限</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">適用</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>DAC</strong> 自主</td><td style="padding:9px 10px; vertical-align:top;"><strong>資料擁有者</strong>自行授權</td><td style="padding:9px 10px; vertical-align:top;">一般檔案系統(彈性、但易擴散)</td></tr>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 中期 D5 收尾：存取控制模型與特權</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">D5 中期收尾，深入<strong>四大存取控制模型</strong>（DAC/MAC/RBAC/ABAC）的細節與適用，以及<strong>特權存取管理（PAM）</strong>、<strong>JIT 提權</strong>與<strong>密碼庫風險</strong>。授權做對，才不會給錯人過大權限。</p>
+    <div style="background-color:#F1F5F9; border-radius:8px; padding:10px 14px; margin:6px 0 4px; font-size:13px; line-height:1.7; color:#5B6675;">🗺️ <strong style="color:#0F1B2D;">本週回顧</strong>：①AAA/因子 → ②生命週期/證明 → ③SAML/OAuth/OIDC → ④Kerberos/目錄 → ⑤<strong>今天：存取控制模型與 PAM</strong>。下週進入 Domain 6 中期。</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 四大存取控制模型</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">模型</td><td style="padding:8px 10px;">誰決定權限</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">適用</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>DAC</strong> 自主</td><td style="padding:9px 10px; vertical-align:top;"><strong>資料擁有者</strong>自行授權</td><td style="padding:9px 10px; vertical-align:top;">一般檔案系統(彈性、但易擴散)</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>MAC</strong> 強制</td><td style="padding:9px 10px; vertical-align:top;"><strong>系統依標籤</strong>強制(不可自改)</td><td style="padding:9px 10px; vertical-align:top;">軍方/高機密(嚴格)</td></tr>
-      <tr style="background-color:#F6F8FA;"><td style="padding:9px 10px; vertical-align:top;"><strong>RBAC</strong> 角色</td><td style="padding:9px 10px; vertical-align:top;">依<strong>角色</strong>給權限</td><td style="padding:9px 10px; vertical-align:top;">多數企業(易管理)</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>RBAC</strong> 角色</td><td style="padding:9px 10px; vertical-align:top;">依<strong>角色</strong>給權限</td><td style="padding:9px 10px; vertical-align:top;">多數企業(易管理)</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;"><strong>ABAC</strong> 屬性</td><td style="padding:9px 10px; vertical-align:top;">依<strong>屬性/情境</strong>動態決策</td><td style="padding:9px 10px; vertical-align:top;">細緻/零信任(彈性強)</td></tr>
     </table>
-    <p style="font-size:14.5px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 判斷口訣：<strong>擁有者決定＝DAC；系統按標籤強制＝MAC；按角色＝RBAC；按屬性/情境(時間/位置/裝置)＝ABAC</strong>。MAC 最嚴、DAC 最彈性、ABAC 最細緻。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">03 — 其他與規則型</div>
+    <p style="font-size:16px; line-height:1.8; margin:8px 0 4px; color:#5B6675;">💡 判斷口訣：<strong>擁有者決定＝DAC；系統按標籤強制＝MAC；按角色＝RBAC；按屬性/情境(時間/位置/裝置)＝ABAC</strong>。MAC 最嚴、DAC 最彈性、ABAC 最細緻。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 其他與規則型</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Rule-based</strong> 規則型：依全域規則(如防火牆 ACL、時間限制)，常與 RBAC 併用</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>RBAC 的最小權限</strong>：角色定義要避免角色爆炸與過大角色</td></tr>
-      <tr><td style="background-color:#F6F8FA; border-left:3px solid #3D52A0; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>SoD 嵌入授權</strong>：互斥角色不可同時授予(如請款＋核款)</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Rule-based</strong> 規則型：依全域規則(如防火牆 ACL、時間限制)，常與 RBAC 併用</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>RBAC 的最小權限</strong>：角色定義要避免角色爆炸與過大角色</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #0A6160; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>SoD 嵌入授權</strong>：互斥角色不可同時授予(如請款＋核款)</td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">04 — PAM / JIT / 密碼庫</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>特權帳號(admin/root)</strong>是最高風險。<strong>PAM</strong> 提供：<strong>密碼庫(vault)集中保管與輪替、JIT(just-in-time)即時提權(用完即收)、工作階段錄製、雙人核准</strong>。原則：<strong>沒有常駐特權(zero standing privilege)</strong>——需要時才給、最小範圍、有時限。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">05 — 關鍵名詞速查</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — PAM / JIT / 密碼庫</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>特權帳號(admin/root)</strong>是最高風險。<strong>PAM</strong> 提供：<strong>密碼庫(vault)集中保管與輪替、JIT(just-in-time)即時提權(用完即收)、工作階段錄製、雙人核准</strong>。原則：<strong>沒有常駐特權(zero standing privilege)</strong>——需要時才給、最小範圍、有時限。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 關鍵名詞速查</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">DAC</strong>（自主存取控制）— <span style="color:#5B6675;">擁有者自行授權(彈性、易擴散)。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">MAC</strong>（強制存取控制）— <span style="color:#5B6675;">系統依標籤強制(軍方/高機密)。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">RBAC</strong>（角色存取控制）— <span style="color:#5B6675;">依角色授權(企業常用)。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">ABAC</strong>（屬性存取控制）— <span style="color:#5B6675;">依屬性/情境動態決策。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">PAM</strong>（特權存取管理）— <span style="color:#5B6675;">管控高權限帳號的整套控制。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">JIT</strong>（即時提權）— <span style="color:#5B6675;">需要時才授予、用完即收。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #EEF0F3; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Password Vault</strong>（密碼庫）— <span style="color:#5B6675;">集中保管/輪替特權憑證。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:14.5px; line-height:1.6;"><strong style="color:#15233B;">Zero Standing Privilege</strong>（零常駐特權）— <span style="color:#5B6675;">平時無特權，按需臨時授予。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">DAC</strong>（自主存取控制）— <span style="color:#5B6675;">擁有者自行授權(彈性、易擴散)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">MAC</strong>（強制存取控制）— <span style="color:#5B6675;">系統依標籤強制(軍方/高機密)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">RBAC</strong>（角色存取控制）— <span style="color:#5B6675;">依角色授權(企業常用)。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">ABAC</strong>（屬性存取控制）— <span style="color:#5B6675;">依屬性/情境動態決策。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">PAM</strong>（特權存取管理）— <span style="color:#5B6675;">管控高權限帳號的整套控制。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">JIT</strong>（即時提權）— <span style="color:#5B6675;">需要時才授予、用完即收。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Password Vault</strong>（密碼庫）— <span style="color:#5B6675;">集中保管/輪替特權憑證。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Zero Standing Privilege</strong>（零常駐特權）— <span style="color:#5B6675;">平時無特權，按需臨時授予。</span></td></tr>
     </table>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">06 — 易混淆釐清</div>
-    <div style="background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>DAC vs MAC</strong>：DAC 由<strong>擁有者</strong>決定(可轉授、易擴散)；MAC 由<strong>系統按標籤</strong>強制，使用者<strong>不能自改</strong>(最嚴)。</p><p style="font-size:14.5px; line-height:1.8; margin:0 0 8px;"><strong>RBAC vs ABAC</strong>：RBAC 依<strong>角色</strong>(靜態、好管理)；ABAC 依<strong>屬性/情境</strong>(動態、細緻，如『財務部＋上班時間＋公司裝置』才允許)。零信任偏 ABAC。</p><p style="font-size:14.5px; line-height:1.8; margin:0;"><strong>PAM 的核心</strong>：把特權從『常駐』改為『<strong>按需即時(JIT)</strong>』，並全程錄製可歸責——降低特權被盜用的窗口。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 易混淆釐清</div>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>DAC vs MAC</strong>：DAC 由<strong>擁有者</strong>決定(可轉授、易擴散)；MAC 由<strong>系統按標籤</strong>強制，使用者<strong>不能自改</strong>(最嚴)。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>RBAC vs ABAC</strong>：RBAC 依<strong>角色</strong>(靜態、好管理)；ABAC 依<strong>屬性/情境</strong>(動態、細緻，如『財務部＋上班時間＋公司裝置』才允許)。零信任偏 ABAC。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>PAM 的核心</strong>：把特權從『常駐』改為『<strong>按需即時(JIT)</strong>』，並全程錄製可歸責——降低特權被盜用的窗口。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">07 — 條文與標準</div>
-    <p style="font-size:15px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-162（ABAC）</strong>、<strong>NIST RBAC 標準(INCITS 359)</strong>、<strong>NIST SP 800-53 AC 控制族</strong>。PAM 是零信任與最小權限的落地；JIT/零常駐特權是現代雲端 IAM 的最佳實務。</p>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#3D52A0; text-transform:uppercase; font-weight:700; margin-top:22px;">08 — 真實事件：LastPass 2022 密碼庫外洩</div>
-    <div style="background-color:#E9F3F2; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#0A5A59; margin-bottom:6px;">🔎 連密碼庫都被偷走</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#2A3340;">2022 年 <strong>LastPass</strong> 遭入侵：攻擊者先取得一名工程師的存取，最終竊得<strong>客戶加密的密碼庫備份</strong>與部分金鑰相關資料。雖密碼庫本身加密，但弱主密碼者面臨離線破解風險。事件凸顯<strong>密碼庫/憑證庫本身是極高價值目標</strong>——保管一切的東西，一旦失守衝擊巨大。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">教訓：密碼庫/PAM vault 需<strong>最高保護(強主密碼/MFA、金鑰隔離、嚴格存取與監控)</strong>；對企業 PAM 而言，vault 的入侵等於特權全失，故需縱深防禦與零常駐特權降低爆炸半徑。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 條文與標準</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 4px;"><strong>NIST SP 800-162（ABAC）</strong>、<strong>NIST RBAC 標準(INCITS 359)</strong>、<strong>NIST SP 800-53 AC 控制族</strong>。PAM 是零信任與最小權限的落地；JIT/零常駐特權是現代雲端 IAM 的最佳實務。</p>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — 真實事件：LastPass 2022 密碼庫外洩</div>
+    <div style="background-color:#EAF4F3; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">🔎 連密碼庫都被偷走</div>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#1E293B;">2022 年 <strong>LastPass</strong> 遭入侵：攻擊者先取得一名工程師的存取，最終竊得<strong>客戶加密的密碼庫備份</strong>與部分金鑰相關資料。雖密碼庫本身加密，但弱主密碼者面臨離線破解風險。事件凸顯<strong>密碼庫/憑證庫本身是極高價值目標</strong>——保管一切的東西，一旦失守衝擊巨大。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">教訓：密碼庫/PAM vault 需<strong>最高保護(強主密碼/MFA、金鑰隔離、嚴格存取與監控)</strong>；對企業 PAM 而言，vault 的入侵等於特權全失，故需縱深防禦與零常駐特權降低爆炸半徑。</p>
     </div>
-    <div style="background-color:#EEF1F8; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
-      <div style="font-size:13.5px; font-weight:700; color:#3D52A0; margin-bottom:6px;">📌 延伸：RBAC 的角色爆炸問題</div>
-      <p style="font-size:14.5px; line-height:1.8; margin:0; color:#2A3340;">RBAC 易管理，但組織成長後常出現<strong>角色爆炸(role explosion)</strong>——為各種權限組合創出成百上千角色，反而難維護、難審查。對策：<strong>角色工程(role mining)、角色階層、以 ABAC 處理情境化例外</strong>，並定期 recertification 清理。授權模型本身也需治理。</p>
+    <div style="background-color:#F1F5F9; border-radius:10px; padding:14px 16px; margin:10px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:6px;">📌 延伸：RBAC 的角色爆炸問題</div>
+      <p style="font-size:16px; line-height:1.8; margin:0; color:#1E293B;">RBAC 易管理，但組織成長後常出現<strong>角色爆炸(role explosion)</strong>——為各種權限組合創出成百上千角色，反而難維護、難審查。對策：<strong>角色工程(role mining)、角色階層、以 ABAC 處理情境化例外</strong>，並定期 recertification 清理。授權模型本身也需治理。</p>
     </div>
-    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:22px;">09 — CISSP 考點提醒</div>
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">09 — CISSP 考點提醒</div>
     <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:14.5px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『擁有者自行決定權限』→ DAC；『系統依標籤強制、不可自改』→ MAC(軍方)；『依角色』→ RBAC；『依情境/屬性動態』→ ABAC；『管理 root 並即時提權』→ PAM＋JIT。</p><p style="font-size:14.5px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>DAC(擁有者) vs MAC(系統強制)；RBAC(角色) vs ABAC(屬性)；PAM 核心是零常駐特權＋可歸責。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>選最佳答案：</strong>『擁有者自行決定權限』→ DAC；『系統依標籤強制、不可自改』→ MAC(軍方)；『依角色』→ RBAC；『依情境/屬性動態』→ ABAC；『管理 root 並即時提權』→ PAM＋JIT。</p><p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>常見陷阱：</strong>DAC(擁有者) vs MAC(系統強制)；RBAC(角色) vs ABAC(屬性)；PAM 核心是零常駐特權＋可歸責。</p>
     </div>
-    <details style="margin-top:22px; background-color:#F6F8FA; border:1px solid #E6E9ED; border-radius:10px; padding:12px 16px;">
-      <summary style="font-size:14px; font-weight:700; color:#15233B; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
-      <p style="font-size:14.5px; line-height:1.8; margin:12px 0 10px; color:#2A3340;"><strong>一句話：</strong>DAC 擁有者決定、MAC 系統按標籤強制、RBAC 依角色、ABAC 依屬性情境；PAM 用 vault＋JIT＋錄製＋零常駐特權管特權。</p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q1</strong> . 軍方高機密最常用哪種存取控制模型、特性？<br><span style="color:#0A5A59;">→ MAC(強制)；系統依標籤強制、使用者不可自行變更。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q2</strong> . 依『部門＋時間＋裝置』等情境動態決定存取是哪種模型？<br><span style="color:#0A5A59;">→ ABAC(屬性存取控制)，零信任偏好。</span></p>
-      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#2A3340;"><strong>Q3</strong> . PAM 的核心原則是什麼？<br><span style="color:#0A5A59;">→ 零常駐特權——按需即時(JIT)授予、用完即收、全程可歸責。</span></p>
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>DAC 擁有者決定、MAC 系統按標籤強制、RBAC 依角色、ABAC 依屬性情境；PAM 用 vault＋JIT＋錄製＋零常駐特權管特權。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 軍方高機密最常用哪種存取控制模型、特性？<br><span style="color:#0A6160;">→ MAC(強制)；系統依標籤強制、使用者不可自行變更。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 依『部門＋時間＋裝置』等情境動態決定存取是哪種模型？<br><span style="color:#0A6160;">→ ABAC(屬性存取控制)，零信任偏好。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . PAM 的核心原則是什麼？<br><span style="color:#0A6160;">→ 零常駐特權——按需即時(JIT)授予、用完即收、全程可歸責。</span></p>
     </details>
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
-    <div style="margin-top:22px; background-color:#FFFBF2; border:1px solid #EFE2C4; border-left:4px solid #C9962E; border-radius:10px; padding:15px 17px;">
-      <div style="font-size:13.5px; font-weight:700; color:#8A6D1E; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.4 存取控制模型（深入））</div>
-<div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍各模型關鍵特徵</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 6px;color:#3A3220;"><strong>DAC</strong>：每物件有擁有者、由 ACL 授權（彈性但難一致）。<strong>MAC</strong>：標籤＋need-to-know，lattice 格狀，最嚴。<strong>RBAC</strong>：以角色（職能）授權、非自主。<strong>Rule-based</strong>：全域規則套所有主體。<strong>ABAC</strong>：多屬性（user/環境/動作/資源），plain-language 規則。</p><div style="font-size:13px;font-weight:700;color:#8A6D1E;margin:2px 0 6px;">▍政策執行點</div><p style="font-size:13.5px;line-height:1.75;margin:0 0 0px;color:#3A3220;"><strong>PDP</strong>（Policy Decision Point，做決策）vs <strong>PEP</strong>（Policy Enforcement Point，執行決策）。Risk-based＝依情境/MFA/位置動態決策。</p>
-      <p style="font-size:11px; color:#A0895A; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §5.4 存取控制模型（深入）。</p>
-      <details style="margin-top:10px;background-color:#FFFDF8;border:1px dashed #E2D2A8;border-radius:9px;padding:10px 14px;"><summary style="font-size:12.5px;font-weight:700;color:#8A6D1E;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#9A8456;'>對應官方 §5.4 授權模型（深入）。</p><div style='font-size:12.5px;font-weight:700;color:#8A6D1E;margin:10px 0 5px;'>§Implement and manage authorization mechanisms (OSG-10 Chpt 14)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• Authorization ensures that the requested activity or object access is possible, given the authenticated identity&#x27;s privileges</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• e.g. ensuring that users with appropriate privileges can access resources</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• common authorization mechanisms include:</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• implicit deny</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• access control lists</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• access control matrixes</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• capability tables</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• constrained interfaces</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• content-dependent controls</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• context-dependent controls</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 5.4.1 Role Based Access Control (RBAC)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Role-Based Access Control (RBAC)</strong>: key characteristic is the use of roles or groups; RBAC models use task-based roles, and users gain privileges when admins place their accounts into a role or group; taking a user out of a role removes the permissions granted through the role membership</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Instead of assigning permissions directly to users, user accounts are placed in roles and administrators assign privileges to the roles (typically defined by job function)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• if the user account is in a role, the user has all privileges assigned to the role</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• MS Windows OS uses this model with groups</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• RBAC models can group users into roles based on the org&#x27;s hierarchy, and it is a non-discretionary access control model; central authority access decisions can use the RBAC model</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• RBAC allows assignment of privileges to users with minimum admin overhead</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 5.4.2 Rule Based access control</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Rule-based Access Control</strong>: use a set of rules, restrictions, or filters to determine access; key characteristic is that it applies global rules to all subjects</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• e.g. firewalls access control lists use a list of rules that define what access is allowed and what access is blocked</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Rules within the rule-based access control model are sometimes referred to as restrictions or filters</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 5.4.3 Mandatory Access Control (MAC)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Mandatory Access Control (MAC)</strong>: access control that requires the system itself to manage access controls in accordance with the org&#x27;s security policies</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• A key characteristic of the MAC model is the use of labels applied to both subjects and objects; subjects need matching labels to access objects</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• e.g. a label of top secret grants access to top-secret documents</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• When documented in a table, the MAC model sometimes resembles a lattice (i.e. climbing rosebush framework), so it is referred to as a lattice-based model</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• the MAC model enforces the need to know principle and supports a hierarchical environment, a compartmentalized environment, or a combination of both (hybrid environment)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 5.4.4 Discretionary Access Control (DAC)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Discretionary Access Control (DAC)</strong>: access control model in which the asset or system owner decides who gets access</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• A key characteristic of the DAC model is that every object has an owner, and the owner can grant or deny access to any other subjects</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• e.g. you create a file and are the owner, and can grant permissions to that file</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• All objects have owners, owners can modify permission</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Each object has an access control list defining permissions (e.g. read and modify files)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• All other models are non-discretionary models, and admins centrally manage non-discretionary controls</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• New Technology File System (NTFS) used in Windows, uses the DAC model</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Non-discretionary Access Control</strong>: somebody other than the asset owner determines access</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 5.4.5 Attribute Based Access Control (ABAC)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Attribute-Based Access Control (ABAC)</strong>: an advanced implementation of a rule-based access model, applying rules based on attributes; an access control paradigm where access rights are granted to users with policies that combine attributes together</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• A key characteristic of the ABAC model is its use of rules that can include multiple attributes about users, the environment, a user&#x27;s action and the target resource</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• this allows it to be much more flexible than a rule-based access control model that applies the rules to all subjects equally</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• many software-defined networks (SDNs) use the ABAC model</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• ABAC allows administrators to create rules within a policy using plain language statements such as &quot;Allow Managers to access the WAN using a mobile device&quot;</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• ABAC uses XACML (eXtensible Access Control Markup Language) which defines attribute-based access control policy language, architecture, and a processing model</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 5.4.6 Risk based access control</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Risk-based access control</strong>: evaluates the environment and the situation, and makes decisions based on software security policies</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• a model that grants access after evaluating risk; it can control access based on multiple factors such as a user&#x27;s location, determined by IP addresses, whether the user has logged on with MFA, and the user&#x27;s device</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• advanced models use machine learning, making predictive conclusions about current activity based on past activity</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#7A6E4E;'>• note that a risk-based access control can be used, as an example, to block malicious traffic from an infected IoT device by evaluating the environment and situation, and using that info to block traffic deemed abnormal</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#5A4F33;'>• 5.4.7 Access policy enforcement (e.g., policy decision point, policy enforcement point)</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• <strong>Access policy enforcement</strong>: enforcing access control policies within an org to regulate and manage access</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Policy Decision Point (PDP): the system responsible for making access control decisions based on predefined access policies and rules; a PDP evaluates access requests</div>
-<div style='font-size:12.5px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#7A6E4E;'>• Policy Enforcement Point (PEP): responsible for enforcing the access control decisions made by the PDP; the PEP acts as a gatekeeper</div><p style="font-size:10.5px;color:#A0895A;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#A0895A;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.4 存取控制模型（深入））</div>
+<div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍各模型關鍵特徵</div><p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>DAC</strong>：每物件有擁有者、由 ACL 授權（彈性但難一致）。<strong>MAC</strong>：標籤＋need-to-know，lattice 格狀，最嚴。<strong>RBAC</strong>：以角色（職能）授權、非自主。<strong>Rule-based</strong>：全域規則套所有主體。<strong>ABAC</strong>：多屬性（user/環境/動作/資源），plain-language 規則。</p><div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍政策執行點</div><p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>PDP</strong>（Policy Decision Point，做決策）vs <strong>PEP</strong>（Policy Enforcement Point，執行決策）。Risk-based＝依情境/MFA/位置動態決策。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §5.4 存取控制模型（深入）。</p>
+      <details style="margin-top:10px;background-color:#F8FAFC;border:1px dashed #CBD5E1;border-radius:9px;padding:10px 14px;"><summary style="font-size:13px;font-weight:700;color:#0A6160;cursor:pointer;">📂 完整考綱原文節錄（點開看官方逐條，English 原文）</summary><div style="margin-top:9px;"><p style='font-size:12px;line-height:1.6;margin:0 0 8px;color:#64748B;'>對應官方 §5.4 授權模型（深入）。</p><div style='font-size:13px;font-weight:700;color:#0A6160;margin:10px 0 5px;'>§Implement and manage authorization mechanisms (OSG-10 Chpt 14)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• Authorization ensures that the requested activity or object access is possible, given the authenticated identity&#x27;s privileges</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• e.g. ensuring that users with appropriate privileges can access resources</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• common authorization mechanisms include:</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• implicit deny</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• access control lists</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• access control matrixes</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• capability tables</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• constrained interfaces</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• content-dependent controls</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• context-dependent controls</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 5.4.1 Role Based Access Control (RBAC)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Role-Based Access Control (RBAC)</strong>: key characteristic is the use of roles or groups; RBAC models use task-based roles, and users gain privileges when admins place their accounts into a role or group; taking a user out of a role removes the permissions granted through the role membership</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Instead of assigning permissions directly to users, user accounts are placed in roles and administrators assign privileges to the roles (typically defined by job function)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• if the user account is in a role, the user has all privileges assigned to the role</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• MS Windows OS uses this model with groups</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• RBAC models can group users into roles based on the org&#x27;s hierarchy, and it is a non-discretionary access control model; central authority access decisions can use the RBAC model</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• RBAC allows assignment of privileges to users with minimum admin overhead</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 5.4.2 Rule Based access control</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Rule-based Access Control</strong>: use a set of rules, restrictions, or filters to determine access; key characteristic is that it applies global rules to all subjects</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• e.g. firewalls access control lists use a list of rules that define what access is allowed and what access is blocked</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Rules within the rule-based access control model are sometimes referred to as restrictions or filters</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 5.4.3 Mandatory Access Control (MAC)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Mandatory Access Control (MAC)</strong>: access control that requires the system itself to manage access controls in accordance with the org&#x27;s security policies</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• A key characteristic of the MAC model is the use of labels applied to both subjects and objects; subjects need matching labels to access objects</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• e.g. a label of top secret grants access to top-secret documents</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• When documented in a table, the MAC model sometimes resembles a lattice (i.e. climbing rosebush framework), so it is referred to as a lattice-based model</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• the MAC model enforces the need to know principle and supports a hierarchical environment, a compartmentalized environment, or a combination of both (hybrid environment)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 5.4.4 Discretionary Access Control (DAC)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Discretionary Access Control (DAC)</strong>: access control model in which the asset or system owner decides who gets access</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• A key characteristic of the DAC model is that every object has an owner, and the owner can grant or deny access to any other subjects</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• e.g. you create a file and are the owner, and can grant permissions to that file</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• All objects have owners, owners can modify permission</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Each object has an access control list defining permissions (e.g. read and modify files)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• All other models are non-discretionary models, and admins centrally manage non-discretionary controls</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• New Technology File System (NTFS) used in Windows, uses the DAC model</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Non-discretionary Access Control</strong>: somebody other than the asset owner determines access</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 5.4.5 Attribute Based Access Control (ABAC)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Attribute-Based Access Control (ABAC)</strong>: an advanced implementation of a rule-based access model, applying rules based on attributes; an access control paradigm where access rights are granted to users with policies that combine attributes together</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• A key characteristic of the ABAC model is its use of rules that can include multiple attributes about users, the environment, a user&#x27;s action and the target resource</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• this allows it to be much more flexible than a rule-based access control model that applies the rules to all subjects equally</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• many software-defined networks (SDNs) use the ABAC model</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• ABAC allows administrators to create rules within a policy using plain language statements such as &quot;Allow Managers to access the WAN using a mobile device&quot;</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• ABAC uses XACML (eXtensible Access Control Markup Language) which defines attribute-based access control policy language, architecture, and a processing model</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 5.4.6 Risk based access control</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Risk-based access control</strong>: evaluates the environment and the situation, and makes decisions based on software security policies</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• a model that grants access after evaluating risk; it can control access based on multiple factors such as a user&#x27;s location, determined by IP addresses, whether the user has logged on with MFA, and the user&#x27;s device</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• advanced models use machine learning, making predictive conclusions about current activity based on past activity</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:28px;color:#334155;'>• note that a risk-based access control can be used, as an example, to block malicious traffic from an infected IoT device by evaluating the environment and situation, and using that info to block traffic deemed abnormal</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:0px;color:#475569;'>• 5.4.7 Access policy enforcement (e.g., policy decision point, policy enforcement point)</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• <strong>Access policy enforcement</strong>: enforcing access control policies within an org to regulate and manage access</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Policy Decision Point (PDP): the system responsible for making access control decisions based on predefined access policies and rules; a PDP evaluates access requests</div>
+<div style='font-size:13px;line-height:1.65;margin:0 0 3px;padding-left:14px;color:#334155;'>• Policy Enforcement Point (PEP): responsible for enforcing the access control decisions made by the PDP; the PEP acts as a gatekeeper</div><p style="font-size:11px;color:#64748B;margin:10px 0 0;font-style:italic;">原文節錄自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0，未改動內文）。</p></div></details>
     </div>
     <!-- /09b -->
-    <div style="margin-top:22px; border:1px solid #E2E5EA; border-radius:10px; padding:14px 16px;">
-      <div style="font-size:13.5px; font-weight:700; color:#15233B; margin-bottom:10px;">📺 本日對應影片</div>
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
       <div style="margin-bottom:11px;">
-        <div style="font-size:12px; color:#0E7C7B; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
-        <a href="https://youtu.be/BUcoABZzeQ4" style="font-size:14px; font-weight:700; color:#0E7C7B; text-decoration:none;">CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview ↗</a>
+        <div style="font-size:12px; color:#0A6160; font-weight:700; margin-bottom:2px;">🎯 重點短片（聚焦本主題）</div>
+        <a href="https://youtu.be/BUcoABZzeQ4" style="font-size:14px; font-weight:700; color:#0A6160; text-decoration:none;">CISSP Domain 5 Review / Mind Map (1 of 2) | Access Control Overview ↗</a>
       </div>
       <div>
         <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
-        <a href="https://youtu.be/VknzQFVUfIc?t=4518" style="font-size:14px; font-weight:700; color:#15233B; text-decoration:none;">CISSP Full Course 2026 – Domain 5<span class="ts-note">（從約 75:18 開始）</span> ↗</a>
+        <a href="https://youtu.be/VknzQFVUfIc?t=4518" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 5<span class="ts-note">（從約 75:18 開始）</span> ↗</a>
       </div>
     </div>
 
@@ -155,8 +155,8 @@
 
   </div>
 
-  <div style="padding:16px 24px 22px; border-top:1px solid #EEF0F3; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#3D52A0; text-decoration:none; font-weight:600;">← 回索引總表</a>
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 65 / 120 · P2-D5-5</span>
   </div>
 
