@@ -80,6 +80,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 存取權依使用者『已看過什麼』動態變化的模型？<br><span style="color:#0A6160;">→ Brewer-Nash（Chinese Wall），防利益衝突。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . EAL7 比 EAL2 代表產品『更安全』嗎？<br><span style="color:#0A6160;">→ 不必然；EAL 衡量驗證嚴謹度，非功能安全程度。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A defense contractor's multilevel secure system blocks a user with a Secret clearance from saving a report to an Unclassified file share, yet still allows the same user to read Unclassified files. Which security model property BEST explains this behavior?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某國防承包商的多層級安全系統阻止具 Secret 授權的使用者將報告存入 Unclassified 共享區,但仍允許他讀取 Unclassified 檔案。哪個安全模型性質最能解釋此行為?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Biba simple integrity property（no read down）Biba 簡單完整性</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Biba star (*) integrity property（no write up）Biba 星號完整性</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Bell-LaPadula simple security property（no read up）BLP 簡單安全性</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Bell-LaPadula star (*) security property（no write down）BLP 星號安全性</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。系統擋的是『把高機密內容寫到低層級』＝防洩漏機密,正是 BLP 的 * property（no write down,又稱 confinement property）;讀取低層級不受限,因 BLP 只禁 read up。記憶:simple＝讀、star(*)＝寫;保機密＝BLP。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Biba 保完整性且 simple 講『讀』,與本題的寫入限制無關。</li><li style="margin-bottom:3px;">B：no write up 防低完整性資料污染高層級,方向相反且目標是完整性非機密性。</li><li style="margin-bottom:3px;">C：simple security 禁『讀上』,本情境被擋的是『寫下』。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A bank requires that tellers modify account balances only through a certified transaction application, never by editing the database directly, and every change must be verified by a second employee. Which security model BEST matches these requirements?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某銀行要求櫃員只能透過認證過的交易程式修改帳戶餘額,不得直接編輯資料庫,且每筆變更須由第二位員工覆核。哪個安全模型最符合這些要求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Bell-LaPadula</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Clark-Wilson</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Biba</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Brewer-Nash</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。『只能經認證程式（TP,受限介面）存取受保護資料（CDI）』＝良構交易（well-formed transaction）,『第二人覆核』＝職責分離（SoD）——正是 Clark-Wilson 的三元組（主體-程式-物件）。記憶:看到『必須經程式/介面改資料＋SoD』就選 Clark-Wilson。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：BLP 保機密性,只有讀寫層級規則,沒有交易與 SoD 概念。</li><li style="margin-bottom:3px;">C：Biba 也保完整性,但只靠 no read down/no write up 的層級規則,沒有『經程式存取』與覆核機制。</li><li style="margin-bottom:3px;">D：Brewer-Nash 防利益衝突,依存取歷史動態調整,與本情境無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization is procuring a firewall evaluated under Common Criteria. The security team has documented the organization's own security needs and now wants to compare them against the vendor's documented claims about the product's security functions. Which Common Criteria artifact contains the VENDOR's claims?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織依 Common Criteria 採購防火牆。安全團隊已寫好描述自身安全需求的文件,現在要與『廠商』對產品安全功能的聲明文件比對。哪個 CC 文件包含廠商的聲明?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Protection Profile（PP）保護輪廓</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Target of Evaluation（TOE）評估標的</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Security Target（ST）安全標的</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Evaluation Assurance Level（EAL）評估保證等級</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。ST（Security Target）＝廠商對 TOE 內建安全功能的聲明文件;採購流程是拿組織的 PP（需求）去比對各廠商的 ST,選最接近者。記憶:PP＝客戶的『I wants』,ST＝廠商的『claims』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：PP 是『客戶需求』文件,正是題目中組織自己寫的那份。</li><li style="margin-bottom:3px;">B：TOE 是被評估的產品本身,不是聲明文件。</li><li style="margin-bottom:3px;">D：EAL 是衡量驗證嚴謹度的等級數字,非聲明文件。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.2 模型 / §3.3 評估準則）</div>

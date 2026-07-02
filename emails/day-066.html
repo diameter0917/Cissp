@@ -83,6 +83,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 紅隊演練與一般滲透測試的差別？<br><span style="color:#0A6160;">→ 紅隊目標導向、模擬真實對手、測整體偵測回應(含社交/實體)；滲透聚焦找漏洞。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 為何用 credentialed scan？<br><span style="color:#0A6160;">→ 登入掃描能看到內部弱點，結果更完整準確。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During an authorized penetration test, a tester discovers indicators that a real attacker has already compromised the target server and appears to be actively exfiltrating data. What should the tester do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（在一次已授權的滲透測試中,測試者發現跡象顯示真實攻擊者已入侵目標伺服器,且似乎正在外傳資料。測試者『首先』應該怎麼做?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Halt testing and immediately notify the designated contact defined in the rules of engagement 停止測試,立即通知 ROE 中指定的聯絡人</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Continue the test as planned and document the finding for the final report 依計畫繼續測試,將發現記錄於最終報告</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Attempt to remove the attacker's access to contain the damage 嘗試移除攻擊者的存取以控制損害</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Expand the test scope to trace the attacker's entry point 擴大測試範圍以追查攻擊者的入侵點</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。ROE 除了界定範圍與可用手段,也應約定『發現真實入侵時的處置程序』——正確做法是<strong>立即停止測試並通報 ROE 指定聯絡人</strong>,讓組織啟動事件回應。滲透測試是演習,真實入侵是事件,兩者混在一起會污染證據,延誤回應。記憶:測試中撞見真攻擊→停,通報,交給 IR。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：真實入侵必須<strong>即時</strong>通報,等到最終報告才提,會讓攻擊者多出數週的活動時間,且測試流量會與攻擊行為混雜。</li><li style="margin-bottom:3px;">C：圍堵是事件回應團隊依授權與程序執行的工作,測試者擅自處置可能破壞證據,也超出測試授權。</li><li style="margin-bottom:3px;">D：擴大範圍違反 ROE/scope,未經授權的存取即使出於善意也可能構成違法。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A quarterly vulnerability scan of a large enterprise returns thousands of findings, far more than the remediation team can address this quarter. Which approach is BEST for prioritizing remediation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（大型企業的季度弱點掃描回報數千筆發現,遠超過修補團隊本季能處理的量。哪種做法『最適合』用來排定修補優先序?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Remediate findings in the order they appear in the scanner report 依掃描報告列出的順序逐筆修補</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Remediate only the vulnerabilities covered in recent news reports 只修補近期新聞報導提及的弱點</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Remediate strictly from the highest to the lowest CVSS base score 嚴格依 CVSS 基本分數由高至低修補</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Rank findings by combining CVSS severity with each asset's value and exposure 結合 CVSS 嚴重度與各資產的價值,曝險程度來排序</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。弱點管理本質是風險管理:同一弱點在『網際網路可達的關鍵資料庫』與『隔離的測試機』上,風險天差地遠。CVSS 量化技術嚴重度,但必須<strong>結合資產價值與曝險程度</strong>(弱點管理循環:資產盤點→估值→找弱點→持續複評)才是風險導向的優先序。Think like a manager:排序看風險,不只看分數。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：報告順序與風險無關,等於放棄排序。</li><li style="margin-bottom:3px;">B：新聞熱度≠自家環境的風險,會漏掉未被報導但對組織高風險的弱點。</li><li style="margin-bottom:3px;">C：只看 CVSS 基本分忽略資產重要性與可達性,可能先修隔離測試機,卻晚修對外的關鍵系統。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A vulnerability scanner reports a critical flaw on a production server, but the system administrator insists the patch was applied last month. What is the BEST next step for the security analyst?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（弱點掃描器回報正式伺服器有一個嚴重弱點,但系統管理員堅稱上個月已套用修補。安全分析師『最佳』的下一步是?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Accept the administrator's statement and close the finding 採信管理員說法,直接將該發現結案</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Manually verify the finding to determine whether it is a false positive 人工驗證該發現,判斷是否為誤報</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Immediately reapply the patch to the server 立即對伺服器重新套用修補</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Escalate the discrepancy to senior management for a decision 將分歧上報高階主管裁決</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。掃描器會有誤報(false positive),管理員的記憶或版本判斷也可能有誤——兩造衝突時的正解是<strong>人工驗證</strong>(檢查實際版本與設定,或用另一工具/手法複核),用證據取代各說各話。掃描結果本來就『需人工驗證後』才能據以行動,這也是弱點評估的基本紀律。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：未驗證就結案,若掃描器是對的(例如修補未生效,需重開機),等於留下已知的洞。</li><li style="margin-bottom:3px;">C：未確認根因就重複動作:若是誤報則白做,若修補真的未生效也查不出原因。</li><li style="margin-bottom:3px;">D：這是技術驗證層級就能解決的問題,直接上報是層級錯置,管理層也無從裁決技術事實。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.1/6.2.2 弱點與滲透（深入））</div>

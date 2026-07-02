@@ -90,6 +90,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 『一律使用 AES-256』屬於哪類文件？<br><span style="color:#0A6160;">→ Standard（標準，具體必遵要求）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 要建立並對外認證 ISMS 用哪個標準？<br><span style="color:#0A6160;">→ ISO/IEC 27001（27002 是控制指引、不可認證）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager wants every newly built server in the organization to start from the same minimum security configuration, and plans to use a configuration management tool to detect systems that drift from it. Which type of governance document BEST captures this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理希望組織內每台新建伺服器都從相同的『最低安全組態』開始,並計畫用組態管理工具偵測偏離的系統。哪一類治理文件最能承載這項要求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Standard 標準</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Baseline 基準</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Procedure 程序</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Guideline 指引</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。Baseline(基準)定義<strong>全組織每個系統都必須達到的最低安全水準</strong>,通常是 system-specific(如伺服器建置的組態清單),並常以 GPO 或組態管理工具落實與偵測偏離——題幹的『最低安全組態＋每台伺服器一致＋工具偵測 drift』正是 baseline 的教科書定義。記憶:baseline＝最低起點設定。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Standard 規範軟硬體與控制的一致性要求(如『一律用 AES-256』),但『每台系統的最低組態範本』這個層次更精準對應 baseline。</li><li style="margin-bottom:3px;">C：Procedure 是逐步操作的 SOP,說明『怎麼把設定做出來』,不是定義最低組態要求本身。</li><li style="margin-bottom:3px;">D：Guideline 是唯一非強制的建議性文件,無法承載『必須遵守』的最低安全要求。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">The board of directors asks the CIO to adopt a framework that focuses on enterprise IT governance, keeps IT activities aligned with business strategy, and is commonly used by auditors for compliance reviews. Which framework BEST fits these requirements?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（董事會要求 CIO 導入一個聚焦企業 IT 治理,使 IT 活動與業務策略對齊,且常被稽核人員用於合規審查的框架。哪個框架最符合需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> ISO/IEC 27002</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> NIST Cybersecurity Framework (CSF)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> COBIT</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> ITIL</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。COBIT 由 ISACA 制定,核心正是<strong>企業 IT 治理與『IT 對齊業務策略』</strong>,且實務上常被當作稽核/合規框架使用;其六大原則包含 provide stakeholder value 與 governance distinct from management。判斷關鍵字:『IT 治理＋業務對齊＋稽核』→ COBIT。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：ISO 27002 是 27001 控制的實作指引,焦點在資安控制細節,不在企業 IT 治理與業務對齊。</li><li style="margin-bottom:3px;">B：NIST CSF 是風險導向的網路安全框架(六功能),用於管理網安風險,不是以 IT 治理與稽核為核心。</li><li style="margin-bottom:3px;">D：ITIL 是 IT 服務管理(ITSM)最佳實務,對齊的是服務交付與業務需求,不是治理稽核框架。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A hospital's compliance team drafts an information security policy specifically because a healthcare law legally requires the organization to have one, and the policy's content mirrors the statute's mandates. Which type of policy is this?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某醫院法遵團隊起草一份資訊安全政策,原因是醫療法律明文要求組織必須具備,政策內容也對應法條的強制要求。這屬於哪一種政策型態?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Advisory policy 建議型政策</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Informative policy 資訊型政策</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Regulatory policy 法規型政策</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Organizational security policy 組織安全政策</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。為了<strong>符合法律/法規</strong>而制定的政策是 Regulatory(法規型)政策,常見於金融,醫療等受高度監管產業。判斷關鍵:制定動機來自『法律強制要求』而非管理層自主意志——先看『為什麼要有這份政策』,再對應政策型態。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Advisory 是組織自行『強烈建議』遵循並說明違反後果的政策,動機是內部管理,不是法律強制。</li><li style="margin-bottom:3px;">B：Informative 純屬告知性質,不具強制力,與法遵要求的強制本質不符。</li><li style="margin-bottom:3px;">D：組織安全政策泛指界定安全範圍與目標的高階文件,是統稱,沒有點出『因法規而生』這個關鍵屬性。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §1.6 文件 / §1.3 框架）</div>

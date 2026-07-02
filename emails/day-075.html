@@ -91,6 +91,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 為何線上備份不足以抗勒索？<br><span style="color:#0A6160;">→ 勒索會加密連網備份;需離線/不可變副本且實測還原。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . NotPetya 中 Maersk 靠什麼重建？<br><span style="color:#0A6160;">→ 一台因斷電離線而倖存的網域控制器備份(凸顯離線/異地備份的關鍵)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During an annual DR exercise, the recovery team travels to the alternate site and fully activates the recovery systems using restored data, while the primary data center continues serving production without interruption. Which type of DRP test is this?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（年度 DR 演練中,復原團隊進駐備援站,以還原的資料實際啟動復原系統;主資料中心則持續正常服務、未受中斷。這是哪一種 DRP 測試?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Simulation test 模擬演練</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Parallel test 平行測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Full-interruption test 完全中斷測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Structured walkthrough 桌上推演</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。判斷邏輯:鑑別點有二——①備援站<strong>實際啟動</strong>(排除只口頭推演或只做部分措施);②主站<strong>照常營運、不切換</strong>。兩者同時成立正是 <strong>parallel test</strong> 的定義;若真把主站關閉並切換,才升級為 full-interruption。五種測試風險由低到高:read-through→walkthrough→simulation→parallel→full-interruption。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：simulation 只依情境『實際執行部分』回應措施,不會完整啟動備援站系統。</li><li style="margin-bottom:3px;">C：full-interruption 必須真正關閉主站並切換;本題主站未中斷。</li><li style="margin-bottom:3px;">D：structured walkthrough 是團隊聚集口頭推演各自步驟,不動任何系統。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A BIA concludes that a trading platform has a maximum tolerable downtime of two hours and can lose almost no transaction data. Which recovery strategy BEST meets these requirements?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（BIA 認定某交易平台的最大可容忍中斷(MTD)為兩小時,且幾乎不能遺失交易資料。哪種復原策略最符合需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> A warm site with equipment in place, restored from nightly backups 溫站(設備就緒,以每晚備份還原資料)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> A hot site kept synchronized through near-real-time data replication 熱站(以近即時資料抄寫保持同步)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> A cold site with facility space ready for equipment delivery 冷站(僅備妥場地設施,待設備進駐)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> A reciprocal agreement with a partner organization's data center 與夥伴組織資料中心簽訂互惠協議</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。判斷邏輯:兩個需求各卡一關——MTD 兩小時代表 <strong>RTO 必須≤2 小時</strong>,只有分鐘級就緒的熱站辦得到;『幾乎不能掉資料』代表 <strong>RPO 趨近零</strong>,需要近即時抄寫。站點選擇是 RTO/RPO 與成本的取捨:需求最嚴,就得付最貴的熱站。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：溫站復原以小時計已屬勉強,且每晚備份代表最壞可掉近 24 小時資料,違反 RPO 要求。</li><li style="margin-bottom:3px;">C：冷站復原以天計,遠遠超出 2 小時的 MTD。</li><li style="margin-bottom:3px;">D：互惠協議的可用性與環境相容性無保證,無法承諾 2 小時 RTO 與近零 RPO。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A business unit states it can tolerate losing at most one hour of order data, yet the only protection for the order database is a nightly backup at 23:00. Which metric is NOT being met, and what is the BEST corrective action?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（業務單位表明訂單資料最多只能遺失一小時,但訂單資料庫目前唯一的保護是每晚 23:00 的備份。哪個指標未被滿足?最佳矯正措施為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> RTO is not met; acquire a hot site to speed up recovery RTO 未達標;建置熱站加速復原</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> MTD is not met; negotiate a longer tolerable outage with the business MTD 未達標;與業務協商延長可容忍中斷時間</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> RPO is not met; increase backup frequency or adopt continuous replication RPO 未達標;提高備份頻率或改採連續抄寫</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> MTTR is not met; assign more staff to the recovery team MTTR 未達標;為復原團隊增派人力</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。判斷邏輯:『可遺失多少資料』對應的是 <strong>RPO(recovery point objective)</strong>——每晚備份的最壞情況會掉近 24 小時資料,遠超 1 小時容忍度。RPO 由<strong>備份/抄寫頻率</strong>決定,矯正就是把備份間隔壓到 1 小時內或改用連續抄寫。記憶法:RPO=Point=可掉多少資料;RTO=Time=多快救回服務。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：RTO 關乎『多快恢復服務』;題目談的是資料遺失量,熱站救不了備份間隔太疏的問題。</li><li style="margin-bottom:3px;">B：MTD 是可容忍的停機時間上限,與資料遺失量無關;要業務遷就 IT 也本末倒置。</li><li style="margin-bottom:3px;">D：MTTR 是平均修復時間指標;增派人力不會改變備份頻率造成的資料缺口。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.6 事件 / §7.10 復原（深入））</div>

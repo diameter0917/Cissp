@@ -79,6 +79,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . API 最常見的 BOLA 漏洞根因與對策？<br><span style="color:#0A6160;">→ 缺伺服器端每物件授權檢查(只靠前端隱藏);對策是後端逐物件驗授權。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Log4Shell 為何難盤點影響範圍？<br><span style="color:#0A6160;">→ Log4j 常是『相依的相依』,無 SBOM 難知哪些應用受影響。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A development manager wants to identify security flaws in the team's proprietary source code as early as possible, before the application is compiled or deployed to any test environment. Which testing approach BEST meets this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（開發經理希望在應用程式編譯或部署到任何測試環境之前,盡早找出團隊自寫原始碼中的安全缺陷。哪種測試方法最符合這個需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Dynamic application security testing (DAST) 動態應用安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Static application security testing (SAST) 靜態應用安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Interactive application security testing (IAST) 互動式應用安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Software composition analysis (SCA) 軟體組成分析</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。<strong>SAST</strong>＝<strong>不執行程式</strong>,直接檢查原始碼(甚至編譯前)找缺陷與違反安全編碼政策之處,是<strong>最早期</strong>可用的自動化掃描,也是可擴展的程式碼安全審查方法。判斷邏輯:關鍵字『自寫原始碼＋編譯前/部署前＋最早』→ 靜態分析。記憶:S＝Static＝Source code＝早。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：DAST 需要<strong>執行中</strong>的應用程式,通常在 SAST 之後,時點不符『編譯前』。</li><li style="margin-bottom:3px;">C：IAST 是在執行期插樁(DAST＋原始碼),同樣需要程式跑起來。</li><li style="margin-bottom:3px;">D：SCA 掃的是<strong>引入的</strong>開源/第三方元件已知漏洞,不分析你自寫的程式碼。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A critical vulnerability is disclosed in a widely used open-source library. A customer asks its software vendor for the formal record enumerating every component, library, and dependency in the delivered product, so the customer can quickly determine whether it is affected. What is the customer requesting?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某廣泛使用的開源函式庫爆出重大漏洞。客戶要求軟體供應商提供一份正式紀錄,列出交付產品中的每個元件,函式庫與相依,以便快速判斷自己是否受影響。客戶要的是什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> A software composition analysis (SCA) tool license 一套軟體組成分析(SCA)工具授權</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> An SLSA provenance attestation SLSA 來源證明</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> The vendor's most recent vulnerability scan report 供應商最近一次的弱點掃描報告</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> A software bill of materials (SBOM) 軟體物料清單(SBOM)</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>SBOM</strong>＝列出軟體產品內<strong>所有元件,函式庫與相依的正式紀錄(產出物)</strong>,供應鏈事件(如 Log4Shell)爆發時能<strong>快速定位受影響元件</strong>。與 SCA 互補:<strong>SCA 是『工具』(掃描並識別元件與已知漏洞),SBOM 是『產出物/文件』</strong>。判斷邏輯:題幹要的是『一份可交付的清單紀錄』,不是掃描能力。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：SCA 是供應商自己用來產生與比對清單的<strong>工具</strong>;客戶要的是清單本身,不是工具授權。</li><li style="margin-bottom:3px;">B：SLSA 證明的是建置<strong>來源與完整性</strong>(誰,怎麼建的),不是完整的元件相依列舉。</li><li style="margin-bottom:3px;">C：掃描報告只列『當時掃到的已知漏洞』,新漏洞爆發時無法回答『產品裡有沒有這個元件』。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization's public API intermittently crashes and returns internal error details when clients send malformed or out-of-range values. Which control BEST addresses this weakness?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織的公開 API 在用戶端送出格式錯誤或超出範圍的值時,會不定期當機並回傳內部錯誤細節。哪個控制最能解決這個弱點?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Apply rate limiting to throttle abusive clients 套用速率限制以節流濫用的用戶端</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Require TLS for all API connections 要求所有 API 連線使用 TLS</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Implement parameter validation to confirm values are within defined limits before they are processed 實作參數驗證,在系統處理前確認參數值在定義的範圍內</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Place the API behind a gateway that logs all requests 將 API 置於記錄所有請求的閘道之後</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。官方考點:<strong>Parameter validation(參數驗證)</strong>＝確認 API 收到的參數<strong>非畸形,非無效,非惡意</strong>,且值在<strong>定義範圍內才處理</strong>——正對症『畸形/超範圍輸入導致當機』。判斷邏輯:對照『弱點是什麼』選控制;問題出在輸入未驗證,不是流量,傳輸或記錄。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：速率限制防的是濫用/暴力/DoS 的『量』;單一畸形請求照樣讓它當機。</li><li style="margin-bottom:3px;">B：TLS 保護傳輸中的機密性與完整性,與輸入內容是否合法無關。</li><li style="margin-bottom:3px;">D：閘道記錄是偵測/鑑識輔助,請求仍會抵達並打掛後端,未修正根因。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.2.9 測試 / §8.5.2 API（深入））</div>

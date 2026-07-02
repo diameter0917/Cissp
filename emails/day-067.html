@@ -77,6 +77,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 前端限制了但 API 仍可越權讀資料，根因？<br><span style="color:#0A6160;">→ API 未做伺服器端授權/未做負向測試(BOLA)；前端非安全控制。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . SAST 與 DAST 為何要併用？<br><span style="color:#0A6160;">→ SAST 早期看碼找根因(誤報多)、DAST 後期實證執行期漏洞，互補盲點。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization deploys a commercial web application purchased from a vendor that will not provide source code. Which testing technique is MOST appropriate for the organization to evaluate the application's security?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（組織部署一套向廠商採購的商用網頁應用程式,廠商不提供原始碼。哪種測試技術『最適合』組織用來評估該應用程式的安全性?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Static application security testing (SAST) 靜態應用程式安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> A formal Fagan code inspection 正式的 Fagan 程式碼審查</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Dynamic application security testing (DAST) 動態應用程式安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Mutation testing of the application's code 對應用程式的程式碼做變異測試</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。DAST 在<strong>執行期(runtime)</strong>評估軟體安全,完全不需要原始碼——考綱明言 DAST『常是部署他人所寫應用程式的組織<strong>唯一的選項</strong>』。買來的軟體拿不到碼,只能從外部測試執行中的應用。記憶:沒有碼→只能動態打。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：SAST 靠分析原始碼(不執行)找漏洞,無碼可用即無從靜態分析。</li><li style="margin-bottom:3px;">B：Fagan 審查是最正式的六步驟程式碼同儕審查,同樣需要原始碼。</li><li style="margin-bottom:3px;">D：變異測試要小幅修改程式產生變異版本來驗證測試品質,是開發方才能做的技術。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A software tester builds a library of test inputs from data models that describe the application's expected input formats, then uses those inputs to probe for unexpected behavior. Which technique is the tester using?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一位軟體測試員根據描述應用程式預期輸入格式的資料模型建立測試輸入庫,再用這些輸入探測非預期行為。這位測試員使用的是哪種技術?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Mutation (dumb) fuzzing 變異式(dumb)模糊測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Generational (intelligent) fuzzing 生成式(intelligent)模糊測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Misuse case testing 誤用案例測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Interface testing 介面測試</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。模糊測試分兩型:<strong>generational(intelligent)fuzzing 依『預期輸入的模型』產生輸入</strong>;mutation(dumb)fuzzing 則是修改『既有的已知輸入』合成新輸入。題幹關鍵字『從資料模型建立』→ 生成式。記憶:mutation 改舊料,generational 照模型造新料。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：變異式的起點是『已知輸入』,加以修改;不是依模型從頭生成。</li><li style="margin-bottom:3px;">C：誤用案例測試先列舉已知濫用情境再嘗試利用,重點在攻擊者行為,不是靠輸入模型產生資料。</li><li style="margin-bottom:3px;">D：介面測試驗證 API/UI/實體介面符合規格,與測試輸入的產生方式無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A development team is planning interface testing for an application that controls robotic machinery on a factory floor. Which type of interface deserves the MOST careful attention from testers?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（開發團隊為一套控制工廠機器手臂的應用程式規劃介面測試。測試者『最』應審慎關注哪一類介面?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> The application programming interfaces exposed as web services 以 web service 對外開放的 API</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> The graphical user interface used by operators 操作員使用的圖形化介面</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> The command-line interface used by administrators 管理員使用的命令列介面</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> The physical interfaces that manipulate the machinery 操縱機械的實體介面</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。介面測試三類:API,UI,<strong>physical interface(實體介面)</strong>。考綱特別提醒:操縱機械,邏輯控制器等實體介面<strong>失效的後果</strong>可能傷及人身與設備,測試者須特別小心——人命與實體安全永遠最優先,這正是 CISSP 的判斷邏輯。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：API 當然要測(確保強制執行安全要求),但失效後果通常不直接危及人身安全。</li><li style="margin-bottom:3px;">B：GUI 屬 UI 測試範圍,重要性次於會實際驅動機械的實體介面。</li><li style="margin-bottom:3px;">C：CLI 同屬 UI 類介面,理由同上。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.5/6.2.7/6.2.8 測試技術（深入））</div>

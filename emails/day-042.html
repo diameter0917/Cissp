@@ -88,6 +88,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 控制年成本高於其能降低的 ALE，應如何？<br><span style="color:#0A6160;">→ 通常選擇接受（accept）剩餘風險——資安要划算。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 何時選定性而非定量分析？<br><span style="color:#0A6160;">→ 缺乏可靠量化數據、需快速排序時用定性（或混合）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A risk analyst values a manufacturing company's ERP system at $400,000. A ransomware event is expected to destroy 25% of the asset's value, and threat intelligence indicates such an event occurs about once every four years. What is the annualized loss expectancy (ALE) for this risk?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（風險分析師評估某製造公司 ERP 系統的資產價值為 $400,000。勒索軟體事件預估會毀損資產價值的 25%,威脅情資顯示此類事件約每 4 年發生一次。此風險的 ALE(年化損失期望)是多少?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> $100,000</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> $400,000</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> $10,000</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> $25,000</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。先算 <strong>SLE = AV × EF = 400,000 × 0.25 = $100,000</strong>;『每 4 年一次』換算 <strong>ARO = 1/4 = 0.25</strong>;<strong>ALE = SLE × ARO = 100,000 × 0.25 = $25,000/年</strong>。口訣:先 SLE(AV×EF),再乘 ARO 得 ALE;看到『每 N 年一次』先換算成 1/N。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：$100,000 是 SLE(單次損失),忘了乘上 ARO 年化。</li><li style="margin-bottom:3px;">B：$400,000 是資產價值 AV 本身,不是任何損失期望值。</li><li style="margin-bottom:3px;">C：$10,000 是把 ARO 誤代為 0.1(小數點錯位)的常見計算錯誤。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A datacenter is valued at $2,000,000. The risk assessment team estimates that a major flood would destroy 40% of the facility. Which value should the analyst record as the exposure factor (EF) for this scenario?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某資料中心價值 $2,000,000。風險評估團隊預估一場大洪水會摧毀設施的 40%。分析師應把哪個數值記為此情境的 EF(暴露係數)?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> 0.40</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> $800,000</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> 0.60</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> $1,200,000</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。EF 是<strong>單次事件造成資產損失的『百分比』</strong>,題幹直接給出『摧毀 40%』→ EF = 0.40。EF 是比例(無單位),不是金額;金額要到 SLE 才出現(SLE = 2,000,000 × 0.4 = $800,000)。別把 EF(%)與 SLE($)或 ARO(次/年)代錯位置。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：$800,000 是 SLE(單次損失金額 AV×EF),不是暴露係數。</li><li style="margin-bottom:3px;">C：0.60 是『倖存比例』,把沒被摧毀的部分誤當成損失。</li><li style="margin-bottom:3px;">D：$1,200,000 是倖存價值(60% × AV),既非 EF 也非 SLE。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A proposed security control costs $40,000 per year to operate and is expected to reduce the ALE of a key system by $100,000. Using the return on security investment (ROSI) formula, what is the ROSI of this control?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一項擬議的安全控制年營運成本為 $40,000,預期可使關鍵系統的 ALE 降低 $100,000。依 ROSI(資安投資報酬)公式,此控制的 ROSI 是多少?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> 250%</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> 40%</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> 150%</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> 60%</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>ROSI = (降低的 ALE − 控制成本) / 控制成本 = (100,000 − 40,000) / 40,000 = 1.5 = 150%</strong>。ROSI 為正代表投資划算,這也是 CISO 向管理層辯護資安預算的共同語言——把『要不要買』變成可量化的商業決策。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：250% 是漏減控制成本(直接算 100,000 / 40,000)的結果,分子應是『淨效益』。</li><li style="margin-bottom:3px;">B：40% 是把公式顛倒(40,000 / 100,000)的算法,分母應是控制成本。</li><li style="margin-bottom:3px;">D：60% 是把淨效益除以 ALE 降低額(60,000 / 100,000),分母代錯了。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §1.9 定量風險）</div>

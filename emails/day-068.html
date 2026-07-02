@@ -76,6 +76,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . BAS 與弱點掃描的差別？<br><span style="color:#0A6160;">→ 掃描找弱點；BAS 自動模擬攻擊技術驗證偵測與控制是否真會觸發。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . clipping level 設太高的風險？<br><span style="color:#0A6160;">→ 漏掉刻意低於門檻的慢速攻擊(如密碼噴灑)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An online banking service sees almost no traffic between 2 a.m. and 5 a.m., yet management wants assurance that the service is functioning correctly during those hours, before any customer is affected. Which monitoring approach BEST meets this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某網路銀行服務凌晨 2 點到 5 點幾乎沒有流量,但管理層希望在任何客戶受影響之前,就能確認服務在該時段運作正常。哪種監控方式『最能』滿足此需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Real user monitoring (RUM) 真實使用者監測</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Daily review of application logs 每日審查應用程式日誌</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Synthetic transactions executed on a schedule 依排程執行的合成交易</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> A breach and attack simulation (BAS) platform 入侵與攻擊模擬平台</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。合成交易(synthetic/active monitoring)以腳本<strong>主動模擬</strong>使用者操作並比對預期結果,即使『沒有真實使用者』也能持續驗證可用性與功能,在客戶受影響前先發現問題——正中題幹『低流量時段』與『事前發現』兩個條件。記憶:沒人用也要測→合成(主動)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：RUM 是<strong>被動</strong>觀測真實流量,凌晨沒人用就沒有資料;等有資料時已有使用者受影響。</li><li style="margin-bottom:3px;">B：每日日誌審查是事後檢視,無法在凌晨即時發現服務異常。</li><li style="margin-bottom:3px;">D：BAS 驗證的是『偵測與控制會不會被觸發』,不是服務功能與可用性監控。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During an incident investigation, SOC analysts find that firewall, server, and application events cannot be assembled into a coherent timeline because their timestamps disagree by several minutes. Which control would BEST prevent this problem?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（事件調查期間,SOC 分析師發現防火牆,伺服器與應用程式的事件因時間戳相差數分鐘而無法組成一致的時間軸。哪個控制『最能』預防此問題?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Increasing the log retention period 延長日誌保存期限</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Enabling log normalization on the SIEM 在 SIEM 上啟用日誌正規化</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Collecting logs from additional sources 蒐集更多來源的日誌</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Synchronizing all log sources and the SIEM using NTP 以 NTP 同步所有日誌來源與 SIEM 的時鐘</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。考綱明言:日誌系統應使用 <strong>NTP(Network Time Protocol)</strong>,讓『送出日誌的系統』與『SIEM 本身』時鐘同步,確保多來源資訊有<strong>一致的時間軸</strong>。時鐘不同步,再多日誌也拼不出攻擊鏈——關聯分析的前提是共同的時間基準。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：保存期限解決『留多久』,不解決時間戳彼此不一致。</li><li style="margin-bottom:3px;">B：正規化統一的是<strong>格式與欄位</strong>,無法修正來源時鐘本身的偏差。</li><li style="margin-bottom:3px;">C：來源更多但時鐘仍亂,時間軸問題只會更嚴重。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Investigators suspect that an attacker moved laterally between internal hosts and exfiltrated a large volume of data to an external address. Which log source would be MOST useful for reconstructing these network communications?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（調查人員懷疑攻擊者曾在內部主機間橫向移動,並將大量資料外傳至外部位址。哪種日誌來源『最有助於』重建這些網路通訊?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Change management logs 變更管理日誌</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Windows Group Policy Object (GPO) settings Windows 群組原則(GPO)設定</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Application error logs 應用程式錯誤日誌</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Network flow (NetFlow) records 網路流量(NetFlow)紀錄</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。考綱明言:<strong>NetFlow 紀錄對調查安全事件特別有用</strong>——它記錄『誰跟誰,何時,傳了多少量』的連線中繼資料,正適合重建橫向移動路徑與辨識異常的大量外傳流量。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：變更管理日誌追蹤系統變更與核准,與網路通訊軌跡無關。</li><li style="margin-bottom:3px;">B：GPO 是集中<strong>部署</strong>日誌政策的工具,本身不是通訊紀錄。</li><li style="margin-bottom:3px;">C：應用程式錯誤日誌只看單一應用的異常,拼不出跨主機的流向與流量。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.3 日誌 / §6.2.9 BAS（深入））</div>
