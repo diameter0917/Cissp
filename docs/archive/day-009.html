@@ -48,7 +48,9 @@
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Purging</strong>（清洗）— <span style="color:#5B6675;">消磁/加密抹除，防實驗室級復原。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Destruction</strong>（摧毀）— <span style="color:#5B6675;">粉碎/焚化，介質報廢，保證最高。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Degaussing</strong>（消磁）— <span style="color:#5B6675;">強磁場抹除磁性介質；對 SSD 無效。</span></td></tr>
-      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Crypto-erase</strong>（加密抹除）— <span style="color:#5B6675;">銷毀加密金鑰使資料永久無法解讀，適合 SSD/雲端。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Crypto-erase</strong>（加密抹除）— <span style="color:#5B6675;">銷毀加密金鑰使資料永久無法解讀，適合 SSD/雲端。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">EOL</strong>（End-of-Life，產品停售）— <span style="color:#5B6675;">廠商停止販售該產品的時間點，軟體與硬體皆適用。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">EOS / EOSL</strong>（End-of-Support，停止支援）— <span style="color:#5B6675;">廠商停止提供支援與安全修補的時間點；續用 EOS 系統須做風險評估並施加補償控制。</span></td></tr>
     </table>
 <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 易混淆釐清</div>
     <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
@@ -72,6 +74,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 介質要報廢、要求最高保證，用哪一級？<br><span style="color:#0A6160;">→ Destruction（粉碎/焚化）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 媒體清除的權威標準是？<br><span style="color:#0A6160;">→ NIST SP 800-88（Clear/Purge/Destroy）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A technician overwrites a hard drive with a fixed pattern so the data cannot be recovered using normal software recovery utilities, though laboratory techniques might still succeed. Which sanitization level BEST describes this?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（技術人員以固定模式覆寫硬碟,使資料無法以一般軟體救援工具復原,但實驗室技術仍可能救回。這最符合哪一個清除等級?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Erasing 刪除</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Clearing 清除</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Purging 清洗</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Destruction 摧毀</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。Clearing＝覆寫資料,防『一般軟體復原工具』但不保證擋得住實驗室級技術;Purging 才是以『任何已知技術都無法復原』為目標。判斷關鍵字:題幹說一般工具救不回、實驗室可能可以——正是 Clearing 的定義邊界。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Erasing 只是刪除操作,留下大量殘留,連一般復原工具都擋不住。</li><li style="margin-bottom:3px;">C：Purging 目標是連實驗室技術都無法復原（如消磁、加密抹除）,強度高於題幹描述。</li><li style="margin-bottom:3px;">D：Destruction 是實體銷毀,介質報廢,保證最高,與『覆寫後仍可再用』不符。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager finds that a critical production server runs an operating system that reached End-of-Support (EOS) a year ago, so the vendor no longer provides security patches. The system cannot be replaced immediately. What is the BEST course of action?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理發現一台關鍵正式伺服器的作業系統已於一年前 End-of-Support（EOS,停止支援）,廠商不再提供安全修補,且系統無法立即汰換。下列何者是最佳做法?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Accept the situation, since the system is still functioning normally 系統仍正常運作,維持現狀即可</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Immediately shut down and decommission the server 立即關閉並除役該伺服器</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Assess the risk and apply compensating controls such as network isolation, while planning replacement 評估風險並施加網路隔離等補償控制,同時規劃汰換</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Ask the vendor to release a one-time security patch 要求廠商釋出一次性安全修補</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。EOS 之後系統不再有修補,每個新漏洞都成為永久破口——但 CISSP 的答案永遠是風險導向:先評估風險,用補償控制（隔離、加強監控、限縮存取）把風險降到可接受,並把汰換排入計畫。Think like a manager:既不是放著不管,也不是衝動關機。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：『還能動』不等於風險可接受,未經評估就默認接受風險是失職。</li><li style="margin-bottom:3px;">B：未評估營運衝擊就關閉關鍵系統,可用性損失可能比原風險更大。</li><li style="margin-bottom:3px;">D：EOS 的定義就是廠商已停止支援,一次性修補通常不可得,不是可依賴的策略。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.4.6 殘留 / §2.4.7 銷毀 / §2.5 EOL）</div>

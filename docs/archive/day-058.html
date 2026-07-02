@@ -81,6 +81,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 誤報與漏報哪個更危險、為什麼？<br><span style="color:#0A6160;">→ 漏報（false negative）——真攻擊沒被抓到。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 零信任的核心原則？<br><span style="color:#0A6160;">→ 永不信任、持續驗證；不因位於內網就放行。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An online retailer's web application keeps receiving SQL injection attempts that pass through the perimeter stateful firewall because they arrive over allowed HTTPS connections. Which control would BEST protect the application?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（線上零售商的 Web 應用持續遭受 SQL injection 攻擊;由於攻擊透過被允許的 HTTPS 連線進入,邊界的狀態防火牆無法阻擋。哪個控制最能保護該應用?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deploy a web application firewall (WAF) to inspect Layer 7 content and block injection patterns 部署 WAF 檢視 L7 應用內容並阻擋注入樣式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Tighten the packet filter rules to allow only ports 80 and 443 收緊封包過濾規則,僅允許 80/443 埠</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Add a network IDS to alert on suspicious traffic 加裝網路 IDS 對可疑流量告警</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Move the web server into a separate VLAN 將 Web 伺服器移入獨立 VLAN</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。攻擊藏在『被允許的 L7 內容』裡,只看 L3/L4 標頭與連線狀態的防火牆天生看不到;WAF 專為 Web 應用設計,檢視 HTTP 請求內容並阻擋 SQLi/XSS 等注入樣式。判斷邏輯:控制的『檢視層級』必須對得上攻擊『所在層級』——應用層攻擊要用應用層控制。記憶法:『擋 SQLi/XSS,找 WAF』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：攻擊本來就走 443 進來,收緊埠規則對『合法埠上的惡意內容』無效。</li><li style="margin-bottom:3px;">C：IDS 只告警不阻擋,且未必能解密檢視 HTTPS 內容,保護力不如在線阻擋的 WAF。</li><li style="margin-bottom:3px;">D：分段限制的是入侵後的橫向移動,無法阻止對應用本身的注入攻擊。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">After deploying an inline anomaly-based IPS, a company's order-processing traffic is repeatedly blocked during month-end peaks, disrupting the business; the signature engine is unaffected. What is the security manager's BEST course of action?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（公司部署在線異常偵測 IPS 後,月底高峰期的訂單處理流量屢次被阻擋而干擾業務;特徵引擎不受影響。安全經理的最佳做法為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Permanently switch the device to passive IDS mode 將設備永久改為被動 IDS 模式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Disable anomaly detection and rely on signatures only 停用異常偵測,只依賴特徵比對</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Add the entire internal network to the IPS allow list 將整個內部網路加入 IPS 允許清單</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Re-baseline the anomaly profile to include peak periods, and run the affected rules in alert-only mode while tuning 重新建立涵蓋高峰期的行為基線,調校期間將受影響規則暫改為僅告警</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。異常偵測依賴『正常行為基線』;基線若沒涵蓋月底業務尖峰,正常高峰流量就會被判為異常（false positive）而遭在線阻擋。最佳做法是重建涵蓋尖峰的基線,並在調校期間把受影響規則改為僅告警——既恢復業務可用性,又保留偵測與其餘防禦能力。判斷邏輯:think like a manager——面對誤報,答案是『調校』而非『棄守』,在誤報與漏報之間取得平衡,不犧牲整個防禦層。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：全面永久改 IDS 就喪失所有在線阻擋能力,為局部誤報放棄整體防禦,因小失大。</li><li style="margin-bottom:3px;">B：只剩特徵比對會抓不到未知攻擊,漏報（false negative）風險上升——漏報比誤報更危險。</li><li style="margin-bottom:3px;">C：把整個內網加入允許清單等於自廢武功,攻擊者一旦進入內網即暢行無阻。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A ransomware incident showed that once a single server in the flat data-center network was compromised, the malware spread laterally to hundreds of workloads behind the same perimeter NGFW. The CISO wants a modern architecture that limits lateral movement between individual workloads. Which approach BEST meets this goal?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一次勒索軟體事件顯示,扁平的資料中心網路中只要單一伺服器被入侵,惡意程式就能橫向擴散到同一邊界 NGFW 後方的數百個工作負載。CISO 希望採用能限制個別工作負載間橫向移動的現代架構。哪個做法最能達成目標?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Upgrade the perimeter NGFW and enable its IPS module 升級邊界 NGFW 並啟用其 IPS 模組</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Implement micro-segmentation using SDN-based distributed firewalls that enforce policy at each workload's virtual interface 以 SDN 為基礎的分散式防火牆實作微分段,在每個工作負載的虛擬介面上落實政策</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Split the data center into two large VLANs separated by an ACL 將資料中心切成兩個大型 VLAN 並以 ACL 區隔</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Deploy an anomaly-based IDS inside the data center 在資料中心內部署異常偵測 IDS</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。橫向移動走的是資料中心內部的東西向（east-west）流量,再強的邊界設備也管不到。微分段（micro-segmentation）把每個工作負載視為獨立安全區,透過 SDN 的集中控制面與分散式防火牆,在每個 VM/容器的虛擬介面層級落實政策,正是零信任『永不信任、持續驗證』的網路落地（2024 考綱 §4.1.11、NIST SP 800-207）。判斷邏輯:題目要的是『工作負載層級』的隔離顆粒度,只有微分段做得到。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：邊界防禦再強也看不到、管不到內部的東西向流量,對橫向移動無能為力。</li><li style="margin-bottom:3px;">C：兩個大 VLAN 顆粒度太粗,同一 VLAN 內的數百個工作負載之間仍可自由橫移。</li><li style="margin-bottom:3px;">D：IDS 只偵測告警,不能阻止擴散;且未改變扁平架構這個根因。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.2.3 防火牆/IDS / §4.1.11 分段）</div>
@@ -138,7 +183,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 58 / 120 · P2-D4-3</span>
   </div>
 

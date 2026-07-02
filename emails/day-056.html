@@ -82,6 +82,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 封裝過程資料在 L4/L3/L2 分別叫什麼？<br><span style="color:#0A6160;">→ segment（L4）/packet（L3）/frame（L2）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . TCP 與 UDP 最大差別？<br><span style="color:#0A6160;">→ TCP 連線導向可靠(三次握手)；UDP 無連線快、無保證。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A SOC analyst observes that a public web server has become unresponsive. Packet captures show thousands of TCP SYN packets from spoofed sources, and the server's connection table is filled with half-open sessions. At which OSI layer does this attack PRIMARILY operate?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（SOC 分析師發現對外 Web 伺服器無回應。封包擷取顯示來自偽造來源的數千個 TCP SYN 封包,且伺服器連線表塞滿半開連線。此攻擊主要發生在 OSI 哪一層?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Application Layer (Layer 7) 應用層（第 7 層）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Network Layer (Layer 3) 網路層（第 3 層）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Data Link Layer (Layer 2) 資料連結層（第 2 層）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Transport Layer (Layer 4) 傳輸層（第 4 層）</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。SYN flood 濫用的是 TCP 三次握手（SYN→SYN-ACK→ACK）:攻擊者只送 SYN 不回 ACK,讓半開連線耗盡連線表。TCP 屬 L4 傳輸層,故攻擊主要在 L4。判斷邏輯:歸層看『被濫用的機制』——看到 TCP/UDP/埠/握手,一律歸 L4。記憶法:握手在傳輸層,『SYN 洪水淹 L4』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：HTTP flood 等應用層 DoS 才屬 L7,本題濫用的是 TCP 握手而非應用內容。</li><li style="margin-bottom:3px;">B：來源偽造雖涉及 L3 的 IP 位址,但攻擊機制（半開連線耗盡）發生在 TCP,層級判斷以機制為準。</li><li style="margin-bottom:3px;">C：L2 的代表性攻擊是 ARP 欺騙/MAC flooding,與 TCP 握手無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security engineer reviewing border router logs discovers inbound packets arriving from the internet with source addresses in the 10.0.0.0/8 range. Which of the following is the BEST response?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全工程師檢視邊界路由器日誌,發現來自網際網路的入站封包,其來源位址屬於 10.0.0.0/8 範圍。下列何者是最佳處置?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Apply ingress filtering to drop the packets, because private addresses are not routable on the public internet and are likely spoofed 實施入口過濾將封包丟棄,因為私有位址不可路由於公網,極可能是偽造</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Forward the packets normally because 10.0.0.0/8 belongs to the internal network 照常轉送,因為 10.0.0.0/8 屬於內部網路</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Translate the addresses with NAT so the packets can reach internal hosts 以 NAT 轉換位址讓封包能到達內部主機</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Allow the packets only if the TCP three-way handshake completes successfully 僅在 TCP 三次握手成功完成時允許</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。私有位址（10/8、172.16/12、192.168/16）依 RFC 1918 不可路由於公網;從外部介面到達的此類封包必為偽造,常見於 DoS 的來源偽冒。最佳處置是在邊界做 ingress filtering（入口過濾）直接丟棄。判斷邏輯:『設計上不該存在的來源』就該在邊界預設拒絕,這是風險導向的邊界防禦基本功。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：位址雖屬私有範圍,但方向是『從網際網路入站』,合法內部流量不會從外部介面進來。</li><li style="margin-bottom:3px;">C：NAT 是讓內部私有位址對外通訊的機制,不是處理外來偽造封包的工具。</li><li style="margin-bottom:3px;">D：等握手完成才判斷,等於放任偽造來源的 SYN 半開連線持續消耗資源。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization is planning its migration to IPv6. Management asks the security architect how IPv6 will change the security posture. Which statement BEST describes the impact?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（組織正規劃移轉到 IPv6。管理層詢問安全架構師 IPv6 將如何改變安全態勢。下列敘述何者最正確?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> IPv6 includes built-in support for IPsec, but protections such as encryption must still be explicitly configured and managed IPv6 內建 IPsec 支援,但加密等保護仍須明確設定與管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> IPv6 encrypts all traffic by default, so TLS is no longer required IPv6 預設加密所有流量,因此不再需要 TLS</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> IPv6 eliminates spoofing because its 128-bit addresses cannot be forged IPv6 的 128-bit 位址無法偽造,因此消除了欺騙攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> NAT must still be deployed in IPv6 to provide address confidentiality 在 IPv6 仍必須部署 NAT 以提供位址機密性</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。IPv6 為 128-bit,設計上內建 IPsec 支援、無需 NAT——但『內建支援』不等於『自動啟用』,加密與鑑別仍要由組織明確配置、管理與監控。判斷邏輯:CISSP 常考『協定能力 vs 實際配置』的落差,最佳答案是帶保留條件的精確敘述,而非把能力誇大為預設保護。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：IPv6 不會預設加密流量,應用/傳輸層保護（TLS）仍然必要。</li><li style="margin-bottom:3px;">C：位址長度與可否偽造無關,IPv6 環境的 spoofing 依然存在。</li><li style="margin-bottom:3px;">D：IPv6 位址空間近乎無限,設計上無需 NAT;位址機密性也非 NAT 的安全目的。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.1 OSI 分層（深入））</div>

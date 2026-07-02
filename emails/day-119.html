@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . CI/CD 憑證的最佳儲存做法？<br><span style="color:#0A6160;">→ 祕密庫+短期最小權限(不硬編入 repo)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 漏洞揭露時快速判斷是否受影響靠什麼？<br><span style="color:#0A6160;">→ SBOM(軟體物料清單)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A developer accidentally installs a malicious package named 'reqeusts' (a typosquat of 'requests') from a public registry, compromising the build server. Which control would BEST prevent this type of attack?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（開發者從公開 registry 誤裝了名為 'reqeusts' 的惡意套件(requests 的拼字搶註),導致建置伺服器遭入侵。哪個控制最能預防這類攻擊?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Run DAST against the finished application 對成品應用執行 DAST</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Store pipeline credentials in a secrets vault 將管線憑證存入祕密庫</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Require all dependencies to come from a curated private registry with pinned, verified versions 要求所有相依一律來自控管的私有 registry,並鎖定與驗證版本</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Patch the build server operating system more frequently 更頻繁修補建置伺服器的作業系統</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。Typosquatting 得逞的前提是『可從公開 registry 隨手安裝近似名套件』;<strong>控管的私有 registry(僅收錄審核過的套件)＋鎖定版本＋完整性驗證</strong>從源頭阻斷惡意套件進入建置——對症下藥的預防控制。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：DAST 找應用執行期漏洞,難以察覺建置鏈被植入的惡意碼。</li><li style="margin-bottom:3px;">B：祕密管理防憑證外洩,擋不住惡意相依被安裝。</li><li style="margin-bottom:3px;">D：OS 修補與『安裝了錯的套件』無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A DevOps team automates build, test, and packaging so every change is always deployable, but company policy requires a human release manager to approve each production deployment. Which practice BEST describes this pipeline?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（DevOps 團隊將建置,測試與封裝全部自動化,使每個變更隨時可部署,但公司政策要求發布經理人工核准每次正式部署。這條管線最符合哪個實務?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Continuous deployment 持續部署</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Continuous integration only 僅持續整合</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Continuous delivery 持續交付</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Waterfall release management 瀑布式發布管理</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>Continuous Delivery(持續交付)＝程式碼隨時處於可部署狀態,但進正式環境需『人工核准』</strong>;Continuous Deployment(持續部署)則通過測試即全自動上線,無人工介入。兩者差別就在最後一步的 human intervention——高鑑別度必考對比。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：若是持續部署,通過測試即自動上線,與『需人工核准』的政策矛盾。</li><li style="margin-bottom:3px;">B：CI 只涵蓋頻繁合併與自動測試,不含隨時可發布的交付能力。</li><li style="margin-bottom:3px;">D：全流程高度自動化,迭代交付,絕非瀑布。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Before signing a contract, a major customer requires the vendor to provide a formal, machine-readable record of every open-source and third-party component contained in the software product, as proof of supply chain transparency. Which artifact BEST satisfies this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（簽約前,大客戶要求供應商提供其軟體產品內所有開源與第三方元件的正式,機器可讀紀錄,作為供應鏈透明度證明。哪個產物最能滿足此要求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> A SOC 2 Type II report SOC 2 Type II 報告</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> A source code escrow agreement 原始碼託管協議</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> The vendor's SCA scanning tool 供應商使用的 SCA 掃描工具</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> A software bill of materials (SBOM) 軟體物料清單(SBOM)</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。客戶要的是<strong>元件透明度的正式紀錄(可交付文件)</strong>＝<strong>SBOM(軟體物料清單)</strong>:列出產品內所有元件,函式庫與相依,是供應鏈透明度與採購信任的證明,客戶日後也能據以自行做漏洞影響分析。記憶法:<strong>SCA 是『工具』,SBOM 是工具產出的『產出物/文件』</strong>——能交付給客戶的是產出物。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：SOC 2 證明服務控制的設計與營運有效性,不列軟體元件。</li><li style="margin-bottom:3px;">B：源碼託管保障供應商倒閉時能取得原始碼,與元件透明度無關。</li><li style="margin-bottom:3px;">C：工具本身不是可交付的紀錄;題幹要的是清單文件,不是掃描能力。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.2.6 CI/CD / §8.4.2 開源（考點））</div>

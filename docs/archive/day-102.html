@@ -102,6 +102,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 軍方依標籤、系統強制、使用者不可改是哪種？<br><span style="color:#0A6160;">→ MAC(強制存取控制)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 依部門/時段/裝置/位置動態授權是哪種？<br><span style="color:#0A6160;">→ ABAC(屬性存取控制)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An access control system applies machine learning to past behavior and evaluates whether the user logged in with MFA, device health, and current threat signals, deciding in real time whether to allow traffic from an IoT device. Which model BEST describes this?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某存取控制系統以機器學習分析過往行為,並評估用戶是否以 MFA 登入、裝置健康度與當下威脅訊號,即時決定是否放行 IoT 裝置的流量。哪個模型「最貼切」?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Rule-based access control 規則式存取控制</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Risk-based access control 風險式存取控制</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Attribute-Based Access Control (ABAC) 屬性式存取控制</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Mandatory Access Control (MAC) 強制式存取控制</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。關鍵訊號:評估「環境與情境」＋以機器學習做「預測性」判斷＋依當下風險高低決定放行——這是 <strong>risk-based access control</strong> 的定義,典型應用就是即時阻擋受感染 IoT 裝置的異常流量。看到「ML/情境風險評分」就往 risk-based 靠。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：規則式對所有主體套用同一組「靜態」規則,沒有情境風險評估。</li><li style="margin-bottom:3px;">C：ABAC 是最強干擾項——它依屬性套政策,但不含以 ML 對「當下風險」做動態預測評分,本題最強訊號在風險評估。</li><li style="margin-bottom:3px;">D：MAC 依安全標籤強制執行,與情境、行為無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">In a zero trust architecture, a gateway forwards each request's context to a central engine that evaluates it against policy and returns permit or deny; the gateway then allows or blocks the traffic. The central engine is the:</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（零信任架構中,閘道把每個請求的情境送到中央引擎,由它依政策評估後回覆允許或拒絕;閘道再據此放行或阻擋。這個中央引擎是:）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Policy Decision Point (PDP) 政策決策點</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Policy Enforcement Point (PEP) 政策執行點</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Identity Provider (IdP) 身分提供者</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Ticket Granting Service (TGS) 票證授予服務</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>PDP(政策決策點)</strong>負責「評估存取請求、做出決策」;<strong>PEP(政策執行點)</strong>是守門員,負責「執行」PDP 的決定——本題的閘道就是 PEP,中央引擎是 PDP。記憶:Decision=決策(大腦),Enforcement=執行(手腳)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：PEP 是閘道扮演的角色,只執行不評估,題目問的是「評估的引擎」。</li><li style="margin-bottom:3px;">C：IdP 負責驗證身分、簽發斷言,不做每筆存取的授權決策。</li><li style="margin-bottom:3px;">D：TGS 是 Kerberos 的元件,負責簽發服務票證,不屬於此政策架構。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An audit finds that employees who transfer between departments keep accumulating old permissions, and per-user cleanup overwhelms administrators. Which approach BEST prevents this problem going forward?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（稽核發現跨部門調動的員工不斷累積舊權限,逐人清理又讓管理員不堪負荷。哪種作法「最能」從根本預防此問題?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Let each data owner re-grant access at their discretion (DAC) 由各資料擁有者自行重新授權</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Apply a global rule set equally to all subjects (rule-based) 對所有主體套用全域規則集</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Bind permissions to roles and reassign the user's role upon transfer (RBAC) 權限綁定角色,調動時改派角色</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Increase the frequency of manual entitlement reviews 提高人工權限盤點頻率</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>RBAC</strong> 把權限綁在職務角色上:調動=移出舊角色、加入新角色,舊權限「自動」隨角色消失——從結構上杜絕權限蔓延(privilege creep),同時大幅降低管理負擔。題目要「預防」,結構性/流程性方案優先於事後補救。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：DAC 授權分散在各擁有者手上,調動時更難統一追蹤與回收。</li><li style="margin-bottom:3px;">B：規則式控制對所有主體套同一規則,不解決「個人隨職務變動」的權限累積。</li><li style="margin-bottom:3px;">D：盤點是「偵測性」補救,能發現但不能預防,且加重而非減輕管理負荷。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.4 存取控制模型（考點））</div>
@@ -183,7 +228,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 102 / 120 · P3-D5-2</span>
   </div>
 

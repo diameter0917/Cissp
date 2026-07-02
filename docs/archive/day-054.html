@@ -48,7 +48,13 @@
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Brute Force</strong>（暴力攻擊）— <span style="color:#5B6675;">窮舉金鑰；長金鑰可抵抗。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Birthday Attack</strong>（生日攻擊）— <span style="color:#5B6675;">利用碰撞機率攻擊雜湊。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Side-channel</strong>（旁通道）— <span style="color:#5B6675;">由時間/功耗/電磁推測密鑰。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Known/Chosen Plaintext</strong>（已知/選擇明文）— <span style="color:#5B6675;">以明密文對分析演算法。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Ciphertext-only</strong>（唯密文攻擊）— <span style="color:#5B6675;">只握有密文樣本,靠大量密文分析還原明文或金鑰,最常見也最難成功。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Known-plaintext</strong>（已知明文攻擊）— <span style="color:#5B6675;">同時握有明文與對應密文,據以推導金鑰;linear cryptanalysis 屬之。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Chosen-plaintext</strong>（選擇明文攻擊）— <span style="color:#5B6675;">可自選任意明文取得對應密文來分析,比已知明文更強;differential cryptanalysis 屬之。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Chosen-ciphertext</strong>（選擇密文攻擊）— <span style="color:#5B6675;">可自選密文取得解密結果反推金鑰,比選擇明文更強;對策是 GCM/CCM 認證加密。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Meet-in-the-middle</strong>（中間相遇攻擊）— <span style="color:#5B6675;">從加密端與解密端同時做較小的暴力搜尋並在中間比對;2DES 因此無效,有效強度僅約單一 DES（約 2^57）,故業界直接採 3DES。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Frequency Analysis</strong>（頻率分析）— <span style="color:#5B6675;">利用語言字母出現頻率（如英文 E 最常見）破解替換式密碼;現代密碼以統計隨機化反制。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Implementation / Fault Injection</strong>（實作攻擊/故障注入）— <span style="color:#5B6675;">攻擊實作弱點（程式錯誤、過時韌體）,或以高電壓、極端溫度等外部故障使密碼裝置失效。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">ICS/SCADA</strong>（工業控制系統）— <span style="color:#5B6675;">控制實體流程，重可用與安全。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">OT</strong>（營運技術）— <span style="color:#5B6675;">Operational Technology，與 IT 對應。</span></td></tr>
       <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Air Gap</strong>（實體隔離）— <span style="color:#5B6675;">網路完全隔絕（Stuxnet 證明非萬靈）。</span></td></tr>
@@ -79,6 +85,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . ICS/OT 系統的安全優先序與一般 IT 有何不同？<br><span style="color:#0A6160;">→ OT 以可用性與人身安全(safety)優先；IT 常以機密性優先。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Stuxnet 證明了什麼防禦迷思？<br><span style="color:#0A6160;">→ air gap（實體隔離）並非絕對安全（可經 USB 跨越）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">To strengthen a legacy system, an architect proposes encrypting data twice with DES using two different 56-bit keys (2DES), claiming an effective strength of 112 bits. Why does the security reviewer reject this claim?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（為強化舊系統,架構師提議用兩把不同的 56-bit 金鑰對資料做兩次 DES 加密（2DES）,宣稱有效強度可達 112-bit。安全審查者為何否決此宣稱?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> A birthday attack can find hash collisions in 2DES 生日攻擊可找出 2DES 的雜湊碰撞</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> A meet-in-the-middle attack reduces the effective strength to roughly single DES 中間相遇攻擊使有效強度僅約等於單一 DES</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Frequency analysis can defeat any substitution-based cipher 頻率分析可破解任何替換式密碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> A chosen-ciphertext attack can recover both keys directly 選擇密文攻擊可直接還原兩把金鑰</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。Meet-in-the-middle 是典型的已知明文攻擊:攻擊者從明文端『加密』、密文端『解密』同時進行兩個較小的暴力搜尋,在中間比對結果——把 2DES 的有效強度打回約 2^57,幾乎等於單一 DES。這正是業界跳過 2DES、直接採用 3DES 的原因。記憶:兩次加密≠強度相加,中間會『相遇』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：生日攻擊針對『雜湊碰撞』機率,與區塊加密的金鑰強度無關。</li><li style="margin-bottom:3px;">C：頻率分析針對簡單替換式密碼,對 DES 這類現代區塊加密無效。</li><li style="margin-bottom:3px;">D：選擇密文是一種攻擊『模型』（可取得解密結果）,並不能直接還原 2DES 金鑰;2DES 的致命傷是 meet-in-the-middle。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A penetration tester finds a web service that encrypts any attacker-supplied input with the server's secret key and returns the resulting ciphertext. The tester submits carefully crafted inputs and studies the outputs to deduce information about the key. Which attack model does this BEST describe?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（滲透測試員發現某網路服務會用伺服器的密鑰加密攻擊者提交的任意輸入並回傳密文。測試員提交精心設計的輸入並分析輸出,以推導金鑰資訊。這最符合哪種攻擊模型?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Ciphertext-only attack 唯密文攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Known-plaintext attack 已知明文攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Chosen-ciphertext attack 選擇密文攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Chosen-plaintext attack 選擇明文攻擊</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。攻擊者能『自選任意明文』並取得對應密文（一個加密 oracle）＝選擇明文攻擊（CPA）;強度排序:唯密文 &lt; 已知明文 &lt; <strong>選擇明文</strong> &lt; 選擇密文。differential cryptanalysis 即屬 CPA。判斷關鍵:誰『選』了輸入?選的是明文還是密文?</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：唯密文攻擊手上只有密文,無法自選輸入。</li><li style="margin-bottom:3px;">B：已知明文是『被動取得』明密文對;本題攻擊者可主動選擇明文,更強。</li><li style="margin-bottom:3px;">C：選擇密文要能提交『密文』並取得『解密結果』;此服務只提供加密方向。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A critical vulnerability is announced for the PLCs controlling a manufacturing line. The vendor has released a patch, but the operations team warns that unplanned downtime could create safety hazards and halt production. What is the BEST course of action?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（控制產線的 PLC 被公告存在重大漏洞,廠商已釋出修補程式,但營運團隊警告非計畫性停機可能造成安全危害並中斷生產。最佳做法是什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Apply the patch to all PLCs immediately during production 立即在生產中對所有 PLC 套用修補</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Rely on the existing air gap and skip the patch 依賴既有 air gap 而不修補</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Replace the PLCs with general-purpose IT servers 以一般用途 IT 伺服器汰換 PLC</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Apply compensating controls (segmentation, monitoring) now, and deploy the vendor-approved patch in a planned maintenance window 先實施補償性控制（分段/監控）,再於排定維護窗口套用廠商核可的修補</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。OT/ICS 以<strong>可用性與人身安全（safety）</strong>優先:先以網路分段、強化監控等補償性控制降低暴露,再於排定的維護窗口套用『廠商核可』的修補（ICS 只用 vendor-approved patch）——同時管理資安風險與營運/安全風險,是 think-like-a-manager 的答案。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：生產中貿然修補可能導致停機與安全事故,違反 OT 的優先序。</li><li style="margin-bottom:3px;">B：Stuxnet 已證明 air gap 非絕對安全,對重大漏洞不作為等於接受過高風險。</li><li style="margin-bottom:3px;">C：PLC 是特殊用途的工控設備,一般 IT 伺服器無法取代,且引入更大的變更風險。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.7 密碼攻擊 / §3.5 IoT/ICS）</div>
@@ -154,7 +205,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 54 / 120 · P2-D3-4</span>
   </div>
 

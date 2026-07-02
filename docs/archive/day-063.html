@@ -78,6 +78,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . SAML 中發行身分斷言的一方叫什麼？<br><span style="color:#0A6160;">→ IdP(身分提供者)；SP(服務提供者)信任並消費。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 行動/SPA 防止授權碼被攔截用什麼？<br><span style="color:#0A6160;">→ PKCE(授權碼交換證明)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A penetration test against a company's API gateway shows that a JWT access token issued for the HR application is also accepted by the payroll API. Signature and expiration checks both pass. Which token validation step is MOST likely missing?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（針對公司 API 閘道的滲透測試顯示,核發給人資應用的 JWT access token 竟也被薪資 API 接受;簽章與逾期檢查皆通過。最可能缺少哪個 token 驗證步驟?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Verifying the token signature against the issuer's public key 以發行者公鑰驗證 token 簽章</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Checking the token expiration (exp) claim 檢查 token 的逾期(exp)宣告</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Validating that the audience (aud) claim matches the receiving API 驗證受眾(aud)宣告與接收方 API 相符</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Enforcing PKCE during the authorization code exchange 在授權碼交換階段強制使用 PKCE</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。JWT 驗證四件事:<strong>簽章、發行者(iss)、受眾(aud)、逾期(exp)</strong>。token 本身有效卻被「別的服務」接受,代表接收方沒有檢查 aud——任何一張合法 token 都變成跨服務的萬用票。記憶法:aud 回答「這張票是發給誰用的」。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：題幹已明示簽章檢查通過,問題不在簽章驗證。</li><li style="margin-bottom:3px;">B：逾期檢查同樣已通過,且 exp 與「跨服務重用」無關。</li><li style="margin-bottom:3px;">D：PKCE 防的是授權碼在「取得階段」被攔截,與 API 端的 token 驗證是不同環節。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Employees at a firm are tricked into clicking 'Accept' on a malicious third-party application's OAuth consent screen, granting it read access to their mailboxes. No passwords were stolen and MFA was never bypassed. Which control BEST reduces the risk of this consent phishing?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某公司員工被誘騙在惡意第三方應用的 OAuth 同意畫面按下「接受」,授予其信箱讀取權限;過程中沒有密碼被竊,也未繞過 MFA。下列何種控制最能降低這種同意釣魚(consent phishing)的風險?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Enforce a stricter password complexity policy 實施更嚴格的密碼複雜度政策</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Require MFA re-authentication at every login 每次登入都要求重新完成 MFA</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Restrict user consent to verified publishers, require admin approval for sensitive scopes, and monitor abnormal grants 限制使用者僅能同意經驗證的發行者,敏感 scope 須管理員核准,並監控異常授權</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Shorten web session timeouts across all applications 縮短所有應用的網頁工作階段逾時時間</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。同意釣魚偷的是「<strong>授權(delegation)</strong>」而不是「憑證」——密碼與 MFA 根本不在攻擊路徑上。有效控制必須作用在 OAuth 同意流程本身:治理誰能被同意(驗證發行者)、哪些 scope 需審核(管理員核准)、並監控異常授權。判斷邏輯:對著攻擊路徑下控制,才是對症下藥。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：攻擊全程不經過密碼,密碼政策再嚴也無效。</li><li style="margin-bottom:3px;">B：使用者是「自願」完成合法授權流程,MFA 照常通過,擋不住同意行為。</li><li style="margin-bottom:3px;">D：OAuth token 是 API 存取憑證,不受網頁工作階段逾時管控,縮短逾時無濟於事。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A company federates 40 SaaS applications through a single cloud identity provider (IdP). The board asks the CISO how to manage the risk concentration this creates. Which response is BEST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某公司透過單一雲端身分提供者(IdP)聯合了 40 個 SaaS 應用。董事會詢問 CISO 該如何管理由此產生的風險集中。下列回應何者最佳?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Treat the IdP as a top-tier asset: phishing-resistant MFA, hardened configuration, high availability, and priority monitoring 將 IdP 視為最高層級資產:抗釣魚 MFA、強化組態、高可用與優先監控</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Keep a local password on every SaaS application as an alternate login path 在每個 SaaS 應用保留本地密碼作為替代登入途徑</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Split authentication across several IdPs so no single provider handles all logins 將鑑別分散到多個 IdP,避免單一供應商處理所有登入</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Reduce the number of federated applications to lower dependence on the IdP 減少聯合的應用數量以降低對 IdP 的依賴</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。SSO/聯合身分的單點失效是<strong>已接受的取捨</strong>,正解是把 IdP 當「王冠上的珠寶」保護:最強鑑別(抗釣魚 MFA)、強化組態、高可用與優先監控,同時保留集中管控(一處停用即全斷)的治理效益。判斷邏輯:風險集中→強化該點,而非破壞集中化的價值。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：遍地本地密碼重新引入密碼蔓延與撤銷盲點,反而破壞「一處停用即全斷」的核心效益。</li><li style="margin-bottom:3px;">C：多 IdP 使信任關係與稽核複雜化、攻擊面加倍,通常得不償失。</li><li style="margin-bottom:3px;">D：因噎廢食;退出聯合的應用回到各自帳號管理,整體風險與管理負擔更高。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.6 SAML / OAuth / OIDC（深入））</div>
@@ -199,7 +244,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 63 / 120 · P2-D5-3</span>
   </div>
 

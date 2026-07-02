@@ -80,6 +80,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 802.1X 與 NAC 各驗證什麼？<br><span style="color:#0A6160;">→ 802.1X 驗身分(能否連)；NAC 再驗裝置合規態勢(修補/防毒)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 偽冒同名 Wi-Fi 熱點誘騙連線叫什麼？<br><span style="color:#0A6160;">→ Evil Twin（邪惡雙生）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Several employees working from a café connected to a Wi-Fi network broadcasting the corporate SSID, and their domain credentials were later found for sale online. The access point turned out to be an attacker's evil twin. Which control would BEST prevent employees' devices from authenticating to such rogue access points?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（多名員工在咖啡店連上廣播公司 SSID 的 Wi-Fi 後,其網域帳密被發現在網路上兜售;該熱點其實是攻擊者的 evil twin。哪個控制最能防止員工裝置向這類假 AP 完成認證?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deploy WPA3/WPA2-Enterprise with 802.1X/EAP mutual authentication, requiring clients to validate the authentication server's certificate 部署 WPA3/WPA2-Enterprise（802.1X/EAP）雙向鑑別,要求用戶端驗證認證伺服器的憑證</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Switch the corporate WLAN to WPA3-Personal with a longer passphrase 將公司 WLAN 改為 WPA3-Personal 並加長密碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Stop broadcasting the corporate SSID 停止廣播公司 SSID</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Enforce MAC address filtering on all corporate access points 在所有公司 AP 上強制 MAC 位址過濾</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。evil twin 得逞的關鍵是『裝置無法辨別 AP 真偽』。802.1X/EAP 的雙向鑑別讓用戶端在送出帳密前先驗證認證伺服器的憑證——假 AP 拿不出合法憑證,認證不會完成,帳密也不會外洩。判斷邏輯:對『冒名』的解法是『相互鑑別』,而不是把密碼變強或把名字藏起來。記憶法:『你驗我、我也驗你,假 AP 現形』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：PSK 再長,員工仍會連上同名假 AP 並暴露資訊;密碼強度不解決冒名問題。</li><li style="margin-bottom:3px;">C：隱藏 SSID 只是隱晦式安全,攻擊者仍可廣播同名 SSID 誘騙已設定過的裝置。</li><li style="margin-bottom:3px;">D：MAC 過濾設定在公司 AP 上,管不到攻擊者自架的假 AP,且 MAC 位址可輕易偽造。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A visiting contractor plugged a personal laptop into an Ethernet jack in a conference room and immediately reached internal file servers. A later audit found the laptop was missing months of security patches. Which control would BEST prevent this situation from recurring?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（來訪承包商將個人筆電接上會議室的網路孔後,立即能存取內部檔案伺服器;事後稽核發現該筆電已數月未安裝安全修補。哪個控制最能防止此情況再次發生?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Implement NAC with 802.1X port authentication and posture assessment, quarantining non-compliant devices 導入 NAC,結合 802.1X 埠認證與合規態勢檢查,並隔離不合規裝置</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Require all visitors to sign an acceptable use policy before entering 要求所有訪客進入前簽署可接受使用政策</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Install a network IDS to detect malicious traffic from visitor devices 安裝網路 IDS 偵測訪客裝置的惡意流量</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Disable all unused switch ports throughout the building 停用大樓內所有未使用的交換器埠</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。這個場景有兩層破口:未經認證的裝置能連上網（802.1X 埠級存取控制解決『能否連』）,以及不合規的裝置能碰內部資源（NAC 態勢檢查解決『健康與否』）。NAC＋802.1X 在連網前先驗身分、再驗裝置合規態勢（修補/防毒/設定）,不合規者隔離或導向修補區。判斷邏輯:預防性技術控制優於事後偵測;同時覆蓋兩層破口的選項最完整。記憶法:802.1X 驗『人』,NAC 再驗『機』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：行政控制無法即時阻止技術層面的接入,簽了政策照樣能插線上網。</li><li style="margin-bottom:3px;">C：IDS 是事後偵測、只告警不阻擋,此時裝置已在內網。</li><li style="margin-bottom:3px;">D：會議室網路孔是『使用中』的埠,停用未使用埠防不了這個場景（雖是好習慣但非最佳解）。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A company allows split tunneling on its remote-access VPN. The security team discovers that malware on a remote laptop communicated directly with the internet, bypassing the corporate web proxy and monitoring stack, while the laptop's VPN session to headquarters remained active. Which change would BEST address this risk?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（公司的遠端存取 VPN 允許 split tunneling。安全團隊發現某遠端筆電上的惡意程式直接與網際網路通訊,繞過公司的 Web 代理與監控機制,而該筆電連往總部的 VPN 會談仍保持連線。哪項變更最能處理此風險?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Increase the VPN encryption from AES-128 to AES-256 將 VPN 加密由 AES-128 升級為 AES-256</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Replace the IPsec VPN with an SSL/TLS VPN 將 IPsec VPN 更換為 SSL/TLS VPN</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Shorten the VPN session timeout 縮短 VPN 會談逾時時間</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Enforce full-tunnel VPN so all remote traffic is routed through the corporate security stack for inspection 強制 full tunnel,使所有遠端流量都經由公司安全堆疊檢查</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。split tunnel 讓『非公司目的地』的流量直接出網,繞過企業的代理、DLP 與監控,形成可視性盲區——這正是本案惡意程式得以隱身的原因。改為 full tunnel 把所有遠端流量導回公司安全堆疊檢查,恢復可視性與控制。判斷邏輯:風險出在『流量繞過檢查路徑』,對策就是『收回路徑』;加密強度或協定種類都不是問題所在。記憶法:『分流方便,全隧道可控』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：問題不是加密強度,惡意流量根本沒有進入公司的檢查路徑。</li><li style="margin-bottom:3px;">B：IPsec 換成 SSL/TLS VPN 只是換通道技術,不改變分流繞檢的行為。</li><li style="margin-bottom:3px;">C：縮短逾時無助於會談存活期間的繞過行為,惡意通訊仍在監控之外。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.13 無線 / §4.2.3 NAC（深入））</div>

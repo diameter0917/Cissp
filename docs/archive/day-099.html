@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 要讓偽冒 From 的信被拒收,需要什麼？<br><span style="color:#0A6160;">→ DMARC 並設 p=reject。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 個人 Wi-Fi 抗離線破解最強選項？<br><span style="color:#0A6160;">→ WPA3-Personal(SAE)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A 500-employee company secures its corporate Wi-Fi with WPA2-Personal and one shared passphrase. Departing employees still know the passphrase, and rotating it disrupts everyone. What is the BEST long-term solution?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某 500 人企業的公司 Wi-Fi 使用 WPA2-Personal 單一共用密碼。離職員工仍知道密碼,而輪換密碼又影響所有人。最佳的長期解法為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Rotate the shared passphrase monthly 每月輪換共用密碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Deploy WPA3-Enterprise with 802.1X/EAP per-user authentication 部署 WPA3-Enterprise 並以 802.1X/EAP 個別認證</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Enable MAC address filtering 啟用 MAC 位址過濾</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Hide the SSID 隱藏 SSID</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。企業環境應用 <strong>Enterprise 模式(802.1X/EAP+認證伺服器如 RADIUS)</strong>,每人使用自己的帳號憑證,離職時停用個人帳號即可,不影響其他人。判斷邏輯:「共用密碼的生命週期管理問題」→改為個別認證,而不是更勤快地換共用密碼。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：治標不治本,輪換的仍是所有人共用的密碼,離職議題依舊。</li><li style="margin-bottom:3px;">C：MAC 位址可被偽造,只是識別不是認證。</li><li style="margin-bottom:3px;">D：隱藏 SSID 只是隱蔽(security through obscurity),無認證與加密強度可言。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization is publishing its first DMARC record and wants to avoid legitimate mail being quarantined or rejected while it validates SPF/DKIM alignment across all senders. What should it do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織首次發布 DMARC 紀錄,希望在驗證所有寄件來源的 SPF/DKIM 對齊前,避免合法郵件被隔離或拒收。應該先做什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Publish p=reject immediately for maximum protection 直接發布 p=reject 以求最大保護</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Publish p=quarantine as a compromise 折衷先設 p=quarantine</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Skip DMARC and rely on SPF hard fail (-all) 跳過 DMARC,改靠 SPF hard fail</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Publish p=none, analyze aggregate reports, then escalate to quarantine and reject 先發布 p=none 並分析彙總報告,再逐步升級到 quarantine/reject</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。DMARC 部署採<strong>政策遞進:none→quarantine→reject</strong>。先用 <strong>p=none</strong>(純監控)收集彙總報告,找出尚未對齊的合法寄件來源(如行銷平台、系統通知),修正後再逐步升級。FIRST 考的是流程順序:先看清楚再執法,而非一步到最強政策。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：reject 最強但直接上線會拒收尚未完成對齊的合法郵件(兩個都對,輸在順序)。</li><li style="margin-bottom:3px;">B：quarantine 同樣會把合法信送進垃圾匣,仍屬過早執法。</li><li style="margin-bottom:3px;">C：SPF -all 沒有 From 對齊與回報機制,不能取代 DMARC。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Recipients report that legitimate messages relayed through a third-party mail-forwarding service now fail SPF checks. What is the MOST likely reason?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（收件方回報,經第三方轉寄服務轉送的合法郵件現在 SPF 檢查失敗。最可能的原因為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> SPF validates the connecting server's IP, and the forwarder's IP is not in the sender domain's SPF record SPF 驗的是連線伺服器 IP,轉寄伺服器不在寄件網域的授權清單內</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> The message body was modified, invalidating SPF's digital signature 郵件內容被修改,使 SPF 的數位簽章失效</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> The forwarding server does not support STARTTLS 轉寄伺服器不支援 STARTTLS</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> The sender's DMARC policy is set to p=none 寄件方 DMARC 政策設為 p=none</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。SPF 只驗<strong>最後連線的寄件伺服器 IP</strong> 是否在網域 DNS 授權清單內;郵件經轉寄後,來源 IP 變成轉寄伺服器,自然驗不過——教科書級的「<strong>轉寄破壞 SPF</strong>」。相對地,DKIM 簽章隨信件走,較能在轉寄後存活。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：SPF 沒有數位簽章,內容簽章是 DKIM 的機制(最常見的混淆陷阱)。</li><li style="margin-bottom:3px;">C：STARTTLS 是傳輸加密,與 SPF 來源驗證無關。</li><li style="margin-bottom:3px;">D：p=none 只影響 DMARC 的處置方式,不會造成 SPF 失敗。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.13 無線 / §4.1.3 郵件（考點））</div>
@@ -240,7 +285,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 99 / 120 · P3-D4-4</span>
   </div>
 

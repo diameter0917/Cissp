@@ -36,6 +36,7 @@
       <tr><td style="padding:9px 10px; vertical-align:top;">RPO</td><td style="padding:9px 10px; vertical-align:top;">可容忍資料遺失;定備份頻率</td></tr>
       <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">Hot site</td><td style="padding:9px 10px; vertical-align:top;">即時就緒、最貴</td></tr>
       <tr><td style="padding:9px 10px; vertical-align:top;">Cold site</td><td style="padding:9px 10px; vertical-align:top;">僅空間、最慢最便宜</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">DRP 五種測試</td><td style="padding:9px 10px; vertical-align:top;">風險低→高:Read-through/Checklist(審閱文件)→Walkthrough/Tabletop(逐步推演)→Simulation(情境模擬)→Parallel(啟動備援站不切換)→Full-interruption(關主站真切換)</td></tr>
     </table>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 關鍵名詞（中英）</div>
     <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
@@ -47,7 +48,7 @@
     </table>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 常見陷阱</div>
     <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px; margin:10px 0 4px;">
-      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>RTO(時間) vs RPO(資料量)</strong>別對調。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>RTO≤MTD</strong>(RTO 大於 MTD 是設計錯誤)。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>需求最快復原→Hot site</strong>(但最貴)。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>RTO(時間) vs RPO(資料量)</strong>別對調。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>RTO≤MTD</strong>(RTO 大於 MTD 是設計錯誤)。</p><p style="font-size:16px; line-height:1.8; margin:0 0 8px;"><strong>需求最快復原→Hot site</strong>(但最貴)。</p><p style="font-size:16px; line-height:1.8; margin:0;"><strong>Full-interruption 測試會關閉主站</strong>:風險最高,須管理層明確核准才能做。</p>
     </div>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 🎯 實戰考題</div>
     <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
@@ -103,6 +104,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 要求數分鐘內復原選哪種站點？<br><span style="color:#0A6160;">→ Hot site(熱站)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . RTO 與 MTD 的必然關係？<br><span style="color:#0A6160;">→ RTO ≤ MTD。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">The board asks for proof that the DR plan actually works, but operations warns the test itself could cause an outage. Which DRP test provides this proof and therefore requires explicit senior management approval before it is run?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（董事會要求證明 DR 計畫『真的可行』,但維運警告測試本身就可能造成中斷。哪種 DRP 測試能提供這種證明,因而執行前需要管理層明確核准?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Full-interruption test 完全中斷測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Parallel test 平行測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Simulation test 模擬演練</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Structured walkthrough 結構化演練</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>Full-interruption</strong> 會實際『關閉主站』並把營運切換到備援站,是唯一能<strong>證明 DR 計畫真的可行</strong>的測試;正因風險最高(主站停擺+來回切換),必須取得管理層明確核准,管理層通常也最抗拒。記憶法:『要證明就得真的關,真的關就要老闆點頭』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：Parallel 會啟動備援站但主站照常營運,沒有證明『切換』可行。</li><li style="margin-bottom:3px;">C：Simulation 針對情境演練回應,最多中斷非關鍵活動。</li><li style="margin-bottom:3px;">D：Walkthrough 是照計畫逐步走流程驗證程序,不碰生產系統。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">After systems are restored at the alternate site, the team still needs time to verify system and data integrity before users resume normal work. Which BIA metric describes this verification window?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（系統在備援站還原後,團隊仍需一段時間驗證系統與資料完整性,使用者才能恢復正常作業。哪個 BIA 指標描述這段驗證時間?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> RPO (Recovery Point Objective) 復原點目標</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> RTO (Recovery Time Objective) 復原時間目標</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> WRT (Work Recovery Time) 工作復原時間</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> MTD (Maximum Tolerable Downtime) 最大可容忍中斷</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>WRT＝系統還原後、恢復正常營運前,用於驗證系統與資料完整性的最大時間</strong>。關係式:<strong>RTO＋WRT ≤ MTD</strong>(救回系統+驗證,總和不能超過業務能撐的上限)。鑑別點:題幹說『還原之後的驗證時間』——RTO 已經結束,這段是 WRT。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：RPO 是可容忍的資料遺失量,與驗證時間無關。</li><li style="margin-bottom:3px;">B：RTO 是把系統救回到既定服務水準的時間,不含還原後的驗證。</li><li style="margin-bottom:3px;">D：MTD 是整體中斷上限,涵蓋 RTO+WRT,非單指驗證時間。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A company sets an RTO of 12 hours for its core application but has a limited DR budget: a cold site cannot meet the RTO and a hot site exceeds the budget. Which recovery option BEST fits?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某公司核心應用的 RTO 為 12 小時,但 DR 預算有限:冷站無法滿足 RTO,熱站又超出預算。哪個備援選項最合適?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Hot site 熱站</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Warm site 溫站</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Cold site 冷站</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Redundant site (active-active) 冗餘站(雙活)</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。<strong>Warm site</strong> 設備就緒、載入資料後數小時內可復原,足以滿足 12 小時 RTO,成本又遠低於熱站。判斷邏輯:站點選擇是<strong>『RTO 需求 × 成本』的平衡</strong>,不是一律選最快——滿足 RTO 的最省方案才是最佳答案。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：熱站技術上可行但超出預算——『技術對、管理錯』的干擾項。</li><li style="margin-bottom:3px;">C：冷站僅有空間與基礎設施,復原需數天到數週,無法滿足 RTO。</li><li style="margin-bottom:3px;">D：Redundant(active-active)是自有雙活站點,比熱站更貴。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.10/§7.11 DR 與 RTO/RPO（考點））</div>

@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . SYN flood 在哪一層？<br><span style="color:#0A6160;">→ L4(傳輸層,濫用 TCP 握手)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . WAF 在哪一層運作？<br><span style="color:#0A6160;">→ L7(應用層)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A protocol analyst reviews functions such as data compression, character-set conversion, and formatting of encrypted data (e.g., JPEG, ASCII). In the OSI model, at which layer are these functions BEST categorized?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（協定分析師檢視資料壓縮、字元集轉換與加密資料格式(如 JPEG、ASCII)等功能。在 OSI 模型中,這些功能最應歸在哪一層?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Layer 5 (Session) 會談層</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Layer 6 (Presentation) 表達層</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Layer 4 (Transport) 傳輸層</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Layer 7 (Application) 應用層</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。<strong>L6 表達層</strong>負責資料表示、字元轉換、壓縮與加密格式,JPEG/ASCII/MIME/TLS 加密格式都歸於此。判斷邏輯:凡是問「資料長什麼樣子/如何呈現」就歸 L6;記憶法:Presentation=呈現格式。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：L5 負責建立/維護/終止會談(simplex/half-duplex/full-duplex),與資料格式無關。</li><li style="margin-bottom:3px;">C：L4 管 TCP/UDP 分段與端對端傳輸;TLS 名稱含 Transport 是常見誤導。</li><li style="margin-bottom:3px;">D：L7 是應用服務介接(HTTP/DNS),不負責格式轉換與壓縮本身。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A network engineer at an ISP must select a routing protocol to exchange routing and reachability information between different autonomous systems (AS) on the internet. Which protocol is the BEST choice?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（ISP 的網路工程師需選擇路由協定,在網際網路上不同自治系統(AS)之間交換路由與可達性資訊。哪個協定最適合?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> BGP (Border Gateway Protocol) 邊界閘道協定</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> OSPF (Open Shortest Path First)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> RIP (Routing Information Protocol)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> EIGRP (Enhanced Interior Gateway Routing Protocol)</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>BGP</strong> 是 path vector 的<strong>外部(exterior)路由協定</strong>,是網際網路上自治系統之間交換路由的主要協定。判斷邏輯:「跨 AS/網際網路級」→exterior→BGP;單一 AS 內部才用 interior 協定。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：OSPF 是 link-state 的內部(interior)協定,用於單一 AS 內。</li><li style="margin-bottom:3px;">C：RIP 是過時的 distance-vector 內部協定,以 hop 數為度量。</li><li style="margin-bottom:3px;">D：EIGRP 也是內部協定(且源自 Cisco 專屬),不用於 AS 之間。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A development team is building a real-time voice application where low latency matters MORE than guaranteed delivery of every packet. Which transport-layer protocol is the BEST fit?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（開發團隊打造即時語音應用,低延遲比每個封包保證送達更重要。哪個傳輸層協定最合適?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> TCP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> UDP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> ICMP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> IP</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。<strong>UDP</strong> 是非連線導向、best-effort 的快速傳輸協定,適合即時語音/串流——掉一兩個封包比重傳造成的延遲更可接受。判斷邏輯:「速度優先、可容忍遺失」→UDP;「必須完整可靠」→TCP。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：TCP 可靠但握手/重傳/排序都增加延遲,即時語音不需要保證送達。</li><li style="margin-bottom:3px;">C：ICMP 是 L3 的錯誤與控制訊息(Ping/Traceroute),不是資料傳輸協定。</li><li style="margin-bottom:3px;">D：IP 是 L3 的定址與路由,根本不在傳輸層。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.1 OSI 分層判斷（考點））</div>
@@ -247,7 +292,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 96 / 120 · P3-D4-1</span>
   </div>
 

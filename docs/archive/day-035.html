@@ -69,6 +69,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . RTO 與 RPO 分別衡量什麼？<br><span style="color:#0A6160;">→ RTO＝可容忍中斷時間；RPO＝可容忍資料遺失量。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Colonial Pipeline 2021 的入侵起點？<br><span style="color:#0A6160;">→ 一個未啟用 MFA 的 VPN 帳號（勒索軟體）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A financial firm's business impact analysis sets an RTO of under one hour for its core trading system. Which alternate site strategy BEST meets this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（金融公司的營運衝擊分析（BIA）要求核心交易系統的 RTO 低於 1 小時。哪種備援站點策略最能滿足需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> A warm site with equipment ready but data still to be loaded 溫站（設備就緒、資料待載入）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> A hot site with fully configured systems and near-real-time data replication 熱站（系統就緒、資料近即時複寫）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> A cold site with power, HVAC, and floor space only 冷站（僅供電、空調與空間）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Offsite backup tapes with systems rebuilt on demand 異地磁帶備份,災時再重建系統</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。RTO 低於 1 小時代表幾乎不容中斷,只有熱站（設備＋資料即時就緒）能在此時間內接手。判斷邏輯:由 BIA 的 RTO/RPO 反推站點等級——目標越嚴,站點越熱、成本越高;成本由風險需求正當化,而非一味省錢。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：溫站需載入資料與啟動服務,復原通常以『小時到天』計,難以保證 1 小時內。</li><li style="margin-bottom:3px;">C：冷站只有場地與基礎設施,復原以『天到週』計,完全不符。</li><li style="margin-bottom:3px;">D：磁帶還原加重建系統最慢,連溫站都不如。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A company keeps its only two backup copies on a NAS located in the same data center as production. Ransomware encrypts the production data and both backup copies. Which practice would have BEST prevented this total data loss?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某公司僅有的兩份備份都放在與正式環境同一機房的 NAS 上;勒索軟體把正式資料與兩份備份全數加密。哪個做法最能避免這種全損?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Increasing the backup frequency to hourly 將備份頻率提高到每小時</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Encrypting the backup copies 將備份加密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Following the 3-2-1 rule with at least one offline, offsite copy 遵循 3-2-1 原則,至少一份離線異地備份</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Failing over to a warm site 切換到溫站</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。兩份備份與正式環境同機房、同網路,攻擊面重疊,勒索軟體一次通殺。<strong>3-2-1 原則</strong>（3 份備份、2 種媒體、1 份異地且離線/不可變）確保至少一份備份不在攻擊面內,是勒索防禦的核心;再搭配定期還原演練驗證備份可用。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：頻率再高,備份仍在同一攻擊面內,一樣會被加密,只是丟得比較新。</li><li style="margin-bottom:3px;">B：加密保護的是機密性,擋不住備份被『再加密/破壞』的可用性攻擊。</li><li style="margin-bottom:3px;">D：溫站復原仍需乾淨的備份資料可載入;備份全毀時,切換站點也無資料可還原。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.6 事件管理 / §7.10 復原）</div>

@@ -77,6 +77,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . Scoping 與 Tailoring 的先後與差別？<br><span style="color:#0A6160;">→ 先 Scoping（選/排除適用控制）再 Tailoring（依風險調整補強）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . GDPR 第 25 條要求的兩個設計原則？<br><span style="color:#0A6160;">→ Privacy by Design 與 Privacy by Default（預設最隱私）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which type of Data Loss Prevention (DLP) solution BEST prevents users from copying sensitive files to removable USB storage?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪一種 DLP 方案最能防止使用者將敏感檔案複製到 USB 等可移除儲存裝置?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Network-based DLP 網路型 DLP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Cloud-based DLP 雲端型 DLP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Cloud Access Security Broker (CASB) 雲端存取安全代理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Endpoint-based DLP 端點型 DLP</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。複製到 USB 發生在使用者的端點裝置上,流量不經過網路邊界——只有安裝在裝置上的 Endpoint-based DLP 能掃描本機檔案,並阻擋複製到可移除媒體或列印。判斷邏輯:先看『資料外流的通道在哪』,再選部署位置對應的 DLP 類型。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：網路型 DLP 部署在網路邊界掃描出站流量,看不到本機的 USB 複製行為。</li><li style="margin-bottom:3px;">B：雲端型 DLP 針對雲原生環境的資料,管不到本機裝置。</li><li style="margin-bottom:3px;">C：CASB 位於使用者與雲端服務之間,USB 複製不會經過它。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization must share confidential design documents with external partners, but wants the files to remain protected—unable to be printed or forwarded—even AFTER they leave the corporate network. Which solution BEST meets this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織必須與外部夥伴分享機密設計文件,但希望檔案離開公司網路之後仍受保護——無法被列印或轉寄。哪個方案最符合需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Network-based DLP 網路型 DLP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Digital Rights Management (DRM) 數位版權管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Full-disk encryption 全磁碟加密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> TLS encryption for file transfer 以 TLS 加密檔案傳輸</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。關鍵字是『離開網路之後仍要受控』——DRM 的保護跟著檔案走（travels with the data）,可持續限制開啟、複製、列印、轉寄,正是『檔案到哪都受控』。DLP 是出口把關,檔案一旦被允許送出就管不到後續了。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：網路型 DLP 只能決定『放不放行』,無法控制已送出檔案的後續使用。</li><li style="margin-bottom:3px;">C：全磁碟加密保護的是自家磁碟上的 at-rest 資料,檔案交給夥伴後即失效。</li><li style="margin-bottom:3px;">D：TLS 只保護傳輸過程（in transit）,檔案送達對方後便不再受控。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.6.2 基準 / §2.6.4 保護技術）</div>

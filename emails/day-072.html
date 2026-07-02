@@ -73,6 +73,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . IOC 與 TTP 何者偵測更持久、為什麼？<br><span style="color:#0A6160;">→ TTP——是行為模式,難偽裝;IOC 指標易變易繞過。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 為何要做出向(egress)監控？<br><span style="color:#0A6160;">→ 資料外洩發生在出向;入向監控抓不到資料被偷傳出去。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A SOC analyst notices that a failed VPN login from a foreign IP, a firewall allow to an internal server, and an unusual PowerShell execution were each logged by different systems, and none of them triggered an alert on its own. Which capability BEST enables the team to detect this multi-stage attack chain?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（SOC 分析師發現:境外 IP 的 VPN 登入失敗、防火牆放行連往內部伺服器、與異常的 PowerShell 執行,分別記錄在不同系統,單獨都未觸發告警。哪項能力最能協助團隊偵測這條多階段攻擊鏈?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Correlation of events across multiple log sources in a SIEM 以 SIEM 跨多來源日誌關聯事件</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Increasing the log retention period on each system 延長各系統的日誌保存期</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Deploying additional signature-based antivirus on endpoints 在端點加裝特徵式防毒</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Blocking all foreign IP ranges at the perimeter 在邊界封鎖所有境外 IP 區段</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。判斷邏輯:SIEM 的核心價值是集中蒐集→正規化→<strong>關聯(correlation)</strong>——單一日誌各自看似無害,跨來源關聯後才拼得出攻擊鏈並產生告警。記憶法:單筆無意義,關聯見全貌→ SIEM。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：保存更久只利於事後調查,不會讓分散的事件被主動關聯與即時告警。</li><li style="margin-bottom:3px;">C：特徵式防毒抓已知惡意檔,無法跨系統關聯多階段的行為軌跡。</li><li style="margin-bottom:3px;">D：全面封鎖境外 IP 過度粗暴且攻擊者可經跳板繞過,並非偵測攻擊鏈的方法。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A SOC is overwhelmed by hundreds of similar phishing alerts per day; Tier 1 analysts repeat the same triage steps for each one, and the mean time to respond (MTTR) keeps rising. Which is the BEST way to address this situation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（SOC 每天湧入數百則相似的網釣告警,Tier 1 分析師對每一則重複相同的分流步驟,平均回應時間(MTTR)持續上升。哪種做法最能改善此情況?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Suppress the low-severity phishing alert rules in the SIEM 在 SIEM 停用低嚴重度的網釣告警規則</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Require analysts to work extended shifts to clear the backlog 要求分析師延長班次消化積壓告警</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Implement SOAR playbooks to automate the repetitive triage and response steps 導入 SOAR playbook 自動化重複的分流與回應步驟</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Extend the SIEM correlation window to merge related alerts 拉長 SIEM 關聯時間窗以合併相關告警</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。判斷邏輯:SIEM 負責<strong>偵測與關聯</strong>,SOAR 負責用 <strong>playbook 自動執行回應</strong>(封鎖 IP、隔離主機、開工單)——把重複性告警自動化處理,正面對抗告警疲勞、縮短 MTTR,讓分析師專注高階研判。記憶法:SIEM 偵測、SOAR 出手。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：停用規則是降低可見度而非解決問題,會連真攻擊一起漏掉。</li><li style="margin-bottom:3px;">B：加班治標不治本,還會加劇倦怠與人員流失,非管理層應選的長期解。</li><li style="margin-bottom:3px;">D：合併告警可略減數量,但每則仍需人工處理,重複性人力消耗未解決。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An egress monitoring team observes a workstation sending thousands of DNS queries with long, random-looking subdomains to a single external domain over several hours. What does this pattern MOST likely indicate?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（出向監控團隊觀察到某工作站在數小時內,對單一外部網域發出數千筆帶有冗長、看似隨機子網域的 DNS 查詢。此模式最可能代表什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Data exfiltration through a DNS tunnel 透過 DNS 隧道外傳資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> A misconfigured internal DNS resolver retrying failed lookups 內部 DNS 解析器設定錯誤反覆重試查詢</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Normal content delivery network (CDN) lookup behavior 正常的內容傳遞網路(CDN)查詢行為</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> A denial-of-service attack against the external DNS server 對外部 DNS 伺服器發動阻斷服務攻擊</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。判斷邏輯:DNS 隧道把竊得的資料<strong>編碼進子網域名稱</strong>夾帶出去,特徵正是『大量、冗長且隨機的子網域＋長期集中單一網域』。DNS 幾乎必被防火牆放行,是繞過出向管制的常見外傳管道,故出向監控必須涵蓋 DNS 流量。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：解析器重試通常是反覆查詢相同名稱,不會產生大量隨機變化的子網域。</li><li style="margin-bottom:3px;">C：CDN 查詢的網域有規律且分散多網域,不會長時間對單一網域灌隨機字串。</li><li style="margin-bottom:3px;">D：DoS 目的在癱瘓服務,型態是巨量洪水;單機低速且精心編碼的查詢不符。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.7 偵測措施（威脅情報/行為））</div>

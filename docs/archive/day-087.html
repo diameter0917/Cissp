@@ -104,6 +104,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 要再用硬碟且防實驗室級復原,用哪一級？<br><span style="color:#0A6160;">→ Purge(清洗)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 雲端資料無法實體接觸時如何銷毀？<br><span style="color:#0A6160;">→ crypto-shredding(銷毀加密金鑰)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A batch of magnetic backup tapes containing Top Secret data has reached the end of its retention period and will never be reused. Which disposition is MOST appropriate?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一批含 Top Secret 資料的磁性備份磁帶已達保存期限,永不再使用。最適當的處置為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Degauss the tapes with an approved degausser 以核可的消磁機消磁</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Overwrite the tapes with multiple passes 對磁帶多次覆寫</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Physically destroy the tapes by incineration or pulverizing 以焚化或粉碎實體銷毀</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Cryptographically erase the tape contents 對磁帶內容做加密抹除</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。Purging(含消磁)<strong>不被接受用於 Top Secret 資料</strong>——purge 無法保證抵擋所有進階復原技術;媒體既已報廢不再用,最高敏感度＋最高保證＝<strong>Destroy(實體銷毀)</strong>。判斷式:報廢＋最高機密→一律銷毀。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：消磁對磁帶有效且屬 Purge 級,但 Top Secret 不接受僅 purge——這是本題陷阱。</li><li style="margin-bottom:3px;">B：覆寫僅達 Clear/Purge 級,保證更低。</li><li style="margin-bottom:3px;">D：crypto-erase 需資料原本已全程加密且依賴金鑰確實銷毀,對報廢的 TS 磁帶非最高保證做法。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization outsources the destruction of decommissioned drives to a third-party vendor. Which practice BEST ensures the destruction is legally defensible?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織將退役硬碟的銷毀外包給第三方廠商。哪個做法最能確保銷毀具法律可辯護性(defensible destruction)?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Selecting a vendor with a strong market reputation 選擇市場信譽良好的廠商</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Witnessing the destruction and obtaining a certificate of destruction 見證銷毀過程並取得銷毀證明</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Adding a confidentiality clause to the vendor contract 在廠商合約中加入保密條款</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Requiring the vendor to hold a security certification 要求廠商具備安全認證</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。Defensible destruction＝以受控、法律上可辯護、符合法規的方式銷毀資料;關鍵在<strong>可證明</strong>——親自(或指派)見證銷毀,並取得 <strong>Certificate of Destruction(銷毀證明,記錄方法、日期、見證人)</strong>,才能在稽核或訴訟中舉證。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：信譽不是證據,無法證明『這批硬碟』確實被銷毀。</li><li style="margin-bottom:3px;">C：保密條款只約束洩密責任,不能證明銷毀已發生。</li><li style="margin-bottom:3px;">D：認證代表廠商具備能力,仍不構成對特定媒體的銷毀證據。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A drive was prepared for donation using a standard delete-and-format procedure. A researcher later recovers intact files from the drive's raw data based on file structure and content. Which technique did the researcher MOST likely use?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某硬碟以一般刪除＋格式化程序準備捐贈。研究人員之後憑檔案結構與內容,從硬碟原始資料中復原出完整檔案。研究人員最可能使用哪種技術?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Degaussing 消磁</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Steganography 隱寫術</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> File carving 檔案雕復</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Rainbow table attack 彩虹表攻擊</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>File carving(檔案雕復)</strong>是電腦鑑識技術:不依賴檔案系統索引,直接依<strong>檔案結構與內容特徵</strong>從原始資料復原檔案——正是 delete/format 只移除索引、留下資料殘留(remanence)時的典型復原手法。教訓:捐贈/轉售前至少要做到 Purge 等級。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：消磁是『銷毀』磁性資料的手段,不是復原技術。</li><li style="margin-bottom:3px;">B：隱寫術是把訊息藏入媒體,與復原刪除檔無關。</li><li style="margin-bottom:3px;">D：彩虹表用於破解雜湊密碼,非檔案復原技術。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.4.7 銷毀方法（考點））</div>
@@ -146,7 +191,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 87 / 120 · P3-D2-2</span>
   </div>
 

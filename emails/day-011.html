@@ -44,7 +44,10 @@
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Least Privilege</strong>（最小權限）— <span style="color:#5B6675;">只授予完成任務所需的最低存取。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Defense in Depth</strong>（縱深防禦）— <span style="color:#5B6675;">多層、重疊的控制，避免單點突破。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Trust but Verify → Zero Trust</strong>（零信任）— <span style="color:#5B6675;">不預設信任，每次存取都驗證。</span></td></tr>
-      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Fail-Secure</strong>（失效安全）— <span style="color:#5B6675;">系統失效時預設進入安全（拒絕）狀態。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Fail Securely</strong>（安全失效）— <span style="color:#5B6675;">系統失效時不得洩漏敏感資訊、不得比正常運作更不安全,預設進入拒絕狀態。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Secure Defaults</strong>（安全預設）— <span style="color:#5B6675;">系統/裝置的預設組態即為最安全狀態,如出廠即須更改預設密碼。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Keep It Simple and Small (KISS)</strong>（簡單化）— <span style="color:#5B6675;">避免過度複雜的設計,越簡單越少漏洞、越容易驗證。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Shared Responsibility</strong>（共同責任）— <span style="color:#5B6675;">安全人人有責;雲端中 CSP 管 security OF the cloud,客戶管 security IN the cloud。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Attack Surface</strong>（攻擊面）— <span style="color:#5B6675;">可被攻擊的入口總和，應盡量縮小。</span></td></tr>
       <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Threat Modeling</strong>（威脅建模）— <span style="color:#5B6675;">系統化找出威脅（STRIDE 等），設計階段即用。</span></td></tr>
     </table>
@@ -70,6 +73,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 防止單點失效導致全面淪陷的原則？<br><span style="color:#0A6160;">→ Defense in Depth 縱深防禦（多層重疊控制）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 「靠隱藏實作細節來求安全」可靠嗎？<br><span style="color:#0A6160;">→ 不可靠；security through obscurity 不應作為主要控制。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which secure design principle states that organizations do not operate in isolation—everyone holds some level of security responsibility, and in the cloud this duty is divided between the provider and the customer?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪一項安全設計原則指出組織並非孤立運作—人人都負有一定的安全責任,且在雲端中此責任由供應商與客戶共同分擔?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Defense in depth 縱深防禦</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Least privilege 最小權限</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Separation of duties 職責分離</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Shared responsibility 共同責任</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。『組織不孤立運作、人人有責』＋『供應商與客戶分工』正是 Shared Responsibility 的定義。雲端口訣:CSP 管 security <strong>OF</strong> the cloud,客戶管 security <strong>IN</strong> the cloud（資料、身分、設定）。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：縱深防禦講多層串聯控制、防單點失效,與『責任如何分配』無關。</li><li style="margin-bottom:3px;">B：最小權限講只授予完成任務所需的權限,是授權範圍問題。</li><li style="margin-bottom:3px;">C：職責分離是把關鍵任務拆給多人以防舞弊,不是供應商與客戶間的責任劃分。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A perimeter firewall at a financial services company crashes unexpectedly during a power fluctuation. According to the fail securely principle, which behavior is BEST while the device recovers?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某金融服務公司的邊界防火牆在電力波動時無預警當機。依 fail securely（安全失效）原則,設備恢復期間哪種行為最佳?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deny all traffic by default until the firewall is restored and verified 預設拒絕所有流量,直到防火牆恢復並驗證正常</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Allow all traffic to pass so business operations are not interrupted 放行所有流量以避免營運中斷</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Forward existing sessions without inspection to preserve user experience 不經檢查繼續轉送既有連線以維持使用體驗</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Restore vendor factory settings and immediately resume operation 回復原廠設定並立即恢復運作</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。Fail securely＝系統失效時不得洩漏敏感資訊,也不得比正常運作時更不安全;對防火牆這類數位控制而言,就是『失效即預設拒絕（fail closed）』。例外是涉及人命的實體情境（如火災時的門禁）才 fail-safe 開門保命。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：這是 fail open,失效期間比正常更不安全,正好違反 fail securely。</li><li style="margin-bottom:3px;">C：未經檢查的流量使防護低於正常水準,仍屬不安全的失效方式。</li><li style="margin-bottom:3px;">D：原廠設定常含預設密碼等弱點;secure defaults 指『預設組態即最安全』的設計要求,不等於恢復原廠就安全。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.1 安全設計原則）</div>

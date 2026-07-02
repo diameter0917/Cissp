@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . L3 站對站 VPN 用什麼協定？<br><span style="color:#0A6160;">→ IPsec(ESP/Tunnel)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . HTTPS 預設埠？<br><span style="color:#0A6160;">→ 443。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During a packet-capture review, an auditor finds a site-to-site IPsec VPN provides integrity and origin authentication, but the payload is transmitted in cleartext. Which IPsec protocol was MOST likely configured?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（稽核員檢視封包側錄時發現,站對站 IPsec VPN 提供完整性與來源驗證,但承載內容(payload)以明文傳輸。最可能設定了哪個 IPsec 協定?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> AH (Authentication Header) 驗證標頭</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> ESP (Encapsulating Security Payload) 封裝安全承載</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> IKE (Internet Key Exchange) 網際網路金鑰交換</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> L2TP (Layer 2 Tunneling Protocol)</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>AH</strong> 提供驗證、完整性與不可否認,但<strong>不加密</strong>——像蓋了官方驗證章、內容卻人人可讀。判斷邏輯:「有驗證、沒加密」直接對應 AH;要機密性必須改用(或加上)ESP。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：ESP 加密 payload 提供機密性,若用 ESP 側錄不會看到明文。</li><li style="margin-bottom:3px;">C：IKE 負責協商金鑰與 SA,不是保護資料的協定本身。</li><li style="margin-bottom:3px;">D：L2TP 是 L2 隧道協定且本身不加密,但它不屬於 IPsec 套件內的協定。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A privacy officer requires that employees' DNS queries be encrypted in transit so on-path eavesdroppers cannot read them. Which solution BEST meets the requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（隱私長要求員工的 DNS 查詢在傳輸中加密,使路徑上的竊聽者無法讀取。哪個方案最符合需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deploy DNSSEC on all zones 全面部署 DNSSEC</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Point clients to an internal recursive resolver 將用戶端指向內部遞迴解析器</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Protect queries with IPsec AH 以 IPsec AH 保護查詢</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Use DNS over HTTPS (DoH) 使用 DoH 加密查詢</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>DoH</strong>(或 DoT)把 DNS 查詢放進加密通道,才能防竊聽。判斷關鍵:<strong>DNSSEC=驗證真偽(完整性/來源),DoH/DoT=加密(機密性)</strong>——兩者目的完全不同,題目要的是機密性。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：DNSSEC 只做簽章驗證防偽造,查詢內容仍是明文,防不了竊聽。</li><li style="margin-bottom:3px;">B：改用內部解析器不改變「查詢在線路上明文傳輸」的事實。</li><li style="margin-bottom:3px;">C：AH 只驗證不加密,無法提供機密性。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">While troubleshooting an IPsec VPN, an engineer confirms the peers have already established a secure, authenticated management channel. At which stage are the Security Associations (SAs) that protect the actual user data negotiated?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（工程師排查 IPsec VPN 時確認雙方已建立安全且經驗證的管理通道。用來保護實際使用者資料的安全關聯(SA)是在哪個階段協商?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> IKE Phase 1</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> IKE Phase 2</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> TCP three-way handshake TCP 三次握手</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> TLS handshake TLS 握手</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。IKE 分兩階段:<strong>Phase 1</strong> 建立安全且經驗證的管理通道(ISAKMP SA);<strong>Phase 2</strong> 在該通道內協商保護實際資料的 IPsec SA(供 ESP/AH 使用)。題目說管理通道已建立=Phase 1 完成,資料 SA 在 Phase 2 協商。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Phase 1 只建立管理通道本身,不協商保護資料的 IPsec SA。</li><li style="margin-bottom:3px;">C：TCP 握手是傳輸層連線建立,與 IPsec SA 協商無關。</li><li style="margin-bottom:3px;">D：TLS 握手屬 TLS/HTTPS 體系,不是 IPsec 的流程。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.3 安全協定選用（考點））</div>
@@ -159,7 +204,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 97 / 120 · P3-D4-2</span>
   </div>
 

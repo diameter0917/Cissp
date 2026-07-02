@@ -2,7 +2,7 @@
   "start_date": "2026-06-25",
   "timezone": "Asia/Taipei",
   "weekdays_only": true,
-  "total": 120,
+  "total": 126,
   "items": [
     {
       "date": "2026-06-25",
@@ -3482,6 +3482,138 @@
         "title": "50 CISSP Practice Questions and Answers 2026 | CISSP Domain 8 Prep",
         "url": "https://youtu.be/h6_zRQBMkjM",
         "category": "practice"
+      }
+    },
+    {
+      "date": "2026-12-10",
+      "seq": 121,
+      "phase": "P3",
+      "phase_name_zh": "後期：考試重點",
+      "domain": "D3",
+      "domain_name_zh": "安全架構與工程",
+      "weight": "13%",
+      "code": "P3-D3-6",
+      "title_zh": "加強：零信任架構深入（NIST SP 800-207）",
+      "title_en": "Deep Dive: Zero Trust Architecture (NIST SP 800-207)",
+      "email_file": "emails/day-121.html",
+      "archive_url": "archive/day-121.html",
+      "video_url": "https://youtu.be/P5So8_NKxz4",
+      "video_primary": null,
+      "video_course": {
+        "url": "https://youtu.be/P5So8_NKxz4"
+      },
+      "video_practice": {
+        "url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      }
+    },
+    {
+      "date": "2026-12-11",
+      "seq": 122,
+      "phase": "P3",
+      "phase_name_zh": "後期：考試重點",
+      "domain": "D3",
+      "domain_name_zh": "安全架構與工程",
+      "weight": "13%",
+      "code": "P3-D3-7",
+      "title_zh": "加強：加密敏捷性與後量子密碼",
+      "title_en": "Deep Dive: Crypto Agility & Post-Quantum Cryptography",
+      "email_file": "emails/day-122.html",
+      "archive_url": "archive/day-122.html",
+      "video_url": "https://youtu.be/P5So8_NKxz4",
+      "video_primary": null,
+      "video_course": {
+        "url": "https://youtu.be/P5So8_NKxz4"
+      },
+      "video_practice": {
+        "url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      }
+    },
+    {
+      "date": "2026-12-14",
+      "seq": 123,
+      "phase": "P3",
+      "phase_name_zh": "後期：考試重點",
+      "domain": "D7",
+      "domain_name_zh": "安全維運",
+      "weight": "13%",
+      "code": "P3-D7-6",
+      "title_zh": "加強：人員安全（§7.15）+ DRP 五種測試 + SOAR",
+      "title_en": "Deep Dive: Personnel Safety, DRP Test Types & SOAR",
+      "email_file": "emails/day-123.html",
+      "archive_url": "archive/day-123.html",
+      "video_url": "https://youtu.be/8zM89KMRniM",
+      "video_primary": null,
+      "video_course": {
+        "url": "https://youtu.be/8zM89KMRniM"
+      },
+      "video_practice": {
+        "url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      }
+    },
+    {
+      "date": "2026-12-15",
+      "seq": 124,
+      "phase": "P3",
+      "phase_name_zh": "後期：考試重點",
+      "domain": "D1",
+      "domain_name_zh": "安全與風險管理",
+      "weight": "16%",
+      "code": "P3-D1-6",
+      "title_zh": "考試機制：CAT 自適應測驗與考場全流程",
+      "title_en": "Exam Mechanics: CISSP CAT Format & Test-Day Logistics",
+      "email_file": "emails/day-124.html",
+      "archive_url": "archive/day-124.html",
+      "video_url": "https://youtu.be/J-su239XmCE",
+      "video_primary": null,
+      "video_course": {
+        "url": "https://youtu.be/J-su239XmCE"
+      },
+      "video_practice": {
+        "url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      }
+    },
+    {
+      "date": "2026-12-16",
+      "seq": 125,
+      "phase": "P3",
+      "phase_name_zh": "後期：考試重點",
+      "domain": "D1",
+      "domain_name_zh": "安全與風險管理",
+      "weight": "16%",
+      "code": "P3-D1-7",
+      "title_zh": "考試策略：Think Like a Manager 與最佳答案五步法",
+      "title_en": "Exam Strategy: Think Like a Manager & Best-Answer Method",
+      "email_file": "emails/day-125.html",
+      "archive_url": "archive/day-125.html",
+      "video_url": "https://youtu.be/J-su239XmCE",
+      "video_primary": null,
+      "video_course": {
+        "url": "https://youtu.be/J-su239XmCE"
+      },
+      "video_practice": {
+        "url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
+      }
+    },
+    {
+      "date": "2026-12-17",
+      "seq": 126,
+      "phase": "P3",
+      "phase_name_zh": "後期：考試重點",
+      "domain": "D8",
+      "domain_name_zh": "軟體開發安全",
+      "weight": "10%",
+      "code": "P3-D8-6",
+      "title_zh": "總驗收：跨域模擬考 20 題（依官方權重）",
+      "title_en": "Final: 20-Question Cross-Domain Mock Exam (Weighted)",
+      "email_file": "emails/day-126.html",
+      "archive_url": "archive/day-126.html",
+      "video_url": "https://youtu.be/vg-o5lKcwsA",
+      "video_primary": null,
+      "video_course": {
+        "url": "https://youtu.be/vg-o5lKcwsA"
+      },
+      "video_practice": {
+        "url": "https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8"
       }
     }
   ]

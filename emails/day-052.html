@@ -81,6 +81,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . n 人兩兩對稱通訊需要幾把金鑰？<br><span style="color:#0A6160;">→ n(n-1)/2 把（增長快、分發困難）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 為何 TLS 採混合加密？<br><span style="color:#0A6160;">→ 非對稱安全交換對稱會談金鑰，再用對稱加密大量資料，兼得安全與速度。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During a security review, an engineer finds a legacy application encrypting database records with AES in ECB mode, and identical records produce identical ciphertext blocks. The team also wants the encrypted data to be protected against undetected tampering. Which mode of operation is the BEST replacement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全審查發現舊系統以 AES-ECB 模式加密資料庫記錄,相同記錄產生相同密文區塊;團隊同時希望加密資料能防範未被察覺的竄改。哪個運作模式是最佳替代方案?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> CBC（Cipher Block Chaining）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> GCM（Galois/Counter Mode）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> CTR（Counter Mode）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> ECB with a longer key 以更長金鑰續用 ECB</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。GCM＝CTR＋Galois 認證,同時提供<strong>機密性＋完整性/來源鑑別</strong>,且快、可平行、NIST 推薦——正好同時滿足『隱藏樣式』與『偵測竄改』兩個需求。判斷邏輯:題目要求兩種保護,只有認證加密模式（GCM/CCM）兩者兼備。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：CBC 能隱藏明文樣式,但不提供完整性保護,且有 POODLE 類攻擊風險。</li><li style="margin-bottom:3px;">C：CTR 快且可平行,但本身缺完整性,需另配雜湊才完整。</li><li style="margin-bottom:3px;">D：ECB 的問題在模式本身（相同明文→相同密文）,金鑰再長也無法解決。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A company is deploying thousands of battery-powered smart sensors with very limited CPU and memory. The design requires asymmetric cryptography for device authentication, using the smallest possible key size at equivalent strength. Which algorithm BEST fits this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某公司部署數千個電池供電、CPU 與記憶體極有限的智慧感測器,設計上需要非對稱密碼進行裝置鑑別,且要求同等強度下金鑰越短越好。哪個演算法最符合需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> RSA with 3072-bit keys（3072 位元 RSA）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> ElGamal</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> ECC with 256-bit keys（256 位元橢圓曲線密碼）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> RSA with 2048-bit keys（2048 位元 RSA）</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。ECC 基於橢圓曲線離散對數問題,在同等強度下金鑰遠短於 RSA（256-bit ECC ≈ 3072-bit RSA）,運算量、儲存與功耗都更省——受限的行動/IoT 裝置首選。判斷邏輯:題目關鍵字是『非對稱＋最短金鑰＋受限裝置』→ ECC。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：3072-bit RSA 強度相當,但金鑰長 12 倍,運算與儲存負擔對受限裝置太重。</li><li style="margin-bottom:3px;">B：ElGamal 是 Diffie-Hellman 的延伸,密文會膨脹（約兩倍）且金鑰不短。</li><li style="margin-bottom:3px;">D：2048-bit RSA 強度低於 256-bit ECC,且運算成本仍高。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A company operates a two-tier PKI with an offline root CA and an online issuing (intermediate) CA. Forensics confirms the intermediate CA's private key has been compromised. What should the security team do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某公司採兩層 PKI:離線 root CA＋線上簽發用中繼 CA。鑑識確認中繼 CA 的私鑰已外洩。安全團隊應『首先』做什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Rebuild the root CA and redistribute new trust anchors 重建 root CA 並重新散布信任根</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Revoke the intermediate CA certificate and publish the revocation via CRL/OCSP 撤銷中繼 CA 憑證並透過 CRL/OCSP 發布</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Reissue all end-entity certificates from the same intermediate CA 由同一中繼 CA 重發所有終端憑證</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Switch affected servers to self-signed certificates 讓受影響伺服器改用自簽憑證</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。私鑰外洩的第一要務是讓全世界『停止信任』該 CA——撤銷其憑證並經 CRL/OCSP 發布,立刻阻斷攻擊者用外洩私鑰簽發偽憑證冒充信任鏈;之後才由（未受影響的）root CA 建立新中繼並重發憑證。判斷邏輯:FIRST＝先止血（遏制）,再重建。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：root CA 離線且未外洩,重建信任根代價極大且非必要。</li><li style="margin-bottom:3px;">C：該中繼已不可信,由它重發的憑證同樣不可信,順序錯誤。</li><li style="margin-bottom:3px;">D：自簽憑證拋棄整個信任鏈,引發更多信任警告,不是解法。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.6.2 對稱與非對稱（深入））</div>

@@ -57,6 +57,8 @@
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Crypto-erase</strong>（加密抹除）— <span style="color:#5B6675;">銷毀金鑰使加密資料無法解讀。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Secure Erase</strong>（安全抹除）— <span style="color:#5B6675;">SSD/HDD 韌體層的抹除指令。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Crypto-shredding</strong>（金鑰銷毀）— <span style="color:#5B6675;">雲端常用：刪金鑰即邏輯銷毀資料。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">EOL</strong>（End-of-Life 停售）— <span style="color:#5B6675;">廠商停止「銷售」該產品的時點；之後通常仍有一段支援期。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">EOS / EOSL</strong>（End-of-Support / End-of-Service-Life 停止支援）— <span style="color:#5B6675;">廠商停止維護與「安全修補」；EOS 後續用須依序：風險評估 → 補償控制（隔離/強化監控）→ 汰換計畫。</span></td></tr>
       <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Certificate of Destruction</strong>（銷毀證明）— <span style="color:#5B6675;">記錄銷毀方法與見證的文件。</span></td></tr>
     </table>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 易混淆釐清</div>
@@ -85,6 +87,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 雲端資料無法實體銷毀時常用什麼？<br><span style="color:#0A6160;">→ crypto-shredding（銷毀加密金鑰）＋契約要求與證明。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 媒體消毒的權威標準？<br><span style="color:#0A6160;">→ NIST SP 800-88（Clear/Purge/Destroy）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A company plans to donate 200 used laptops with magnetic hard drives to local schools. The drives previously stored sensitive business data, and the laptops must remain fully functional. According to NIST SP 800-88, which sanitization approach is MOST appropriate?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（公司計畫把 200 台配備磁性硬碟的舊筆電捐給在地學校。硬碟曾儲存敏感商業資料,且筆電必須保持完整可用。依 NIST SP 800-88,哪種消毒方式最合適?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Perform a standard format of each drive before donation 捐贈前對每顆硬碟做標準格式化</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Clear the drives with a single overwrite, sufficient for any transfer 以單次覆寫做 Clear,任何轉移情境都足夠</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Purge the drives (e.g., firmware Secure Erase) because the media is leaving organizational control 對硬碟執行 Purge(如韌體 Secure Erase),因為媒體將脫離組織控制</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Degauss the drives to guarantee the data cannot be recovered 對硬碟消磁以保證資料不可復原</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。800-88 決策邏輯:看<strong>資料機密性+媒體是否脫離組織控制+是否再用</strong>。敏感資料+媒體將『離開組織控制』(捐贈)→ 至少要 <strong>Purge</strong>(防實驗室級復原);又必須保持可用 → 韌體 Secure Erase 是能同時滿足兩個條件的 purge 手段。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Format 只移除索引,資料殘留仍可用一般工具復原;format/delete 永遠不是『不可復原』的答案。</li><li style="margin-bottom:3px;">B：Clear 只防『一般軟體工具』復原;媒體要脫離組織控制時,這個保證等級不足。</li><li style="margin-bottom:3px;">D：消磁雖達 Purge 等級,但會破壞硬碟韌體與伺服馬達資訊使其<strong>不可再用</strong>,違背『筆電須保持可用』的前提。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A hospital discovers that a critical medical imaging workstation runs an operating system that has passed its End-of-Support (EOS/EOSL) date: the vendor no longer issues security patches, and budget to replace the system will not be available for 18 months. What should the security manager do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（醫院發現一台關鍵醫療影像工作站的作業系統已過 End-of-Support(EOS/EOSL):廠商不再提供安全修補,而汰換預算要 18 個月後才會到位。安全經理應『首先』怎麼做?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Immediately power off the workstation until it can be replaced 立即關閉該工作站直到完成汰換</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Perform a risk assessment, then apply compensating controls such as network isolation and enhanced monitoring while tracking a funded replacement plan 先做風險評估,再施加網段隔離,強化監控等補償控制,並持續追蹤已排定的汰換計畫</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Continue normal operations since the system has run reliably for years 系統多年運作穩定,維持現狀即可</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Ask the vendor to reclassify the product as End-of-Life (EOL) so support resumes 要求廠商把產品重新歸類為 EOL 以恢復支援</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。EOS/EOSL 後<strong>不再有安全修補</strong>,風險急升,但關鍵醫療系統不能說關就關(可用性攸關病患安全)。正確處置順序:<strong>風險評估 → 補償控制(隔離/虛擬補丁/加強監控)→ 汰換計畫</strong>。Think like a manager:先量化風險,用控制把風險壓到可接受,同時推進根本解(汰換)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：未經風險評估就停機,可能中斷醫療服務,危及病患安全——人命與可用性優先,處置要先評估。</li><li style="margin-bottom:3px;">C：『一直沒出事』不是風險處置;無修補的已知漏洞會持續累積,這是未經評估的風險接受。</li><li style="margin-bottom:3px;">D：混淆名詞:EOL 是『停售』,發生在 EOS『停止支援』之前;重新歸類不會讓安全修補復活。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A financial firm outsourced the destruction of retired hard drives containing customer PII. Six months later, several of those drives — with data fully intact — are found for sale on an online marketplace. Which control failure MOST likely allowed this to happen?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（金融公司把含客戶 PII 的退役硬碟外包銷毀。半年後,其中數顆硬碟(資料完好無缺)出現在網路二手市場求售。最可能是哪項控制失效所致?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Failure to maintain chain of custody and obtain a verified certificate of destruction 未維護監管鏈(chain of custody),也未取得經驗證的銷毀證明</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Use of a three-pass overwrite instead of a seven-pass pattern 覆寫時採用三次而非七次的寫入模式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Choosing shredding instead of degaussing as the destruction method 銷毀方法選了粉碎而非消磁</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Missing classification labels on the drive enclosures 硬碟外殼缺少分級標籤</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。資料『完好無缺』流入市場,代表硬碟<strong>根本沒被銷毀就中途流出</strong>——問題不在銷毀技術,而在<strong>託管流程</strong>:從退役到銷毀全程要有監管鏈,取得含序號,方法,日期,見證的<strong>銷毀證明</strong>,並抽樣驗證。外包銷毀,當責仍在委託方,流程證據就是防線。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：覆寫次數之爭已過時(800-88 下一次完整覆寫即達 Clear);且資料完好顯示任何銷毀程序都沒執行。</li><li style="margin-bottom:3px;">C：粉碎本身就是最高保證的 Destroy 方法;方法沒選錯,是根本沒執行到。</li><li style="margin-bottom:3px;">D：標籤有助於正確處理,但缺標籤不會直接導致『已交付銷毀的硬碟』流入二手市場。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.4.6 殘留 / §2.4.7 銷毀（標準））</div>
@@ -129,7 +176,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 49 / 120 · P2-D2-4</span>
   </div>
 

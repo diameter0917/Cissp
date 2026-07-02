@@ -71,6 +71,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . XSS 與 CSRF 的防禦分別是？<br><span style="color:#0A6160;">→ XSS：輸出編碼/CSP；CSRF：CSRF token/SameSite cookie。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 輸入驗證該用白名單還黑名單？<br><span style="color:#0A6160;">→ 白名單（只允許已知合法），較黑名單可靠。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security architect reviews an application and concludes that even if the developers had implemented every part of the specification perfectly, the vulnerability would still exist. Which type of source-code weakness does this BEST describe?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全架構師審查應用程式後判斷:即使開發者完美實作規格的每一部分,該漏洞仍會存在。這最符合哪種原始碼層級弱點?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Implementation flaw 實作缺陷</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Security misconfiguration 安全組態錯誤</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Design flaw 設計缺陷</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Zero-day vulnerability 零時差漏洞</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。官方考綱對 design flaw 的定義正是『<strong>即使開發者一切都做對,漏洞仍會存在</strong>』——問題出在設計本身,不是程式寫錯。判斷邏輯:看到『做對也有漏』這句關鍵描述→設計缺陷;這也解釋了為何威脅建模必須在設計期進行,實作後才修設計問題成本極高。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Implementation flaw 是『好設計被寫錯』——與題幹『完美實作仍有漏』正好相反。</li><li style="margin-bottom:3px;">B：組態錯誤發生在部署/維運層的設定,不是原始碼層級的設計問題。</li><li style="margin-bottom:3px;">D：Zero-day 描述的是『尚無修補即被利用』的漏洞狀態,不是弱點成因的分類。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Customers of an online bank report that money transfers they never initiated were executed from their accounts. Investigation shows the forged requests were sent from the victims' own browsers while they were still logged in to the bank, triggered when they visited a malicious website. Which attack does this BEST describe?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（網路銀行客戶回報帳戶出現非本人發起的轉帳。調查顯示偽造請求是在受害者仍登入銀行期間,於造訪某惡意網站時從受害者自己的瀏覽器送出。這最符合哪種攻擊?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> SQL injection SQL 注入</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Cross-site scripting (XSS) 跨站腳本</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Cross-site request forgery (CSRF) 跨站請求偽造</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Session hijacking 工作階段劫持</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。CSRF 三特徵在題幹齊備:受害者<strong>已登入</strong>＋請求由<strong>受害者自己的瀏覽器</strong>發出＋由<strong>第三方惡意網站</strong>觸發——攻擊者利用網站對『已驗證使用者』的信任,冒用其身分送出非本意請求。防禦:anti-CSRF token＋SameSite cookie。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：SQLi 是把惡意輸入當 SQL 執行、攻擊資料庫層,與冒用使用者身分送請求無關。</li><li style="margin-bottom:3px;">B：XSS 是把攻擊者的腳本注入頁面在受害者瀏覽器執行;本題沒有腳本注入銀行網站,而是誘發偽造請求。</li><li style="margin-bottom:3px;">D：Session hijacking 是竊取 session token 後由『攻擊者的』環境冒用;本題請求來自受害者本人的瀏覽器。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.5.1 OWASP 與常見漏洞）</div>

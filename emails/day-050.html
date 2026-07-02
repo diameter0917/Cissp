@@ -83,6 +83,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 要讓檔案外寄後仍限制開啟與列印，用什麼？<br><span style="color:#0A6160;">→ DRM/IRM（保護綁在檔案上）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Privacy by Design 的核心預設原則是什麼？<br><span style="color:#0A6160;">→ Privacy by Default——預設即最小蒐集、最嚴隱私設定。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An investigation reveals that employees in a design department are copying confidential drawings to personal USB drives and printing them at office printers. Which DLP deployment BEST addresses this specific leakage channel?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（調查發現設計部門員工把機密圖檔複製到私人 USB 隨身碟,並在辦公室印表機列印。哪種 DLP 部署最能處理這種特定外洩管道?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Network DLP at the internet egress 部署於網際網路出口的 Network DLP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Storage/discovery DLP scanning file repositories 掃描檔案儲存庫的 Storage/Discovery DLP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Endpoint DLP agents on the department's workstations 在該部門工作站安裝 Endpoint DLP 代理程式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> A CASB monitoring sanctioned SaaS applications 監控已核准 SaaS 應用的 CASB</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。USB 複製與列印發生在<strong>端點</strong>,屬於資料<strong>使用中(in use)</strong>的狀態,只有 <strong>Endpoint DLP</strong> 能在裝置上攔截複製到隨身碟,列印,剪貼等動作。記憶:三種 DLP 對應資料三狀態——網路(in transit),端點(in use),儲存(at rest);先辨識外洩管道在哪一層,再選部署。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Network DLP 只看得到『經網路外送』的流量;USB 複製與本機列印根本不經過網路出口。</li><li style="margin-bottom:3px;">B：Storage DLP 是掃描靜止資料,找出未受保護的敏感檔,無法即時攔截端點上的動作。</li><li style="margin-bottom:3px;">D：CASB 管的是雲端服務的可視化與管控,與 USB/列印這類本機管道無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A CISO discovers through expense reports that business units have subscribed to dozens of unsanctioned SaaS applications where corporate files are being shared. Which solution BEST provides visibility into this shadow IT and enforces the organization's cloud usage policy?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（CISO 從報帳紀錄發現各事業單位自行訂閱了數十個未核准的 SaaS,公司檔案正在其中流通。哪個方案最能提供影子 IT 的可視性,並執行組織的雲端使用政策?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Endpoint DLP to block file copies to USB media 以 Endpoint DLP 阻擋檔案複製到 USB</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> DRM to attach usage rights to every corporate document 以 DRM 為每份公司文件附加使用權限</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> A firewall rule blocking all cloud storage domains 以防火牆規則封鎖所有雲端儲存網域</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> A CASB positioned between users and cloud services 部署介於使用者與雲端服務之間的 CASB</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>CASB</strong> 邏輯上位於使用者與雲端服務之間,四支柱的第一項就是<strong>可視化(含影子 IT 發現)</strong>,再配合合規,資料安全(DLP/加密),威脅防護,對雲端使用執行政策——正是為『發現並治理未核准 SaaS』而生的方案。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Endpoint DLP 管 USB/列印等端點管道,無法盤點與治理雲端 SaaS 的整體使用。</li><li style="margin-bottom:3px;">B：DRM 保護單一檔案本身,但不能發現有哪些影子 IT,也無法管控 SaaS 使用行為。</li><li style="margin-bottom:3px;">C：全面封鎖過於粗暴會癱瘓合法業務,使用者將改走個人裝置繞過,可視性反而更差。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A retailer wants to shrink its PCI DSS assessment scope. It plans to replace stored card numbers with surrogate values that have no mathematical relationship to the originals and can only be mapped back through a secured lookup vault. Which technique does this describe?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（零售商想縮小 PCI DSS 評估範圍,計畫把儲存的卡號換成與原值『無數學關係』的替代值,且只能透過受保護的對照庫(vault)換回。這描述的是哪種技術?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Format-preserving encryption 保留格式加密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Tokenization 代碼化</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> One-way hashing 單向雜湊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Anonymization 匿名化</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。<strong>Tokenization(代碼化)</strong>的招牌特徵:token 與原值<strong>無數學關係</strong>,靠<strong>查表(vault)</strong>還原。持卡資料以 token 取代後,多數系統不再接觸真卡號,有效縮小 PCI 範圍——這正是 PCI DSS 鼓勵代碼化的原因。判斷關鍵:數學轉換=加密;查表替換=代碼化。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：加密(含保留格式加密)是<strong>演算法+金鑰</strong>的數學轉換,密文與原值存在數學關係,與題幹矛盾。</li><li style="margin-bottom:3px;">C：單向雜湊不可還原,無法透過對照庫換回原卡號,不符『可換回』的需求。</li><li style="margin-bottom:3px;">D：匿名化是永久不可逆地移除可識別性,同樣無法還原,且是個資去識別概念而非替代值機制。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.6.4 DLP/DRM/CASB 與隱私）</div>

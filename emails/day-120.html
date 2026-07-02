@@ -107,6 +107,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 接受剩餘風險須由誰、以什麼形式？<br><span style="color:#0A6160;">→ 管理層,書面核准(風險為基礎+當責)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . (ISC)² 選答心態一句話？<br><span style="color:#0A6160;">→ 像資安管理者思考:風險為基礎、處理根因、正確流程。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A development team asks for a copy of the production customer database to make its testing ‘more realistic.’ As the security manager, what is the BEST response?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（開發團隊為了讓測試『更擬真』,要求一份正式環境客戶資料庫的副本。身為資安主管,最佳回應為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Provide masked or anonymized test data that preserves the data's format and volume 提供保留格式與量體的遮罩/去識別化測試資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Grant temporary read access to production data after the developers sign an NDA 開發者簽署 NDA 後授予正式資料暫時唯讀權限</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Refuse to provide any test data to the development environment 拒絕提供任何測試資料給開發環境</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Copy the production data but encrypt the development database 複製正式資料但將開發資料庫加密</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。跨域整合題:<strong>D8(開發/測試環境)＋D2(資料保護)</strong>——開發環境防護較弱,不應存放真實個資;<strong>遮罩/去識別化</strong>既滿足『擬真格式與量體』的測試需求,又消除外洩與法遵風險。<strong>Think like a manager</strong>:先問需求的本質(要的是格式擬真,不是真實身分),再用最低風險的方式滿足它。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：NDA 是行政控制,擋不住技術性外洩,且違反最小權限與用途限制。</li><li style="margin-bottom:3px;">C：一刀切拒絕阻礙業務,不是風險管理。</li><li style="margin-bottom:3px;">D：加密只保護儲存;開發者仍持有真實個資,風險與法遵問題依然存在。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A business-critical application depends on an unsupported framework with known vulnerabilities, and a full rewrite will take 18 months. What is the BEST course of action in the meantime?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某業務關鍵應用依賴已停止支援,存在已知漏洞的框架,完整改寫需要 18 個月。過渡期間的最佳做法為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Formally accept the risk and take no further action 正式接受風險,不採取進一步行動</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Shut the application down until the rewrite is complete 停用該應用直到改寫完成</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Start the rewrite and address security only when the new version ships 先啟動改寫,安全等新版上線再處理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Apply compensating controls (WAF, network segmentation, enhanced monitoring) while managing the rewrite as a risk-treatment plan 施加補償性控制(WAF,網段隔離,強化監控),並將改寫納入風險處理計畫管理</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。跨域整合題:<strong>D1(風險處理)＋D3(縱深防禦)＋D8(遺留軟體)</strong>——無法立即消除弱點時,以<strong>補償性控制</strong>把暴險降到可接受水準,同時把長期修復納入風險處理計畫由治理追蹤。判斷邏輯:風險是拿來『管理』的,不是在『全停』與『裸奔』之間二選一。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：有可行控制卻不作為,不符 due care。</li><li style="margin-bottom:3px;">B：業務關鍵應用中斷 18 個月,處置與風險不成比例。</li><li style="margin-bottom:3px;">C：過渡期完全不設防,已知漏洞持續暴險,不可接受。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A developer privately discovers a serious vulnerability in software her company has already shipped to customers. According to security governance and the (ISC)² Code of Ethics, what should she do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某開發者私下發現公司已出貨給客戶的軟體存在嚴重漏洞。依安全治理與 (ISC)² 道德準則,她應『首先』做什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Disclose it publicly at once so customers can protect themselves 立即公開揭露讓客戶自保</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Quietly patch it in the next release without telling management 默默在下一版修掉,不告知管理層</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Wait for the next scheduled security audit to raise it 等下一次排定的安全稽核再提出</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Report it through the organization's internal vulnerability-handling process so it is risk-assessed, fixed under change management, and disclosed as management decides 循組織內部弱點處理流程通報,經風險評估,依變更管理修復,並由管理層決定揭露</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。全課程收尾心法題:<strong>think like a manager</strong>——正確的『流程與治理』優先於個人英雄主義:<strong>內部通報→風險評估→變更管理下修復→由當責的管理層決定對客戶的揭露</strong>。這同時滿足 (ISC)² 道德準則(保護社會,行事誠實且負責):讓組織能以受控方式降低所有客戶的風險。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：修復前公開反而讓攻擊者先行,使客戶更暴險,違背保護社會的本意。</li><li style="margin-bottom:3px;">B：繞過管理層與變更管理,剝奪了組織(當責方)的風險決策,也可能引入新缺陷。</li><li style="margin-bottom:3px;">C：重大弱點時效即風險,不能等排程稽核。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.1 + §8.5 D8 綜合 + 全考科收尾）</div>

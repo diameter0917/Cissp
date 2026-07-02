@@ -71,6 +71,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . TPM 與 HSM 差別？<br><span style="color:#0A6160;">→ TPM 內建單機主機板綁平台；HSM 為獨立高強度金鑰設備。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Capital One 2019 外洩的根因類型？<br><span style="color:#0A6160;">→ 客戶端雲端設定/權限錯誤（共同責任中客戶的部分）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which hardware component is a chip embedded on a computer's motherboard that stores cryptographic keys and supports full-disk encryption such as BitLocker?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪個硬體元件是內建於電腦主機板的晶片,負責保管加密金鑰並支援 BitLocker 等全磁碟加密?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> HSM 硬體安全模組</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> TPM 信賴平台模組</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Smart card 智慧卡</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Security token 安全權杖</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。TPM（Trusted Platform Module）是焊在主機板上、與該平台綁定的安全晶片,負責保管金鑰並支援開機完整性量測與全磁碟加密。記憶:TPM＝『單機內建』,HSM＝『獨立設備』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：HSM 是獨立的高強度金鑰管理設備（常用於 CA/資料中心）,不是主機板內建晶片。</li><li style="margin-bottom:3px;">C：智慧卡是隨身攜帶的身分/金鑰載具,不綁定主機板。</li><li style="margin-bottom:3px;">D：安全權杖用於使用者驗證（如 OTP）,與磁碟加密金鑰保管無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager finds that factory ICS controllers run firmware that cannot be patched without halting production, and several still use vendor default passwords. Which action is BEST to reduce the risk?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理發現工廠 ICS 控制器的韌體無法在不停產的情況下修補,且部分仍使用原廠預設密碼。哪個行動最能降低風險?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Patch all controllers immediately during production hours 在生產時段立即修補所有控制器</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Replace the ICS equipment with new IoT devices 將 ICS 設備全面更換為新的 IoT 裝置</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Accept the risk because ICS networks are isolated by design 接受風險,因為 ICS 網路本來就是隔離的</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Change the default credentials and segment the ICS network as compensating controls 更改預設密碼,並以網路分段隔離 ICS 作為補償性控制</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。無法立即修補時,風險導向的做法是先消除最便宜、最有效的弱點（預設密碼）,再用<strong>補償性控制</strong>（網路分段/隔離）降低暴露。ICS 的典型弱點正是『難修補＋預設密碼＋生命週期長』,補償性控制是標準解法。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：生產時段強行修補可能造成停產甚至工安事故,違反可用性與人員安全優先。</li><li style="margin-bottom:3px;">B：全面汰換成本極高,且 IoT 同樣有預設密碼/難修補問題,並非更安全。</li><li style="margin-bottom:3px;">C：『天生隔離』是未驗證的假設;未評估就接受風險是管理失職。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.5 系統與雲端弱點）</div>

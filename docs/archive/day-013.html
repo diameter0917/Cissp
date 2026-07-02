@@ -71,6 +71,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 數位簽章用哪把金鑰簽、哪把驗？<br><span style="color:#0A6160;">→ 私鑰簽、公鑰驗（提供不可否認）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 驗證檔案完整性用什麼？<br><span style="color:#0A6160;">→ 雜湊（如 SHA-256），比對指紋是否相同。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which key does a sender use to CREATE a digital signature on a message?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（寄件者要對訊息「建立」數位簽章,應使用哪把金鑰?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> The sender's public key 寄件者的公鑰</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> The recipient's public key 收件者的公鑰</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> The sender's private key 寄件者的私鑰</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> The recipient's private key 收件者的私鑰</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。簽章＝用<strong>自己的私鑰</strong>簽,收件者用寄件者的公鑰驗;因為私鑰只有本人持有,才能提供完整性、真實性與不可否認。記憶:『私鑰簽、公鑰驗』,與加密方向相反（加密用收件者公鑰、解密用收件者私鑰）。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：寄件者公鑰是給別人『驗章』用的,人人可取得,無法證明身分。</li><li style="margin-bottom:3px;">B：收件者公鑰用於加密要給對方的機密訊息,與簽章無關。</li><li style="margin-bottom:3px;">D：收件者私鑰只用於解密自己收到的訊息,寄件者根本不應持有。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security engineer must send several terabytes of sensitive archives to a business partner over an untrusted network. Which approach is BEST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全工程師必須透過不受信任的網路,傳送數 TB 的敏感封存資料給合作夥伴。哪種做法最佳?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Encrypt the entire archive with the partner's RSA public key 以夥伴的 RSA 公鑰加密整批資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Encrypt with AES and send the key in the same message 以 AES 加密並在同一訊息附上金鑰</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Encrypt the data with an AES session key, then exchange that key using asymmetric cryptography 以 AES session key 加密資料,再用非對稱加密安全交換金鑰</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Compute a SHA-256 hash of the archives to keep them confidential 對資料計算 SHA-256 雜湊以保護機密性</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>混合加密（hybrid）</strong>取兩者之長:對稱（AES）快、適合大量資料;非對稱解決『金鑰如何安全交換』的難題。TLS 正是這個模式——先用非對稱協商 session key,再用對稱加密資料。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：非對稱運算慢,直接加密數 TB 資料不切實際。</li><li style="margin-bottom:3px;">B：金鑰與密文同通道傳送,攻擊者攔截即可全解,加密形同虛設。</li><li style="margin-bottom:3px;">D：雜湊是單向的完整性工具,不可逆也不是加密,無法提供機密性。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.6.2 密碼學基礎）</div>

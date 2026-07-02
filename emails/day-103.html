@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 建於 OAuth 上、提供鑑別發 ID token 的是？<br><span style="color:#0A6160;">→ OIDC。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Kerberos 認證後先取得什麼？<br><span style="color:#0A6160;">→ TGT(票證授予票證),再換服務票證。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During incident response, forensics confirms attackers extracted the krbtgt account hash from a domain controller, enabling them to forge ticket-granting tickets (a Golden Ticket attack). After evicting the attackers, which action is MOST critical to invalidate the forged tickets?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（事件應變中,鑑識確認攻擊者已從網域控制站取出 krbtgt 帳號雜湊,可偽造 TGT(Golden Ticket 攻擊)。驅逐攻擊者後,哪個動作對「使偽造票證失效」最關鍵?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Force a password reset for all user accounts 強制全體使用者重設密碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Rebuild every workstation in the domain 重建網域內所有工作站</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Shorten the maximum TGT lifetime policy 縮短 TGT 最長效期政策</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Reset the krbtgt account password twice in succession 連續重設 krbtgt 帳號密碼兩次</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。Golden Ticket 的「簽章」來源就是 <strong>krbtgt 的金鑰</strong>——只要該雜湊仍有效,攻擊者可憑偽造 TGT 冒充任何人,連改密碼都擋不住。因 KDC 會接受前一代金鑰,必須<strong>連續重設 krbtgt 兩次</strong>把新舊金鑰都換掉,偽造票證才真正失效。記憶:Golden Ticket 的根=krbtgt;斷根要「reset ×2」。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：偽造 TGT 不依賴任何使用者密碼,全員改密碼不影響 Golden Ticket 的有效性。</li><li style="margin-bottom:3px;">B：代價極高且沒對到根因——票證偽造能力在 krbtgt 金鑰,不在工作站。</li><li style="margin-bottom:3px;">C：攻擊者偽造票證時可自行填寫超長效期,不受政策約束;縮短效期是輔助強化,非關鍵。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A domain controller restored from an old VM snapshot causes widespread Kerberos authentication failures across the office. Investigators find the server's clock is 20 minutes off. Which Kerberos characteristic BEST explains the failures?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某網域控制站從舊 VM 快照還原後,全辦公室大量 Kerberos 驗證失敗。調查發現該伺服器時鐘偏差 20 分鐘。哪個 Kerberos 特性「最能」解釋此故障?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Kerberos tickets are signed with time-limited PKI certificates 票證以有時效的 PKI 憑證簽署</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Kerberos uses timestamps to prevent replay and rejects requests beyond the clock-skew tolerance, so it relies on NTP sync 以時戳防重放,超出容許時差即拒絕,故依賴 NTP 校時</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> A firewall change blocked port 88 between clients and the KDC 防火牆變更擋住用戶端與 KDC 間的 port 88</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> All previously issued TGTs expired during the restore 還原期間所有已核發 TGT 都過期了</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。Kerberos 用<strong>時戳(timestamp)防重放攻擊</strong>:請求時間與 KDC 時間差超過容許時差(典型 5 分鐘)即拒絕,因此<strong>依賴 NTP 同步各方時鐘</strong>。快照還原把時鐘拉偏 20 分鐘→全面驗證失敗,校時即恢復。看到「Kerberos＋時鐘/快照還原」直接連到 NTP/時戳。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Kerberos 用「對稱式」密碼學與票證,不靠 PKI 憑證簽署票證。</li><li style="margin-bottom:3px;">C：port 88 被擋會連不上 KDC,但事證(快照還原＋時鐘偏 20 分)指向時差,非網路。</li><li style="margin-bottom:3px;">D：TGT 過期只影響「既有」票證持有者重新換票,無法解釋與時鐘偏差吻合的全面失敗。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An enterprise uses SAML federation so employees access dozens of external SaaS applications with corporate credentials. When an employee resigns, which action MOST effectively ensures they immediately lose access to ALL federated SaaS applications?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某企業以 SAML 聯合身分讓員工用公司帳號存取數十個外部 SaaS。員工離職時,哪個動作「最有效」確保其立即失去「所有」聯合 SaaS 的存取?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Disable the user's account at the corporate Identity Provider (IdP) 在公司 IdP 停用該使用者帳號</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Submit deprovisioning requests to each SaaS provider 逐一向每個 SaaS 供應商提出刪帳號申請</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Ask the user to log out of all SaaS sessions 請該使用者登出所有 SaaS 會談</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Rotate the SAML signing certificate 更換 SAML 簽章憑證</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。聯合身分架構中,<strong>鑑別集中在 IdP</strong>,各 SP(SaaS)只「信任消費」IdP 的斷言——在 IdP 停用帳號=一個動作切斷所有下游 SaaS 的登入,這正是集中身分管理的治理優勢(可再輔以撤銷現存會談)。記憶:聯合身分的「總開關」在 IdP。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：方向對但非最有效——逐一申請緩慢且易遺漏,期間該員工仍可經 IdP 登入。</li><li style="margin-bottom:3px;">C：依賴離職者自律毫無強制力,不是控制。</li><li style="margin-bottom:3px;">D：換簽章憑證會讓「全公司所有人」的聯合登入中斷,殺傷面過大且非針對該身分。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.6 聯合身分協定（考點））</div>

@@ -88,6 +88,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . STRIDE 的 Tampering 對應哪個安全目標？<br><span style="color:#0A6160;">→ 完整性 Integrity（Spoofing↔真實性、DoS↔可用性…）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . BIA 應由誰主導排序關鍵流程？<br><span style="color:#0A6160;">→ 業務單位（最了解流程關鍵性），非只由 IT 決定。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">The BIA for an e-commerce order database establishes an RPO of 4 hours, but the database is currently protected only by a nightly full backup. Which action would BEST bring the environment into line with the BIA?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（電商訂單資料庫的 BIA 訂出 RPO 為 4 小時,但目前僅靠每晚一次的完整備份保護。哪個行動最能使環境符合 BIA 的要求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Shorten the RTO by pre-staging a warm standby server 以預先就緒的暖備援伺服器縮短 RTO</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Keep nightly backups because the RTO target is still met 維持每晚備份,因為 RTO 目標仍可達成</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Ask management to extend the MTD for the order process 請管理層延長訂單流程的 MTD</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Increase backup or replication frequency so no more than 4 hours of data can be lost 提高備份/複寫頻率,使資料遺失不超過 4 小時</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。RPO 是『<strong>可容忍的資料遺失量</strong>』,直接決定<strong>備份頻率</strong>:RPO 4 小時代表最後一次可用備份距故障點不得超過 4 小時;每晚一次(最多丟 24 小時)明顯不符,必須把備份/複寫頻率提高到至少每 4 小時。判斷關鍵:題目談『能丟多少資料』→ RPO → 備份頻率,時間軸看『過去』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：RTO 處理『系統多快回來』(時間軸看未來);加快復原無法減少已經遺失的資料。</li><li style="margin-bottom:3px;">B：RTO 達標與 RPO 是兩個獨立指標,24 小時的潛在資料損失仍違反 RPO 要求。</li><li style="margin-bottom:3px;">C：MTD 是業務中斷的上限,與資料遺失量無關;改指標遷就現狀更是本末倒置。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A bank uncovers a multi-year fraud scheme run by an accountant who single-handedly controlled every step of the payment process and had not taken a vacation in years. Which combination of personnel security controls would MOST likely have detected this scheme earlier?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某銀行揭發一起多年的舞弊案,涉案會計師獨自掌控付款流程的每個步驟,且多年未曾休假。哪種人員安全控制組合最可能提早偵測出這起舞弊?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Stricter pre-employment background checks 更嚴格的任用前背景查核</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Separation of duties combined with mandatory vacations 職務分離搭配強制休假</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> A signed nondisclosure agreement (NDA) 簽署保密協議</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Annual security awareness training 年度安全意識訓練</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。職務分離(SoD)讓<strong>單人無法獨立完成整個敏感流程</strong>,舞弊必須共謀才可能;強制休假(mandatory vacation)迫使他人代理其職務,長期舞弊會在代理期間曝光——兩者正是針對『一人掌控全流程＋從不休假』這組紅旗設計的人員控制。Think like a manager:流程設計面的控制,勝過事後補救。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：背景查核只能過濾任用『前』已知的不良紀錄,擋不住到職後才開始的舞弊。</li><li style="margin-bottom:3px;">C：NDA 管的是資訊保密義務,與偵測財務舞弊無關。</li><li style="margin-bottom:3px;">D：意識訓練提升整體防禦意識,對內部人蓄意舞弊幾乎沒有偵測效果。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security architect wants a threat modeling methodology that is attacker-centric, proceeds through seven defined stages, and ties simulated attacks back to business impact so that results can be prioritized as risk. Which methodology BEST fits?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全架構師想採用一套以攻擊者為中心,依七個明確階段進行,並把模擬攻擊連結回業務衝擊,使結果能以風險排序的威脅建模方法。哪個方法最符合?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> STRIDE</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> DREAD</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> PASTA</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> MITRE ATT&amp;CK</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。PASTA(Process for Attack Simulation and Threat Analysis)是<strong>七階段,風險/攻擊者導向</strong>的威脅建模方法,從定義風險分析目標一路走到攻擊模擬(AMS)與風險分析管理(RAM),核心正是『攻擊模擬＋業務影響』。判斷關鍵字:『七階段＋攻擊模擬＋以風險排序』→ PASTA。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：STRIDE 是六類威脅『分類法』,幫設計期系統化找威脅,不是七階段的風險導向流程。</li><li style="margin-bottom:3px;">B：DREAD 是五構面的風險『評分』模型,用來排優先序,本身不含攻擊模擬流程。</li><li style="margin-bottom:3px;">D：MITRE ATT&amp;CK 是真實攻擊者 TTP 的知識庫,常用於偵測與對照,不是威脅建模方法論。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §1.7 BIA / §1.8 / §1.10 威脅建模 / §1.11）</div>

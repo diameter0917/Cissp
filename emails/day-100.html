@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 對付 ARP 毒化的最佳緩解？<br><span style="color:#0A6160;">→ 動態 ARP 檢測(DAI)＋DHCP snooping/綁定。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . DDoS 與 DoS 的關鍵區別？<br><span style="color:#0A6160;">→ DDoS 來自大量分散來源,更難緩解。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization adopting zero trust wants every critical workload in its own zone, with policy enforced at each connection point—including east-west traffic between servers in the same subnet. Department-level VLANs already exist. Which approach BEST meets this goal?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（採行零信任的組織希望每個關鍵工作負載都在自己的區域內,並在每個連接點執行政策——包含同子網伺服器間的東西向流量。部門層級 VLAN 已存在。哪個做法最能達成目標?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Create more department-level VLANs 增設更多部門層級 VLAN</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Upgrade the perimeter to a next-generation firewall 將邊界升級為次世代防火牆</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Require full-tunnel VPN for all users 要求所有使用者改走 full-tunnel VPN</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Micro-segmentation with distributed firewalls per workload 微分段,搭配每個工作負載的分散式防火牆</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>微分段</strong>把網路切到「單一工作負載/伺服器」等級,由<strong>分散式防火牆</strong>在每個連接點執行各自政策,才能管控同網段內的東西向流量——這正是零信任「永不信任、持續驗證」的落地方式。判斷邏輯:VLAN 與微分段都是分段,差在<strong>粒度與段內信任</strong>:VLAN 段內流量仍互信,微分段不留隱含信任。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：VLAN 是部門級粗粒度隔離,同 VLAN 內的橫向流量不受控(對但粒度不夠)。</li><li style="margin-bottom:3px;">B：邊界 NGFW 管南北向流量,看不到也管不到內部東西向。</li><li style="margin-bottom:3px;">C：VPN 解決遠端接入加密,與內部工作負載間的隔離無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Incident responders find a victim host overwhelmed by ICMP echo replies from many hosts on the local network, after an attacker sent echo requests to the network broadcast address using the victim's spoofed source address. Which attack is this?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（事件應變人員發現,攻擊者以受害者的偽造來源位址向網路廣播位址發送 echo 請求後,受害主機被同網路大量主機的 ICMP echo 回覆淹沒。這是哪種攻擊?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Smurf attack Smurf 攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> SYN flood SYN 洪水</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> DNS amplification DNS 放大攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Ping of death 死亡之 Ping</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>Smurf</strong>=「ICMP echo 請求送到<strong>廣播位址</strong>+<strong>偽造受害者為來源</strong>」,全網主機同時回覆 echo reply 灌爆受害者,是利用放大網路(amplification network)的 DoS。記憶關鍵字:ICMP+broadcast+spoofed source=Smurf。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：SYN flood 濫用 TCP 三次握手耗盡連線表,與 ICMP 廣播無關。</li><li style="margin-bottom:3px;">C：DNS 放大同樣偽造來源,但靠 DNS 解析器的大型回應放大,不是 ICMP 廣播。</li><li style="margin-bottom:3px;">D：Ping of death 是送出超大/畸形 ICMP 封包使系統當機,不是放大流量。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A penetration test shows that an attacker on an access port can craft frames to reach a VLAN they are not assigned to (VLAN hopping). Which is the BEST mitigation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（滲透測試顯示,接在存取埠的攻擊者可偽造訊框跳到未被指派的 VLAN(VLAN hopping)。最佳緩解措施為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Enable DHCP snooping 啟用 DHCP snooping</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Place a NIDS on the core switch 在核心交換器部署 NIDS</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Encrypt inter-VLAN traffic with TLS 以 TLS 加密跨 VLAN 流量</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Harden switch ports—disable auto-trunk negotiation and enable port security 強化交換器埠—停用自動 trunk 協商並啟用 port security</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。VLAN hopping 靠濫用交換器的 <strong>trunk 自動協商/雙重標籤</strong>,屬 L2 攻擊,必須在交換器層面治理:存取埠明確設定、<strong>停用自動 trunking、啟用 port security</strong>。判斷邏輯:L2 攻擊用 L2 控制解,選「對得上機制」的對策。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：DHCP snooping 防 DHCP 欺騙(也是 DAI 的前提),但擋不住 trunk 協商濫用(同圈陷阱)。</li><li style="margin-bottom:3px;">B：NIDS 只能偵測告警,無法阻止跳躍發生。</li><li style="margin-bottom:3px;">C：加密保護內容機密性,擋不住攻擊者「進入」該 VLAN。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.1 + §4.1.3 D4 綜合）</div>

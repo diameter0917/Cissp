@@ -84,6 +84,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . Golden Ticket 攻擊偽造什麼、根源是竊得什麼？<br><span style="color:#0A6160;">→ 偽造 TGT；根源是竊得 krbtgt 帳號雜湊(等於網域萬能鑰匙)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . TGT 與 Service Ticket 的關係？<br><span style="color:#0A6160;">→ 先取得 TGT(身分證明)，再向 TGS 換取存取特定服務的 Service Ticket。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A threat hunt reveals that an attacker holding a low-privilege domain account has requested Kerberos service tickets for dozens of service accounts and is cracking them offline (Kerberoasting). Which control would MOST reduce the impact of this technique?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（威脅獵捕發現,攻擊者以一個低權限網域帳號索取了數十個服務帳號的 Kerberos 服務票證,並正在離線破解(Kerberoasting)。下列何種控制最能降低此手法的衝擊?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Tighten NTP time synchronization between clients and the KDC 收緊用戶端與 KDC 之間的 NTP 時間同步</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Shorten the lifetime of ticket-granting tickets (TGTs) 縮短票證授予票證(TGT)的有效期限</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Require MFA for all interactive user logons 要求所有互動式使用者登入都使用 MFA</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Use managed service accounts with long, random, automatically rotated passwords 服務帳號改用具備長且隨機、自動輪換密碼的受管服務帳號(如 gMSA)</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。Kerberoasting 的本質是「<strong>離線暴力破解服務帳號密碼</strong>」——服務票證以服務帳號金鑰加密,密碼弱就破得開。讓服務帳號密碼長、隨機且自動輪換(如 gMSA),使破解在計算上不可行,直接消滅攻擊的成功條件;這也呼應服務帳號(非人類身分)須納管與輪換的原則。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：時間同步防的是重放攻擊,與離線破解密碼無關。</li><li style="margin-bottom:3px;">B：縮短 TGT 壽命不影響「已取得的服務票證」被拿去離線破解。</li><li style="margin-bottom:3px;">C：索取服務票證是任何已認證帳號的合法操作,MFA 擋不住;且服務帳號本身無法互動式 MFA。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Incident responders confirm that attackers stole the krbtgt account hash from a domain controller and forged Golden Tickets. After evicting the attackers, what MUST the team do to invalidate any remaining forged tickets?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（事件應變團隊確認攻擊者已從網域控制器竊得 krbtgt 帳號雜湊並偽造了 Golden Ticket。驅離攻擊者後,團隊必須做什麼才能讓殘存的偽造票證失效?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Force a password reset for every user account in the domain 強制網域內所有使用者帳號重設密碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Re-image every workstation the attackers touched 重灌攻擊者接觸過的所有工作站</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Reset the krbtgt account password twice in succession 連續兩次重設 krbtgt 帳號密碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Block TCP/UDP port 88 at the perimeter firewall 在邊界防火牆封鎖 TCP/UDP 88 端口</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。Golden Ticket 是用 <strong>krbtgt 金鑰</strong>簽發的偽造 TGT——只要舊金鑰仍被接受,偽票就持續有效。krbtgt 會保留「現任＋前任」兩代金鑰,因此必須<strong>連續重設兩次</strong>讓兩代全部換新,偽造票證才徹底作廢(兩次之間需留意複寫完成與服務衝擊)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：使用者密碼與 krbtgt 金鑰無關,重設全員密碼無法作廢偽造的 TGT。</li><li style="margin-bottom:3px;">B：重灌主機清除的是立足點;偽票由 krbtgt 舊金鑰背書,依然有效。</li><li style="margin-bottom:3px;">D：Kerberos 是內網認證協定,邊界封 88 端口擋不住網域內使用偽票,反而癱瘓正常認證。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A red team demonstrates that domain administrators routinely log on to ordinary user workstations for support tasks, allowing credential hashes to be harvested from workstation memory and replayed (pass-the-hash) to reach the domain controllers. Which control BEST prevents this path to domain compromise?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（紅隊演練證明:網域管理員經常登入一般使用者工作站處理支援工作,導致其憑證雜湊可被從工作站記憶體擷取並重放(pass-the-hash),進而直達網域控制器。下列何種控制最能阻斷這條網域淪陷路徑?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Enforce a tiered administration model that forbids privileged accounts from logging on to lower-trust hosts 實施分層管理模型,禁止特權帳號登入較低信任層級的主機</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Increase the minimum password length for administrator accounts 提高管理員帳號的最低密碼長度</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Deploy full-disk encryption on all user workstations 為所有使用者工作站部署全磁碟加密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Require administrators to change passwords after every support session 要求管理員每次支援作業結束後更換密碼</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。Pass-the-Hash 成立的前提是「<strong>高權限憑證出現在低信任主機的記憶體</strong>」。分層管理(Tier 0/1/2)從架構上禁止 DA 憑證落在工作站,直接消除攻擊素材;再搭配 Credential Guard/LSASS 保護效果更佳。判斷邏輯:讓憑證「不落地」的預防性架構,優於任何事後補救。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：PtH 使用的是雜湊本身,不需要破解出明文,密碼再長也無效。</li><li style="margin-bottom:3px;">C：全磁碟加密防實體/離線竊取,擋不住執行中系統記憶體的憑證擷取。</li><li style="margin-bottom:3px;">D：雜湊在支援作業當下即可被擷取並立即重放,事後改密碼為時已晚,也不切實際。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.6 Kerberos / 目錄服務（深入））</div>

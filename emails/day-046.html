@@ -80,6 +80,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 多筆低敏感資料合在一起變更敏感，這是什麼風險？<br><span style="color:#0A6160;">→ 聚合（Aggregation）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 商業組織通常分幾級較實際、為何不是越多越好？<br><span style="color:#0A6160;">→ 3–4 級；級數越多控制/訓練/標示成本越高、易被繞過。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During an internal audit, a reviewer discovers that a file server processing Confidential customer data is inventoried and protected as a standard low-value IT asset. Which corrective action BEST aligns with asset classification principles?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（內部稽核時,稽核員發現一台處理 Confidential(機密)客戶資料的檔案伺服器,在資產清冊中僅列為一般低價值 IT 資產並依此保護。哪個矯正措施最符合資產分級原則?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Rely on network segmentation to compensate for the server's lower protection level 以網路分段補償該伺服器較低的保護等級</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Downgrade the data classification to match the protection the server already receives 調降資料分級,以符合伺服器現有的保護等級</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Move the data to encrypted removable media and keep the server classification unchanged 把資料搬到加密可攜媒體,伺服器分級維持不變</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Classify and protect the server at the level of the MOST sensitive data it processes 依該伺服器所處理『最敏感資料』的等級來分級與保護</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。考綱明確要求<strong>資產分級應對齊資料分級</strong>(asset classifications should match data classification):處理 Top Secret 資料的電腦就是 Top Secret 資產。伺服器承載 Confidential 資料,就必須以 Confidential 等級盤點與保護,後續控制才會正確配置。記憶:資產跟著資料走,保護跟著分級走。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：網路分段只是單一補償控制,沒有解決『資產分級錯誤』的根因,其他控制仍會依錯誤分級配置。</li><li style="margin-bottom:3px;">B：為遷就現況而調降資料分級是本末倒置;分級應依資料價值與外洩衝擊決定,不是依現有保護能力。</li><li style="margin-bottom:3px;">C：搬移資料治標不治本,還引入可攜媒體遺失的新風險,伺服器上的殘留資料也仍在。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A records manager finds that 15-year-old product design documents are still classified Confidential and consume costly secure storage, even though the designs were long ago publicly disclosed in patent filings. Which action BEST addresses this situation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（文件管理員發現 15 年前的產品設計文件至今仍列為 Confidential(機密),持續占用昂貴的安全儲存,但這些設計早已因專利申請而公開。哪個做法最能處理這個狀況?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Establish a periodic declassification review so data whose sensitivity has declined can be formally downgraded 建立定期解密降級(declassification)審查,讓敏感度已下降的資料依程序正式降級</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Destroy the archived documents to eliminate the storage cost 銷毀這批歸檔文件以消除儲存成本</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Immediately reclassify all archived data as Public to reduce cost 立即把所有歸檔資料重新分類為 Public 以降低成本</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Keep the current classification because lowering a label always increases risk 維持現有分級,因為調降標示必然增加風險</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。完整的分類制度必須包含 <strong>Declassification(解密降級)</strong>機制:資料敏感度會隨時間下降,應依<strong>正式程序</strong>定期審查並降級,避免『過度保護』造成的成本與摩擦。這正是分類制度需要動態維護,而非一次貼標就永久不變的原因。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：文件可能仍有業務價值或法定保存義務;為省儲存費而銷毀是犧牲業務與法遵需求。</li><li style="margin-bottom:3px;">C：未經審查就全部改 Public,可能誤放其中仍敏感的資料;降級必須逐案依程序進行。</li><li style="margin-bottom:3px;">D：過度分類本身就是制度失敗:成本暴增,人員對標示麻木,真正機密反而被雜訊淹沒。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security officer at a U.S. federal agency is assigning Low, Moderate, or High impact values to an information system based on the potential effect of a loss of confidentiality, integrity, or availability, as required by FIPS 199. Which process is the officer performing?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（美國聯邦機構的安全官依 FIPS 199 要求,根據機密性,完整性,可用性喪失的潛在衝擊,為資訊系統指定 Low/Moderate/High 衝擊等級。這位安全官正在執行什麼流程?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Data classification based on sensitivity labels 依敏感度標籤進行的資料分類(classification)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Security categorization 安全分類定級(categorization)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Asset valuation 資產估值</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Labeling 標示</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。<strong>Categorization(FIPS 199 / NIST SP 800-60)</strong>是依 <strong>C/I/A 衝擊</strong>把系統定為 Low/Moderate/High;<strong>Classification</strong> 則是依<strong>敏感度</strong>貼 Top Secret/Confidential 等標籤。題幹出現『衝擊等級 Low/Mod/High』就是 categorization 的招牌特徵,這是兩者最快的鑑別點。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Classification 使用敏感度標籤(政府 TS/S/C/U 或商業四級),不是 Low/Mod/High 衝擊值。</li><li style="margin-bottom:3px;">C：資產估值是計算資產的貨幣或業務價值(供風險分析用),不是指定衝擊等級。</li><li style="margin-bottom:3px;">D：Labeling 是把『已決定』的分類以機器可讀方式附加到資料上,發生在定級之後。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.1 分類 / §2.6.3 標準選擇）</div>

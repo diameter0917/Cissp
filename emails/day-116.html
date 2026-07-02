@@ -104,6 +104,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 處理安全缺陷最具成本效益的時機？<br><span style="color:#0A6160;">→ 越早越好(需求/設計,shift left)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . SAST 整合在哪個階段？<br><span style="color:#0A6160;">→ 開發階段(撰寫程式碼時)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization adopting DevOps deploys code to production several times a day. The security team's manual review before each release has become a bottleneck. What is the BEST way to maintain security assurance without blocking delivery?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某導入 DevOps 的組織每天多次部署上線,資安團隊每次發布前的人工審查已成瓶頸。維持安全保證又不阻斷交付的最佳做法?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Hire more security staff to speed up the manual review gate 增聘資安人力加速人工審查關卡</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Reduce the release frequency to once per week so reviews can keep up 降低發布頻率至每週一次以配合審查</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Embed automated security testing (SAST/DAST) as gates within the CI/CD pipeline (DevSecOps) 將自動化安全測試(SAST/DAST)內建為 CI/CD 管線關卡(DevSecOps)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Perform a full penetration test after each production deployment 每次部署上線後執行完整滲透測試</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>DevSecOps</strong> 的核心:安全必須與開發<strong>同速</strong>,把安全控制<strong>自動化內建於 CI/CD 管線</strong>(software-defined security),每次提交都自動把關——既維持保證又不阻斷交付,呼應『安全內建於 SDLC 各階段』。判斷邏輯:節奏衝突要用<strong>流程與自動化</strong>解,不是加人或降速。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：人工審查天生跟不上每日多次部署,加人只是治標。</li><li style="margin-bottom:3px;">B：犧牲業務敏捷去遷就審查,方向顛倒。</li><li style="margin-bottom:3px;">D：上線後才測是『右移』,發現已太晚且頻率跟不上。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A development project has evolving requirements, and management insists that each iteration begin by explicitly identifying and resolving risks before any building starts. Which development model BEST fits this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某開發專案需求持續演進,管理層堅持每一次迭代都必須先明確識別並解決風險才能開發。哪個開發模型最符合?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Waterfall 瀑布模型</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Scrum</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Spiral model 螺旋模型</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> V-Model V 模型</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>螺旋模型(Boehm)是風險驅動(risk-driven)</strong>:每一圈依序『定目標→<strong>識別並解決風險</strong>→開發測試→規劃下一圈』,允許需求隨迭代演進又保留瀑布元素。記憶法:<strong>『每圈先算風險』＝螺旋</strong>。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：瀑布線性,需求前置固定,無法回頭迭代。</li><li style="margin-bottom:3px;">B：Scrum 雖迭代,但衝刺不以『風險識別與解決』為固定起手式。</li><li style="margin-bottom:3px;">D：V 模型是瀑布延伸,強調開發與測試階段配對驗證,非風險驅動迭代。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Before design begins, a security manager wants the team to document how an attacker might intentionally misuse a new payment feature, so that countermeasures become formal requirements. Which technique BEST achieves this?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（設計開始前,資安主管希望團隊記錄攻擊者可能如何蓄意濫用新付款功能,使對策成為正式需求。哪個技術最能達成?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Dynamic application security testing (DAST) 動態應用安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Threat modeling of the system architecture 對系統架構進行威脅建模</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Abuse case (misuse case) development 撰寫濫用案例(誤用案例)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Regression testing 回歸測試</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>濫用/誤用案例(abuse case)</strong>在<strong>需求階段</strong>以攻擊者視角描述『功能如何被惡意使用』,並把對策寫成<strong>正式安全需求</strong>——比設計更早的左移。判斷邏輯:題幹兩個關鍵『設計開始前』『成為需求』都指向需求階段技術。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：DAST 需有可執行的應用,階段太晚。</li><li style="margin-bottom:3px;">B：威脅建模方向對但階段錯——它分析的是『已成形的設計/架構』,題幹明說設計尚未開始(兩個都對時,比時機)。</li><li style="margin-bottom:3px;">D：回歸測試驗證變更未破壞既有功能,與攻擊者視角需求無關。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.1.1 SDLC 安全活動（考點））</div>

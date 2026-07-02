@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 盤點第三方函式庫漏洞版本用什麼？<br><span style="color:#0A6160;">→ SCA(配 SBOM)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 結合靜動態、執行中插樁的方法？<br><span style="color:#0A6160;">→ IAST。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security team wants to uncover input-handling flaws by automatically feeding large volumes of malformed and random data into a running application and watching for crashes. Which technique BEST matches this goal?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（資安團隊想以自動方式餵入大量畸形與隨機資料給執行中的應用並觀察當機,以找出輸入處理缺陷。哪個技術最符合?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> SAST 靜態應用安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> IAST 互動式應用安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Regression testing 回歸測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Fuzzing 模糊測試</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>Fuzzing(模糊測試)</strong>＝自動產生大量畸形/隨機/非預期輸入餵給執行中的程式,觀察當機或異常——屬 <strong>DAST 範疇</strong>的動態技術,擅長挖輸入處理與記憶體類缺陷。判斷邏輯:題幹關鍵『自動產生畸形輸入+觀察當機』是 fuzzing 的定義特徵。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：SAST 讀原始碼,不執行程式,無法觀察執行期當機。</li><li style="margin-bottom:3px;">B：IAST 靠插樁觀察執行期行為,核心不是產生畸形輸入。</li><li style="margin-bottom:3px;">C：回歸測試驗證變更未破壞既有功能,用的是正常測試案例。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization already runs SAST and DAST in its pipeline, but management worries about business-logic flaws (e.g., abusing a discount workflow) that automated tools routinely miss. Which activity BEST complements the existing tools?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織管線已有 SAST 與 DAST,但管理層擔心自動化工具經常漏掉的業務邏輯缺陷(如濫用折扣流程)。哪個活動最能補足?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Increase the frequency of DAST scans 提高 DAST 掃描頻率</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Manual code review by experienced staff 由資深人員進行人工程式碼審查</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Add software composition analysis (SCA) 加入軟體組成分析(SCA)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Re-run SAST with stricter rule sets 以更嚴格規則集重跑 SAST</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。業務邏輯缺陷(流程被濫用但每一步技術上都『合法』)是自動化工具的天生盲點;<strong>人工程式碼審查(code review＝由人執行的靜態分析)</strong>能理解商業脈絡與意圖,正是補位角色。記憶法:<strong>工具找模式,人找邏輯</strong>。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：同一工具跑再多次,盲點依舊。</li><li style="margin-bottom:3px;">C：SCA 查第三方相依的已知漏洞,與自寫業務邏輯無關。</li><li style="margin-bottom:3px;">D：規則更嚴只會更多誤報,仍不懂商業邏輯。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager must schedule both SAST and DAST for a new application. Which sequencing is the BEST practice?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（資安主管要為新應用排程 SAST 與 DAST。哪個先後順序是最佳實務?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Run DAST first to find runtime flaws, then SAST 先跑 DAST 找執行期缺陷,再跑 SAST</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Run SAST first during development to fix code-level flaws, then run DAST on the running application 開發期先跑 SAST 修正碼層缺陷,再對執行中應用跑 DAST</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Run only DAST because it simulates real attacks 只跑 DAST,因為最貼近真實攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Run both only after production deployment to test the real environment 兩者都等部署上線後在正式環境執行</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。最佳實務:<strong>先 SAST(開發期,早,便宜)清除基本碼層缺陷,通過後再以 DAST 對執行中應用驗證執行期行為</strong>——DAST is usually performed once a program has cleared SAST。符合 shift left 與修復成本邏輯。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：順序顛倒:碼層基本缺陷未清,DAST 結果會被淹沒且修復更貴。</li><li style="margin-bottom:3px;">C：兩者互補:只用 DAST 看不到內部,無法定位根因。</li><li style="margin-bottom:3px;">D：等上線才測,發現成本最高且已暴險。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.2.9 測試方法選用（考點））</div>

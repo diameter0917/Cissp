@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 偵測合法憑證的異常存取用什麼？<br><span style="color:#0A6160;">→ UEBA(行為分析)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 抗勒索最重要的備份特性？<br><span style="color:#0A6160;">→ 離線/不可變且經還原測試。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">SOC analysts are overwhelmed by SIEM alerts that keep turning out to be benign, and management fears real attacks may soon be missed. What is the BEST course of action?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（SOC 分析師被大量最終證實無害的 SIEM 告警淹沒,管理層擔心真正的攻擊反而會被漏掉。最佳做法是?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Disable the noisiest detection rules 直接停用最吵的偵測規則</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Require analysts to review every alert regardless of volume 要求分析師照單全收逐一檢視</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Tune the SIEM to reduce false positives while ensuring false negatives are not introduced 調校 SIEM 降低誤報,同時確保不引入漏報</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Replace the SIEM with a different vendor's product 更換其他廠牌的 SIEM</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。這是典型的 <strong>SIEM tuning</strong> 情境:誤報(false positive)造成告警疲勞、降低效率;調校目標是<strong>『降誤報、不增漏報(false negative)』</strong>。SIEM 上線後必須持續調校與監控才能有效。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：直接停規則會製造漏報,真攻擊直接看不見——比誤報更危險。</li><li style="margin-bottom:3px;">B：不解決根因,告警疲勞只會更嚴重。</li><li style="margin-bottom:3px;">D：不調校就換產品,問題照舊且成本高。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A vendor releases a critical security patch for the organization's production ERP server. What should the operations team do BEFORE deploying it to production?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（廠商針對生產環境 ERP 伺服器發布重大安全修補。維運團隊在部署到生產環境『之前』應先做什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deploy it to all systems immediately because it is critical 因為重大所以立即全面部署</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Wait for the next quarterly maintenance window 等下一季的維護時段</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Test the patch on an isolated non-production system, then obtain approval through change management 先在隔離的非生產系統測試,再走變更管理取得核准</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Skip the patch and rely on the antivirus solution 跳過修補,靠防毒方案</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。修補管理流程:<strong>評估→測試(隔離的非生產環境,確認無副作用)→核准(常結合變更管理)→部署→驗證</strong>。再急也要先測試+核准——修補本身也可能造成生產中斷。鑑別點:題目考『流程優先』而非『速度優先』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：未測試就全面部署,可能引發比弱點本身更大的中斷。</li><li style="margin-bottom:3px;">B：重大修補不應拖到季度時段,應走緊急變更流程加速。</li><li style="margin-bottom:3px;">D：防毒不是修補的替代;補償控制只是無法修補時的過渡。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">The security team wants confirmed phishing alerts to automatically trigger a playbook that disables the affected account and isolates the endpoint, without waiting for an analyst. Which technology BEST provides this capability?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全團隊希望確認為釣魚的告警能自動觸發劇本:停用受影響帳號並隔離端點,不必等分析師。哪種技術最能提供此能力?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> SIEM 安全資訊事件管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> IDS 入侵偵測系統</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Vulnerability scanner 弱點掃描器</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> SOAR 安全協作、自動化與回應</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>SOAR</strong> 用 playbook/runbook 對事件『<strong>自動回應</strong>』(停帳號、隔離端點),減輕分析師負擔並降低人為錯誤。鑑別點:<strong>SIEM 偵測+關聯,SOAR 自動化回應</strong>——題幹要的是『自動觸發動作』,所以選 SOAR。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：SIEM 長於收集/關聯/告警,自動化回應動作非其核心——最強干擾項。</li><li style="margin-bottom:3px;">B：IDS 只偵測與告警,不會執行停用帳號等回應。</li><li style="margin-bottom:3px;">C：弱點掃描器找已知弱點,與事件自動回應無關。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.6 + §7.10 D7 綜合）</div>
@@ -157,7 +202,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 115 / 120 · P3-D7-5</span>
   </div>
 

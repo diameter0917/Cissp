@@ -85,6 +85,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 生物辨識系統哪個指標越低代表越準？<br><span style="color:#0A6160;">→ CER（交叉錯誤率，FAR=FRR 之點）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 防密碼噴灑最有效的單一控制？<br><span style="color:#0A6160;">→ MFA（抗釣魚形式），輔以密碼黑名單與異常偵測。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A financial services company suffers repeated account takeovers: attackers use real-time adversary-in-the-middle (AiTM) phishing proxies to capture one-time passwords and session cookies, and bombard users with MFA push notifications until someone approves. Which authentication approach would BEST mitigate these attacks?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一家金融服務公司屢遭帳號接管:攻擊者以即時中間人(AiTM)釣魚代理攔截一次性密碼與會談 cookie,並對使用者發動 MFA 推播轟炸直到有人誤按同意。下列何種鑑別方式最能緩解這些攻擊?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Require users to change their passwords every 30 days 要求使用者每 30 天更換密碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Replace SMS one-time passwords with TOTP authenticator apps 以 TOTP 驗證器 App 取代簡訊 OTP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Enable number matching on all MFA push notifications 為所有 MFA 推播啟用號碼比對(number matching)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Deploy FIDO2/passkey authentication bound to the origin domain 部署綁定來源網域的 FIDO2/passkey 無密碼鑑別</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。FIDO2/passkey 的私鑰不離裝置,且密碼學簽章<strong>綁定來源網域(origin binding)</strong>——釣魚代理站的網域不符,認證根本無法完成;同時消滅了 OTP 與推播這兩種「可被騙取/轟炸」的因子,是唯一<strong>抗釣魚</strong>的選項。記憶法:AiTM 攔得到「你輸入的東西」,攔不到「綁網域的簽章」。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：更換頻率無助於「即時轉發」憑證的 AiTM 攻擊;NIST 800-63B 也不建議強制定期改密碼。</li><li style="margin-bottom:3px;">B：TOTP 仍是使用者手動輸入的 OTP,AiTM 代理可即時轉發使用,不具抗釣魚性。</li><li style="margin-bottom:3px;">C：號碼比對只緩解推播轟炸,對竊取會談 cookie 的 AiTM 釣魚無效,僅解決一半問題。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">After an audit flags that impostors were falsely accepted, a data center manager increases the sensitivity threshold of the fingerprint access system. Which outcome is the MOST likely side effect of this change?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（稽核發現有冒充者被誤放行後,資料中心經理調高了指紋門禁系統的靈敏度門檻。此調整最可能出現的副作用是什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> The crossover error rate (CER) of the device will automatically decrease 裝置的交叉錯誤率(CER)會自動下降</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Both the FAR and the FRR will decrease at the same time 誤接受率(FAR)與誤拒絕率(FRR)會同時下降</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> All users must re-enroll their fingerprint templates 所有使用者必須重新註冊指紋樣板</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> The false rejection rate (FRR) will rise, locking out more legitimate staff 誤拒絕率(FRR)上升,更多合法員工被擋在門外</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。FAR 與 FRR 是蹺蹺板:調高靈敏度壓低 FAR(安全風險)的同時<strong>必然推高 FRR(可用性問題)</strong>——合法員工被誤拒、支援成本增加。管理者要在安全與可用之間取捨;比較系統好壞則看 CER(越低越準)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：CER 是系統固有的準確度指標(FAR=FRR 之點),不會因調整判定門檻而改變。</li><li style="margin-bottom:3px;">B：兩者呈反向消長,調整單一門檻不可能讓 FAR 與 FRR 同時下降。</li><li style="margin-bottom:3px;">C：調整的是比對判定門檻,不需要重新採集註冊樣板。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During an audit, a reviewer finds that five database administrators all perform maintenance through a single shared 'dba_admin' account. Management asks why this practice MUST be corrected. What is the PRIMARY security concern?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（稽核發現五名資料庫管理員全都透過同一個共用的「dba_admin」帳號執行維護。管理層詢問為何必須改正此做法,主要的安全疑慮是什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> A shared password is more likely to be weak and easily guessed 共用密碼較可能偏弱且容易被猜中</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> The shared account probably exceeds the least privilege each task requires 該共用帳號的權限可能超出各項工作所需的最小權限</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Actions cannot be attributed to an individual, destroying accountability 行為無法歸責到個人,可歸責性(accountability)蕩然無存</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Concurrent logins to one account will degrade database performance 多人同時登入同一帳號會拖累資料庫效能</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。AAA 的可歸責(accountability)靠<strong>唯一身分＋完整日誌</strong>達成;共用帳號讓日誌只能記到「帳號」、記不到「人」,出事無法追溯與究責,也失去不可否認性——這是禁用共享帳號的根本原因,層級高於密碼強度等技術細節。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：密碼管理是衍生問題;即使密碼再強,無法歸責到人的核心缺陷依然存在。</li><li style="margin-bottom:3px;">B：最小權限是另一軸的疑慮,與「多人共用」本身無直接因果。</li><li style="margin-bottom:3px;">D：效能屬營運考量而非安全疑慮,亦非共用帳號的核心風險。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.2.2 AAA 與因子（深入））</div>

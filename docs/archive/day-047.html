@@ -78,6 +78,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 兩家公司共同決定個資處理目的，是什麼關係？<br><span style="color:#0A6160;">→ Joint Controllers（共同控管者），需協議分責。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Controller 能否藉由外包把責任完全轉給 Processor？<br><span style="color:#0A6160;">→ 不能；Controller 仍負選任監督等主要義務。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A fast-growing health-tech company processes special categories of personal data (health records) of EU residents on a large scale. Which statement BEST describes the company's obligation regarding a Data Protection Officer (DPO)?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一家快速成長的健康科技公司大規模處理歐盟居民的特種個資(健康紀錄)。關於資料保護長(DPO),下列敘述何者最正確?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> It must appoint a DPO who acts independently, reports to top management, and serves as the contact point for supervisory authorities and data subjects 必須設置 DPO,且其須獨立運作,直接向最高管理層報告,並作為主管機關與當事人的聯絡窗口</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> A DPO is only required for public authorities, so a private company is exempt 只有公務機關才須設置 DPO,私人公司可豁免</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> The CISO should automatically take on the DPO role to save cost 應由 CISO 直接兼任 DPO 以節省成本</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> A DPO is unnecessary as long as a DPA is signed with every processor 只要與每個處理者都簽了 DPA 就不需要 DPO</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。GDPR Art.37-39 規定:<strong>大規模處理特種個資</strong>(健康資料)是『強制』設置 DPO 的情形之一;且 DPO 必須<strong>獨立</strong>(不受指示,不因履行職務被解任),直接向最高管理層報告,並擔任主管機關與當事人的聯絡窗口。三個要件(設置義務,獨立性,聯絡窗口)齊備的只有此選項。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：公務機關只是強制情形『之一』;大規模特種個資與大規模系統性監控同樣觸發設置義務。</li><li style="margin-bottom:3px;">C：DPO 須獨立且避免利益衝突;CISO 自己決定安全處理方式再自己監督自己,有角色衝突。</li><li style="margin-bottom:3px;">D：DPA 處理的是 Controller-Processor 間的合約義務,與是否須設置 DPO 是兩回事。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A hospital nurse uses legitimate system credentials to look up a celebrity patient's medical record out of curiosity, with no work-related need. Which statement BEST describes the roles and liability involved?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一名護理師出於好奇,以合法系統帳號查閱名人病患的病歷,並無任何工作上的需要。下列何者最能描述其中的角色與法律責任?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> The nurse became an independent data controller by deciding to access the record 護理師因自行決定存取而成為獨立的 Data Controller</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> The nurse is an authorized user who exceeded authorization and may face personal legal liability, while the hospital as controller must still review its safeguards 護理師是逾越授權的授權使用者(user),可能自負個人法律責任;醫院作為 Controller 仍須檢討自身防護措施</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Only the hospital is liable because employees always act on the organization's behalf 只有醫院須負責,因為員工行為一律歸屬組織</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> The nurse acted as a data processor and is protected by the hospital's DPA 護理師屬於 Data Processor,受醫院簽訂的 DPA 保護</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。員工是代表組織(Controller)處理資料的<strong>授權使用者(user)</strong>,不是獨立的 Controller/Processor;但當員工<strong>逾越授權</strong>濫用個資(偷查病歷),可能<strong>自負個人法律責任</strong>,同時醫院也須檢討最小權限與存取監控是否失靈。責任是雙軌的:個人究責+組織改善。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Controller 是『決定處理目的與方式』的法律主體(通常是組織);員工私自查閱不會使其變成 Controller。</li><li style="margin-bottom:3px;">C：員工『在授權範圍內』的行為歸組織;逾越授權的濫用可個人究責,並非組織單方吸收全部責任。</li><li style="margin-bottom:3px;">D：Processor 是受託處理的外部法律主體,DPA 是 Controller 與 Processor 間的合約,都與內部員工無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A company is about to outsource payroll processing to a SaaS vendor that will process employee personal data strictly on the company's instructions. Procurement proposes signing only a generic service contract. What should the privacy officer require BEFORE processing begins?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（公司即將把薪資作業外包給 SaaS 廠商,廠商將完全依公司指示處理員工個資。採購部門提議只簽一般服務合約。隱私長應在處理開始『之前』要求什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> A joint controller arrangement allocating shared decision-making 簽訂共同控管者協議以分配共同決策責任</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> A data processing agreement (DPA) defining security measures, breach notification, and subprocessor rules 簽訂資料處理協議(DPA),明定安全措施,外洩通報與子處理者規則</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Written consent from every employee approving the outsourcing 取得每位員工同意外包的書面同意</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Appointment of the vendor as the company's DPO 指定該廠商擔任公司的 DPO</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。一方決定目的與方式,一方依指示執行=<strong>Controller-Processor</strong> 關係;GDPR Art.28 要求雙方必須簽訂 <strong>DPA</strong>,寫明處理範圍,安全措施,通報義務,子處理者與稽核權。一般服務合約不含這些法定條款——外包出事時,DPA 有沒有簽,責任有沒有寫清楚就是關鍵證據。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：廠商只依指示執行,並未共同決定處理目的與方式,不構成 Joint Controllers。</li><li style="margin-bottom:3px;">C：薪資處理通常以履行契約/法定義務為合法基礎;逐一取得員工同意非必要,也不能取代 DPA。</li><li style="margin-bottom:3px;">D：DPO 是獨立監督職位;由受監督的外包廠商兼任,存在根本的利益衝突。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.4.1 資料角色（深入））</div>
@@ -134,7 +179,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 47 / 120 · P2-D2-2</span>
   </div>
 

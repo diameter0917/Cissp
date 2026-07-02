@@ -85,6 +85,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 由多次統計查詢反推特定個人機密，是什麼攻擊？<br><span style="color:#0A6160;">→ 推論攻擊（inference）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 讓不同密級使用者看到不同版本記錄以防推論的技術？<br><span style="color:#0A6160;">→ Polyinstantiation（多實例化）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Servers in a branch office keep rebooting on summer afternoons. The facilities team confirms that utility voltage stays noticeably below normal for hours at a time but never fully drops out. Which power condition is occurring, and what is the BEST mitigation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（分公司伺服器在夏季午後反覆重啟。設施團隊確認市電電壓連續數小時明顯偏低,但從未完全中斷。這是哪種電力狀況?最佳因應是什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Blackout — deploy a backup generator 完全停電,部署備援發電機</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Spike — install surge protectors 電壓尖突,安裝突波保護器</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Fault — shorten the UPS transfer time 瞬間斷電,縮短 UPS 切換時間</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Brownout — use a UPS with line conditioning to stabilize input voltage 電壓持續過低,以 UPS/線路調節穩定輸入電壓</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。『電壓長時間持續偏低、未完全中斷』＝brownout（常見於用電高峰,如夏季午後空調負載）;對策是 UPS 搭配穩壓/線路調節,讓設備獲得穩定電壓。判斷邏輯:先分類（持續偏低 vs 瞬斷 vs 突升）,再對應控制。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：blackout 是完全停電,與『未中斷』的情境不符。</li><li style="margin-bottom:3px;">B：spike 是瞬間電壓突升,方向與情境相反。</li><li style="margin-bottom:3px;">C：fault 是瞬間斷電,情境是長時間電壓偏低。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A data analyst has read access to individual sales records, each classified as low sensitivity. Using SQL functions, the analyst combines millions of these records into a nationwide revenue and customer dataset that the company classifies as highly sensitive. Which database threat does this BEST illustrate?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（資料分析師對單筆低敏感度的銷售記錄有讀取權。他利用 SQL 函數彙整數百萬筆記錄,產出公司列為高敏感的全國營收與客戶資料集。這最能說明哪種資料庫威脅?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Inference attack 推論攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> SQL injection SQL 注入</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Aggregation attack 聚合攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Privilege escalation 權限提升</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。聚合（aggregation）＝利用資料庫的<strong>數學/函數</strong>能力『彙整』多筆低敏資料,使整體敏感度高於個別部分;對策是依『整體』敏感度控管存取。記憶:聚合靠彙整（math）、推論靠人為推理（deduction）——本題是直接用 SQL 函數合併,屬聚合。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：推論是從間接線索『推導』出未授權機密,靠人的演繹能力;本題是直接彙整資料本身。</li><li style="margin-bottom:3px;">B：SQL 注入是利用輸入驗證漏洞;分析師使用的是合法查詢。</li><li style="margin-bottom:3px;">D：分析師並未取得超出授權的權限,風險發生在授權範圍之內。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During routine maintenance, a fire breaks out inside an energized electrical distribution panel next to the server racks. Staff must choose a hand-held extinguisher. Which fire class rating is MOST appropriate?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（例行維護時,伺服器機架旁『通電中』的配電盤內部起火,人員須選用手提滅火器。哪個火災等級的滅火器最合適?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Class A（ordinary combustibles, water-based 普通可燃物,水基）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Class C（electrical fires 電氣火災）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Class B（flammable liquids 可燃液體）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Class K（kitchen grease 廚房油脂）</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。通電中的電氣設備火災屬 <strong>Class C</strong>,必須使用<strong>不導電</strong>滅火劑（CO₂、乾粉、潔淨氣體）;用水基滅火劑會導電,危及救火人員——<strong>人身安全永遠最優先</strong>。記憶:A 普通、B 液體、C 電氣、D 金屬、K 廚房。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：水基滅火劑導電,對通電設備火災極度危險。</li><li style="margin-bottom:3px;">C：Class B 針對汽油/溶劑等可燃液體火災。</li><li style="margin-bottom:3px;">D：Class K 針對廚房油脂火災,與電氣火災無關。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.9 實體控制 / §3.5.3 資料庫）</div>

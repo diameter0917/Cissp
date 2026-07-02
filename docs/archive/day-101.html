@@ -102,6 +102,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 智慧卡屬哪個因子類別？<br><span style="color:#0A6160;">→ Type 2(所有)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 確保行為可追溯到個人的 AAA 元件？<br><span style="color:#0A6160;">→ Accountability(可歸責)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A banking application detects a login with the correct password, but from an unrecognized device in a country the user has never logged in from. Which response BEST balances security and user experience?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某銀行應用偵測到一次登入:密碼正確,但來自未見過的裝置與該用戶從未登入過的國家。哪個回應「最能」兼顧安全與使用者體驗?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Permanently lock the account until the user visits a branch 永久鎖定帳戶直到用戶臨櫃處理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Allow the login and flag the session for later review 放行登入並標記供事後審查</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Force an immediate password reset before allowing access 先強制重設密碼才放行</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Require step-up authentication with an additional factor before granting access 要求以額外因子完成 step-up(升級)驗證後才授權</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。這是 risk-based(風險式)驗證的標準劇本:依環境訊號(裝置、位置、行為)動態調整驗證強度,風險升高就要求 <strong>step-up 額外因子</strong>——既擋住只偷到密碼的攻擊者,又不懲罰出差中的合法用戶。記憶:訊號異常→先「加驗」,不是「封殺」也不是「放行」。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：過度反應;尚未證實是攻擊,永久鎖定重創可用性與用戶體驗。</li><li style="margin-bottom:3px;">B：風險當下未緩解;若真是攻擊者,事後審查已來不及。</li><li style="margin-bottom:3px;">C：密碼未證實外洩;且攻擊者若正持有密碼,重設流程擋不住他,額外因子才能。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An agency policy requires HIGH confidence in remote user authentication: MFA with replay resistance is mandatory, but hardware authenticators are not required. Per NIST SP 800-63B, which Authenticator Assurance Level does this describe?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某機關政策要求遠端用戶驗證達「高」信心:強制 MFA 且須抗重放,但不強制硬體驗證器。依 NIST SP 800-63B,這描述哪個驗證器保證等級?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> AAL1 允許單因子的基本保證</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> AAL2 要求 MFA 且抗重放</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> AAL3 要求硬體 MFA 與抗釣魚</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> IAL2 身分證明(proofing)等級</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。NIST 800-63B 的 AAL 三級:<strong>AAL1</strong>=些許保證(允許單因子);<strong>AAL2</strong>=高信心(要求 MFA＋抗重放);<strong>AAL3</strong>=極高信心(強制硬體 MFA＋verifier impersonation/抗釣魚)。題目「高信心＋MFA＋不強制硬體」正好對到 AAL2。記憶:1 些許/2 高(MFA)/3 極高(硬體)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：AAL1 只提供些許保證,允許單因子,達不到「高信心」。</li><li style="margin-bottom:3px;">C：AAL3 須「硬體」MFA,題目明說不強制硬體。</li><li style="margin-bottom:3px;">D：IAL 衡量註冊時的「身分證明」嚴謹度,與驗證器強度(AAL)是不同軸。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A CISO proposes replacing passwords with FIDO2/WebAuthn password-less authentication. What is the PRIMARY security benefit of this change?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（CISO 提議以 FIDO2/WebAuthn 無密碼驗證取代密碼。此變更的「主要」安全效益為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> It removes the dependency on user devices 移除對用戶裝置的依賴</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Phishing resistance, because no shared secret is typed or transmitted for attackers to capture 抗釣魚,沒有可被騙走或攔截的共享祕密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> It eliminates the need for identity proofing at registration 註冊時不再需要身分證明</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> It lowers implementation cost compared with passwords 導入成本比密碼更低</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。FIDO2/WebAuthn 以非對稱金鑰驗證,<strong>私鑰不離開裝置</strong>,用戶沒有可輸入到假網站、也沒有可被中途攔截的共享祕密→<strong>抗釣魚</strong>是無密碼驗證最核心的安全效益(也大幅消除密碼重用/外洩問題)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：相反,無密碼驗證「增加」對裝置的依賴(這是它的缺點之一)。</li><li style="margin-bottom:3px;">C：身分證明(identity proofing)是註冊階段的查核,任何驗證技術都不能取代。</li><li style="margin-bottom:3px;">D：需要額外硬體與導入工程,成本通常「更高」(缺點而非效益)。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.2.2 因子分類（考點））</div>
@@ -163,7 +208,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 101 / 120 · P3-D5-1</span>
   </div>
 

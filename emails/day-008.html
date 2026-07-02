@@ -78,6 +78,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 三狀態中哪個最難保護、為什麼？<br><span style="color:#0A6160;">→ In Use；資料須在記憶體解密才能運算，故最難。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 只對資料庫做 at-rest 加密，足夠嗎？<br><span style="color:#0A6160;">→ 不足；備份、傳輸、使用中仍可能外洩，需三狀態各自保護。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which of the following BEST describes data in use?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（下列何者最能描述使用中資料 data in use?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Data loaded in memory and being processed by an application 載入記憶體、正被應用程式處理的資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Data stored on backup tapes in an offsite vault 存放於異地保管庫備份磁帶上的資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Data moving across a VPN tunnel between two sites 透過 VPN 隧道在兩站點間傳輸的資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Data archived to long-term cold storage 封存至長期冷儲存的資料</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。Data in use＝在記憶體中被應用程式處理的資料。因為運算前必須解密,傳統加密保護不了這一態,所以它是三態中最難保護的。判斷口訣:存著＝at rest、走網路＝in transit、在記憶體算＝in use。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：備份磁帶是儲存媒體上的資料,屬 data at rest。</li><li style="margin-bottom:3px;">C：在網路上移動的資料屬 data in transit（in motion）。</li><li style="margin-bottom:3px;">D：封存仍是儲存狀態,屬 at rest（生命週期的 archive 階段）。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A project team is about to launch a new CRM system that will collect customer data. To manage the data lifecycle properly, when should the data FIRST be classified?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（專案團隊即將上線新 CRM 系統並開始蒐集客戶資料。為妥善管理資料生命週期,資料最早應在何時被分類?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> When the data is shared with external partners 與外部夥伴分享資料時</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> During the annual security review 年度安全審查時</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> As soon as the data is created or collected 資料建立或蒐集的當下</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Just before the data is archived 資料封存之前</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。生命週期是『從搖籃到墳墓（cradle to grave）』的保護,起點就是在建立/蒐集當下即分類——之後的儲存加密、存取控制、保存與銷毀才能依級套用。越晚分類,資料『裸奔』的窗口越大。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：等到分享時才分類,資料在儲存與使用階段已缺乏對應保護。</li><li style="margin-bottom:3px;">B：年度審查只是補救時點,不符『最早』且不合生命週期管理。</li><li style="margin-bottom:3px;">D：封存前才分類,前面所有階段都失去分類驅動的控制。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.4 生命週期 / §2.6.1 資料三態）</div>

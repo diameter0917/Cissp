@@ -94,6 +94,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 主控制無法實施時的等效替代控制叫什麼？<br><span style="color:#0A6160;">→ 補償控制（compensating control）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 嚇阻與預防控制的差別？<br><span style="color:#0A6160;">→ 嚇阻作用於意圖/心理；預防作用於能力（讓人做不到）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">After an intrusion alert on a file server, the administrator removes the malware, restores the damaged files from backup, and applies the missing patch so the server returns to its normal state. Which control function BEST describes these actions?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（檔案伺服器發出入侵警報後,管理員清除惡意程式,從備份還原受損檔案,並補上缺漏的修補程式,使伺服器回到正常狀態。這些行動最符合哪種控制功能?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Corrective 矯正</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Recovery 復原</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Detective 偵測</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Compensating 補償</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。事件發生『後』把受影響的系統<strong>修好,回到正常狀態</strong>——清惡意碼,還原備份,打修補——正是 Corrective(矯正)控制的定義。判斷關鍵:對象是『這台系統』的修復(修好這個),而非整體營運的災後重建(恢復營運)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：Recovery 針對『災後恢復營運能力』(備援站點,DR 計畫),範圍是業務/站點層級;題幹只是修復單一伺服器。</li><li style="margin-bottom:3px;">C：Detective 是發出警報,發現事件那一步;題幹問的是警報之後的處置行動。</li><li style="margin-bottom:3px;">D：Compensating 是主控制無法實施時的等效替代方案,與事件後修復無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A government agency has categorized a new information system, selected and implemented the controls, and just received the independent assessment results. Before the system goes live, a senior official must formally determine that the remaining risk is acceptable. Under the NIST RMF, which step should occur NEXT?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某政府機關已完成新資訊系統的定級,控制的選擇與實作,並剛收到獨立評估結果。系統上線前,須由高階官員正式判定剩餘風險可接受。依 NIST RMF,下一步應執行哪個步驟?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Monitor 監控</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Assess 評估</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Select 選擇控制</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Authorize 授權</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。RMF 循環步驟:Categorize → Select → Implement → Assess → <strong>Authorize</strong> → Monitor(SP 800-37 另有 Prepare 前置步驟)。評估完成後,由高階官員(Authorizing Official)基於剩餘風險是否可接受<strong>正式授權系統上線</strong>——這正體現『風險由管理層當責接受』,不是技術人員說了算。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Monitor 是授權『之後』的持續監控與回報,順序未到。</li><li style="margin-bottom:3px;">B：Assess 題幹已完成(獨立評估結果已出爐)。</li><li style="margin-bottom:3px;">C：Select 在 Categorize 之後早已完成,不會回頭重選。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">To reduce the success rate of phishing attacks, a security manager rolls out mandatory security awareness training for all employees. How should this control be classified by function and by category?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（為降低釣魚攻擊的成功率,安全經理對全體員工推行強制的安全意識訓練。此控制的『功能』與『類別』應如何分類?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deterrent, administrative 嚇阻,管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Preventive, technical 預防,技術</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Preventive, administrative 預防,管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Detective, administrative 偵測,管理</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。意識訓練透過教育提升員工辨識能力,<strong>事前降低事件發生機率</strong>(讓員工不上鉤)→ 功能是 Preventive;其形式屬人員/流程/訓練 → 類別是 Administrative。記住:一個控制要同時貼『功能 × 類別』兩個標籤,題目常兩個維度一起考。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：嚇阻(deterrent)作用於攻擊者或違規者的『意圖/心理』;訓練是提升員工的防禦能力,不是施加心理壓力。</li><li style="margin-bottom:3px;">B：訓練不是軟硬體機制,類別不是技術(technical)。</li><li style="margin-bottom:3px;">D：訓練不負責『發現已發生的事件』,不是偵測控制。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §1.9 控制分類）</div>
@@ -273,7 +318,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 43 / 120 · P2-D1-3</span>
   </div>
 

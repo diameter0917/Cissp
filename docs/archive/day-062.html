@@ -51,6 +51,8 @@
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Recertification</strong>（再認證）— <span style="color:#5B6675;">定期複核權限仍必要。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Privilege Creep</strong>（權限蔓延）— <span style="color:#5B6675;">轉調未回收致權限累積。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SCIM</strong>（跨網域身分管理系統）— <span style="color:#5B6675;">自動化身分佈建標準。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Machine/Service Identity</strong>（機器/服務身分）— <span style="color:#5B6675;">服務帳號/憑證/API key 也要全生命週期治理:指派擁有者、最小權限、vault 保管與定期輪換。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Risk-based/Adaptive Authentication</strong>（風險式調適鑑別）— <span style="color:#5B6675;">依位置/裝置/行為即時評估登入風險,異常時 step-up 要求更強因子。</span></td></tr>
       <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Orphan/Zombie Account</strong>（孤兒/殭屍帳號）— <span style="color:#5B6675;">離職未撤銷的殘留帳號。</span></td></tr>
     </table>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 易混淆釐清</div>
@@ -79,6 +81,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 轉調未回收舊權限導致的問題叫什麼？<br><span style="color:#0A6160;">→ 權限蔓延(privilege creep)，靠 recertification 矯正。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 防止離職員工帳號被濫用的關鍵控制？<br><span style="color:#0A6160;">→ 即時自動化 de-provisioning(與 HR 連動)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An online bank lets new customers open accounts remotely. Fraud investigators find that criminals pass the current sign-up flow by answering security questions using details researched from social media. Which improvement would BEST strengthen identity proofing at registration?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一家網路銀行允許新客戶遠端開戶。反詐調查發現,犯罪者靠著從社群媒體查到的資料回答安全問題,順利通過現行註冊流程。下列何者最能強化註冊階段的身分證明(identity proofing)?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Require MFA on every subsequent login to the new account 要求新帳號日後每次登入都使用 MFA</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Validate a government-issued ID with liveness detection and match it against authoritative records 驗證政府核發證件並搭配活體偵測,再比對權威資料來源</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Exchange digitally signed federation assertions with partner banks 與合作銀行交換數位簽章的聯合斷言</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Add more knowledge-based questions drawn from credit bureau history 增加更多取自信用機構紀錄的知識型問題(KBA)</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。失守的是<strong>註冊時的身分證明(IAL 軸)</strong>:認知密碼/KBA 的答案可從社群媒體與公開來源查得。提高 IAL 要靠更強的證據——政府證件驗真＋活體偵測＋權威資料庫比對。判斷邏輯:先分清問題出在「證明(註冊階段)」而非「鑑別(登入階段)」,再選對應軸的控制。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：MFA 強化的是 AAL(登入鑑別強度),擋不住一開始就以假身分完成註冊的人。</li><li style="margin-bottom:3px;">C：聯合斷言屬 FAL 軸,處理跨組織的信任傳遞,與開戶身分證明無關。</li><li style="margin-bottom:3px;">D：KBA 正是被攻破的機制——答案常可公開查得,加更多同類問題只是加深同一弱點。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security review at a SaaS company finds a CI/CD pipeline API key that was created three years ago, has never been rotated, carries full administrative privileges, and has no assigned owner. Which response BEST addresses the underlying risk?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一家 SaaS 公司的安全審查發現,某 CI/CD 管線使用的 API key 建立於三年前、從未輪換、擁有完整管理權限,且沒有指定擁有者。下列何者最能解決其根本風險?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Immediately revoke the key and have the pipeline team request a new one 立即撤銷該 key,請管線團隊重新申請一把新的</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Move the key out of the code repository into an encrypted configuration file 將 key 移出程式碼儲存庫,改放加密設定檔</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Enable alerting on anomalous usage patterns for the key 針對該 key 的異常使用行為啟用告警</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Bring machine identities into the identity lifecycle: assign owners, enforce least privilege, and vault-manage keys with scheduled rotation 將機器身分納入身分生命週期治理:指派擁有者、實施最小權限,並以密碼庫集中保管與定期輪換</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。這是<strong>治理缺口</strong>而非單一 key 的問題:服務帳號、憑證、API key 等非人類身分長期游離於身分生命週期之外(無擁有者、權限過大、永不輪換)。最佳解是把機器身分納入與人類帳號相同的治理——有擁有者、最小權限、vault 集中保管、定期輪換與審查,一次解決「這把 key」與「所有同類 key」。Think like a manager:流程性根因優先於單點修補。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：只處理了這一把 key;沒有擁有者與輪換機制,幾年後同樣的殭屍 key 會再出現。</li><li style="margin-bottom:3px;">B：改變存放位置未解決權限過大、無人負責與永不輪換等根本問題。</li><li style="margin-bottom:3px;">C：偵測性控制只能事後發現濫用,並未降低根本暴險,層級不足。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During a quarterly access review, an analyst discovers that a domain administrator account belonging to an engineer who resigned four months ago is still active. What should the analyst do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（季度存取審查中,分析師發現一名四個月前離職工程師的網域管理員帳號至今仍然有效。分析師首先應該做什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Investigate the account's logs for signs of misuse since the departure 調查該帳號自離職以來的日誌是否有濫用跡象</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Report the control failure and update the de-provisioning procedure 呈報控制失效並修訂撤銷(de-provisioning)程序</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Contact the former employee's manager to confirm the account is unused 聯繫前員工的主管確認該帳號未被使用</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Disable the account immediately to eliminate the exposure 立即停用該帳號以消除暴險</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。一個仍然有效的高權限殭屍帳號是<strong>正在持續的暴險</strong>,FIRST 永遠先止血——立即停用(而非刪除,保留鑑識證據),之後再調查日誌、呈報並修訂流程。判斷邏輯:面對現行風險,遏制(containment)優先於調查與長期矯正。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：調查很重要,但在帳號仍可登入的狀態下調查,等於讓風險窗口持續開著——是第二步。</li><li style="margin-bottom:3px;">B：修訂程序屬長期矯正措施,無法處理眼前的暴險。</li><li style="margin-bottom:3px;">C：口頭確認不能消除風險,且主管無從得知帳號是否已被攻擊者盜用。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.5 生命週期 / §5.2.4 身分證明）</div>
@@ -118,7 +165,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 62 / 120 · P2-D5-2</span>
   </div>
 
