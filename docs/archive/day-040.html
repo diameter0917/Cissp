@@ -70,6 +70,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 引入外購/開源軟體前後的關鍵控制？<br><span style="color:#0A6160;">→ 供應商評估、完整性驗證(簽章/雜湊)、SBOM/SCA、上線安全驗收。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 偽裝成正常程式誘騙安裝的惡意軟體？<br><span style="color:#0A6160;">→ Trojan 木馬（不自我複製）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A database administrator secretly inserts code into a production system that will erase critical tables if his employee ID ever disappears from the payroll file. Which type of malware does this BEST describe?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某資料庫管理員在正式系統中偷偷植入程式碼,一旦他的員工編號從薪資檔中消失,就會刪除關鍵資料表。這最符合哪種惡意程式?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Worm 蠕蟲</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Trojan 木馬</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Rootkit 隱匿程式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Logic bomb 邏輯炸彈</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。Logic bomb 的識別特徵＝『<strong>滿足特定條件才觸發</strong>』的惡意碼,典型情境正是內部人員預埋報復程式（被解僱/名字從薪資檔消失時發作）。判斷邏輯:看到 if/當某條件成立才發作→邏輯炸彈;這也是內部威脅（insider threat）常考的組合。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Worm 的特徵是自我複製並透過網路自動傳播;此程式碼不傳播、只等條件觸發。</li><li style="margin-bottom:3px;">B：Trojan 靠偽裝成正常程式誘騙使用者安裝;此碼由內部人直接植入,沒有偽裝誘騙環節。</li><li style="margin-bottom:3px;">C：Rootkit 的重點是隱藏自身存在並維持高權限,不是條件觸發的破壞行為。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager must evaluate a niche COTS application before purchase. The product has little public security research, and the vendor will not release source code. Which of the following BEST helps assess the security of this product?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理須在採購前評估一套小眾 COTS 應用。該產品的公開安全研究極少,且供應商不提供原始碼。下列何者最有助於評估其安全性?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Research the vendor's security certifications (e.g., ISO/IEC 27034, ISO/IEC 27001) and its vulnerability-handling history 查證供應商安全認證（如 ISO/IEC 27034、ISO/IEC 27001）與其漏洞處理紀錄</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Require the vendor to hand over source code for in-house SAST 要求供應商交出原始碼供內部執行 SAST</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Assume it is secure because widely used COTS products are tested by many security researchers 認定其安全,因為廣泛使用的 COTS 已被大量安全研究者測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Add a contract clause requiring external audits of the development process 在合約中加入開發過程外部稽核條款</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。官方考綱指出:對<strong>小眾（niche）COTS</strong> 產品,應查證供應商認證（如 ISO/IEC 27034 應用安全、ISO/IEC 27001 ISMS、FedRAMP）並研究其已揭露漏洞與修補紀錄,以判斷供應商對安全的重視程度。判斷邏輯:COTS 是黑箱＋採購前評估→評的是『供應商』的安全成熟度,不是產品內部。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：COTS 是不供修改的成品,供應商通常不會提供原始碼,此路不可行。</li><li style="margin-bottom:3px;">C：『廣泛使用才有大量研究者檢視』的前提在小眾產品不成立,正是題幹刻意排除的情境。</li><li style="margin-bottom:3px;">D：合約綁外部稽核適用於『第三方客製開發』;現成 COTS 已開發完成,沒有開發過程可供稽核。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.4 外購軟體）</div>

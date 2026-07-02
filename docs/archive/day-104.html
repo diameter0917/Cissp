@@ -102,6 +102,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 從安全看哪種生物錯誤最嚴重？<br><span style="color:#0A6160;">→ FAR(誤接受,放冒充者進來)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 員工資遣時最重要的存取動作？<br><span style="color:#0A6160;">→ 立即停用/撤銷帳號(deprovisioning)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager is configuring a fingerprint reader for a restricted server room. Management states that admitting an unauthorized person is unacceptable, even at the cost of employee inconvenience. How should the system sensitivity be tuned?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理為管制機房設定指紋辨識。管理層明示:「放進未授權者」絕不可接受,即使犧牲員工便利也在所不惜。系統靈敏度應如何調校?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Operate exactly at the CER for the best balance 設在 CER 交叉點取得最佳平衡</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Decrease sensitivity to minimize false rejections 調低靈敏度,把誤拒降到最低</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Choose the device with the highest throughput 選處理量最高的設備</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Increase sensitivity to minimize FAR, accepting a higher FRR 調高靈敏度把 FAR 壓到最低,接受較高 FRR</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。FAR 與 FRR 是蹺蹺板:調高靈敏度→FAR 降、FRR 升。管理層已把風險胃納說死——「絕不可誤放冒充者」,所以應<strong>犧牲便利(容忍較高 FRR)換取最低 FAR</strong>。調校方向永遠由「風險決策」決定:高安全區壓 FAR,一般便利區才考慮平衡。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：最強干擾項——CER 是「比較設備準確度」的指標;營運調校點應依風險需求偏移,高安全區不該停在平衡點。</li><li style="margin-bottom:3px;">B：把便利放在安全之前,與管理層的風險決策相反(FRR 低=FAR 高)。</li><li style="margin-bottom:3px;">C：處理量是速度/容量指標,與防止誤接受無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An audit at a manufacturing firm finds dozens of service accounts whose passwords have not changed in years, several holding domain administrator privileges, with no record of which application uses which account. What should the security team do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某製造業稽核發現數十個服務帳號多年未改密碼,其中數個持有網域管理員權限,且無任何紀錄可知哪個應用程式使用哪個帳號。安全團隊「首先」應做什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Disable all service accounts until owners come forward 先停用所有服務帳號,等使用者自行認領</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Immediately rotate every service account password 立即輪換所有服務帳號密碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Inventory the accounts, assign owners, and document required privileges 先盤點帳號、指定負責人並記錄所需權限</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Purchase a PAM platform to vault the credentials 採購 PAM 平台把憑證入庫</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。機器/服務身分治理的第一步永遠是<strong>盤點與當責</strong>:知道有哪些帳號、誰負責、各需要多少權限,之後的降權(最小權限)、輪換、入庫 PAM 才有依據。「不知道就無法管理」——在不明用途前貿然動帳號,會弄壞生產系統。Think like a manager:先建立可視性與當責,再做技術處置。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：不知道哪個帳號撐著哪條產線就全面停用,等於自己對工廠發動阻斷攻擊。</li><li style="margin-bottom:3px;">B：方向對但順序錯——不知道哪個應用綁定哪個帳號就輪換,會造成大規模服務中斷。</li><li style="margin-bottom:3px;">D：PAM 是好的「後續」解方,但沒有盤點清單,連要把哪些憑證入庫都不知道。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A hospital plans to authenticate staff with fingerprint templates stored in a central database. From a security standpoint, what is the MOST significant concern about a breach of this database?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某醫院計畫以集中資料庫儲存員工指紋樣板做驗證。從安全角度看,該資料庫外洩「最重大」的隱憂是什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Biometric characteristics cannot be revoked or reissued like a password 生物特徵不像密碼,外洩後無法撤銷或換發</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Templates consume excessive storage space 樣板占用過多儲存空間</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Encrypting templates slows down each authentication 樣板加密會拖慢每次驗證</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Staff may object to enrollment on privacy grounds 員工可能以隱私為由抗拒註冊</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。密碼外洩可重設、Token 遺失可換發,但<strong>指紋一輩子只有一組</strong>——樣板外洩後受害者「永久」失去該因子的可信度,無法撤銷或補發。這是生物特徵(Type 3)獨有的風險,所以樣板庫必須以最高等級保護(加密、存取控制、甚至只存不可逆的特徵值)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：樣板通常很小,儲存成本是營運瑣事,非安全隱憂。</li><li style="margin-bottom:3px;">C：加密開銷極低,且保護樣板本來就是必要控制,不構成反對理由。</li><li style="margin-bottom:3px;">D：接受度/隱私顧慮是真實的「導入」議題,但題目問的是「外洩」的最重大後果——不可撤銷性才是安全核心。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.2.4 生物特徵 / §5.5 生命週期（考點））</div>
@@ -167,7 +212,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 104 / 120 · P3-D5-4</span>
   </div>
 

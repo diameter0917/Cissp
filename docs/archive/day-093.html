@@ -104,6 +104,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 同時提供完整性與不可否認的是？<br><span style="color:#0A6160;">→ 數位簽章(私鑰簽、公鑰驗)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 即時查單張憑證撤銷狀態用什麼？<br><span style="color:#0A6160;">→ OCSP。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A penetration test finds that a web application stores passwords as unsalted SHA-256 hashes, exposing them to rainbow table attacks. What is the BEST remediation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（滲透測試發現某 Web 應用以『未加鹽的 SHA-256』儲存密碼,暴露於彩虹表攻擊。最佳的修補方式為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Add a unique per-user salt and use a key-stretching algorithm such as bcrypt 每使用者獨立鹽值+bcrypt 等金鑰延伸演算法</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Encrypt the passwords with AES-256 instead 改以 AES-256 加密儲存</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Switch to unsalted SHA-512 改用未加鹽的 SHA-512</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Hash each password twice with SHA-256 以 SHA-256 對每組密碼雜湊兩次</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>鹽值(salting)</strong>讓每筆雜湊獨一無二,直接廢掉預計算的彩虹表;<strong>金鑰延伸(key stretching,如 bcrypt/PBKDF2/scrypt)</strong>再把每次雜湊刻意變慢,大幅拉高暴力破解成本——兩者合璧才是密碼儲存的業界標準。記憶:鹽值抗『查表』,延伸抗『硬算』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：加密是可逆的,金鑰一旦外洩所有密碼可被還原;密碼應存『加鹽雜湊』而非加密——聽起來安全但方向錯,是本題最強干擾項。</li><li style="margin-bottom:3px;">C：換更長的雜湊仍未加鹽,攻擊者可對 SHA-512 重建預計算表。</li><li style="margin-bottom:3px;">D：雜湊兩次仍是固定函數,同樣可預計算,也沒有解決雜湊過快的問題。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A large enterprise is deploying an internal PKI. To offload the task of verifying the identity of employees who request certificates, which PKI component should be implemented?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（大型企業部署內部 PKI。為分擔『驗證申請憑證員工身分』的工作,應建置哪個 PKI 元件?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Issuing CA 簽發憑證機構</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> CRL distribution point CRL 發布點</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Registration Authority (RA) 註冊機構</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> OCSP responder OCSP 回應伺服器</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>RA(Registration Authority)</strong>專責<strong>驗證憑證申請者的身分</strong>,驗畢再交由 CA 簽發——正是為了替 CA 分擔身分查驗工作而存在的元件。記憶:<strong>RA 驗身分、CA 發與撤</strong>。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：CA 負責簽發/撤銷憑證;身分查驗可以(且大型環境通常)委由 RA 執行——題幹問的正是『分擔查驗』,選 CA 是層級錯的干擾項。</li><li style="margin-bottom:3px;">B：CRL 發布點提供撤銷清單下載,與申請時的身分驗證無關。</li><li style="margin-bottom:3px;">D：OCSP 回應伺服器提供即時撤銷狀態查詢,也與身分驗證無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization escrows its encryption keys and requires that NO single administrator can recover a key alone; any 3 of 5 designated recovery agents must participate together. What is this control called?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織託管(escrow)其加密金鑰,並要求任何單一管理員都不能獨自復原金鑰,必須由 5 位指定復原代理人中的任 3 位共同參與。這種控制稱為?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Key stretching 金鑰延伸</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Zero-knowledge proof 零知識證明</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Split custody 分持保管</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> m of n control m of n 控制</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>m of n control</strong>:指定 n 位復原代理人,只需其中任 <strong>m 位</strong>(此例 3 of 5)即可復原金鑰——同時防單人濫權(至少 3 人)並保可用性(不必全員到齊)。記憶:『n 取 m 的門檻制』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：金鑰延伸是刻意放慢密碼雜湊,與金鑰復原無關。</li><li style="margin-bottom:3px;">B：零知識證明是『不透露秘密本身』的驗證方法,非復原控制。</li><li style="margin-bottom:3px;">C：split custody 是固定的『各持一半』分持(例如兩人各持半組密碼),沒有『任 m 位即可』的門檻彈性——與 m of n 最接近,是本題鑑別點。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.6.3 雜湊與 PKI（考點））</div>
@@ -202,7 +247,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 93 / 120 · P3-D3-3</span>
   </div>
 

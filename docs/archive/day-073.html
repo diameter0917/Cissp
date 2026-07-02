@@ -77,6 +77,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 緊急變更可否略過審核？<br><span style="color:#0A6160;">→ 可走快速通道但事後必須補審與記錄,否則成繞過控制的後門。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 組態管理與變更管理的分工？<br><span style="color:#0A6160;">→ 組態管理維持已知良好基準;變更管理控制狀態如何被改動。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Servers were hardened to a CIS Benchmark at deployment, but an audit six months later finds that many production systems no longer match the approved secure baseline. Which is the BEST way to ensure the baseline is maintained going forward?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（伺服器部署時已依 CIS Benchmark 硬化,但六個月後稽核發現許多正式系統已不符合核定的安全基準。哪種做法最能確保基準持續被維持?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deploy automated tools that continuously compare configurations against the baseline and alert on drift 部署自動化工具持續比對組態與基準,並對漂移告警</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Rebuild all servers from the golden image once a year 每年以黃金映像重建所有伺服器一次</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Distribute the hardening standard and require administrators to acknowledge it 發布硬化標準並要求管理員簽署知悉</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Rely on the annual penetration test to identify weakened settings 仰賴年度滲透測試找出被弱化的設定</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。判斷邏輯:組態漂移(configuration drift)是<strong>持續發生</strong>的,對策也必須持續——自動比對『實際 vs 基準』並即時告警,才能在漂移累積成風險前矯正。這正是組態管理『維持已知良好狀態』的核心做法。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：一年重建一次,期間漂移最長可存在近一年,頻率不足且成本高。</li><li style="margin-bottom:3px;">C：簽署政策屬行政控制,無法偵測系統實際偏離基準的狀態。</li><li style="margin-bottom:3px;">D：滲透測試一年一次且目的是找可利用弱點,並非全面的組態合規比對。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A vulnerability scanner finds a critical flaw in a legacy application server that the vendor no longer supports, and the business cannot retire the system for another year. What is the BEST course of action?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（弱點掃描在一台廠商已停止支援的舊版應用伺服器上發現重大漏洞,而業務單位一年內無法汰除該系統。最佳做法為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Isolate the system through network segmentation and apply compensating controls such as virtual patching 以網路分段隔離該系統,並施加補償控制(如虛擬修補)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Formally accept the risk and document that no patch is available 正式接受風險並記錄無修補可用</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Apply an unofficial patch published by a third-party community 安裝第三方社群釋出的非官方修補</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Increase logging and monitoring on the server until it is retired 加強該伺服器的日誌與監控直到汰除</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。判斷邏輯:無法即時修補時的標準解法是<strong>補償控制(compensating controls)</strong>——分段隔離縮小攻擊面、WAF/虛擬修補阻擋利用途徑,實質把風險降到可接受。風險導向思維:能『降低』就不直接『接受』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：尚有可行且合理成本的降險手段時就直接接受風險,不符合 due care。</li><li style="margin-bottom:3px;">C：非官方修補來源不可信且未經測試,可能引入更大風險(供應鏈疑慮)。</li><li style="margin-bottom:3px;">D：監控是偵測性控制,只能更快發現入侵,無法降低漏洞被利用的可能性。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Last year an urgent security update took down a critical service enterprise-wide. The CISO wants future patches deployed quickly but without self-inflicted outages. Which deployment approach BEST balances these goals?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（去年一次緊急安全更新造成關鍵服務全面停擺。CISO 希望未來的修補既要部署得快,又不能自傷造成中斷。哪種部署方式最能兼顧兩者?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deploy each patch to all systems simultaneously to minimize the exposure window 同步部署到所有系統以縮短暴露窗口</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Test patches, then roll them out in phased rings with monitoring and a rollback plan 先測試,再分批(canary/ring)部署並持續監控、備妥回退計畫</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Defer all patches for 90 days until other organizations prove them stable 所有修補一律延後 90 天,待其他組織驗證穩定</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Apply patches only during the annual maintenance window 僅在年度維護窗口套用修補</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。判斷邏輯:修補生命週期要求<strong>測試→分批部署→監控→可回退</strong>:canary/ring 讓問題只影響一小批先行系統,回退計畫確保可迅速復原,在『快速修漏洞』與『避免自我中斷』間取得平衡;在野利用的緊急漏洞可加速節奏,但仍保留測試與回退。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：全面同步部署等於重演去年災難——一個壞更新就是全域中斷。</li><li style="margin-bottom:3px;">C：一律延後 90 天會讓已被利用的漏洞暴露過久,風險不可接受。</li><li style="margin-bottom:3px;">D：一年只修一次,暴露窗口以年計,完全不符合弱點管理的要求。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.3 組態 / §7.8 修補 / §7.9 變更（深入））</div>
@@ -135,7 +180,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 73 / 120 · P2-D7-3</span>
   </div>
 

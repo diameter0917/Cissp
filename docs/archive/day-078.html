@@ -84,6 +84,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . XSS 與 CSRF 的防禦分別是？<br><span style="color:#0A6160;">→ XSS:輸出編碼/CSP/HttpOnly;CSRF:CSRF token/SameSite cookie。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . HttpOnly cookie 如何降低 XSS 危害？<br><span style="color:#0A6160;">→ 讓 JavaScript 讀不到 session cookie,即使有 XSS 也難竊取 session。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During a web application penetration test, the tester enters ' OR '1'='1 into the login form and gains administrative access. Which control would MOST effectively eliminate the root cause of this vulnerability?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（在網頁應用滲透測試中,測試者在登入表單輸入 ' OR '1'='1 便取得管理員存取權。哪個控制最能有效根除這個漏洞的根因?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deploy a web application firewall in front of the application 在應用程式前部署 WAF</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Encrypt all sensitive data stored in the database 加密資料庫中所有敏感資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Rewrite database access to use parameterized queries (prepared statements) 改用參數化查詢(預備語句)存取資料庫</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Filter user input to remove quotation marks and SQL keywords 過濾使用者輸入移除引號與 SQL 關鍵字</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。這是 <strong>SQL Injection</strong>:輸入被當成 SQL 執行而繞過登入。注入的共通根因是『資料被當指令』,<strong>參數化查詢讓資料與指令分離,資料永遠是資料</strong>,從根本消除漏洞——這是防 SQLi 最根本的控制(再配輸入驗證與 DB 最小權限)。判斷邏輯:題目問『根除根因(root cause)』→ 選改變程式碼行為的控制,不是外掛防護。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：WAF 是外部緩解層,可被繞過(編碼,變形 payload),漏洞本身仍在,非根因解。</li><li style="margin-bottom:3px;">B：加密保護的是靜態資料機密性;應用程式帶著合法權限查詢,注入照樣讀得到解密後資料。</li><li style="margin-bottom:3px;">D：過濾/黑名單特定字元易被編碼繞過,且可能破壞正常輸入(如姓名 O'Brien),不如參數化可靠。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A CISO wants to reduce source-code vulnerabilities across dozens of development teams in a way that is consistent and verifiable. Which approach would be MOST effective?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（資安長希望以一致且可驗證的方式,降低數十個開發團隊的原始碼漏洞。哪個做法最有效?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Publish secure coding guidelines that recommend best practices for each language 發布各語言的安全編碼指引,建議最佳實務</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Provide annual secure coding awareness training for all developers 為所有開發者提供年度安全編碼認知訓練</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Increase the frequency of dynamic scans against production applications 提高對正式環境應用的動態掃描頻率</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Enforce mandatory secure coding standards that are enforceable across all development efforts and verifiably implemented 強制推行安全編碼標準,可跨所有開發工作執行且可驗證落實</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。官方考點:<strong>嚴格落實的安全編碼『標準(standards)』是降低原始碼漏洞最有效的方法</strong>。標準＝強制,可跨全組織執行(enforceable),可驗證(verifiably implemented)——確保開發者『一定以特定方式做某些事,避免另一些事』;題幹的『一致且可驗證』正對應標準的定義。記憶:standards 強制,guidelines 建議保彈性。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：指引(guidelines)只是建議,保留彈性,無法保證一致與可驗證,降漏效果不如標準。</li><li style="margin-bottom:3px;">B：訓練提升意識但不具強制力與驗證機制,無法確保寫碼行為一致。</li><li style="margin-bottom:3px;">C：動態掃描是事後偵測已存在的漏洞,無法『減少寫出』漏洞,且在正式環境已太晚。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A developer blocks the string "&lt;script&gt;" from a comment field, yet attackers still inject executable scripts using encoded payloads and event-handler attributes. Which input validation approach would BEST address this weakness?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（開發者在留言欄位封鎖了 "&lt;script&gt;" 字串,但攻擊者仍能用編碼後的 payload 與事件處理屬性注入可執行腳本。哪種輸入驗證方法最能解決這個弱點?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Expand the blocklist to include more known malicious strings 擴充黑名單納入更多已知惡意字串</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Use allowlist (whitelist) validation that accepts only known-good input patterns 改用白名單驗證,只接受已知合法的輸入格式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Move the validation logic into client-side JavaScript for immediate feedback 把驗證邏輯移到用戶端 JavaScript 以即時回饋</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Truncate all input fields to a maximum safe length 將所有輸入欄位截斷至安全長度上限</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。題幹演示了<strong>黑名單的結構性缺陷</strong>:壞字串的變形(編碼,大小寫,事件屬性如 onerror)列舉不完,永遠追著攻擊者跑。<strong>白名單只允許已知合法格式</strong>(例如限定字元集與格式),未知的變形一律拒絕,可靠得多;再配<strong>輸出編碼</strong>作為防 XSS 主力。判斷邏輯:enumerate goodness, not badness(列舉好的,而非壞的)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：擴充黑名單治標不治本,新編碼與新屬性層出不窮,依然可被繞過。</li><li style="margin-bottom:3px;">C：用戶端驗證可被攻擊者直接繞過(改請求即可),只能當使用者體驗,不能當安全控制。</li><li style="margin-bottom:3px;">D：截長度擋不住短小的 XSS payload(如 &lt;img src=x onerror=...&gt;),與弱點無關。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.5 注入/XSS/CSRF 與安全編碼（深入））</div>
@@ -136,7 +181,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 78 / 120 · P2-D8-3</span>
   </div>
 

@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 資料中心最適合的滅火方式？<br><span style="color:#0A6160;">→ 潔淨氣體(FM-200/Inergen),非水。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 生日攻擊威脅什麼？<br><span style="color:#0A6160;">→ 雜湊函數的抗碰撞性。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During a cryptanalysis engagement, an attacker is able to submit arbitrary plaintexts of her own choosing to the encryption system and collect the resulting ciphertexts to deduce information about the key. Which attack model is this?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（密碼分析演練中,攻擊者可『自行選定』任意明文送入加密系統,並收集對應密文以推導金鑰資訊。這是哪種攻擊模型?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Known-plaintext attack 已知明文攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Chosen-plaintext attack 選擇明文攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Ciphertext-only attack 唯密文攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Pass-the-hash attack 傳遞雜湊攻擊</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。關鍵字『可<strong>自行選定(chosen)</strong>任意明文並取得對應密文』→ <strong>選擇明文攻擊(CPA)</strong>;它比已知明文更強(攻擊者能主動控制輸入),差分密碼分析即屬此類。記憶:能『選』=chosen,只是『有』=known。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：已知明文是攻擊者『手上剛好有』明密文對,無法自選明文——與 chosen 只差一字,是本題最強干擾項。</li><li style="margin-bottom:3px;">C：唯密文攻擊只有密文可用,是最弱的攻擊模型。</li><li style="margin-bottom:3px;">D：Pass-the-Hash 是竊取密碼雜湊直接用於認證,屬憑證攻擊而非密碼分析模型。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A defense facility processing classified data is concerned that attackers in a nearby building could reconstruct screen contents from electromagnetic emanations. Which countermeasure BEST addresses this risk?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某處理機密資料的國防設施擔心鄰棟攻擊者可由電磁洩漏重建螢幕內容。哪個對策最能處理此風險?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Full-disk encryption 全磁碟加密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> TEMPEST-rated shielding (e.g., Faraday cage) TEMPEST 等級屏蔽(如法拉第籠)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Upgrading to AES-256 encryption 升級至 AES-256 加密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Network intrusion detection system 網路入侵偵測系統</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。電磁洩漏(emanation)攻擊擷取的是<strong>顯示/處理中的明文訊號</strong>,加密幫不上忙;對策是 <strong>TEMPEST 等級設備、屏蔽線材/法拉第籠、白噪音與管制區(control zone)</strong>。判斷邏輯:威脅在『物理訊號外洩』,就要用物理屏蔽對付。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：磁碟加密保護『靜態儲存』;螢幕顯示時資料已解密,電磁訊號照樣洩漏——聽起來對但保護錯層,是本題最強干擾項。</li><li style="margin-bottom:3px;">C：加密演算法強度與空中電磁洩漏無關。</li><li style="margin-bottom:3px;">D：NIDS 監看網路流量,偵測不到不經網路的電磁側漏。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A fire alarm triggers in a data center protected by a CO2 flooding suppression system. What is the FIRST priority before the agent discharges?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（資料中心的 CO₂ 全區滅火系統因火警觸發。在氣體釋放前的『第一』優先事項是?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Gracefully shut down critical servers 優雅關閉關鍵伺服器</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Ensure all personnel have evacuated the room 確認所有人員已撤離該區</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Notify senior management 通報高階主管</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Fail over to the disaster recovery site 切換至災難復原站點</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。CO₂ 靠<strong>排除氧氣</strong>滅火,對人員<strong>致命</strong>——因此釋放前必須先確認人員撤離。判斷邏輯:CISSP 鐵律『<strong>人命安全永遠優先於資產與營運</strong>』,任何實體安全情境題先想 people first。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：保護設備排在保護人命之後——技術上合理但優先序錯,是本題最強干擾項。</li><li style="margin-bottom:3px;">C：通報屬後續溝通程序,非釋放前第一優先。</li><li style="margin-bottom:3px;">D：營運持續(切換 DR)是火災處理後段的動作。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.7 密碼攻擊 / §3.9 實體（考點））</div>
@@ -177,7 +222,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 94 / 120 · P3-D3-4</span>
   </div>
 

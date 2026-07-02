@@ -80,6 +80,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 為何無檔案惡意程式難用傳統防毒擋？<br><span style="color:#0A6160;">→ 它藏在記憶體/濫用合法工具(LOLBins)、無檔案特徵;需行為偵測(EDR)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 引入外購/開源軟體的關鍵把關控制？<br><span style="color:#0A6160;">→ 供應商評估、完整性驗證(簽章/雜湊)、SBOM/SCA、上線安全驗收、持續監控。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization is commissioning a third party to develop custom software. Which practice would BEST provide assurance of the software's security before the purchase is finalized?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織委託第三方開發客製化軟體。哪個做法最能在完成採購前對軟體的安全性提供保證?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Build an independent external security audit into the contract, with passing the audit a condition for finalizing the purchase 在合約中納入獨立外部安全稽核,並以通過稽核作為完成採購的條件</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Ask the vendor to share the results of its own internal testing 要求供應商分享其內部測試結果</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Rely on the vendor's ISO/IEC 27001 certification as sufficient evidence 以供應商的 ISO/IEC 27001 認證作為充分證據</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Scan the delivered binaries with antivirus software before installation 安裝前以防毒軟體掃描交付的二進位檔</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。官方考點:第三方(外包)軟體的最佳實務是<strong>由第三方執行外部稽核與安全評估,寫進供應商合約,並以『通過稽核』作為完成採購的條件</strong>。判斷邏輯:客製軟體沒有廣大市場替你驗證,獨立稽核＋合約槓桿(不過不付款)才能在錢付出去前取得可信保證——契約先行,信任要驗證。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：供應商自行測試缺乏獨立性(自己考自己),證據力不足。</li><li style="margin-bottom:3px;">C：ISO 27001 證明的是供應商的 ISMS 管理制度,不代表『這套客製軟體』本身安全。</li><li style="margin-bottom:3px;">D：防毒只能抓已知惡意特徵,查不出後門邏輯與設計/實作漏洞,且時點太晚,證據力最弱。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Weeks after a database administrator resigns on bad terms, a script activates and deletes critical tables when the administrator's employee ID no longer appears in the payroll run. Which type of malicious code BEST describes this?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一位資料庫管理員不歡而散離職數週後,一支腳本在偵測到該管理員的員工編號不再出現於薪資作業時啟動,刪除了關鍵資料表。哪種惡意程式類型最符合這個描述?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Worm 蠕蟲</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Remote access trojan (RAT) 遠端存取木馬</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Logic bomb 邏輯炸彈</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Rootkit 隱匿程式</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>Logic bomb(邏輯炸彈)</strong>＝潛伏的惡意碼,在<strong>特定條件成立時觸發</strong>破壞——題幹的觸發條件是『員工編號從薪資名單消失』(＝我被開除/離職就引爆),是內部人員植入邏輯炸彈的經典手法。判斷邏輯:抓關鍵特徵『條件觸發(condition-triggered)』;對策含程式碼審查,職責分離,離職權限即刻回收。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：蠕蟲的特徵是<strong>自我複製與傳播</strong>,題幹的腳本潛伏等待條件,並未擴散。</li><li style="margin-bottom:3px;">B：RAT 提供攻擊者<strong>遠端控制</strong>;此腳本自動觸發,無遠端操控成分。</li><li style="margin-bottom:3px;">D：Rootkit 的重點是<strong>隱藏自身與取得最高權限</strong>以長期潛伏,不是條件式破壞。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A hospital operates fixed-function servers that run a small, stable set of clinical applications. Management wants to prevent execution of any unapproved program, including malware that has never been seen before. Which control BEST meets this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某醫院營運固定功能的伺服器,只執行少量穩定的臨床應用程式。管理層希望防止任何未核准程式執行,包括從未見過的惡意程式。哪個控制最符合這個需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Application allowlisting that permits only approved programs to execute 只允許核准程式執行的應用程式白名單</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Signature-based antivirus with daily definition updates 每日更新特徵碼的特徵式防毒</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> A blocklist of known malicious executables maintained by the security team 由安全團隊維護的已知惡意執行檔黑名單</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Monthly vulnerability scanning of the servers 每月對伺服器執行弱點掃描</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>Application allowlisting(應用白名單)</strong>＝預設拒絕,只有核准清單上的程式能執行——<strong>未知/零時差惡意程式因不在清單上,一律跑不起來</strong>。固定功能,軟體清單穩定的環境(醫療,SCADA,POS)正是白名單的最佳場景(NIST SP 800-167)。判斷邏輯:『擋沒見過的』→ 特徵式做不到,只有 default-deny 的白名單能。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：特徵式防毒只能辨識<strong>已知</strong>特徵,對『從未見過』的惡意程式無效。</li><li style="margin-bottom:3px;">C：黑名單同樣只擋『已知壞』,列舉不完,擋不住未知樣本。</li><li style="margin-bottom:3px;">D：弱點掃描找的是系統缺陷與缺補丁,屬評估活動,無法即時阻止程式執行。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.4 外購軟體與惡意程式（深入））</div>
@@ -117,7 +162,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 80 / 120 · P2-D8-5</span>
   </div>
 

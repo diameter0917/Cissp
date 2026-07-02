@@ -84,6 +84,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . HMAC 與數位簽章在不可否認上的差別？<br><span style="color:#0A6160;">→ HMAC 用共享密鑰、無不可否認；簽章用私鑰、有不可否認。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 為何密碼儲存要加鹽？<br><span style="color:#0A6160;">→ 防彩虹表、使相同密碼有不同雜湊；搭配慢雜湊更佳。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security engineer discovers that the company's code-signing pipeline still hashes software releases with SHA-1 before signing them. Management asks what an attacker could realistically achieve. Which attack is MOST directly enabled by this weakness?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全工程師發現公司的程式碼簽章流程仍以 SHA-1 產生摘要後簽章。管理層詢問攻擊者實際能做到什麼。此弱點『最直接』使哪種攻擊成為可能?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Brute-forcing the code-signing private key 暴力破解簽章私鑰</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Crafting a malicious file whose digest collides with a legitimately signed file 製造與合法簽署檔案摘要碰撞的惡意檔案</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Replaying captured TLS sessions 重放攔截到的 TLS 會談</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Extracting the key through a timing side channel 以時間旁通道萃取金鑰</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。數位簽章簽的是『摘要』,SHA-1 的抗碰撞性已被實際攻破;攻擊者可製造摘要相同的惡意檔案,使合法簽章『轉嫁』到惡意檔上（Flame 對 MD5 憑證即是如此）。判斷邏輯:弱雜湊的直接後果＝碰撞→簽章與 PKI 信任瓦解。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：私鑰強度取決於非對稱演算法與金鑰長度,與雜湊演算法無關。</li><li style="margin-bottom:3px;">C：重放攻擊靠攔截重送,與雜湊碰撞無關。</li><li style="margin-bottom:3px;">D：旁通道攻擊打『實作』,與 SHA-1 的數學弱點是不同攻擊面。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An auditor discovers that production database encryption keys are stored in cleartext configuration files inside a source-code repository accessible to all developers. What is the BEST long-term remediation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（稽核發現正式環境的資料庫加密金鑰以明文存放在原始碼儲存庫的設定檔中,所有開發者皆可存取。最佳的長期矯正措施是什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Restrict repository access to senior developers only 將儲存庫權限限縮給資深開發者</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Encrypt the config files with another key kept in the same repository 用另一把存放在同儲存庫的金鑰加密設定檔</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Move key generation and storage into an HSM/KMS and rotate all exposed keys 將金鑰生成與儲存移入 HSM/KMS 並輪替所有已曝光金鑰</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Ask developers to delete the files from their local copies 要求開發者刪除本機副本</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。金鑰在整個生命週期都必須受保護,『不得以明文存在於密碼設備之外』;正解同時處理根因（金鑰集中到 HSM/KMS 安全生成與儲存）與既成事實（已曝光的金鑰視同外洩,必須輪替）。判斷邏輯:BEST＋長期＝治本＋處置已曝險資產。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：金鑰仍是明文,且儲存庫歷史紀錄早已曝光給所有人。</li><li style="margin-bottom:3px;">B：『加密金鑰的金鑰』放在同一處,等於沒有保護。</li><li style="margin-bottom:3px;">D：版本庫歷史與遠端仍保有金鑰,治標不治本。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization implements key escrow so that lost encryption keys can be recovered. The CISO is concerned that a single rogue administrator could secretly recover keys and decrypt sensitive data. Which control BEST addresses this risk?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（組織建立金鑰託管以復原遺失的加密金鑰。CISO 擔心單一惡意管理員可能私自復原金鑰並解密敏感資料。哪個控制最能因應此風險?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Storing escrowed keys in an HSM 將託管金鑰存於 HSM</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> m of n control requiring multiple recovery agents to act together 以 m of n 控制要求多位復原代理人共同執行</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Shortening the key rotation interval 縮短金鑰輪替週期</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Logging all recovery operations for later review 記錄所有復原操作供事後審查</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。m of n（多方金鑰復原）指定 n 位復原代理人,且至少需 m 人共同參與才能復原金鑰——從機制上消除『單人可獨自復原』,屬<strong>預防性</strong>控制,直接對應題目風險。類似概念:split custody（金鑰分持）。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：HSM 保護金鑰儲存,但獲授權的單一管理員仍可能獨自執行復原。</li><li style="margin-bottom:3px;">C：輪替縮短單把金鑰的暴露期間,無法阻止單人復原行為本身。</li><li style="margin-bottom:3px;">D：日誌是偵測性控制,只能事後發現,不能防止資料已被解密。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.6.3 雜湊、簽章與 PKI）</div>
@@ -178,7 +223,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 53 / 120 · P2-D3-3</span>
   </div>
 

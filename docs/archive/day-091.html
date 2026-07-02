@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 『no read down / no write up』保護什麼、是哪個模型？<br><span style="color:#0A6160;">→ 完整性;Biba 模型。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 存取權依『已看過什麼』動態變化的模型？<br><span style="color:#0A6160;">→ Brewer-Nash(Chinese Wall)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security engineer is concerned that low-security users could infer a high-security process's activity by observing changes in system behavior, creating a covert channel. Which security model MOST directly addresses this concern?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一名安全工程師擔心低安全等級使用者可藉由觀察系統行為變化,推斷高安全等級程序的活動,形成隱蔽通道。哪個安全模型最直接處理此疑慮?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Noninterference model 非干擾模型</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Information flow model 資訊流模型</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Bell-LaPadula model Bell-LaPadula 模型</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Clark-Wilson model Clark-Wilson 模型</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>非干擾模型(Noninterference)</strong>確保高安全等級的動作<strong>不影響低安全等級可觀察的行為</strong>——直接防止透過系統狀態變化『推斷』高層資訊(隱蔽通道式洩漏)。判斷邏輯:題幹關鍵是『高層活動被低層觀察推斷』,不是讀寫規則,故非干擾最直接。記憶:高層做什麼,低層『看不出來也感覺不到』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：資訊流模型是較廣的上位概念(BLP/Biba 的設計基礎),管『流動方向』;題幹問的是『高層行為不得被低層觀察到影響』,非干擾更直接——兩個都『對』,考最直接。</li><li style="margin-bottom:3px;">C：BLP 只定義讀寫規則,官方筆記明言它『不處理 covert channels』。</li><li style="margin-bottom:3px;">D：Clark-Wilson 管交易完整性(良構交易+SoD),與隱蔽通道無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Under a strict MAC implementation, a subject is permitted to read and write ONLY at its own security level — never above or below. Which Bell-LaPadula property does this describe?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（在嚴格的 MAC 實作下,主體『只能』在自己所屬的安全等級讀與寫,不得向上或向下。這描述 Bell-LaPadula 的哪個性質?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Strong star property 強星規則</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Star (*) property 星規則</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Simple security property 簡單安全規則</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Discretionary security property 自主安全規則</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>Strong Star Property(強星規則)</strong>:主體<strong>讀與寫都只能在自己的密級層</strong>(read/write only in their own layer of secrecy)。判斷邏輯:一般 star 只禁『寫低』(仍可寫高),題幹連『寫高、讀低』都禁止→是更嚴格的 strong star。記憶:strong=『鎖死在本層』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：星規則只有 no write down,仍允許 write up 與 read down——與題幹『只能本層』不符,是本題最強干擾項。</li><li style="margin-bottom:3px;">C：簡單安全規則只管讀(no read up),未限制寫。</li><li style="margin-bottom:3px;">D：自主安全規則指以存取矩陣(need to know)控管,與層級讀寫限制無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A core banking system requires that account records be modified ONLY through certified transaction programs enforcing well-formed transactions; users can never manipulate the records directly. This is an implementation of which model?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（核心銀行系統要求帳戶紀錄『只能』透過經認證、強制良構交易的交易程式修改,使用者永遠不能直接操作紀錄。這是哪個模型的實作?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Clark-Wilson</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Biba</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Bell-LaPadula</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Graham-Denning</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。主體與物件之間有『<strong>中介程式保護完整性</strong>』→就是 <strong>Clark-Wilson</strong>:存取三元組(subject/program/object),受限資料項(CDI)只能由轉換程序(TP)操作,並強制良構交易與 SoD。記憶:看到『只能透過程式/介面改資料』一律選 Clark-Wilson。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：Biba 也保完整性,但靠層級讀寫規則(no read down/no write up),沒有『中介程式』概念——兩者都『保完整』,鑑別點在機制。</li><li style="margin-bottom:3px;">C：BLP 保機密性,與交易完整性無關。</li><li style="margin-bottom:3px;">D：Graham-Denning 管主體/物件的安全建立、刪除與權限授予(8 條規則),非交易完整性。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.2 模型規則（考點））</div>
@@ -194,7 +239,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 91 / 120 · P3-D3-1</span>
   </div>
 

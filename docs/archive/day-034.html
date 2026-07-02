@@ -72,6 +72,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 『同一高敏感動作需兩人同時授權』叫什麼？<br><span style="color:#0A6160;">→ Dual control 雙人控制。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . need to know 與 least privilege 的面向差異？<br><span style="color:#0A6160;">→ 需知＝資訊（知不知道）；最小權限＝權限（能不能做）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which solution is BEST suited to control administrator and root accounts by vaulting their credentials, granting just-in-time elevation, and recording privileged sessions?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪一種方案最適合管控 admin/root 帳號:集中保管憑證、即時（JIT）提權、錄製特權工作階段?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Privileged Access Management (PAM) 特權存取管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Security Information and Event Management (SIEM) 安全資訊與事件管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Single Sign-On (SSO) 單一登入</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Data Loss Prevention (DLP) 資料外洩防護</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。密碼庫（vaulting）、JIT 提權、工作階段錄製正是 PAM 的三大核心能力,專門針對風險最高的特權帳號,是最小權限與可歸責性的落地工具。判斷關鍵:題幹描述的是『管控特權帳號怎麼被使用』,不是偵測、登入便利或防外洩。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：SIEM 做日誌關聯與告警,可『偵測』特權濫用,但不提供密碼庫與提權管控。</li><li style="margin-bottom:3px;">C：SSO 解決登入便利與帳號整合,不提供 JIT 提權與工作階段側錄。</li><li style="margin-bottom:3px;">D：DLP 防資料外洩,與特權帳號的使用管控無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During an audit, a bank discovers that the same employee can both create new vendor records and approve payments to those vendors. Which control BEST mitigates this fraud risk?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（稽核發現銀行同一名員工既能建立新供應商資料,又能核准對這些供應商的付款。哪個控制最能降低這項舞弊風險?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Separation of duties 職責分離</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Mandatory vacation 強制休假</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Dual control 雙人控制</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Job rotation 工作輪調</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。一人同時掌握『建立供應商』與『核准付款』兩個<strong>不同步驟</strong>,可獨力完成整條舞弊鏈。職責分離（SoD）把關鍵任務的不同步驟拆給不同人,迫使舞弊必須共謀（collusion）,是針對此情境的<strong>預防性</strong>控制,優先於事後偵測。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：強制休假是『偵測/揭發』已發生的藏匿弊端,不能預防單人完成整筆交易。</li><li style="margin-bottom:3px;">C：雙人控制是『同一動作』需兩人同時授權（如金庫雙鑰）;此處問題是『不同步驟』集中在一人,SoD 才是最精確的解。</li><li style="margin-bottom:3px;">D：輪調偏偵測與知識分散,不直接拆開衝突職務。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.4 維運基礎與特權）</div>

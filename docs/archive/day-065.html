@@ -79,6 +79,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 依『部門＋時間＋裝置』等情境動態決定存取是哪種模型？<br><span style="color:#0A6160;">→ ABAC(屬性存取控制)，零信任偏好。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . PAM 的核心原則是什麼？<br><span style="color:#0A6160;">→ 零常駐特權——按需即時(JIT)授予、用完即收、全程可歸責。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">After a decade of RBAC growth, a company with 4,000 employees has accumulated 2,600 roles, and access reviews repeatedly fail because reviewers cannot tell what each role actually grants. Which approach would BEST restore manageable authorization?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（歷經十年 RBAC 擴張,一家 4,000 名員工的公司累積了 2,600 個角色,存取審查屢屢失敗,因為審查者根本看不出每個角色實際授予了什麼。下列何種做法最能恢復可管理的授權?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Perform role mining to consolidate roles into a hierarchy, and handle contextual exceptions with attribute-based rules 進行角色探勘(role mining)將角色整併為階層,情境化例外改以屬性式(ABAC)規則處理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Convert to DAC so each data owner grants access case by case 改用 DAC,由各資料擁有者逐案自行授權</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Retire all roles and assign permissions directly to individual users 廢除所有角色,將權限直接指派給個別使用者</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Freeze the creation of new roles until the next annual audit 凍結新角色的建立,直到下一次年度稽核</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。這是典型的<strong>角色爆炸(role explosion)</strong>。解方是角色工程/探勘:分析實際權限使用、整併重疊角色、建立角色階層,少數情境化需求交給 ABAC 規則,再以定期 recertification 持續清理——授權模型本身也需要治理,而不是放棄模型。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：DAC 逐案授權會讓權限更發散、更難一致與審查,是倒退而非解方。</li><li style="margin-bottom:3px;">C：直接指派權限正是 RBAC 要解決的老問題,4,000 人規模下審查負擔會徹底爆炸。</li><li style="margin-bottom:3px;">D：凍結只是止痛,既有 2,600 個角色的不可審性一點都沒有改善。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Cloud engineers at a company hold standing global administrator rights around the clock, although each engineer actually needs them for only a few hours per month. Which change would MOST reduce the risk associated with these privileged accounts?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某公司的雲端工程師全天候持有常駐的全域管理員權限,但每位工程師實際上每月只需要用到幾小時。下列何種改變最能降低這些特權帳號的風險?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Rotate the administrators' passwords on a weekly schedule 將管理員密碼改為每週定期輪換</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Have each engineer sign a privileged-use agreement annually 要求每位工程師每年簽署特權使用同意書</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Record all privileged sessions for later review 錄製所有特權工作階段供事後審查</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Replace standing rights with just-in-time elevation that grants time-bound access upon approval 以 JIT 即時提權取代常駐權限,經核准後才授予有時限的存取</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。特權風險與「<strong>特權存在的時間窗口</strong>」成正比:常駐特權等於 24×7 都可被竊用。JIT＋零常駐特權(zero standing privilege)把窗口從「永遠」縮到「核准後的幾小時」——帳號在任何時點被盜,手上都沒有現成特權可用。這正是 PAM 的核心原則。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：輪換密碼不改變「隨時擁有特權」的事實;帳號被接管當下特權依然在手。</li><li style="margin-bottom:3px;">B：行政簽署屬威懾性的紙面控制,完全不影響技術暴險。</li><li style="margin-bottom:3px;">C：工作階段錄製是偵測性控制,能事後追查但不能阻止濫用,層級低於消除常駐特權。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An enterprise is deploying a PAM credential vault that will hold every privileged password and key in the organization. Drawing on the lessons of the LastPass breach, which consideration is MOST important for this deployment?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某企業正在部署 PAM 密碼庫(vault),將集中保管組織內所有特權密碼與金鑰。借鏡 LastPass 外洩事件的教訓,此部署最重要的考量是什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Selecting the vault product with the widest set of integrations 選擇整合產品範圍最廣的密碼庫</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Storing break-glass emergency credentials in the same vault for completeness 為求完整,把緊急救援(break-glass)憑證也存進同一個密碼庫</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Protecting the vault itself with the strongest controls: phishing-resistant MFA, key isolation, strict access, and continuous monitoring 以最高強度控制保護密碼庫本身:抗釣魚 MFA、金鑰隔離、嚴格存取與持續監控</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Relying on the vault's built-in encryption so no additional controls are needed 信賴密碼庫內建加密,即不需其他額外控制</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。密碼庫把所有特權<strong>集中成單一高價值目標</strong>——vault 一旦失守等於特權全失。因此 vault 本身必須獲得全組織最高等級的保護與縱深防禦(抗釣魚 MFA、金鑰隔離、嚴格存取、監控),並以零常駐特權縮小爆炸半徑。LastPass 的教訓:保管一切的東西,正是攻擊者最想要的東西。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：整合廣度是功能考量;失守時整合越廣、災情越大,排不上「最重要」。</li><li style="margin-bottom:3px;">B：break-glass 憑證正是為 vault 失效/失守而準備,存進同一 vault 形成循環依賴。</li><li style="margin-bottom:3px;">D：加密只是其中一層;LastPass 事件證明加密庫被竊後仍可離線破解弱主密碼,縱深防禦不可省。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.4 存取控制模型（深入））</div>
@@ -156,7 +201,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 65 / 120 · P2-D5-5</span>
   </div>
 

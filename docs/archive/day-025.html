@@ -72,6 +72,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 『僅公司裝置、上班時間可存取』最適合哪種模型？<br><span style="color:#0A6160;">→ ABAC（屬性/情境型）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 管理 root/admin 特權帳號的整套控制稱為？<br><span style="color:#0A6160;">→ PAM（特權存取管理），搭配最小權限與 JIT。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">In which access control model does the owner of each object decide which subjects may access it?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（在哪種存取控制模型中,由每個物件的擁有者自行決定哪些主體可以存取?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Mandatory Access Control (MAC) 強制存取控制</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Role-Based Access Control (RBAC) 角色型存取控制</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Rule-based access control 規則型存取控制</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Discretionary Access Control (DAC) 自主存取控制</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。DAC 的關鍵特徵:每個物件都有擁有者,擁有者可自行授予或拒絕其他主體的存取（如 Windows NTFS 檔案權限）;其餘模型皆屬 non-discretionary,由管理者或系統集中決定。記憶:DAC＝擁有者說了算。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：MAC 由系統依安全標籤（label/lattice）強制,擁有者與使用者都不能改。</li><li style="margin-bottom:3px;">B：RBAC 由管理者把帳號放入角色,權限跟著角色走,非擁有者決定。</li><li style="margin-bottom:3px;">C：規則型對『所有主體』套用全域規則（如防火牆 ACL）,同樣非擁有者決定。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager discovers that database administrators hold standing domain administrator privileges that they use only a few hours each month. Which control BEST reduces the risk associated with these standing privileges?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理發現資料庫管理員長期持有網域管理員特權,但每月僅使用數小時。哪個控制最能降低這種常駐特權的風險?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Enforce longer passwords on the administrator accounts 對管理員帳號強制更長的密碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Use a PAM solution to grant just-in-time (JIT) privileged access only when needed 以 PAM 方案實施 JIT 即時特權,需要時才授予、用完即收</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Consolidate the administrators into one shared admin account for easier monitoring 將管理員合併為一組共用帳號以便監控</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Convert file permissions from DAC to RBAC 將檔案權限由 DAC 改為 RBAC</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。風險根源是『常駐特權（standing privilege）』的暴露時間過長。PAM＋JIT 讓特權只在需要的時段授予、用完即收,並配合 credential vault 與 session recording 全程留痕,直接消除常駐暴露,符合最小權限原則——風險導向、對症下藥。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：更長密碼只強化鑑別,特權仍 24 小時常駐,未處理根因。</li><li style="margin-bottom:3px;">C：共用帳號破壞可歸責,反而使監控與究責更困難。</li><li style="margin-bottom:3px;">D：改變檔案權限模型,不影響網域管理員特權的暴露時間。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.4 存取控制模型 / PAM）</div>

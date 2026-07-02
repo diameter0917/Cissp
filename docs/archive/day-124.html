@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 124</title>
+</head>
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
+
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 124 / 126</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#B45309; padding:4px 9px; border-radius:5px;">P3-D1-6</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">後期 · 考試重點 &nbsp;|&nbsp; Domain 1 · 安全與風險管理 &nbsp;|&nbsp; 權重 16%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">考試機制：CAT 自適應測驗與考場全流程</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Exam Mechanics: CISSP CAT Format &amp; Test-Day Logistics</div>
+  </div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:98.4%; background-color:#B45309;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 🎫 為什麼要懂「考試本身」</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">知識準備到位後,最後一哩路是<strong>理解考試機制本身</strong>。CISSP 用的不是傳統固定題數的紙筆邏輯,而是 <strong>CAT(Computerized Adaptive Testing,電腦自適應測驗)</strong>——它會根據你的作答表現<strong>動態決定下一題出什麼、以及何時結束</strong>。不了解 CAT 的考生常在考場被兩件事嚇到:一是「怎麼突然結束了」,二是「怎麼不能回頭改答案」。本封把 CAT 機制、報名流程、考試當天動線、考後程序一次講完,讓你進考場時<strong>沒有任何意外</strong>。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — CAT 是怎麼運作的</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">CAT 的核心是<strong>能力估計(ability estimate)</strong>:系統對你維持一個即時的能力值,每答一題就更新一次。<strong>答對,下一題會出較難的;答錯,下一題會出較易的</strong>——目的是用最少題數把你的能力值「夾」到夠精確。也因為每一題都依你先前的作答挑選,<strong>作答送出後不能回頭修改</strong>,也不能跳題:每一題都必須當下作答、當下決定。</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 4px;">
+      <tr><td style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:10px 14px; font-size:14px; line-height:1.6; text-align:center;"><strong>作答第 N 題</strong> → 系統即時更新能力估計 θ</td></tr>
+      <tr><td style="padding:0; text-align:center; font-size:14px; color:#5B6675;">↓</td></tr>
+      <tr><td style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:10px 14px; font-size:14px; line-height:1.6; text-align:center;">答對 → 下一題<strong>較難</strong> ↑ &nbsp;&nbsp;|&nbsp;&nbsp; 答錯 → 下一題<strong>較易</strong> ↓</td></tr>
+      <tr><td style="padding:0; text-align:center; font-size:14px; color:#5B6675;">↓（累積至第 100 題後開始判定）</td></tr>
+      <tr><td style="background-color:#FBF4E8; border:1px solid #E2E8F0; border-left:3px solid #B45309; border-radius:8px; padding:10px 14px; font-size:14px; line-height:1.6; text-align:center; color:#4A3A1C;">能力估計<strong>明確高於(或低於)及格線</strong>且統計信心足夠 → <strong>提前結束</strong></td></tr>
+      <tr><td style="padding:0; text-align:center; font-size:14px; color:#5B6675;">↓（信心不足則繼續出題）</td></tr>
+      <tr><td style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:8px; padding:10px 14px; font-size:14px; line-height:1.6; text-align:center;">出到 <strong>150 題</strong>或 <strong>3 小時用盡</strong> → 以最終能力估計判定通過與否</td></tr>
+    </table>
+    <p style="font-size:16px; line-height:1.8; margin:14px 0 14px;">三個常被誤解的細節:<strong>①</strong> 題目中混有<strong>未計分的預試題(pretest items)</strong>——ISC2 用真實考生測試新題,共 25 題,你<strong>分不出哪題是預試題</strong>,所以每題都要認真作答;<strong>②</strong> 通過標準是<strong>1000 分制的 700 分</strong>,但 CAT 的「通過」實際上是看<strong>能力估計是否以足夠信心高於及格線</strong>,不是算你答對幾題——答錯不少題仍可能通過,因為難題答對的權重高;<strong>③</strong> 到第 100 題後,系統一旦有足夠統計信心判定你「穩過」或「穩不過」,就會直接結束;若到 150 題或時間用盡仍未提前結束,則以當下的能力估計做最終判定。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 考試規格對照表</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">項目</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">CISSP 英文版 CAT(2024 起)</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">考試時間</td><td style="padding:9px 10px; vertical-align:top;"><strong>3 小時</strong>(180 分鐘)</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">題數</td><td style="padding:9px 10px; vertical-align:top;"><strong>100–150 題</strong>(依 CAT 判定動態決定)</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">未計分預試題</td><td style="padding:9px 10px; vertical-align:top;">25 題混入,外觀無法辨識</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">通過標準</td><td style="padding:9px 10px; vertical-align:top;">1000 分制 <strong>700 分</strong>(以能力估計為準)</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">回頭改答案</td><td style="padding:9px 10px; vertical-align:top;"><strong>不可</strong>——送出即定案,不能跳題</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">提前結束</td><td style="padding:9px 10px; vertical-align:top;">第 100 題後,能力估計信心足夠即結束</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;">平均每題可用時間</td><td style="padding:9px 10px; vertical-align:top;">約 <strong>72 秒</strong>(150 題)～ <strong>108 秒</strong>(100 題)</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;">題型</td><td style="padding:9px 10px; vertical-align:top;">單選為主,少量進階創新題型</td></tr>
+    </table>
+    <p style="font-size:14px; line-height:1.75; margin:6px 0 14px; color:#5B6675;">註:非英文語種(如日文、簡中等)仍採線性固定題數形式,規格不同;本課程以英文版 CAT 為準。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 報名流程（Pearson VUE）</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">CISSP 由 <strong>Pearson VUE</strong> 考試中心施測,流程是:<strong>① 建立 ISC2 帳號</strong>(官網註冊,填寫個人資料須與證件完全一致)→ <strong>② 同意 NDA 與考試政策</strong>(Non-Disclosure Agreement,保密協議——考試當天開考前也會再次要求在機器上同意,限時內未同意視同棄考)→ <strong>③ 連到 Pearson VUE 選考場與時段</strong>(台灣有台北等考場,熱門時段建議提早數週預約)→ <strong>④ 繳費完成報名</strong>。改期與取消有期限與手續費規定,報名時看清楚。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 考試當天動線</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>提早 30 分鐘報到</strong>:遲到 15 分鐘以上可能被拒絕入場且不退費。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>兩份有效證件</strong>:主證件須為政府核發附照片與簽名(如護照),姓名須與報名資料一致。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>生物辨識</strong>:掌靜脈掃描(palm vein)+ 現場照相,離場再入場都要重新驗證。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>置物櫃</strong>:手機、手錶、錢包、筆記全部鎖進去,任何個人物品不得帶入考區。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>白板筆記板</strong>:考場提供可擦寫筆記板與筆,可用來畫刪去法記號、算時間節點。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>休息</strong>:可舉手申請上洗手間,但<strong>計時不會暫停</strong>——3 小時內建議自行斟酌。</td></tr>
+    </table>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 考前一週準備清單</div>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">作息對時</strong> — <span style="color:#5B6675;">把睡眠與清醒高峰調到考試時段,考前一晚務必睡飽,別熬夜刷題。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">考場路線</strong> — <span style="color:#5B6675;">事先實地或線上確認交通與停車,預留塞車緩衝;確認考場大樓入口與樓層。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">證件檢查</strong> — <span style="color:#5B6675;">兩份證件放好,確認未過期、姓名拼字與 ISC2 帳號一致。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">飲食計畫</strong> — <span style="color:#5B6675;">考前吃易消化、有飽足感的一餐;咖啡因照平常習慣,別考前突然加倍。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">收斂複習</strong> — <span style="color:#5B6675;">最後一週只看錯題本與各 Domain 一頁摘要,不再啃新教材。</span></td></tr>
+    </table>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 考後：成績與 Endorsement</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">考完離場時,考場會<strong>當場印出初步結果(unofficial result)</strong>——多數情況直接寫明暫定通過或未通過;少數會顯示成績待複核。通過後還不是 CISSP:你需要在 <strong>9 個月內完成 Endorsement(背書)流程</strong>——由一位現任 ISC2 認證持有者確認你具備<strong>累計 5 年(可用學歷/其他認證折抵 1 年)相關工作經驗</strong>並簽署背書;找不到背書人可申請由 ISC2 官方代為背書。背書核准、繳交年費(AMF)後,才正式取得 CISSP 頭銜。若經驗年資尚不足,通過考試可先成為 <strong>Associate of ISC2</strong>,在期限內補足年資。</p>
+
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:18px 0 4px;">
+      <div style="font-size:14px; font-weight:700; color:#B45309; margin-bottom:6px;">⏱️ 應試提醒</div>
+      <p style="font-size:16px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>時間配置</strong>:180 分鐘 ÷ 100–150 題 = 平均每題約 <strong>72–108 秒</strong>。建議以「50 題 / 60 分鐘」為節奏檢查點,單題卡超過 2 分鐘就下決定。</p>
+      <p style="font-size:16px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>不可回頭 = 每題當下決定</strong>:CAT 不能回頭改答案也不能跳題,與其糾結,不如用刪去法選出最佳答案後<strong>果斷送出、立刻忘掉上一題</strong>——懊惱只會拖垮後面的節奏。</p>
+    </div>
+
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — 🎯 實戰考題（CAT 機制理解）</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A candidate taking the English CISSP CAT exam sees the exam end abruptly at question 100 with over an hour remaining. What does this MOST likely indicate?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一位考英文版 CISSP CAT 的考生,在第 100 題時考試突然結束,時間還剩超過一小時。這『最可能』代表什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> The candidate has definitely failed the exam 考生必定未通過</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> The candidate has definitely passed the exam 考生必定通過</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> A technical error terminated the exam session 技術錯誤導致考試中斷</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> The scoring engine reached a statistically confident pass/fail decision about the candidate's ability 計分引擎已對考生能力做出具統計信心的通過/未通過判定</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。CAT 在第 100 題後,只要能力估計<strong>以足夠統計信心高於「或」低於及格線</strong>,就會提前結束——提前結束本身<strong>不透露方向</strong>,穩過與穩不過都會在第 100 題附近收掉。記憶法:『早收 ≠ 好壞,只代表系統已經很確定』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A／B：提前結束無法推論通過或未通過,兩種情況都會提前結束。</li><li style="margin-bottom:3px;">C：第 100 題正是 CAT 判定門檻的起點,是正常機制而非故障。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which time-management strategy BEST fits the CISSP CAT exam format?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪一種時間管理策略『最』適合 CISSP CAT 考試形式?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Maintain a steady pace, decide each question once within about two minutes, and never look back 維持穩定節奏,每題約兩分鐘內下一次決定,絕不回想上一題</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Answer the first 100 questions as fast as possible to bank time for the final 50 前 100 題盡量快答,把時間留給最後 50 題</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Flag difficult questions and return to them during a final review pass 標記難題,最後統一回頭檢查</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Spend extra time on early questions because later questions carry less weight 前面的題多花時間,因為後面的題權重較低</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。CAT 平均每題只有 72–108 秒,且<strong>不能回頭</strong>——最佳策略是穩定節奏、每題當下決斷、送出即放下。前 100 題求快反而增加失誤,而 CAT 的能力估計對每題都敏感。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：可能只考 100 題就結束,「留時間給後 50 題」的前提不成立,且趕答傷正確率。</li><li style="margin-bottom:3px;">C：CAT 沒有標記回顧功能,不能回頭。</li><li style="margin-bottom:3px;">D：CAT 沒有「後面權重較低」的規則,每題都影響能力估計。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During the CAT exam, a candidate encounters a question on a topic they barely remember. What should the candidate do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（CAT 考試中,考生遇到一題幾乎沒印象的主題。考生應『首先』怎麼做?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Skip the question and return to it later 跳過這題,稍後再回來作答</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Spend as much time as needed until certain of the answer 花多少時間都要想到確定為止</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Eliminate clearly wrong options, choose the best remaining answer, and move on 先刪去明顯錯誤的選項,從剩下的選出最佳答案後前進</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Select an answer at random without reading the options to save time 為省時間,不看選項直接隨機選一個</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。CAT <strong>不能跳題也不能回頭</strong>,遇到不會的題,正確做法是<strong>刪去法</strong>:先剔除明顯錯的 1–2 個選項,把猜對機率從 25% 拉到 50%,選出最佳者後果斷前進。這也可能是未計分的預試題,不值得耗損時間。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：CAT 沒有跳題功能,必須當下作答。</li><li style="margin-bottom:3px;">B：單題耗時過久會壓縮後面所有題目的時間,得不償失。</li><li style="margin-bottom:3px;">D：連讀都不讀就隨機選,放棄了刪去法能爭取的機率優勢。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
+
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>英文版 CISSP 是 3 小時、100–150 題的 CAT:答題表現決定下一題難度與何時結束,不能回頭改答案,700/1000 以能力估計判定;考前把報到、證件、時間節奏全部演練一遍。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . CAT 何時會提前結束？<br><span style="color:#0A6160;">→ 第 100 題後,能力估計以足夠信心高於或低於及格線時。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 為什麼每題都要認真答,即使懷疑是預試題？<br><span style="color:#0A6160;">→ 25 題未計分預試題外觀無法辨識,分不出哪題不計分。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 通過考試後還要完成什麼才算取得 CISSP？<br><span style="color:#0A6160;">→ 9 個月內完成 Endorsement(背書)、驗證 5 年經驗、繳年費。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q4</strong> . 考試當天要帶什麼、多早到？<br><span style="color:#0A6160;">→ 兩份證件(主證件為政府核發附照),提早 30 分鐘報到。</span></p>
+    </details>
+
+    <!-- 官方資源 -->
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📚 官方資源</div>
+      <p style="font-size:14px; line-height:1.75; margin:0 0 6px; color:#1E293B;">考試機制屬於<strong>應考資訊</strong>而非考綱內容,本封不附考綱對照。最權威的第一手資料在 <a href="https://www.isc2.org" style="color:#0A6160;">ISC2 官網</a>:</p>
+      <p style="font-size:14px; line-height:1.75; margin:0 0 6px; color:#1E293B;">① <strong>CISSP Exam Outline</strong>(考試大綱):正式的題數、時間、通過標準、各 Domain 權重。&nbsp;② <strong>CAT 說明頁(CISSP CAT Examination Information)</strong>:自適應機制、提前結束規則的官方描述。&nbsp;③ <strong>Exam Pricing 與 Pearson VUE 報名指引</strong>:費用、改期政策、考場規範。&nbsp;④ <strong>Endorsement 說明</strong>:背書流程、經驗年資認定與折抵規則。</p>
+      <p style="font-size:12px; color:#64748B; margin:8px 0 0; font-style:italic;">規格可能調整,報名前務必以官網當下公告為準。</p>
+    </div>
+
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（考試機制與應考準備）</div>
+        <a href="https://youtu.be/J-su239XmCE" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Exam Preparation – CAT Format &amp; Test-Day Walkthrough ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#B45309; font-weight:700; margin-bottom:2px;">📝 考題練習（刷題）</div>
+        <a href="https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8" style="font-size:14px; font-weight:700; color:#B45309; text-decoration:none;">CISSP Practice Questions Playlist ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 124 / 126 · P3-D1-6</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

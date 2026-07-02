@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 121</title>
+</head>
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
+
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 121 / 126</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#B45309; padding:4px 9px; border-radius:5px;">P3-D3-6</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">後期 · 考試重點 &nbsp;|&nbsp; Domain 3 · 安全架構與工程 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">加強：零信任架構深入（NIST SP 800-207）</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Deep Dive: Zero Trust Architecture (NIST SP 800-207)</div>
+  </div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:96.0%; background-color:#B45309;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:4px;">00 — 📬 開場：加強週開跑</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">歡迎進入<strong>加強複習週</strong>!接下來 6 封是針對『新考綱重點 + 高頻弱點』的火力加強。今天深入 <strong>Zero Trust</strong>（零信任）——它是 <strong>2024 官方考綱 §3.1 新增的安全設計原則</strong>,也是近年情境題的常客。之前 D4 網路篇提過概念,今天用 <strong>NIST SP 800-207</strong> 把架構元件一次講透。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — Never Trust, Always Verify</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;"><strong>Zero Trust</strong>（零信任）是一種安全模型:<strong>不論使用者、裝置或系統位於網路何處,一律不預設信任</strong>。每一次存取請求都被視為來自未知、不受信任的位置,必須先<strong>驗證身分（authenticate）、授權（authorize）、加密（encrypt）</strong>才放行,而且是<strong>持續驗證</strong>,不是登入一次就永久有效。</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Never trust, always verify</strong>（永不信任,始終驗證）——取代了舊式的 <strong>trust but verify</strong>（信任但查證,源自俄國諺語,已被視為不足）。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Assume breach</strong>（假設已被入侵）——設計時假設攻擊者已在內網,因此內部流量同樣要驗證與加密。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>Least privilege</strong>（最小權限）——每次授權只給該請求所需的最小存取,粒度做到最細。</td></tr>
+    </table>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 傳統邊界防禦 vs 零信任（對比表）</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 10px;">傳統模型被稱為 <strong>castle-and-moat</strong>（城堡與護城河）:邊界防得很硬,但進了城牆就<strong>隱性信任</strong>——這正是內部威脅與<strong>橫向移動（lateral movement）</strong>得逞的原因。</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">面向</td><td style="padding:8px 10px;">傳統邊界（castle-and-moat）</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">Zero Trust</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>信任假設</strong></td><td style="padding:9px 10px; vertical-align:top;">內網＝可信,外網＝不可信</td><td style="padding:9px 10px; vertical-align:top;">任何位置都不預設信任</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>驗證時機</strong></td><td style="padding:9px 10px; vertical-align:top;">進入邊界時驗證一次</td><td style="padding:9px 10px; vertical-align:top;">每一次請求都持續驗證</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>安全核心</strong></td><td style="padding:9px 10px; vertical-align:top;">網路位置（IP/網段）</td><td style="padding:9px 10px; vertical-align:top;">身分 + 裝置狀態（identity-centric）</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>橫向移動</strong></td><td style="padding:9px 10px; vertical-align:top;">入侵後易於橫向擴散</td><td style="padding:9px 10px; vertical-align:top;">微分段 + 逐請求授權,大幅受限</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>典型技術</strong></td><td style="padding:9px 10px; vertical-align:top;">防火牆、DMZ、VPN</td><td style="padding:9px 10px; vertical-align:top;">ZTNA、微分段、MFA、裝置健檢</td></tr>
+    </table>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — NIST SP 800-207 核心元件</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 12px;"><strong>NIST SP 800-207</strong>《Zero Trust Architecture》是零信任的權威參考文件。它把架構拆成<strong>控制平面（control plane）</strong>與<strong>資料平面（data plane）</strong>:</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">元件</td><td style="padding:8px 10px;">平面</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">職責</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Policy Engine（PE）</strong>政策引擎</td><td style="padding:9px 10px; vertical-align:top;">控制</td><td style="padding:9px 10px; vertical-align:top;">大腦:依政策、身分、裝置狀態、威脅情資<strong>做出</strong>准駁決策（grant/deny/revoke）</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>Policy Administrator（PA）</strong>政策管理器</td><td style="padding:9px 10px; vertical-align:top;">控制</td><td style="padding:9px 10px; vertical-align:top;">傳令官:把 PE 的決策<strong>下達</strong>給 PEP,建立/切斷通訊路徑（發 token/憑證）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>Policy Enforcement Point（PEP）</strong>政策執行點</td><td style="padding:9px 10px; vertical-align:top;">資料</td><td style="padding:9px 10px; vertical-align:top;">守門員:位於主體與資源之間,實際<strong>執行</strong>放行或阻斷每個連線</td></tr>
+    </table>
+    <p style="font-size:14px; line-height:1.75; margin:8px 0 12px; color:#5B6675;">PE + PA 合稱 <strong>Policy Decision Point（PDP,政策決策點）</strong>。記憶法:<strong>PE 決策、PA 下令、PEP 執行</strong>——「法官、書記官、法警」。</p>
+    <div style="background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px; margin:10px 0 4px; text-align:center; font-size:14px; line-height:2; font-family:'SFMono-Regular',Consolas,Menlo,monospace;">
+      <span style="display:inline-block; background-color:#FFFFFF; border:1px solid #CBD5E1; border-radius:6px; padding:4px 10px;">Subject 主體</span> <span style="color:#B45309; font-weight:700;">→</span> <span style="display:inline-block; background-color:#FBF4E8; border:1px solid #B45309; border-radius:6px; padding:4px 10px; font-weight:700;">PEP</span> <span style="color:#B45309; font-weight:700;">→</span> <span style="display:inline-block; background-color:#FFFFFF; border:1px solid #CBD5E1; border-radius:6px; padding:4px 10px;">Resource 資源</span><br>
+      <span style="color:#5B6675; font-size:12px;">↑ 控制平面:</span> <span style="display:inline-block; background-color:#EAF4F3; border:1px solid #0A6160; border-radius:6px; padding:4px 10px; color:#0A6160; font-weight:700;">PDP = PE + PA</span> <span style="color:#5B6675; font-size:12px;">對 PEP 下達准駁指令</span>
+    </div>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — ZTNA vs VPN</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 10px;"><strong>ZTNA</strong>（Zero Trust Network Access,零信任網路存取）常被稱為「VPN 的繼任者」,也是 SASE 框架的關鍵元件之一。差異在於:</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">面向</td><td style="padding:8px 10px;">傳統 VPN</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">ZTNA</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>存取範圍</strong></td><td style="padding:9px 10px; vertical-align:top;">通了隧道 = 進入整個內網（過度授權）</td><td style="padding:9px 10px; vertical-align:top;">只連到<strong>特定應用</strong>,逐應用授權</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>驗證</strong></td><td style="padding:9px 10px; vertical-align:top;">連線時驗證一次</td><td style="padding:9px 10px; vertical-align:top;">持續評估身分 + 裝置狀態（posture）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>暴露面</strong></td><td style="padding:9px 10px; vertical-align:top;">VPN 閘道對外公開,常成攻擊目標</td><td style="padding:9px 10px; vertical-align:top;">應用對外<strong>隱形</strong>（dark cloud）,由 broker 中介</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>橫向移動風險</strong></td><td style="padding:9px 10px; vertical-align:top;">高:憑證失竊即可漫遊內網</td><td style="padding:9px 10px; vertical-align:top;">低:看不到未授權的資源</td></tr>
+    </table>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 微分段（Microsegmentation）</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;"><strong>Microsegmentation</strong>（微分段）是零信任在網路層的落地手段:把網路切成<strong>非常小的安全區段</strong>——細到單一工作負載（workload）、單一 VM 或容器——每個區段之間的東西向流量（east-west traffic）都要通過政策檢查。與傳統 VLAN 分段的差別:VLAN 以「網段」為單位、段內互信;微分段以「工作負載」為單位、<strong>段內也不互信</strong>。它是限制<strong>橫向移動</strong>、圍堵勒索軟體擴散的首選答案,常以軟體定義網路（SDN）或主機防火牆政策實作。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 零信任七大支柱（精簡版）</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 10px;">美國 CISA 的 Zero Trust Maturity Model 把零信任拆成<strong>五大支柱 + 兩個橫貫能力</strong>,合稱七大面向,是盤點成熟度的實用框架:</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">① Identity 身分</strong> — <span style="color:#5B6675;">MFA、持續驗證、以身分為新邊界。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">② Devices 裝置</strong> — <span style="color:#5B6675;">裝置清冊、健康狀態（posture）檢查後才給存取。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">③ Networks 網路</strong> — <span style="color:#5B6675;">微分段、全程加密、不再信任「內網」。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">④ Applications &amp; Workloads 應用與工作負載</strong> — <span style="color:#5B6675;">逐應用授權、安全開發與部署。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">⑤ Data 資料</strong> — <span style="color:#5B6675;">分類分級、加密、DLP——零信任的最終保護對象。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">＋ Visibility &amp; Analytics／Automation &amp; Orchestration</strong> — <span style="color:#5B6675;">橫貫全部支柱的可見性分析與自動化編排。</span></td></tr>
+    </table>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 實務案例：Google BeyondCorp</div>
+    <div style="background-color:#EAF4F3; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:13px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;">2009 年 Google 遭遇國家級攻擊 <strong>Operation Aurora</strong>（極光行動),攻擊者突破邊界後在內網橫向移動。Google 痛定思痛,啟動 <strong>BeyondCorp</strong> 計畫:<strong>徹底廢除「特權內網」</strong>,員工不論在辦公室或咖啡廳,一律走相同的存取流程——由 access proxy（相當於 PEP）依「使用者身分 + 裝置清冊與健康狀態」逐請求授權,內網 IP 不再代表任何信任。</p>
+      <p style="font-size:14px; line-height:1.75; margin:0; color:#0A6160;"><strong>啟示</strong>:BeyondCorp 是零信任「去邊界化」最著名的實證——不靠 VPN,靠身分與裝置狀態決定一切存取。</p>
+    </div>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">08 — 🚨 CISSP 考點雷達</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>① 考綱定位</strong>:零信任是 <strong>2024 考綱 §3.1 新增</strong>的安全設計原則（3.1.8 Zero Trust or trust but verify）,屬於「必然出題」的新重點。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>② 情境題常問「哪個做法最能落實零信任」</strong>:正解特徵是「<strong>持續驗證每一請求、以身分/裝置狀態為依據、最小權限</strong>」;干擾項特徵是「加強邊界」（更大防火牆、更多 VPN）——那是 castle-and-moat 思維。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>③ 元件題</strong>:分清 <strong>PE 決策、PA 下令、PEP 執行</strong>;PDP = PE + PA。限制橫向移動 → 想到<strong>微分段</strong>。</p>
+    </div>
+
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A CISO is redesigning security architecture after attackers breached the perimeter and moved laterally for months. Which approach BEST implements a zero trust design principle?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（攻擊者突破邊界後在內網橫向移動數月,CISO 要重新設計安全架構。哪個做法『最能』落實零信任設計原則?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Continuously verify every access request based on identity and device posture, regardless of network location 不論網路位置,依身分與裝置狀態持續驗證每一次存取請求</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Deploy a next-generation firewall at the network perimeter 在網路邊界部署次世代防火牆</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Require all remote users to connect through a full-tunnel VPN 要求所有遠端使用者一律走 full-tunnel VPN</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Authenticate users once at login and trust the session all day 登入時驗證一次,整天信任該工作階段</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。零信任核心是 <strong>never trust, always verify</strong>:不以網路位置為信任依據,對<strong>每一次</strong>請求依身分與裝置狀態<strong>持續</strong>驗證授權——這正是防止橫向移動的根本解。記憶法:題目看到『橫向移動 + 最能落實零信任』,選『持續驗證/身分中心』,不選『加強邊界』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：更強的邊界防火牆仍是 castle-and-moat 思維,擋不住已入內網的橫向移動。</li><li style="margin-bottom:3px;">C：VPN 通了隧道即給整個內網存取,屬過度授權,與零信任相悖。</li><li style="margin-bottom:3px;">D：驗證一次就長期信任,違反『持續驗證』原則。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An architect is deploying zero trust per NIST SP 800-207. Which component sits in the data path and actually enables, monitors, and terminates each connection between a subject and a resource?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（依 NIST SP 800-207 部署零信任,哪個元件位於資料路徑上,實際負責放行、監控與終止主體到資源的每一條連線?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Policy Engine 政策引擎</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Policy Administrator 政策管理器</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Policy Enforcement Point 政策執行點</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Policy Decision Point 政策決策點</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>PEP（Policy Enforcement Point）</strong>是資料平面上的守門員,位於主體與資源之間,依控制平面的指令實際<strong>執行</strong>放行/監控/切斷連線。記憶法:<strong>PE 決策、PA 下令、PEP 執行</strong>（法官、書記官、法警）。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Policy Engine 在控制平面『做決策』,不在資料路徑上執行。</li><li style="margin-bottom:3px;">B：Policy Administrator 負責把決策『下達』給 PEP,本身不擋流量。</li><li style="margin-bottom:3px;">D：PDP = PE + PA 的合稱,屬控制平面,不是執行元件。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">After a ransomware incident spread from one compromised server to dozens of others in the same data center, which control would BEST limit lateral movement in line with zero trust?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（勒索軟體從一台受駭伺服器擴散到同機房數十台主機。哪個控制『最能』依零信任精神限制橫向移動?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deploy a network intrusion detection system (NIDS) 部署網路入侵偵測系統</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Move the servers into a hardened DMZ 把伺服器搬進強化的 DMZ</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Separate servers into a few large VLANs 將伺服器劃分成幾個大型 VLAN</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Implement microsegmentation with per-workload access policies 實施微分段,對每個工作負載套用個別存取政策</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>Microsegmentation</strong>（微分段）把安全邊界縮到單一工作負載,東西向流量逐一過政策檢查——即使一台被攻陷,也無法自由連到鄰居,是圍堵橫向移動的最佳答案。判斷邏輯:『限制 lateral movement』幾乎等於在點名微分段。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：NIDS 只能『偵測』,不能阻斷擴散（偵測性 vs 預防性控制）。</li><li style="margin-bottom:3px;">B：DMZ 是對外服務的邊界概念,無助於內部東西向流量管控。</li><li style="margin-bottom:3px;">C：大型 VLAN 段內仍互信,勒索軟體照樣在段內橫掃,粒度不足。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
+
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>零信任 = never trust, always verify:不看網路位置、看身分與裝置狀態,每次請求都驗證;SP 800-207 由 PE 決策、PA 下令、PEP 執行;微分段擋橫向移動。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . PDP 由哪兩個元件組成？<br><span style="color:#0A6160;">→ Policy Engine + Policy Administrator（PEP 是資料平面的執行點）。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . ZTNA 與 VPN 最大的差異？<br><span style="color:#0A6160;">→ ZTNA 逐應用授權、持續驗證、應用對外隱形;VPN 通了隧道即給整個內網。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Google BeyondCorp 的轉型契機與核心做法？<br><span style="color:#0A6160;">→ 2009 Operation Aurora 後廢除特權內網,由 access proxy 依身分 + 裝置狀態逐請求授權。</span></p>
+    </details>
+
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.1 零信任設計原則）</div>
+      <div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍§3.1.8 Zero Trust or trust but verify（2024 新增）</div>
+      <p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>Zero Trust</strong>:假設任何使用者/裝置/系統都不預設可信（assume breach）,對每個請求強制<strong>持續驗證、最小權限、細粒度存取控制</strong>;取代傳統 castle/moat 與 trust but verify。目標是每次存取都先 <strong>authenticated、authorized、encrypted</strong> 才放行。</p>
+      <div style="font-size:13px;font-weight:700;color:#0A6160;margin:8px 0 6px;">▍架構參考:NIST SP 800-207</div>
+      <p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;">控制平面 <strong>PDP（Policy Engine + Policy Administrator）</strong>做決策並下令,資料平面 <strong>PEP</strong> 執行放行/阻斷;搭配 §3.1.11 SASE 的 <strong>ZTNA</strong> 元件與微分段,實現 identity-centric 的去邊界架構。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §3.1.8 Zero Trust + NIST SP 800-207。</p>
+    </div>
+    <!-- /09b -->
+
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/P5So8_NKxz4" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 3 ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#B45309; font-weight:700; margin-bottom:2px;">📝 考題練習（刷題）</div>
+        <a href="https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8" style="font-size:14px; font-weight:700; color:#B45309; text-decoration:none;">CISSP Practice Questions Playlist｜刷題播放清單 ↗</a>
+      </div>
+    </div>
+
+    
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 121 / 126 · P3-D3-6</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

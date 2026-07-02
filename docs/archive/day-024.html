@@ -70,6 +70,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . OAuth 2.0 解決的是鑑別還是授權？<br><span style="color:#0A6160;">→ 授權（委派存取、發 token），非鑑別。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . AD 內網的票證式 SSO 機制？<br><span style="color:#0A6160;">→ Kerberos（KDC 發 TGT 與服務票）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which of the following statements about Kerberos is TRUE?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（關於 Kerberos,下列敘述何者正確?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> It uses asymmetric (public key) cryptography to issue tickets 使用非對稱（公鑰）密碼學發放票證</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> It uses symmetric cryptography and time-stamped tickets issued by a Key Distribution Center (KDC) 使用對稱密碼學,由 KDC 發放含時戳的票證</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Its primary purpose is authorization rather than authentication 其主要目的是授權而非鑑別</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> It encrypts only the password exchange, leaving other authentication traffic unprotected 僅加密密碼交換,其餘鑑別流量未受保護</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。Kerberos 以<strong>對稱密碼學</strong>（AES）與票證（TGT/服務票）證明身分,由 KDC 擔任可信第三方;票證含時戳與有效期,故依賴 NTP 時間同步以防重放攻擊,並使用 port 88。記憶:Kerberos＝對稱＋票證＋KDC＋時間同步。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Kerberos v5 用對稱（secret-key）密碼學;同時支援對稱＋非對稱的是 SESAME。</li><li style="margin-bottom:3px;">C：Kerberos 的主要目的是『鑑別』,是組織內最常見的 SSO 方法。</li><li style="margin-bottom:3px;">D：『僅加密密碼』是 RADIUS 的弱點;Kerberos 對鑑別流量提供端對端保護。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A network security manager must centralize AAA for administrators logging in to routers and switches. Requirements: the entire authentication exchange must be encrypted, and authentication, authorization, and accounting must be handled as separate processes. Which protocol BEST meets these requirements?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（網路安全經理需為登入路由器與交換器的管理員集中 AAA。需求:整個鑑別交換全程加密,且認證、授權、記帳須可分離處理。哪個協定最符合?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> RADIUS 遠端撥入使用者驗證服務</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Kerberos 票證式鑑別協定</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> TACACS+ 終端存取控制器存取控制系統</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> SAML 安全斷言標記語言</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。TACACS+ 專為網路設備管理設計:加密『全部』鑑別資訊（非僅密碼）、把 AAA 三程序分離（可部署於不同伺服器）、走 TCP port 49 提供可靠傳輸——兩項需求完全對應。記憶:TACACS+＝全加密＋AAA 分離＋TCP 49。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：RADIUS 預設僅加密密碼欄位,且 AAA 綁在一起,不符題幹兩項需求。</li><li style="margin-bottom:3px;">B：Kerberos 是內網票證式鑑別/SSO,不是網路設備的 AAA 協定。</li><li style="margin-bottom:3px;">D：SAML 是瀏覽器聯合 SSO 的 XML 斷言標準,與設備管理 AAA 無關。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.6 聯合協定 / §5.2.5 FIM）</div>

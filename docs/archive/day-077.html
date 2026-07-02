@@ -78,6 +78,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 防止 CI/CD 管線投毒的關鍵控制？<br><span style="color:#0A6160;">→ artifact 簽章、SLSA 來源可驗、最小權限 token、SBOM、受保護分支審查。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . CI 中管理憑證的正確做法？<br><span style="color:#0A6160;">→ 用祕密庫＋短期最小權限/OIDC 聯合,不硬編入 repo。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A financial services company fully automates its build and test pipeline so every change that passes automated testing is always in a deployable state. However, its change advisory board requires a human to approve each release before it reaches production. Which practice BEST describes this approach?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某金融服務公司將建置與測試管線完全自動化,每個通過自動化測試的變更都隨時處於可部署狀態;但其變更諮詢委員會要求每次發布上正式環境前須經人工核准。哪個實務最能描述這個做法?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Continuous delivery 持續交付</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Continuous deployment 持續部署</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Continuous integration 持續整合</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Blue-green deployment 藍綠部署</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。Continuous Delivery 與 Continuous Deployment 的關鍵差異在<strong>發布最後一步是否有人工介入</strong>:<strong>Delivery＝程式碼隨時可部署,但上正式環境需人工核准</strong>;Deployment＝通過自動化測試即自動上線,無人工介入。題幹『自動化到可部署＋人工核准』正是持續交付。記憶:delivery 送到門口(等你簽收),deployment 直接進門。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：持續部署是通過測試後<strong>自動</strong>部署到正式環境,無人工核准步驟,與題幹相反。</li><li style="margin-bottom:3px;">C：持續整合只涵蓋『提交即合併並觸發單元/整合測試』,未涵蓋隨時可發布與核准流程。</li><li style="margin-bottom:3px;">D：藍綠部署是『如何切換』新舊環境的部署技術,與『是否人工核准』無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">After a production outage, a senior developer requests permanent, direct deployment access to the production environment so future fixes can be applied faster. What is the security manager's BEST response?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一次正式環境故障後,資深開發者要求取得永久,直接的正式環境部署權限,以便未來更快套用修正。安全經理的最佳回應是什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deny the request and require all changes to go through the controlled release process, preserving separation of duties between development and production 拒絕請求,要求所有變更經受控發行流程,維持開發與正式環境的職責分離</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Grant the access but require the developer to document every change made in production 授予權限,但要求開發者記錄在正式環境所做的每項變更</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Grant the access only during business hours when the operations team can observe 只在維運團隊可觀察的上班時間授予權限</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Approve the request on condition that the developer uses multifactor authentication 以開發者使用多因子驗證為條件核准請求</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。環境隔離的鐵則之一:<strong>開發者不應有正式環境的不受控部署權(職責分離)</strong>。緊急修正應走受控的變更/發行流程(必要時用緊急變更程序),而非開後門。判斷邏輯:Think like a manager——流程優先,單一事件的『快』不能犧牲結構性控制;開發者能直改正式環境會使未授權/未測試變更與舞弊風險大增。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：事後記錄是偵測性補償,擋不住未經審查的變更進入正式環境,職責分離已被破壞。</li><li style="margin-bottom:3px;">C：限制時段沒有改變『開發者可不受控直改正式環境』的本質,只是縮小視窗。</li><li style="margin-bottom:3px;">D：MFA 強化的是『身分確認』,解決不了『這個身分本來就不該有此權限』的授權問題。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A development team discovers most of its security defects during pre-release penetration testing, when fixes are slow and expensive. Which change would MOST effectively reduce the cost of remediating these defects?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某開發團隊的大多數安全缺陷都是在發布前滲透測試才發現,此時修正既慢又貴。哪項改變最能有效降低修復這些缺陷的成本?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Hire additional penetration testers so tests can run more frequently 增聘滲透測試人員以提高測試頻率</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Extend the penetration testing window in the release schedule 在發布時程中拉長滲透測試期間</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Integrate automated security gates (secret scanning, SAST, SCA) earlier in the CI/CD pipeline so defects are caught at commit and build time 在 CI/CD 管線更早階段整合自動化安全關卡(祕密掃描,SAST,SCA),在提交與建置時就攔到缺陷</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Deploy a web application firewall to block exploitation of the defects in production 部署 WAF 在正式環境阻擋缺陷被利用</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。這是 <strong>Shift Left(左移)</strong>的經典情境:缺陷越晚發現,修復成本越高。把自動化安全檢查(pre-commit hook,secret scanning,SAST,SCA,未過不建置)織入管線<strong>早期</strong>,讓開發者在提交/建置當下就得到回饋,從根本降低修復成本。判斷邏輯:問『降低修復成本』→ 改變『發現時點』,而非加強最後一關。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：增加人力仍在<strong>後期</strong>發現問題,發現時點不變,修復成本依然高。</li><li style="margin-bottom:3px;">B：拉長測試期間同樣不改變發現時點,反而拖慢交付。</li><li style="margin-bottom:3px;">D：WAF 是執行期緩解(治標),缺陷仍在程式碼裡,也沒有降低修復成本。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.2 DevSecOps 與環境控制（深入））</div>
@@ -124,7 +169,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 77 / 120 · P2-D8-2</span>
   </div>
 

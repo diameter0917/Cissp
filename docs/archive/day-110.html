@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 不關閉主系統、備援並行的 DR 測試是？<br><span style="color:#0A6160;">→ Parallel test(平行測試)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 最真實但風險最高的 DR 測試？<br><span style="color:#0A6160;">→ Full interruption test(全中斷)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During an authorized penetration test, the testing team discovers evidence that a real attacker has already compromised the target server and is actively exfiltrating data. According to the rules of engagement (RoE), what should the testers do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（在一次獲授權的滲透測試中,測試團隊發現目標伺服器早已被真實攻擊者入侵,且正在外洩資料。依交戰規則 (RoE),測試人員應「首先」怎麼做?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Continue the test as planned and document the compromise in the final report 依原計畫繼續測試,將入侵寫入期末報告</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Immediately remove the attacker's malware and close the backdoor 立即移除攻擊者惡意程式並關閉後門</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Expand the test scope to trace the attacker's entry point 擴大測試範圍追查攻擊者入侵路徑</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Halt testing and immediately notify the designated point of contact as defined in the RoE 停止測試,並依 RoE 立即通報指定聯絡窗口</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。RoE 應事先定義「發現真實入侵指標 (IoC) 時」的處置程序:<strong>停止測試、立即通報指定窗口</strong>,讓組織啟動正式事件回應 (incident response)。測試人員的授權僅限於「模擬攻擊」,真實事件的處置權責在組織,而且繼續測試會污染證據、干擾應變。記憶法:<strong>遇真事,先停手、再通報</strong>。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：延到期末報告才揭露,會讓攻擊者持續外洩資料,通報時效是關鍵。</li><li style="margin-bottom:3px;">B：清除動作屬事件回應,超出測試授權,且會破壞鑑識證據。</li><li style="margin-bottom:3px;">C：擅自擴大範圍違反 RoE 的 scope 約定,可能產生法律責任。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A CISO wants continuous, automated validation that detection and prevention controls can identify advanced persistent threat (APT) techniques between the annual penetration tests. Which approach BEST meets this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（CISO 希望在年度滲透測試之間,能「持續、自動化」驗證偵測與防禦控制是否能識別 APT 攻擊技術。哪個做法「最」符合需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Commission an additional red team engagement each quarter 每季加做一次紅隊演練</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Increase the frequency of authenticated vulnerability scans 提高授權弱點掃描的頻率</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Run quarterly tabletop exercises with the incident response team 與 IR 團隊每季做桌面演練</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Deploy a breach and attack simulation (BAS) platform 部署 BAS 入侵與攻擊模擬平台</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>BAS (Breach and Attack Simulation)</strong> 結合紅隊 (攻) 與藍隊 (守) 技術加上<strong>自動化</strong>,持續在環境中注入威脅指標 (如在伺服器放置可疑檔案) 模擬 APT,驗證偵測/防禦控制是否即時觸發——正對題幹的「持續、自動化、驗證控制」三個關鍵字。判斷邏輯:紅隊是「人工、時間點」,BAS 是「自動、持續」。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：紅隊是人工、單次時間點的演練,成本高且無法「持續」覆蓋。</li><li style="margin-bottom:3px;">B：弱點掃描找的是「弱點存在與否」,不會實際模擬攻擊行為來驗證偵測控制是否觸發。</li><li style="margin-bottom:3px;">C：桌面演練是紙上流程討論,不會對技術控制做實際驗證。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager is mapping the organization's ISMS activities to the ISO 9000 Plan-Do-Check-Act (PDCA) loop. Security assessment and testing activities BEST correspond to which phase?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理正將組織 ISMS 活動對應到 ISO 9000 的 PDCA 循環。安全評估與測試活動「最」對應哪個階段?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Plan — establishing ISMS goals and policies 規劃:訂定 ISMS 目標與政策</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Do — day-to-day security operations 執行:日常安全維運</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Check — verifying that controls operate as intended 查核:驗證控制如預期運作</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Act — conducting the formal management review 行動:進行正式管理審查</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。在 PDCA 循環中:Plan 訂目標與政策、Do 是日常維運、<strong>Check 就是安全評估與測試</strong> (驗證控制是否有效)、Act 才是正式的<strong>管理審查</strong> (依評估結果做決策與改善)。高鑑別點:很多人把「評估」和「管理審查」混在同一格——<strong>評估產生資料 (Check),管理審查消化資料並拍板 (Act)</strong>,先 Check 後 Act。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Plan 是 ISMS 的基礎,決定目標並驅動政策,尚未涉及驗證。</li><li style="margin-bottom:3px;">B：Do 是安全維運本身,評估是對維運結果的檢驗,不是維運。</li><li style="margin-bottom:3px;">D：Act 是管理審查——它「使用」評估與測試的產出,但評估活動本身屬 Check。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2 + §6.5 D6 綜合）</div>
@@ -193,7 +238,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 110 / 120 · P3-D6-5</span>
   </div>
 

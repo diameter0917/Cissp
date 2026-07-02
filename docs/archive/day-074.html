@@ -79,6 +79,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . honeytoken 為何是高訊噪比的偵測？<br><span style="color:#0A6160;">→ 假資產無正常用途,被觸碰即代表異常,告警可信度高。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . EDR 相較傳統防毒的優勢？<br><span style="color:#0A6160;">→ 靠行為偵測未知威脅並能遠端隔離回應,非僅靠已知特徵。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A bank suspects that a payments administrator has been committing fraud that requires daily manipulation of records to stay hidden. Which control is MOST likely to bring this ongoing fraud to light?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（銀行懷疑一名支付系統管理員涉入舞弊,且該舞弊需要每天動手腳才能不被發現。哪項控制最可能讓這種持續性舞弊曝光?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Enforcing least privilege on the payments application 對支付應用系統落實最小權限</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Requiring background checks at the time of hiring 在招聘時執行背景查核</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Splitting payment initiation and approval between two roles 將付款發起與核准拆分給兩個角色</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Enforcing mandatory vacations for the administrator 對該管理員實施強制休假</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。判斷邏輯:關鍵字是『需要<strong>每天動手腳</strong>才能藏住』——<strong>強制休假(mandatory vacation)</strong>迫使當事人離開崗位、由他人接手職務,無人持續維護時異常自然浮現,是專門<strong>揭發</strong>持續性舞弊的偵測控制。記憶法:要抓『天天顧著的鬼』,就逼他休假。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：最小權限是預防性控制,對『已在自身權限內進行』的舞弊沒有揭發力。</li><li style="margin-bottom:3px;">B：背景查核只在入職前過濾人選,管不到在職期間的行為。</li><li style="margin-bottom:3px;">C：SoD 是預防未來單人舞弊的設計(預防性),無法讓既有的持續舞弊現形。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security team plans to deploy a honeypot to detect intruders moving laterally in the internal network. Which consideration is MOST important before deployment?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（資安團隊計畫部署蜜罐(honeypot)以偵測在內網橫向移動的入侵者。部署前哪項考量最重要?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Loading real production data onto it so attackers find it convincing 放入真實正式資料使其更逼真</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Fully patching it so intruders cannot actually compromise it 完整修補使入侵者無法真正入侵它</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Isolating it, using only fake data, and completing a legal review of entrapment and liability risks 妥善隔離、只放假資料,並完成誘捕(entrapment)與衍生責任的法務評估</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Announcing its presence to employees to deter insider misuse 向員工公告其存在以嚇阻內部濫用</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。判斷邏輯:蜜罐是<strong>刻意可被入侵的誘餌</strong>,部署三原則:嚴格隔離(防止被攻擊者反利用為跳板)、絕不放真實資料、事前完成 enticement/entrapment 與責任風險的法務評估。控制若自身變成風險就本末倒置——先把法律與隔離做好才能上線。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：放真資料等於主動把資產送給攻擊者,絕對禁止。</li><li style="margin-bottom:3px;">B：蜜罐常刻意保留假漏洞(pseudo flaws)引誘攻擊,完全修補反而失去誘捕功能。</li><li style="margin-bottom:3px;">D：公告存在會讓誘餌失效(攻擊者與內鬼避開),違反欺敵的本意。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization already runs EDR, but recent attacks moved across email, cloud services, and the network, and analysts must manually piece together alerts from separate consoles. Which solution BEST addresses this gap?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（組織已部署 EDR,但近期攻擊橫跨郵件、雲端服務與網路,分析師必須在多個獨立主控台之間人工拼湊告警。哪個方案最能補足此缺口?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deploy XDR to correlate detections across endpoint, network, email, and cloud telemetry 導入 XDR 跨端點/網路/郵件/雲端遙測整合關聯偵測</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Replace the EDR agent with next-generation signature-based antivirus 以新一代特徵式防毒取代 EDR 代理程式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Deploy additional honeypots in each environment to attract the attackers 在各環境加設蜜罐吸引攻擊者</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Increase the scan frequency of the existing endpoint agents 提高既有端點代理程式的掃描頻率</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。判斷邏輯:痛點是『攻擊跨域、告警各自為政』——<strong>XDR</strong> 的定位正是把端點(EDR)延伸到網路、郵件、雲端,<strong>集中關聯並自動回應</strong>,消除人工跨主控台拼湊。記憶法:E(endpoint)只顧端點,X(extended)跨域整合。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：退回特徵式防毒是能力降級,連端點行為偵測與遠端回應都失去。</li><li style="margin-bottom:3px;">C：蜜罐提供高可信誘捕點,但不解決跨域告警的整合關聯問題。</li><li style="margin-bottom:3px;">D：掃描更頻繁仍侷限於端點視野,補不了郵件/雲端/網路的缺口。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.4 維運 / §7.7.1 防火牆（深入））</div>
@@ -123,7 +168,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 74 / 120 · P2-D7-4</span>
   </div>
 

@@ -70,6 +70,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 變更管理的關鍵要素？<br><span style="color:#0A6160;">→ 核准、測試、可回退、留紀錄。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . WannaCry 利用的未修補漏洞代號？<br><span style="color:#0A6160;">→ MS17-010（SMB），修補早已釋出但未部署。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which process is PRIMARILY responsible for ensuring that every modification to a production system is formally requested, assessed, approved, and documented before implementation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪一個流程的主要職責,是確保正式環境的每次修改在實施前都經過申請、評估、核准並留下紀錄?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Configuration management 組態管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Change management 變更管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Patch management 修補管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Vulnerability management 弱點管理</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。變更管理控制『狀態如何被改變』:申請 → 評估 → 核准 → 測試 → 實施 → 回顧,確保所有變更受控且可回溯。判斷關鍵字是『修改前經過核准、留下紀錄』——這正是變更管理的定義;組態管理則是維持『現在的標準狀態』（baseline）,兩者相輔但職責不同。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：組態管理維持基準、防漂移,不負責審核與批准變更流程本身。</li><li style="margin-bottom:3px;">C：修補管理只涵蓋安全修補這一類變更,範圍較窄,且本身也應走變更管理。</li><li style="margin-bottom:3px;">D：弱點管理負責發現與排序弱點,不控制系統修改的流程。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An audit finds that production servers have gradually drifted from the approved secure baseline because administrators made undocumented ad hoc changes. Which practice would BEST prevent this situation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（稽核發現正式環境伺服器因管理員多次未記錄的臨時修改,逐漸偏離已核准的安全基準。哪個做法最能防止這種情況?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Deploying security patches more frequently 更頻繁地部署安全修補</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Enforcing configuration management with regular audits against the approved baseline 落實組態管理,定期對照核准基準稽核</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Running quarterly vulnerability scans on all servers 每季對所有伺服器做弱點掃描</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Requiring administrators to work in pairs 要求管理員兩人一組作業</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。情境描述的是<strong>組態漂移（configuration drift）</strong>,根因是修改未受控、也沒有對照基準的稽核。最佳解是落實組態管理:定義並維護 baseline,定期比對實際設定與基準、矯正偏差,並要求所有修改走變更管理留下紀錄。針對根因的流程性控制,優於只處理症狀的做法。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：修補更頻繁不會阻止未記錄的組態修改,與漂移的根因無關。</li><li style="margin-bottom:3px;">C：弱點掃描找的是已知漏洞,不一定能發現『偏離基準但尚未成為已知弱點』的設定。</li><li style="margin-bottom:3px;">D：雙人作業是防舞弊的人事控制,無法系統性地偵測與矯正組態偏離。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.3 組態管理 / §7.9 變更）</div>

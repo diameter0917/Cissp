@@ -79,6 +79,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . DNSSEC 提供機密性嗎？<br><span style="color:#0A6160;">→ 否；只提供完整性與來源鑑別（防 spoofing）。加密用 DoH/DoT。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 站對站 VPN 用 IPsec 哪種模式？<br><span style="color:#0A6160;">→ Tunnel 模式（加密整個原始封包）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During a penetration test, an organization's public web server is found to still accept SSL 3.0 and TLS 1.0 connections that were kept for compatibility with older clients. The tester demonstrates that an on-path attacker can force browsers to negotiate the weakest protocol. Which of the following is the BEST remediation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（滲透測試發現,組織的對外 Web 伺服器為相容舊用戶端仍接受 SSL 3.0 與 TLS 1.0 連線。測試員展示路徑上的攻擊者可強迫瀏覽器協商到最弱協定。下列何者是最佳補救措施?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Disable SSL 3.0/TLS 1.0-1.1 and weak cipher suites on the server, and enable downgrade protection such as TLS_FALLBACK_SCSV 在伺服器停用 SSL 3.0/TLS 1.0-1.1 與弱加密套件,並啟用 TLS_FALLBACK_SCSV 等降級保護</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Replace the server certificate with one using a longer RSA key 更換為使用更長 RSA 金鑰的伺服器憑證</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Require users to upgrade their browsers before connecting 要求使用者連線前先升級瀏覽器</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Migrate the website from TLS to an IPsec tunnel 將網站由 TLS 移轉為 IPsec 通道</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。降級攻擊（如 POODLE）的根因是『為相容而保留弱協定』——只要伺服器還接受 SSL 3.0/TLS 1.0,攻擊者就能強迫協商到弱版本再利用其漏洞。最佳補救是直接消除根因:停用弱版本與弱套件,並啟用 TLS_FALLBACK_SCSV 等降級保護。判斷邏輯:修補『根因』永遠優於補強周邊環節。記憶法:『保留弱選項,本身就是漏洞』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：SSL 3.0 的弱點在協定設計本身,金鑰長度再長也擋不住降級後的協定層攻擊。</li><li style="margin-bottom:3px;">C：依賴使用者行為不可控;只要伺服器仍接受弱協定,攻擊者就能誘導降級。</li><li style="margin-bottom:3px;">D：IPsec 不適用一般大眾瀏覽器存取的公開網站,且換協定並未處理『保留弱版本』的根因。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A network architect must protect routing protocol updates exchanged between two internal routers. Compliance requires source authentication and integrity so that forged updates are rejected, but the packet contents must remain readable for troubleshooting, and encryption is explicitly NOT required. Which IPsec option BEST meets these requirements?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（網路架構師須保護兩台內部路由器間交換的路由協定更新。法遵要求來源鑑別與完整性以拒絕偽造更新,但封包內容須保持可讀以利除錯,且明確不需要加密。哪個 IPsec 選項最符合需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> ESP in tunnel mode ESP 通道模式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> ESP in transport mode ESP 傳輸模式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> AH in transport mode AH 傳輸模式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> TLS sessions between the routers 於路由器之間改用 TLS 會談</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。先列需求再對映元件:要『來源鑑別＋完整性』且『不加密、內容可讀』——這正是 AH（Authentication Header）的定義:提供鑑別、完整性與防重放,但不加密。兩台路由器端對端通訊用 transport 模式即可。判斷邏輯:CISSP 常反向出題——大家記得『要加密選 ESP』,這題考的是『明確不要機密性』時,AH 才是精準選擇,ESP 反而超出需求。記憶法:AH 像『官方認證章』,蓋章但不封口,誰都能讀。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：ESP 會加密 payload,違反『內容須可讀』的需求;tunnel 模式是閘道對閘道用,場景也不符。</li><li style="margin-bottom:3px;">B：模式正確但元件錯:ESP 仍會加密內容,不符『明確不需加密』的條件。</li><li style="margin-bottom:3px;">D：TLS 保護的是 TCP 應用會談,不適合 L3 路由協定更新的逐封包保護。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Users at a financial services firm report being redirected to a fraudulent website even though they typed the correct URL. Investigation shows the internal recursive resolver's cache contains forged records for the bank's domain. Which control would BEST prevent this attack from succeeding in the future?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（金融服務公司的使用者回報,即使輸入正確網址仍被導向詐騙網站。調查發現內部遞迴解析器的快取存有該銀行網域的偽造紀錄。哪個控制最能防止此攻擊再次得逞?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Encrypt all DNS queries with DNS over HTTPS (DoH) 以 DNS over HTTPS（DoH）加密所有 DNS 查詢</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Block outbound UDP port 53 at the perimeter firewall 在邊界防火牆封鎖出站 UDP 53 埠</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Enable DNSSEC validation so DNS responses are verified with digital signatures 啟用 DNSSEC 驗證,以數位簽章驗證 DNS 回應</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Increase the TTL of cached DNS records 增加 DNS 快取紀錄的 TTL</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。症狀（正確網址被導向假站、快取有偽造紀錄）就是 DNS 快取毒化（cache poisoning）,根因是傳統 DNS 回應缺乏驗證。DNSSEC 以數位簽章提供來源鑑別與完整性,偽造紀錄因簽章驗不過而被拒收。判斷邏輯:攻擊利用『無驗證』,對策就是『加上驗證』;注意 DNSSEC 提供的是完整性/鑑別,不是加密。記憶法:DNSSEC＝『簽章防偽,不封口』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：DoH 加密的是查詢通道（機密性）,不驗證紀錄本身真偽,解析器快取仍可能被毒化。</li><li style="margin-bottom:3px;">B：封鎖 53 埠會癱瘓正常名稱解析,是斷服務而非控制措施。</li><li style="margin-bottom:3px;">D：拉長 TTL 反而讓已被毒化的紀錄在快取中存留更久,惡化問題。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.3 安全協定與 DNS（深入））</div>
@@ -131,7 +176,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 57 / 120 · P2-D4-2</span>
   </div>
 

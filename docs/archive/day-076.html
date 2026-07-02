@@ -50,6 +50,8 @@
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Threat Modeling</strong>（威脅建模）— <span style="color:#5B6675;">設計期系統化找威脅。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SAMM</strong>（軟體保證成熟度模型）— <span style="color:#5B6675;">OWASP 規範性框架。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">BSIMM</strong>（建構安全成熟度模型）— <span style="color:#5B6675;">描述性、觀察業界實作。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SW-CMM</strong>（軟體能力成熟度模型）— <span style="color:#5B6675;">五級:①Initial 初始(混亂)→②Repeatable 可重複(基本專案管理)→③Defined 已定義(文件化標準流程)→④Managed 已管理(量化度量)→⑤Optimizing 最佳化(持續改善);評估『現在在哪』,不含安全。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">IDEAL Model</strong>（IDEAL 改善模型）— <span style="color:#5B6675;">五階段:Initiating 啟動→Diagnosing 診斷→Establishing 建立→Acting 行動→Learning 學習;講『怎麼改善』。</span></td></tr>
       <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">CMMI</strong>（能力成熟度整合）— <span style="color:#5B6675;">流程成熟度分級。</span></td></tr>
     </table>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 易混淆釐清</div>
@@ -78,6 +80,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . SAMM 與 BSIMM 的差別？<br><span style="color:#0A6160;">→ SAMM 規範性(該做什麼);BSIMM 描述性(業界實際在做什麼,當標竿)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 敏捷開發如何確保安全不被犧牲？<br><span style="color:#0A6160;">→ 把安全活動內建每個 sprint(納入 Definition of Done),而非最後補。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager assessing her company's development organization finds that all teams follow formal, documented, organization-wide development processes with peer reviews and training programs, but no quantitative measures of process or product quality are collected. Under the SW-CMM, which maturity level BEST describes this organization?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理評估公司的開發組織,發現所有團隊都遵循正式,文件化,全組織一致的開發流程,並有同儕審查與訓練計畫,但尚未蒐集任何流程或產品品質的量化度量。依 SW-CMM,哪個成熟度等級最能描述這個組織?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Level 2: Repeatable 第二級:可重複</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Level 3: Defined 第三級:已定義</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Level 4: Managed 第四級:已管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Level 5: Optimizing 第五級:最佳化</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。SW-CMM 第三級 <strong>Defined(已定義)</strong>的標誌正是:開發者依<strong>正式,文件化的標準流程</strong>運作(含同儕審查,訓練計畫,組織級流程定義)——但<strong>尚未量化度量</strong>。判斷邏輯:『有文件化標準流程,沒有度量』＝Defined;一旦加上量化指標才升到 Managed。記憶:1 混亂→2 可重複→3 已定義(文件化)→4 已管理(量化)→5 最佳化(持續改善)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Repeatable 只有基本專案管理(規劃,組態,需求管理),還沒有『全組織文件化標準流程』。</li><li style="margin-bottom:3px;">C：Managed 的特徵是<strong>量化度量</strong>軟體流程與產品,題幹明說尚未蒐集度量,故未達第四級。</li><li style="margin-bottom:3px;">D：Optimizing 是在量化基礎上做<strong>持續改善</strong>(缺陷預防,流程/技術變更管理),距離題幹情境還差兩級。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization adopting the IDEAL model for software process improvement has just finished analyzing the current state of its development practices and produced general recommendations for change. Which phase should the organization enter NEXT?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織採用 IDEAL 模型進行軟體流程改善,剛完成對現行開發實務的現況分析並提出概略的變更建議。組織『接下來』應進入哪個階段?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Acting 行動</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Establishing 建立</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Learning 學習</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Initiating 啟動</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。IDEAL 五階段:<strong>Initiating(啟動)→Diagnosing(診斷)→Establishing(建立)→Acting(行動)→Learning(學習)</strong>。題幹描述的『分析現況並提出概略建議』正是 <strong>Diagnosing(診斷)</strong>階段的產出,下一步是 <strong>Establishing</strong>:依診斷建議<strong>發展具體行動計畫</strong>。記憶:I-D-E-A-L 首字母順序即階段順序,先診斷,再定計畫,才動手。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Acting 是開發,測試,精煉並實作解決方案的階段,必須先有 Establishing 的具體計畫。</li><li style="margin-bottom:3px;">C：Learning 是最後階段,持續分析成效並提出新行動,還早。</li><li style="margin-bottom:3px;">D：Initiating(闡明變更的業務理由,建立支持,配置基礎設施)是第一階段,題幹已越過。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A software vendor proudly advertises its SW-CMM Level 5 (Optimizing) rating, yet its products continue to ship with security vulnerabilities. Which statement BEST explains this situation to executive management?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某軟體供應商自豪地宣傳其 SW-CMM 第五級(最佳化)評級,但其產品仍持續出現安全漏洞。哪個說法最能向高階管理層解釋這個情況?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> The Level 5 rating must have expired, since ratings require annual reassessment 第五級評級必定已過期,因為評級須每年重新評估</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Level 5 only applies to project management processes, not to coding activities 第五級只適用於專案管理流程,與寫程式活動無關</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> The vendor most likely misrepresented its rating, since Level 5 processes cannot produce defects 供應商很可能謊報評級,因為第五級流程不會產出缺陷</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> SW-CMM measures software process maturity and does not explicitly address security, so a security-focused model such as SAMM is also needed SW-CMM 衡量的是軟體流程成熟度,並未明確涵蓋安全,故還需要 SAMM 這類安全導向模型</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。官方考點:<strong>CMM 不明確涵蓋安全(doesn't explicitly address security)</strong>。SW-CMM 衡量的是流程的成熟與品質(可重複,文件化,量化,持續改善),流程再成熟也不代表已嵌入威脅建模,安全編碼等安全實務——那要靠 <strong>SAMM/BSIMM</strong> 這類軟體『安全』成熟度模型。判斷邏輯:向管理層解釋要選『模型適用範圍』的正確陳述,而非指控造假。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：題幹沒有任何評級過期的證據;這是憑空假設,不是最佳解釋。</li><li style="margin-bottom:3px;">B：第五級涵蓋整體軟體流程(含缺陷預防,流程改善),不是只管專案管理。</li><li style="margin-bottom:3px;">C：成熟流程能降低缺陷但不保證零缺陷,更不保證『安全』缺陷為零;指控造假缺乏依據。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.1.2 成熟度模型（深入））</div>
@@ -178,7 +225,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 76 / 120 · P2-D8-1</span>
   </div>
 

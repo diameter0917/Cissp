@@ -102,6 +102,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 模擬無內部資訊的外部攻擊者是哪種箱型？<br><span style="color:#0A6160;">→ 黑箱(black box)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 滲透測試合法的必要前提？<br><span style="color:#0A6160;">→ 書面授權與 ROE。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During an authorized penetration test conducted under agreed rules of engagement, the tester discovers evidence that a REAL attacker has already compromised the target server. What should the tester do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（在依約定交戰規則進行的授權滲透測試中,測試人員發現目標伺服器『已被真實攻擊者入侵』的證據。測試人員應『首先』怎麼做?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Continue the test and include the finding in the final report 繼續測試,將發現寫入期末報告</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Exploit the attacker's backdoor to gather more evidence 利用攻擊者留下的後門蒐集更多證據</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Pause testing and immediately notify the designated contact per the RoE 依 RoE 暫停測試並立即通報指定窗口</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Remove the attacker's malware to protect the client 移除攻擊者的惡意程式以保護客戶</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。發現<strong>真實入侵＝進行中的事件</strong>,已超出演練範疇;RoE 應定義此情況的緊急通報程序,測試人員須<strong>暫停測試、立即依 RoE 升級通報</strong>,讓客戶啟動事件回應。記憶法:演習中遇到真火,先報警再演。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：等到期末報告會延誤真實事件的應變時機。</li><li style="margin-bottom:3px;">B：動用攻擊者後門超出授權範圍,且可能破壞鑑識證據。</li><li style="margin-bottom:3px;">D：逕自清除會破壞證據,應變處置屬客戶 IR 流程的決策,非測試人員。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A CISO wants CONTINUOUS, automated validation that detection and prevention controls actually trigger when threat indicators appear on systems, without hiring a dedicated offensive team. Which approach BEST meets this need?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（CISO 想要『持續、自動化』地驗證:當威脅指標出現在系統上時,偵測與防禦控制是否真的會觸發,且不想聘請專職攻擊團隊。哪種做法最能滿足需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Annual red team engagement 年度紅隊演練</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Breach and attack simulation (BAS) platform 入侵與攻擊模擬平台</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Quarterly external penetration test 每季外部滲透測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Monthly vulnerability scans 每月弱點掃描</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。<strong>BAS</strong> 結合紅隊(攻擊)與藍隊(防禦)技術加上<strong>自動化</strong>,主動注入威脅指標(如在伺服器放置可疑檔案)以驗證偵測/防禦控制是否即時觸發,可持續、可重複執行——正中『持續自動化驗證控制』的需求。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：紅隊演練深度高但一年一次且靠人力,非持續自動化。</li><li style="margin-bottom:3px;">C：滲透測試同樣是週期性、人工的時點活動。</li><li style="margin-bottom:3px;">D：弱點掃描只列弱點,不會驗證偵測控制是否真的觸發告警。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager notes that unauthenticated network vulnerability scans miss configuration flaws and produce many false positives. Exploitation is NOT permitted in this environment. What is the BEST way to improve scan accuracy?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理發現『未驗證』的網路弱點掃描漏掉組態缺陷且誤報很多。此環境『不允許』任何利用行為。改善掃描準確度的最佳方式是?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Run authenticated (credentialed) scans using a read-only account 以唯讀帳號執行驗證(憑證)掃描</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Commission a penetration test to confirm each finding 委託滲透測試逐一確認發現</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Increase the frequency of the same unauthenticated scans 提高相同未驗證掃描的頻率</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Switch to an external black-box scan 改為外部黑箱掃描</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>驗證(credentialed)掃描</strong>以有效憑證(常用唯讀帳號)登入目標,能讀取組態檔、深入系統內層,<strong>提高準確度、降低誤報</strong>,且仍不做任何利用——同時滿足準確度與『不利用』兩個限制。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：滲透測試會實際利用弱點,違反『不允許利用』的限制(典型「技術上有效但違反前提」陷阱)。</li><li style="margin-bottom:3px;">C：提高頻率不會改善單次掃描的深度與準確度。</li><li style="margin-bottom:3px;">D：黑箱掃描資訊更少,漏報與誤報反而更多。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2 弱點 vs 滲透（考點））</div>
@@ -180,7 +225,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 106 / 120 · P3-D6-1</span>
   </div>
 

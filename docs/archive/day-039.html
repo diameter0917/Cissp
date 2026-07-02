@@ -45,6 +45,7 @@
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">DAST</strong>（動態應用安全測試）— <span style="color:#5B6675;">攻擊執行中應用（黑箱、近真實）。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">IAST</strong>（互動式應用安全測試）— <span style="color:#5B6675;">執行中插樁，結合靜動態優點。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SCA</strong>（軟體組成分析）— <span style="color:#5B6675;">掃描第三方/開源相依的已知漏洞。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">SBOM</strong>（軟體物料清單）— <span style="color:#5B6675;">列出軟體所有元件與相依的清單,軟體供應鏈透明度的基礎;與 SCA 互補——SCA 是分析工具,SBOM 是產出物/文件。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Dependency / Supply Chain</strong>（相依/供應鏈）— <span style="color:#5B6675;">引入的套件可能帶漏洞或惡意。</span></td></tr>
       <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">API Security</strong>（API 安全）— <span style="color:#5B6675;">授權/越權(BOLA)、速率限制、輸入驗證。</span></td></tr>
     </table>
@@ -70,6 +71,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 管理第三方/開源套件已知漏洞用什麼？<br><span style="color:#0A6160;">→ SCA（軟體組成分析），搭配 SBOM。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Log4Shell 為何影響如此廣？<br><span style="color:#0A6160;">→ Log4j 被極廣泛相依，許多應用因『相依的相依』受影響卻不自知。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A development team wants a security testing approach that observes the application while it is running AND has internal visibility through instrumentation of the code, combining the strengths of static and dynamic analysis. Which approach BEST meets this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（開發團隊想要一種安全測試方法:在應用程式執行中觀察,同時透過程式碼插樁取得內部視角,結合靜態與動態分析的優點。哪種方法最符合需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Static application security testing (SAST) 靜態應用安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Interactive application security testing (IAST) 互動式應用安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Dynamic application security testing (DAST) 動態應用安全測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Software composition analysis (SCA) 軟體組成分析</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。IAST＝<strong>執行中（DAST 特性）＋內部插樁可見原始碼（SAST 特性）</strong>,官方定義即『SAST 與 DAST 的結合:在執行中的系統上測試,同時能存取原始碼』。判斷邏輯:題幹同時出現 running＋instrumentation/內部視角兩個條件→IAST。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：SAST 只分析原始碼、不執行程式,缺少『執行中觀察』這個條件。</li><li style="margin-bottom:3px;">C：DAST 只從外部攻擊執行中的應用（黑箱）,沒有內部插樁與原始碼可見性。</li><li style="margin-bottom:3px;">D：SCA 盤點第三方/開源元件的版本與已知漏洞,不測試自寫程式的執行行為。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A critical remote code execution vulnerability is announced in a widely used open-source logging library, similar to the Log4Shell event. Management asks the security team to determine, within hours, which of the organization's 200 applications contain the affected component. Which of the following would BEST enable the team to answer quickly?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一個被廣泛使用的開源日誌函式庫爆出重大遠端程式碼執行漏洞,情境類似 Log4Shell。管理層要求安全團隊在數小時內確認 200 個應用中哪些含有受影響元件。下列何者最能讓團隊快速回答?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> An up-to-date SBOM maintained for each application 每個應用都維護最新的 SBOM（軟體物料清單）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Launching new DAST scans against all 200 applications 對 200 個應用全部重新執行 DAST 掃描</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Reviewing the most recent annual penetration test reports 審閱最近一次年度滲透測試報告</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Searching firewall logs for exploitation attempts 搜尋防火牆日誌中的攻擊嘗試紀錄</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。SBOM 列出每個應用的<strong>所有元件與相依（含『相依的相依』）</strong>,漏洞爆發時直接查清單即可定位受影響系統——這正是 SBOM 作為軟體供應鏈透明度基礎的核心價值,也是 Log4Shell 後 SBOM 成為標配的原因。判斷邏輯:問題是『哪些系統含有該元件』的盤點問題,答案是<strong>事先備妥的元件清單（產出物）</strong>;SCA 是產生與分析它的工具,兩者互補。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：DAST 從外部黑箱打站,對深埋在相依中的函式庫偵測不可靠,且掃 200 個應用耗時,不符『數小時內』。</li><li style="margin-bottom:3px;">C：滲透測試是時間點快照,漏洞公布前的報告不會涵蓋新 CVE,也不是元件盤點。</li><li style="margin-bottom:3px;">D：防火牆日誌只能看『是否已被攻擊』,無法回答『哪些系統含有該元件』。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.2.9 安全測試 / §8.4.2 開源）</div>

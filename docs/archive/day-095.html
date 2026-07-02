@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 專門安全管理加密金鑰的企業級裝置？<br><span style="color:#0A6160;">→ HSM(硬體安全模組)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 哪種雲模型客戶須自管 OS 與應用？<br><span style="color:#0A6160;">→ IaaS(客戶責任最多)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security architect is designing badge-controlled doors for a server room that stores highly sensitive data. Management asks how the doors should behave if the electronic access control system loses power. Which design is BEST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全架構師為存放高敏感資料的機房設計刷卡門禁,管理層詢問:電子門禁系統斷電時,門應如何動作?哪個設計最佳?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Configure the doors to fail-secure at all times, because protecting highly sensitive assets is the primary goal 全時 fail-secure,以保護高敏感資產為第一目標</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Configure the doors to fail-open at all times to preserve availability 全時 fail-open 以維持可用性</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Have the doors fail-safe in the direction of egress to protect human life, with compensating controls such as guards to protect the assets 逃生方向 fail-safe 保護人命,並以警衛等補償控制保護資產</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Keep the doors locked in their last state until power is restored 維持斷電前狀態直到復電</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。實體安全的鐵律:<strong>人命安全永遠優先於資產保護</strong>。實體 fail-safe(逃生方向解鎖)保護人,資產缺口再用警衛、監視等補償控制補上。記憶法:Physical 的 fail-safe/fail-open 保「人」,fail-secure/fail-closed 保「資產」;兩者衝突時人命勝出。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：典型陷阱——技術上「保護資產」沒錯,但斷電時把人困在機房內,違反人命優先原則。</li><li style="margin-bottom:3px;">B：全時 fail-open 讓任何人可進入,完全放棄機密性,矯枉過正。</li><li style="margin-bottom:3px;">D：維持原狀態不可預期,可能把人鎖在裡面,也可能把門敞開,兩頭落空。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager must choose between two firewall products, both certified at Common Criteria EAL4. To determine which product actually satisfies the organization's security requirements, what should the manager do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理要在兩款皆通過 Common Criteria EAL4 認證的防火牆中選型,要判斷哪個產品真正符合組織的安全需求,首先應該做什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Rely on the shared EAL4 rating, since it proves both products provide equivalent and sufficient security functionality 直接依 EAL4 認證,因它證明兩產品安全功能相同且足夠</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Request each vendor's Authorization to Operate (ATO) documentation 要求各廠商提供 ATO(營運授權)文件</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Compare the organization's Protection Profile (PP) against each product's Security Target (ST) 將組織的 Protection Profile(PP)與各產品的 Security Target(ST)逐一比對</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Commission an independent penetration test of both products 委外對兩產品進行獨立滲透測試</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。Common Criteria 的選型邏輯:PP 是組織的「需求清單」(I wants),ST 是廠商對其 TOE 的「安全承諾」;<strong>拿自己的 PP 去比對各廠商的 ST,最接近者中選</strong>。EAL 只衡量「評估過程的嚴謹度」(EAL1 功能測試→EAL7 形式化驗證),不代表功能強弱、更不代表符合你的需求。記憶法:PP=我要什麼、ST=廠商給什麼、EAL=驗得多嚴。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：高鑑別陷阱——EAL 相同只代表兩者受過同等嚴謹的「評估」,不保證功能相同,也不保證符合組織需求。</li><li style="margin-bottom:3px;">B：ATO 是組織自己的授權官(AO)對系統上線的風險核可,不是廠商產品選型文件。</li><li style="margin-bottom:3px;">D：滲透測試有價值但成本高且非 CC 架構下的第一步,應先完成 PP 對 ST 的需求比對。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An analyst with access only to several unclassified databases — shipping schedules, catering orders, and travel bookings — correctly deduces the date and location of a classified operation. Which attack does this scenario BEST describe?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一名分析師僅能存取幾個非機密資料庫——運輸排程、餐飲訂單與差旅訂位,卻正確推斷出一項機密行動的日期與地點。此情境最符合哪種攻擊?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Aggregation attack, because database functions combined multiple records into useful information 聚合攻擊(資料庫函數把多筆紀錄合併成有用資訊)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Privilege escalation, because the analyst obtained information above his clearance 權限提升(取得了超出其許可等級的資訊)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Inference attack, because human deduction combined nonsensitive information to derive classified information 推論攻擊(以人的推理結合非敏感資訊,得出機密資訊)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Covert channel exploitation, because information flowed outside authorized paths 隱蔽通道利用(資訊經未授權路徑流出)</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>推論(Inference)靠「人的演繹推理」</strong>:把多筆各自非敏感的資訊拼湊,推導出本應屬更高機密等級的結論。與聚合(Aggregation)的分界是「誰在組合」——聚合是<strong>資料庫的數學/SQL 函數</strong>在組合紀錄,推論是<strong>人腦</strong>在推理。記憶法:Inference=人腦推、Aggregation=資料庫算。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：高鑑別陷阱——聚合是基於數學、由 SQL 函數合併紀錄產生資訊;本題是人以常識推理拼湊,屬推論。</li><li style="margin-bottom:3px;">B：分析師從頭到尾只用自己被授權的存取,沒有取得更高權限帳號或系統權限。</li><li style="margin-bottom:3px;">D：隱蔽通道需存在一條隱藏的通訊路徑(如 timing/storage channel),本題資訊全來自正常授權查詢。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.1 + §3.6.2 D3 綜合）</div>
@@ -257,7 +302,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 95 / 120 · P3-D3-5</span>
   </div>
 

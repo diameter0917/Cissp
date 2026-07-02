@@ -78,6 +78,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 雲端共同責任模型下，資料分類與加密金鑰通常誰負責？<br><span style="color:#0A6160;">→ 客戶（in the cloud 的安全）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 法定最低保存年限與個資最小化刪除衝突時怎麼辦？<br><span style="color:#0A6160;">→ 依資料類別分別訂定保存政策，不可一刀切。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A multinational plans to consolidate all employee data into a single cloud region abroad. Legal counsel in one country objects, citing a national law that requires citizens' personal data to be stored on servers physically located within that country's borders. Which requirement does the counsel describe?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（跨國企業計畫把所有員工資料整併到境外單一雲端 region。某國法務提出異議,指出該國法律要求公民個資必須儲存在境內的實體伺服器。法務描述的是哪種要求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Data residency 資料存放地(residency)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Data localization 資料在地化(localization)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Data sovereignty 資料主權(sovereignty)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Purpose limitation 目的拘束</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。<strong>Data localization(在地化)</strong>=法規<strong>強制</strong>個資留在境內,是一種合規義務。判斷關鍵字:『法律要求』+『必須存放境內』。Residency 是描述性的(資料實際存哪),localization 是強制性的(法律要求存哪)——一字之差,考的就是這個。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Residency 描述資料『實際』儲存的地理位置與 region 選擇,本身不是法律強制要求。</li><li style="margin-bottom:3px;">C：Sovereignty 講資料受所在地/供應商母國『法律管轄』,關注誰能合法調取,而非強制留境內。</li><li style="margin-bottom:3px;">D：目的拘束是不得逾原蒐集目的使用個資,與資料儲存位置無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A SaaS provider acting for an EU controller receives a verified erasure request. The data subject's records exist in the production database, in encrypted long-term backups, and at two subprocessors. Which approach BEST fulfills the deletion obligation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（一家為歐盟 Controller 服務的 SaaS 收到經確認的刪除請求。當事人資料同時存在於正式資料庫,加密長期備份,以及兩家子處理者。哪個做法最能完整履行刪除義務?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Delete the production record and let backups age out silently without tracking 刪除正式環境紀錄,備份放著自然過期即可,不需追蹤</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Anonymize the production record and leave backup and subprocessor copies unchanged 將正式環境紀錄匿名化,備份與子處理者副本維持不變</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Delete production copies, apply crypto-shredding to render backup data unreadable, and contractually require subprocessors to confirm deletion 刪除正式環境副本,對備份採 crypto-shredding 使其不可解讀,並依契約要求子處理者確認刪除</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Reject the request because data in backups is technically impossible to erase 以備份技術上無法刪除為由拒絕請求</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。真正落實刪除要能<strong>定位所有副本</strong>:正式環境直接刪;難以逐筆改寫的加密備份用 <strong>crypto-shredding(銷毀金鑰)</strong>做邏輯刪除;子處理者則依 DPA <strong>連動刪除並回報確認</strong>。三個面向(線上,備份,第三方)缺一不可,這正是雲端刪除的難題與解法。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：沒有追蹤,也沒涵蓋子處理者;備份在過期前仍可還原資料,刪除義務並未履行。</li><li style="margin-bottom:3px;">B：只處理了一個副本;備份與子處理者仍持有可識別個資,等於沒刪。</li><li style="margin-bottom:3px;">D：技術困難不構成拒絕理由;crypto-shredding 與備份輪替刪除是業界已成熟的做法。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A product team designs a new registration form that collects national ID number, birth date, and household income 'in case they become useful for future features.' Applying the data minimization principle, what should the privacy officer recommend FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（產品團隊設計新的註冊表單,蒐集身分證字號,出生日期與家庭收入,理由是『以後功能也許用得到』。依資料最小化原則,隱私長應『首先』建議什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Collect only the fields required for the current, stated purpose and drop the rest 只蒐集現行特定目的所需的欄位,其餘一律不蒐集</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Encrypt all collected fields at rest and in transit 對所有蒐集欄位做靜態與傳輸加密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Obtain broad consent covering all possible future uses 取得涵蓋所有未來可能用途的概括同意</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Shorten the retention period for the extra fields 縮短多餘欄位的保存期間</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>Collection limitation(蒐集最小化)</strong>:只蒐集<strong>特定目的所需</strong>的最少資料。『以後也許用得到』正是最小化要禁止的心態——<strong>沒蒐集的資料不會外洩</strong>,最少資料=最小攻擊面與最低法遵風險。FIRST 該做的是從源頭砍欄位,而不是事後補控制。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：加密保護的是『已蒐集』的資料,技術上正確但不能正當化過度蒐集本身(層級錯)。</li><li style="margin-bottom:3px;">C：概括同意違反目的明確原則;同意不能治癒『沒有特定目的的蒐集』。</li><li style="margin-bottom:3px;">D：縮短保存只是下游補救;資料一旦蒐集,風險與法遵義務已經產生。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.4.3 位置 / §2.4.5 保存 / 主權）</div>
@@ -114,7 +159,7 @@
   </div>
 
   <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
-    <a href="#" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <a href="index.html" style="font-size:13px; color:#0A6160; text-decoration:none; font-weight:600;">← 回索引總表</a>
     <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 48 / 120 · P2-D2-3</span>
   </div>
 
