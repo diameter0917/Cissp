@@ -43,5 +43,14 @@
     "title_zh": "BCP、人員、供應鏈與意識",
     "sent_at_utc": "2026-07-01T00:02:19Z",
     "status": "sent"
+  },
+  {
+    "seq": 6,
+    "date": "2026-07-02",
+    "code": "P1-D2-1",
+    "phase": "P1",
+    "title_zh": "Domain 2 全景與資料分類",
+    "sent_at_utc": "2026-07-02T00:02:47Z",
+    "status": "sent"
   }
 ]
