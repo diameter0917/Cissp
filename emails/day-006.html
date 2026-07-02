@@ -81,6 +81,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 敏感度（sensitivity）與關鍵性（criticality）差在哪？<br><span style="color:#0A6160;">→ 敏感度＝外洩傷害（機密性面）；關鍵性＝對營運的重要（可用性面）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 誰負責決定一份資料的分類等級？<br><span style="color:#0A6160;">→ Data Owner（業務擁有者），非 IT/Custodian。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">In a typical commercial data classification scheme, which label represents the MOST sensitive level of data?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（在典型的商業資料分類制度中,哪個標籤代表最敏感的資料等級?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Confidential/Proprietary 機密/專有</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Private 私有</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Sensitive 敏感</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Public 公開</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。商業分類由高至低:Confidential/Proprietary ＞ Private ＞ Sensitive ＞ Public。Confidential/Proprietary 僅限組織內部使用,未授權揭露會造成嚴重後果,故為最高級。記憶法:商業版的『Top Secret』就是 Confidential/Proprietary。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：Private 多為個資/財務資料,等級次於 Confidential/Proprietary。</li><li style="margin-bottom:3px;">C：Sensitive 需要額外保護,但排序低於前兩者。</li><li style="margin-bottom:3px;">D：Public 可對外公開,揭露不會造成損害,為最低級。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager discovers that a server processing Top Secret data has been labeled and protected only as an Unclassified asset. Which of the following is the BEST course of action?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全經理發現一台處理 Top Secret 資料的伺服器,被標示且僅以 Unclassified 資產的等級保護。下列何者是最佳做法?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Encrypt all data stored on the server 將伺服器上所有資料加密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Move the Top Secret data to another unclassified server 把 Top Secret 資料移到另一台未分類伺服器</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Reclassify the server to match the highest classification of data it processes 將伺服器重新分類至其處理資料的最高等級</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Restrict physical access to the server room 限制機房的實體進出</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。資產分類必須與資料分類一致——處理 Top Secret 資料的系統,就應被分類並保護為 Top Secret 資產。先把分類改對,加密、存取、實體等整組控制才會依級自動套用;這是『分類驅動控制』的管理面答案,而非單點技術補救。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：加密只是單一技術控制,未修正根因（分類錯誤）,其他等級對應控制仍不到位。</li><li style="margin-bottom:3px;">B：把高機密資料移到另一台未分類伺服器,問題原封不動,暴露面甚至更大。</li><li style="margin-bottom:3px;">D：實體管制同樣只是局部控制,無法取代正確分類帶動的完整保護。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.1 資料與資產分類）</div>

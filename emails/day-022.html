@@ -46,6 +46,8 @@
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">FAR</strong>（誤接受率）— <span style="color:#5B6675;">冒充者被接受的比率（安全性最關鍵）。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">FRR</strong>（誤拒絕率）— <span style="color:#5B6675;">合法者被拒的比率（影響可用性）。</span></td></tr>
       <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">CER</strong>（交叉錯誤率）— <span style="color:#5B6675;">FAR＝FRR 之點，越低越準。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Machine / Service Identity</strong>（機器與服務身分）— <span style="color:#5B6675;">裝置與服務等非人類主體也需唯一身分,以憑證（certificate）、API key、服務帳號（service account）鑑別並定期輪換（考綱 §5.2 涵蓋 people、devices、services）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">Risk-based / Adaptive Authentication</strong>（風險式自適應驗證）— <span style="color:#5B6675;">依位置、裝置、行為等情境訊號動態調整鑑別強度,風險高時才要求額外因子（step-up）。</span></td></tr>
       <tr><td style="padding:7px 0; font-size:16px; line-height:1.6;"><strong style="color:#0F1B2D;">FIDO2 / Passkey</strong>（無密碼鑑別）— <span style="color:#5B6675;">以公鑰加密取代密碼，抗釣魚。</span></td></tr>
     </table>
     <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#0A6160; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 易混淆釐清</div>
@@ -70,6 +72,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 生物辨識系統準確度用哪個指標、方向？<br><span style="color:#0A6160;">→ CER（交叉錯誤率），越低越準。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Uber 2022 如何繞過 MFA？<br><span style="color:#0A6160;">→ MFA 疲勞轟炸（push bombing）＋社交工程誘導同意。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which authentication approach dynamically adjusts the required strength of authentication based on contextual signals such as user location, device, and login behavior?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪種鑑別方式會依使用者位置、裝置、登入行為等情境訊號,動態調整所需的鑑別強度?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Single-factor authentication 單因子鑑別</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Knowledge-based authentication (KBA) 知識型鑑別</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Risk-based (adaptive) authentication 風險式自適應驗證</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Synchronous token authentication 同步式 token 鑑別</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。風險式（自適應）驗證會即時評估情境風險——異地登入、陌生裝置、異常時段——風險低時放行,風險高時才要求額外因子（step-up）,在安全與使用體驗間取得平衡。官方考綱 §5.2 的識別與鑑別策略設計即涵蓋此類情境式決策。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：單因子固定只用一種因子,不會依風險調整強度。</li><li style="margin-bottom:3px;">B：KBA 是以個人歷史問題做身分證明/鑑別的靜態方法。</li><li style="margin-bottom:3px;">D：同步 token 每 30–60 秒產生 OTP,強度固定,與情境無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security architect is designing an identification and authentication strategy that must cover people, devices, and services. For backend services that call APIs with no human interaction, which approach is MOST appropriate?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全架構師正在設計須涵蓋人員、裝置與服務的識別與鑑別策略。對於無人為介入、自動呼叫 API 的後端服務,哪種做法最適當?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Issue each service its own certificate or API key, stored in a vault and rotated regularly 為每個服務發放專屬憑證或 API key,存於保管庫並定期輪換</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Require push-based MFA approval before each service call 每次服務呼叫前要求推播式 MFA 核准</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Embed one shared password in the source code of all services 在所有服務的原始碼中內嵌一組共用密碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Identify services solely by their source IP address 僅以來源 IP 位址識別服務</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。機器與服務身分（machine/service identity）應比照人員身分管理:每個服務有唯一身分,以憑證（certificate）、API key 或服務帳號鑑別,金鑰集中保管並定期輪換,才能鑑別與歸責。官方考綱 §5.2 明定鑑別策略須涵蓋 people、devices『與 services』,非人類主體不能被忽略。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：服務無人操作,推播 MFA 需要人為互動,實務上無法運作。</li><li style="margin-bottom:3px;">C：共用＋硬編碼密碼無法歸責、難以輪換,是重大弱點。</li><li style="margin-bottom:3px;">D：IP 屬『somewhere you are』的輔助情境因子,可被偽造,不能單獨作為鑑別。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.2.2 鑑別因子與 MFA）</div>

@@ -71,6 +71,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 驗證系統能擋住惡意輸入屬正向還負向測試？<br><span style="color:#0A6160;">→ 負向/誤用案例測試。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 事後追查入侵最重要的資料來源？<br><span style="color:#0A6160;">→ 日誌（log review，搭配 SIEM）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which software testing technique evaluates an application from a hostile actor's point of view by first enumerating known abuse scenarios and then attempting to exploit them?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪一種軟體測試技術從敵意行為者的觀點評估應用程式,先列舉已知的濫用情境,再嘗試加以利用?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Misuse case testing 誤用案例測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Use case testing 使用案例測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Mutation fuzzing 變異式模糊測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Interface testing 介面測試</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。Misuse case testing(誤用/濫用案例測試)聚焦在<strong>組織不希望發生,違反系統正常功能的行為</strong>:先列舉已知 misuse cases,再以手動或自動攻擊技術嘗試利用。記憶:use case 問『該做什麼』,misuse case 問『壞人會做什麼』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：使用案例測試驗證軟體『依設計正常運作』,是正向觀點,不是敵意觀點。</li><li style="margin-bottom:3px;">C：模糊測試靠修改輸入產生非預期資料觸發異常,不是先『列舉濫用情境』再利用。</li><li style="margin-bottom:3px;">D：介面測試驗證 API/UI/實體介面間的互動符合規格,與攻擊者觀點無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A development manager reviewing a test coverage report confirms that every IF statement in the new application was executed under both the IF and ELSE conditions. Which coverage criterion has been satisfied?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（開發經理審閱測試涵蓋率報告,確認新應用程式中每個 IF 敘述都已在 IF 與 ELSE 兩種條件下執行。這滿足了哪一項涵蓋率準則?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Statement coverage 敘述涵蓋率</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Loop coverage 迴圈涵蓋率</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Condition coverage 條件涵蓋率</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Branch coverage 分支涵蓋率</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。Branch coverage(分支涵蓋率)的定義正是:<strong>每個 IF 敘述是否都在 IF 與 ELSE 條件下執行過</strong>。記憶:IF/ELSE 是程式的『分岔路』→ branch(分支)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：敘述涵蓋率只問『每一行程式碼是否執行過』,不要求 IF 與 ELSE 兩條路徑都走過。</li><li style="margin-bottom:3px;">B：迴圈涵蓋率針對迴圈:是否在執行多次,一次與零次的條件下都測過。</li><li style="margin-bottom:3px;">C：條件涵蓋率問『每個邏輯判斷式是否在所有輸入組合下執行』,考的是邏輯運算式內部組合,不是 IF/ELSE 分支。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.5 程式測試 / §6.2.4 合成）</div>

@@ -80,6 +80,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 決定資料分類的是 Owner 還是 Custodian？<br><span style="color:#0A6160;">→ Data Owner（業務）；Custodian 只負責技術執行。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . GDPR 要求 Controller 與 Processor 間簽什麼？<br><span style="color:#0A6160;">→ DPA 資料處理協議（第 28 條），載明安全與通報義務。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which data role is PRIMARILY delegated the day-to-day tasks of storing and protecting data, such as performing backups and configuring access permissions?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪個資料角色主要被委派日常的資料儲存與保護工作,例如執行備份與設定存取權限?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Data owner 資料擁有者</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Data custodian 資料保管者</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Data controller 資料控管者</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Data steward 資料管家</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。Custodian（保管者,通常是 IT/DBA）受委派負責備份、封存、防止遺失毀損與復原等日常保護工作。記憶法:Owner 決定、Custodian 動手——當責（accountability）留在 Owner,日常執行（responsibility）交給 Custodian。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Owner 決定分類與保護需求,會委派執行但不做日常操作。</li><li style="margin-bottom:3px;">C：Controller 是法律上決定個資處理目的與方式的主體,不是技術執行者。</li><li style="margin-bottom:3px;">D：Steward 負責資料品質與業務意涵,不做備份等技術維運。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A company hires a payroll firm to process employee data. The payroll firm later begins analyzing that data for its own product research, without instructions from the company. Under GDPR, what does the payroll firm BEST become with respect to this new processing?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某公司委託薪資外包商處理員工個資。外包商後來未經公司指示,擅自將資料用於自家產品研究。依 GDPR,就這項新的處理而言,外包商最適合被視為什麼角色?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> It remains a data processor acting on the company's behalf 仍是代該公司行事的資料處理者</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> A data controller, because it now decides the purpose and means of processing 成為資料控管者,因為它自行決定了處理的目的與方式</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> A data custodian responsible only for technical safeguards 成為僅負責技術保護的資料保管者</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> A data subject with rights over the information 成為對該資料享有權利的當事人</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。Controller 與 Processor 的分界就是『誰決定目的與方式』。Processor 只能依 Controller 指示處理個資;一旦超出指示、自定目的（自家研究）,它就該項處理而言成為 Controller,必須自行承擔合法性基礎、告知當事人等完整義務。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：自定目的已超出『solely on behalf of the controller』的定義,不再只是 Processor。</li><li style="margin-bottom:3px;">C：Custodian 是組織內控語彙（技術執行）,不是 GDPR 的法律角色。</li><li style="margin-bottom:3px;">D：Data Subject 是資料所描述的本人,外包商顯然不是。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.3 擁有權 / §2.4.1 資料角色）</div>

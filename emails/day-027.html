@@ -71,6 +71,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 模擬無內部資訊的外部攻擊者屬哪種箱型？<br><span style="color:#0A6160;">→ 黑箱（black box）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 進行滲透測試前最重要的前置是什麼？<br><span style="color:#0A6160;">→ 書面授權與 ROE/範圍界定。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">In which type of penetration test does the tester evaluate the software from a user's perspective while also having access to the source code?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（在哪一種滲透測試中,測試者以使用者觀點評估軟體,但同時可存取原始碼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Black-box (unknown environment) test 黑箱(未知環境)測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> White-box (known environment) test 白箱(已知環境)測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Red team exercise 紅隊演練</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Gray-box (partially known environment) test 灰箱(部分已知環境)測試</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。灰箱測試＝<strong>使用者觀點＋可存取原始碼</strong>,在黑箱與白箱的優缺點間取得平衡;常見於想要黑箱效果,但受成本或時間限制而需要部分資訊的情況。記憶:灰＝黑白混合,partial knowledge。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：黑箱測試『完全不提供』事前資訊,模擬外部攻擊者,測試者不會有原始碼。</li><li style="margin-bottom:3px;">B：白箱是<strong>開發者觀點</strong>取得詳細系統資訊與原始碼,題幹強調『使用者觀點』故非白箱。</li><li style="margin-bottom:3px;">C：紅隊是組織內的攻擊方角色(offensive security),描述的是團隊分工而非箱型知識程度。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A penetration testing team has finished mapping the target's website, completing network discovery, and probing for weaknesses with vulnerability scans. According to the NIST four-phase penetration testing process, which phase should the team perform NEXT?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（滲透測試團隊已完成目標網站測繪,網路探索,並以弱點掃描探測弱點。依 NIST 四階段滲透測試流程,團隊『接下來』應執行哪個階段?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Planning 規劃</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Reporting 報告</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Information gathering and discovery 資訊蒐集與探索</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Attack 攻擊</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。NIST 四階段:planning → information gathering and discovery → <strong>attack</strong> → reporting。題幹描述的網站測繪,網路探索與弱點掃描都屬第二階段,下一步就是以手動與自動工具嘗試實際利用弱點的<strong>攻擊階段</strong>——這也是滲透測試超越弱點掃描之處。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：規劃(範圍與 RoE 交戰規則,取得明確授權)是第一階段,早已完成。</li><li style="margin-bottom:3px;">B：報告是最後階段,須等攻擊階段結束後彙整結果與建議。</li><li style="margin-bottom:3px;">C：題幹列的活動正是資訊蒐集與探索階段的內容,該階段已經完成。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §6.2.1 弱點 / §6.2.2 滲透）</div>

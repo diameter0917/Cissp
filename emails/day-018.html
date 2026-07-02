@@ -69,6 +69,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 限制攻擊者在內網橫向移動最有效的做法？<br><span style="color:#0A6160;">→ 網路分段／微分段（搭配最小權限/零信任）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 對外 Web 伺服器應放在哪？<br><span style="color:#0A6160;">→ DMZ（與內網隔離的區段）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which firewall type BEST describes making filtering decisions by tracking the state of active connections, rather than evaluating each packet in isolation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（哪一種防火牆最符合『依據連線狀態追蹤做過濾決策,而非孤立地檢視每個封包』的描述?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Static packet-filtering firewall 靜態封包過濾防火牆</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Application-level proxy firewall 應用層代理防火牆</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Web Application Firewall (WAF) 網頁應用防火牆</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Stateful inspection firewall 狀態化檢測防火牆</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。Stateful firewall 維護<strong>連線狀態表</strong>,知道封包屬於哪條已建立的會話（例如已完成三向交握的回應流量可放行）,而非逐包孤立判斷。記憶:看到『track connection state』→ stateful。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：靜態封包過濾是<strong>無狀態</strong>的,只逐包比對 IP/埠/協定規則。</li><li style="margin-bottom:3px;">B：應用層代理是代替兩端連線的中介,判斷依據是應用內容,不是連線狀態表的定義。</li><li style="margin-bottom:3px;">C：WAF 專注過濾 HTTP/S 的網頁攻擊（如 SQLi/XSS）,與題幹描述無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A SOC discovers its network IDS failed to alert on a zero-day attack because the sensor only compares traffic against a database of known attack patterns. Which approach would BEST improve detection of previously unknown attacks?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（SOC 發現其網路 IDS 沒有對一起零時差攻擊告警,因為感測器只將流量與已知攻擊特徵庫比對。哪個做法最能改善對未知攻擊的偵測?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Add more signatures to the existing database 為既有特徵庫增加更多特徵</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Deploy signature-based sensors on more network segments 在更多網段部署特徵式感測器</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Move the sensor inline to operate as an IPS 將感測器改為串接運作的 IPS</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Add anomaly-based detection that baselines normal behavior 加入以正常行為基線的異常式偵測</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。特徵式偵測只認得<strong>已知</strong>攻擊;異常式（行為式）偵測先學習正常流量基線,偏離基線即告警,因此能發現<strong>沒有特徵的新攻擊</strong>（代價是誤報較高）。判斷邏輯:問題出在『偵測原理』,就要換原理,不是加大同一套。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：零時差攻擊尚無特徵可加,特徵庫永遠落後於新攻擊。</li><li style="margin-bottom:3px;">B：增加部署位置不改變『只認已知特徵』的根本限制。</li><li style="margin-bottom:3px;">C：IPS 只是把『告警』升級為『阻擋』,若仍靠特徵比對,一樣看不見未知攻擊。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.2.3 網路設備與防禦）</div>

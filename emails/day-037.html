@@ -71,6 +71,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 用來追蹤軟體所有相依元件的清單？<br><span style="color:#0A6160;">→ SBOM（軟體物料清單）。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 為何攻擊者鎖定建置流程？<br><span style="color:#0A6160;">→ 一次污染可散布到所有下游，且產物看似官方、難察覺。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which statement BEST describes the PRIMARY difference between continuous delivery and continuous deployment?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（下列哪個敘述最能描述 Continuous Delivery（持續交付）與 Continuous Deployment（持續部署）的主要差異?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Continuous delivery keeps code always deployable but requires manual approval before production; continuous deployment releases automatically once tests pass 持續交付讓程式隨時可部署但上正式環境需人工核可;持續部署過測後即自動上線</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Continuous delivery applies only to infrastructure, while continuous deployment applies to application code 持續交付僅適用基礎設施,持續部署僅適用應用程式碼</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Continuous deployment requires a manual approval step, while continuous delivery is fully automated 持續部署需人工核可,持續交付則全自動</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> They are identical terms that can be used interchangeably 兩者是可互換的同義詞</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。兩者都建立在 CI 的自動化之上,官方考綱明示關鍵差異只在<strong>最後一步是否需要人工介入</strong>:Delivery＝程式隨時處於可部署狀態,但部署到正式環境需人工核可;Deployment＝通過自動化測試即自動上線。記憶法:Deployment 自動『部』上去,Delivery 只『交』到門口等你簽收。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：兩者都描述應用程式的交付/部署流程,與基礎設施或應用之分無關。</li><li style="margin-bottom:3px;">C：恰好講反了——需人工核可的是 Delivery,全自動的是 Deployment。</li><li style="margin-bottom:3px;">D：兩者並非同義詞,差異就在『人工核可』這一步,是考試常考的鑑別點。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">After studying the SolarWinds supply chain compromise, a CISO wants assurance that software artifacts produced by the CI/CD pipeline have not been tampered with before they are deployed to production. Which control BEST provides this assurance?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（研究 SolarWinds 供應鏈事件後,CISO 希望確保 CI/CD 管線產出的軟體 artifact 在部署到正式環境前未被竄改。哪個控制最能提供此保證?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Running DAST scans against the production environment weekly 每週對正式環境執行 DAST 掃描</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Requiring peer code review for every merge request 每個合併請求都要求同儕程式碼審查</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Segmenting the production network from the development network 將正式環境網路與開發環境網路隔離</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Digitally signing build artifacts and verifying signatures and provenance before deployment 對建置 artifact 數位簽章,部署前驗證簽章與來源證明</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。題目要的是<strong>產物完整性（integrity）與來源可驗</strong>:artifact 簽章＋部署前驗證簽章與來源（如 SLSA 來源證明）能直接偵測建置之後的任何竄改,正對管線投毒/供應鏈植入的威脅。判斷邏輯:題幹關鍵字是 tampered——選能直接『驗證完整性』的控制,而非泛用的安全措施。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：DAST 找的是執行期漏洞,無法辨識『功能正常但被植入後門』的產物。</li><li style="margin-bottom:3px;">B：同儕審查看的是原始碼,SolarWinds 型攻擊發生在建置環節,審查程式碼看不到建置後的竄改。</li><li style="margin-bottom:3px;">C：網路隔離能降低橫向移動風險,但無法驗證 artifact 本身是否完整未被竄改。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.2.6 CI/CD / §8.1.1 DevSecOps）</div>

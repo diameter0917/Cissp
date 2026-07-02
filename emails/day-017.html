@@ -70,6 +70,37 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . DNSSEC 提供加密嗎？<br><span style="color:#0A6160;">→ 否；提供真實性/完整性（防偽造），加密查詢需 DoH/DoT。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 取代明文 Telnet 的安全協定？<br><span style="color:#0A6160;">→ SSH（埠 22）。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Which statement BEST describes how HTTPS (HTTP over TLS) protects a web session?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（下列哪一項最能正確描述 HTTPS（HTTP over TLS）如何保護網頁會話?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> The entire session is encrypted with asymmetric cryptography for maximum strength 全程使用非對稱加密以求最高強度</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Asymmetric cryptography exchanges an ephemeral session key, then symmetric encryption protects the rest of the session 以非對稱加密交換臨時會話金鑰,其後改用對稱加密保護會話（混合式）</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> A hash function encrypts all transmitted data 以雜湊函數加密所有傳輸資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Pre-shared symmetric keys are manually distributed to every browser 預先以人工方式把共享對稱金鑰發給每個瀏覽器</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。TLS 採<strong>混合式密碼學（hybrid cryptography）</strong>:非對稱加密安全但慢,只用來交換臨時（ephemeral）會話金鑰;之後改用快速的對稱加密保護大量資料。記憶:『非對稱交鑰匙,對稱跑長途』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：非對稱加密運算成本高,全程使用效能不可行,實務只用於金鑰交換與驗證。</li><li style="margin-bottom:3px;">C：雜湊是單向、不可逆的完整性機制,不是加密,無法還原資料。</li><li style="margin-bottom:3px;">D：人工預先發送金鑰無法擴展到全球網站與瀏覽器,也不安全。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A network engineer must build a site-to-site VPN between two branch gateways so that the entire original IP packet, including its header, is encrypted while crossing the internet. Which IPsec configuration BEST meets this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（網路工程師要在兩個分公司閘道間建站對站 VPN,要求整個原始 IP 封包（含標頭）在通過網際網路時都被加密。哪種 IPsec 組態最符合需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> AH in transport mode 傳輸模式的 AH</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> ESP in transport mode 傳輸模式的 ESP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> AH in tunnel mode 隧道模式的 AH</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> ESP in tunnel mode 隧道模式的 ESP</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。兩個條件缺一不可:要<strong>加密</strong>（機密性）→ 只有 ESP 提供;要加密<strong>整個封包含標頭</strong>且是閘道對閘道 → tunnel mode。記憶:『tunnel 包全包,ESP 才加密』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：AH 只提供驗證/完整性/防重放,<strong>不加密</strong>;transport 模式也不保護標頭。</li><li style="margin-bottom:3px;">B：ESP 有加密,但 transport 模式只加密 payload、不含原始標頭,適合點對點而非閘道對閘道。</li><li style="margin-bottom:3px;">C：即使用 tunnel 模式,AH 仍不提供加密,無法滿足機密性要求。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.1.2 IP / §4.1.3 安全協定）</div>
