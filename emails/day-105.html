@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 降低常駐特權被濫用最佳做法？<br><span style="color:#0A6160;">→ JIT 即時特權(零常駐特權)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 新進員工依最小權限應給多少權限？<br><span style="color:#0A6160;">→ 僅執行工作所需的最少權限。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A penetration test shows that any domain user can request Kerberos service tickets for accounts running services, then crack them offline to recover weak service account passwords (Kerberoasting). Which control BEST mitigates this attack?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（滲透測試顯示:任何網域使用者都能為執行服務的帳號請求 Kerberos 服務票證,再離線破解取回「弱」服務帳號密碼(Kerberoasting)。哪個控制「最能」緩解此攻擊?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Shorten the service ticket lifetime 縮短服務票證效期</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Use long, random service account passwords with automatic rotation (managed service accounts) 服務帳號改用長且隨機並自動輪換的密碼(受管服務帳號)</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Block port 88 at the network perimeter 在網路邊界封鎖 port 88</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Require MFA for all interactive user logons 對所有互動式使用者登入強制 MFA</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。Kerberoasting 的本質是<strong>對服務帳號密碼的離線暴力破解</strong>——票證用該帳號金鑰加密,密碼弱才破得開。治本之道是讓密碼「不可破」:<strong>長且隨機＋自動輪換(受管服務帳號)</strong>,並依最小權限降低服務帳號權限。這正是機器身分治理的核心考點:服務帳號不是人,防禦靠密碼強度與治理,不靠使用者端控制。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：破解在「離線」進行,拿到票證的當下就足夠,效期長短不影響破解。</li><li style="margin-bottom:3px;">C：攻擊者是「內部合法網域使用者」,流量都在內網,邊界封 88 擋不到且會弄壞驗證。</li><li style="margin-bottom:3px;">D：MFA 保護的是「人」的互動登入;服務帳號不做互動登入,MFA 管不到這條攻擊路徑。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Auditors require the organization to prove EXACTLY what commands an external contractor executed during privileged database maintenance. Which PAM capability BEST satisfies this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（稽核要求組織證明外部承包商在特權資料庫維護期間「究竟」執行了哪些指令。哪個 PAM 能力「最能」滿足此要求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Session recording 特權會談側錄</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Credential vaulting 憑證保險庫</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Just-in-time privilege elevation 即時(JIT)提權</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Automatic password rotation 密碼自動輪換</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。需求關鍵字是「證明做了什麼」=<strong>可歸責/稽核證據</strong>,對應 PAM 的<strong>session recording(會談側錄)</strong>:逐鍵/逐畫面記錄特權會談,事後可回放舉證。PAM 三大能力對號入座:側錄=證明行為;vault=保管憑證;JIT=縮小提權窗口——考題問哪個,就看題幹要的是「證據」「保管」還是「時窗」。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：保險庫管「誰能領用憑證」,領用後做了什麼它不記錄。</li><li style="margin-bottom:3px;">C：JIT 限縮特權「存在的時間」,是預防控制,無法回答「執行了哪些指令」。</li><li style="margin-bottom:3px;">D：輪換降低憑證外洩的殘餘價值,與行為舉證無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An attacker compromises a regular user's workstation, escalates to local administrator, then uses harvested credentials to access other computers across the network with similar privileges. This network-wide movement is BEST described as:</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（攻擊者入侵一般使用者的工作站,先提權為本機管理員,再用竊得的憑證以「相近權限」存取網路上其他電腦。這種在網路中的移動「最貼切」的描述是:）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Vertical privilege escalation 垂直提權</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Privilege creep 權限蔓延</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Session hijacking 會談劫持</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Lateral movement (horizontal privilege escalation) 橫向移動(水平提權)</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。攻擊分兩段:在單機上從一般使用者→本機管理員是「垂直提權」;之後以<strong>相近權限橫跨其他電腦</strong>=水平提權,遍及全網就叫<strong>lateral movement(橫向移動)</strong>——題目問的是「網路中的移動」那一段。防禦要點:限縮本機管理員與服務帳號權限、網段隔離,縮小橫向移動空間。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：垂直提權是「權限層級升高」,只描述前段單機提權,不是題目問的網路間移動。</li><li style="margin-bottom:3px;">B：privilege creep 是員工轉調累積多餘權限的「治理」問題,不是攻擊技術。</li><li style="margin-bottom:3px;">C：會談劫持是接管既有連線/會談,情境中攻擊者用的是竊得憑證另建存取。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §5.2.2 + §5.4 D5 綜合）</div>

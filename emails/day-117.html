@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 留言中腳本在他人瀏覽器執行竊 cookie 是？<br><span style="color:#0A6160;">→ Stored XSS。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 防 CSRF 的主要手段？<br><span style="color:#0A6160;">→ CSRF token 與 SameSite cookie。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A tester logged in as a regular customer changes the URL from /orders?id=1001 to /orders?id=1002 and views another customer's order. Which vulnerability is this, and what is the BEST remediation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（測試者以一般客戶身分登入,把網址 /orders?id=1001 改成 /orders?id=1002 就看到他人訂單。這是哪種漏洞,最佳修法為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> CSRF; anti-CSRF tokens CSRF;CSRF token</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> SQL injection; parameterized queries SQL 注入;參數化查詢</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Session hijacking; enforce TLS 工作階段劫持;強制 TLS</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Broken access control (IDOR); server-side per-object authorization checks 存取控制失效(IDOR);伺服器端逐物件授權檢查</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。改個參數就能讀他人資料＝<strong>Broken Access Control(IDOR/BOLA)</strong>:應用只驗證『已登入』卻沒驗證『此使用者有權存取此物件』。修法:<strong>每次請求都在伺服器端做逐物件授權檢查</strong>——前端隱藏或猜不到的 ID 都不是授權控制。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：攻擊者用的是自己的合法 session 直接存取,並非冒用他人身分送請求。</li><li style="margin-bottom:3px;">B：輸入未被當 SQL 執行,只是改了資源識別碼。</li><li style="margin-bottom:3px;">C：沒有竊取他人 session;TLS 保護傳輸,無法補授權缺失。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A newly deployed web server still uses the vendor's default administrator password, has directory listing enabled, and returns detailed stack traces to users. Which OWASP Top 10 category BEST describes this condition?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（新部署的網頁伺服器仍使用原廠預設管理者密碼,開啟目錄列示,並向使用者回傳詳細堆疊追蹤。哪個 OWASP Top 10 類別最能描述此狀況?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Security misconfiguration 安全組態錯誤</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Insecure design 不安全設計</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Authentication failures 鑑別失效</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Cryptographic failures 密碼學失效</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。預設帳密,目錄列示,詳細錯誤訊息——共同根因是<strong>部署設定未強化</strong>＝<strong>Security Misconfiguration</strong>。修法:強化基準(hardening baseline),變更所有預設值,關閉不必要功能。判斷邏輯:多個症狀指向同一根因時,選<strong>涵蓋根因</strong>的類別。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：設計本身沒有缺陷,是部署組態問題(design flaw＝就算都做對仍有漏洞,此處改設定即可修)。</li><li style="margin-bottom:3px;">C：預設密碼是誘餌——根因是『沒改預設組態』,非鑑別機制本身失效。</li><li style="margin-bottom:3px;">D：與加密保護無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A web application was breached three months ago, but the intrusion was only discovered when a customer complained. Investigation shows the application recorded no authentication failures or access anomalies at all. Which OWASP Top 10 category BEST describes the root weakness?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某網頁應用三個月前遭入侵,直到客戶投訴才被發現;調查顯示應用完全沒有記錄任何鑑別失敗或存取異常。根本弱點屬於哪個 OWASP 類別?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Insecure design 不安全設計</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Security logging and alerting failures 安全記錄與警示失效</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Authentication failures 鑑別失效</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Security misconfiguration 安全組態錯誤</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。入侵三個月無人知,因為應用<strong>完全沒有記錄與警示</strong>＝OWASP <strong>Security logging and alerting failures</strong>:沒有 log 就沒有偵測,回應與鑑識能力。判斷邏輯:題幹問的不是『怎麼被入侵』,而是『為何這麼久才發現』——弱點在可觀測性。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：問題不在功能設計,而在偵測能力缺失。</li><li style="margin-bottom:3px;">C：攻擊者或許利用了鑑別弱點,但題幹指的根本弱點是『看不見』。</li><li style="margin-bottom:3px;">D：記錄缺失有專屬類別,比籠統的組態錯誤更精確(選最佳答案)。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §8.5.1 OWASP 漏洞辨識（考點））</div>

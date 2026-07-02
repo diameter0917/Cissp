@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 122</title>
+</head>
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
+
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 122 / 126</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#B45309; padding:4px 9px; border-radius:5px;">P3-D3-7</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">後期 · 考試重點 &nbsp;|&nbsp; Domain 3 · 安全架構與工程 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">加強：加密敏捷性與後量子密碼</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Deep Dive: Crypto Agility &amp; Post-Quantum Cryptography</div>
+  </div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:96.8%; background-color:#B45309;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:4px;">00 — 📬 開場：為「算法退役」做好準備</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">加強週第二天,聚焦另一個 <strong>2024 考綱新增焦點</strong>:<strong>crypto agility</strong>（加密敏捷性）與<strong>後量子密碼（PQC）</strong>。密碼學史一再證明:DES 被淘汰、MD5 與 SHA-1 相繼陣亡——<strong>沒有永遠安全的演算法</strong>。而量子電腦這次瞄準的是整個非對稱體系。今天把「威脅是什麼、標準有哪些、怎麼遷移」一次講清楚。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 什麼是 Crypto Agility（加密敏捷性）</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;"><strong>Crypto agility</strong>（加密敏捷性）指系統具備<strong>快速替換加密演算法、金鑰長度與協定的能力</strong>——當某個演算法被破解或宣告棄用時,不必重寫應用程式、不必大改架構,就能切換到新演算法。做法是在設計階段就把密碼功能<strong>抽象化</strong>:不把演算法寫死（hard-code）在程式裡,而是透過設定檔、密碼函式庫介面或集中式金鑰管理來呼叫。</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>為什麼重要 ①</strong>——演算法會老化:密碼分析進步、算力成長,今天安全的演算法可能十年後不安全（MD5、SHA-1、DES 都是前車之鑑）。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>為什麼重要 ②</strong>——量子威脅逼近:非對稱演算法（RSA/ECC）面臨被整批淘汰的命運,沒有敏捷性的組織將無法及時遷移到 PQC。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>為什麼重要 ③</strong>——合規與生命週期:金鑰輪換、憑證更換、演算法棄用公告（deprecation）都需要「可以換、換得快」的架構支撐。</td></tr>
+    </table>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 量子威脅：Shor vs Grover（對比表）</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 10px;">量子電腦利用 <strong>qubit</strong>（量子位元）同時表示 0 與 1 的特性,對特定數學問題有指數級加速。對密碼學的衝擊來自兩個演算法,<strong>影響程度天差地遠</strong>——這正是考試最愛考的鑑別點:</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">面向</td><td style="padding:8px 10px;">Shor's algorithm（休爾演算法）</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">Grover's algorithm（格羅弗演算法）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>攻擊目標</strong></td><td style="padding:9px 10px; vertical-align:top;">大整數因數分解、離散對數</td><td style="padding:9px 10px; vertical-align:top;">無結構搜尋（加速暴力破解）</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>受害者</strong></td><td style="padding:9px 10px; vertical-align:top;"><strong>非對稱</strong>:RSA、Diffie-Hellman、ECC</td><td style="padding:9px 10px; vertical-align:top;"><strong>對稱</strong>:AES 等;也影響雜湊</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>衝擊程度</strong></td><td style="padding:9px 10px; vertical-align:top;"><strong>徹底破解</strong>——多項式時間解開,加大金鑰也救不了</td><td style="padding:9px 10px; vertical-align:top;">僅平方加速,<strong>有效金鑰強度減半</strong></td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>因應之道</strong></td><td style="padding:9px 10px; vertical-align:top;">必須<strong>整批換成 PQC</strong> 演算法</td><td style="padding:9px 10px; vertical-align:top;">把金鑰加倍即可:AES-128→等效 64 位元（危險）;<strong>AES-256→等效 128 位元,仍然安全</strong></td></tr>
+    </table>
+    <p style="font-size:14px; line-height:1.75; margin:8px 0 12px; color:#5B6675;">一句話記憶:<strong>Shor 殺非對稱（換演算法）,Grover 砍對稱一半（加大金鑰）</strong>。所以量子時代 AES-256 續用,RSA/ECC 淘汰。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — Harvest Now, Decrypt Later（先收割,後解密）</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>HNDL（Harvest Now, Decrypt Later）</strong>:攻擊者（尤其國家級對手）<strong>現在就攔截並儲存</strong>加密流量與資料,等未來量子電腦成熟後再解密。也就是說,「量子電腦還沒出現」不代表現在安全。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>判斷關鍵</strong>:資料的<strong>機密性壽命（useful lifetime）</strong>。若資料需要保密 10–25 年以上（病歷、國防機密、營業秘密、基因資料）,而量子威脅可能在這期間內成真,那麼<strong>今天就得開始遷移 PQC</strong>——這是「為何現在就要行動」的標準答案。</p>
+    </div>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — NIST PQC 標準（2024 定案的三份 FIPS）</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 12px;"><strong>後量子密碼（Post-Quantum Cryptography, PQC）</strong>是指<strong>在傳統電腦上就能實作、但能抵抗量子攻擊</strong>的新型密碼演算法——注意它不是「量子密碼」,不需要量子硬體。NIST 歷經多輪全球徵選,於 <strong>2024 年 8 月正式發布三份標準</strong>:</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">標準</td><td style="padding:8px 10px;">演算法（原名）</td><td style="padding:8px 10px;">用途</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">數學基礎</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>FIPS 203</strong></td><td style="padding:9px 10px; vertical-align:top;"><strong>ML-KEM</strong>（CRYSTALS-Kyber）</td><td style="padding:9px 10px; vertical-align:top;">金鑰封裝（KEM）——取代 RSA/DH/ECDH 的金鑰交換</td><td style="padding:9px 10px; vertical-align:top;">格（lattice）</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>FIPS 204</strong></td><td style="padding:9px 10px; vertical-align:top;"><strong>ML-DSA</strong>（CRYSTALS-Dilithium）</td><td style="padding:9px 10px; vertical-align:top;">數位簽章——取代 RSA/ECDSA 簽章,主力標準</td><td style="padding:9px 10px; vertical-align:top;">格（lattice）</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>FIPS 205</strong></td><td style="padding:9px 10px; vertical-align:top;"><strong>SLH-DSA</strong>（SPHINCS+）</td><td style="padding:9px 10px; vertical-align:top;">數位簽章——備援方案,萬一格密碼被攻破時的保險</td><td style="padding:9px 10px; vertical-align:top;">雜湊（hash-based）</td></tr>
+    </table>
+    <p style="font-size:14px; line-height:1.75; margin:8px 0 12px; color:#5B6675;"><strong>格密碼（lattice-based cryptography）</strong>一句話:利用高維格點結構上的數學難題（如最短向量問題）加密,這類問題<strong>連量子電腦也難以有效求解</strong>,因此成為 PQC 主流基礎。記憶法:<strong>203 換鑰匙（KEM）、204 簽名主力、205 簽名備胎</strong>。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — 遷移策略：盤點 → 混合 → 分階段汰換</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 10px;">PQC 遷移是<strong>多年期工程</strong>,考試考的是「正確順序與優先序」:</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">① 盤點（cryptographic inventory）</strong> — <span style="color:#5B6675;">先弄清楚組織在哪裡、用什麼演算法、保護什麼資料——沒有清冊就無從規劃。這是永遠的第一步（FIRST）。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">② 混合模式（hybrid mode）</strong> — <span style="color:#5B6675;">過渡期同時使用「傳統 + PQC」演算法（例如 TLS 金鑰交換同時跑 ECDH 與 ML-KEM）,任一方被破解仍受另一方保護,兼顧相容性與抗量子。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">③ 分階段汰換（phased replacement）</strong> — <span style="color:#5B6675;">依「資料機密性壽命長短 + 系統曝險程度」排優先序,先換保護長壽命資料與對外傳輸的系統,逐步淘汰 RSA/ECC。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">＋ 底層前提：crypto agility</strong> — <span style="color:#5B6675;">整個遷移能否順利,取決於系統當初是否具備加密敏捷性——把演算法抽象化的組織,換 PQC 只是設定變更;寫死的組織則要大動土木。</span></td></tr>
+    </table>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — 🚨 CISSP 考點雷達</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>① 對稱 vs 非對稱受量子影響的差異</strong>:非對稱（RSA/ECC/DH）被 Shor <strong>徹底破解</strong>,必須換 PQC;對稱（AES）只被 Grover <strong>減半強度</strong>,AES-256 等效 128 位元<strong>仍安全</strong>。看到「量子時代哪個仍可用」→ 選 AES-256。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>② crypto agility 的 BEST 實踐</strong>:正解特徵是「<strong>抽象化/模組化密碼層、不把演算法寫死、集中金鑰管理、可快速替換</strong>」;干擾項特徵是「選一個最強的演算法」「加大金鑰長度」——那是強度,不是敏捷性。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>③ HNDL 情境</strong>:題目描述「資料需保密數十年 + 對手正在蒐集加密流量」→ 正解是<strong>現在就啟動 PQC/混合遷移</strong>,不是「等量子電腦出現再說」。另注意:PQC 用傳統電腦就能跑,別和需要量子硬體的 QKD 混淆。</p>
+    </div>
+
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security architect is designing a new payment platform expected to operate for 15 years. Which approach BEST achieves cryptographic agility?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全架構師正在設計一個預計運行 15 年的支付平台。哪個做法『最能』達成加密敏捷性?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Standardize on AES-256 and hard-code it into every module 全平台標準化採用 AES-256 並寫死在每個模組中</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Double all key lengths currently in use 把現行所有金鑰長度加倍</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Purchase quantum key distribution (QKD) hardware for all links 為所有線路採購量子金鑰分發（QKD）硬體</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Abstract cryptographic functions behind a modular interface so algorithms and keys can be replaced without re-architecting 以模組化介面抽象化密碼功能,使演算法與金鑰可替換而不需重構系統</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。Crypto agility 的定義就是<strong>快速替換演算法/金鑰/協定而不需大改架構的能力</strong>,實作關鍵是把密碼功能抽象化、模組化,不寫死在程式裡。判斷邏輯:題目問的是「敏捷性」（換得快）,不是「強度」（夠不夠硬)——凡是選「某個特定強演算法」的選項都答非所問。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：寫死（hard-code）正是敏捷性的反面——AES-256 再強,寫死就換不掉。</li><li style="margin-bottom:3px;">B：加大金鑰是提升強度,不解決「演算法被破解時如何替換」的問題。</li><li style="margin-bottom:3px;">C：QKD 是金鑰分發技術,需要專用量子硬體,昂貴且與敏捷性無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A risk committee asks the CISO to summarize the impact of large-scale quantum computers on the organization's cryptography. Which statement is MOST accurate?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（風險委員會請 CISO 總結大型量子電腦對組織密碼系統的衝擊。哪個敘述『最』正確?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Shor's algorithm breaks RSA and ECC outright, while Grover's algorithm only halves effective symmetric strength, so AES-256 remains secure Shor 演算法徹底破解 RSA 與 ECC,而 Grover 僅使對稱強度等效減半,故 AES-256 仍安全</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Grover's algorithm breaks RSA, so doubling RSA key sizes restores security Grover 演算法破解 RSA,因此 RSA 金鑰加倍即可恢復安全</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Quantum computers break all cryptography equally, so every algorithm must be replaced 量子電腦對所有密碼技術的破壞力相同,所有演算法都必須汰換</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Symmetric ciphers are hit hardest, so AES should be replaced with elliptic curve algorithms 對稱式加密受創最深,應以橢圓曲線演算法取代 AES</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。這是量子威脅的標準結論:<strong>Shor</strong> 在多項式時間內解決因數分解與離散對數,RSA/DH/ECC <strong>整批陣亡</strong>;<strong>Grover</strong> 只提供平方加速,等效砍半金鑰強度,AES-256 剩等效 128 位元<strong>依然足夠</strong>。記憶法:『Shor 殺非對稱,Grover 砍對稱一半』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：張冠李戴——破 RSA 的是 Shor 不是 Grover,且 Shor 是指數級突破,加大金鑰救不了 RSA。</li><li style="margin-bottom:3px;">C：衝擊程度天差地遠:非對稱需汰換,對稱只需加大金鑰,並非「一視同仁」。</li><li style="margin-bottom:3px;">D：完全顛倒——受創最深的是非對稱;ECC 本身就是 Shor 的受害者,不能當替代品。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A health agency transmits genomic records that must remain confidential for 30 years over TLS using RSA key exchange. Threat intelligence indicates a nation-state adversary is recording the agency's encrypted traffic. What is the MOST appropriate response?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（衛生機關以 RSA 金鑰交換的 TLS 傳輸須保密 30 年的基因資料。威脅情資顯示國家級對手正在側錄該機關的加密流量。哪個回應『最』適當?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Take no action because RSA cannot be broken with today's computers 不採取行動,因為現今電腦無法破解 RSA</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Begin migrating now to a hybrid key exchange that combines a classical algorithm with ML-KEM (FIPS 203) 立即啟動遷移,採用結合傳統演算法與 ML-KEM（FIPS 203）的混合金鑰交換</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Increase the RSA key size from 2048 to 4096 bits 將 RSA 金鑰長度由 2048 提高到 4096 位元</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Wait until a cryptographically relevant quantum computer is publicly demonstrated before migrating 等到具密碼破解能力的量子電腦公開展示後再遷移</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。這是典型的 <strong>Harvest Now, Decrypt Later</strong> 情境:資料機密性壽命長達 30 年,對手今天側錄、未來用量子電腦解密——所以<strong>現在</strong>就要遷移。混合模式（傳統 + ML-KEM）是 NIST 建議的過渡做法:即使 PQC 尚未久經考驗,雙演算法互為保險,兼顧相容與抗量子。判斷邏輯:『長壽命資料 + 流量被蒐集』→ 立即行動,不等威脅成真。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：忽略 HNDL——今天破不了不代表 30 年內破不了,被側錄的資料已在對手手上。</li><li style="margin-bottom:3px;">C：Shor 對 RSA 是指數級突破,4096 位元只是杯水車薪,不改變被淘汰的命運。</li><li style="margin-bottom:3px;">D：等量子電腦公開展示才動手,已側錄的 30 年壽命資料早已全數暴露,為時已晚。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
+
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>crypto agility = 演算法可快速替換的架構能力;Shor 殺非對稱、Grover 砍對稱一半（AES-256 仍安全）;HNDL 逼你現在行動;NIST 2024 三標準 = FIPS 203 ML-KEM/204 ML-DSA/205 SLH-DSA;遷移 = 盤點→混合→分階段汰換。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . 量子時代哪類演算法必須整批汰換?哪類只需加大金鑰?<br><span style="color:#0A6160;">→ 非對稱（RSA/DH/ECC,被 Shor 破解）必須換 PQC;對稱（AES,被 Grover 減半）用 AES-256 即可。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . FIPS 203/204/205 分別對應什麼演算法與用途?<br><span style="color:#0A6160;">→ 203 ML-KEM（Kyber）金鑰封裝、204 ML-DSA（Dilithium）簽章主力、205 SLH-DSA（SPHINCS+）雜湊簽章備援。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . PQC 遷移的第一步（FIRST）是什麼?為什麼?<br><span style="color:#0A6160;">→ 密碼資產盤點（cryptographic inventory）——不知道哪裡用了什麼演算法,就無法排定混合部署與汰換的優先序。</span></p>
+    </details>
+
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.6 密碼解決方案 + Crypto Agility）</div>
+      <div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍§3.6.2 Cryptographic methods（quantum）＋ crypto agility（2024 新增）</div>
+      <p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>Quantum supremacy</strong> 指量子電腦可輕易解決因數分解與離散對數等難題,使 <strong>RSA、Diffie-Hellman</strong> 等演算法失去安全性;<strong>HNDL（Harvest Now, Decrypt Later）</strong>是對手先攔截儲存加密資料、待量子電腦成熟再解密的威脅——安全人員須評估資料的有效保密期間,及早導入 PQC-safe 演算法。<strong>Crypto agility</strong> 為 2024 考綱納入的能力要求:系統應能在不重構的前提下替換演算法與金鑰。</p>
+      <div style="font-size:13px;font-weight:700;color:#0A6160;margin:8px 0 6px;">▍PQC 與格密碼（lattice-based）</div>
+      <p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;"><strong>Post-Quantum Cryptography</strong>:可在傳統電腦上實作、且能抵抗量子攻擊的新型密碼方法;<strong>lattice-based cryptography</strong> 以格結構上的數學難題為基礎,即使面對量子算力仍難以求解（注意:抵抗「多數」而非全部量子攻擊,故 NIST 保留 hash-based 的 SLH-DSA 作備援）。另區分 §3.6.3 的 <strong>QKD</strong>:以量子力學「量測即擾動」特性分發金鑰,是硬體技術,不屬於 PQC。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §3.6 + crypto agility（2024 新增）。</p>
+    </div>
+    <!-- /09b -->
+
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/P5So8_NKxz4" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 3 ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#B45309; font-weight:700; margin-bottom:2px;">📝 考題練習（刷題）</div>
+        <a href="https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8" style="font-size:14px; font-weight:700; color:#B45309; text-decoration:none;">CISSP Practice Questions Playlist｜刷題播放清單 ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 122 / 126 · P3-D3-7</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

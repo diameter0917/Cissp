@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 每日電子報 · Day 123</title>
+</head>
+<body style="margin:0; padding:0; background-color:#EEF2F6;">
+<div style="background-color:#EEF2F6; padding:20px 12px;">
+<div style="max-width:600px; margin:0 auto; background-color:#FFFFFF; border:1px solid #E2E8F0; border-radius:16px; overflow:hidden; font-family:-apple-system,'PingFang TC','Microsoft JhengHei','Noto Sans TC','Hiragino Sans',sans-serif; color:#1E293B;">
+
+  <div style="background-color:#0F1B2D; padding:22px 24px 20px;">
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:2px; color:#8FA0B6; text-transform:uppercase;">CISSP 每日電子報 &nbsp;·&nbsp; DAY 123 / 126</div>
+    <div style="margin-top:14px;">
+      <span style="display:inline-block; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:12px; font-weight:700; letter-spacing:1px; color:#FFFFFF; background-color:#B45309; padding:4px 9px; border-radius:5px;">P3-D7-6</span>
+      <span style="display:inline-block; font-size:12px; color:#C7D2E0; margin-left:8px;">後期 · 考試重點 &nbsp;|&nbsp; Domain 7 · 安全維運 &nbsp;|&nbsp; 權重 13%</span>
+    </div>
+    <h1 style="margin:14px 0 4px; font-size:26px; line-height:1.35; color:#FFFFFF; font-weight:700;">加強：人員安全（§7.15）+ DRP 五種測試 + SOAR</h1>
+    <div style="font-size:13px; color:#8FA0B6; font-style:italic;">Deep Dive: Personnel Safety, DRP Test Types &amp; SOAR</div>
+  </div>
+  <div style="height:4px; background-color:#E2E8F0;"><div style="height:4px; width:97.6%; background-color:#B45309;"></div></div>
+
+  <div style="padding:24px 24px 8px;">
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:4px;">00 — 📬 開場：D7 三個高頻補強點</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;">加強週來到 Domain 7。今天一次補強三個常被輕忽、卻反覆出現在考題裡的主題:<strong>§7.15 人員安全</strong>（含考試最重要的一條鐵律）、<strong>DRP 五種測試類型</strong>的完整光譜,以及 <strong>SOAR</strong> 與 SIEM 的分工。三塊都屬於「觀念不難、選項極會混淆」的類型,重點在鑑別。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">01 — 考試鐵律：人命永遠第一</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>Safety of human life is ALWAYS the first priority</strong>（人身安全永遠是第一優先）。這是 CISSP 全考試範圍內<strong>最不可動搖的一條規則</strong>:任何災難、事故、入侵情境,只要選項中出現「保護人員/疏散人員」,它就凌駕於保護資料、系統、營運與商譽之上。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>陷阱形式</strong>:題目常用「機房失火,FIRST 該做什麼」引誘你選「優雅關機」「啟動異地備援」——只要疏散/人員安全在選項裡,先選它,系統的事之後再說。</p>
+    </div>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">02 — 差旅安全（§7.15.1 Travel）</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 10px;">員工出差（尤其前往高風險國家）是人員與資料同時曝險的場景,訓練重點:</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:12px 0 4px; border-collapse:separate; border-spacing:0 6px;">
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>裝置減量</strong>——隨行裝置<strong>不應存放敏感資料</strong>;高風險行程改用乾淨的「借用裝置（loaner device）」,回國後重灌,不接回內網。邊境檢查時裝置可能被要求解鎖、複製甚至扣留——帶得越少,損失越小。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>公共 Wi-Fi 與旅館風險</strong>——免費 Wi-Fi 可能是攔截流量的陷阱,一律透過<strong>公司 VPN</strong> 建立加密通道;旅館房間可能被安裝實體監控或惡意裝置,裝置不離身、閒置時上鎖。</td></tr>
+      <tr><td style="background-color:#F8FAFC; border-left:3px solid #B45309; padding:9px 12px; font-size:14px; line-height:1.6;"><strong>安全意識訓練（§7.15.2）</strong>——把人員安全納入年度訓練:內部威脅徵兆通報、社群媒體過度分享（給社交工程送素材）、<strong>MFA fatigue</strong>（疲勞轟炸推播——沒發起的驗證請求一律拒絕並通報）。</td></tr>
+    </table>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">03 — 脅迫（§7.15.4 Duress）</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 14px;"><strong>Duress</strong>（脅迫）指人員被迫在威脅下行動——例如警衛被持械挾持、行員被迫開金庫。因應設計:<strong>duress system</strong>（脅迫系統),如按下即發出求救的<strong>無聲警報（silent alarm）按鈕</strong>、輸入特殊「脅迫碼」開門同時通報保全,對<strong>獨自工作（working alone）</strong>的人員特別重要。搭配<strong>暗語/安全字（code word）</strong>機制:誤觸警報時說出暗語表示「一切正常」;若<strong>刻意不說</strong>暗語,回應人員便知這是真實事件。核心原則:面對威脅<strong>先配合、保住性命,事後立即通報</strong>——不要逞英雄,財物與資料都可以再補救。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">04 — 緊急管理與疏散（§7.15.3）＋經典案例</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 10px;"><strong>Emergency management</strong>（緊急管理）計畫確保災難發生時人員的安全與應變:疏散路線與集合點、人員清點（accountability）、定期<strong>疏散演練（evacuation drill）</strong>。演練不是形式——它決定真實災難那一天,人走不走得出去。</p>
+    <div style="background-color:#EAF4F3; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:13px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px;"><strong>Rick Rescorla 與 Morgan Stanley（911 案例）</strong>:Morgan Stanley 安全主管 Rick Rescorla 在 1993 年世貿爆炸案後,判斷大樓仍會再遭攻擊,於是<strong>不顧抱怨、堅持全員定期疏散演練</strong>,連高階主管也不得缺席。2001 年 9 月 11 日,他無視「留在原地」的廣播,用擴音器指揮近 2,700 名員工依演練路線快速撤離南塔——公司員工幾乎全數生還。Rescorla 為了確認沒有人留下而折返大樓,不幸罹難。</p>
+      <p style="font-size:14px; line-height:1.75; margin:0; color:#0A6160;"><strong>啟示</strong>:緊急管理計畫 + 反覆演練 = 真正救命的控制措施。這是「人命第一」與「演練價值」最有力的實證,考題常以此類情境包裝。</p>
+    </div>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">05 — DRP 五種測試類型（§7.12 總整理表）</div>
+    <p style="font-size:15px; line-height:1.8; margin:10px 0 10px;">DRP 測試由淺入深形成光譜:<strong>越往右,驗證力越強、風險與成本也越高</strong>。考題最愛給情境問「這是哪一種」或「該用哪一種」:</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 8px; border-collapse:collapse; font-size:14px;">
+      <tr style="background-color:#0F1B2D; color:#FFFFFF;"><td style="padding:8px 10px; border-radius:6px 0 0 0;">測試類型</td><td style="padding:8px 10px;">做什麼</td><td style="padding:8px 10px;">動到系統?</td><td style="padding:8px 10px; border-radius:0 6px 0 0;">風險/適用時機</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>① Read-through / Checklist</strong> 讀查</td><td style="padding:9px 10px; vertical-align:top;">發放 DR 計畫給團隊成員各自審閱:確認職責、找出過時內容、發現離職未交接的責任</td><td style="padding:9px 10px; vertical-align:top;">否</td><td style="padding:9px 10px; vertical-align:top;">零風險;最簡單也最基本,計畫更新後首選</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>② Walkthrough / Tabletop</strong> 走查/桌上演練</td><td style="padding:9px 10px; vertical-align:top;">團隊與關鍵利害關係人<strong>齊聚一堂</strong>,依情境口頭走一遍應變流程,驗證程序完整可行</td><td style="padding:9px 10px; vertical-align:top;">否</td><td style="padding:9px 10px; vertical-align:top;">低風險;訓練團隊、找流程漏洞的高 CP 值選擇</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>③ Simulation</strong> 模擬</td><td style="padding:9px 10px; vertical-align:top;">給定災難情境並<strong>實際執行部分應變措施</strong>,可能中斷非關鍵業務</td><td style="padding:9px 10px; vertical-align:top;">部分（非關鍵）</td><td style="padding:9px 10px; vertical-align:top;">中風險;想驗證「做得出來」而非「講得出來」時</td></tr>
+      <tr><td style="padding:9px 10px; vertical-align:top;"><strong>④ Parallel</strong> 平行</td><td style="padding:9px 10px; vertical-align:top;">人員進駐備援站點、<strong>實際啟動異地系統</strong>,與主站<strong>並行運作</strong>,主站不中斷</td><td style="padding:9px 10px; vertical-align:top;">是（備援站）</td><td style="padding:9px 10px; vertical-align:top;">中高風險;驗證備援能力又不影響營運</td></tr>
+      <tr style="background-color:#F8FAFC;"><td style="padding:9px 10px; vertical-align:top;"><strong>⑤ Full-interruption</strong> 全中斷</td><td style="padding:9px 10px; vertical-align:top;"><strong>真的關閉主站</strong>,把營運整個切到備援站</td><td style="padding:9px 10px; vertical-align:top;">是（主站停機）</td><td style="padding:9px 10px; vertical-align:top;">最高風險,須高階管理層核准;唯一能「證明」DRP 真的可行的測試</td></tr>
+    </table>
+    <p style="font-size:14px; line-height:1.75; margin:8px 0 12px; color:#5B6675;">鑑別口訣:<strong>讀（各自看）→ 演（一起講）→ 模（做一部分）→ 平（備援真開機、主站照跑）→ 斷（主站真的關）</strong>。Parallel 與 full-interruption 的差別只有一個:主站有沒有停。</p>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">06 — SOAR：從「偵測」走向「自動回應」</div>
+    <p style="font-size:16px; line-height:1.8; margin:10px 0 12px;"><strong>SOAR</strong>（Security Orchestration, Automation, and Response,安全協調、自動化與回應）是一組讓組織<strong>自動回應</strong>特定事件的技術。與 SIEM 的分工:<strong>SIEM 負責蒐集日誌、關聯分析、偵測與告警;SOAR 接手告警之後的事——依既定劇本自動執行回應動作</strong>（隔離主機、封鎖 IP、停用帳號、開立工單）。</p>
+    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:10px 0 4px; border-collapse:collapse;">
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Playbook 劇本</strong> — <span style="color:#5B6675;">「文件/檢核表」:定義某類事件該如何回應的書面流程。</span></td></tr>
+      <tr><td style="padding:7px 0; border-bottom:1px solid #E2E8F0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">Runbook 執行手冊</strong> — <span style="color:#5B6675;">playbook 的「實作」:把書面步驟轉譯成可自動執行的動作。記憶法:play 是劇本,run 是照劇本跑。</span></td></tr>
+      <tr><td style="padding:7px 0; font-size:15px; line-height:1.6;"><strong style="color:#0F1B2D;">與 SOC 人力的關係</strong> — <span style="color:#5B6675;">SOAR 的首要效益是<strong>降低管理人員工作負荷、減少人為錯誤</strong>,讓分析師從重複性告警解放、專注高階研判——是「增力」而非「取代」SOC。</span></td></tr>
+    </table>
+
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">07 — 🚨 CISSP 考點雷達</div>
+    <div style="background-color:#FBF4E8; border-left:3px solid #B45309; border-radius:0 8px 8px 0; padding:12px 16px; margin:10px 0 4px;">
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>① 人命安全選項永遠優先</strong>:災難情境問 FIRST/MOST important,選項含「疏散/保護人員」→ 直接選它,不管其他選項技術上多正確。脅迫情境 → 配合要求保命,事後通報。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0 0 8px; color:#4A3A1C;"><strong>② DRP 測試鑑別</strong>:「不動系統、開會討論」= tabletop/walkthrough;「備援站啟動、主站照常」= <strong>parallel</strong>;「主站真的關掉」= full-interruption（唯一需最高層核准、也唯一能證明計畫可行）。</p>
+      <p style="font-size:15px; line-height:1.8; margin:0; color:#4A3A1C;"><strong>③ SIEM vs SOAR</strong>:題目要「偵測/關聯/告警」→ SIEM;要「自動回應、減輕分析師負擔、降低人為錯誤」→ <strong>SOAR</strong>。playbook = 文件,runbook = 自動化實作,別倒過來。</p>
+    </div>
+
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 1</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A fire breaks out in the data center while the operations team is inside performing maintenance. What should the shift supervisor do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（維運團隊在機房內進行維護時發生火災。值班主管『首先』該做什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Gracefully shut down critical servers to prevent data loss 優雅關閉關鍵伺服器以避免資料遺失</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Evacuate all personnel according to the emergency management plan 依緊急管理計畫疏散所有人員</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Activate the disaster recovery plan and fail over to the hot site 啟動災難復原計畫並切換到熱備援站點</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Notify senior management and the cyber insurance carrier 通知高階管理層與資安保險公司</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。CISSP 鐵律:<strong>人身安全永遠是第一優先</strong>——高於資料、系統、營運與任何通報義務。火災現場有人,唯一的 FIRST 就是依緊急管理計畫疏散。判斷邏輯:凡災難情境的 FIRST 題,先掃描選項有沒有「人員安全」;有,就是它。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：為了關機讓人多留在火場一秒都不對——資料可以從備份救回,人命不行。</li><li style="margin-bottom:3px;">C：DRP 切換是人員安全確保之後的事,不是第一動作。</li><li style="margin-bottom:3px;">D：通報有其必要,但順位在疏散之後;任何行政程序都不優先於人命。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 2</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">Management wants to verify that the alternate recovery site can actually run production workloads, but refuses to accept any disruption to primary operations. Which DRP test type BEST meets this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（管理層想驗證備援站點真的能運行正式工作負載,但不接受主站營運受到任何中斷。哪種 DRP 測試『最』符合需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Tabletop exercise 桌上演練</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Parallel test 平行測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Full-interruption test 全中斷測試</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Read-through test 讀查測試</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。<strong>Parallel test</strong>:人員進駐備援站、實際執行站點啟動程序、跑起真實工作負載,但<strong>主站照常運作、不中斷</strong>——同時滿足「真的開機驗證」與「不影響營運」兩個條件。判斷邏輯:抓兩個關鍵字「實際運行 + 主站不中斷」,光譜上只有 parallel 同時吻合。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：tabletop 只是口頭走流程,完全不動系統,驗證不了備援站「能不能跑」。</li><li style="margin-bottom:3px;">C：full-interruption 要真的關閉主站,直接違反「不接受任何中斷」的前提。</li><li style="margin-bottom:3px;">D：read-through 只是各自審閱文件,離「實際運行工作負載」最遠。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 3</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A SOC receives hundreds of similar phishing alerts daily. Analysts spend most of their shift on repetitive containment steps, and fatigue-related mistakes are increasing. Which solution would BEST address this situation?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（SOC 每天收到數百則相似的釣魚告警,分析師大半時間耗在重複的隔離處置上,疲勞造成的失誤也在增加。哪個方案『最能』解決此狀況?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Add more correlation rules to the SIEM to generate more detailed alerts 在 SIEM 增加更多關聯規則以產生更詳細的告警</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Hire additional analysts to spread the alert-handling workload 增聘分析師分攤告警處理工作</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Deploy a SOAR platform with playbooks and runbooks to automate the routine response steps 部署 SOAR 平台,以 playbook 與 runbook 自動化例行回應步驟</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Raise alert thresholds so fewer phishing alerts are generated 提高告警門檻,讓釣魚告警數量變少</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。題幹三個訊號——<strong>重複性處置、人力被占滿、人為錯誤上升</strong>——正是 SOAR 的教科書適應症:以 playbook 定義回應流程、runbook 自動執行,主要效益就是<strong>降低管理負荷 + 減少人為錯誤</strong>,把分析師還給高價值研判。記憶法:偵測找 SIEM,回應自動化找 SOAR。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：SIEM 規則解決「偵測品質」,但問題卡在「回應太耗人力」,更多告警只會更糟。</li><li style="margin-bottom:3px;">B：加人是線性堆疊成本,不消除重複勞動,疲勞失誤問題依舊存在。</li><li style="margin-bottom:3px;">D：提高門檻是掩蓋問題——會漏報真實攻擊,犧牲偵測能力換取表面清淨。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
+
+    <details style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-radius:10px; padding:12px 16px;">
+      <summary style="font-size:14px; font-weight:700; color:#0F1B2D; cursor:pointer;">✏️ 一句話總結 + 自我檢測（點開看解答）</summary>
+      <p style="font-size:16px; line-height:1.8; margin:12px 0 10px; color:#1E293B;"><strong>一句話：</strong>人命永遠第一（脅迫先配合、事後通報;差旅裝置減量走 VPN）;DRP 測試光譜 = 讀→演→模→平行（主站照跑）→全中斷（主站真關）;SIEM 偵測告警,SOAR 用 playbook/runbook 自動回應、減負荷減人為錯誤。</p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q1</strong> . duress system 誤觸警報時,如何讓回應人員知道是虛驚?<br><span style="color:#0A6160;">→ 說出約定的暗語（code word）表示誤觸;刻意不說暗語則代表真實脅迫事件。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . parallel 與 full-interruption 測試的唯一差別?哪個需要最高層核准?<br><span style="color:#0A6160;">→ 差別在主站是否停機:parallel 主站照常,full-interruption 真的關閉主站——風險最高,須高階管理層核准。</span></p>
+      <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . playbook 與 runbook 的差別?SOAR 的首要效益?<br><span style="color:#0A6160;">→ playbook 是定義回應流程的文件,runbook 是把流程轉為自動化動作的實作;首要效益是降低管理員工作負荷並減少人為錯誤。</span></p>
+    </details>
+
+    <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
+    <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
+      <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.15 人員安全 / §7.12 DRP 測試 / SOAR）</div>
+      <div style="font-size:13px;font-weight:700;color:#0A6160;margin:2px 0 6px;">▍§7.15 Address personnel safety and security concerns</div>
+      <p style="font-size:14px;line-height:1.75;margin:0 0 6px;color:#1E293B;"><strong>Travel</strong>:隨行裝置不放敏感資料、慎防旅館被植入的惡意/監控裝置、免費 Wi-Fi 可能攔截流量、以公司 VPN 建立安全連線。<strong>Emergency management</strong>:災後以人員安全為首要考量。<strong>Duress</strong>:求救按鈕等脅迫系統,適用獨自工作情境;誤觸時以 code word 表明虛驚,省略暗語即觸發真實回應。訓練另涵蓋 insider threat、社群媒體風險與 <strong>2FA/MFA fatigue</strong>（未發起的推播一律拒絕並通報）。</p>
+      <div style="font-size:13px;font-weight:700;color:#0A6160;margin:8px 0 6px;">▍§7.12 DRP 測試 ＋ SOAR</div>
+      <p style="font-size:14px;line-height:1.75;margin:0 0 0px;color:#1E293B;">五種測試:<strong>read-through/checklist</strong>（審閱計畫、確認職責）、<strong>walkthrough/tabletop</strong>（齊聚討論情境回應）、<strong>simulation</strong>（實測部分措施,可中斷非關鍵業務）、<strong>parallel</strong>（進駐備援站並啟動,主站不停）、<strong>full-interruption</strong>（關閉主站切換,唯一證明 DRP 可行,風險最高）。<strong>SOAR</strong>:自動回應事件的技術群,經由 <strong>playbook</strong>（回應文件）與 <strong>runbook</strong>（自動化實作）降低管理負荷與人為錯誤;SIEM 偵測,SOAR 回應。</p>
+      <p style="font-size:11px; color:#64748B; margin:11px 0 0; font-style:italic;">重點改編自 <a href="https://github.com/jefferywmoore/CISSP-Study-Resources" style="color:#64748B;">jefferywmoore/CISSP-Study-Resources</a>（Apache-2.0），對應官方考綱 §7.15 + §7.12 + SOAR。</p>
+    </div>
+    <!-- /09b -->
+
+    <div style="margin-top:28px; border:1px solid #E2E8F0; border-radius:10px; padding:14px 16px;">
+      <div style="font-size:14px; font-weight:700; color:#0F1B2D; margin-bottom:10px;">📺 本日對應影片</div>
+      <div style="margin-bottom:11px;">
+        <div style="font-size:12px; color:#5B6675; font-weight:700; margin-bottom:2px;">📚 完整課程（看全貌，約一小時）</div>
+        <a href="https://youtu.be/8zM89KMRniM" style="font-size:14px; font-weight:700; color:#0F1B2D; text-decoration:none;">CISSP Full Course 2026 – Domain 7 ↗</a>
+      </div>
+      <div>
+        <div style="font-size:12px; color:#B45309; font-weight:700; margin-bottom:2px;">📝 考題練習（刷題）</div>
+        <a href="https://youtube.com/playlist?list=PLNoUpEKd6YvAYFgJOoSGr5yNJBMOQCkh8" style="font-size:14px; font-weight:700; color:#B45309; text-decoration:none;">CISSP Practice Questions Playlist｜刷題播放清單 ↗</a>
+      </div>
+    </div>
+
+    <!-- TODAY_NEWS -->
+
+  </div>
+
+  <div style="padding:16px 24px 22px; border-top:1px solid #E2E8F0; margin-top:16px;">
+    <a href="#" style="font-size:13px; color:#B45309; text-decoration:none; font-weight:600;">← 回索引總表</a>
+    <span style="float:right; font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; color:#9AA6B4;">Day 123 / 126 · P3-D7-6</span>
+  </div>
+
+</div>
+</div>
+</body>
+</html>

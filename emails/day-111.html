@@ -100,6 +100,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 根除為何在復原之前？<br><span style="color:#0A6160;">→ 確保威脅完全移除,避免復原後再次淪陷。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 事件回應的第一個階段？<br><span style="color:#0A6160;">→ 準備(preparation,平時做好)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During containment of an active intrusion, a senior engineer proposes hacking back into the attacker's command-and-control server to stop the attack quickly. What is the BEST response from the incident response manager?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（在遏制進行中的入侵時,一位資深工程師提議『反駭』攻擊者的 C2 伺服器以快速止血。事件回應經理的最佳回應是?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Approve it, because stopping the attack is the top priority 核准,因為止住攻擊是第一優先</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Reject it; continue containment per the plan and leave offensive action to law enforcement 拒絕;依計畫持續遏制,攻擊性行動交由執法機關</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Approve it only if the attacker's IP address has been positively identified 僅在確認攻擊者 IP 後才核准</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Postpone the decision until the recovery phase 延後到復原階段再決定</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。判斷邏輯:組織<strong>絕不反擊(never hack back)</strong>——反擊通常違法、常打到被當跳板的無辜第三方,還會破壞證據;正確做法是依計畫持續遏制(隔離/阻斷),攻擊性行動交由執法機關。記憶法:『止血靠隔離,不靠開戰』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：止血手段是遏制,不是攻擊對方;反擊本身製造新的法律風險。</li><li style="margin-bottom:3px;">C：即使確認 IP,反擊仍違法,且該 IP 常是被劫持的無辜主機。</li><li style="margin-bottom:3px;">D：這不是時機問題——任何階段都不應反擊。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">After services are restored, the team performs a root cause analysis and changes system configurations to prevent the incident from recurring. In the (ISC)&sup2; incident management stages, this activity belongs to:</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（服務恢復後,團隊進行根因分析並變更系統設定以防事件重演。在 (ISC)² 事件管理階段中,這屬於:）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Remediation 矯正</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Mitigation 減緩</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Recovery 復原</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Lessons Learned 事後檢討</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。(ISC)² 七階段(DRMRRRL)中,<strong>Remediation(矯正)＝根因分析＋變更設定防重演</strong>,位於 Recovery 之後、Lessons Learned 之前。鑑別點:題幹說『找出根因並實際改設定』——這是 Remediation 的定義。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：Mitigation 是遏制/控制損害(＝containment),不處理根因。</li><li style="margin-bottom:3px;">C：Recovery 只是把系統恢復運作,不含根因修復。</li><li style="margin-bottom:3px;">D：Lessons Learned 是檢討並產出改善『建議』,實際變更設定的是 Remediation。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A SOC analyst receives a single IDS alert indicating suspicious traffic from a business-critical server. What should the analyst do FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（SOC 分析師收到一則 IDS 告警,指出某台業務關鍵伺服器出現可疑流量。分析師應『首先』做什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Analyze and validate the alert to confirm whether an actual incident has occurred 分析並驗證告警,確認是否真的發生事件</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Immediately disconnect the server from the network 立即將伺服器斷網</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Notify regulators and affected customers 通知主管機關與受影響客戶</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Restore the server from the most recent backup 用最近的備份還原伺服器</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>收到告警不等於事件已發生(event ≠ incident)</strong>;偵測階段要先分析/驗證是否為真實事件,確認後才啟動遏制。鑑別點:與『惡意程式正在擴散』(已確認)不同,本題只是『一則告警』——先驗證,避免因誤報貿然中斷關鍵業務。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：遏制在『確認事件』之後;誤報就斷網等於自己造成中斷。</li><li style="margin-bottom:3px;">C：通報要先確認事件與影響範圍,否則是誤報也通報。</li><li style="margin-bottom:3px;">D：還原屬復原階段,此時做會破壞證據且未確認有事件。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §7.6 事件流程順序（考點））</div>
