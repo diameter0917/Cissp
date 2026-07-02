@@ -45,10 +45,11 @@ def main():
         else:
             html = html.replace(NEWS_MARKER, "")
 
-        # 頁尾回索引連結指向 index.html
-        html = html.replace(
-            '<a href="#" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>',
-            '<a href="index.html" style="font-size:13px; color:#0E7C7B; text-decoration:none; font-weight:600;">← 回索引總表</a>',
+        # 頁尾回索引連結指向 index.html（不綁定樣式色碼，restyle 後仍有效）
+        html = re.sub(
+            r'<a href="#"([^>]*)>← 回索引總表</a>',
+            r'<a href="index.html"\1>← 回索引總表</a>',
+            html,
         )
 
         (ARCHIVE / f.name).write_text(html, encoding="utf-8")
