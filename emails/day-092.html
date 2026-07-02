@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . TLS 用混合加密的最佳理由？<br><span style="color:#0A6160;">→ 對稱加密大量資料快得多;用非對稱只為安全交換對稱金鑰。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 8 人純對稱兩兩通訊需幾把金鑰？<br><span style="color:#0A6160;">→ 8×7/2 = 28 把。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A legacy system "strengthens" DES by encrypting each block twice with two different 56-bit keys (2DES). Which attack explains why this does NOT provide the expected 112-bit security?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某舊系統以兩把不同的 56 位元金鑰對每個區塊加密兩次(2DES)來『強化』DES。哪種攻擊解釋了為何這無法提供預期的 112 位元安全強度?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Frequency analysis 頻率分析</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Birthday attack 生日攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Side-channel attack 旁通道攻擊</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Meet-in-the-middle attack 中間相遇攻擊</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>Meet-in-the-middle(中間相遇)</strong>是已知明文攻擊:同時『從明文往前加密』與『從密文往後解密』各做一次較小的暴力搜尋,在中間比對結果找出兩把金鑰——使 2DES 有效強度僅約 57 bits,這正是業界跳過 2DES 直接採 3DES 的原因。記憶:『兩段式加密→中間相遇』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：頻率分析利用語言字母出現頻率,只對簡單替換密碼有效,打不動 DES 這類現代區塊密碼。</li><li style="margin-bottom:3px;">B：生日攻擊利用機率找『雜湊碰撞』,針對雜湊函數而非重複加密結構。</li><li style="margin-bottom:3px;">C：旁通道攻擊量測功耗/時間打『實作』,與 2DES 的結構性弱點無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A department of 20 employees communicates using only pairwise symmetric keys. When ONE new employee joins, how many NEW keys must be generated so everyone can communicate securely?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某部門 20 人全用兩兩對稱金鑰通訊。新進 1 人後,需要『新增』幾把金鑰才能讓所有人安全通訊?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> 1</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> 20</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> 21</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> 210</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。新成員須與既有 <strong>20 人各建立一把</strong>共享金鑰→新增 <strong>20</strong> 把。驗算:總數由 20×19/2=190 變成 21×20/2=210,差正好 20。判斷邏輯:考的是 n(n-1)/2 的『增量』——第 n+1 人加入,新增 n 把;這也是對稱金鑰管理不可擴展的核心原因。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：一把金鑰給所有人共用會變成群組金鑰,失去兩兩通訊的機密性。</li><li style="margin-bottom:3px;">C：21 是新的總人數,不是新增金鑰數。</li><li style="margin-bottom:3px;">D：210 是新的『總』金鑰數(21×20/2),題目問的是新增數。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security architect must implement digital signatures on battery-powered IoT sensors with very limited CPU and memory. Which algorithm is the BEST choice?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全架構師須在 CPU 與記憶體都非常有限的電池供電 IoT 感測器上實作數位簽章。最佳的演算法選擇為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> RSA-4096</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> AES-256</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> ECDSA (elliptic curve) 橢圓曲線簽章</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> SHA-256 alone 單獨使用 SHA-256</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>ECC 在同等安全強度下金鑰短得多、運算量低</strong>,最適合資源受限的行動/IoT 裝置;ECDSA 也是 FIPS 186-5 認可的簽章演算法。判斷邏輯:題幹兩個關鍵——『數位簽章』(需非對稱)+『資源受限』(選 ECC)。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：RSA-4096 也『能』簽,但金鑰長、運算昂貴,在受限裝置上不是『最佳』——技術上對但優先序錯,是本題最強干擾項。</li><li style="margin-bottom:3px;">B：AES 是對稱加密,金鑰雙方共享,無法提供簽章所需的不可否認。</li><li style="margin-bottom:3px;">D：單純雜湊無身分綁定,任何人都能重算,不構成簽章。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §3.6.2 對稱 vs 非對稱（考點））</div>

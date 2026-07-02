@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 唯一能讓資料脫離 GDPR 的去識別技術？<br><span style="color:#0A6160;">→ 匿名化(anonymization,不可逆)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . Privacy by Design 的核心預設原則？<br><span style="color:#0A6160;">→ Privacy by Default(預設即最小蒐集、最嚴隱私)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A retailer wants to remove cardholder data from most systems' compliance scope while still supporting purchases. Each card number is replaced with a random value, and the real number is kept only in a secure vault. This technique is:</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某零售商想讓多數系統脫離持卡人資料的合規範圍,但仍能支援消費交易。每個卡號被換成一個隨機值,真實卡號只保存在安全保險庫(vault)中。此技術為:）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Field-level encryption 欄位層級加密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Data masking 資料遮罩</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Tokenization 代碼化</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Hashing 雜湊</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。以<strong>與原值無數學關聯的隨機字串(token)</strong>替代真值、原值僅存於 tokenization vault,POS 等系統只接觸 token——token 被竊也無價值,故能縮小合規範圍。與加密之別:token 無法被『解』回原值,只能透過 vault 查表對應。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：加密值與原值有數學關係,金鑰外洩即可還原,系統仍在合規範圍內。</li><li style="margin-bottom:3px;">B：遮罩(如只顯示末四碼)用於展示層,遮罩後的資料無法再用於交易授權。</li><li style="margin-bottom:3px;">D：雜湊不可逆,授權時無法還原卡號完成交易流程。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A development team completes a new customer portal, then asks the privacy team to 'add privacy controls' before launch. Which Privacy by Design principle does this approach violate MOST directly?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某開發團隊完成新客戶入口網站後,才請隱私團隊在上線前『加上隱私控制』。此做法最直接違反哪項 Privacy by Design 原則?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Data minimization 資料最小化</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Transparency and notice 透明與告知</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Data portability 資料可攜</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Privacy embedded into design, proactive not reactive 隱私內建於設計,主動而非事後補救</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。PbD 的核心:隱私必須在<strong>設計階段就內建(embedded)、主動預防(proactive)</strong>,而不是系統完工後才『外掛』補上——事後補救成本高、覆蓋不全,正是本情境違反之處。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：題目未顯示過度蒐集;違反點在『時機』,不在『數量』。</li><li style="margin-bottom:3px;">B：透明是對當事人的告知義務,與開發流程的時機無關。</li><li style="margin-bottom:3px;">C：可攜是當事人取得/轉移自身資料的權利,與此情境無關。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization launches a project that will collect large volumes of customer data. Before selecting encryption, DLP rules, or a control baseline, what should be done FIRST?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織啟動一個將蒐集大量客戶資料的專案。在選擇加密、DLP 規則或控制基準之前,應『首先』做什麼?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Encrypt all data by default 預設加密所有資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Deploy DLP at the network egress 在網路出口部署 DLP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Identify and classify the data to be collected 識別並分類將蒐集的資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Apply the most stringent control baseline available 套用現有最嚴格的控制基準</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。D2 主線:<strong>先分類,後依分類決定處理與保護強度</strong>。資料生命週期最前段的步驟就是識別與分類——不知道資料多敏感,就無從決定加密等級、DLP 規則或基準選擇。FIRST 題要選『建立後續決策依據』的那一步。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：全面加密未必必要且有成本,加密強度應依分類決定。</li><li style="margin-bottom:3px;">B：DLP 規則必須先知道『哪些資料算敏感』才能設定。</li><li style="margin-bottom:3px;">D：一律套最嚴基準會過度保護低敏資料、浪費資源;基準應依分類/衝擊等級選擇。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.1 + §2.6.4 D2 綜合）</div>

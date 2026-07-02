@@ -101,6 +101,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 阻擋端點上傳敏感檔用哪種 DLP？<br><span style="color:#0A6160;">→ Endpoint DLP(端點)。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 哪個資料狀態最難保護、為什麼？<br><span style="color:#0A6160;">→ In use；須解密才能運算。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A company distributes confidential pricing documents to external partners and must prevent recipients from printing, copying, or forwarding them even after the files leave the corporate network. Which control BEST meets this requirement?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某公司將機密報價文件發給外部夥伴,且須在檔案離開公司網路之後,仍能阻止收件者列印、複製或轉寄。哪個控制最能滿足此需求?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Network DLP at the egress point 部署於出口的網路 DLP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Digital Rights Management (DRM) 數位版權管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> TLS encryption for all file transfers 所有檔案傳輸皆用 TLS 加密</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Full-disk encryption on file servers 檔案伺服器全磁碟加密</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：B</strong>。<strong>DRM 隨資料移動(travels with the data)</strong>:保護與檔案綁定,不論資料狀態或所在裝置,離開網路後仍能限制列印/複製/轉寄——這是 DLP 與通道加密都做不到的『邊界外持續管控』。判斷式:要管到『對方拿到檔案之後』→ DRM。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Network DLP 只能在自家網路出口攔截,檔案送出後即失去控制。</li><li style="margin-bottom:3px;">C：TLS 只保護傳輸通道,送達後收件者可任意處理檔案。</li><li style="margin-bottom:3px;">D：全磁碟加密保護伺服器上的靜止資料,對已分享出去的檔案無作用。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A CISO discovers employees are using dozens of unsanctioned SaaS applications. The organization needs visibility into cloud app usage and a single enforcement point that applies its security policies between users and all cloud services. Which solution BEST fits?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某 CISO 發現員工使用數十個未經核准的 SaaS 應用。組織需要掌握雲端應用使用狀況,並在使用者與所有雲端服務之間建立單一政策執行點。哪個方案最適合?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Endpoint DLP 端點 DLP</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Next-generation firewall 次世代防火牆</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Digital Rights Management (DRM) 數位版權管理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Cloud Access Security Broker (CASB) 雲端存取安全代理</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>CASB 邏輯上位於使用者與雲端資源之間</strong>,確保雲端資源享有與內網相同的保護,並作為安全政策的執行點;四大基石:可視性(visibility)、資料安全、威脅偵測、合規——『發現影子 IT＋雲端政策執行』正是 CASB 的適用邊界。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：Endpoint DLP 管端點的外傳行為(列印/USB/上傳),無法提供跨雲端服務的整體可視性與政策執行。</li><li style="margin-bottom:3px;">B：防火牆過濾網路流量,難以辨識並細緻管控各 SaaS 應用的使用。</li><li style="margin-bottom:3px;">C：DRM 保護『文件本身』的使用權,不管理雲端應用存取。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A DLP rule inspects outbound email and blocks any message containing numbers matching a social security number pattern. Which DLP type and data state does this control address?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某 DLP 規則檢查外寄郵件,阻擋內含符合 SSN(社會安全號碼)樣式數字的訊息。此控制屬於哪種 DLP 類型,並對應哪種資料狀態?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Network-based DLP protecting data in transit 網路 DLP,保護傳輸中資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Endpoint-based DLP protecting data in use 端點 DLP,保護使用中資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Storage/discovery DLP protecting data at rest 儲存掃描 DLP,保護靜止資料</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Cloud-based DLP protecting data at rest 雲端 DLP,保護靜止資料</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。部署在<strong>網路邊界、掃描所有外送資料(on the wire)</strong>並依規則(如 SSN 樣式)阻擋傳輸＝Network-based DLP;郵件正在線路上流動＝<strong>data in transit</strong>。配對式考法:部署點(網路出口)與資料狀態(傳輸中)要同時答對。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：端點 DLP 在裝置上管列印/USB/複製,本題的攔截點在網路郵件流。</li><li style="margin-bottom:3px;">C：Storage/discovery DLP 掃描檔案庫中的靜止資料,不做即時外送攔截。</li><li style="margin-bottom:3px;">D：雲端 DLP 針對雲原生環境;且外寄郵件屬傳輸中,非靜止。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §2.6.1 三態 / §2.6.4 保護（考點））</div>

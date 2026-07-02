@@ -104,6 +104,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . RTO 與 MTD 的必然關係？<br><span style="color:#0A6160;">→ RTO ≤ MTD。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . STRIDE 的 Spoofing 對應哪個安全目標？<br><span style="color:#0A6160;">→ 真實性(Authenticity)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A BIA establishes an RPO of 2 hours for a critical customer database, but backups currently run only once every 24 hours. What is the BEST course of action?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（BIA 為某關鍵顧客資料庫訂出 2 小時的 RPO,但目前備份每 24 小時才執行一次。最佳做法為何?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Increase backup or replication frequency so potential data loss cannot exceed 2 hours 提高備份/複寫頻率,使資料損失不超過 2 小時</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Revise the RPO to 24 hours to match current backup capability 把 RPO 改成 24 小時以符合現行備份能力</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Shorten the RTO to compensate for the potential data loss 縮短 RTO 以彌補資料損失</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Accept the gap since daily backups are an industry norm 每日備份是業界常態,接受此落差</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。<strong>RPO 決定備份頻率</strong>,不是反過來。RPO 出自 BIA 的『業務可容忍資料損失』,是業務需求;技術能力(每 24 小時備份)必須追上需求,而非把需求改低遷就技術。RPO 2 小時→至少每 2 小時做一次備份/複寫。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：高誘答陷阱——看似『務實』,但復原目標由業務衝擊決定;為遷就 IT 現況而改 RPO,等於默默讓業務承受 24 小時資料損失。</li><li style="margin-bottom:3px;">C：RTO 是『多快復原(時間)』、RPO 是『可丟多少(資料)』,不同維度,救不了資料損失。</li><li style="margin-bottom:3px;">D：接受須經知情的管理層決策,且『業界常態』不是理由——本題已有明確的業務需求(RPO 2 小時)未被滿足。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A development team has used STRIDE to identify and categorize threats against a new application. Which methodology is BEST suited to rate and prioritize those identified threats NEXT?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（開發團隊已用 STRIDE 對新應用程式的威脅完成識別與分類。接下來最適合用哪個方法對這些威脅評分並排定優先序?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> PASTA</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> VAST</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> DREAD</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Trike</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。經典搭配:<strong>STRIDE 負責『識別/分類』,DREAD 負責『評分/排序』</strong>(Damage、Reproducibility、Exploitability、Affected users、Discoverability 五項打分),兩者常一起使用。題幹已完成識別,下一步就是用 DREAD 排優先序,先處理最嚴重的威脅。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：高誘答陷阱——PASTA 是完整的七階段風險導向方法論,若要用它應從頭走全流程,不是接在 STRIDE 之後做評分的工具。</li><li style="margin-bottom:3px;">B：VAST 是把威脅建模整合進 Agile 並強調規模化的概念,非威脅評分法。</li><li style="margin-bottom:3px;">D：Trike 是開源的風險基礎威脅建模/稽核框架,同樣是獨立方法論而非 STRIDE 的排序配套。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization wants threat modeling to deliver the GREATEST security benefit at the LOWEST remediation cost for a new system. At which point should threat modeling be performed?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織希望對新系統的威脅建模能以最低的修復成本帶來最大安全效益。應在哪個時間點執行威脅建模?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> During early design and development, as a proactive defensive approach 在設計開發早期,採主動防禦式做法</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> After deployment, through adversarial testing such as penetration tests 部署後以滲透測試等對抗式方法進行</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Only after a security incident confirms a real threat 待資安事件證實威脅存在後再做</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> During the annual external audit cycle 配合年度外部稽核週期執行</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：A</strong>。威脅建模有兩種取徑:<strong>proactive/defensive(設計開發早期預測威脅並內建防禦)</strong>與 reactive/adversarial(產品部署後)。題目關鍵字是『最低修復成本』——越早發現設計缺陷,修復越便宜;上線後才改,成本呈倍數增加。安全要『內建(built-in)』,不是『外掛(bolted-on)』。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">B：高誘答陷阱——部署後的對抗式(reactive)威脅建模是真實且有價值的做法,但屬事後驗證,修復成本遠高於設計期,不符題目的成本條件。</li><li style="margin-bottom:3px;">C：等事件發生才建模等於用損失換教訓,完全喪失預防價值。</li><li style="margin-bottom:3px;">D：稽核是驗證合規的週期性活動,與系統設計時程脫鉤,無法在最便宜的階段介入。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §1.7 BIA / §1.10 威脅建模）</div>

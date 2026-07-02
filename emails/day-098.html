@@ -103,6 +103,51 @@
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q2</strong> . 真實攻擊未被偵測叫什麼、為何危險？<br><span style="color:#0A6160;">→ 漏報(false negative);真攻擊溜過去。</span></p>
       <p style="font-size:14px; line-height:1.7; margin:0 0 7px; color:#1E293B;"><strong>Q3</strong> . 專擋 SQLi/XSS 的應用層控制？<br><span style="color:#0A6160;">→ WAF(Web 應用防火牆)。</span></p>
     </details>
+    <!-- 09a 實戰演練 -->
+    <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1.5px; color:#B45309; text-transform:uppercase; font-weight:700; margin-top:28px;">🎯 實戰演練 EXTRA</div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 4</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">An organization wants a device in front of its public web servers to distribute incoming internet traffic, hide backend server details, and terminate client connections at the perimeter. Which solution BEST fits?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（某組織想在對外 Web 伺服器前放一台設備,分散進入流量、隱藏後端伺服器細節,並在邊界終結用戶端連線。哪個方案最合適?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Forward proxy 正向代理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Transparent proxy 透明代理</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Packet-filtering firewall 封包過濾防火牆</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Reverse proxy 反向代理</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：D</strong>。<strong>反向代理</strong>部署在伺服器前(常位於周邊網路),代表伺服器接收網際網路流量,可負載平衡並隱藏後端細節。判斷邏輯:「代表/保護用戶端」=forward proxy;「代表/保護伺服器」=reverse proxy。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：正向代理在用戶端側,用於匿名化、快取與管制對外存取。</li><li style="margin-bottom:3px;">B：透明代理攔截用戶端流量做監控/過濾,同屬用戶端側。</li><li style="margin-bottom:3px;">C：封包過濾防火牆只依 L3/L4 規則放行,不終結連線也不做負載平衡。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 5</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">A security manager is concerned that an attacker who fully compromises a critical server could discover and disable the monitoring installed on it. Which detection control BEST addresses this concern?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（安全主管擔心攻擊者完全入侵關鍵伺服器後,會發現並停用其上安裝的監控。哪個偵測控制最能因應這個疑慮?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> HIDS on each server 每台伺服器安裝 HIDS</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Host-based firewall 主機型防火牆</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Network-based IDS (NIDS) 網路型入侵偵測系統</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> More frequent antivirus scans 提高防毒掃描頻率</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。<strong>NIDS</strong> 部署在網路上(SPAN/TAP)監看流量,不駐留在被入侵的主機上,攻擊者<strong>不易發現、也無法從主機上停用</strong>。判斷邏輯:HIDS 的教科書缺點正是「主機被拿下後可被發現並關閉」,NIDS 恰好補上。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：HIDS 裝在主機上,正是題目擔心會被入侵者停用的控制。</li><li style="margin-bottom:3px;">B：主機型防火牆同樣駐留主機,取得權限後即可關閉。</li><li style="margin-bottom:3px;">D：防毒也在主機上執行,提高頻率不解決「被停用」的根本問題。</li></ul></div>
+      </details>
+    </div>
+    <div style="border:1px solid #E2E8F0; border-radius:10px; padding:13px 15px; margin:12px 0;">
+      <div style="font-family:'SFMono-Regular',Consolas,Menlo,monospace; font-size:11px; letter-spacing:1px; color:#B45309; font-weight:700; margin-bottom:5px;">QUESTION 6</div>
+      <p style="font-size:16px; line-height:1.65; margin:0 0 4px; font-weight:600; color:#0F1B2D;">During a firewall audit, a reviewer finds the ruleset ends with a rule permitting all remaining traffic, relying on earlier rules to block known-bad sources. Which configuration stance SHOULD the firewall follow instead?</p>
+      <p style="font-size:13px; line-height:1.6; margin:0 0 9px; color:#5B6675;">（防火牆稽核發現規則集最後一條是放行所有剩餘流量,僅靠前面規則封鎖已知惡意來源。防火牆應改採哪種設定原則?）</p>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>A.</strong> Default permit with an updated blocklist 預設允許並持續更新封鎖清單</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>B.</strong> Permit all outbound, deny all inbound 出站全放行、入站全拒絕</div>
+        <div style="border:1px solid #E2E8F0; background-color:#FBF4E8; border-color:#64748B; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>C.</strong> Default deny—block everything not explicitly permitted 預設拒絕—未明確允許即封鎖</div>
+        <div style="border:1px solid #E2E8F0; background-color:#F8FAFC; border-radius:6px; padding:7px 11px; margin:5px 0; font-size:14px; line-height:1.5;"><strong>D.</strong> Mirror all traffic to an IDS for alerting 將全部流量鏡射給 IDS 告警</div>
+      <details style="margin-top:8px;">
+        <summary style="font-size:13px; font-weight:700; color:#B45309; cursor:pointer;">✅ 解答與解析</summary>
+        <p style="font-size:14px; line-height:1.75; margin:9px 0 6px; color:#1E293B;"><strong>正解：C</strong>。防火牆應採 <strong>default deny(隱含拒絕)</strong>:只放行明確允許的流量,其餘一律封鎖。判斷邏輯:封鎖清單永遠追不上「未知」威脅,白名單(允許清單)思維才是安全預設。</p>
+        <div style="font-size:14px; line-height:1.7; color:#5B6675;"><strong>為何其他選項錯：</strong><ul style="margin:4px 0 0; padding-left:20px;"><li style="margin-bottom:3px;">A：預設允許+黑名單只能擋已知惡意,新的未知威脅會全數放行。</li><li style="margin-bottom:3px;">B：出站全放行會讓 C2 回連與資料外洩暢通,仍違反最小化原則。</li><li style="margin-bottom:3px;">D：IDS 只告警不阻擋,無法取代防火牆的預設拒絕策略。</li></ul></div>
+      </details>
+    </div>
+    <!-- /09a -->
     <!-- 09b 官方考綱對照（改編自 jefferywmoore/CISSP-Study-Resources, Apache-2.0） -->
     <div style="margin-top:28px; background-color:#F8FAFC; border:1px solid #E2E8F0; border-left:4px solid #0A6160; border-radius:10px; padding:15px 17px;">
       <div style="font-size:14px; font-weight:700; color:#0A6160; margin-bottom:10px;">📑 官方考綱對照重點（Official Objectives · §4.2.3 防火牆與 IDS（考點））</div>
