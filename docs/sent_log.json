@@ -52,5 +52,14 @@
     "title_zh": "Domain 2 全景與資料分類",
     "sent_at_utc": "2026-07-02T00:02:47Z",
     "status": "sent"
+  },
+  {
+    "seq": 7,
+    "date": "2026-07-03",
+    "code": "P1-D2-2",
+    "phase": "P1",
+    "title_zh": "資料角色與擁有權",
+    "sent_at_utc": "2026-07-03T00:00:11Z",
+    "status": "sent"
   }
 ]
