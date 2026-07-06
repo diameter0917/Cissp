@@ -61,5 +61,14 @@
     "title_zh": "資料角色與擁有權",
     "sent_at_utc": "2026-07-03T00:00:11Z",
     "status": "sent"
+  },
+  {
+    "seq": 8,
+    "date": "2026-07-06",
+    "code": "P1-D2-3",
+    "phase": "P1",
+    "title_zh": "資料生命週期與狀態",
+    "sent_at_utc": "2026-07-06T00:00:46Z",
+    "status": "sent"
   }
 ]
