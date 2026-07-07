@@ -79,5 +79,14 @@
     "title_zh": "資料保存、銷毀與殘留",
     "sent_at_utc": "2026-07-07T00:02:13Z",
     "status": "sent"
+  },
+  {
+    "seq": 10,
+    "date": "2026-07-08",
+    "code": "P1-D2-5",
+    "phase": "P1",
+    "title_zh": "資料保護技術與基準",
+    "sent_at_utc": "2026-07-07T23:53:25Z",
+    "status": "sent"
   }
 ]
