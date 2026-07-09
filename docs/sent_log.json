@@ -88,5 +88,14 @@
     "title_zh": "資料保護技術與基準",
     "sent_at_utc": "2026-07-07T23:53:25Z",
     "status": "sent"
+  },
+  {
+    "seq": 11,
+    "date": "2026-07-09",
+    "code": "P1-D3-1",
+    "phase": "P1",
+    "title_zh": "Domain 3 全景與安全設計原則",
+    "sent_at_utc": "2026-07-09T00:04:19Z",
+    "status": "sent"
   }
 ]
