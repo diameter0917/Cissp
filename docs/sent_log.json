@@ -106,5 +106,14 @@
     "title_zh": "安全模型輪廓",
     "sent_at_utc": "2026-07-09T23:59:37Z",
     "status": "sent"
+  },
+  {
+    "seq": 13,
+    "date": "2026-07-13",
+    "code": "P1-D3-3",
+    "phase": "P1",
+    "title_zh": "密碼學輪廓",
+    "sent_at_utc": "2026-07-12T23:46:27Z",
+    "status": "sent"
   }
 ]
