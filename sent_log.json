@@ -115,5 +115,14 @@
     "title_zh": "密碼學輪廓",
     "sent_at_utc": "2026-07-12T23:46:27Z",
     "status": "sent"
+  },
+  {
+    "seq": 14,
+    "date": "2026-07-14",
+    "code": "P1-D3-4",
+    "phase": "P1",
+    "title_zh": "系統與雲端架構弱點",
+    "sent_at_utc": "2026-07-13T23:48:14Z",
+    "status": "sent"
   }
 ]
