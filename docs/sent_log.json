@@ -124,5 +124,14 @@
     "title_zh": "系統與雲端架構弱點",
     "sent_at_utc": "2026-07-13T23:48:14Z",
     "status": "sent"
+  },
+  {
+    "seq": 15,
+    "date": "2026-07-15",
+    "code": "P1-D3-5",
+    "phase": "P1",
+    "title_zh": "實體與場所安全",
+    "sent_at_utc": "2026-07-14T23:46:43Z",
+    "status": "sent"
   }
 ]
