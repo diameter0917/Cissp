@@ -133,5 +133,14 @@
     "title_zh": "實體與場所安全",
     "sent_at_utc": "2026-07-14T23:46:43Z",
     "status": "sent"
+  },
+  {
+    "seq": 16,
+    "date": "2026-07-16",
+    "code": "P1-D4-1",
+    "phase": "P1",
+    "title_zh": "Domain 4 全景與 OSI/TCP-IP",
+    "sent_at_utc": "2026-07-15T23:54:04Z",
+    "status": "sent"
   }
 ]
