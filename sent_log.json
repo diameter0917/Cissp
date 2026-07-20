@@ -160,5 +160,14 @@
     "title_zh": "網路設備與防禦",
     "sent_at_utc": "2026-07-20T02:54:37Z",
     "status": "sent"
+  },
+  {
+    "seq": 19,
+    "date": "2026-07-21",
+    "code": "P1-D4-4",
+    "phase": "P1",
+    "title_zh": "無線、行動與遠端",
+    "sent_at_utc": "2026-07-20T23:52:09Z",
+    "status": "sent"
   }
 ]
