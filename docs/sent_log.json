@@ -169,5 +169,14 @@
     "title_zh": "無線、行動與遠端",
     "sent_at_utc": "2026-07-20T23:52:09Z",
     "status": "sent"
+  },
+  {
+    "seq": 20,
+    "date": "2026-07-22",
+    "code": "P1-D4-5",
+    "phase": "P1",
+    "title_zh": "郵件安全與網路攻擊",
+    "sent_at_utc": "2026-07-21T23:52:03Z",
+    "status": "sent"
   }
 ]
