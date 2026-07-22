@@ -178,5 +178,14 @@
     "title_zh": "郵件安全與網路攻擊",
     "sent_at_utc": "2026-07-21T23:52:03Z",
     "status": "sent"
+  },
+  {
+    "seq": 21,
+    "date": "2026-07-23",
+    "code": "P1-D5-1",
+    "phase": "P1",
+    "title_zh": "Domain 5 全景與 AAA",
+    "sent_at_utc": "2026-07-22T23:57:11Z",
+    "status": "sent"
   }
 ]
