@@ -187,5 +187,14 @@
     "title_zh": "Domain 5 全景與 AAA",
     "sent_at_utc": "2026-07-22T23:57:11Z",
     "status": "sent"
+  },
+  {
+    "seq": 22,
+    "date": "2026-07-24",
+    "code": "P1-D5-2",
+    "phase": "P1",
+    "title_zh": "鑑別因子與 MFA",
+    "sent_at_utc": "2026-07-23T23:54:54Z",
+    "status": "sent"
   }
 ]
