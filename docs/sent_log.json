@@ -196,5 +196,14 @@
     "title_zh": "鑑別因子與 MFA",
     "sent_at_utc": "2026-07-23T23:54:54Z",
     "status": "sent"
+  },
+  {
+    "seq": 23,
+    "date": "2026-07-27",
+    "code": "P1-D5-3",
+    "phase": "P1",
+    "title_zh": "身分生命週期與聯合身分",
+    "sent_at_utc": "2026-07-26T23:54:55Z",
+    "status": "sent"
   }
 ]
