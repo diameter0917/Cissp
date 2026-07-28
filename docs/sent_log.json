@@ -214,5 +214,14 @@
     "title_zh": "聯合協定輪廓",
     "sent_at_utc": "2026-07-27T23:57:27Z",
     "status": "sent"
+  },
+  {
+    "seq": 25,
+    "date": "2026-07-29",
+    "code": "P1-D5-5",
+    "phase": "P1",
+    "title_zh": "存取控制模型與 PAM",
+    "sent_at_utc": "2026-07-28T23:54:32Z",
+    "status": "sent"
   }
 ]
