@@ -241,5 +241,14 @@
     "title_zh": "弱點評估與滲透測試",
     "sent_at_utc": "2026-07-30T23:57:30Z",
     "status": "sent"
+  },
+  {
+    "seq": 28,
+    "date": "2026-08-03",
+    "code": "P1-D6-3",
+    "phase": "P1",
+    "title_zh": "測試技術輪廓",
+    "sent_at_utc": "2026-08-02T23:52:56Z",
+    "status": "sent"
   }
 ]
