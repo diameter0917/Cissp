@@ -259,5 +259,14 @@
     "title_zh": "稽核與報告",
     "sent_at_utc": "2026-08-04T00:02:56Z",
     "status": "sent"
+  },
+  {
+    "seq": 30,
+    "date": "2026-08-05",
+    "code": "P1-D6-5",
+    "phase": "P1",
+    "title_zh": "管理審查與度量",
+    "sent_at_utc": "2026-08-04T23:58:21Z",
+    "status": "sent"
   }
 ]
