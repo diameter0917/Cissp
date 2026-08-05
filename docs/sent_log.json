@@ -268,5 +268,14 @@
     "title_zh": "管理審查與度量",
     "sent_at_utc": "2026-08-04T23:58:21Z",
     "status": "sent"
+  },
+  {
+    "seq": 31,
+    "date": "2026-08-06",
+    "code": "P1-D7-1",
+    "phase": "P1",
+    "title_zh": "Domain 7 全景與調查鑑識",
+    "sent_at_utc": "2026-08-05T23:54:30Z",
+    "status": "sent"
   }
 ]
