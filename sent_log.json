@@ -277,5 +277,14 @@
     "title_zh": "Domain 7 全景與調查鑑識",
     "sent_at_utc": "2026-08-05T23:54:30Z",
     "status": "sent"
+  },
+  {
+    "seq": 32,
+    "date": "2026-08-07",
+    "code": "P1-D7-2",
+    "phase": "P1",
+    "title_zh": "日誌監控與 SIEM",
+    "sent_at_utc": "2026-08-07T01:40:24Z",
+    "status": "sent"
   }
 ]
