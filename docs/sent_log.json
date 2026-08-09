@@ -286,5 +286,14 @@
     "title_zh": "日誌監控與 SIEM",
     "sent_at_utc": "2026-08-07T01:40:24Z",
     "status": "sent"
+  },
+  {
+    "seq": 33,
+    "date": "2026-08-10",
+    "code": "P1-D7-3",
+    "phase": "P1",
+    "title_zh": "組態/變更/修補管理",
+    "sent_at_utc": "2026-08-09T23:24:05Z",
+    "status": "sent"
   }
 ]
