@@ -304,5 +304,14 @@
     "title_zh": "維運基礎與特權管理",
     "sent_at_utc": "2026-08-10T23:28:20Z",
     "status": "sent"
+  },
+  {
+    "seq": 35,
+    "date": "2026-08-12",
+    "code": "P1-D7-5",
+    "phase": "P1",
+    "title_zh": "事件管理與災難復原",
+    "sent_at_utc": "2026-08-11T23:33:28Z",
+    "status": "sent"
   }
 ]
