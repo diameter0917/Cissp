@@ -313,5 +313,14 @@
     "title_zh": "事件管理與災難復原",
     "sent_at_utc": "2026-08-11T23:33:28Z",
     "status": "sent"
+  },
+  {
+    "seq": 36,
+    "date": "2026-08-13",
+    "code": "P1-D8-1",
+    "phase": "P1",
+    "title_zh": "Domain 8 全景與 SDLC",
+    "sent_at_utc": "2026-08-12T23:34:18Z",
+    "status": "sent"
   }
 ]
