@@ -62,13 +62,13 @@
 
 <div class="tbl-scroll">
 <table class="data">
-  <thead><tr><th>階段</th><th>攻擊者目的</th><th>代表技術</th><th>典型偵測訊號</th><th>分診第一動作</th></tr></thead>
+  <thead><tr><th>階段</th><th>攻擊者目的</th><th>代表技術</th><th>典型偵測訊號</th></tr></thead>
   <tbody>
-    <tr><td><strong>① 偵察</strong><br>Reconnaissance</td><td>畫網域地圖：有哪些帳戶群組、誰有特權</td><td>SMB／Kerberos 帳戶列舉、SAMR 群組查詢、LDAP 主體偵察（BloodHound）、DNS 區域傳輸</td><td>MDI：帳戶列舉偵察、使用者與群組成員資格偵察、安全性主體偵察（LDAP）、網路對應偵察（DNS）</td><td>鎖定來源裝置與帳戶，先排除盤點工具與紅隊演練</td></tr>
-    <tr><td><strong>② 認證竊取</strong><br>Credential Access</td><td>把密碼變成可重複使用的憑證</td><td>密碼噴灑、AS-REP Roasting、Kerberoasting、<strong>pass-the-hash</strong>、<strong>pass-the-ticket</strong>、<strong>overpass-the-hash</strong></td><td>MDI：可疑暴力破解、可疑 AS-REP Roasting、Kerberos SPN 曝光、可疑身分竊取、加密降級活動</td><td>查「同一組認證出現在幾台機器」，帳戶與機器同時列管</td></tr>
-    <tr><td><strong>③ 橫向移動</strong><br>Lateral Movement</td><td>拿憑證跳到更有價值的主機</td><td>PsExec／WMI 遠端執行、用竊得票證存取檔案伺服器、沿 LMP 往特權爬</td><td>MDI：可疑遠端程式碼執行、資源存取異常、<strong>橫向移動路徑（LMP）</strong>曝險圖；MDE：可疑處理程序建立</td><td>打開 LMP 圖，數清楚離網域管理員還有幾步</td></tr>
-    <tr><td><strong>④ 網域支配</strong><br>Domain Dominance</td><td>取得長期偽造任意身分的能力</td><td><strong>DCSync</strong>、<strong>黃金票證 golden ticket</strong>、<strong>skeleton key</strong>、DCShadow、竄改 AdminSDHolder</td><td>MDI：可疑 DCSync（目錄服務複寫）、可疑黃金票證使用、可疑 skeleton key、可疑 DCShadow、敏感群組的可疑新增</td><td>視同重大事件升級；krbtgt 是否連續重設兩次屬上報決策</td></tr>
-    <tr><td><strong>⑤ 雲端延伸</strong><br>Cloud Expansion</td><td>用同一個身分登入雲端與 SaaS</td><td>權杖竊取、AiTM 中間人釣魚、惡意 OAuth 同意</td><td>Entra ID Protection：異常權杖、AiTM、不可能的移動、匿名 IP、可疑瀏覽器</td><td>撤銷工作階段並要求安全密碼變更</td></tr>
+    <tr><td><strong>① 偵察</strong><br>Reconnaissance</td><td>畫網域地圖：有哪些帳戶群組、誰有特權</td><td>SMB／Kerberos 帳戶列舉、SAMR 群組查詢、LDAP 主體偵察（BloodHound）、DNS 區域傳輸</td><td>MDI：帳戶列舉偵察、使用者與群組成員資格偵察、安全性主體偵察（LDAP）、網路對應偵察（DNS）</td></tr>
+    <tr><td><strong>② 認證竊取</strong><br>Credential Access</td><td>把密碼變成可重複使用的憑證</td><td>密碼噴灑、AS-REP Roasting、Kerberoasting、<strong>pass-the-hash</strong>、<strong>pass-the-ticket</strong>、<strong>overpass-the-hash</strong></td><td>MDI：可疑暴力破解、可疑 AS-REP Roasting、Kerberos SPN 曝光、可疑身分竊取、加密降級活動</td></tr>
+    <tr><td><strong>③ 橫向移動</strong><br>Lateral Movement</td><td>拿憑證跳到更有價值的主機</td><td>PsExec／WMI 遠端執行、用竊得票證存取檔案伺服器</td><td>MDI：可疑遠端程式碼執行、資源存取異常、<strong>橫向移動路徑（LMP）</strong>曝險圖；MDE：可疑處理程序建立</td></tr>
+    <tr><td><strong>④ 網域支配</strong><br>Domain Dominance</td><td>取得長期偽造任意身分的能力</td><td><strong>DCSync</strong>、<strong>黃金票證 golden ticket</strong>、<strong>skeleton key</strong>、DCShadow</td><td>MDI：可疑 DCSync（目錄服務複寫）、可疑黃金票證使用、可疑 skeleton key、可疑 DCShadow、敏感群組的可疑新增</td></tr>
+    <tr><td><strong>⑤ 雲端延伸</strong><br>Cloud Expansion</td><td>用同一個身分登入雲端與 SaaS</td><td>權杖竊取、AiTM 中間人釣魚、惡意 OAuth 同意</td><td>Entra ID Protection：異常權杖、AiTM、不可能的移動、匿名 IP、可疑瀏覽器</td></tr>
   </tbody>
 </table>
 </div>
@@ -110,8 +110,8 @@ IdentityLogonEvents
   </tbody>
 </table>
 </div>
-<p>風險等級只有<strong>低、中、高</strong>三級（外加無風險），代表模型的信賴度而非損失大小。調查主線是三份報表：<strong>有風險的使用者</strong>看誰的帳號可能被盜、<strong>有風險的登入</strong>看哪些登入可疑、<strong>風險偵測</strong>看每一筆原始訊號。手動處置的副作用要記牢：<strong>確認遭入侵</strong>把使用者風險拉到高並回饋模型；<strong>關閉使用者風險（dismiss）</strong>把風險清為零但<strong>不做任何修復</strong>，密碼沒換、權杖沒撤，只適合已確認的誤判；要真正救回帳戶，該做的是重設密碼並撤銷工作階段，而不是把風險關掉了事。</p>
-<p>把風險變成防線靠<strong>風險型條件式存取</strong>：在條件式存取政策中以使用者風險或登入風險當條件套用授與控制。這也是自動修復（self-remediation）的關鍵——使用者自己過 MFA 或改密碼，風險就自動關閉，人力留給真正的高風險事件。兩個常考前置條件：使用者風險政策要求安全密碼變更的前提是使用者<strong>已完成 MFA 註冊</strong>；完整風險明細與風險型政策需要 <strong>Microsoft Entra ID P2</strong> 授權。</p>
+<p>風險等級只有<strong>低、中、高</strong>三級（外加無風險），代表模型的信賴度而非損失大小。調查主線是三份報表：<strong>有風險的使用者</strong>看誰的帳號可能被盜、<strong>有風險的登入</strong>看哪些登入可疑、<strong>風險偵測</strong>看每一筆原始訊號。手動處置的副作用要記牢：<strong>確認遭入侵</strong>把使用者風險拉到高並回饋模型；<strong>關閉使用者風險（dismiss）</strong>把風險清為零卻<strong>不做任何修復</strong>，密碼沒換、權杖沒撤，只適合已確認的誤判——要真正救回帳戶，該做的是重設密碼並撤銷工作階段。</p>
+<p>把風險變成防線靠<strong>風險型條件式存取</strong>：以使用者風險或登入風險當條件套用授與控制。這也是自動修復（self-remediation）的關鍵——使用者自己過 MFA 或改密碼，風險就自動關閉，人力留給真正的高風險事件。兩個常考前置條件：要求安全密碼變更的前提是使用者<strong>已完成 MFA 註冊</strong>；完整風險明細與風險型政策需要 <strong>Microsoft Entra ID P2</strong>。</p>
 <pre class="kql">// 風險登入成功了，而且沒有任何條件式存取政策套用到它
 SigninLogs
 | <span class="k">where</span> TimeGenerated &gt; <span class="f">ago</span>(<span class="n">24h</span>)
@@ -121,8 +121,8 @@ SigninLogs
 | <span class="k">project</span> TimeGenerated, UserPrincipalName, IPAddress, Location, AppDisplayName,
           RiskLevelDuringSignIn, RiskLevelAggregated, RiskEventTypes_V2
 | <span class="k">sort by</span> TimeGenerated <span class="k">desc</span></pre>
-<p class="kql-note">第 3 行：ResultType 為 0 代表登入<strong>成功</strong>。第 4 行：RiskLevelDuringSignIn 是<strong>當次</strong>的登入風險，帳戶層級的長期風險要看 RiskLevelAggregated。第 5 行：ConditionalAccessStatus 為 <code>notApplied</code>＝沒命中任何條件式存取政策，也就是政策範圍的破口，中高風險登入本該被 MFA 政策攔下。注意 SigninLogs 屬 <strong>Sentinel</strong>（Entra ID 資料連接器）那側；XDR 進階搜捕對應的是 AADSignInEventsBeta，別把表名寫混。</p>
-<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>「該用哪個風險政策」是必考題型</strong>，關鍵在題幹描述的是「一次事件」還是「一個帳戶的狀態」。看到<strong>不可能的移動、匿名 IP、不熟悉的登入屬性</strong>——描述某一次登入 → <strong>登入風險政策，要求 MFA</strong>。看到<strong>認證外洩到暗網、系統管理員已確認遭入侵</strong>——描述帳戶已被盜 → <strong>使用者風險政策，要求安全密碼變更</strong>。想清楚為什麼：密碼都外洩了，只要求 MFA 並不能讓那組密碼作廢；而正常使用者出差登入，強迫改密碼是過度反應。<strong>次考點：</strong>「要讓使用者自行解除風險、減少人工作業」→ 風險型條件式存取的自動修復；緊急存取帳戶必須排除在所有風險政策之外。</p></div>
+<p class="kql-note">第 3 行：ResultType 為 0 代表登入<strong>成功</strong>。第 4 行：RiskLevelDuringSignIn 是<strong>當次</strong>登入風險，帳戶層級的長期風險要看 RiskLevelAggregated。第 5 行：ConditionalAccessStatus 為 <code>notApplied</code>＝沒命中任何條件式存取政策，也就是政策範圍的破口。注意 SigninLogs 屬 <strong>Sentinel</strong>（Entra ID 資料連接器）那側，XDR 進階搜捕對應的是 AADSignInEventsBeta，別把表名寫混。</p>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>「該用哪個風險政策」是必考題型</strong>，關鍵在題幹描述的是「一次事件」還是「一個帳戶的狀態」。看到<strong>不可能的移動、匿名 IP、不熟悉的登入屬性</strong>——描述某一次登入 → <strong>登入風險政策，要求 MFA</strong>。看到<strong>認證外洩到暗網、系統管理員已確認遭入侵</strong>——描述帳戶已被盜 → <strong>使用者風險政策，要求安全密碼變更</strong>。想清楚為什麼：密碼都外洩了，只要求 MFA 並不能讓那組密碼作廢；而正常使用者出差登入，強迫改密碼是過度反應。<strong>次考點：</strong>要讓使用者自行解除風險、減少人工作業 → 風險型條件式存取的自動修復；緊急存取帳戶必須排除在所有風險政策之外。</p></div>
 
 <div class="eyebrow">07 — 🧭 ITDR 分工對照</div>
 <h2 data-toc="分工對照">地端與雲端，兩張網一個事件</h2>

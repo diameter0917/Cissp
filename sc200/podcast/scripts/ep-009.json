@@ -38,7 +38,7 @@
     {"speaker": "host_f", "text": "比對的規則哪裡來？"},
     {"speaker": "host_m", "text": "內容中樞的 Threat Intelligence 解決方案帶了 TI map 系列範本，命名規律是拿哪種指標對哪張表，像 TI map IP entity to CommonSecurityLog，背後就是把有效指標 join 上記錄表。"},
     {"speaker": "host_f", "text": "這裡最愛考的陷阱是？"},
-    {"speaker": "host_m", "text": "兩邊都要有資料。指標有了、對應的記錄表沒接，規則就是空轉。所以環境有什麼表才開什麼規則。另外微軟還有一條內建的 Matching Analytics，自動拿微軟指標對 CEF、DNS、Syslog 比對。"},
+    {"speaker": "host_m", "text": "兩邊都要有資料，指標有了、對應的記錄表沒接，規則就是空轉，所以環境有什麼表才開什麼規則。另外微軟還有一條內建的 Matching Analytics，自動拿微軟指標對 CEF、DNS、Syslog 比對。"},
     {"speaker": "host_f", "text": "換 watchlist。它跟威脅情報的分工是？"},
     {"speaker": "host_m", "text": "威脅情報處理外面的壞東西，watchlist 處理你自己知道的事：VIP 名單、離職員工、允許的掃描器 IP。這些業務脈絡不會出現在任何情資餵送裡，但少了它們偵測就又聾又瞎。"},
     {"speaker": "host_f", "text": "建立的時候要設哪三件事？"},

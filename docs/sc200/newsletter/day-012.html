@@ -33,9 +33,9 @@
 <strong>學習目標（對應官方考綱 D2「回應安全性事件」）：</strong>
 <ul>
   <li>☐ 說明警示如何關聯成事件、嚴重性如何決定（對應考綱 <em>respond to alerts and incidents identified by Microsoft Defender XDR</em>）</li>
-  <li>☐ 用篩選、指派、狀態與標籤管理佇列，並判斷何時該手動合併事件</li>
+  <li>☐ 用篩選、指派、狀態與標籤管理佇列，並判斷何時該合併事件</li>
   <li>☐ 依資產重要性、攻擊階段、使用者風險與訊號多樣性排出處理順序</li>
-  <li>☐ 用攻擊故事圖、警示時間軸、實體側邊窗格與 Go hunt 完成一次調查</li>
+  <li>☐ 用攻擊故事圖、警示時間軸、實體窗格與 Go hunt 完成一次調查</li>
   <li>☐ 正確選擇 true positive／informational, expected activity／false positive 及其子判定</li>
   <li>☐ 說明內嵌 Security Copilot 事件摘要在分診中的定位（對應考綱 <em>manage and investigate threats by using Microsoft Security Copilot</em>）</li>
 </ul>
@@ -80,19 +80,19 @@
   <li><strong>篩選：服務來源與偵測來源</strong>（MDE、MDO、MDI、MDA、Entra ID Protection、Defender for Cloud、Sentinel），並可篩「<strong>多重服務來源</strong>」——幾乎等於「跨產品的真攻擊」。其餘維度：受影響資產／裝置群組、標籤、分類、自動調查狀態、資料敏感度。</li>
   <li><strong>指派</strong>：一個事件一個擁有者，認領當下就把狀態改為「進行中」避免重工，這是「下一步該做什麼」的常見正解。</li>
   <li><strong>狀態流</strong>：作用中 → 進行中 → 已解決。解決時要填分類，並可把結果套用到事件內的警示；日後若有新的相關警示關聯進來，已解決的事件可能被重新啟動。</li>
-  <li><strong>標籤</strong>：自訂文字標記（如 <em>VIP-user</em>、<em>phishing-0817</em>）可作篩選條件，Sentinel 的自動化規則也能拿它當觸發條件；系統也會自動貼標籤（例如自動攻擊中斷）。</li>
+  <li><strong>標籤</strong>：自訂文字標記（如 <em>VIP-user</em>、<em>phishing-0817</em>）可作篩選條件，Sentinel 自動化規則也能拿它當觸發條件；系統也會自動貼標籤（例如自動攻擊中斷）。</li>
   <li><strong>命名</strong>：系統依偵測來源、攻擊類別與受影響資產自動命名（如「涉及多個端點的多階段事件」），可改成團隊看得懂的描述。</li>
 </ul>
 <div class="point"><strong>2026 的新同事：內嵌 Security Copilot</strong> <span class="badge-2026">2026 新考點</span><br>事件的摘要面板可由 Security Copilot 產生自然語言<strong>事件摘要</strong>（把警示、實體與時序寫成一段人話），並以<strong>引導式回應</strong>建議下一步；另有代理式（agentic）分診能力，例如自動處理使用者回報的釣魚郵件並附上判定理由。考點記法：Copilot 產出的是<strong>摘要與建議</strong>，不是判決——分類、指派與回應仍由分析師負責，且只呈現使用者權限內的資料。</div>
 
 <div class="eyebrow">05 — ⚖️ 優先排序</div>
 <h2 data-toc="優先排序">嚴重性只是起點，不是順序</h2>
-<p>佇列裡同時躺著五個高嚴重性事件時，嚴重性就沒有排序能力了。真正的順序來自下表的綜合判斷，也是「哪一個先調查」題型的骨架。</p>
+<p>佇列裡同時躺著五個高嚴重性事件時，嚴重性就沒有排序能力了。真正的順序來自下表的綜合判斷。</p>
 <div class="tbl-scroll">
 <table class="data">
   <thead><tr><th>判斷因素</th><th>怎麼看</th><th>提高優先度的訊號</th></tr></thead>
   <tbody>
-    <tr><td>資產重要性</td><td>是網域控制站、財務系統，還是訪客筆電</td><td>命中被標記為<strong>關鍵資產</strong>的系統或特權帳號</td></tr>
+    <tr><td>資產重要性</td><td>網域控制站、財務系統，還是訪客筆電</td><td>命中被標記為<strong>關鍵資產</strong>的系統或特權帳號</td></tr>
     <tr><td>攻擊階段</td><td>類別欄顯示涵蓋哪些 MITRE 戰術</td><td>已推進到憑證存取、橫向移動、外洩或影響</td></tr>
     <tr><td>使用者風險</td><td>Entra ID Protection 風險等級、是否特權帳號</td><td>高風險使用者、全域管理員</td></tr>
     <tr><td>訊號多樣性</td><td>是否含多個服務來源的警示</td><td>「多重服務來源」通常代表真攻擊</td></tr>
@@ -156,8 +156,8 @@
   <li><strong>掃描（09:12）</strong>：三個高優先訊號同時成立——多重服務來源、受影響資產含財務伺服器、類別涵蓋初始存取與憑證存取。決定先做它。</li>
   <li><strong>認領（09:13）</strong>：指派給自己、狀態改「進行中」、加標籤 <em>fin-dept</em>。</li>
   <li><strong>看攻擊故事（09:14）</strong>：四則警示——MDO「使用者點擊惡意 URL」、MDE「可疑 PowerShell 下載活動」、MDE「嘗試存取 LSASS 記憶體」、Entra ID Protection「陌生位置的高風險登入」。順序一目瞭然：郵件 → 端點執行 → 憑證竊取 → 帳號被用。</li>
-  <li><strong>看細節（09:17）</strong>：時間軸顯示 PowerShell 的父程序是 Outlook 開啟的附件；使用者窗格顯示帳號屬財務群組、風險等級高；自動調查已封鎖惡意檔案，但帳號尚未處置。</li>
-  <li><strong>Go hunt（09:21）</strong>：從寄件者實體按 Go hunt，確認同一封信寄給 43 人、9 封成功遞送、1 人點擊——是小型 campaign。</li>
+  <li><strong>看細節（09:17）</strong>：時間軸顯示 PowerShell 的父程序是 Outlook 開啟的附件；使用者帳號屬財務群組、風險高；自動調查已封鎖惡意檔案，但帳號尚未處置。</li>
+  <li><strong>Go hunt（09:21）</strong>：從寄件者按 Go hunt，確認同一封信寄給 43 人、9 封成功遞送、1 人點擊——是小型 campaign。</li>
   <li><strong>升級（09:25）</strong>：命中判準——憑證存取戰術、財務系統、已擴散。tier-1 不自行處置帳號與裝置，改為加註發現、貼標籤 <em>escalated-t2</em>、重新指派給 tier-2。狀態維持「進行中」——<strong>升級不是結案</strong>。</li>
   <li><strong>tier-2 收尾（11:40）</strong>：裝置隔離、密碼重設與工作階段撤銷、其餘 8 封信郵件修復後，狀態改「已解決」，分類 <strong>True positive</strong>、判定 <strong>網路釣魚</strong>，並套用到四則警示。</li>
 </ol>

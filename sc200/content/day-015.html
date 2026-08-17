@@ -3,11 +3,11 @@
 <p>這一週守了裝置、守了信箱，今天守的是把所有資源串起來的那條線——身分。現代入侵幾乎都長同一個樣子：先釣到一組帳密，再在網域裡東翻西找、偷票證、跳機器，最後拿下網域管理員；整條路上多半沒有惡意程式，只有「看起來完全合法的驗證行為」。防毒攔不住合法登入，所以考綱 D2「回應安全性事件」給了身分兩個專屬武器：地端 Active Directory 交給 <strong>Microsoft Defender for Identity（MDI）</strong>，雲端交給 <strong>Microsoft Entra ID Protection</strong>。今天釘死四件事：感應器裝在哪、攻擊鏈每階段亮什麼燈、兩邊能按哪些回應按鈕，以及最常被混淆的「使用者風險 vs 登入風險」。</p>
 <p><strong>學習目標</strong>（對應官方 study guide D2「調查並修復由 Microsoft Defender for Identity 識別的威脅」與「調查並修復 Microsoft Entra ID Protection 中的身分風險」）：</p>
 <ul>
-  <li>☐ 說明 MDI 感應器的部署位置（網域控制站、AD FS、AD CS）、目錄服務帳戶用途，以及訊號如何整合進 Defender XDR</li>
-  <li>☐ 依身分攻擊鏈階段（偵察 → 認證竊取 → 橫向移動 → 網域支配）判讀 MDI 警示代表的攻擊技術</li>
+  <li>☐ 說明 MDI 感應器的部署位置（網域控制站、AD FS、AD CS）、目錄服務帳戶用途與 XDR 整合</li>
+  <li>☐ 依攻擊鏈階段（偵察 → 認證竊取 → 橫向移動 → 網域支配）判讀 MDI 警示代表的攻擊技術</li>
   <li>☐ 用橫向移動路徑（lateral movement paths）評估帳戶曝險，並依身分安全態勢（ISPM）建議修補</li>
   <li>☐ 對遭盜用身分執行正確回應：停用使用者、要求密碼重設、暫停帳戶、確認遭入侵</li>
-  <li>☐ 分辨風險偵測類型與使用者風險／登入風險的差別，設定風險型條件式存取政策並調查、關閉風險</li>
+  <li>☐ 分辨使用者風險與登入風險，設定風險型條件式存取政策並調查、關閉風險</li>
 </ul>
 
 <div class="eyebrow">02 — 📺 影片伴讀</div>
@@ -34,13 +34,13 @@
 
 <div class="tbl-scroll">
 <table class="data">
-  <thead><tr><th>階段</th><th>攻擊者目的</th><th>代表技術</th><th>典型偵測訊號</th><th>分診第一動作</th></tr></thead>
+  <thead><tr><th>階段</th><th>攻擊者目的</th><th>代表技術</th><th>典型偵測訊號</th></tr></thead>
   <tbody>
-    <tr><td><strong>① 偵察</strong><br>Reconnaissance</td><td>畫網域地圖：有哪些帳戶群組、誰有特權</td><td>SMB／Kerberos 帳戶列舉、SAMR 群組查詢、LDAP 主體偵察（BloodHound）、DNS 區域傳輸</td><td>MDI：帳戶列舉偵察、使用者與群組成員資格偵察、安全性主體偵察（LDAP）、網路對應偵察（DNS）</td><td>鎖定來源裝置與帳戶，先排除盤點工具與紅隊演練</td></tr>
-    <tr><td><strong>② 認證竊取</strong><br>Credential Access</td><td>把密碼變成可重複使用的憑證</td><td>密碼噴灑、AS-REP Roasting、Kerberoasting、<strong>pass-the-hash</strong>、<strong>pass-the-ticket</strong>、<strong>overpass-the-hash</strong></td><td>MDI：可疑暴力破解、可疑 AS-REP Roasting、Kerberos SPN 曝光、可疑身分竊取、加密降級活動</td><td>查「同一組認證出現在幾台機器」，帳戶與機器同時列管</td></tr>
-    <tr><td><strong>③ 橫向移動</strong><br>Lateral Movement</td><td>拿憑證跳到更有價值的主機</td><td>PsExec／WMI 遠端執行、用竊得票證存取檔案伺服器、沿 LMP 往特權爬</td><td>MDI：可疑遠端程式碼執行、資源存取異常、<strong>橫向移動路徑（LMP）</strong>曝險圖；MDE：可疑處理程序建立</td><td>打開 LMP 圖，數清楚離網域管理員還有幾步</td></tr>
-    <tr><td><strong>④ 網域支配</strong><br>Domain Dominance</td><td>取得長期偽造任意身分的能力</td><td><strong>DCSync</strong>、<strong>黃金票證 golden ticket</strong>、<strong>skeleton key</strong>、DCShadow、竄改 AdminSDHolder</td><td>MDI：可疑 DCSync（目錄服務複寫）、可疑黃金票證使用、可疑 skeleton key、可疑 DCShadow、敏感群組的可疑新增</td><td>視同重大事件升級；krbtgt 是否連續重設兩次屬上報決策</td></tr>
-    <tr><td><strong>⑤ 雲端延伸</strong><br>Cloud Expansion</td><td>用同一個身分登入雲端與 SaaS</td><td>權杖竊取、AiTM 中間人釣魚、惡意 OAuth 同意</td><td>Entra ID Protection：異常權杖、AiTM、不可能的移動、匿名 IP、可疑瀏覽器</td><td>撤銷工作階段並要求安全密碼變更</td></tr>
+    <tr><td><strong>① 偵察</strong><br>Reconnaissance</td><td>畫網域地圖：有哪些帳戶群組、誰有特權</td><td>SMB／Kerberos 帳戶列舉、SAMR 群組查詢、LDAP 主體偵察（BloodHound）、DNS 區域傳輸</td><td>MDI：帳戶列舉偵察、使用者與群組成員資格偵察、安全性主體偵察（LDAP）、網路對應偵察（DNS）</td></tr>
+    <tr><td><strong>② 認證竊取</strong><br>Credential Access</td><td>把密碼變成可重複使用的憑證</td><td>密碼噴灑、AS-REP Roasting、Kerberoasting、<strong>pass-the-hash</strong>、<strong>pass-the-ticket</strong>、<strong>overpass-the-hash</strong></td><td>MDI：可疑暴力破解、可疑 AS-REP Roasting、Kerberos SPN 曝光、可疑身分竊取、加密降級活動</td></tr>
+    <tr><td><strong>③ 橫向移動</strong><br>Lateral Movement</td><td>拿憑證跳到更有價值的主機</td><td>PsExec／WMI 遠端執行、用竊得票證存取檔案伺服器</td><td>MDI：可疑遠端程式碼執行、資源存取異常、<strong>橫向移動路徑（LMP）</strong>曝險圖；MDE：可疑處理程序建立</td></tr>
+    <tr><td><strong>④ 網域支配</strong><br>Domain Dominance</td><td>取得長期偽造任意身分的能力</td><td><strong>DCSync</strong>、<strong>黃金票證 golden ticket</strong>、<strong>skeleton key</strong>、DCShadow</td><td>MDI：可疑 DCSync（目錄服務複寫）、可疑黃金票證使用、可疑 skeleton key、可疑 DCShadow、敏感群組的可疑新增</td></tr>
+    <tr><td><strong>⑤ 雲端延伸</strong><br>Cloud Expansion</td><td>用同一個身分登入雲端與 SaaS</td><td>權杖竊取、AiTM 中間人釣魚、惡意 OAuth 同意</td><td>Entra ID Protection：異常權杖、AiTM、不可能的移動、匿名 IP、可疑瀏覽器</td></tr>
   </tbody>
 </table>
 </div>

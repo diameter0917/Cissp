@@ -34,7 +34,7 @@
     {"speaker": "host_f", "text": "第三個重點，summary rules 又解決什麼？"},
     {"speaker": "host_m", "text": "另一半問題。防火牆、netflow 每天數百 GB，就算進了 lake，偵測跟儀表板還是需要一個即時可查的統計面。summary rule 以固定 bin 持續跑彙總查詢，把結果寫進分析層的自訂表。"},
     {"speaker": "host_f", "text": "bin 可以設多久？"},
-    {"speaker": "host_m", "text": "20 分鐘到 24 小時。比方每小時把防火牆連線壓成一列，算連線數、deny 數、傳輸量，寫進 FirewallSummary_CL。之後分析規則直接對這張輕量表寫，deny 數超過 500 就告警。原始洪流留在低成本層，量級常差一百倍。"},
+    {"speaker": "host_m", "text": "20 分鐘到 24 小時。比方每小時把防火牆連線壓成一列，算連線數、deny 數、傳輸量，寫進 FirewallSummary_CL。之後分析規則直接對這張輕量表寫，deny 數超過 500 就告警，原始洪流留在低成本層，量級常差一百倍。"},
     {"speaker": "host_f", "text": "那 summary rules 跟 KQL jobs 怎麼分？"},
     {"speaker": "host_m", "text": "一個向前看、一個向後看。summary rules 是持續進行式，資料一邊進來一邊濃縮，服務日常偵測跟儀表板；KQL jobs 是回頭看，對湖裡的歷史做一次或排程分析，服務回溯獵捕。"},
     {"speaker": "host_f", "text": "第三兄弟 search jobs 呢？"},
