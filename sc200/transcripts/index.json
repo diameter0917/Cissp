@@ -3,71 +3,71 @@
     {
       "ep": "EP1",
       "id": "8gCUtYEpTe8",
-      "title": null,
-      "status": "metadata_failed",
+      "title": "Mitigate threats using Microsoft Defender XDR | SC-200 | Episode 1",
+      "status": "title_only",
       "langs": {}
     },
     {
       "ep": "EP2",
       "id": "QmvVYOG4uWI",
-      "title": null,
-      "status": "metadata_failed",
+      "title": "Mitigate threats using Microsoft Security Copilot | SC-200 | Episode 2",
+      "status": "title_only",
       "langs": {}
     },
     {
       "ep": "EP3",
       "id": "5ln3fMECedU",
-      "title": null,
-      "status": "metadata_failed",
+      "title": "Mitigate threats using Microsoft Purview | SC-200 | Episode 3",
+      "status": "title_only",
       "langs": {}
     },
     {
       "ep": "EP4",
       "id": "e7UxqMgb1zk",
-      "title": null,
-      "status": "metadata_failed",
+      "title": "Mitigate threats using Microsoft Defender for Endpoint | SC-200 | Episode 4",
+      "status": "title_only",
       "langs": {}
     },
     {
       "ep": "EP5",
       "id": "Nt7f2Bog89c",
-      "title": null,
-      "status": "metadata_failed",
+      "title": "Mitigate threats using Microsoft Defender for Cloud | SC-200 | Episode 5",
+      "status": "title_only",
       "langs": {}
     },
     {
       "ep": "EP6",
       "id": "3DHcnk9obfk",
-      "title": null,
-      "status": "metadata_failed",
+      "title": "Create queries in Microsoft Sentinel using Kusto Query Language (KQL) | SC-200 | Episode 6",
+      "status": "title_only",
       "langs": {}
     },
     {
       "ep": "EP7",
       "id": "0ydVILka3eg",
-      "title": null,
-      "status": "metadata_failed",
+      "title": "Configure Microsoft Sentinel environment | SC-200 | Episode 7",
+      "status": "title_only",
       "langs": {}
     },
     {
       "ep": "EP8",
       "id": "hOYpji940yw",
-      "title": null,
-      "status": "metadata_failed",
+      "title": "Connect logs to Microsoft Sentinel | SC-200 | Episode 8",
+      "status": "title_only",
       "langs": {}
     },
     {
       "ep": "EP9",
       "id": "qlyEmMLif_M",
-      "title": null,
-      "status": "metadata_failed",
+      "title": "Create detections and perform investigations in Microsoft Sentinel | SC-200 | Episode 9",
+      "status": "title_only",
       "langs": {}
     },
     {
       "ep": "EP10",
       "id": "z6QbN4rpAvA",
-      "title": null,
-      "status": "metadata_failed",
+      "title": "Perform threat hunting in Microsoft Sentinel | SC-200 | Episode 10",
+      "status": "title_only",
       "langs": {}
     }
   ]
