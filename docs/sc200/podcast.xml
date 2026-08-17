@@ -84,19 +84,19 @@
     <item>
       <title>EP9｜威脅情報與 Watchlists</title>
       <description>SC-200 速成 Day 對應單元：P1-W2-4。雙主持人帶你複習當日考點。</description>
-      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-009.mp3" length="2691155" type="audio/mpeg"/>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-009.mp3" length="2679491" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-009</guid>
       <pubDate>Fri, 28 Aug 2026 07:00:00 +0800</pubDate>
-      <itunes:duration>7:28</itunes:duration>
+      <itunes:duration>7:27</itunes:duration>
       <itunes:episode>9</itunes:episode>
     </item>
     <item>
       <title>EP10｜Sentinel data lake 與 Summary Rules</title>
       <description>SC-200 速成 Day 對應單元：P1-W2-5。雙主持人帶你複習當日考點。</description>
-      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-010.mp3" length="2742143" type="audio/mpeg"/>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-010.mp3" length="2736239" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-010</guid>
       <pubDate>Mon, 31 Aug 2026 07:00:00 +0800</pubDate>
-      <itunes:duration>7:37</itunes:duration>
+      <itunes:duration>7:36</itunes:duration>
       <itunes:episode>10</itunes:episode>
     </item>
     <item>
@@ -109,12 +109,30 @@
       <itunes:episode>11</itunes:episode>
     </item>
     <item>
+      <title>EP12｜Defender XDR 事件分診</title>
+      <description>SC-200 速成 Day 對應單元：P1-W3-2。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-012.mp3" length="3198180" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-012</guid>
+      <pubDate>Wed, 02 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>8:53</itunes:duration>
+      <itunes:episode>12</itunes:episode>
+    </item>
+    <item>
+      <title>EP13｜MDE 裝置回應與 Live Response</title>
+      <description>SC-200 速成 Day 對應單元：P1-W3-3。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-013.mp3" length="2599580" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-013</guid>
+      <pubDate>Thu, 03 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>7:13</itunes:duration>
+      <itunes:episode>13</itunes:episode>
+    </item>
+    <item>
       <title>EP14｜電子郵件威脅回應（MDO）</title>
       <description>SC-200 速成 Day 對應單元：P1-W3-4。雙主持人帶你複習當日考點。</description>
-      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-014.mp3" length="3114524" type="audio/mpeg"/>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-014.mp3" length="2703980" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-014</guid>
       <pubDate>Fri, 04 Sep 2026 07:00:00 +0800</pubDate>
-      <itunes:duration>8:39</itunes:duration>
+      <itunes:duration>7:31</itunes:duration>
       <itunes:episode>14</itunes:episode>
     </item>
   </channel>

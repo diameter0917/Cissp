@@ -77,18 +77,18 @@
       "unit": "P1-W2-4",
       "title_zh": "威脅情報與 Watchlists",
       "file": "ep-009.mp3",
-      "bytes": 2691155,
-      "duration_sec": 448,
-      "script_sha256": "f174fc21755161f2a4b10580c9159cdb8b31f310041ea967d03a1c5ed41e4fa9"
+      "bytes": 2679491,
+      "duration_sec": 447,
+      "script_sha256": "0bc2bd638c6d9a66a98d33ec15a4aa89b6a6eacff1f0ec11386daa2eb94ec6bc"
     },
     "010": {
       "episode": 10,
       "unit": "P1-W2-5",
       "title_zh": "Sentinel data lake 與 Summary Rules",
       "file": "ep-010.mp3",
-      "bytes": 2742143,
-      "duration_sec": 457,
-      "script_sha256": "11383ec7bc2429cb549cbba763ac64a91881463351778171b4cf0b272cf6cb0d"
+      "bytes": 2736239,
+      "duration_sec": 456,
+      "script_sha256": "47d6340bfcc0ffd5c59cf0f8d93b0fc488b88c5feaac4f8e82ff503154abdd66"
     },
     "011": {
       "episode": 11,
@@ -104,9 +104,27 @@
       "unit": "P1-W3-4",
       "title_zh": "電子郵件威脅回應（MDO）",
       "file": "ep-014.mp3",
-      "bytes": 3114524,
-      "duration_sec": 519,
-      "script_sha256": "4f4a1b3d17ec683f4a993b8ebdbdd02d7979650fa65b05aacac0f60b72e14003"
+      "bytes": 2703980,
+      "duration_sec": 451,
+      "script_sha256": "ed0c1c5497c176f2cb1db7d85150eb7b0c1062d4e65937c9d7de897e421e34bb"
+    },
+    "012": {
+      "episode": 12,
+      "unit": "P1-W3-2",
+      "title_zh": "Defender XDR 事件分診",
+      "file": "ep-012.mp3",
+      "bytes": 3198180,
+      "duration_sec": 533,
+      "script_sha256": "5ee53a0ab2a4063d54c36bc173eab0662bbc5c6b6a19fc61180969cb6c62bb2f"
+    },
+    "013": {
+      "episode": 13,
+      "unit": "P1-W3-3",
+      "title_zh": "MDE 裝置回應與 Live Response",
+      "file": "ep-013.mp3",
+      "bytes": 2599580,
+      "duration_sec": 433,
+      "script_sha256": "fcf82aa42d2b96e28aa9a94d282aad75d49ab3188f2c4528f5deb5d7c9f85c95"
     }
   }
 }
