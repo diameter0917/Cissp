@@ -228,70 +228,114 @@ def main():
         print("   （詳細步驟見 sc200/LOCAL_TRANSCRIPTS_GUIDE.md），commit 後再跑本工具。")
         return
 
+    # 每支 EP 是一整條學習路徑（約 50 分鐘），橫跨數個單元——
+    # 因此「影片講了教材沒寫」要拿**該 EP 對應的所有單元**合起來比，
+    # 否則 Day 7 會被誤判成「沒寫威脅情報」（其實寫在同樣對應 EP8 的 Day 9）。
+    ep_units = {}
+    for u in units:
+        for ep in (u.get("video_eps") or []):
+            ep_units.setdefault(ep, []).append(u)
+
+    # 單元 seq → podcast 集數（study 單元依序編號）
+    ep_no = {u["seq"]: i + 1 for i, u in
+             enumerate(sorted([x for x in curriculum["units"] if x["type"] == "study"],
+                              key=lambda x: x["seq"]))}
+
+    def unit_texts(u):
+        news_path = CONTENT / f"day-{u['seq']:03d}.html"
+        pod_path = SCRIPTS / f"ep-{ep_no[u['seq']]:03d}.json"
+        news = strip_html(news_path.read_text(encoding="utf-8")) if news_path.exists() else ""
+        pod = ""
+        if pod_path.exists():
+            pod = " ".join(t["text"] for t in
+                           json.loads(pod_path.read_text(encoding="utf-8"))["dialogue"])
+        return news, pod
+
+    # 全課程各單元電子報的術語索引（判斷「別課有沒有教過」用）
+    course_news = {u["seq"]: present_terms(unit_texts(u)[0]) for u in units}
+
     lines = ["# 字幕 × 教材覆蓋度報告", "",
-             "由 `sc200/scripts/check_coverage.py` 產生。三個欄位的意義：", "",
-             "- **要補教材**：影片講了、電子報沒寫 → 補進核心章節（或確認刻意略過）",
-             "- **要補音檔**：電子報寫了、Podcast 沒講 → 補進對談腳本",
-             "- **自主補強**：電子報寫了、影片沒講 → 應落在「考綱補洞」章節（刻意的，確認即可）", ""]
-    ep_i = 0
+             "由 `sc200/scripts/check_coverage.py` 產生。**以影片為單位**比對——每支 EP 是一整條",
+             "學習路徑、橫跨數個單元，故「教材是否涵蓋」須把該影片對應的所有單元合起來看。", "",
+             "- 🔴 **真缺口**：影片講了、全課程都沒寫 → 必須補進最相關那一課\n- 🟠 **對應錯位**：影片在此講、教材寫在別課 → 確認編排是否要調整（資訊性）",
+             "- 🟡 **要補音檔**：該課電子報實質著墨、Podcast 沒講 → 補進對談腳本",
+             "- 🔵 **自主補強**：電子報寫了、影片沒講 → 應落在「考綱補洞」章節（刻意的，確認即可）", ""]
     todo_content, todo_podcast = 0, 0
 
-    for u in units:
-        ep_i += 1
-        seq, code = u["seq"], u["code"]
-        eps = u.get("video_eps") or []
-        tr_text, langs = "", []
-        for ep in eps:
-            t, l = load_transcript(ep)
-            tr_text += "\n" + t
-            langs += l
-        news_path = CONTENT / f"day-{seq:03d}.html"
-        pod_path = SCRIPTS / f"ep-{ep_i:03d}.json"
-        news_text = strip_html(news_path.read_text(encoding="utf-8")) if news_path.exists() else ""
-        pod_text = ""
-        if pod_path.exists():
-            pod_text = " ".join(t["text"] for t in
-                                json.loads(pod_path.read_text(encoding="utf-8"))["dialogue"])
+    for ep in sorted(ep_units, key=lambda e: int(e[2:])):
+        us = sorted(ep_units[ep], key=lambda x: x["seq"])
+        tr_text, langs = load_transcript(ep)
+        info_path = TRANSCRIPTS / f"{ep_slug(ep)}.info.json"
+        title = ""
+        if info_path.exists():
+            title = json.loads(info_path.read_text(encoding="utf-8")).get("title") or ""
+        day_list = "、".join(f"Day {u['seq']:03d}" for u in us)
 
-        lines.append(f"## Day {seq:03d} · {code} · {u['title_zh']}")
+        lines.append(f"## {ep}｜{title}")
+        lines.append("")
+        lines.append(f"對應單元：{day_list}")
         lines.append("")
         if not tr_text.strip():
-            lines.append(f"> ⚠️ {'／'.join(eps)} 尚無字幕文字，略過比對。")
+            lines.append("> ⚠️ 尚無字幕文字，略過比對。")
             lines.append("")
             continue
-        lines.append(f"影片 {'／'.join(eps)}（字幕語言：{'、'.join(sorted(set(langs))) or '—'}）"
-                     f"｜電子報：{'✅' if news_text else '❌ 未撰寫'}"
-                     f"｜Podcast：{'✅' if pod_text else '❌ 未撰寫'}")
-        lines.append("")
 
         vid = {k: v for k, v in present_terms(tr_text).items() if v >= args.min}
-        news = present_terms(news_text)
-        pod = present_terms(pod_text)
+        # 該 EP 所有對應單元的電子報聯集
+        all_news = " ".join(unit_texts(u)[0] for u in us)
+        news_union = present_terms(all_news)
 
-        # 只看「實質著墨」的主題（電子報提及 ≥2 次），避免一筆帶過的名詞洗版報告
-        news_core = {k: v for k, v in news.items() if v >= 2}
-        gap_content = sorted(k for k in vid if k not in news)
-        gap_podcast = sorted(k for k in news_core if k not in pod and k in vid)
-        extra = sorted(k for k in news_core if k not in vid)
-        todo_content += len(gap_content)
-        todo_podcast += len(gap_podcast)
-
-        covered = len(vid) - len(gap_content)
+        # 影片講了、本 EP 對應單元沒寫的，再看「全課程其他單元有沒有寫」：
+        #   全課程都沒寫 → 🔴 真缺口，必須補
+        #   別的單元寫了 → 🟠 對應錯位（教材有教，只是掛在別支影片底下），資訊性提示
+        missing_here = [k for k in vid if k not in news_union]
+        gap_real, gap_elsewhere = [], []
+        for k in missing_here:
+            owners = [f"Day {u['seq']:03d}" for u in units if k in course_news.get(u["seq"], {})]
+            (gap_elsewhere if owners else gap_real).append((k, owners))
+        gap_real.sort()
+        gap_elsewhere.sort()
+        todo_content += len(gap_real)
+        covered = len(vid) - len(gap_real)
         pct = round(covered / len(vid) * 100) if vid else 100
-        lines.append(f"**影片主題覆蓋率：{covered}/{len(vid)}（{pct}%）**")
+        lines.append(f"**影片主題覆蓋率：{covered}/{len(vid)}（{pct}%，全課程口徑）**"
+                     f"（字幕語言：{'、'.join(sorted(set(langs))) or '—'}）")
         lines.append("")
-        if gap_content:
-            lines.append("### 🔴 要補教材（影片講了、電子報沒寫）")
-            lines += [f"- `{k}`（字幕出現 {vid[k]} 次）" for k in gap_content]
+        if gap_real:
+            # 對應單元若還沒撰寫，缺口會在該課寫完時自然補上——標註出來免得誤判
+            pending = [f"Day {u['seq']:03d}" for u in us
+                       if not (CONTENT / f"day-{u['seq']:03d}.html").exists()]
+            note = f"（{'、'.join(pending)} 尚未撰寫，屆時應涵蓋）" if pending else ""
+            lines.append("### 🔴 真缺口（影片講了、全課程都沒寫 → 必須補）")
+            lines += [f"- `{k}`（字幕出現 {vid[k]} 次）{note}" for k, _ in gap_real]
             lines.append("")
-        if gap_podcast:
-            lines.append("### 🟡 要補音檔（電子報寫了、Podcast 沒講）")
-            lines += [f"- `{k}`" for k in gap_podcast]
+        if gap_elsewhere:
+            lines.append("### 🟠 對應錯位（影片在這裡講、教材寫在別課 → 確認編排即可）")
+            lines += [f"- `{k}`（字幕 {vid[k]} 次）→ 教材在 {'、'.join(o)}"
+                      for k, o in gap_elsewhere]
             lines.append("")
-        if extra:
-            lines.append("### 🔵 自主補強（電子報寫了、影片沒講——應在「考綱補洞」）")
-            lines.append("- " + "、".join(f"`{k}`" for k in extra))
+
+        for u in us:
+            news_text, pod_text = unit_texts(u)
+            if not news_text:
+                lines.append(f"- Day {u['seq']:03d} {u['title_zh']}：❌ 電子報未撰寫")
+                continue
+            news_core = {k: v for k, v in present_terms(news_text).items() if v >= 2}
+            pod = present_terms(pod_text)
+            gap_pod = sorted(k for k in news_core if k not in pod and k in vid)
+            extra = sorted(k for k in news_core if k not in vid)
+            todo_podcast += len(gap_pod)
+            lines.append(f"### Day {u['seq']:03d} · {u['title_zh']}")
+            if not pod_text:
+                lines.append("- ❌ Podcast 腳本未撰寫")
+            elif gap_pod:
+                lines.append("- 🟡 要補音檔：" + "、".join(f"`{k}`" for k in gap_pod))
+            else:
+                lines.append("- ✅ Podcast 已涵蓋電子報重點")
+            if extra:
+                lines.append("- 🔵 自主補強（應在考綱補洞）：" + "、".join(f"`{k}`" for k in extra))
             lines.append("")
+
         mined = mine_phrases(tr_text)
         if mined:
             lines.append("### 🔍 字幕高頻片語（詞典未收錄，人工判斷是否為新主題）")
