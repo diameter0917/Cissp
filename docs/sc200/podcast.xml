@@ -72,5 +72,14 @@
       <itunes:duration>8:18</itunes:duration>
       <itunes:episode>7</itunes:episode>
     </item>
+    <item>
+      <title>EP8｜Syslog、CEF 與 ASIM 正規化</title>
+      <description>SC-200 速成 Day 對應單元：P1-W2-3。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-008.mp3" length="2711752" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-008</guid>
+      <pubDate>Thu, 27 Aug 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>7:32</itunes:duration>
+      <itunes:episode>8</itunes:episode>
+    </item>
   </channel>
 </rss>

@@ -62,6 +62,15 @@
       "bytes": 2991103,
       "duration_sec": 498,
       "script_sha256": "ec2903279a90e82f37c84e0c1714cad9e62291713dc20884ef892fa58e3d0fcb"
+    },
+    "008": {
+      "episode": 8,
+      "unit": "P1-W2-3",
+      "title_zh": "Syslog、CEF 與 ASIM 正規化",
+      "file": "ep-008.mp3",
+      "bytes": 2711752,
+      "duration_sec": 452,
+      "script_sha256": "ebd6dead959d97a6fe750eca6714bfd6a7a7ffb8f31bcead8d4b99a4463819bc"
     }
   }
 }
