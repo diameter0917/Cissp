@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 4｜Defender XDR 統一入口網站：設定、統一 RBAC 與多租用戶｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 4 / 40 · 2026-08-21</div>
+    <h1>Defender XDR 統一入口網站：設定、統一 RBAC 與多租用戶</h1>
+    <p class="sub"><em>Defender XDR Unified Portal: Settings, Unified RBAC & Multi-tenant</em></p>
+    <div class="meta-row">
+      <span class="pill d1">D1 管理安全性作業環境</span>
+      <span class="pill ghost">40-45%</span>
+      <span class="pill ghost">P1-W1-4</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:16%"></div></div>
+    <div class="progress-text">五週速成進度 4 / 25 · 距離考試（2026-10-17）還有 57 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP1｜Mitigate threats using Microsoft Defender XDR | SC-200 | Episode 1</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/8gCUtYEpTe8' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">Defender XDR 統一入口：一個網址、一套權限、一條事件佇列</h2>
+<p>前兩天練 KQL，今天回到 D1 主場：<strong>defender.microsoft.com</strong> 這個統一入口網站。SC-200 的第一大領域「管理安全性作業環境」占比 40–45%，其中「設定 Microsoft Defender XDR」與「使用統一 RBAC 管理權限」是每一屆考生都會遇到的固定題型。本日重點有三：第一，統一入口到底把哪些產品「收編」進來，事件佇列、進階搜捕（advanced hunting）與設定各自整合成什麼樣子；第二，Microsoft Defender XDR 統一 RBAC（unified role-based access control）的權限群組結構與最小權限選角思路——這是本單元最高頻考點；第三，多租用戶管理與 MSSP 場景，以及 <span class="badge-2026">2026 新考點</span> Sentinel 進駐 Defender portal 後的統一 SOC 平台。</p>
+<div class="point">
+<strong>學習目標（對應官方考綱 D1「管理安全性作業環境」）：</strong>
+<ul>
+  <li>☐ 說出統一入口整合了哪些產品入口、與「事件佇列合併／跨產品進階搜捕／統一設定」三大整合面（對應考綱 <em>configure settings in Microsoft Defender XDR</em>）</li>
+  <li>☐ 描述統一 RBAC 的三大權限群組、自訂角色與指派結構，並說明啟用（activate）後與各產品舊 RBAC 的關係（對應考綱 <em>manage access and permissions by using unified role-based access control (RBAC)</em>）</li>
+  <li>☐ 判斷 Entra 內建角色（Security Reader／Security Operator／Security Administrator）何時「夠用」、何時該改用統一 RBAC 自訂角色</li>
+  <li>☐ 解釋多租用戶入口與 GDAP 在 MSSP 場景的角色</li>
+  <li>☐ 說明把 Sentinel 工作區連入 Defender portal 的統一 SOC 平台體驗（對應考綱 <em>configure a connection from Defender XDR to a Sentinel workspace</em>）</li>
+</ul>
+</div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP1 觀看重點指引（第二輪：這次看「入口與權限」）</h2>
+<p>本單元沿用 Day 1 的 EP1 總覽影片。第一輪你看的是「生態系全景」，這一輪請帶著三個問題重看與入口網站相關的段落：</p>
+<ul>
+  <li><strong>入口導覽段落</strong>：講者展示 defender.microsoft.com 左側導覽時，留意「事件與警示」「搜捕」「資產」「設定」四個區塊各對應昨天以前哪些獨立產品入口。邊看邊對照下一節的整合地圖表格。</li>
+  <li><strong>事件（incident）展示段落</strong>：注意單一事件裡同時出現端點、郵件、身分識別警示的畫面——這就是「警示關聯成事件」的統一佇列價值，考題常拿它當情境開頭。</li>
+  <li><strong>Sentinel 出現的段落</strong>：留意講者是在 Defender portal 內展示 Sentinel（統一體驗），還是切去 Azure portal。2026 年起統一入口已是主要體驗，看影片時建立這個「新常態」印象。</li>
+</ul>
+<div class="info-box">📌 EP1 字幕尚未抓取完成；字幕到位後本節會回補精確時間碼（格式如 <span class="timestamp">EP1 12:35</span>）。目前請以上面三個「帶著問題看」的指引自行定位段落。</div>
+
+<div class="eyebrow">03 — 🗺️ 統一入口整合地圖</div>
+<h2 data-toc="入口整合">defender.microsoft.com 收編了什麼</h2>
+<p>Microsoft Defender XDR（XDR）統一入口網站把過去四、五個獨立安全性入口收整成一站。首先把「舊入口 → 新位置」的對照背起來，考題描述舊入口名稱時你才不會迷路：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>功能</th><th>原產品／原入口</th><th>統一入口後的位置</th></tr></thead>
+  <tbody>
+    <tr><td>端點警示、裝置清查、弱點管理</td><td>Microsoft Defender for Endpoint（MDE）— securitycenter.windows.com</td><td>統一事件佇列＋「資產 &gt; 裝置」＋「端點」設定區</td></tr>
+    <tr><td>郵件威脅調查（Threat Explorer）、隔離區</td><td>Microsoft Defender for Office 365（MDO）— protection.office.com</td><td>「電子郵件與共同作業」區</td></tr>
+    <tr><td>身分識別偵測、橫向移動路徑</td><td>Microsoft Defender for Identity（MDI）— 獨立 ATP 入口</td><td>統一事件佇列＋「資產 &gt; 身分識別」</td></tr>
+    <tr><td>雲端應用程式可見性與控制</td><td>Microsoft Defender for Cloud Apps（MDA）獨立入口</td><td>「雲端應用程式」區</td></tr>
+    <tr><td>SIEM：分析規則、資料連接器、自動化</td><td>Microsoft Sentinel — Azure portal</td><td>統一事件佇列＋「Microsoft Sentinel」導覽區 <span class="badge-2026">2026 新考點</span></td></tr>
+    <tr><td>跨產品查詢</td><td>各產品各自的搜尋／查詢頁</td><td>單一「進階搜捕」：一條 KQL 同時查 Device*、Email*、Identity*、CloudApp* 資料表</td></tr>
+  </tbody>
+</table>
+</div>
+<p>整合的本質可以濃縮成三件事：<strong>事件佇列合併</strong>（跨產品警示自動關聯成單一事件，分析師分診一個事件就能看到完整攻擊故事）、<strong>進階搜捕跨產品</strong>（一條查詢跨所有訊號來源）、<strong>統一設定</strong>（通知、權限、保留期集中管理）。舉一段跨產品查詢感受一下——追查「釣魚郵件附件在端點被執行」，過去要跨兩個入口，如今一條 KQL：</p>
+<pre class="kql">EmailAttachmentInfo
+| where Timestamp &gt; ago(7d)
+| where FileType == "exe"
+| join kind=inner (
+    DeviceProcessEvents
+    | where Timestamp &gt; ago(7d)
+  ) on SHA256
+| project Timestamp, RecipientEmailAddress, FileName, DeviceName, InitiatingProcessFileName</pre>
+<p class="kql-note">EmailAttachmentInfo 是 MDO 的訊號、DeviceProcessEvents 是 MDE 的訊號，以 SHA256 做 inner join——「郵件裡的附件雜湊」對上「端點上執行的程序雜湊」，就是附件落地執行的證據。這種跨表關聯只有統一入口的進階搜捕辦得到，是考題最愛的「為什麼要用統一入口」情境。</p>
+<h3>統一設定：通知、功能開關、資料保留</h3>
+<ul>
+  <li><strong>通知與電子郵件設定</strong>：在設定區可建立事件與警示的電子郵件通知規則——依嚴重性、裝置群組或服務來源篩選，寄給指定收件者；弱點管理也有獨立的通知規則。考點：通知規則是「設定」，需要有設定管理權限的角色才能建立。</li>
+  <li><strong>功能開關（preview features）</strong>：預覽功能是租用戶層級的單一開關，打開後才看得到最新功能。考 2026 新功能時，題幹偶爾會提「已啟用預覽功能」當前提。</li>
+  <li><strong>資料保留設定</strong>：Defender XDR 的警示與事件資料預設保留 180 天；進階搜捕可查詢的原始資料是 30 天。端點資料保留期可在設定中調整（30–180 天）。要留更久做長期搜捕？那是 Sentinel／data lake 的工作——Day 10 會講。</li>
+</ul>
+
+<div class="eyebrow">04 — 🔐 統一 RBAC 深入</div>
+<h2 data-toc="統一RBAC">一套自訂角色模型，管到所有工作負載</h2>
+<p>入口統一了，權限也要統一。過去 MDE 有自己的角色、MDO 權限藏在 Exchange Online、MDI 用 Entra 群組——三套模型三種邏輯。<strong>Microsoft Defender XDR 統一 RBAC</strong> 用一個自訂角色模型取代它們：一個角色、一次指派，套用到你選擇的多個工作負載（workload）。</p>
+<p>自訂角色的權限從三大<strong>權限群組</strong>勾選，這個結構要記熟：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>權限群組</th><th>涵蓋權限（節錄）</th><th>給誰</th></tr></thead>
+  <tbody>
+    <tr><td><strong>安全性作業</strong>（Security operations）</td><td>安全性資料基本（讀取）、警示（管理）、回應動作：即時回應（Live Response）、進階修復動作、檔案收集、電子郵件與共同作業修復</td><td>分析師：讀資料、分診、做回應</td></tr>
+    <tr><td><strong>安全性態勢</strong>（Security posture）</td><td>弱點管理（讀取／例外處理／修復處理）、Secure Score（讀取／管理）</td><td>弱點管理與態勢團隊</td></tr>
+    <tr><td><strong>授權與設定</strong>（Authorization and settings）</td><td>授權（管理角色與指派）、安全性設定、系統設定</td><td>SOC 管理者／工程師——這一組等於「可以改環境」</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>建立自訂角色的流程</strong>：建立角色 → 勾選權限 → 建立<strong>指派（assignment）</strong>。每個指派包含三個要素：指派給誰（Entra 使用者或群組）、<strong>資料來源</strong>（套用到哪些工作負載：MDE、MDO、MDI、MDA⋯⋯）、<strong>範圍</strong>（MDE 可進一步限縮到特定裝置群組）。一個角色可以有多個指派——例如同一組「分診權限」，指派 A 給台北團隊管台北的裝置群組、指派 B 給倫敦團隊管歐洲的裝置群組。</p>
+<p><strong>啟用與遷移</strong>：統一 RBAC 是「按工作負載啟用（activate）」的。某個工作負載一旦啟用，該產品的<strong>舊 RBAC 角色立即停止生效</strong>，只認統一 RBAC。因此正確順序是：先用「匯入角色」功能把 MDE／MDO 等既有角色匯入統一 RBAC、檢查對應無誤，<em>再</em>逐一啟用工作負載。另外有一條保命規則：Entra 的 Global Administrator 與 Security Administrator <strong>不受啟用影響</strong>，永遠保有完整存取——所以永遠不會發生「全員被鎖在門外」。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>「最小權限該選哪個角色」的答題公式</strong>：先抓題幹兩個訊號——（1）需要<em>做</em>什麼：只看＝讀取、分診改狀態＝警示（管理）、隔離裝置＝回應動作、建通知規則或改功能＝授權與設定；（2）需要<em>管到</em>哪：全租用戶還是特定裝置群組。然後套用鐵律：<strong>Global Administrator 永遠不是最小權限的正解</strong>；題目說「不可變更設定」就刪掉 Security Administrator；題目要求「限縮到某些裝置群組」或「只給部分工作負載」，Entra 內建角色一律做不到，答案必是<strong>統一 RBAC 自訂角色</strong>。</div>
+
+<div class="eyebrow">05 — ⚖️ Entra 角色 vs 統一 RBAC</div>
+<h2 data-toc="角色比較">內建角色何時夠用、何時該自訂</h2>
+<p>Entra ID 內建角色是「快速起步」方案：指派一次，所有安全性入口都認得。統一 RBAC 是「精細治理」方案。比較如下：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>面向</th><th>Entra 內建角色</th><th>統一 RBAC 自訂角色</th></tr></thead>
+  <tbody>
+    <tr><td>粒度</td><td>粗：整個租用戶、所有產品一體適用</td><td>細：權限 × 工作負載 × 範圍（裝置群組）三維控制</td></tr>
+    <tr><td>管理位置</td><td>Entra ID（Microsoft Entra 系統管理中心）</td><td>Defender portal 的「權限」設定</td></tr>
+    <tr><td>常用角色</td><td>Security Reader（唯讀）／Security Operator（管理警示與事件、執行調查回應）／Security Administrator（前者＋管理安全性設定）</td><td>自行組合三大權限群組</td></tr>
+    <tr><td>能否限裝置群組</td><td>不能</td><td>能（MDE 資料來源可設範圍）</td></tr>
+    <tr><td>適用情境</td><td>小團隊、職能單純、全域授權可接受</td><td>大型 SOC 的 tier 分層、MSSP、最小權限稽核要求</td></tr>
+  </tbody>
+</table>
+</div>
+<p>記法：<strong>Reader 看、Operator 動手、Admin 動設定</strong>。三個內建角色是同心圓，一圈比一圈大；自訂角色則是把圓切成扇形，要哪塊給哪塊。</p>
+<div class="case-box"><span class="case-label">🛡️ 實戰情境：新進 Tier-1 分析師的角色決策</span><br>
+<p>你是 SOC 的權限管理者。新進 tier-1 分析師 Amy 下週報到，需求是：<strong>檢視事件、變更事件狀態與指派、加註解——但不可變更任何入口設定</strong>。走一遍決策：</p>
+<ol>
+  <li><strong>Security Reader 夠嗎？</strong>不夠。Reader 是唯讀，Amy 改不了事件狀態、做不了指派——分診工作直接卡死。</li>
+  <li><strong>Security Administrator？</strong>過頭了。它包含管理安全性設定的權限，違反「不可改設定」的限制條件，最小權限原則直接淘汰。</li>
+  <li><strong>Security Operator？</strong>可以動事件、不能改設定——需求全中。若團隊小、不要求限縮範圍，<strong>這就是答案</strong>。</li>
+  <li><strong>還要更嚴？</strong>注意 Security Operator 也帶著「執行回應動作」的能力（例如隔離裝置）。如果政策規定 tier-1 只能分診、回應動作留給 tier-2，就改用<strong>統一 RBAC 自訂角色</strong>：勾「安全性資料基本（讀取）」＋「警示（管理）」，不勾任何回應動作、不碰「授權與設定」，指派範圍限 tier-1 負責的裝置群組。</li>
+</ol>
+<p><strong>結論</strong>：考題只給「分診＋不可改設定」→ 選 Security Operator；題幹多了「不得執行回應動作」或「僅限特定裝置群組」→ 選統一 RBAC 自訂角色。條件多一個，答案就換一個。</p>
+</div>
+
+<div class="eyebrow">06 — 🏢 多租用戶與 MSSP</div>
+<h2 data-toc="多租用戶">一個分析師，看很多租用戶</h2>
+<p>MSSP（託管安全服務供應商）或多租用戶集團的痛點：分析師要在十幾個租用戶之間切換。Defender 的解法有兩層：</p>
+<ul>
+  <li><strong>多租用戶入口（multi-tenant portal，mto.security.microsoft.com）</strong>：把你有權存取的多個租用戶聚合成單一檢視——跨租用戶的<strong>事件佇列</strong>、跨租用戶的<strong>進階搜捕</strong>（同一條查詢同時打向多個租用戶）、以及內容管理（把自訂偵測規則同步到多個租用戶）。它不是新的權限系統，你在每個租用戶裡有多少權限，聚合檢視就顯示多少。</li>
+  <li><strong>存取怎麼來：GDAP</strong>（granular delegated administrative privileges，細緻委派系統管理權限）。CSP 夥伴透過 Partner Center 與客戶建立 GDAP 關係：<strong>指名特定 Entra 角色</strong>（例如只給 Security Operator）、<strong>有時效</strong>（到期須重新核可）、可稽核。它取代了舊制 DAP（預設近乎全域管理員的委派，權限過廣，已淘汰）。企業內部的跨租用戶存取則常用 Entra B2B 邀請＋各租用戶內指派角色。</li>
+</ul>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>MSSP 題的正解長相</strong>：題幹說「MSSP 需要以最小權限、可時效控管的方式存取客戶租用戶」→ 正解是 <strong>GDAP</strong>。干擾項套路：DAP（真實存在但已淘汰、權限過廣）、在客戶租用戶建 Global Administrator 帳號（違反最小權限）、共用帳號（違反可歸責性）。另一型：「分析師要在單一檢視分診多個租用戶的事件」→ 正解是<strong>多租用戶入口</strong>，干擾項會是「輪流登入各租用戶」或「把所有記錄集中到單一工作區」（可行但題目問的是 Defender 原生的聚合檢視）。</div>
+
+<div class="eyebrow">07 — 🛰️ Sentinel 進 Defender portal</div>
+<h2 data-toc="統一SOC">統一 SOC 平台 <span class="badge-2026">2026 新考點</span></h2>
+<p>XDR 管「微軟訊號」，SIEM 管「所有訊號」——過去這兩個世界分屬兩個入口。把 Microsoft Sentinel 工作區<strong>連入（onboard）Defender portal</strong> 之後，兩者合體為統一 SOC 平台：</p>
+<ul>
+  <li><strong>單一事件佇列</strong>：Sentinel 分析規則產生的事件與 XDR 事件進同一條佇列，關聯引擎會把相關警示歸進同一事件。</li>
+  <li><strong>單一進階搜捕</strong>：同一個查詢介面同時查 XDR 資料表<em>與</em> Sentinel 工作區的資料表（含第三方記錄），跨來源 join 不用換入口。</li>
+  <li><strong>自動化與 AI 同棚</strong>：Sentinel 的自動化規則、劇本（Playbook）照常運作，Security Copilot 的事件摘要與引導式回應也在同一入口。</li>
+</ul>
+<p><strong>2026 年的關鍵事實</strong>：Azure portal 中的 Sentinel 體驗已進入退場時程（2026 年 7 月起以 Defender portal 為唯一主要體驗），且新一代能力——Sentinel data lake、Sentinel Graph、Sentinel MCP Server——都只在統一平台上提供。考題若問「該在哪裡操作 Sentinel」或「如何取得單一事件佇列」，方向一律是<strong>把工作區連入 Defender portal</strong>。連入動作本身需要工作區層級的足夠授權（例如工作區的 Owner），連入後的日常操作權限仍由 Sentinel 的 Azure RBAC 角色與統一 RBAC 各管各的資源。</p>
+<div class="point"><strong>一句話記憶</strong>：「XDR 給你深度（微軟產品訊號的自動關聯），Sentinel 給你廣度（任何來源的記錄），統一 SOC 平台讓兩者共用同一條佇列、同一個搜捕介面。」明天開始逐一部署這些訊號來源，第一站就是 MDE。</div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">EP1 沒講透、考試會考的</h2>
+<p>EP1 是全景導覽，以下考綱項目影片著墨有限，本文已補講、這裡做最後確認：</p>
+<ul>
+  <li><strong>統一 RBAC 啟用順序</strong>：先匯入既有角色 → 檢查 → 再逐工作負載啟用；啟用後舊產品 RBAC 即失效；Global Administrator／Security Administrator 不受影響（§04）。</li>
+  <li><strong>通知規則、預覽功能、資料保留</strong>：三者都在統一設定區；事件通知可依嚴重性與裝置群組篩選；XDR 事件資料保留 180 天、進階搜捕原始資料 30 天（§03）。</li>
+  <li><strong>Entra 三角色分界</strong>：Reader 看、Operator 動手、Admin 動設定；要範圍限縮就轉統一 RBAC（§05）。</li>
+  <li><strong>GDAP 取代 DAP</strong>：指名角色、有時效、可稽核（§06）。</li>
+  <li><strong>連入 Sentinel 工作區</strong>：考綱明列「設定從 Defender XDR 到 Sentinel 工作區的連線」——記住連入的效果（單一佇列、單一搜捕）與 2026 主要體驗的定位（§07）。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深讀清單</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/manage-rbac" target="_blank" rel="noopener">Microsoft Defender XDR 統一 RBAC 總覽</a> — 讀「權限群組」完整清單，把 §04 的節錄表補全。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/create-custom-rbac-roles" target="_blank" rel="noopener">建立自訂角色與指派</a> — 走一遍「角色 → 權限 → 指派（使用者／資料來源／範圍）」的實際步驟。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/m365d-permissions" target="_blank" rel="noopener">以 Entra 全域角色管理入口存取</a> — 對照 Security Reader／Operator／Administrator 在入口內各能做什麼。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/mto-overview" target="_blank" rel="noopener">多租用戶管理總覽</a> — 看跨租用戶事件佇列與進階搜捕的前提條件。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/microsoft-sentinel-defender-portal" target="_blank" rel="noopener">Defender portal 中的 Microsoft Sentinel</a> — 2026 新考點主文：連入流程與統一體驗差異。</li>
+</ul>
+
+
+  <div class="eyebrow">10 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W1-4">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D1-0006</div><div class='q-stem'>You are a security operations analyst. During a phishing investigation, you need to run a single KQL query that joins email attachment data with endpoint process execution data to confirm whether a malicious attachment was executed on any device. Which capability should you use?</div><div class='q-zh'>（你是安全性作業分析師。調查釣魚事件時，你需要用單一 KQL 查詢把郵件附件資料與端點程序執行資料 join 起來，確認惡意附件是否曾在任何裝置上被執行。你應該使用哪個功能？）</div><div class='q-opt'><strong>A.</strong> Threat Explorer in Microsoft Defender for Office 365<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender for Office 365 的 Threat Explorer</div></div><div class='q-opt'><strong>B.</strong> Microsoft Sentinel workbooks<div style='font-size:12.5px;color:var(--muted)'>Microsoft Sentinel 活頁簿（Workbook）</div></div><div class='q-opt'><strong>C.</strong> Advanced hunting in the Microsoft Defender portal<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender 入口網站的進階搜捕</div></div><div class='q-opt'><strong>D.</strong> The device timeline in Microsoft Defender for Endpoint<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender for Endpoint 的裝置時間軸</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>統一入口的進階搜捕（advanced hunting）讓你以一條 KQL 同時查詢跨產品資料表——例如 MDO 的 EmailAttachmentInfo 與 MDE 的 DeviceProcessEvents，以 SHA256 進行 join 即可確認附件是否落地執行。這種跨產品單一查詢正是 Defender 統一入口的核心價值之一。</p><ul><li><strong>A</strong>：Threat Explorer 只涵蓋電子郵件與共同作業訊號，能調查郵件流向與附件，但無法在同一查詢中 join 端點的程序執行資料。</li><li><strong>B</strong>：活頁簿（Workbook）是視覺化儀表板工具，用來呈現既有查詢結果，不是執行跨產品 KQL join 調查的主要介面。</li><li><strong>D</strong>：裝置時間軸是單一裝置的事件檢視，適合逐裝置深入，無法以單一查詢跨所有裝置並關聯郵件資料。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-overview' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D1-0007</div><div class='q-stem'>A new tier-1 analyst joins your SOC. The analyst must view incidents in the Microsoft Defender portal, change incident status, assign incidents, and add comments, but must not be able to modify any security settings. Following the principle of least privilege, which Microsoft Entra built-in role should you assign?</div><div class='q-zh'>（SOC 新進一名 tier-1 分析師。這名分析師必須能在 Microsoft Defender 入口網站檢視事件、變更事件狀態、指派事件並加註解，但不可變更任何安全性設定。依最小權限原則，你應指派哪個 Microsoft Entra 內建角色？）</div><div class='q-opt'><strong>A.</strong> Security Reader<div style='font-size:12.5px;color:var(--muted)'>Security Reader（安全性讀取者）</div></div><div class='q-opt'><strong>B.</strong> Security Operator<div style='font-size:12.5px;color:var(--muted)'>Security Operator（安全性操作員）</div></div><div class='q-opt'><strong>C.</strong> Security Administrator<div style='font-size:12.5px;color:var(--muted)'>Security Administrator（安全性系統管理員）</div></div><div class='q-opt'><strong>D.</strong> Global Administrator<div style='font-size:12.5px;color:var(--muted)'>Global Administrator（全域系統管理員）</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>Security Operator 可以管理警示與事件（變更狀態、指派、加註解）並執行調查回應，但不能變更安全性設定，完全符合「能分診、不能改設定」的需求，是最小權限正解。記法：Reader 看、Operator 動手、Admin 動設定。</p><ul><li><strong>A</strong>：Security Reader 是唯讀角色，無法變更事件狀態或指派事件，分診工作會被卡住，權限不足。</li><li><strong>C</strong>：Security Administrator 額外具備管理安全性設定的權限，違反題目「不可變更設定」的限制，超出最小權限。</li><li><strong>D</strong>：Global Administrator 具備整個租用戶的完整管理權限，永遠不會是最小權限題的正解。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/m365d-permissions' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D1-0008</div><div class='q-stem'>Your organization uses custom roles in Microsoft Defender for Endpoint and separate permission models for Defender for Office 365. You plan to adopt Microsoft Defender XDR Unified RBAC so that a single custom-role model governs both workloads. You must ensure existing role assignments continue to work with no loss of access when the switch happens. What should you do first?</div><div class='q-zh'>（你的組織在 Microsoft Defender for Endpoint 使用自訂角色，Defender for Office 365 則使用另一套權限模型。你計畫改採 Microsoft Defender XDR 統一 RBAC，讓單一自訂角色模型同時治理兩個工作負載，且切換時既有角色指派必須繼續有效、不可造成存取中斷。你應該先做什麼？）</div><div class='q-opt'><strong>A.</strong> Assign the Security Administrator role to all SOC members before the change<div style='font-size:12.5px;color:var(--muted)'>在切換前先將 Security Administrator 角色指派給所有 SOC 成員</div></div><div class='q-opt'><strong>B.</strong> Activate Unified RBAC for both workloads immediately, then recreate the roles manually<div style='font-size:12.5px;color:var(--muted)'>立即為兩個工作負載啟用統一 RBAC，之後再手動重建角色</div></div><div class='q-opt'><strong>C.</strong> Create a Microsoft Entra security group and assign it the Security Operator role<div style='font-size:12.5px;color:var(--muted)'>建立 Microsoft Entra 安全性群組並指派 Security Operator 角色</div></div><div class='q-opt'><strong>D.</strong> Import the existing roles into Unified RBAC, review the imported assignments, and then activate the workloads<div style='font-size:12.5px;color:var(--muted)'>先將既有角色匯入統一 RBAC、檢查匯入的指派無誤後，再啟用工作負載</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>統一 RBAC 是按工作負載啟用（activate）的：某工作負載一旦啟用，該產品的舊 RBAC 角色立即停止生效。因此正確順序是先用匯入功能把 MDE、MDO 的既有角色帶進統一 RBAC，確認指派對應無誤後再啟用，才能保證零存取中斷。此外 Global Administrator 與 Security Administrator 不受啟用影響，是內建的保命機制。</p><ul><li><strong>A</strong>：把 Security Administrator 給所有成員嚴重違反最小權限原則，也沒有解決舊角色如何轉移到統一 RBAC 的問題。</li><li><strong>B</strong>：先啟用會讓舊角色立刻失效，在手動重建完成前造成存取中斷，正好違反題目「不可中斷」的要求；順序顛倒是本題的主要陷阱。</li><li><strong>C</strong>：指派 Entra 內建角色與遷移既有工作負載自訂角色無關，無法保留原本細緻的權限設計。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/import-rbac-roles' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D1-0009</div><div class='q-stem'>You work for an MSSP that manages security operations for multiple customers. The customers require that your analysts access their tenants with only the specific security roles needed, that the access is time-bound, and that it can be audited. What should you use to establish this access?</div><div class='q-zh'>（你任職於為多家客戶管理安全性作業的 MSSP。客戶要求你的分析師只能以工作所需的特定安全性角色存取其租用戶，存取必須有時效且可稽核。你應該用什麼方式建立這種存取？）</div><div class='q-opt'><strong>A.</strong> Granular delegated admin privileges (GDAP) relationships with only the required roles<div style='font-size:12.5px;color:var(--muted)'>以細緻委派系統管理權限（GDAP）建立關係，僅授與必要角色</div></div><div class='q-opt'><strong>B.</strong> Delegated administration privileges (DAP) with Admin Agent access<div style='font-size:12.5px;color:var(--muted)'>使用委派系統管理權限（DAP）的 Admin Agent 存取</div></div><div class='q-opt'><strong>C.</strong> Dedicated Global Administrator accounts created in each customer tenant<div style='font-size:12.5px;color:var(--muted)'>在每個客戶租用戶建立專用的 Global Administrator 帳號</div></div><div class='q-opt'><strong>D.</strong> A shared analyst account whose credentials are rotated monthly<div style='font-size:12.5px;color:var(--muted)'>使用每月輪換密碼的共用分析師帳號</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>GDAP（granular delegated administrative privileges）讓客戶透過 Partner Center 授權夥伴指名的特定 Entra 角色（例如只給 Security Operator），關係有有效期限且可稽核，完全對應題目「最小角色、有時效、可稽核」三個條件，是 MSSP 委派存取的現行標準做法。</p><ul><li><strong>B</strong>：DAP 是舊制委派，預設授與近乎全域管理員的過廣權限、無法細緻指名角色，已被 GDAP 取代。</li><li><strong>C</strong>：在客戶租用戶建立 Global Administrator 帳號嚴重違反最小權限原則，也不具時效控管。</li><li><strong>D</strong>：共用帳號讓操作無法歸責到個人，違反可稽核的要求，即使定期輪換密碼也不能接受。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/partner-center/customers/gdap-introduction' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D1-0010</div><div class='q-stem'>Your SOC currently manages Microsoft Sentinel incidents in the Azure portal and Defender XDR incidents in the Microsoft Defender portal. Ahead of the retirement of the Sentinel experience in the Azure portal, you must give analysts a single incident queue that contains both Sentinel analytics rule incidents and Defender XDR incidents, and a single advanced hunting experience across both data sets. What should you do?</div><div class='q-zh'>（你的 SOC 目前在 Azure portal 管理 Microsoft Sentinel 事件、在 Microsoft Defender 入口網站管理 Defender XDR 事件。在 Azure portal 的 Sentinel 體驗退場之前，你必須讓分析師擁有同時包含 Sentinel 分析規則事件與 Defender XDR 事件的單一事件佇列，以及跨兩邊資料的單一進階搜捕體驗。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Enable the Microsoft Defender XDR data connector in Microsoft Sentinel and keep working in the Azure portal<div style='font-size:12.5px;color:var(--muted)'>在 Microsoft Sentinel 啟用 Microsoft Defender XDR 資料連接器，並繼續在 Azure portal 作業</div></div><div class='q-opt'><strong>B.</strong> Onboard the Microsoft Sentinel workspace to the Microsoft Defender portal<div style='font-size:12.5px;color:var(--muted)'>將 Microsoft Sentinel 工作區連入（onboard）Microsoft Defender 入口網站</div></div><div class='q-opt'><strong>C.</strong> Create a Microsoft Sentinel workbook that visualizes incidents from both platforms<div style='font-size:12.5px;color:var(--muted)'>建立 Microsoft Sentinel 活頁簿（Workbook）同時視覺化兩個平台的事件</div></div><div class='q-opt'><strong>D.</strong> Configure an automation rule that forwards Defender XDR incidents by email to analysts<div style='font-size:12.5px;color:var(--muted)'>設定自動化規則，將 Defender XDR 事件以電子郵件轉寄給分析師</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>把 Sentinel 工作區連入 Defender portal 即啟用統一 SOC 平台：Sentinel 與 XDR 事件進入同一條事件佇列並由關聯引擎整併，進階搜捕也能在同一介面查詢 Sentinel 資料表與 XDR 資料表。2026 年起 Defender portal 已是 Sentinel 的主要體驗，Azure portal 體驗進入退場時程，這是面向未來的唯一正解。</p><ul><li><strong>A</strong>：XDR 資料連接器可把事件同步進 Sentinel，但作業體驗仍停留在即將退場的 Azure portal，且進階搜捕仍是兩套介面，不符合題目要求。</li><li><strong>C</strong>：活頁簿（Workbook）只是唯讀的視覺化儀表板，無法提供可分診操作的單一事件佇列，也不是搜捕介面。</li><li><strong>D</strong>：電子郵件通知只是告警轉送，與統一事件佇列或統一進階搜捕完全無關。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/microsoft-sentinel-defender-portal' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP4</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><div class='p-hint'>🎧 本集音檔生成中（push 腳本後由 GitHub Actions 自動合成）。</div><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-004'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="4">
+    <label for="doneChk">我讀完 Day 4 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-003.html'>← Day 3</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-005.html'>Day 5 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 4 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

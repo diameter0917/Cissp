@@ -1,0 +1,459 @@
+[
+  {
+    "id": "D3-0001",
+    "domain": "D3",
+    "topic": "kql-basics",
+    "unit": "P1-W1-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Review the following KQL query:\n\nSigninLogs\n| where TimeGenerated > ago(1h)\n| project UserPrincipalName, IPAddress\n\nWhat is the function of the pipe character (|) in this query?",
+    "stem_zh": "檢視以下 KQL 查詢：SigninLogs | where TimeGenerated > ago(1h) | project UserPrincipalName, IPAddress。管線符號（|）在這段查詢中的作用是什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It combines rows from two different tables into a single result set.",
+        "text_zh": "把兩張不同資料表的資料列合併成單一結果集。"
+      },
+      {
+        "key": "B",
+        "text_en": "It passes the output of the previous step as the input to the next operator, processed from top to bottom.",
+        "text_zh": "把上一步的輸出當成下一個運算子的輸入，由上而下依序處理。"
+      },
+      {
+        "key": "C",
+        "text_en": "It marks the start of a comment that the query engine ignores.",
+        "text_zh": "標記註解的開始，查詢引擎會忽略後面的內容。"
+      },
+      {
+        "key": "D",
+        "text_en": "It evaluates both sides as an OR condition and returns rows that match either one.",
+        "text_zh": "把兩側當成 OR 條件評估，回傳符合任一側的資料列。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "KQL 是管線式（pipeline）語言：查詢以資料表開頭，每個 | 把上一步的輸出資料流交給下一個運算子繼續加工，由上而下循序處理。本例中 SigninLogs 的原始資料先經 where 篩出過去 1 小時的列，再由 project 只保留兩個欄位。理解「上一步輸出＝下一步輸入」是讀懂所有 KQL 題目的前提。",
+    "why_wrong_zh": {
+      "A": "合併兩張表是 join／union 運算子的工作（Day 3 主題），管線符號本身不做跨表合併，它只負責把資料流往下傳。",
+      "C": "KQL 的註解符號是 //（雙斜線），不是管線符號；| 是有實際語意的資料流串接符。",
+      "D": "OR 邏輯條件寫在 where 子句內（例如 where A or B）；| 是串接運算子的結構符號，不是邏輯運算子。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/tutorials/learn-common-operators",
+    "tags": [
+      "kql",
+      "hunting"
+    ]
+  },
+  {
+    "id": "D3-0002",
+    "domain": "D3",
+    "topic": "kql-where",
+    "unit": "P1-W1-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are a security operations analyst hunting in the DeviceProcessEvents table over 30 days of data. You need to find rows where ProcessCommandLine includes the whole term \"mimikatz\", the match must be case-insensitive, and the query should run as efficiently as possible. Which where clause should you use?",
+    "stem_zh": "你是安全性作業分析師，要在 DeviceProcessEvents 資料表中搜捕 30 天的資料。你需要找出 ProcessCommandLine 包含完整字詞「mimikatz」的資料列，比對須不分大小寫，且查詢要盡可能有效率。應使用哪個 where 子句？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "| where ProcessCommandLine contains \"mimikatz\"",
+        "text_zh": "| where ProcessCommandLine contains \"mimikatz\""
+      },
+      {
+        "key": "B",
+        "text_en": "| where ProcessCommandLine == \"mimikatz\"",
+        "text_zh": "| where ProcessCommandLine == \"mimikatz\""
+      },
+      {
+        "key": "C",
+        "text_en": "| where ProcessCommandLine has \"mimikatz\"",
+        "text_zh": "| where ProcessCommandLine has \"mimikatz\""
+      },
+      {
+        "key": "D",
+        "text_en": "| where ProcessCommandLine matches regex \"mimikatz\"",
+        "text_zh": "| where ProcessCommandLine matches regex \"mimikatz\""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "has 以「完整詞（term）」為單位比對、不分大小寫，且能利用字詞索引，是大量資料上最有效率的選擇。官方 KQL 最佳做法明確建議：能用 has 就不要用 contains。題幹同時給了「完整字詞」與「最有效率」兩個訊號，都指向 has。",
+    "why_wrong_zh": {
+      "A": "contains 比對任意子字串、不吃字詞索引，需要逐字元掃描，在 30 天的大量資料上效能明顯較差；題目要求「盡可能有效率」，它不是最佳解。",
+      "B": "== 是整個字串的精確比對且區分大小寫；命令列通常包含許多其他內容，整串等於「mimikatz」的機率極低，會漏掉幾乎所有目標資料列。",
+      "D": "matches regex 是正規表達式比對，成本最高；本題只是找固定的完整字詞，用正規表達式殺雞用牛刀，效能最差。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/best-practices",
+    "tags": [
+      "kql",
+      "advanced-hunting",
+      "performance"
+    ]
+  },
+  {
+    "id": "D3-0003",
+    "domain": "D3",
+    "topic": "kql-summarize",
+    "unit": "P1-W1-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "What does the following KQL query return?\n\nSigninLogs\n| where TimeGenerated > ago(7d)\n| where ResultType != \"0\"\n| summarize FailedCount = count() by bin(TimeGenerated, 1h)",
+    "stem_zh": "以下 KQL 查詢會回傳什麼？SigninLogs | where TimeGenerated > ago(7d) | where ResultType != \"0\" | summarize FailedCount = count() by bin(TimeGenerated, 1h)",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The number of failed sign-ins in each one-hour interval over the past 7 days.",
+        "text_zh": "過去 7 天內，每個一小時區間各有多少次失敗登入。"
+      },
+      {
+        "key": "B",
+        "text_en": "A single row with the total number of failed sign-ins over the past 7 days.",
+        "text_zh": "單一資料列，顯示過去 7 天失敗登入的總次數。"
+      },
+      {
+        "key": "C",
+        "text_en": "The full details of every failed sign-in event, one row per event.",
+        "text_zh": "每筆失敗登入事件的完整明細，一筆事件一列。"
+      },
+      {
+        "key": "D",
+        "text_en": "The number of distinct users who failed to sign in, grouped by hour.",
+        "text_zh": "每小時分組的「不重複」失敗登入使用者數。"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "查詢先篩出過去 7 天、ResultType 不是 \"0\"（登入失敗）的紀錄，再用 summarize count() 計數，並以 bin(TimeGenerated, 1h) 把時間切成一小時一桶分組。結果是每個一小時區間一列、附上該小時的失敗筆數——標準的時間分桶趨勢統計，可直接拿來畫每小時失敗登入趨勢圖。",
+    "why_wrong_zh": {
+      "B": "若沒有 by bin(...) 分組子句，summarize count() 才會輸出單一總數；本題有 by bin(TimeGenerated, 1h)，所以會依小時展開成多列。",
+      "C": "summarize 是聚合運算子，執行後只剩聚合欄位與分組欄位，原始事件明細不會保留；要看逐筆明細就不能用 summarize。",
+      "D": "算「不重複使用者數」要用 dcount(UserPrincipalName)；本題用的是 count()，算的是事件筆數，不是不重複人數。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/summarize-operator",
+    "tags": [
+      "kql",
+      "hunting"
+    ]
+  },
+  {
+    "id": "D3-0004",
+    "domain": "D3",
+    "topic": "kql-project",
+    "unit": "P1-W1-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are investigating suspicious sign-ins in SigninLogs. You want to add a new calculated column named Location_IP that combines the Location and IPAddress columns, while keeping all existing columns available for later steps in the pipeline. Which operator should you use?",
+    "stem_zh": "你正在調查 SigninLogs 中的可疑登入，想新增一個名為 Location_IP 的計算欄位（合併 Location 與 IPAddress），同時保留所有現有欄位供管線後續步驟使用。應使用哪個運算子？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "project",
+        "text_zh": "project"
+      },
+      {
+        "key": "B",
+        "text_en": "summarize",
+        "text_zh": "summarize"
+      },
+      {
+        "key": "C",
+        "text_en": "project-away",
+        "text_zh": "project-away"
+      },
+      {
+        "key": "D",
+        "text_en": "extend",
+        "text_zh": "extend"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "extend 會在保留所有現有欄位的前提下新增計算欄位（例如 extend Location_IP = strcat(Location, \"-\", IPAddress)），正符合「加欄位且不動原欄位」的需求。口訣：extend 加欄位、project 挑欄位——題幹出現「保留所有現有欄位」就是 extend 的訊號。",
+    "why_wrong_zh": {
+      "A": "project 雖然也能定義計算欄位，但它只保留你點名的欄位，其餘全部丟棄，違反題目「保留所有現有欄位」的要求。",
+      "B": "summarize 是聚合運算子，執行後只剩聚合結果與分組欄位，原始欄位與明細都會消失，不是用來加欄位的工具。",
+      "C": "project-away 是「點名移除」欄位、其餘保留，它只會減少欄位，無法新增計算欄位。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/extend-operator",
+    "tags": [
+      "kql",
+      "hunting"
+    ]
+  },
+  {
+    "id": "D3-0005",
+    "domain": "D3",
+    "topic": "kql-summarize",
+    "unit": "P1-W1-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A colleague shares the following hunting query:\n\nSigninLogs\n| where TimeGenerated > ago(24h)\n| where ResultType == \"50126\"\n| summarize Attempts = count(), Targets = dcount(UserPrincipalName) by IPAddress\n| where Targets > 20\n| order by Attempts desc\n\nWhich attack technique is this query designed to surface?",
+    "stem_zh": "同事分享了一段搜捕查詢：SigninLogs | where TimeGenerated > ago(24h) | where ResultType == \"50126\" | summarize Attempts = count(), Targets = dcount(UserPrincipalName) by IPAddress | where Targets > 20 | order by Attempts desc。這段查詢是設計來找出哪種攻擊手法？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A brute-force attack against a single privileged account from many different IP addresses.",
+        "text_zh": "多個不同 IP 位址對單一特權帳號進行的暴力破解攻擊。"
+      },
+      {
+        "key": "B",
+        "text_en": "A password spray attack, where one source IP attempts sign-ins against many distinct accounts.",
+        "text_zh": "Password spray 攻擊：單一來源 IP 對大量不同帳號嘗試登入。"
+      },
+      {
+        "key": "C",
+        "text_en": "A phishing campaign delivering credential-harvesting email to multiple recipients.",
+        "text_zh": "向多名收件者投遞竊取認證郵件的釣魚活動。"
+      },
+      {
+        "key": "D",
+        "text_en": "Lateral movement between devices by using stolen credential hashes.",
+        "text_zh": "利用竊得的認證雜湊在裝置之間橫向移動。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "拆解查詢：ResultType \"50126\" 是「帳號或密碼錯誤」的失敗登入；summarize ... by IPAddress 以「來源 IP」分組；dcount(UserPrincipalName) 計算每個 IP 打過的「不重複帳號數」；Targets > 20 篩出 24 小時內對超過 20 個不同帳號嘗試的 IP。「一個來源、大量不同帳號、各少量嘗試」正是 password spray 的特徵——攻擊者用常見密碼廣撒帳號，以避開單一帳號的鎖定門檻。",
+    "why_wrong_zh": {
+      "A": "暴力破解單一帳號的偵測方向相反：應以帳號分組、計算不重複來源 IP 或失敗次數（例如 dcount(IPAddress) by UserPrincipalName）；本查詢是以 IP 分組數帳號。",
+      "C": "釣魚郵件活動要查 EmailEvents 等 Defender for Office 365 的郵件資料表；SigninLogs 只有登入行為，看不到郵件投遞。",
+      "D": "橫向移動的證據在裝置與身分識別遙測（如 DeviceLogonEvents、IdentityLogonEvents），且特徵是裝置對裝置的驗證行為，不是雲端登入的密碼錯誤統計。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/dcount-aggregation-function",
+    "tags": [
+      "kql",
+      "hunting",
+      "identity"
+    ]
+  },
+  {
+    "id": "D3-0006",
+    "domain": "D3",
+    "unit": "P1-W1-3",
+    "set": "A",
+    "topic": "kql-join",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [],
+    "stem_en": "A security operations analyst runs the following query in advanced hunting: IdentityLogonEvents | join (DeviceLogonEvents) on AccountName. No kind parameter is specified. Which join flavor does KQL apply by default?",
+    "stem_zh": "安全性作業分析師在進階搜捕執行查詢：IdentityLogonEvents | join (DeviceLogonEvents) on AccountName，未指定 kind 參數。KQL 預設會套用哪一種 join？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "inner — every matching pair of rows from both tables is returned",
+        "text_zh": "inner——左右兩表每一組配對的資料列都會輸出"
+      },
+      {
+        "key": "B",
+        "text_en": "innerunique — duplicate keys on the left table are deduplicated before matching",
+        "text_zh": "innerunique——左表鍵值先去除重複，再與右表配對"
+      },
+      {
+        "key": "C",
+        "text_en": "leftouter — all left-table rows are kept, unmatched right columns are null",
+        "text_zh": "leftouter——左表資料列全部保留，配不到的右表欄位補空值"
+      },
+      {
+        "key": "D",
+        "text_en": "fullouter — all rows from both tables are kept",
+        "text_zh": "fullouter——左右兩表的資料列全部保留"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "KQL 的 join 未指定 kind 時，預設是 innerunique：左表相同鍵值的重複列會先被去重（每個鍵值僅隨機保留一列），再與右表做 inner 式配對。因此輸出筆數常比預期少，這是搜捕查詢與考試的高頻陷阱——需要逐筆配對時必須明確寫 kind=inner。",
+    "why_wrong_zh": {
+      "A": "inner 會保留左表所有重複鍵值並逐筆配對，但它不是預設值——必須明確指定 kind=inner 才會使用。",
+      "C": "leftouter 保留左表全部資料列並為未配對列補空值，屬於必須明確指定的 kind，不是預設行為。",
+      "D": "fullouter 保留兩表所有資料列，是最寬鬆的 kind，同樣必須明確指定，並非預設。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/join-operator"
+  },
+  {
+    "id": "D3-0007",
+    "domain": "D3",
+    "unit": "P1-W1-3",
+    "set": "A",
+    "topic": "kql-join",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You are hunting for accounts that signed in successfully but have never registered for MFA. You build: SigninLogs | where ResultType == 0 | join kind=??? (MfaRegisteredUsers) on UserPrincipalName. You need to return only the sign-in rows for users that have NO matching row in MfaRegisteredUsers. Which join kind should replace ????",
+    "stem_zh": "你要搜捕「成功登入但從未註冊 MFA」的帳號，查詢為：SigninLogs | where ResultType == 0 | join kind=??? (MfaRegisteredUsers) on UserPrincipalName。你需要只回傳「在 MfaRegisteredUsers 中沒有配對列」的登入紀錄。??? 應填入哪一種 join kind？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "leftouter",
+        "text_zh": "leftouter"
+      },
+      {
+        "key": "B",
+        "text_en": "inner",
+        "text_zh": "inner"
+      },
+      {
+        "key": "C",
+        "text_en": "leftsemi",
+        "text_zh": "leftsemi"
+      },
+      {
+        "key": "D",
+        "text_en": "leftanti",
+        "text_zh": "leftanti"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "題幹關鍵字是「沒有配對列（NO matching row）」：leftanti 只保留左表中配不到右表的資料列，正好回傳「有登入、但不在 MFA 已註冊清單」的帳號。解題口訣：找『缺席／不存在於另一表』→ leftanti。",
+    "why_wrong_zh": {
+      "A": "leftouter 會保留左表全部資料列（配到與配不到都輸出），還需要再加一段 where isempty(...) 過濾才能達成目的，不是最直接的答案。",
+      "B": "inner 只保留「兩表都有」的配對列，回傳的是已註冊 MFA 的使用者登入，與需求正好相反。",
+      "C": "leftsemi 保留的是「配得到」右表的左表列（右表當過濾清單），同樣與『沒有配對』的需求相反；它的反義才是 leftanti。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/join-operator"
+  },
+  {
+    "id": "D3-0008",
+    "domain": "D3",
+    "unit": "P1-W1-3",
+    "set": "A",
+    "topic": "kql-parse",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "An analyst runs: DeviceEvents | extend Status = AdditionalFields.SigningStatus | where isnotempty(Status). The query returns zero rows even though AdditionalFields visibly contains JSON with a SigningStatus property. The AdditionalFields column is typed as string. How should the analyst fix the query?",
+    "stem_zh": "分析師執行：DeviceEvents | extend Status = AdditionalFields.SigningStatus | where isnotempty(Status)。雖然 AdditionalFields 內容明顯是含 SigningStatus 屬性的 JSON，查詢卻回傳零筆。該欄位的型別是 string。分析師應如何修正查詢？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Use extend Status = tostring(todynamic(AdditionalFields).SigningStatus) to convert the string to dynamic before accessing the property",
+        "text_zh": "改為 extend Status = tostring(todynamic(AdditionalFields).SigningStatus)，先把字串轉成 dynamic 再取屬性"
+      },
+      {
+        "key": "B",
+        "text_en": "Use extend Status = tostring(AdditionalFields).SigningStatus to cast the column first",
+        "text_zh": "改為 extend Status = tostring(AdditionalFields).SigningStatus，先轉型再取屬性"
+      },
+      {
+        "key": "C",
+        "text_en": "Use extend Status = split(AdditionalFields, \",\") to break the JSON into fields",
+        "text_zh": "改為 extend Status = split(AdditionalFields, \",\")，把 JSON 切成多個欄位"
+      },
+      {
+        "key": "D",
+        "text_en": "Use summarize make_set(AdditionalFields) to expand the JSON properties",
+        "text_zh": "改為 summarize make_set(AdditionalFields) 展開 JSON 屬性"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "型別為 string 的欄位即使內容是 JSON，也不能直接用點語法取屬性——會靜默回傳空值而非報錯。正確做法是先用 todynamic()（同 parse_json()）把字串轉成 dynamic 物件，再以 .SigningStatus 取屬性，最後用 tostring() 轉回純量型別以便比對與聚合。口訣：先轉 dynamic、再取屬性、再轉回純量。",
+    "why_wrong_zh": {
+      "B": "tostring() 的輸出仍是 string，對字串做 .SigningStatus 屬性存取一樣拿到空值，問題完全沒有解決。",
+      "C": "split() 只依分隔符把字串切成陣列，不會解析 JSON 結構，無法以屬性名稱取值；逗號也可能出現在 JSON 值內造成錯切。",
+      "D": "make_set() 是聚合函式，把多列值收成去重陣列，與解析單一欄位內的 JSON 屬性無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/parse-json-function"
+  },
+  {
+    "id": "D3-0009",
+    "domain": "D3",
+    "unit": "P1-W1-3",
+    "set": "A",
+    "topic": "kql-timeseries",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "An analyst builds a time-series hunt: SigninLogs | make-series FailedCount = count() default = 0 on TimeGenerated from ago(14d) to now() step 1h by UserPrincipalName | extend (Anomalies, Score, Baseline) = series_decompose_anomalies(FailedCount, 2.5). What does the Anomalies output contain for each user?",
+    "stem_zh": "分析師建立時間序列搜捕查詢：SigninLogs | make-series FailedCount = count() default = 0 on TimeGenerated from ago(14d) to now() step 1h by UserPrincipalName | extend (Anomalies, Score, Baseline) = series_decompose_anomalies(FailedCount, 2.5)。每個使用者的 Anomalies 輸出內容是什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A list of datetime values containing only the anomalous time bins",
+        "text_zh": "只包含異常時段之 datetime 值的清單"
+      },
+      {
+        "key": "B",
+        "text_en": "The expected baseline value calculated for the whole series",
+        "text_zh": "整條數列計算出的預期基線值"
+      },
+      {
+        "key": "C",
+        "text_en": "A dynamic array aligned to every time bin, with 1, 0, or -1 marking a positive anomaly, no anomaly, or a negative anomaly",
+        "text_zh": "與每個時間格對齊的 dynamic 陣列，值為 1、0 或 -1，分別代表正向異常、無異常、負向異常"
+      },
+      {
+        "key": "D",
+        "text_en": "A single number representing the total count of anomalies detected",
+        "text_zh": "代表偵測到的異常總數的單一數值"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "series_decompose_anomalies() 回傳三個與輸入數列「逐格對齊」的陣列：Anomalies 每格標 1（高於基線的正向異常）、0（正常）或 -1（低於基線的負向異常）；Score 是異常分數；Baseline 是預期基線值。因為輸出是陣列，後續通常要用 mv-expand 展開成一列一時段，再以 where Anomalies == 1 篩出異常時點。",
+    "why_wrong_zh": {
+      "A": "Anomalies 陣列涵蓋『所有』時間格（正常時段為 0），不是只列出異常時段的時間清單；要取得異常時點需 mv-expand 後再過濾。",
+      "B": "預期基線值是第三個輸出 Baseline 的內容，不是 Anomalies。",
+      "D": "函式不會輸出異常總數的單一數值；若要總數，需自行對展開後的結果做 summarize count()。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/series-decompose-anomalies-function"
+  },
+  {
+    "id": "D3-0010",
+    "domain": "D3",
+    "unit": "P1-W1-3",
+    "set": "A",
+    "topic": "kql-join",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You are investigating suspected lateral movement after a phishing campaign. You run: let Phished = EmailEvents | where ThreatTypes has \"Phish\" and DeliveryAction == \"Delivered\" | distinct RecipientEmailAddress; IdentityLogonEvents | where Timestamp > ago(3d) | where AccountUpn in~ (Phished) | summarize arg_max(Timestamp, *) by AccountUpn. What does this query return?",
+    "stem_zh": "你在網釣行動後調查疑似橫向移動，執行：let Phished = EmailEvents | where ThreatTypes has \"Phish\" and DeliveryAction == \"Delivered\" | distinct RecipientEmailAddress; IdentityLogonEvents | where Timestamp > ago(3d) | where AccountUpn in~ (Phished) | summarize arg_max(Timestamp, *) by AccountUpn。此查詢會回傳什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Every logon event in the last 3 days for each account that received a delivered phishing email",
+        "text_zh": "每個收到已送達網釣郵件之帳號，最近 3 天內的全部登入事件"
+      },
+      {
+        "key": "B",
+        "text_en": "For each phished account that logged on in the last 3 days, the single most recent logon row including all its columns",
+        "text_zh": "每個最近 3 天內有登入的受網釣帳號，各回傳時間最新的那一列登入紀錄（含該列所有欄位）"
+      },
+      {
+        "key": "C",
+        "text_en": "For each phished account, the earliest logon row in the period, which reveals the start of the lateral movement",
+        "text_zh": "每個受網釣帳號在期間內最早的一列登入紀錄，可看出橫向移動的起點"
+      },
+      {
+        "key": "D",
+        "text_en": "The total number of logons per phished account in the last 3 days",
+        "text_zh": "每個受網釣帳號最近 3 天內的登入總次數"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "let 先以 distinct 建立「已送達網釣郵件」的收件者清單；in~ 做不分大小寫的清單比對，篩出這些帳號的登入事件；關鍵在 summarize arg_max(Timestamp, *) by AccountUpn——每個帳號分一組，取組內 Timestamp 最大（最新）的那一列，星號代表把該列所有欄位完整輸出。因此結果是「每個受害帳號各一列：其最近一次登入的完整紀錄」，適合快速確認每個帳號最後出現的位置與方式。",
+    "why_wrong_zh": {
+      "A": "summarize arg_max(...) by AccountUpn 會把每個帳號聚合成單一列（最新那筆），不會保留全部登入事件；要全部事件就不該加這段 summarize。",
+      "C": "取「最早一筆」是 arg_min(Timestamp, *) 的行為；本查詢用的是 arg_max，回傳最新一筆。",
+      "D": "計算登入總次數是 summarize count() by AccountUpn 的行為；arg_max 回傳的是整列紀錄，不是次數。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/arg-max-aggregation-function"
+  }
+]

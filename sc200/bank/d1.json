@@ -1,0 +1,666 @@
+[
+  {
+    "id": "D1-0001",
+    "domain": "D1",
+    "topic": "exam-landscape",
+    "unit": "P1-W1-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "You are preparing for the SC-200 exam by using the official study guide updated on July 28, 2026. Which skill area carries the highest weight on the exam?",
+    "stem_zh": "你正依 2026 年 7 月 28 日更新的官方 study guide 準備 SC-200 考試。哪一個技能領域在考試中的權重最高？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Manage a security operations environment",
+        "text_zh": "管理安全性作業環境"
+      },
+      {
+        "key": "B",
+        "text_en": "Respond to security incidents",
+        "text_zh": "回應安全性事件"
+      },
+      {
+        "key": "C",
+        "text_en": "Perform threat hunting",
+        "text_zh": "執行威脅搜捕"
+      },
+      {
+        "key": "D",
+        "text_en": "Design a security operations strategy",
+        "text_zh": "設計安全性作業策略"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "2026-07-28 版考綱三大領域權重為：D1「管理安全性作業環境」40–45%、D2「回應安全性事件」35–40%、D3「執行威脅搜捕」20–25%。D1 權重最高，因為 2026 版將 Sentinel data lake 與 Security Copilot 的管理面併入此領域，涵蓋 Defender XDR／MDE 設定、Sentinel 工作區與資料連接器等「環境管理」主題。讀書時間與刷題比重都應依此分配。",
+    "why_wrong_zh": {
+      "B": "「回應安全性事件」占 35–40%，是第二重的領域，並非最高。",
+      "C": "「執行威脅搜捕」占 20–25%，是三大領域中權重最低的。",
+      "D": "「設計安全性作業策略」屬於 SC-100（Cybersecurity Architect）的考綱，架構設計不在 SC-200 的評量範圍。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/credentials/certifications/resources/study-guides/sc-200",
+    "tags": []
+  },
+  {
+    "id": "D1-0002",
+    "domain": "D1",
+    "topic": "xdr-ecosystem",
+    "unit": "P1-W1-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are a security operations analyst. A third-party OAuth application has been granted broad permissions in your organization's SaaS environment, and you must investigate cloud app usage and the application's risk across the organization. Which Microsoft Defender XDR family product should you use?",
+    "stem_zh": "你是安全性作業分析師。某個第三方 OAuth 應用程式在貴組織的 SaaS 環境中被授予過大的權限，你需要調查全組織的雲端應用程式使用情形與該應用程式的風險。應使用 Defender XDR 家族中的哪一個產品？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Microsoft Defender for Endpoint (MDE)",
+        "text_zh": "Microsoft Defender for Endpoint（MDE）"
+      },
+      {
+        "key": "B",
+        "text_en": "Microsoft Defender for Office 365 (MDO)",
+        "text_zh": "Microsoft Defender for Office 365（MDO）"
+      },
+      {
+        "key": "C",
+        "text_en": "Microsoft Defender for Identity (MDI)",
+        "text_zh": "Microsoft Defender for Identity（MDI）"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Defender for Cloud Apps (MDA)",
+        "text_zh": "Microsoft Defender for Cloud Apps（MDA）"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "MDA（Defender for Cloud Apps）的保護面是 SaaS 雲端應用程式：影子 IT 探索、雲端 App 風險評估、OAuth 應用程式的權限與行為監控都是它的守備範圍。題幹關鍵字「OAuth 應用程式」「SaaS」「雲端應用程式使用情形」直接對應 MDA。記住口訣：MDE 守裝置、MDO 守信箱、MDI 守 AD、MDA 守 SaaS。",
+    "why_wrong_zh": {
+      "A": "MDE 是端點的 EDR，負責裝置上的偵測與回應（隔離、即時回應等），不負責 SaaS 應用程式的權限與使用調查。",
+      "B": "MDO 保護電子郵件與協作工具（釣魚、惡意附件與連結），OAuth 應用程式風險不是它的守備範圍。",
+      "C": "MDI 透過網域控制站上的感應器偵測內部部署 Active Directory 的身分識別威脅（如橫向移動），與 SaaS 雲端應用無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-cloud-apps/what-is-defender-for-cloud-apps",
+    "tags": []
+  },
+  {
+    "id": "D1-0003",
+    "domain": "D1",
+    "topic": "soc-workflow",
+    "unit": "P1-W1-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You work as a tier 1 analyst in a security operations center (SOC). A high-severity multi-stage incident involving credential theft appears in the Microsoft Defender XDR incident queue. You confirm that it is a true positive, but the investigation requires cross-product evidence correlation and response actions that are beyond your standard runbook. What should you do next?",
+    "stem_zh": "你是 SOC 的 tier 1 分析師。Defender XDR 事件佇列出現一筆涉及認證竊取的高嚴重性多階段事件。你確認它是真陽性，但後續調查需要跨產品證據關聯與超出你標準程序的回應動作。下一步應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Resolve the incident and classify it as a false positive to clear the queue",
+        "text_zh": "將事件解決並分類為誤判，以清空佇列"
+      },
+      {
+        "key": "B",
+        "text_en": "Escalate the incident to a tier 2 analyst for in-depth investigation and response",
+        "text_zh": "將事件升級給 tier 2 分析師進行深入調查與回應"
+      },
+      {
+        "key": "C",
+        "text_en": "Start a hypothesis-driven threat hunt across historical data",
+        "text_zh": "立即對歷史資料展開假說驅動的威脅搜捕"
+      },
+      {
+        "key": "D",
+        "text_en": "Create a new analytics rule to detect similar attacks in the future",
+        "text_zh": "建立新的分析規則以偵測未來類似的攻擊"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SOC 分層的核心就是「分診—升級」流程：tier 1 負責監看佇列、判斷真偽陽性、依標準程序處理常見案件；一旦案件複雜度超出標準程序（跨產品關聯、進階回應動作），正確動作是升級（escalate）給 tier 2 進行深入調查與回應。題幹已明說「超出你標準程序」，這就是升級的訊號。",
+    "why_wrong_zh": {
+      "A": "事件已確認為真陽性，把它標成誤判會讓真實攻擊未被處理，是嚴重的分診錯誤。",
+      "C": "假說驅動搜捕是 tier 3 的主動性工作，用來找「還沒變成警示」的威脅；眼前這筆已確認的活動事件需要的是調查與回應，不是搜捕。",
+      "D": "建立分析規則屬於事後學習與調校階段的工作，應在事件遏制與復原之後進行，不是分診當下的下一步。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/incidents-overview",
+    "tags": []
+  },
+  {
+    "id": "D1-0004",
+    "domain": "D1",
+    "topic": "siem-vs-xdr",
+    "unit": "P1-W1-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are a security operations analyst. Your organization already uses Microsoft Defender XDR. You are now required to ingest logs from third-party firewalls and a non-Microsoft cloud platform, correlate them with Microsoft security signals by using custom detection logic, and automate incident response with playbooks. What should you deploy?",
+    "stem_zh": "你是安全性作業分析師。貴組織已使用 Defender XDR，現在需要擷取第三方防火牆與非微軟雲端平台的記錄、以自訂偵測邏輯與微軟安全訊號做關聯，並用劇本（Playbook）自動化事件回應。應該部署什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Microsoft Defender for Cloud",
+        "text_zh": "Microsoft Defender for Cloud"
+      },
+      {
+        "key": "B",
+        "text_en": "Microsoft Defender Threat Intelligence (MDTI)",
+        "text_zh": "Microsoft Defender Threat Intelligence（MDTI）"
+      },
+      {
+        "key": "C",
+        "text_en": "Microsoft Sentinel",
+        "text_zh": "Microsoft Sentinel"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Security Copilot",
+        "text_zh": "Microsoft Security Copilot"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "題幹的三個需求——擷取第三方與多雲記錄（資料連接器）、自訂偵測關聯（分析規則）、劇本自動化（SOAR）——正是 SIEM＋SOAR 的定義，也就是 Microsoft Sentinel 的角色。記住分工：Defender XDR 深（微軟自家訊號的深度關聯），Sentinel 廣（把第三方與多雲的世界接進工作區）。凡出現「第三方／非微軟資料來源」關鍵字，答案幾乎都指向 Sentinel。",
+    "why_wrong_zh": {
+      "A": "Defender for Cloud 保護 Azure 與多雲的工作負載（VM、儲存體、容器等）並產生警示，它不是通用的記錄擷取與關聯平台，也不提供劇本自動化框架。",
+      "B": "MDTI 提供威脅情報資料（威脅執行者、指標），可餵給 Sentinel 使用，但本身不做記錄擷取、關聯偵測或自動化回應。",
+      "D": "Security Copilot 是生成式 AI 助手，能摘要事件、輔助調查，但不是 SIEM，無法擷取第三方記錄或執行分析規則與劇本。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/overview",
+    "tags": []
+  },
+  {
+    "id": "D1-0005",
+    "domain": "D1",
+    "topic": "sentinel-data-lake",
+    "unit": "P1-W1-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "You are a security operations analyst managing Microsoft Sentinel. To reduce ingestion costs, verbose network logs are retained only in the Microsoft Sentinel data lake tier. During an investigation, you must run a KQL query on demand against several months of these logs and make the results available in the analytics tier for further correlation. Which capability should you use?",
+    "stem_zh": "你是管理 Microsoft Sentinel 的安全性作業分析師。為降低擷取成本，大量網路記錄僅保留在 Sentinel data lake 的資料湖層。調查期間，你需要隨需對數個月的這類記錄執行 KQL 查詢，並讓結果送入分析層供後續關聯分析。應使用哪一項功能？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Summary rules",
+        "text_zh": "Summary rules（摘要規則）"
+      },
+      {
+        "key": "B",
+        "text_en": "KQL jobs",
+        "text_zh": "KQL jobs"
+      },
+      {
+        "key": "C",
+        "text_en": "Microsoft Sentinel Graph",
+        "text_zh": "Microsoft Sentinel Graph"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Sentinel MCP Server",
+        "text_zh": "Microsoft Sentinel MCP Server"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "KQL jobs 是 2026 新考點：它讓你對資料湖層的資料執行單次或排程的 KQL 查詢，並把查詢結果寫回分析層，供分析規則與調查使用——正好對應題幹「隨需查詢數個月的湖層記錄、結果送入分析層」。判斷關鍵在「隨需／針對歷史湖層資料／結果進分析層」三個條件同時成立。",
+    "why_wrong_zh": {
+      "A": "Summary rules 是在資料進入時持續依排程把高流量記錄聚合成摘要表，適合「事先定義、持續執行」的彙總場景；它不是調查中對歷史湖層資料的隨需查詢工具。",
+      "C": "Sentinel Graph 提供圖譜式的關聯分析（攻擊路徑、影響範圍），用於視覺化與關係探索，不負責對湖層資料執行 KQL 查詢並回填分析層。",
+      "D": "Sentinel MCP Server 讓 AI 代理透過 Model Context Protocol 標準化地存取 Sentinel 資料，服務對象是 agentic AI 整合，不是分析師的隨需歷史查詢。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-lake-overview",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "D1-0006",
+    "domain": "D1",
+    "unit": "P1-W1-4",
+    "set": "A",
+    "topic": "xdr-portal",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You are a security operations analyst. During a phishing investigation, you need to run a single KQL query that joins email attachment data with endpoint process execution data to confirm whether a malicious attachment was executed on any device. Which capability should you use?",
+    "stem_zh": "你是安全性作業分析師。調查釣魚事件時，你需要用單一 KQL 查詢把郵件附件資料與端點程序執行資料 join 起來，確認惡意附件是否曾在任何裝置上被執行。你應該使用哪個功能？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Threat Explorer in Microsoft Defender for Office 365",
+        "text_zh": "Microsoft Defender for Office 365 的 Threat Explorer"
+      },
+      {
+        "key": "B",
+        "text_en": "Microsoft Sentinel workbooks",
+        "text_zh": "Microsoft Sentinel 活頁簿（Workbook）"
+      },
+      {
+        "key": "C",
+        "text_en": "Advanced hunting in the Microsoft Defender portal",
+        "text_zh": "Microsoft Defender 入口網站的進階搜捕"
+      },
+      {
+        "key": "D",
+        "text_en": "The device timeline in Microsoft Defender for Endpoint",
+        "text_zh": "Microsoft Defender for Endpoint 的裝置時間軸"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "統一入口的進階搜捕（advanced hunting）讓你以一條 KQL 同時查詢跨產品資料表——例如 MDO 的 EmailAttachmentInfo 與 MDE 的 DeviceProcessEvents，以 SHA256 進行 join 即可確認附件是否落地執行。這種跨產品單一查詢正是 Defender 統一入口的核心價值之一。",
+    "why_wrong_zh": {
+      "A": "Threat Explorer 只涵蓋電子郵件與共同作業訊號，能調查郵件流向與附件，但無法在同一查詢中 join 端點的程序執行資料。",
+      "B": "活頁簿（Workbook）是視覺化儀表板工具，用來呈現既有查詢結果，不是執行跨產品 KQL join 調查的主要介面。",
+      "D": "裝置時間軸是單一裝置的事件檢視，適合逐裝置深入，無法以單一查詢跨所有裝置並關聯郵件資料。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-overview"
+  },
+  {
+    "id": "D1-0007",
+    "domain": "D1",
+    "unit": "P1-W1-4",
+    "set": "A",
+    "topic": "unified-rbac",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "A new tier-1 analyst joins your SOC. The analyst must view incidents in the Microsoft Defender portal, change incident status, assign incidents, and add comments, but must not be able to modify any security settings. Following the principle of least privilege, which Microsoft Entra built-in role should you assign?",
+    "stem_zh": "SOC 新進一名 tier-1 分析師。這名分析師必須能在 Microsoft Defender 入口網站檢視事件、變更事件狀態、指派事件並加註解，但不可變更任何安全性設定。依最小權限原則，你應指派哪個 Microsoft Entra 內建角色？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Security Reader",
+        "text_zh": "Security Reader（安全性讀取者）"
+      },
+      {
+        "key": "B",
+        "text_en": "Security Operator",
+        "text_zh": "Security Operator（安全性操作員）"
+      },
+      {
+        "key": "C",
+        "text_en": "Security Administrator",
+        "text_zh": "Security Administrator（安全性系統管理員）"
+      },
+      {
+        "key": "D",
+        "text_en": "Global Administrator",
+        "text_zh": "Global Administrator（全域系統管理員）"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Security Operator 可以管理警示與事件（變更狀態、指派、加註解）並執行調查回應，但不能變更安全性設定，完全符合「能分診、不能改設定」的需求，是最小權限正解。記法：Reader 看、Operator 動手、Admin 動設定。",
+    "why_wrong_zh": {
+      "A": "Security Reader 是唯讀角色，無法變更事件狀態或指派事件，分診工作會被卡住，權限不足。",
+      "C": "Security Administrator 額外具備管理安全性設定的權限，違反題目「不可變更設定」的限制，超出最小權限。",
+      "D": "Global Administrator 具備整個租用戶的完整管理權限，永遠不會是最小權限題的正解。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/m365d-permissions"
+  },
+  {
+    "id": "D1-0008",
+    "domain": "D1",
+    "unit": "P1-W1-4",
+    "set": "A",
+    "topic": "unified-rbac",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [],
+    "stem_en": "Your organization uses custom roles in Microsoft Defender for Endpoint and separate permission models for Defender for Office 365. You plan to adopt Microsoft Defender XDR Unified RBAC so that a single custom-role model governs both workloads. You must ensure existing role assignments continue to work with no loss of access when the switch happens. What should you do first?",
+    "stem_zh": "你的組織在 Microsoft Defender for Endpoint 使用自訂角色，Defender for Office 365 則使用另一套權限模型。你計畫改採 Microsoft Defender XDR 統一 RBAC，讓單一自訂角色模型同時治理兩個工作負載，且切換時既有角色指派必須繼續有效、不可造成存取中斷。你應該先做什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Assign the Security Administrator role to all SOC members before the change",
+        "text_zh": "在切換前先將 Security Administrator 角色指派給所有 SOC 成員"
+      },
+      {
+        "key": "B",
+        "text_en": "Activate Unified RBAC for both workloads immediately, then recreate the roles manually",
+        "text_zh": "立即為兩個工作負載啟用統一 RBAC，之後再手動重建角色"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a Microsoft Entra security group and assign it the Security Operator role",
+        "text_zh": "建立 Microsoft Entra 安全性群組並指派 Security Operator 角色"
+      },
+      {
+        "key": "D",
+        "text_en": "Import the existing roles into Unified RBAC, review the imported assignments, and then activate the workloads",
+        "text_zh": "先將既有角色匯入統一 RBAC、檢查匯入的指派無誤後，再啟用工作負載"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "統一 RBAC 是按工作負載啟用（activate）的：某工作負載一旦啟用，該產品的舊 RBAC 角色立即停止生效。因此正確順序是先用匯入功能把 MDE、MDO 的既有角色帶進統一 RBAC，確認指派對應無誤後再啟用，才能保證零存取中斷。此外 Global Administrator 與 Security Administrator 不受啟用影響，是內建的保命機制。",
+    "why_wrong_zh": {
+      "A": "把 Security Administrator 給所有成員嚴重違反最小權限原則，也沒有解決舊角色如何轉移到統一 RBAC 的問題。",
+      "B": "先啟用會讓舊角色立刻失效，在手動重建完成前造成存取中斷，正好違反題目「不可中斷」的要求；順序顛倒是本題的主要陷阱。",
+      "C": "指派 Entra 內建角色與遷移既有工作負載自訂角色無關，無法保留原本細緻的權限設計。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/import-rbac-roles"
+  },
+  {
+    "id": "D1-0009",
+    "domain": "D1",
+    "unit": "P1-W1-4",
+    "set": "A",
+    "topic": "multi-tenant",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You work for an MSSP that manages security operations for multiple customers. The customers require that your analysts access their tenants with only the specific security roles needed, that the access is time-bound, and that it can be audited. What should you use to establish this access?",
+    "stem_zh": "你任職於為多家客戶管理安全性作業的 MSSP。客戶要求你的分析師只能以工作所需的特定安全性角色存取其租用戶，存取必須有時效且可稽核。你應該用什麼方式建立這種存取？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Granular delegated admin privileges (GDAP) relationships with only the required roles",
+        "text_zh": "以細緻委派系統管理權限（GDAP）建立關係，僅授與必要角色"
+      },
+      {
+        "key": "B",
+        "text_en": "Delegated administration privileges (DAP) with Admin Agent access",
+        "text_zh": "使用委派系統管理權限（DAP）的 Admin Agent 存取"
+      },
+      {
+        "key": "C",
+        "text_en": "Dedicated Global Administrator accounts created in each customer tenant",
+        "text_zh": "在每個客戶租用戶建立專用的 Global Administrator 帳號"
+      },
+      {
+        "key": "D",
+        "text_en": "A shared analyst account whose credentials are rotated monthly",
+        "text_zh": "使用每月輪換密碼的共用分析師帳號"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "GDAP（granular delegated administrative privileges）讓客戶透過 Partner Center 授權夥伴指名的特定 Entra 角色（例如只給 Security Operator），關係有有效期限且可稽核，完全對應題目「最小角色、有時效、可稽核」三個條件，是 MSSP 委派存取的現行標準做法。",
+    "why_wrong_zh": {
+      "B": "DAP 是舊制委派，預設授與近乎全域管理員的過廣權限、無法細緻指名角色，已被 GDAP 取代。",
+      "C": "在客戶租用戶建立 Global Administrator 帳號嚴重違反最小權限原則，也不具時效控管。",
+      "D": "共用帳號讓操作無法歸責到個人，違反可稽核的要求，即使定期輪換密碼也不能接受。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/partner-center/customers/gdap-introduction"
+  },
+  {
+    "id": "D1-0010",
+    "domain": "D1",
+    "unit": "P1-W1-4",
+    "set": "A",
+    "topic": "xdr-portal",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "2026"
+    ],
+    "stem_en": "Your SOC currently manages Microsoft Sentinel incidents in the Azure portal and Defender XDR incidents in the Microsoft Defender portal. Ahead of the retirement of the Sentinel experience in the Azure portal, you must give analysts a single incident queue that contains both Sentinel analytics rule incidents and Defender XDR incidents, and a single advanced hunting experience across both data sets. What should you do?",
+    "stem_zh": "你的 SOC 目前在 Azure portal 管理 Microsoft Sentinel 事件、在 Microsoft Defender 入口網站管理 Defender XDR 事件。在 Azure portal 的 Sentinel 體驗退場之前，你必須讓分析師擁有同時包含 Sentinel 分析規則事件與 Defender XDR 事件的單一事件佇列，以及跨兩邊資料的單一進階搜捕體驗。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Enable the Microsoft Defender XDR data connector in Microsoft Sentinel and keep working in the Azure portal",
+        "text_zh": "在 Microsoft Sentinel 啟用 Microsoft Defender XDR 資料連接器，並繼續在 Azure portal 作業"
+      },
+      {
+        "key": "B",
+        "text_en": "Onboard the Microsoft Sentinel workspace to the Microsoft Defender portal",
+        "text_zh": "將 Microsoft Sentinel 工作區連入（onboard）Microsoft Defender 入口網站"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a Microsoft Sentinel workbook that visualizes incidents from both platforms",
+        "text_zh": "建立 Microsoft Sentinel 活頁簿（Workbook）同時視覺化兩個平台的事件"
+      },
+      {
+        "key": "D",
+        "text_en": "Configure an automation rule that forwards Defender XDR incidents by email to analysts",
+        "text_zh": "設定自動化規則，將 Defender XDR 事件以電子郵件轉寄給分析師"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "把 Sentinel 工作區連入 Defender portal 即啟用統一 SOC 平台：Sentinel 與 XDR 事件進入同一條事件佇列並由關聯引擎整併，進階搜捕也能在同一介面查詢 Sentinel 資料表與 XDR 資料表。2026 年起 Defender portal 已是 Sentinel 的主要體驗，Azure portal 體驗進入退場時程，這是面向未來的唯一正解。",
+    "why_wrong_zh": {
+      "A": "XDR 資料連接器可把事件同步進 Sentinel，但作業體驗仍停留在即將退場的 Azure portal，且進階搜捕仍是兩套介面，不符合題目要求。",
+      "C": "活頁簿（Workbook）只是唯讀的視覺化儀表板，無法提供可分診操作的單一事件佇列，也不是搜捕介面。",
+      "D": "電子郵件通知只是告警轉送，與統一事件佇列或統一進階搜捕完全無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/microsoft-sentinel-defender-portal"
+  },
+  {
+    "id": "D1-0011",
+    "domain": "D1",
+    "unit": "P1-W1-5",
+    "set": "A",
+    "topic": "mde-onboarding",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You are a security operations analyst running a proof-of-concept evaluation of Microsoft Defender for Endpoint. You need to onboard eight Windows 11 devices. The pilot environment has no Microsoft Intune or Microsoft Configuration Manager infrastructure available. Which onboarding method should you use?",
+    "stem_zh": "你是安全性作業分析師，正在為 Microsoft Defender for Endpoint 進行概念驗證評估，需要將 8 台 Windows 11 裝置上線。試點環境沒有 Microsoft Intune 或 Microsoft Configuration Manager 可用。你應該使用哪一種上線方式？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Group Policy (GPO)",
+        "text_zh": "群組原則（GPO）"
+      },
+      {
+        "key": "B",
+        "text_en": "VDI onboarding script",
+        "text_zh": "VDI 專用上線指令碼"
+      },
+      {
+        "key": "C",
+        "text_en": "Local onboarding script",
+        "text_zh": "本機上線指令碼（local script）"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Configuration Manager",
+        "text_zh": "Microsoft Configuration Manager"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "本機上線指令碼是官方建議的評估與測試方式，適用上限約 10 台裝置——正好符合 8 台的概念驗證情境，且不需要任何管理基礎結構，登入裝置執行指令碼即可完成上線。",
+    "why_wrong_zh": {
+      "A": "GPO 是網域環境的大規模派送通道，需要設定並連結原則物件；對只有 8 台的評估情境是多餘的工程，且本機指令碼才是官方對評估情境的建議做法。",
+      "B": "VDI 上線指令碼是給非持續性虛擬桌面（每次登入重建）用的，目的是避免重複裝置記錄；本題是一般實體裝置的評估，不適用。",
+      "D": "題幹明說環境沒有 Configuration Manager 可用；它適合已有此管理通道的大規模部署，不是評估情境的答案。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/configure-endpoints-script"
+  },
+  {
+    "id": "D1-0012",
+    "domain": "D1",
+    "unit": "P1-W1-5",
+    "set": "A",
+    "topic": "mde-onboarding",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "Your company hosts a non-persistent virtual desktop infrastructure (VDI) farm. Each virtual desktop is recreated from a master image at every user sign-in. After onboarding the desktops to Microsoft Defender for Endpoint with the standard local script, the device inventory fills up with duplicate device entries. What should you do?",
+    "stem_zh": "公司使用非持續性 VDI（虛擬桌面基礎結構）農場，每台虛擬桌面在使用者每次登入時都會從母映像重建。用一般本機指令碼上線後，裝置清查出現大量重複的裝置記錄。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Onboard each session host manually with the local script after every rebuild",
+        "text_zh": "每次重建後，用本機指令碼手動重新上線每台工作階段主機"
+      },
+      {
+        "key": "B",
+        "text_en": "Use the dedicated VDI onboarding script in the master image so it runs at startup",
+        "text_zh": "在母映像中改用 VDI 專用上線指令碼，於開機時執行"
+      },
+      {
+        "key": "C",
+        "text_en": "Onboard the virtual desktops by using a Group Policy Object instead",
+        "text_zh": "改用群組原則物件（GPO）上線虛擬桌面"
+      },
+      {
+        "key": "D",
+        "text_en": "Enable device discovery in standard mode to deduplicate the entries",
+        "text_zh": "啟用標準模式的裝置探索（device discovery）來去除重複記錄"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "非持續性 VDI 必須使用 VDI 專用上線指令碼並放入母映像於開機時執行，讓每個重建的執行個體以單一裝置記錄回報，避免同一台虛擬機不斷產生新的裝置項目。",
+    "why_wrong_zh": {
+      "A": "手動逐台重跑本機指令碼無法解決重複記錄的根因（每次重建都是「新裝置」），而且在每次登入都重建的環境中根本不可維運。",
+      "C": "GPO 只是換一種派送一般上線套件的通道，沒有處理非持續性 VDI 的重複記錄問題；問題出在上線套件類型，不是派送方式。",
+      "D": "裝置探索是用來找出網路上尚未上線的未受管理裝置，它不會合併或去除已上線裝置的重複記錄。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/configure-endpoints-vdi"
+  },
+  {
+    "id": "D1-0013",
+    "domain": "D1",
+    "unit": "P1-W1-5",
+    "set": "A",
+    "topic": "device-groups",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "All devices in your Microsoft Defender for Endpoint tenant currently use the Full automation level. The server team requires that any automated remediation action on the domain controllers must be manually approved, while workstations must keep fully automated remediation. What should you do?",
+    "stem_zh": "你的 Microsoft Defender for Endpoint 租用戶目前所有裝置都使用 Full 自動化層級。伺服器團隊要求：網域控制站上的任何自動修復動作都必須人工核准，而工作站要維持全自動修復。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Set the automation level to 'No automated response' for the tenant",
+        "text_zh": "將整個租用戶的自動化層級改為「No automated response」"
+      },
+      {
+        "key": "B",
+        "text_en": "Create an alert suppression rule for alerts generated on the domain controllers",
+        "text_zh": "為網域控制站產生的警示建立警示抑制規則"
+      },
+      {
+        "key": "C",
+        "text_en": "Turn off the 'Automatically resolve alerts' advanced feature",
+        "text_zh": "關閉進階功能中的「Automatically resolve alerts」"
+      },
+      {
+        "key": "D",
+        "text_en": "Create a device group for the domain controllers and set its automation level to 'Semi - require approval for any remediation'",
+        "text_zh": "為網域控制站建立裝置群組，並將其自動化層級設為「Semi - 任何修復都需核准」"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "自動化層級是跟著裝置群組走的設定。為網域控制站建立獨立裝置群組並設為 Semi（任何修復需核准），其餘工作站群組維持 Full，即可同時滿足兩種要求——這是「不同裝置要不同自動化行為」題型的標準答案。",
+    "why_wrong_zh": {
+      "A": "整個租用戶關閉自動回應會讓工作站也失去全自動修復，違反題目要求，而且官方明確不建議 No automated response。",
+      "B": "警示抑制規則是隱藏已知無害的警示，不會改變自動調查與修復的核准行為，也會讓網域控制站的真實警示被埋掉。",
+      "C": "Automatically resolve alerts 只決定 AIR 判定「無威脅」時是否自動解決警示，與修復動作是否需要人工核准無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/machine-groups"
+  },
+  {
+    "id": "D1-0014",
+    "domain": "D1",
+    "unit": "P1-W1-5",
+    "set": "A",
+    "topic": "asr-rules",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You plan to deploy attack surface reduction (ASR) rules to 4,000 devices. Management requires that line-of-business applications must not be disrupted while you evaluate the impact of the rules. What should you do first?",
+    "stem_zh": "你計畫將攻擊面縮小（ASR）規則部署到 4,000 台裝置。管理層要求：在你評估規則影響期間，不得干擾業務應用程式的運作。你應該先做什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Enable the ASR rules in audit mode",
+        "text_zh": "以 audit（稽核）模式啟用 ASR 規則"
+      },
+      {
+        "key": "B",
+        "text_en": "Enable the ASR rules in block mode with folder exclusions for the applications",
+        "text_zh": "以 block（封鎖）模式啟用 ASR 規則，並為應用程式加上資料夾排除"
+      },
+      {
+        "key": "C",
+        "text_en": "Enable the ASR rules in warn mode",
+        "text_zh": "以 warn（警告）模式啟用 ASR 規則"
+      },
+      {
+        "key": "D",
+        "text_en": "Enable EDR in block mode from advanced features",
+        "text_zh": "在進階功能中啟用 EDR in block mode"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "audit 模式只記錄「如果啟用封鎖會擋到什麼」而不實際阻擋，是官方部署方法論的第一步：先稽核觀察、用報表與 advanced hunting 找出誤擋，加上必要排除後再切換到 block。題幹出現「不能影響業務」就是 audit 的訊號。",
+    "why_wrong_zh": {
+      "B": "還沒評估就直接 block，等於在盲測中賭排除清單是否完整，任何遺漏都會立刻打斷業務流程，與題目要求相反。",
+      "C": "warn 仍會對使用者彈出封鎖提示（僅允許自行放行），已經干擾使用者作業，且部分 ASR 規則不支援 warn 模式；純評估影響要用 audit。",
+      "D": "EDR in block mode 是在第三方防毒為主、Defender 防毒處於被動模式時讓 EDR 攔截惡意行為的功能，與 ASR 規則的部署評估無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/attack-surface-reduction-rules-deployment"
+  },
+  {
+    "id": "D1-0015",
+    "domain": "D1",
+    "unit": "P1-W1-5",
+    "set": "A",
+    "topic": "device-groups",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You manage Microsoft Defender for Endpoint for an organization with 5,000 devices. Requirements: Tier 1 analysts must be able to view and manage alerts only for workstations; only the infrastructure team may take response actions on servers; server remediation must require manual approval while workstations remain fully automated. What should you configure to meet all requirements with the least administrative effort?",
+    "stem_zh": "你管理一個 5,000 台裝置組織的 Microsoft Defender for Endpoint。需求：Tier 1 分析師只能檢視與管理工作站的警示；只有基礎架構團隊可以對伺服器執行回應動作；伺服器的修復需人工核准，工作站維持全自動。要以最少管理負擔滿足所有需求，你應該設定什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Assign both teams a directory-level security role and add device tags to the servers",
+        "text_zh": "為兩個團隊指派目錄層級的安全性角色，並為伺服器加上裝置標籤"
+      },
+      {
+        "key": "B",
+        "text_en": "Create separate device groups for workstations and servers with different automation levels, and assign each team's Entra ID user group to the corresponding device group",
+        "text_zh": "為工作站與伺服器建立不同自動化層級的獨立裝置群組，並將各團隊的 Entra ID 使用者群組指派到對應的裝置群組"
+      },
+      {
+        "key": "C",
+        "text_en": "Create two Microsoft Sentinel workspaces and route each team's device telemetry separately",
+        "text_zh": "建立兩個 Microsoft Sentinel 工作區，把兩個團隊的裝置遙測分開路由"
+      },
+      {
+        "key": "D",
+        "text_en": "Configure custom network indicators scoped to the server IP ranges",
+        "text_zh": "設定範圍限定在伺服器 IP 範圍的自訂網路指標"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "裝置群組同時解決三個需求：成員比對條件把工作站與伺服器分開、每個群組各自設定自動化層級（伺服器 Semi 需核准、工作站 Full）、再把各團隊的 Entra ID 使用者群組指派到對應裝置群組完成 RBAC 範圍界定——一項設定滿足權限與自動化的全部要求。",
+    "why_wrong_zh": {
+      "A": "目錄層級角色無法把可見範圍限縮到特定裝置集合；裝置標籤只是群組比對條件的素材，單獨貼標不會產生權限邊界，也不能設定自動化層級。",
+      "C": "Sentinel 工作區是 SIEM 的資料界限，無法控制 Defender 入口網站中誰能對哪些裝置執行回應動作，也與 MDE 的自動化層級無關，且管理負擔遠大於裝置群組。",
+      "D": "自訂網路指標是用來允許或封鎖 IP／URL／網域的威脅指標功能，與權限範圍界定和自動化層級完全無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/machine-groups"
+  }
+]

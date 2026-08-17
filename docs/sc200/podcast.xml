@@ -9,14 +9,6 @@
     <itunes:author>SC-200 學習專案（AI 生成）</itunes:author>
     <itunes:category text="Education"/>
     <itunes:explicit>false</itunes:explicit>
-    <item>
-      <title>EP0｜管線測試集（驗證後刪除）</title>
-      <description>SC-200 速成 Day 對應單元：。雙主持人帶你複習當日考點。</description>
-      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-000.mp3" length="206301" type="audio/mpeg"/>
-      <guid isPermaLink="false">sc200-ep-000</guid>
-      <pubDate>Mon, 17 Aug 2026 18:20:19 +0800</pubDate>
-      <itunes:duration>0:34</itunes:duration>
-      <itunes:episode>0</itunes:episode>
-    </item>
+
   </channel>
 </rss>

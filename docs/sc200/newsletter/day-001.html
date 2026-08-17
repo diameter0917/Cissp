@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 1｜SC-200 考試全景與 Microsoft 安全生態系｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 1 / 40 · 2026-08-18</div>
+    <h1>SC-200 考試全景與 Microsoft 安全生態系</h1>
+    <p class="sub"><em>SC-200 Exam Landscape & the Microsoft Security Ecosystem</em></p>
+    <div class="meta-row">
+      <span class="pill d1">D1 管理安全性作業環境</span>
+      <span class="pill ghost">40-45%</span>
+      <span class="pill ghost">P1-W1-1</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:4%"></div></div>
+    <div class="progress-text">五週速成進度 1 / 25 · 距離考試（2026-10-17）還有 60 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP1｜Mitigate threats using Microsoft Defender XDR | SC-200 | Episode 1</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/8gCUtYEpTe8' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">先看懂整張地圖，再開始行軍</h2>
+<p>歡迎來到 SC-200 速成的第一天。今天不急著背任何設定步驟，我們先把三件事看清楚：<strong>考綱長什麼樣</strong>（三大領域與權重，2026-07-28 更新版）、<strong>Microsoft 安全生態系的全景圖</strong>（Defender XDR 家族、Microsoft Sentinel、Defender for Cloud、Security Copilot 各守哪一面），以及<strong>SOC 分析師的一天</strong>——因為整份考綱其實就是照著 SOC 的工作流設計的：把環境管好（D1）、把事件處理掉（D2）、把還沒變成警示的威脅找出來（D3）。最後我們會盤點考試形式與 2026 年新增考點，並給你一張 8 週作戰地圖。今天讀完，你之後每一天的學習都知道自己「站在地圖的哪裡」。</p>
+<p><strong>學習目標</strong>（對應官方 study guide 2026-07-28 版的措辭）：</p>
+<ul>
+  <li>☐ 說出三大評量領域與權重：「管理安全性作業環境（Manage a security operations environment）」40–45%、「回應安全性事件（Respond to security incidents）」35–40%、「執行威脅搜捕（Perform threat hunting）」20–25%</li>
+  <li>☐ 分辨 Defender XDR 家族四個成員（MDE／MDO／MDI／MDA）的保護面，以及 Defender XDR 作為整合層的角色</li>
+  <li>☐ 說明 Microsoft Sentinel 為什麼同時是 SIEM 與 SOAR，以及它與 Defender XDR 的分工</li>
+  <li>☐ 描述 SOC tier 1／2／3 的分工與事件（incident）生命週期</li>
+  <li>☐ 掌握考試形式（題型、時間、700／1000 及格、可翻 MS Learn 的開卷政策）與 2026 新考點清單</li>
+</ul>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP1 觀看重點指引</h2>
+<div class="info-box">EP1 字幕尚未到位，本節先寫成「觀看重點指引」；字幕抓取完成後會回補逐段時間碼整理。</div>
+<p>EP1 是整個系列的開場導覽，資訊密度不高但「畫面」很重要——它會帶你逛一圈 Microsoft 安全產品的入口與定位。建議帶著下面三個任務去看：</p>
+<ul>
+  <li><strong>任務一：認產品臉孔。</strong>每當影片出現一個產品名（Defender for Endpoint、Sentinel、Security Copilot…），先在心裡回答「它保護哪一面？」看完後對照下一節的全景矩陣，檢查自己有沒有認錯。</li>
+  <li><strong>任務二：認入口網站。</strong>留意講者示範的統一入口（defender.microsoft.com）：事件佇列在哪一區、進階搜捕（advanced hunting）在哪一區、設定類功能在哪一區。不用背點擊路徑（入口常改版，考試也以「能做什麼」為主），但要建立空間感。</li>
+  <li><strong>任務三：抓住「整合」這個關鍵詞。</strong>EP1 反覆出現的主軸是「訊號整合」：四個 Defender 產品把警示（alert）送進 Defender XDR 關聯成事件，Sentinel 再把微軟以外的世界接進來。這條線就是整份考綱的骨架。</li>
+</ul>
+<div class="point">看影片時如果聽到還不懂的名詞（例如 ASIM、DCR、UEBA），先記下來不要停——它們都有各自的專屬單元，本週先建立全景即可。</div>
+
+<div class="eyebrow">03 — 🗺️ 核心概念</div>
+<h2 data-toc="生態系全景">Microsoft 安全生態系全景圖</h2>
+<p>SC-200 考的產品乍看很多，其實只要一張矩陣就能收納。先記住一個結構：<strong>四個 Defender 家族成員各守一面牆，Defender XDR 把四面牆連成一個房間，Sentinel 再把房間外的世界接進來，Security Copilot 則是站在你旁邊的 AI 副駕駛。</strong></p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>產品</th><th>保護面</th><th>一句話定位</th><th>主要考綱領域</th></tr></thead>
+  <tbody>
+    <tr><td>Microsoft Defender for Endpoint（MDE）</td><td>端點裝置（Windows／macOS／Linux／行動裝置）</td><td>裝置上的 EDR：偵測、裝置隔離、即時回應（Live Response）</td><td>D1 部署管理／D2 裝置回應</td></tr>
+    <tr><td>Microsoft Defender for Office 365（MDO）</td><td>電子郵件與協作工具</td><td>釣魚、惡意附件與連結的防護、調查與郵件修復</td><td>D2 郵件威脅回應</td></tr>
+    <tr><td>Microsoft Defender for Identity（MDI）</td><td>內部部署 Active Directory 身分識別</td><td>網域控制站上的感應器，抓認證竊取與橫向移動</td><td>D2 身分識別威脅</td></tr>
+    <tr><td>Microsoft Defender for Cloud Apps（MDA）</td><td>SaaS 雲端應用程式</td><td>影子 IT 探索、OAuth 應用程式與雲端 App 行為監控</td><td>D2 雲端應用威脅</td></tr>
+    <tr><td>Microsoft Defender XDR</td><td>上述四者的整合層</td><td>跨產品把警示關聯成事件、統一入口、進階搜捕</td><td>D1／D2／D3 全都有</td></tr>
+    <tr><td>Microsoft Sentinel</td><td>全環境（含第三方、多雲、內部部署）</td><td>雲原生 SIEM＋SOAR：資料擷取、分析規則、自動化與劇本（Playbook）</td><td>D1／D2／D3 全都有</td></tr>
+    <tr><td>Microsoft Defender for Cloud</td><td>Azure 與多雲工作負載（VM、儲存體、容器…）</td><td>雲端安全態勢管理＋工作負載保護警示</td><td>D2 警示回應</td></tr>
+    <tr><td>Microsoft Security Copilot</td><td>橫跨整個生態系</td><td>生成式 AI 助手：事件摘要、引導式回應、KQL 生成、agents</td><td>D1 管理／D2 調查</td></tr>
+  </tbody>
+</table>
+</div>
+<p>那 Defender XDR 和 Sentinel 都做「整合」，兩者怎麼分工？記這條就夠：<strong>Defender XDR 深、Sentinel 廣。</strong>XDR 在微軟自家訊號之間做深度關聯與自動回應；Sentinel 是 SIEM，負責把第三方防火牆、Syslog、多雲記錄等「XDR 管不到的訊號」全部擷取進工作區（workspace），再疊上分析規則與 SOAR 自動化。而且這兩者已經在同一個統一入口相遇——Sentinel 可以整合進 Defender 入口網站一起操作，事件佇列合而為一。考試會假設你在這個「合體後」的世界工作。</p>
+<div class="point"><strong>記憶口訣：</strong>MDE 守裝置、MDO 守信箱、MDI 守 AD、MDA 守 SaaS。看到題目描述的攻擊面，先問「這面牆歸誰管」，答案通常就出來一半。</div>
+<div class="point"><strong>Purview 的邊界：</strong>Microsoft Purview（資料安全與合規治理，如 DLP、資訊保護）主要屬於 SC-401 的範圍。SC-200 只需要知道：Defender 入口裡看得到部分 Purview 訊號、調查內部風險時可能與它交手——但你不會被考 Purview 的設定細節。分清「誰是主角、誰是鄰居」可以幫你排除干擾選項。</div>
+
+<div class="eyebrow">04 — ⚖️ 核心概念</div>
+<h2 data-toc="考綱拆解">三大領域拆解與權重</h2>
+<p>2026-07-28 更新版 study guide 把技能評量收斂成三大領域。權重就是你的讀書時間分配表，也是考題數量的預告：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>領域</th><th>英文原文</th><th>權重</th><th>考什麼</th></tr></thead>
+  <tbody>
+    <tr><td><strong>D1 管理安全性作業環境</strong></td><td>Manage a security operations environment</td><td><strong>40–45%</strong></td><td>Defender XDR 與 MDE 的設定部署、Sentinel 工作區設計、資料連接器與資料收集規則、威脅情報、<span class="badge-2026">2026 新考點</span> Sentinel data lake 與 Security Copilot 的管理面</td></tr>
+    <tr><td><strong>D2 回應安全性事件</strong></td><td>Respond to security incidents</td><td><strong>35–40%</strong></td><td>事件分診與調查、MDE／MDO／MDI／Defender for Cloud 的回應動作、Sentinel 分析規則、自動化規則與劇本（Playbook）</td></tr>
+    <tr><td><strong>D3 執行威脅搜捕</strong></td><td>Perform threat hunting</td><td><strong>20–25%</strong></td><td>KQL、Defender XDR 進階搜捕與自訂偵測、Sentinel 的搜捕功能、書籤與筆記本（Notebook）</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p>權重直接換算成題數：以 55 題估算，D1 約 22–25 題、D2 約 20–22 題、D3 約 11–13 題。<strong>D1 是最大糧倉</strong>——工作區、連接器、data lake 這些「管理面」內容雖然不炫，卻是及格與否的關鍵。另外記住 SC-200 的題目是「選最佳答案（best answer）」風格：常有兩個選項都「做得到」，要選<strong>更符合題幹角色與目標</strong>的那個。看到「設計整體安全架構」這種選項要警覺——那是 SC-100（架構師）的事，不是安全性作業分析師的日常。</p></div>
+
+<div class="eyebrow">05 — 🕘 核心概念</div>
+<h2 data-toc="SOC 工作流">SOC 分析師的一天</h2>
+<p>SC-200 的正式頭銜是 Security Operations Analyst。理解 SOC（安全性作業中心）的分工，你就理解為什麼考綱長這樣：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>層級</th><th>角色</th><th>主要工作</th><th>對應課程</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Tier 1 分診</strong></td><td>分診分析師</td><td>監看事件佇列、判斷真陽性／誤判、按標準程序處理常見警示、升級複雜案件</td><td>W3 事件分診</td></tr>
+    <tr><td><strong>Tier 2 調查回應</strong></td><td>事件回應分析師</td><td>深入調查升級案件、跨產品關聯證據、執行隔離與修復等回應動作</td><td>W3–W4 回應與自動化</td></tr>
+    <tr><td><strong>Tier 3 搜捕</strong></td><td>威脅搜捕專家</td><td>假說驅動搜捕未被偵測的威脅、撰寫自訂偵測、調校分析規則減少誤判</td><td>W1 KQL＋W5 搜捕</td></tr>
+  </tbody>
+</table>
+</div>
+<p>事件生命週期則是一條循環的線：<strong>偵測 → 分診 → 調查 → 遏制與回應 → 復原 → 事後學習（調校規則、更新自動化）</strong>。最後一步「學習」會回頭改善「偵測」，這也是為什麼 D1（環境管理）權重最高——環境調得好，後面每一步都省力。SOC 的成效也有量化指標：平均認可時間（MTTA，多快有人接手警示）與平均修復時間（MTTR，多快把事件處理完）。之後學到的自動化規則與劇本（Playbook），本質上都是在壓低這兩個數字。</p>
+<div class="case-box"><div class="case-label">💼 實戰情境</div><p>早上 9:00，你是 Tier 1 分診分析師。事件佇列跳出一筆高嚴重性事件：「多階段事件：涉及多個使用者的認證竊取與橫向移動」。這筆事件是 Defender XDR 自動把 MDI 的「疑似 Pass-the-Hash」警示、MDE 的「可疑 LSASS 存取」警示關聯（correlate）成同一個事件的結果——你不必自己拼圖。你先確認影響範圍（3 個使用者、2 台裝置），判定為真陽性，指派給 Tier 2；Tier 2 用進階搜捕追出最初入侵點是一封釣魚郵件（MDO 的守備範圍），對裝置下達隔離、強制受影響帳戶重設密碼；事後 Tier 3 把這次的攻擊手法寫成一條自訂偵測。這條「警示→分診→調查→回應→學習」的路線，就是你接下來五週要逐站練熟的地圖。</p></div>
+<p>順帶先偷看一眼你明天就會學的 KQL——SOC 分析師每天上工第一件事，常常就是用一句查詢看看過去 24 小時的事件分布：</p>
+<div class="kql-block">
+<pre class="kql">SecurityIncident
+| <span class="k">where</span> TimeGenerated &gt; <span class="f">ago</span>(<span class="n">24h</span>)
+| <span class="k">summarize</span> <span class="f">count</span>() <span class="k">by</span> Severity
+| <span class="k">sort by</span> count_</pre>
+</div>
+<div class="kql-note">看不懂沒關係：第一行選資料表，之後每個「|」把資料往下傳——篩時間、按嚴重性分組計數、排序。明天整天都在講這件事。</div>
+
+<div class="eyebrow">06 — 📝 核心概念</div>
+<h2 data-toc="考試新考點">考試形式與 2026 新考點</h2>
+<p>先把遊戲規則弄清楚：</p>
+<ul>
+  <li><strong>題數與時間：</strong>約 40–60 題、100 分鐘作答。題型包含單選、多選（Select all that apply）、拖放排序、下拉配對，以及成組的案例研究（case study）。</li>
+  <li><strong>及格線：</strong>700／1000。採量尺計分，不是答對 70% 的意思；答錯不倒扣，<strong>絕對不要留空白</strong>。</li>
+  <li><strong>作答限制：</strong>案例研究區段送出後不能回頭；一般題組內可以標記待檢查。</li>
+  <li><strong>開卷政策：</strong>考試中可以開 <strong>Microsoft Learn</strong> 查資料（練習評量與部分題型除外），但翻閱時間計入你的 100 分鐘。</li>
+  <li><strong>應考方式：</strong>可選測驗中心或線上監考（線上要先做系統檢測、淨空桌面）。成績當場出來，成績單會列出各領域的強弱長條圖——模擬考階段我們也會用同樣方式檢討。</li>
+</ul>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>開卷不是護身符。</strong>平均每題不到兩分鐘，若每題都想「等等再查」，時間一定爆炸。正確用法：平常就練到 8 成題目不翻書能答，把翻 Learn 的額度留給「記不住的數字型細節」（保留期上限、承諾層級門檻這類）。翻的時候直接搜英文功能名效率最高——這也是本課程堅持「繁中說明＋英文術語並列」的原因。</p></div>
+<p>2026-07-28 版考綱最大的變化，是把過去一年 Microsoft 安全平台的 AI 與資料平台演進正式納入評量。以下六個新考點，課程都有專屬或深度整合的單元：</p>
+<ul>
+  <li><span class="badge-2026">2026 新考點</span> <strong>內嵌 Security Copilot 與 agentic AI</strong>：事件摘要、引導式回應、promptbook 與自主代理（agents）的使用與管理（W3、W4）</li>
+  <li><span class="badge-2026">2026 新考點</span> <strong>Sentinel data lake</strong>：分析層與資料湖層的分工、低成本長期保留（W2）</li>
+  <li><span class="badge-2026">2026 新考點</span> <strong>Summary rules</strong>：把高流量記錄聚合成摘要表以省成本（W2）</li>
+  <li><span class="badge-2026">2026 新考點</span> <strong>KQL jobs</strong>：對 data lake 排程執行查詢、把結果送回分析層（W2）</li>
+  <li><span class="badge-2026">2026 新考點</span> <strong>Sentinel Graph</strong>：以圖譜關聯做攻擊路徑與影響範圍分析（W5）</li>
+  <li><span class="badge-2026">2026 新考點</span> <strong>Sentinel MCP Server</strong>：讓 AI 代理以標準協定存取 Sentinel 資料（W5）</li>
+</ul>
+<p>最後是你的 <strong>8 週作戰地圖</strong>：W1 打 KQL 地基（前置到第一週，因為它貫穿三大領域）＋生態系與 MDE；W2 把資料接進 Sentinel（工作區、連接器、data lake）；W3 Security Copilot＋開始回應（分診、裝置、郵件、身分識別）；W4 分析規則與自動化；W5 威脅搜捕＋總複習——五週讀完全考綱。W6–W8 進入刷題階段：領域題組→權重混合→三場模擬考→錯題殲滅。每天一封電子報＋一集 Podcast＋5 題自測，平日進行，週末休息或補進度。</p>
+
+<div class="eyebrow">07 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">影片沒講到的考綱角落</h2>
+<p>EP1 是全景導覽，操作細節本來就會留給後面的影片；但有幾件「考綱與考試制度」層面的事，影片不會講，你今天就該知道：</p>
+<ul>
+  <li><strong>study guide 要會自己讀：</strong>官方 study guide 開頭有「變更紀錄（change log）」，逐條列出這一版新增與刪除的技能項目——2026-07-28 版的新增項就是上一節那六個新考點。考前一週務必回去對照一次，確認沒有更新。</li>
+  <li><strong>認證會過期：</strong>SC-200 認證有效期一年，到期前可在線上免費完成續證評量（renewal），不用重考整場。</li>
+  <li><strong>官方練習評量（Practice Assessment）：</strong>Microsoft Learn 提供免費的官方練習題，風格最接近真題，我們排在 W6 之後與模擬考交錯使用。</li>
+  <li><strong>角色邊界：</strong>study guide 明訂本角色與 security engineer、architect「協作」——考題裡出現「重新設計網路架構」「制定治理政策」這類選項時，通常是留給別的角色的干擾項。</li>
+</ul>
+
+<div class="eyebrow">08 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深入連結</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/credentials/certifications/resources/study-guides/sc-200" target="_blank" rel="noopener">SC-200 官方 study guide</a>——讀「評量的技能」全文與變更紀錄，這是全課程的地圖原稿。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/microsoft-365-defender" target="_blank" rel="noopener">什麼是 Microsoft Defender XDR</a>——讀「整合」的官方說法：警示如何跨產品關聯成事件。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/overview" target="_blank" rel="noopener">什麼是 Microsoft Sentinel</a>——讀 SIEM＋SOAR 四大功能（收集、偵測、調查、回應）的框架圖。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/security-copilot/microsoft-security-copilot" target="_blank" rel="noopener">什麼是 Microsoft Security Copilot</a>——讀獨立體驗與內嵌體驗的差別，這是 2026 新考點的入門。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/credentials/certifications/security-operations-analyst/" target="_blank" rel="noopener">SC-200 認證頁</a>——確認考試語言、報名方式與練習評量入口。</li>
+</ul>
+
+
+  <div class="eyebrow">09 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W1-1">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D1-0001</div><div class='q-stem'>You are preparing for the SC-200 exam by using the official study guide updated on July 28, 2026. Which skill area carries the highest weight on the exam?</div><div class='q-zh'>（你正依 2026 年 7 月 28 日更新的官方 study guide 準備 SC-200 考試。哪一個技能領域在考試中的權重最高？）</div><div class='q-opt'><strong>A.</strong> Manage a security operations environment<div style='font-size:12.5px;color:var(--muted)'>管理安全性作業環境</div></div><div class='q-opt'><strong>B.</strong> Respond to security incidents<div style='font-size:12.5px;color:var(--muted)'>回應安全性事件</div></div><div class='q-opt'><strong>C.</strong> Perform threat hunting<div style='font-size:12.5px;color:var(--muted)'>執行威脅搜捕</div></div><div class='q-opt'><strong>D.</strong> Design a security operations strategy<div style='font-size:12.5px;color:var(--muted)'>設計安全性作業策略</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>2026-07-28 版考綱三大領域權重為：D1「管理安全性作業環境」40–45%、D2「回應安全性事件」35–40%、D3「執行威脅搜捕」20–25%。D1 權重最高，因為 2026 版將 Sentinel data lake 與 Security Copilot 的管理面併入此領域，涵蓋 Defender XDR／MDE 設定、Sentinel 工作區與資料連接器等「環境管理」主題。讀書時間與刷題比重都應依此分配。</p><ul><li><strong>B</strong>：「回應安全性事件」占 35–40%，是第二重的領域，並非最高。</li><li><strong>C</strong>：「執行威脅搜捕」占 20–25%，是三大領域中權重最低的。</li><li><strong>D</strong>：「設計安全性作業策略」屬於 SC-100（Cybersecurity Architect）的考綱，架構設計不在 SC-200 的評量範圍。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/credentials/certifications/resources/study-guides/sc-200' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D1-0002</div><div class='q-stem'>You are a security operations analyst. A third-party OAuth application has been granted broad permissions in your organization's SaaS environment, and you must investigate cloud app usage and the application's risk across the organization. Which Microsoft Defender XDR family product should you use?</div><div class='q-zh'>（你是安全性作業分析師。某個第三方 OAuth 應用程式在貴組織的 SaaS 環境中被授予過大的權限，你需要調查全組織的雲端應用程式使用情形與該應用程式的風險。應使用 Defender XDR 家族中的哪一個產品？）</div><div class='q-opt'><strong>A.</strong> Microsoft Defender for Endpoint (MDE)<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender for Endpoint（MDE）</div></div><div class='q-opt'><strong>B.</strong> Microsoft Defender for Office 365 (MDO)<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender for Office 365（MDO）</div></div><div class='q-opt'><strong>C.</strong> Microsoft Defender for Identity (MDI)<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender for Identity（MDI）</div></div><div class='q-opt'><strong>D.</strong> Microsoft Defender for Cloud Apps (MDA)<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender for Cloud Apps（MDA）</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>MDA（Defender for Cloud Apps）的保護面是 SaaS 雲端應用程式：影子 IT 探索、雲端 App 風險評估、OAuth 應用程式的權限與行為監控都是它的守備範圍。題幹關鍵字「OAuth 應用程式」「SaaS」「雲端應用程式使用情形」直接對應 MDA。記住口訣：MDE 守裝置、MDO 守信箱、MDI 守 AD、MDA 守 SaaS。</p><ul><li><strong>A</strong>：MDE 是端點的 EDR，負責裝置上的偵測與回應（隔離、即時回應等），不負責 SaaS 應用程式的權限與使用調查。</li><li><strong>B</strong>：MDO 保護電子郵件與協作工具（釣魚、惡意附件與連結），OAuth 應用程式風險不是它的守備範圍。</li><li><strong>C</strong>：MDI 透過網域控制站上的感應器偵測內部部署 Active Directory 的身分識別威脅（如橫向移動），與 SaaS 雲端應用無關。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-cloud-apps/what-is-defender-for-cloud-apps' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D1-0003</div><div class='q-stem'>You work as a tier 1 analyst in a security operations center (SOC). A high-severity multi-stage incident involving credential theft appears in the Microsoft Defender XDR incident queue. You confirm that it is a true positive, but the investigation requires cross-product evidence correlation and response actions that are beyond your standard runbook. What should you do next?</div><div class='q-zh'>（你是 SOC 的 tier 1 分析師。Defender XDR 事件佇列出現一筆涉及認證竊取的高嚴重性多階段事件。你確認它是真陽性，但後續調查需要跨產品證據關聯與超出你標準程序的回應動作。下一步應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Resolve the incident and classify it as a false positive to clear the queue<div style='font-size:12.5px;color:var(--muted)'>將事件解決並分類為誤判，以清空佇列</div></div><div class='q-opt'><strong>B.</strong> Escalate the incident to a tier 2 analyst for in-depth investigation and response<div style='font-size:12.5px;color:var(--muted)'>將事件升級給 tier 2 分析師進行深入調查與回應</div></div><div class='q-opt'><strong>C.</strong> Start a hypothesis-driven threat hunt across historical data<div style='font-size:12.5px;color:var(--muted)'>立即對歷史資料展開假說驅動的威脅搜捕</div></div><div class='q-opt'><strong>D.</strong> Create a new analytics rule to detect similar attacks in the future<div style='font-size:12.5px;color:var(--muted)'>建立新的分析規則以偵測未來類似的攻擊</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>SOC 分層的核心就是「分診—升級」流程：tier 1 負責監看佇列、判斷真偽陽性、依標準程序處理常見案件；一旦案件複雜度超出標準程序（跨產品關聯、進階回應動作），正確動作是升級（escalate）給 tier 2 進行深入調查與回應。題幹已明說「超出你標準程序」，這就是升級的訊號。</p><ul><li><strong>A</strong>：事件已確認為真陽性，把它標成誤判會讓真實攻擊未被處理，是嚴重的分診錯誤。</li><li><strong>C</strong>：假說驅動搜捕是 tier 3 的主動性工作，用來找「還沒變成警示」的威脅；眼前這筆已確認的活動事件需要的是調查與回應，不是搜捕。</li><li><strong>D</strong>：建立分析規則屬於事後學習與調校階段的工作，應在事件遏制與復原之後進行，不是分診當下的下一步。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/incidents-overview' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D1-0004</div><div class='q-stem'>You are a security operations analyst. Your organization already uses Microsoft Defender XDR. You are now required to ingest logs from third-party firewalls and a non-Microsoft cloud platform, correlate them with Microsoft security signals by using custom detection logic, and automate incident response with playbooks. What should you deploy?</div><div class='q-zh'>（你是安全性作業分析師。貴組織已使用 Defender XDR，現在需要擷取第三方防火牆與非微軟雲端平台的記錄、以自訂偵測邏輯與微軟安全訊號做關聯，並用劇本（Playbook）自動化事件回應。應該部署什麼？）</div><div class='q-opt'><strong>A.</strong> Microsoft Defender for Cloud<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender for Cloud</div></div><div class='q-opt'><strong>B.</strong> Microsoft Defender Threat Intelligence (MDTI)<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender Threat Intelligence（MDTI）</div></div><div class='q-opt'><strong>C.</strong> Microsoft Sentinel<div style='font-size:12.5px;color:var(--muted)'>Microsoft Sentinel</div></div><div class='q-opt'><strong>D.</strong> Microsoft Security Copilot<div style='font-size:12.5px;color:var(--muted)'>Microsoft Security Copilot</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>題幹的三個需求——擷取第三方與多雲記錄（資料連接器）、自訂偵測關聯（分析規則）、劇本自動化（SOAR）——正是 SIEM＋SOAR 的定義，也就是 Microsoft Sentinel 的角色。記住分工：Defender XDR 深（微軟自家訊號的深度關聯），Sentinel 廣（把第三方與多雲的世界接進工作區）。凡出現「第三方／非微軟資料來源」關鍵字，答案幾乎都指向 Sentinel。</p><ul><li><strong>A</strong>：Defender for Cloud 保護 Azure 與多雲的工作負載（VM、儲存體、容器等）並產生警示，它不是通用的記錄擷取與關聯平台，也不提供劇本自動化框架。</li><li><strong>B</strong>：MDTI 提供威脅情報資料（威脅執行者、指標），可餵給 Sentinel 使用，但本身不做記錄擷取、關聯偵測或自動化回應。</li><li><strong>D</strong>：Security Copilot 是生成式 AI 助手，能摘要事件、輔助調查，但不是 SIEM，無法擷取第三方記錄或執行分析規則與劇本。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/overview' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D1-0005</div><div class='q-stem'>You are a security operations analyst managing Microsoft Sentinel. To reduce ingestion costs, verbose network logs are retained only in the Microsoft Sentinel data lake tier. During an investigation, you must run a KQL query on demand against several months of these logs and make the results available in the analytics tier for further correlation. Which capability should you use?</div><div class='q-zh'>（你是管理 Microsoft Sentinel 的安全性作業分析師。為降低擷取成本，大量網路記錄僅保留在 Sentinel data lake 的資料湖層。調查期間，你需要隨需對數個月的這類記錄執行 KQL 查詢，並讓結果送入分析層供後續關聯分析。應使用哪一項功能？）</div><div class='q-opt'><strong>A.</strong> Summary rules<div style='font-size:12.5px;color:var(--muted)'>Summary rules（摘要規則）</div></div><div class='q-opt'><strong>B.</strong> KQL jobs<div style='font-size:12.5px;color:var(--muted)'>KQL jobs</div></div><div class='q-opt'><strong>C.</strong> Microsoft Sentinel Graph<div style='font-size:12.5px;color:var(--muted)'>Microsoft Sentinel Graph</div></div><div class='q-opt'><strong>D.</strong> Microsoft Sentinel MCP Server<div style='font-size:12.5px;color:var(--muted)'>Microsoft Sentinel MCP Server</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>KQL jobs 是 2026 新考點：它讓你對資料湖層的資料執行單次或排程的 KQL 查詢，並把查詢結果寫回分析層，供分析規則與調查使用——正好對應題幹「隨需查詢數個月的湖層記錄、結果送入分析層」。判斷關鍵在「隨需／針對歷史湖層資料／結果進分析層」三個條件同時成立。</p><ul><li><strong>A</strong>：Summary rules 是在資料進入時持續依排程把高流量記錄聚合成摘要表，適合「事先定義、持續執行」的彙總場景；它不是調查中對歷史湖層資料的隨需查詢工具。</li><li><strong>C</strong>：Sentinel Graph 提供圖譜式的關聯分析（攻擊路徑、影響範圍），用於視覺化與關係探索，不負責對湖層資料執行 KQL 查詢並回填分析層。</li><li><strong>D</strong>：Sentinel MCP Server 讓 AI 代理透過 Model Context Protocol 標準化地存取 Sentinel 資料，服務對象是 agentic AI 整合，不是分析師的隨需歷史查詢。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-lake-overview' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP1</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><div class='p-hint'>🎧 本集音檔生成中（push 腳本後由 GitHub Actions 自動合成）。</div><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-001'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="1">
+    <label for="doneChk">我讀完 Day 1 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a class='disabled'>← 沒有上一天</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-002.html'>Day 2 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 1 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>
