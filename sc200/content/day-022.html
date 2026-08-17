@@ -30,7 +30,7 @@
 <div class="eyebrow">03 — 🔍 搜捕頁面全景</div>
 <h2 data-toc="搜捕頁面">查詢清單怎麼挑：戰術、結果數與批次跑</h2>
 <p>搜捕頁面分成 <strong>Queries</strong>、<strong>Livestream</strong>、<strong>Bookmarks</strong> 幾個頁籤，新版再加 <strong>Hunts</strong>。查詢有兩種來源：<strong>內建範本</strong>（微軟與社群提供，隨內容中樞 Content Hub 的解決方案安裝）與你的<strong>自訂查詢</strong>。清單標示提供者、資料來源與 <strong>MITRE 戰術／技術</strong>——最實用的瀏覽維度：懷疑有人橫向移動，就篩 Lateral Movement 那一欄。</p>
-<div class="point">💡 三個常被忽略的操作：<strong>①Run all queries 批次執行</strong>——跑完先看「結果數」，有數字的才展開；<strong>②結果差異（Results delta）</strong>——「昨天 0 筆、今天 47 筆」比絕對數字更有訊號；<strong>③我的最愛</strong>——標記後進頁面自動執行，等於個人化搜捕儀表板。注意：搜捕查詢<strong>不會自己排程、不會產生警示</strong>。</div>
+<div class="point">💡 三個常被忽略的操作：<strong>①Run all queries 批次執行</strong>——跑完先看「結果數」，有數字的才展開；<strong>②結果差異（Results delta）</strong>——「昨天 0 筆、今天 47 筆」比絕對數字更有訊號；<strong>③我的最愛</strong>——標記後進頁面自動執行，等於個人化儀表板。注意：搜捕查詢<strong>不會自己排程、不會產生警示</strong>。</div>
 <p>自訂查詢有兩條路：複製（Clone）既有範本後改寫，或直接新建。除了 KQL，還要填<strong>實體對應</strong>（把輸出欄位對應成 Account／Host／IP 實體）與<strong>戰術、技術</strong>：有實體對應，書籤才進得了調查圖；標了戰術，查詢才會出現在按戰術瀏覽的清單裡。先看一支典型查詢：</p>
 <pre class="kql">// 假說：帳號遭接管後，攻擊者會在短時間內把 SharePoint／OneDrive 檔案整批帶走
 let lookback = 7d;           // 搜捕視窗：假說必須 time bound
@@ -56,14 +56,14 @@ OfficeActivity
 
 <div class="eyebrow">04 — 📦 Hunts 專案</div>
 <h2 data-toc="Hunts">把一次獵捕包成可交接的專案</h2>
-<p>單支查詢跑完就沒了，但真實獵捕常跑一兩週、動用十幾支查詢，中途還換人接手。<strong>Hunts</strong> 就是為此存在的容器：把<strong>假說、查詢、書籤、備註與發現</strong>綁在同一個工作項目下，讓「這次獵捕」變成可追蹤、可結案的專案。建立時填名稱、<strong>假說</strong>、擁有者、狀態與 MITRE 戰術；之後在 hunt 內執行查詢，把有價值的結果列存成書籤，自動掛在該 hunt 底下形成證據夾。</p>
+<p>單支查詢跑完就沒了，但真實獵捕常跑一兩週、動用十幾支查詢，中途還換人接手。<strong>Hunts</strong> 就是為此存在的容器：把<strong>假說、查詢、書籤、備註與發現</strong>綁在同一個工作項目下，讓「這次獵捕」變成可結案的專案。建立時填名稱、<strong>假說</strong>、擁有者、狀態與 MITRE 戰術；之後在 hunt 內執行查詢，把有價值的結果列存成書籤，自動掛在該 hunt 底下。</p>
 <div class="tbl-scroll">
 <table class="data">
   <thead><tr><th>面向</th><th>取值</th><th>營運意義</th></tr></thead>
   <tbody>
     <tr><td>Hunt 狀態</td><td><strong>New → Active → Closed</strong></td><td>New＝假說寫好未動手；Active＝正在跑查詢累積書籤；Closed＝結論已下並寫原因</td></tr>
     <tr><td>假說狀態</td><td><strong>Unknown／Validated／Invalidated</strong></td><td>結案務必更新：<strong>不成立也是成果</strong>，代表這條路徑沒被利用，可停止重複投入</td></tr>
-    <tr><td>內容物</td><td>查詢、書籤、備註、戰術標記</td><td>接手的人打開就知道：問了什麼、找到什麼、還缺什麼</td></tr>
+    <tr><td>內容物</td><td>查詢、書籤、備註、戰術標記</td><td>接手的人打開就知道：問了什麼、找到什麼</td></tr>
     <tr><td>成果出口</td><td>建立事件、查詢轉分析規則</td><td>價值不在報告，而在「下次它會自己被抓到」</td></tr>
   </tbody>
 </table>
@@ -73,10 +73,10 @@ OfficeActivity
 
 <div class="eyebrow">05 — 🔖 書籤留證</div>
 <h2 data-toc="書籤">可疑但還不確定？先存起來</h2>
-<p>搜捕最尷尬的狀態是「這列看起來怪，但還不敢說它是攻擊」。<strong>書籤</strong>就是為這狀態設計的：選取結果的某幾列存成書籤，Sentinel 會把<strong>那幾列資料、當時的 KQL、查詢的時間範圍</strong>一起保存。它是可重現的證據快照——三週後回頭看，你還知道當初怎麼問出這結果。建立時能補的三件事，每件都決定它後續能做什麼：</p>
+<p>搜捕最尷尬的狀態是「這列看起來怪，但不敢說是攻擊」。<strong>書籤</strong>就是為這狀態設計的：選取結果的某幾列存成書籤，Sentinel 會把<strong>那幾列資料、當時的 KQL、查詢的時間範圍</strong>一起保存。它是可重現的證據快照——三週後回頭看，還知道當初怎麼問出這結果。建立時能補的三件事，每件都決定它後續能做什麼：</p>
 <ul>
   <li><strong>備註與標籤</strong>：寫下判斷與待辦；標籤用獵捕代號（如 <code>AiTM-2026-08</code>）串起同一次調查的所有書籤。</li>
-  <li><strong>實體對應</strong>：把欄位對應成帳號、主機、IP。影片示範中最關鍵的一步——<strong>有對應才進得了調查圖</strong>。</li>
+  <li><strong>實體對應</strong>：把欄位對應成帳號、主機、IP。影片示範最關鍵的一步——<strong>有對應才進得了調查圖</strong>。</li>
   <li><strong>MITRE 戰術／技術</strong>：讓證據帶著攻擊階段語意（影片把可疑 PowerShell 標成 command and control）。</li>
 </ul>
 <p>下游有三條路：<strong>升級成新事件</strong>、<strong>加入既有事件</strong>、<strong>留著繼續觀察</strong>。書籤本身也是工作區的一張表，盤點與交接時直接查就行：</p>
@@ -130,7 +130,7 @@ OfficeActivity
   <li><strong>跑內建查詢暖身</strong>：按戰術篩出 Exfiltration 與 Initial Access 的內建查詢，<strong>Run all queries</strong>，看哪幾支有結果、哪幾支的 <strong>Results delta</strong> 在跳動。狀態改 <strong>Active</strong>。</li>
   <li><strong>寫自訂查詢</strong>：用第 03 節那支基準線查詢收斂。三個帳號超標，其中一位財務同仁單日下載 1,340 個檔案、平常基準只有 12，來源 IP 在海外。</li>
   <li><strong>留證：書籤</strong>：把這幾列存成書籤，<code>UserId</code> 對 Account、<code>ClientIP</code> 對 IP 實體，戰術標 Exfiltration，標籤 <code>AiTM-2026-08</code>，自動掛進 hunt。</li>
-  <li><strong>擴大關聯</strong>：從書籤進<strong>調查圖</strong>，圖上帶出同時段登入記錄：一個沒出現過的 IP、一次沒有 MFA 挑戰的權杖重放。假說開始成立。</li>
+  <li><strong>擴大關聯</strong>：從書籤進<strong>調查圖</strong>，圖上帶出同時段登入記錄：一個沒出現過的 IP、一次沒有 MFA 挑戰的權杖重放，假說開始成立。</li>
   <li><strong>掛 Livestream</strong>：把「這帳號的下載動作」做成串流，一邊處置一邊盯——唯一能回答「他<strong>現在</strong>還在下載嗎」的工具。同時請身分小組撤銷權杖。</li>
   <li><strong>升級成事件</strong>：把書籤<strong>升級成事件</strong>（若已有相關事件，改<strong>加入既有事件</strong>），嚴重性 High，進正式分診與 SLA；Livestream 續開，驗證撤銷權杖後是否歸零。</li>
   <li><strong>轉成偵測規則</strong>：收尾不是報告，是<strong>讓它下次自動被抓到</strong>。把驗證過的查詢建成排程分析規則（或從 Livestream 直接 elevate to alert），設好實體對應與自動化規則，命中就自動指派並跑撤銷權杖的劇本。</li>

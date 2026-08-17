@@ -69,7 +69,7 @@
 </div>
 <p>成熟 SOC 是三者<strong>接力</strong>：情資驅動找到一台中招主機 → 假說驅動問「同一手法還有誰中」→ 異常清單再變成下一輪假說。今天主攻中間這段。</p>
 <div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
-<strong>「這是搜捕嗎」只有一個判準</strong>：起點是不是「先前未被偵測到」的東西。題幹寫「佇列出現高嚴重性事件，請調查」→ 那是分診；寫「懷疑有尚未觸發警示的行為，請主動尋找」→ 才是搜捕。陷阱選項常把「調降規則門檻」或「檢視自動調查結果」包裝成搜捕，兩者都從既有警示出發。</div>
+<strong>「這是搜捕嗎」只有一個判準</strong>：起點是不是「先前未被偵測到」的東西。題幹寫「佇列出現高嚴重性事件，請調查」→ 那是分診；寫「懷疑有尚未觸發警示的行為，請主動尋找」→ 才是搜捕。陷阱選項常把「調降規則門檻」或「檢視自動調查結果」當成搜捕，兩者都從既有警示出發。</div>
 
 <div class="eyebrow">04 — 🧪 假說怎麼生出來</div>
 <h2 data-toc="假說形成">四個來源，一個句型，三種結局</h2>
@@ -149,7 +149,7 @@ DeviceProcessEvents
   </tbody>
 </table>
 </div>
-<p>建立方式兩條：從 Sentinel 筆記本頁面挑範本（需連結 Azure ML 工作區與運算叢集），或在 Visual Studio Code 建 Jupyter Notebook 再接回來。<span class="badge-2026">2026 新考點</span> data lake 的筆記本走 Sentinel 的 VS Code 擴充功能加 <strong>MCP（Model Context Protocol）伺服器</strong>，直接對 data lake 資料源探索——這條路線與 Sentinel Graph 是明天的主題。</p>
+<p>建立方式兩條：從 Sentinel 筆記本頁面挑範本（需連結 Azure ML 工作區與運算叢集），或在 Visual Studio Code 建 Jupyter Notebook 再接回來。<span class="badge-2026">2026 新考點</span> data lake 的筆記本走 VS Code 擴充功能加 <strong>MCP（Model Context Protocol）伺服器</strong>——這條路線與 Sentinel Graph 是明天的主題。</p>
 <div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
 <strong>工具四選一怎麼刷</strong>：題幹出現 <em>apply machine learning</em>、<em>enrich with GeoIP or Whois</em>、<em>combine Sentinel data with external datasets</em> → <strong>筆記本</strong>；<em>automatically notify / block / isolate</em> → 劇本；<em>dashboard for management</em> → 活頁簿；「快速確認這個雜湊有沒有出現過」→ 一段搜捕查詢就好。另一常錯點：使用筆記本的<strong>前置作業是 Azure ML 工作區與運算資源</strong>，不是「啟用 UEBA」或「建立監視清單」。</div>
 
