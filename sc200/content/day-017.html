@@ -29,16 +29,16 @@
 <table class="data">
 <thead><tr><th>規則類型</th><th>觸發方式</th><th>關鍵限制</th><th>典型用途</th></tr></thead>
 <tbody>
-<tr><td><strong>Scheduled（排程查詢）</strong></td><td>依你設定的頻率（最短 5 分鐘）執行 KQL 查詢，比對門檻</td><td>回看期間最長 14 天；單次執行最多 150 個警示</td><td>絕大多數自訂偵測：跨表關聯、聚合統計、比對監視清單</td></tr>
-<tr><td><strong>NRT（近即時）</strong></td><td>系統固定<strong>每分鐘</strong>執行，回看最近約 13 分鐘</td><td>只能參照<strong>單一資料表</strong>，不支援 join／union、跨工作區；排程與回看不可自訂</td><td>要求最短偵測延遲的高價值單事件偵測（勒索前置命令、關鍵帳號變更）</td></tr>
-<tr><td><strong>Microsoft security</strong></td><td>來源產品（MDE／MDO／MDI／MDA／Entra ID Protection／Defender for Cloud）產生警示時即時觸發</td><td>不做偵測、不能改邏輯；只能依<strong>嚴重性與警示名稱包含／排除</strong>過濾</td><td>把既有產品警示自動升級為 Sentinel 事件</td></tr>
+<tr><td><strong>Scheduled（排程查詢）</strong></td><td>依你設定的頻率（最短 5 分鐘）執行 KQL 查詢並比對門檻</td><td>回看最長 14 天；單次執行最多 150 個警示</td><td>絕大多數自訂偵測：跨表關聯、聚合統計、比對監視清單</td></tr>
+<tr><td><strong>NRT（近即時）</strong></td><td>系統固定<strong>每分鐘</strong>執行，回看最近約 13 分鐘</td><td>只能參照<strong>單一資料表</strong>；不支援 join／union／跨工作區；排程不可自訂</td><td>要求最短延遲的單事件偵測（勒索前置命令、關鍵帳號變更）</td></tr>
+<tr><td><strong>Microsoft security</strong></td><td>來源產品（MDE／MDO／MDI／MDA／Entra ID Protection／Defender for Cloud）產生警示時觸發</td><td>不做偵測、不能改邏輯；只能依<strong>嚴重性與警示名稱包含／排除</strong>過濾</td><td>把既有產品警示自動升級為 Sentinel 事件</td></tr>
 <tr><td><strong>Fusion</strong></td><td>微軟關聯引擎跨產品、跨時間找多階段攻擊</td><td>邏輯不可見、不可編輯；需要多來源資料</td><td>低量高保真的多階段攻擊（明天詳談）</td></tr>
 <tr><td><strong>ML behavior analytics／Anomaly</strong></td><td>微軟訓練的行為模型與異常偵測</td><td>需要基線期；異常規則預設多為觀察模式</td><td>寫不出死規則的行為偏移（明天詳談）</td></tr>
 <tr><td><strong>Threat intelligence（TI map）</strong></td><td>拿威脅指標對指定資料表比對</td><td>兩邊都要有資料：指標＋對應記錄表</td><td>IoC 比對偵測（Day 9 已談）</td></tr>
 </tbody>
 </table>
 </div>
-<div class="point">💡 <strong>選型口訣</strong>：要跨表關聯或做統計 → Scheduled；要「秒級」反應且只碰一張表 → NRT；只想把 Defender 警示變成 Sentinel 事件 → Microsoft security 規則。最後這條有個實務陷阱：若已啟用 <strong>Defender XDR 連接器</strong>做事件雙向同步，XDR 那邊早就把警示關聯成事件同步過來，再開同來源的 Microsoft security 規則會產生<strong>重複事件</strong>——考題常拿「事件數量突然翻倍」當題幹。</div>
+<div class="point">💡 <strong>選型口訣</strong>：要跨表關聯或做統計 → Scheduled；要「秒級」反應且只碰一張表 → NRT；只想把 Defender 警示變成 Sentinel 事件 → Microsoft security 規則。最後這條有個陷阱：若已啟用 <strong>Defender XDR 連接器</strong>做事件雙向同步，XDR 早就把警示關聯成事件同步過來，再開同來源的 Microsoft security 規則會產生<strong>重複事件</strong>——考題常拿「事件數量突然翻倍」當題幹。</div>
 
 <div class="eyebrow">04 — ⏱️ 排程與延遲</div>
 <h2 data-toc="排程設定">排程規則四件事：頻率、回看、門檻、事件</h2>
@@ -64,8 +64,8 @@ SigninLogs
 | extend AccountName = tostring(split(TargetedUser, "@")[0]),
          UPNSuffix   = tostring(split(TargetedUser, "@")[1])
 | project StartTimeUtc, EndTimeUtc, IPAddress, Country, AccountName, UPNSuffix, Attempts, FailedAccounts</pre>
-<p class="kql-note">逐行解說：第 2 行的時間窗要跟規則的回看期間一致，寫規則查詢時<strong>自己也要寫時間篩選</strong>，別依賴平台；第 3 行只取「密碼試錯」類的失敗碼；第 4–9 行按來源 IP 聚合，算出嘗試次數與<strong>被打到的相異帳號數</strong>——噴灑的特徵是帳號數多、每個帳號次數少；第 10 行把門檻寫在查詢裡，比只靠規則的列數門檻精準；第 11 行是關鍵：<code>make_set()</code> 產生的是陣列，<strong>陣列欄位不能對應成實體</strong>，用 <code>mv-expand</code> 展開成「一列一個帳號」才對應得了；第 12–13 行把 UPN 切成帳號名與網域字尾，因為 Account 實體要的是 <code>Name</code>＋<code>UPNSuffix</code> 這一組；最後 <code>project</code> 保留的每一欄，等一下都會用在實體對應、自訂詳細資料或警示名稱——<strong>沒 project 出來的欄位，後面就選不到</strong>。</p>
-<p>接著是最容易被忽略的<strong>擷取延遲（ingestion delay）</strong>。記錄從發生到寫進工作區有時間差，Syslog／CEF 或 API 拉取的來源可能延遲數分鐘到數十分鐘。規則按 <code>TimeGenerated</code>（事件發生時間）撈資料，但資料還沒到——查詢跑了個空，事件就這樣漏掉。標準解法是<strong>把回看期間拉長吸收延遲，再用 <code>ingestion_time()</code> 只取這一輪新進來的資料</strong>：</p>
+<p class="kql-note">逐行解說：第 2 行的時間窗要跟規則的回看期間一致，寫規則查詢時<strong>自己也要寫時間篩選</strong>；第 3 行只取「密碼試錯」類失敗碼；第 4–9 行按來源 IP 聚合，算出嘗試次數與<strong>被打到的相異帳號數</strong>——噴灑的特徵是帳號數多、每帳號次數少；第 10 行把門檻寫在查詢裡，比只靠規則的列數門檻精準；第 11 行是關鍵：<code>make_set()</code> 產生的是陣列，<strong>陣列欄位不能對應成實體</strong>，用 <code>mv-expand</code> 展開成「一列一個帳號」才對應得了；第 12–13 行把 UPN 切成帳號名與網域字尾，因為 Account 實體要的是 <code>Name</code>＋<code>UPNSuffix</code>；最後 <code>project</code> 保留的每一欄都會用在實體對應、自訂詳細資料或警示名稱——<strong>沒 project 出來的欄位，後面就選不到</strong>。</p>
+<p>接著是最容易被忽略的<strong>擷取延遲（ingestion delay）</strong>。記錄從發生到寫進工作區有時間差，Syslog／CEF 或 API 拉取的來源可能慢上數十分鐘。規則按 <code>TimeGenerated</code>（事件發生時間）撈資料，資料卻還沒到——查詢跑了個空，事件就這樣漏掉。標準解法是<strong>把回看期間拉長吸收延遲，再用 <code>ingestion_time()</code> 只取這一輪新進來的資料</strong>：</p>
 <pre class="kql">// 同一支規則的抗延遲版本：每 1 小時執行、回看 3 小時
 let RuleFrequency = 1h;
 let IngestionBuffer = 2h;
@@ -80,21 +80,21 @@ SigninLogs
 
 <div class="eyebrow">05 — 🧬 實體與詳細資料</div>
 <h2 data-toc="實體對應">實體對應：警示能不能被調查的分水嶺</h2>
-<p>查詢跑出一堆列，對 Sentinel 來說那只是文字。<strong>實體對應（entity mapping）就是告訴平台：這一欄是帳號、那一欄是 IP、這一欄是主機。</strong>做了對應，這條規則的警示才會長出下面這些能力：</p>
+<p>查詢跑出一堆列，對 Sentinel 來說那只是文字。<strong>實體對應（entity mapping）就是告訴平台：這一欄是帳號、那一欄是 IP、這一欄是主機。</strong>做了對應，警示才會長出這些能力：</p>
 <ul>
 <li><strong>調查圖（investigation graph）</strong>：圖上的節點就是實體；沒對應，點開事件只有一張空圖。</li>
-<li><strong>實體頁面（entity pages）</strong>：點使用者或主機能看到它的時間軸、相關警示與 UEBA 洞察。</li>
-<li><strong>事件關聯與警示分組</strong>：「同一個 IP 的警示併成一件」這種分組條件，靠的就是實體。</li>
-<li><strong>自動化</strong>：劇本（Playbook）要封鎖 IP、停用帳號，得先從事件裡拿到實體物件；沒對應，劇本收到的是空清單。</li>
+<li><strong>實體頁面（entity pages）</strong>：點使用者或主機看得到時間軸、相關警示與 UEBA 洞察。</li>
+<li><strong>警示分組</strong>：「同一個 IP 的警示併成一件」這種條件，靠的就是實體。</li>
+<li><strong>自動化</strong>：劇本（Playbook）要封鎖 IP、停用帳號，得先從事件拿到實體物件；沒對應，劇本收到空清單。</li>
 </ul>
-<p>設定方式是「<strong>實體類型 → 識別碼（identifier）→ 查詢欄位</strong>」三段式：每條規則最多對應 <strong>10 個實體</strong>，每個實體最多 <strong>3 個識別碼</strong>。識別碼分強弱：Account 的 <code>AadUserId</code>、<code>Sid</code> 是強識別碼，單獨就能唯一指認；<code>Name</code> 是弱識別碼，要配 <code>UPNSuffix</code> 或 <code>NTDomain</code> 才夠力（這就是上一節把 UPN 切兩半的理由）。Host 同理：<code>HostName</code> ＋ <code>DnsDomain</code>，或直接用 <code>AzureID</code>。IP 最單純，只有 <code>Address</code>。</p>
-<p>另外兩個常跟實體對應一起考的欄位設定：</p>
+<p>設定方式是「<strong>實體類型 → 識別碼（identifier）→ 查詢欄位</strong>」三段式：每條規則最多對應 <strong>10 個實體</strong>，每個實體最多 <strong>3 個識別碼</strong>。識別碼分強弱：Account 的 <code>AadUserId</code>、<code>Sid</code> 是強識別碼，單獨就能唯一指認；<code>Name</code> 是弱識別碼，要配 <code>UPNSuffix</code> 或 <code>NTDomain</code> 才夠力（這就是上一節把 UPN 切兩半的理由）。Host 同理：<code>HostName</code>＋<code>DnsDomain</code>，或直接用 <code>AzureID</code>；IP 最單純，只有 <code>Address</code>。</p>
+<p>另外兩個常跟實體對應一起考的設定：</p>
 <ul>
-<li><strong>自訂詳細資料（custom details）</strong>：把查詢結果的其他欄位（如 <code>Attempts</code>、<code>Country</code>、<code>FileHash</code>）以鍵值對浮上警示與事件畫面。價值在於<strong>分診時不必回頭跑查詢就看得到關鍵數字</strong>，而且這些欄位可以拿來當警示分組的依據、也能被自動化規則的條件引用。</li>
-<li><strong>警示詳細資料（alert details）</strong>：用查詢欄位<strong>動態命名警示</strong>，例如把名稱寫成 <code>Password spray from {{IPAddress}} ({{Country}}) hitting {{FailedAccounts}} accounts</code>，佇列裡一眼看出差別；描述、嚴重性與戰術同樣可以綁欄位動態決定，讓同一條規則對高風險條件自動吐出高嚴重性警示。</li>
+<li><strong>自訂詳細資料（custom details）</strong>：把查詢的其他欄位（如 <code>Attempts</code>、<code>Country</code>）以鍵值對浮上警示與事件畫面，<strong>分診時不必回頭跑查詢就看得到關鍵數字</strong>；這些欄位還能當警示分組依據、被自動化規則的條件引用。</li>
+<li><strong>警示詳細資料（alert details）</strong>：用查詢欄位<strong>動態命名警示</strong>，例如 <code>Password spray from {{IPAddress}} ({{Country}})</code>，佇列裡一眼看出差別；描述、嚴重性與戰術同樣能綁欄位動態決定，讓同一條規則對高風險條件自動吐出高嚴重性警示。</li>
 </ul>
 <div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
-<strong>「實體對應漏了會怎樣」</strong>是必考的因果題。關鍵前提：漏了對應，<strong>規則照樣存得起來、照樣產生警示、照樣建立事件</strong>——所以題幹不會說「規則失敗」，只會說「調查圖是空的」「劇本沒有封鎖到 IP」「事件沒有依帳號分組」「使用者實體頁面查不到這則警示」。看到這幾種症狀，答案就往實體對應走。第二層陷阱是<strong>為什麼欄位選不到</strong>：查詢用了 <code>summarize</code> 之後只剩聚合欄位，或該欄位是 <code>make_set()</code> 產生的陣列——修法是 <code>mv-expand</code> 展開，或用 <code>arg_max(TimeGenerated, *)</code> 把原始欄位帶回結果，不是去改實體對應設定。順帶一提，Defender XDR 自訂偵測也有同款要求（結果必須含 <code>Timestamp</code>、<code>ReportId</code> 與實體欄位），兩邊一起記。</div>
+<strong>「實體對應漏了會怎樣」</strong>是必考的因果題。關鍵前提：漏了對應，<strong>規則照樣存得起來、照樣產生警示、照樣建立事件</strong>——所以題幹不會說「規則失敗」，只會說「調查圖是空的」「劇本沒封鎖到 IP」「事件沒依帳號分組」「使用者實體頁面查不到這則警示」。看到這些症狀，答案就往實體對應走。第二層陷阱是<strong>欄位為什麼選不到</strong>：<code>summarize</code> 之後只剩聚合欄位，或該欄位是 <code>make_set()</code> 產生的陣列——修法是 <code>mv-expand</code> 展開或 <code>arg_max(TimeGenerated, *)</code> 把原始欄位帶回結果，而不是去改對應設定。Defender XDR 自訂偵測有同款要求（結果必須含 <code>Timestamp</code>、<code>ReportId</code> 與實體欄位），兩邊一起記。</div>
 
 <div class="eyebrow">06 — 🧵 分組與 MITRE</div>
 <h2 data-toc="事件分組">一個事件還是兩百個事件，由你決定</h2>
@@ -103,29 +103,29 @@ SigninLogs
 <table class="data">
 <thead><tr><th>事件分組選項</th><th>行為</th><th>什麼時候用</th></tr></thead>
 <tbody>
-<tr><td><strong>Group all events into a single alert</strong>（預設）</td><td>整輪查詢結果不論幾列，只產生<strong>一個</strong>警示</td><td>結果本來就是「一組」的偵測，例如一個 IP 噴灑多個帳號</td></tr>
-<tr><td><strong>Trigger an alert for each event</strong></td><td>每列結果各產生一個警示；單次執行上限 150 個，超過時最後一個警示會摘要其餘結果</td><td>每列各自需要獨立分診與追蹤，例如每台受影響裝置一件</td></tr>
+<tr><td><strong>Group all events into a single alert</strong>（預設）</td><td>整輪結果不論幾列，只產生<strong>一個</strong>警示</td><td>結果本來就是「一組」的偵測，例如一個 IP 噴灑多個帳號</td></tr>
+<tr><td><strong>Trigger an alert for each event</strong></td><td>每列各產生一個警示；單次執行上限 150 個，超過時最後一個警示會摘要其餘結果</td><td>每列各自要獨立分診，例如每台受影響裝置一件</td></tr>
 </tbody>
 </table>
 </div>
-<p>第二道閘門在 <strong>Incident settings</strong> 頁，叫<strong>警示分組（alert grouping）</strong>，管的是「警示 → 事件」：開啟後，同一條規則在指定時間窗內產生的警示會被併進同一個事件，<strong>預設時間窗 5 小時</strong>。分組依據有三種：全部併成一件、選定的<strong>實體</strong>相同才併（最常用，例如同一個 IP 才算同一波）、選定的<strong>自訂詳細資料</strong>相同才併。還有一個 <strong>re-open closed matching incidents</strong> 開關：若新警示對應到一個已經關閉的事件，要不要把它重新開啟——攻擊者回鍋時很有用，但也可能讓已結案的噪音一直復活。</p>
-<p>最後一格是 <strong>MITRE ATT&amp;CK 對照</strong>：在 General 頁替規則勾選戰術（tactic）與技術（technique，含子技術）。它不影響偵測邏輯，但有三個實質作用——事件畫面直接顯示這是攻擊鏈的哪一段、分診時可依戰術篩選、以及 Sentinel 的 <strong>MITRE ATT&amp;CK 覆蓋率檢視</strong>：矩陣上每格顯示「目前有幾條啟用中的規則覆蓋」與「Content Hub 還有幾個範本可用」。缺口一目了然，這是資安主管最愛的一張圖，也是考題問「如何呈現偵測覆蓋範圍與缺口」的標準答案。</p>
+<p>第二道閘門在 <strong>Incident settings</strong> 頁，叫<strong>警示分組（alert grouping）</strong>，管的是「警示 → 事件」：開啟後，同一條規則在指定時間窗內產生的警示會併進同一個事件，<strong>預設時間窗 5 小時</strong>。依據有三種：全部併成一件、選定的<strong>實體</strong>相同才併（最常用，例如同一個 IP 才算同一波）、選定的<strong>自訂詳細資料</strong>相同才併。還有 <strong>re-open closed matching incidents</strong> 開關：新警示對應到已關閉的事件時要不要重開——攻擊者回鍋時很有用，但也可能讓已結案的噪音一直復活。</p>
+<p>最後一格是 <strong>MITRE ATT&amp;CK 對照</strong>：在 General 頁替規則勾選戰術（tactic）與技術（technique，含子技術）。它不影響偵測邏輯，卻有三個實質作用——事件畫面直接顯示這是攻擊鏈的哪一段、分診時可依戰術篩選、以及 Sentinel 的 <strong>MITRE ATT&amp;CK 覆蓋率檢視</strong>：矩陣每格顯示「有幾條啟用中的規則覆蓋」與「Content Hub 還有幾個範本可用」，缺口一目了然。考題問「如何呈現偵測覆蓋範圍與缺口」，這就是標準答案。</p>
 <div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
-<strong>「規則有跑，佇列裡卻沒有事件」——照這個順序查</strong>：①查詢在 Logs 裡跑同樣的時間窗有沒有結果（沒有就是邏輯或資料問題）；②<strong>警示門檻</strong>是不是設得比實際列數高；③<strong>事件建立開關</strong>是不是被關掉了（這時 <code>SecurityAlert</code> 有資料、事件佇列沒有，是最經典的題幹描述）；④<strong>警示分組</strong>是不是把新警示併進了既有事件（事件數沒增加，但事件裡的警示變多）；⑤<strong>自動化規則</strong>是不是自動把它關閉或標成誤判；⑥資料本身是不是因為擷取延遲還沒到（§04）。相對地，若題幹是「事件太多、每則警示都自成一件」，方向相反：先看事件分組是不是設成 trigger an alert for each event，再開啟依實體的警示分組。</div>
+<strong>「規則有跑，佇列裡卻沒有事件」——照這個順序查</strong>：①同樣的時間窗在 Logs 裡跑有沒有結果（沒有就是邏輯或資料問題）；②<strong>警示門檻</strong>設得比實際列數高；③<strong>事件建立開關</strong>被關掉（這時 <code>SecurityAlert</code> 有資料、事件佇列沒有，最經典的題幹描述）；④<strong>警示分組</strong>把新警示併進既有事件（事件數沒增加，但事件裡的警示變多）；⑤<strong>自動化規則</strong>自動把它關閉或標成誤判；⑥擷取延遲讓資料還沒到（§04）。反過來，若題幹是「事件太多、每則警示都自成一件」，先看事件分組是不是設成 trigger an alert for each event，再開啟依實體的警示分組。</div>
 
 <div class="eyebrow">07 — ⚡ NRT 與升級實戰</div>
 <h2 data-toc="NRT規則">NRT：拿排程自由換偵測速度</h2>
-<p>排程規則最快 5 分鐘跑一次，對勒索軟體刪除陰影複製這種「三十秒內就結束」的動作還是太慢。<strong>NRT（near-real-time）規則</strong>的交易條件很直白：<strong>你放棄自訂排程與跨表查詢，換到每分鐘執行的偵測速度。</strong></p>
+<p>排程規則最快 5 分鐘跑一次，對勒索軟體刪除陰影複製這種「三十秒內就結束」的動作還是太慢。<strong>NRT（near-real-time）規則</strong>的交易條件很直白：<strong>放棄自訂排程與跨表查詢，換到每分鐘執行的速度。</strong></p>
 <div class="tbl-scroll">
 <table class="data">
 <thead><tr><th>面向</th><th>Scheduled 排程規則</th><th>NRT 近即時規則</th></tr></thead>
 <tbody>
 <tr><td>執行頻率</td><td>自訂，5 分鐘 ～ 14 天</td><td><strong>固定每分鐘</strong>，不可調整</td></tr>
-<tr><td>回看期間</td><td>自訂，上限 14 天</td><td>固定約 <strong>13 分鐘</strong>（已內含吸收擷取延遲的緩衝），不可調整</td></tr>
-<tr><td>查詢限制</td><td>完整 KQL：join、union、跨工作區、監視清單皆可</td><td><strong>只能參照單一資料表</strong>；不支援 join／union、不支援跨工作區</td></tr>
-<tr><td>時間篩選</td><td>要自己在查詢裡寫 <code>ago()</code>，並考慮擷取延遲</td><td>不需要（也不該）自己寫時間窗，平台代管</td></tr>
-<tr><td>警示門檻</td><td>可設定大於／小於／等於 N</td><td>不可設定，命中即產生警示</td></tr>
-<tr><td>實體對應／自訂詳細資料／警示詳細資料／MITRE／自動化</td><td>支援</td><td><strong>同樣支援</strong>——差別只在排程與查詢範圍</td></tr>
+<tr><td>回看期間</td><td>自訂，上限 14 天</td><td>固定約 <strong>13 分鐘</strong>（內含吸收擷取延遲的緩衝）</td></tr>
+<tr><td>查詢限制</td><td>完整 KQL：join、union、跨工作區皆可</td><td><strong>只能參照單一資料表</strong>；不支援 join／union／跨工作區</td></tr>
+<tr><td>時間篩選</td><td>要自己寫 <code>ago()</code>，並考慮擷取延遲</td><td>不需要（也不該）自己寫時間窗，平台代管</td></tr>
+<tr><td>警示門檻</td><td>可設大於／小於／等於 N</td><td>不可設定，命中即產生警示</td></tr>
+<tr><td>實體對應／custom details／MITRE／自動化</td><td>支援</td><td><strong>同樣支援</strong>——差別只在排程與查詢範圍</td></tr>
 <tr><td>典型用途</td><td>統計型、關聯型偵測（噴灑、外傳、比對監視清單）</td><td>單一事件即可定罪的高保真偵測</td></tr>
 </tbody>
 </table>
@@ -138,17 +138,17 @@ DeviceProcessEvents
          DnsDomain = tostring(strcat_array(array_slice(split(DeviceName, "."), 1, -1), "."))
 | project Timestamp, DeviceId, DeviceName, HostName, DnsDomain,
           AccountName, AccountDomain, InitiatingProcessFileName, ProcessCommandLine, FileName</pre>
-<p class="kql-note">逐行解說：這支查詢<strong>從頭到尾只碰 <code>DeviceProcessEvents</code> 一張表</strong>，這是 NRT 的硬門檻——只要出現第二張記錄表的 join 或 union，規則存檔就會被擋下來（監視清單與威脅情報的參照是官方列出的例外，但兩張記錄表關聯一律出局）。第 2–3 行用 <code>in~</code>（不分大小寫比對）與 <code>has_any</code> 抓命令列特徵，比對整串字串更耐得住參數順序變化。第 4–5 行為實體對應鋪路：把 FQDN 切成 <code>HostName</code> 與 <code>DnsDomain</code>，湊成 Host 實體的強識別組合；<code>AccountName</code>／<code>AccountDomain</code> 則對應 Account 實體。<strong>整支查詢沒有任何 <code>ago()</code> 或時間篩選</strong>——平台固定看最近約 13 分鐘，自己再加時間窗只會互相打架。想不到適合的 NRT 題材時記住這個判準：這件事一旦發生，你會希望一分鐘內就被叫醒嗎？是，才值得用 NRT。</p>
+<p class="kql-note">逐行解說：這支查詢<strong>從頭到尾只碰 <code>DeviceProcessEvents</code> 一張表</strong>，這是 NRT 的硬門檻——只要出現第二張記錄表的 join 或 union，規則存檔就會被擋（監視清單與威脅情報的參照是官方列出的例外，但兩張記錄表關聯一律出局）。第 2–3 行用 <code>in~</code>（不分大小寫）與 <code>has_any</code> 抓命令列特徵，比對整串字串更耐得住參數順序變化。第 4–5 行為實體對應鋪路：把 FQDN 切成 <code>HostName</code> 與 <code>DnsDomain</code>，湊成 Host 實體的強識別組合；<code>AccountName</code>／<code>AccountDomain</code> 對應 Account 實體。<strong>整支查詢沒有任何 <code>ago()</code></strong>——平台固定看最近約 13 分鐘，自己再加時間窗只會打架。NRT 的取材判準只有一句：這件事發生時，你會希望一分鐘內被叫醒嗎？</p>
 <div class="case-box"><span class="case-label">🛡️ SOC Walkthrough：把一支搜捕查詢升級成正式偵測規則</span><br>
-<p>你在威脅搜捕階段寫了 §04 那支密碼噴灑查詢，手動跑了兩週，命中三次真陽性。現在要把它變成常設偵測：</p>
+<p>你在搜捕階段寫了 §04 那支密碼噴灑查詢，手動跑了兩週、命中三次真陽性。現在把它變成常設偵測：</p>
 <ol>
-<li><strong>選類型</strong>：查詢有 <code>summarize</code> 聚合、要看一小時窗的統計 → 只能是 <strong>Scheduled</strong>。（若是單事件型，可從搜捕頁直接建立規則，查詢會自動帶入精靈。）</li>
-<li><strong>量延遲、定排程</strong>：先用 <code>ingestion_time() - TimeGenerated</code> 量出 SigninLogs 的 95 百分位延遲約 20 分鐘 → 頻率設 1 小時、回看設 3 小時，並在查詢加上 <code>ingestion_time()</code> 篩選（§04 第二支查詢）。</li>
-<li><strong>調門檻</strong>：把規則邏輯貼進精靈後，看右側結果模擬圖——過去 50 次執行會產生 40 個警示，太吵。把查詢裡的相異帳號門檻從 5 提到 8，模擬圖降到 3 個，合理。</li>
-<li><strong>對應實體</strong>：IP → <code>Address = IPAddress</code>；Account → <code>Name = AccountName</code> ＋ <code>UPNSuffix = UPNSuffix</code>。自訂詳細資料加 <code>Attempts</code>、<code>FailedAccounts</code>、<code>Country</code>，分診時免跑查詢。</li>
-<li><strong>命名與標記</strong>：警示名稱設成 <code>Password spray from {{IPAddress}} ({{Country}})</code>；MITRE 勾 <strong>Credential Access → T1110.003 Password Spraying</strong>，覆蓋率矩陣上那一格就亮起來了。</li>
-<li><strong>事件設定</strong>：事件建立開啟；事件分組維持「整輪一個警示」；警示分組開啟、依 <strong>IP 實體</strong>分組、時間窗 5 小時——同一個攻擊者噴一整個下午只會有一件事件。</li>
-<li><strong>上線後調校</strong>：兩週後發現某合作夥伴的 VPN 出口 IP 一直誤判。正解是<strong>在查詢中排除監視清單裡的已知來源</strong>（或加自動化規則自動關閉），而不是關掉規則或無限往上調門檻——降噪要精準，別把偵測面一起關掉。</li>
+<li><strong>選類型</strong>：查詢有 <code>summarize</code> 聚合、要看一小時窗的統計 → 只能是 <strong>Scheduled</strong>。（單事件型的查詢可從搜捕頁直接建立規則，查詢會自動帶入精靈。）</li>
+<li><strong>量延遲、定排程</strong>：用 <code>ingestion_time() - TimeGenerated</code> 量出 SigninLogs 的 95 百分位延遲約 20 分鐘 → 頻率 1 小時、回看 3 小時，查詢加上 <code>ingestion_time()</code> 篩選。</li>
+<li><strong>調門檻</strong>：貼進精靈後看右側結果模擬圖——過去 50 次執行會產生 40 個警示，太吵；把相異帳號門檻從 5 提到 8，模擬圖降到 3 個。</li>
+<li><strong>對應實體</strong>：IP → <code>Address = IPAddress</code>；Account → <code>Name = AccountName</code>＋<code>UPNSuffix = UPNSuffix</code>。自訂詳細資料放 <code>Attempts</code>、<code>FailedAccounts</code>、<code>Country</code>。</li>
+<li><strong>命名與標記</strong>：警示名稱設成 <code>Password spray from {{IPAddress}} ({{Country}})</code>；MITRE 勾 <strong>Credential Access → T1110.003</strong>，覆蓋率矩陣那一格就亮了。</li>
+<li><strong>事件設定</strong>：事件建立開啟；事件分組維持「整輪一個警示」；警示分組開啟、依 <strong>IP 實體</strong>、時間窗 5 小時——同一個攻擊者噴一整個下午只會有一件事件。</li>
+<li><strong>上線後調校</strong>：兩週後某合作夥伴的 VPN 出口 IP 一直誤判。正解是<strong>在查詢中排除監視清單裡的已知來源</strong>（或用自動化規則自動關閉），不是關規則或無限調高門檻——降噪要精準，別把偵測面一起關掉。</li>
 </ol>
 </div>
 
