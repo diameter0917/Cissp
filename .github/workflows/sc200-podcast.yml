@@ -19,6 +19,7 @@ on:
     paths:
       - 'sc200/podcast/scripts/**'
       - 'sc200/scripts/gen_podcast.py'
+      - '.github/workflows/sc200-podcast.yml'
 
 permissions:
   contents: write
@@ -37,8 +38,11 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install edge-tts
-        run: pip install "edge-tts>=7"
+      - name: Install edge-tts and ffmpeg
+        run: |
+          pip install "edge-tts>=7"
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
 
       - name: Render audio
         run: |
