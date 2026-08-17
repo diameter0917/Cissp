@@ -68,9 +68,45 @@
       "unit": "P1-W2-3",
       "title_zh": "Syslog、CEF 與 ASIM 正規化",
       "file": "ep-008.mp3",
-      "bytes": 2711752,
-      "duration_sec": 452,
-      "script_sha256": "ebd6dead959d97a6fe750eca6714bfd6a7a7ffb8f31bcead8d4b99a4463819bc"
+      "bytes": 2600872,
+      "duration_sec": 433,
+      "script_sha256": "3f839e383640e60add27c0cacca37e2bb8d5a3e3fc808643cdf31c05493b3b83"
+    },
+    "009": {
+      "episode": 9,
+      "unit": "P1-W2-4",
+      "title_zh": "威脅情報與 Watchlists",
+      "file": "ep-009.mp3",
+      "bytes": 2691155,
+      "duration_sec": 448,
+      "script_sha256": "f174fc21755161f2a4b10580c9159cdb8b31f310041ea967d03a1c5ed41e4fa9"
+    },
+    "010": {
+      "episode": 10,
+      "unit": "P1-W2-5",
+      "title_zh": "Sentinel data lake 與 Summary Rules",
+      "file": "ep-010.mp3",
+      "bytes": 2742143,
+      "duration_sec": 457,
+      "script_sha256": "11383ec7bc2429cb549cbba763ac64a91881463351778171b4cf0b272cf6cb0d"
+    },
+    "011": {
+      "episode": 11,
+      "unit": "P1-W3-1",
+      "title_zh": "Security Copilot 設定與管理",
+      "file": "ep-011.mp3",
+      "bytes": 2703547,
+      "duration_sec": 451,
+      "script_sha256": "72f69294f8a840fdb66968780f0b6fca4c53af33a206e3dabad13905aa1a97e2"
+    },
+    "014": {
+      "episode": 14,
+      "unit": "P1-W3-4",
+      "title_zh": "電子郵件威脅回應（MDO）",
+      "file": "ep-014.mp3",
+      "bytes": 3114524,
+      "duration_sec": 519,
+      "script_sha256": "4f4a1b3d17ec683f4a993b8ebdbdd02d7979650fa65b05aacac0f60b72e14003"
     }
   }
 }
