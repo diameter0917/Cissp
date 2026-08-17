@@ -76,7 +76,8 @@ def video_block(unit, curriculum, titles):
         seg_html = ""
         if segs:
             seg_html = "<div class='vm'>本日對應段落：" + "、".join(
-                f"<a href='{url}&t={int(s['start'])}s' target='_blank' rel='noopener'>"
+                # youtu.be 短網址沒有既有查詢字串，時間碼要用 ?t= 起頭（&t= 會壞掉）
+                f"<a href='{url}?t={int(s['start'])}' target='_blank' rel='noopener'>"
                 f"<span class='timestamp'>{fmt_ts(s['start'])}</span></a> {s.get('title','')}"
                 for s in segs) + "</div>"
         rows.append(
