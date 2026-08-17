@@ -59,31 +59,31 @@ IdentityLogonEvents
 
 <div class="eyebrow">05 — 🚑 MDI 回應與態勢</div>
 <h2 data-toc="MDI 回應">按哪個按鈕，與 ISPM 的預防面</h2>
-<p>MDI 的回應動作掛在<strong>使用者實體頁面</strong>上，三類全部針對身分本身：<strong>停用 Active Directory 中的使用者</strong>是最快的止血，帳戶當場無法驗證，適用已確認遭盜用；<strong>要求使用者重設密碼</strong>強制下次登入變更密碼，讓被偷走的雜湊失效，適用要讓人盡快回到工作又得斷掉攻擊者；<strong>暫停 Microsoft Entra ID 中的使用者</strong>是混合身分情境下把雲端那一半一起關掉，避免同步延遲被利用。</p>
-<p>這裡藏著高頻考點：<strong>這些動作不會自己生效</strong>。MDI 是雲端服務，要回頭改地端 AD 物件，必須在 MDI 設定中配置具備適當權限的<strong>動作帳戶（action account）</strong>——可沿用 gMSA，但要另外委派「重設密碼」與「停用帳戶」的寫入權限，只給唯讀權限的環境按鈕會按不動。另外把使用者<strong>標記為遭入侵（confirm compromised）</strong>會把訊號送進 Entra ID Protection，使該帳戶的使用者風險直接升為高——兩個產品間最實用的連動線。</p>
-<div class="point"><strong>別記錯歸屬：</strong>MDI 能停用帳戶、重設密碼，但<strong>不能隔離裝置</strong>——裝置隔離是 MDE 的動作。而「包含使用者（contain user）」這類阻斷帳戶橫向移動的手段屬於 XDR 的<strong>自動攻擊中斷（automatic attack disruption）</strong>，可在高信賴度攻擊中自動停用帳戶或圍堵裝置，事後於動作中心還原。考題描述「無人核准就自動停用了受害帳戶」→ 自動攻擊中斷，不是 MDI 的手動回應。</div>
-<p>回應是止血，<strong>身分安全態勢管理（ISPM）</strong>才是止痛。MDI 持續評估 AD 組態並把問題寫成建議，呈現在安全分數與曝險管理清單裡：明文傳輸認證的舊協定、不安全的 Kerberos 委派、敏感群組中的閒置帳戶、DC 上不該開的 Print Spooler、未受監控的網域控制站、AD CS 憑證範本的危險組態、風險最高的橫向移動路徑。考題問「如何主動降低身分攻擊面」，答案在 ISPM 建議，不在警示。</p>
-<div class="case-box"><div class="case-label">💼 實戰情境</div><p>週四 15:20，XDR 跳出中度事件：MDI 警示「Suspected identity theft (pass-the-ticket)」，主體是財務部 <code>k.wang</code>，來源 <code>FIN-WS041</code>、目標 <code>SRV-FILE02</code>。你是值班分析師：<strong>①</strong> 先看事件全貌——關聯進來的還有兩小時前 MDE 的「LSASS 記憶體讀取」警示，故事成形：先在工作站偷票證，再拿票證打檔案伺服器。<strong>②</strong> 打開 k.wang 的使用者實體頁面，時間軸顯示同一張票證在 FIN-WS041 與 <code>FIN-WS017</code> 都出現過，確認不是單機誤判。<strong>③</strong> 檢查<strong>橫向移動路徑</strong>：k.wang 非特權帳戶，卻在三台工作站是本機管理員，其中一台曾有網域管理員登入過——距離網域支配只剩兩步，嚴重性當場調高。<strong>④</strong> 止血：<strong>要求密碼重設</strong>並撤銷工作階段（讓已簽發票證與權杖失效）、由 MDE <strong>隔離 FIN-WS041</strong>、把帳戶<strong>標記為遭入侵</strong>讓 Entra 側升為高風險並觸發風險型政策。<strong>⑤</strong> 擴大搜尋：用上一節的查詢確認沒有第三台機器牽涉，並檢查 SRV-FILE02 是否已有資料外傳。<strong>⑥</strong> 收尾：把「工作站本機管理員權限過度發放」開成 ISPM 待辦——這條 LMP 不砍掉，下次還是同一齣戲。</p></div>
+<p>MDI 的回應動作掛在<strong>使用者實體頁面</strong>上，三類都針對身分本身：<strong>停用 Active Directory 中的使用者</strong>是最快的止血，帳戶當場無法驗證；<strong>要求使用者重設密碼</strong>強制下次登入變更密碼，讓被偷走的雜湊失效，適合要讓人盡快回到工作又得斷掉攻擊者；<strong>暫停 Microsoft Entra ID 中的使用者</strong>則在混合身分情境把雲端那一半一起關掉。</p>
+<p>高頻考點藏在後面：<strong>這些動作不會自己生效</strong>。MDI 是雲端服務，要回頭改地端 AD 物件，必須配置具備權限的<strong>動作帳戶（action account）</strong>——可沿用 gMSA，但要另外委派「重設密碼」與「停用帳戶」的寫入權限，只有唯讀權限時按鈕按不動。把使用者<strong>標記為遭入侵（confirm compromised）</strong>則會把訊號送進 Entra ID Protection，使該帳戶的使用者風險直接升為高。</p>
+<div class="point"><strong>別記錯歸屬：</strong>MDI 能停用帳戶、重設密碼，但<strong>不能隔離裝置</strong>——裝置隔離是 MDE 的動作；「包含使用者（contain user）」則屬於 XDR 的<strong>自動攻擊中斷</strong>，可在高信賴度攻擊中自動停用帳戶或圍堵裝置。考題描述「無人核准就自動停用了受害帳戶」→ 自動攻擊中斷，不是 MDI 的手動回應。</div>
+<p>回應是止血，<strong>身分安全態勢管理（ISPM）</strong>才是止痛。MDI 持續評估 AD 組態並把問題寫成建議，呈現在安全分數與曝險管理清單裡：明文傳輸認證的舊協定、不安全的 Kerberos 委派、敏感群組中的閒置帳戶、未受監控的網域控制站、AD CS 憑證範本的危險組態、風險最高的橫向移動路徑。考題問「如何主動降低身分攻擊面」，答案在 ISPM，不在警示。</p>
+<div class="case-box"><div class="case-label">💼 實戰情境</div><p>週四 15:20，XDR 跳出中度事件：MDI 警示「Suspected identity theft (pass-the-ticket)」，主體是財務部 <code>k.wang</code>，來源 <code>FIN-WS041</code>、目標 <code>SRV-FILE02</code>。<strong>①</strong> 先看事件全貌——同時關聯了兩小時前 MDE 的「LSASS 記憶體讀取」，故事成形：先在工作站偷票證，再拿票證打檔案伺服器。<strong>②</strong> 打開使用者實體頁面，同一張票證在兩台工作站都出現過，排除單機誤判。<strong>③</strong> 查<strong>橫向移動路徑</strong>：k.wang 非特權帳戶，卻在三台工作站是本機管理員，其中一台曾有網域管理員登入——距離網域支配只剩兩步，嚴重性當場調高。<strong>④</strong> 止血：<strong>要求密碼重設</strong>並撤銷工作階段（讓票證與權杖失效）、由 MDE <strong>隔離 FIN-WS041</strong>、把帳戶<strong>標記為遭入侵</strong>讓 Entra 側升為高風險。<strong>⑤</strong> 用上一節的查詢確認沒有第三台機器牽涉。<strong>⑥</strong> 把「本機管理員權限過度發放」開成 ISPM 待辦——這條 LMP 不砍掉，下次還是同一齣戲。</p></div>
 
 <div class="eyebrow">06 — ☁️ Entra ID Protection</div>
 <h2 data-toc="風險偵測">使用者風險與登入風險的分野</h2>
-<p>雲端這側邏輯完全不同。Entra ID Protection 不需部署元件，直接坐在 Entra ID 的驗證流程上，用 Microsoft 威脅情報與機器學習替每次登入、每個帳戶評分。它產出的不是「某某攻擊技術」，而是<strong>風險偵測（risk detection）</strong>，再匯總成兩種風險——這組區別是全考科最常見的觀念題：</p>
+<p>雲端這側邏輯完全不同。Entra ID Protection 不需部署元件，直接坐在驗證流程上，用 Microsoft 威脅情報與機器學習替每次登入、每個帳戶評分。它產出的不是「某某攻擊技術」，而是<strong>風險偵測（risk detection）</strong>，再匯總成兩種風險——這是全考科最常見的觀念題：</p>
 <div class="tbl-scroll">
 <table class="data">
   <thead><tr><th>比較面向</th><th>登入風險（sign-in risk）</th><th>使用者風險（user risk）</th></tr></thead>
   <tbody>
     <tr><td>它在問什麼</td><td>「<strong>這一次登入</strong>是本人嗎？」</td><td>「<strong>這個帳號</strong>是不是已經被盜了？」</td></tr>
     <tr><td>評估對象</td><td>單一次驗證要求</td><td>帳戶的長期狀態，會持續累積</td></tr>
-    <tr><td>代表偵測</td><td>匿名 IP、不可能的移動、不熟悉的登入屬性、惡意 IP、可疑瀏覽器、AiTM</td><td>外洩認證、Entra 威脅情報、可疑的主要更新權杖存取、異常使用者活動、系統管理員確認遭入侵</td></tr>
-    <tr><td>評估時機</td><td>即時與離線兩種，即時的才擋得下當次登入</td><td>離線匯總為主，升高後維持到被修復</td></tr>
+    <tr><td>代表偵測</td><td>匿名 IP、不可能的移動、不熟悉的登入屬性、可疑瀏覽器、AiTM</td><td>外洩認證、Entra 威脅情報、可疑的更新權杖存取、異常使用者活動、管理員確認遭入侵</td></tr>
+    <tr><td>評估時機</td><td>即時與離線兩種，即時的才擋得下當次</td><td>離線匯總，升高後維持到被修復</td></tr>
     <tr><td>對應政策</td><td>登入風險政策 → <strong>要求 MFA</strong>（多為中以上）</td><td>使用者風險政策 → <strong>要求安全密碼變更</strong>（多為高）</td></tr>
-    <tr><td>修復後果</td><td>通過 MFA → 該次登入風險自動關閉</td><td>完成安全密碼變更 → 風險歸零、既有更新權杖失效</td></tr>
+    <tr><td>修復後果</td><td>通過 MFA → 該次登入風險關閉</td><td>安全密碼變更 → 風險歸零、更新權杖失效</td></tr>
     <tr><td>記錄欄位</td><td>SigninLogs 的 RiskLevelDuringSignIn</td><td>RiskLevelAggregated、AADRiskyUsers</td></tr>
   </tbody>
 </table>
 </div>
-<p>風險等級只有<strong>低、中、高</strong>三級（外加無風險），代表模型的信賴度而非損失大小。調查主線是三份報表：<strong>有風險的使用者</strong>看誰的帳號可能被盜、<strong>有風險的登入</strong>看哪些登入可疑、<strong>風險偵測</strong>看每一筆原始訊號。手動處置的副作用要記牢：<strong>確認遭入侵</strong>把使用者風險拉到高並回饋模型；<strong>關閉使用者風險（dismiss）</strong>把風險清為零卻<strong>不做任何修復</strong>，密碼沒換、權杖沒撤，只適合已確認的誤判——要真正救回帳戶，該做的是重設密碼並撤銷工作階段。</p>
-<p>把風險變成防線靠<strong>風險型條件式存取</strong>：以使用者風險或登入風險當條件套用授與控制。這也是自動修復（self-remediation）的關鍵——使用者自己過 MFA 或改密碼，風險就自動關閉，人力留給真正的高風險事件。兩個常考前置條件：要求安全密碼變更的前提是使用者<strong>已完成 MFA 註冊</strong>；完整風險明細與風險型政策需要 <strong>Microsoft Entra ID P2</strong>。</p>
+<p>風險等級只有<strong>低、中、高</strong>三級，代表模型的信賴度而非損失大小。調查主線是三份報表：<strong>有風險的使用者</strong>、<strong>有風險的登入</strong>、<strong>風險偵測</strong>（每一筆原始訊號）。手動處置的副作用要記牢：<strong>確認遭入侵</strong>把使用者風險拉到高並回饋模型；<strong>關閉使用者風險（dismiss）</strong>把風險清為零卻<strong>不做任何修復</strong>，密碼沒換、權杖沒撤，只適合已確認的誤判——要真正救回帳戶得重設密碼並撤銷工作階段。</p>
+<p>把風險變成防線靠<strong>風險型條件式存取</strong>：以使用者風險或登入風險當條件套用授與控制，這也是自動修復（self-remediation）的關鍵——使用者自己過 MFA 或改密碼，風險就自動關閉。兩個常考前置條件：要求安全密碼變更的前提是使用者<strong>已完成 MFA 註冊</strong>；完整風險明細與風險型政策需要 <strong>Microsoft Entra ID P2</strong>。</p>
 <pre class="kql">// 風險登入成功了，而且沒有任何條件式存取政策套用到它
 SigninLogs
 | <span class="k">where</span> TimeGenerated &gt; <span class="f">ago</span>(<span class="n">24h</span>)
@@ -94,37 +94,37 @@ SigninLogs
           RiskLevelDuringSignIn, RiskLevelAggregated, RiskEventTypes_V2
 | <span class="k">sort by</span> TimeGenerated <span class="k">desc</span></pre>
 <p class="kql-note">第 3 行：ResultType 為 0 代表登入<strong>成功</strong>。第 4 行：RiskLevelDuringSignIn 是<strong>當次</strong>登入風險，帳戶層級的長期風險要看 RiskLevelAggregated。第 5 行：ConditionalAccessStatus 為 <code>notApplied</code>＝沒命中任何條件式存取政策，也就是政策範圍的破口。注意 SigninLogs 屬 <strong>Sentinel</strong>（Entra ID 資料連接器）那側，XDR 進階搜捕對應的是 AADSignInEventsBeta，別把表名寫混。</p>
-<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>「該用哪個風險政策」是必考題型</strong>，關鍵在題幹描述的是「一次事件」還是「一個帳戶的狀態」。看到<strong>不可能的移動、匿名 IP、不熟悉的登入屬性</strong>——描述某一次登入 → <strong>登入風險政策，要求 MFA</strong>。看到<strong>認證外洩到暗網、系統管理員已確認遭入侵</strong>——描述帳戶已被盜 → <strong>使用者風險政策，要求安全密碼變更</strong>。想清楚為什麼：密碼都外洩了，只要求 MFA 並不能讓那組密碼作廢；而正常使用者出差登入，強迫改密碼是過度反應。<strong>次考點：</strong>要讓使用者自行解除風險、減少人工作業 → 風險型條件式存取的自動修復；緊急存取帳戶必須排除在所有風險政策之外。</p></div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>「該用哪個風險政策」是必考題型</strong>，關鍵在題幹描述的是「一次事件」還是「一個帳戶的狀態」。看到<strong>不可能的移動、匿名 IP、不熟悉的登入屬性</strong>——描述某一次登入 → <strong>登入風險政策，要求 MFA</strong>。看到<strong>認證外洩、管理員已確認遭入侵</strong>——描述帳戶已被盜 → <strong>使用者風險政策，要求安全密碼變更</strong>。想清楚為什麼：密碼都外洩了，只要求 MFA 不能讓那組密碼作廢；而正常使用者出差登入，強迫改密碼是過度反應。<strong>次考點：</strong>要讓使用者自行解除風險 → 靠風險型政策的自動修復；緊急存取帳戶必須排除在所有風險政策之外。</p></div>
 
 <div class="eyebrow">07 — 🧭 ITDR 分工對照</div>
 <h2 data-toc="分工對照">地端與雲端，兩張網一個事件</h2>
-<p><strong>ITDR（identity threat detection and response）</strong>是這兩個產品共同撐起的能力：把身分當成獨立的偵測面，而不只是存取控制的設定項。分工很單純——<strong>地端 AD 歸 MDI，雲端 Entra 歸 ID Protection</strong>，訊號在 Defender XDR 會合成同一起事件。混合身分環境兩邊都要：只裝 MDI 看不到雲端 SaaS 的異常登入，只有 ID Protection 看不到 DC 上的票證偽造。</p>
+<p><strong>ITDR（identity threat detection and response）</strong>是這兩個產品共同撐起的能力：把身分當成獨立的偵測面，而不只是存取控制的設定項。分工很單純——<strong>地端 AD 歸 MDI，雲端 Entra 歸 ID Protection</strong>，訊號在 XDR 匯合成同一起事件。混合身分環境兩邊都要：只裝 MDI 看不到雲端異常登入，只有 ID Protection 看不到 DC 上的票證偽造。</p>
 <div class="tbl-scroll">
 <table class="data">
   <thead><tr><th>面向</th><th>Defender for Identity（MDI）</th><th>Entra ID Protection</th></tr></thead>
   <tbody>
     <tr><td><strong>守護對象</strong></td><td>地端 Active Directory、AD FS、AD CS</td><td>雲端 Entra ID 的帳戶與每一次登入</td></tr>
-    <tr><td><strong>訊號來源</strong></td><td>伺服器上的感應器：驗證流量、Windows 事件、LDAP 查詢</td><td>Entra 驗證流程本身＋威脅情報與 ML（免部署）</td></tr>
-    <tr><td><strong>偵測方式</strong></td><td>攻擊技術特徵＋行為基準，認得出 AD 專屬手法</td><td>機率式風險評分，輸出低／中／高風險等級</td></tr>
-    <tr><td><strong>輸出單位</strong></td><td>依攻擊階段分類的<strong>警示</strong>，直接關聯進 XDR 事件</td><td><strong>風險偵測</strong>，匯總成登入風險與使用者風險</td></tr>
+    <tr><td><strong>訊號來源</strong></td><td>伺服器上的感應器：驗證流量、Windows 事件、LDAP</td><td>Entra 驗證流程＋威脅情報與 ML（免部署）</td></tr>
+    <tr><td><strong>偵測方式</strong></td><td>攻擊技術特徵＋行為基準，認得出 AD 專屬手法</td><td>機率式風險評分，輸出低／中／高等級</td></tr>
+    <tr><td><strong>輸出單位</strong></td><td>依攻擊階段分類的<strong>警示</strong>，關聯進 XDR 事件</td><td><strong>風險偵測</strong>，匯總為登入風險與使用者風險</td></tr>
     <tr><td><strong>代表偵測</strong></td><td>黃金票證、pass-the-hash／ticket、DCSync、LDAP 偵察</td><td>外洩認證、不可能的移動、匿名 IP、AiTM、異常權杖</td></tr>
-    <tr><td><strong>回應動作</strong></td><td>停用使用者、要求密碼重設、暫停 Entra 帳戶（需動作帳戶）</td><td>風險型條件式存取：要求 MFA、安全密碼變更、封鎖存取</td></tr>
-    <tr><td><strong>自助修復</strong></td><td>無，由分析師或自動攻擊中斷執行</td><td>有，使用者過 MFA 或改密碼即可關閉風險</td></tr>
-    <tr><td><strong>預防面</strong></td><td>ISPM 態勢建議（組態弱點、LMP 曝險）</td><td>風險註冊與 MFA 註冊政策、驗證強度要求</td></tr>
+    <tr><td><strong>回應動作</strong></td><td>停用使用者、要求密碼重設、暫停 Entra 帳戶（需動作帳戶）</td><td>風險型條件式存取：MFA、安全密碼變更、封鎖</td></tr>
+    <tr><td><strong>自助修復</strong></td><td>無，由分析師或自動攻擊中斷執行</td><td>有，過 MFA 或改密碼即可關閉風險</td></tr>
+    <tr><td><strong>預防面</strong></td><td>ISPM 態勢建議（組態弱點、LMP 曝險）</td><td>MFA 註冊政策、驗證強度要求</td></tr>
     <tr><td><strong>搜捕資料</strong></td><td>IdentityLogonEvents／QueryEvents／DirectoryEvents</td><td>SigninLogs、AADUserRiskEvents、AADSignInEventsBeta</td></tr>
   </tbody>
 </table>
 </div>
-<div class="point"><strong>一句話收束：</strong>MDI 回答「攻擊者在我的網域裡用了什麼手法」，Entra ID Protection 回答「這個帳號還能不能相信」。前者是特徵與技術、靠分析師按按鈕；後者是機率與信賴度、靠政策自動擋。</div>
+<div class="point"><strong>一句話收束：</strong>MDI 回答「攻擊者在我的網域裡用了什麼手法」，Entra ID Protection 回答「這個帳號還能不能相信」。前者是特徵與技術、靠分析師按鈕；後者是機率與信賴度、靠政策自動擋。</div>
 
 <div class="eyebrow">08 — 🧩 考綱補洞</div>
 <h2 data-toc="考綱補洞">影片沒講到的考綱角落</h2>
 <ul>
-  <li><strong>誘餌帳戶（honeytoken）：</strong>在 MDI 可把閒置帳戶或群組標記為 honeytoken 實體，正常情況絕不會有人碰，一旦出現任何驗證或查詢就直接產生警示——零誤報的偵察偵測器。相關的還有實體標籤（敏感、可執行、VIP），標為敏感的帳戶會提高相關警示嚴重性並納入 LMP 分析。</li>
-  <li><strong>LMP 需要權限才算得出來：</strong>MDI 必須能查詢各機器的本機系統管理員群組成員資格；若環境限制了遠端 SAM-R 呼叫而沒把 MDI 的帳戶加進允許清單，LMP 就會是空的。考題說「LMP 頁面沒有資料」，方向是權限與網路組態，不是授權不足。</li>
-  <li><strong>持續存取評估（CAE）：</strong>條件式存取原本只在發權杖時判定一次，權杖有效期內即使帳戶被停用也可能仍可存取。CAE 讓支援的服務近乎即時重新評估，帳戶被停用、密碼重設、風險升高時就地終止工作階段——這是「已經停用帳戶了，為什麼他還在讀信」的標準答案。</li>
-  <li><strong>MDI 與 Sentinel 的關係：</strong>MDI 警示透過 Defender XDR 連接器一併流進 Sentinel，不需要單獨的 MDI 連接器；跨地端與雲端的關聯分析在 Sentinel 側做，下週的 Sentinel 章節會接續。</li>
-  <li><span class="badge-2026">2026 新考點</span> <strong>Security Copilot 的身分調查輔助：</strong>內嵌在 Defender 入口網站的體驗可對一起身分事件產生自然語言摘要——攻擊鏈走到哪、涉及哪些帳戶與裝置、建議下一步；也能把「這個帳號過去七天的異常登入」直接轉成搜捕查詢。考試層級只需知道定位：加速分診，不取代你對風險類型與回應動作的判斷。</li>
+  <li><strong>誘餌帳戶（honeytoken）：</strong>可把閒置帳戶或群組標記為 honeytoken 實體，正常情況絕不會有人碰，一旦出現驗證或查詢就直接產生警示——零誤報的偵察偵測器。相關的還有實體標籤（敏感、VIP），標為敏感的帳戶會提高警示嚴重性並納入 LMP 分析。</li>
+  <li><strong>LMP 需要權限才算得出來：</strong>MDI 必須能查詢各機器的本機系統管理員群組成員；若環境限制了遠端 SAM-R 呼叫又沒把 MDI 的帳戶加進允許清單，LMP 會是空的。考題說「LMP 頁面沒資料」，方向是權限與組態，不是授權不足。</li>
+  <li><strong>持續存取評估（CAE）：</strong>條件式存取原本只在發權杖時判定一次，權杖有效期內即使帳戶被停用也可能仍可存取。CAE 讓支援的服務近乎即時重新評估，帳戶停用、密碼重設、風險升高時就地終止工作階段——這是「已經停用帳戶了，為什麼他還在讀信」的標準答案。</li>
+  <li><strong>MDI 與 Sentinel 的關係：</strong>MDI 警示透過 Defender XDR 連接器一併流進 Sentinel，不需要單獨的 MDI 連接器；跨地端與雲端的關聯分析在 Sentinel 側做。</li>
+  <li><span class="badge-2026">2026 新考點</span> <strong>Security Copilot 的身分調查輔助：</strong>內嵌在 Defender 入口網站的體驗可對身分事件產生自然語言摘要——攻擊鏈走到哪、涉及哪些帳戶與裝置、建議下一步，也能把自然語言問句轉成搜捕查詢。考試層級只需知道定位：加速分診，不取代你對風險類型與回應動作的判斷。</li>
 </ul>
 
 <div class="eyebrow">09 — 📚 延伸閱讀</div>

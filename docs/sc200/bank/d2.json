@@ -1,0 +1,222 @@
+[
+  {
+    "id": "D2-0006",
+    "domain": "D2",
+    "topic": "device-response",
+    "unit": "P1-W3-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "You are a security operations analyst. From the Microsoft Defender portal, you apply full isolation to a compromised Windows 11 device. Which statement describes the connectivity of the device after the action completes?",
+    "stem_zh": "你是安全性作業分析師。你在 Microsoft Defender 入口網站對一台遭入侵的 Windows 11 裝置套用完全隔離（full isolation）。動作完成後，該裝置的連線狀態為何？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The device is cut off from the network but keeps its connection to the Defender for Endpoint service, so investigation can continue.",
+        "text_zh": "裝置與網路斷開，但保留與 Defender for Endpoint 服務的連線，因此仍可繼續調查。"
+      },
+      {
+        "key": "B",
+        "text_en": "All connectivity is severed, including the connection to the Defender for Endpoint service.",
+        "text_zh": "所有連線都被切斷，包含與 Defender for Endpoint 服務的連線。"
+      },
+      {
+        "key": "C",
+        "text_en": "Only a limited set of applications is blocked, while Outlook, Microsoft Teams, and Skype for Business keep working.",
+        "text_zh": "只有一組有限的應用程式被封鎖，Outlook、Microsoft Teams 與 Skype for Business 仍可正常運作。"
+      },
+      {
+        "key": "D",
+        "text_en": "Network connectivity is preserved, but only files signed by a Microsoft-issued certificate are allowed to run.",
+        "text_zh": "網路連線保留，但只有由 Microsoft 簽發憑證簽章的檔案才允許執行。"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "MDE 的完全隔離會切斷裝置對外的網路通訊，但「刻意」保留裝置與 Defender for Endpoint 雲端服務的通道，因此隔離後你仍能收集調查套件、開啟即時回應（Live Response）工作階段、執行防毒掃描。這正是考試「先隔離還是先取證」排序題的關鍵理由：先遏制不會犧牲取證能力。動作本身可逆，調查完成後從裝置頁解除隔離即可。",
+    "why_wrong_zh": {
+      "B": "若連 Defender 服務通道都切斷，分析師將無法遠端調查與解除隔離，這是拔網路線或關機造成的效果，不是 MDE 隔離的行為。",
+      "C": "這是選擇性隔離（selective isolation）的行為，只封鎖有限的一組應用程式對外連線並刻意保留 Outlook／Teams／Skype for Business，不是完全隔離。",
+      "D": "這是 restrict app execution（限制應用程式執行）的效果，它套用程式碼完整性原則限制可執行的檔案，網路仍然暢通。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/respond-machine-alerts",
+    "tags": []
+  },
+  {
+    "id": "D2-0007",
+    "domain": "D2",
+    "topic": "device-response",
+    "unit": "P1-W3-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are a security operations analyst. An alert indicates that an unknown unsigned binary is executing on a Windows server that controls a manufacturing line. Operations state that the server must not lose network connectivity, but the unknown binary must be prevented from running. Which response action should you take?",
+    "stem_zh": "你是安全性作業分析師。一則警示顯示某台控制生產線的 Windows 伺服器上正在執行不明的未簽章二進位檔。營運單位表示該伺服器不得中斷網路連線，但必須阻止該不明程式執行。你應採取哪一個回應動作？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Isolate the device by using full isolation.",
+        "text_zh": "對該裝置執行完全隔離（full isolation）。"
+      },
+      {
+        "key": "B",
+        "text_en": "Restrict app execution on the device.",
+        "text_zh": "對該裝置執行限制應用程式執行（restrict app execution）。"
+      },
+      {
+        "key": "C",
+        "text_en": "Collect an investigation package from the device.",
+        "text_zh": "從該裝置收集調查套件（investigation package）。"
+      },
+      {
+        "key": "D",
+        "text_en": "Run a full antivirus scan on the device.",
+        "text_zh": "對該裝置執行完整防毒掃描。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "restrict app execution 會對裝置套用程式碼完整性原則，只允許由 Microsoft 簽發憑證簽章的檔案執行，未簽章或攻擊者投放的二進位檔會被擋下，而「網路連線完全不受影響」。題幹同時給了「不能斷網」與「要擋執行」兩個條件，只有這個動作同時滿足。此動作僅適用 Windows，且可逆（remove app restriction）。",
+    "why_wrong_zh": {
+      "A": "完全隔離會切斷裝置對外的所有網路連線，直接違反題幹「不得中斷網路連線」的限制條件。",
+      "C": "收集調查套件是唯讀的取證動作，只把鑑識資料打包供下載，完全不會阻止任何程式繼續執行。",
+      "D": "防毒掃描只能清除被特徵或雲端判定為惡意的項目；對尚未有判定的不明二進位檔，掃描不保證能阻止它執行。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/respond-machine-alerts",
+    "tags": []
+  },
+  {
+    "id": "D2-0008",
+    "domain": "D2",
+    "topic": "live-response",
+    "unit": "P1-W3-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are a security operations analyst. You can start a live response session on an onboarded device and successfully run the dir and processes commands, but the run command fails when you try to execute your own PowerShell collection script. You must be able to execute the script during live response sessions. What should you do?",
+    "stem_zh": "你是安全性作業分析師。你可以對一台已上線的裝置啟動即時回應（Live Response）工作階段，並成功執行 dir 與 processes 命令，但要以 run 命令執行自己的 PowerShell 蒐證指令碼時卻失敗。你必須能在即時回應工作階段中執行該指令碼。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Enable EDR in block mode in the advanced features settings.",
+        "text_zh": "在進階功能設定中啟用 EDR in block mode。"
+      },
+      {
+        "key": "B",
+        "text_en": "Assign the live response basic commands permission to your account.",
+        "text_zh": "為你的帳戶指派即時回應「基本命令」權限。"
+      },
+      {
+        "key": "C",
+        "text_en": "Grant the unrestricted (advanced) live response permission and upload the script to the live response library.",
+        "text_zh": "取得不受限制（unrestricted，進階命令）的即時回應權限，並將指令碼上傳到即時回應 library。"
+      },
+      {
+        "key": "D",
+        "text_en": "Isolate the device first, then retry the run command.",
+        "text_zh": "先對裝置執行隔離，再重試 run 命令。"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "dir 與 processes 屬於「基本命令」，能執行它們代表工作階段與基本權限都正常；run、putfile、remediate、library、undo 則屬於「進階（unrestricted）命令」，需要更高的權限層級。此外 run 只能執行已上傳到 live response library 的檔案，不能直接貼上一段程式碼；若指令碼未簽章，還必須開啟進階功能中的「live response unsigned script execution」。因此正確做法是同時補齊權限與 library 上傳。",
+    "why_wrong_zh": {
+      "A": "EDR in block mode 是讓第三方防毒當家時 EDR 仍能攔截惡意行為的開關，與即時回應的命令權限無關。",
+      "B": "分析師已經能執行 dir 與 processes，代表基本命令權限已具備；缺的是執行 run 所需的進階（unrestricted）權限。",
+      "D": "隔離與能否執行即時回應命令無關——裝置在隔離狀態下仍保留 Defender 服務通道，本來就能開啟工作階段與下命令。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/live-response",
+    "tags": []
+  },
+  {
+    "id": "D2-0009",
+    "domain": "D2",
+    "topic": "air",
+    "unit": "P1-W3-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "You are a security operations analyst. Workstations are in a device group set to full automation and threats on them are remediated automatically. Domain controllers are in a separate device group whose automation level requires approval for any remediation. Automated investigations on two domain controllers have finished, but the malicious files are still present. You must remove the files now while keeping the approval requirement for domain controllers. What should you do?",
+    "stem_zh": "你是安全性作業分析師。工作站所在的裝置群組設為完全自動化，威脅都會自動修復；網域控制站則位於另一個裝置群組，其自動化層級設定為「任何修復都需要核准」。兩台網域控制站上的自動調查已經完成，惡意檔案卻仍然存在。你必須立刻移除這些檔案，同時保留網域控制站的核准要求。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Change the automation level of the domain controller device group to full automation.",
+        "text_zh": "把網域控制站裝置群組的自動化層級改為完全自動化。"
+      },
+      {
+        "key": "B",
+        "text_en": "Turn off automated investigation and response for the domain controllers and remediate them manually later.",
+        "text_zh": "對網域控制站關閉自動調查與修復，之後再以手動方式修復。"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a block-and-remediate file indicator for the file hashes.",
+        "text_zh": "為這些檔案雜湊建立 Block and remediate 檔案指標。"
+      },
+      {
+        "key": "D",
+        "text_en": "Approve the pending remediation actions in the Action center.",
+        "text_zh": "在 Action center 的待核准動作中核准這些修復動作。"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "semi 自動化層級的意思是：AIR 照樣完成調查並產生修復動作，但動作會停在 「Action center 的待核准（pending）區」等待人工批准。題幹要「立刻移除且保留核准要求」，唯一同時滿足的做法就是進 Action center 核准這些待核准動作。核准後動作立即執行，且仍留在歷史紀錄中可供稽核與 undo。",
+    "why_wrong_zh": {
+      "A": "改成完全自動化確實會讓後續修復自動執行，但直接違反題幹「保留網域控制站的核准要求」這個限制條件。",
+      "B": "關閉自動調查會讓 AIR 連調查都不做，官方明確不建議；而且既有的待核准動作仍不會被執行，問題沒有解決。",
+      "C": "檔案指標是面向未來的持續性封鎖規則，雖然 Block and remediate 會影響後續遭遇，但它不是核准既有 AIR 待核准動作的正確途徑，也繞過了原本設計的核准流程。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/m365d-action-center",
+    "tags": []
+  },
+  {
+    "id": "D2-0010",
+    "domain": "D2",
+    "topic": "live-response",
+    "unit": "P1-W3-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are a security operations analyst investigating a device that is currently isolated. You must retrieve one specific suspicious executable from the device so that a malware analyst can detonate it in an external sandbox. You must not remove the file from the device yet. Which capability should you use?",
+    "stem_zh": "你是安全性作業分析師，正在調查一台目前處於隔離狀態的裝置。你必須從該裝置取回「一個」特定的可疑執行檔，讓惡意程式分析師在外部沙箱中引爆分析，而且暫時不能把檔案從裝置上移除。你應使用哪一項功能？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The getfile command in a live response session.",
+        "text_zh": "在即時回應（Live Response）工作階段中使用 getfile 命令。"
+      },
+      {
+        "key": "B",
+        "text_en": "Collect investigation package from the device page.",
+        "text_zh": "在裝置頁面執行收集調查套件（collect investigation package）。"
+      },
+      {
+        "key": "C",
+        "text_en": "Stop and quarantine file for the file hash.",
+        "text_zh": "對該檔案雜湊執行 stop and quarantine file。"
+      },
+      {
+        "key": "D",
+        "text_en": "The putfile command in a live response session.",
+        "text_zh": "在即時回應工作階段中使用 putfile 命令。"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "getfile 是即時回應的「基本命令」，用途正是把裝置上的特定檔案取回供離線分析，而且不會改變裝置上的檔案狀態。裝置處於隔離狀態不影響操作——隔離保留了 Defender 服務通道，工作階段照樣能建立。記住這組對比：要「一個特定檔案」用 getfile，要「整台機器的鑑識快照」用調查套件。",
+    "why_wrong_zh": {
+      "B": "調查套件是整台裝置的鑑識打包（autoruns、處理程序、網路連線、排程工作、事件記錄檔等），用來取得全機快照，不是取回單一指定檔案的工具。",
+      "C": "stop and quarantine file 會停止相關處理程序並把檔案隔離起來，違反題幹「暫時不能把檔案從裝置上移除」的條件，且它的目的是清除而非取證。",
+      "D": "putfile 的方向相反——它是把 live response library 中的檔案「放到」裝置上（例如下放蒐證工具），而且屬於進階命令。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/live-response",
+    "tags": []
+  }
+]
