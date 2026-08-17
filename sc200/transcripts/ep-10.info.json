@@ -4,13 +4,14 @@
   "url": "https://youtu.be/z6QbN4rpAvA",
   "title": "Perform threat hunting in Microsoft Sentinel | SC-200 | Episode 10",
   "channel": "Microsoft Learn",
-  "duration_sec": null,
-  "duration_string": null,
-  "upload_date": null,
-  "language": null,
+  "duration_sec": 1605,
+  "duration_string": "26:45",
+  "upload_date": "20260504",
+  "language": "en-US",
   "chapters": [],
-  "manual_sub_langs": [],
-  "auto_sub_has_zh_hant": null,
-  "description_head": "",
-  "source": "oembed_fallback"
+  "manual_sub_langs": [
+    "en"
+  ],
+  "auto_sub_has_zh_hant": false,
+  "description_head": "Episode 10 of 10\nFor the full video series, click here: https://aka.ms/SC-200onYouTube\n\nThis video teaches how to proactively hunt for threats in Microsoft Sentinel, guiding learners through the concepts, tools, and workflows used by Security Operations Analysts to uncover malicious activity that may evade traditional detections. It covers the full threat‑hunting lifecycle—introducing core hunting concepts, using Kusto Query Language (KQL) to identify suspicious behaviors, leveraging bookmarks and livestream for iterative investigations, running large‑scale search jobs across extensive datasets, and applying notebooks for advanced, code‑driven hunting scenarios. Together, these modules build the analytical mindset and technical proficiency needed to perform structured, hypothesis‑driven threat hunting in a modern cloud‑native SIEM, aligning directly with the skills measured in the SC‑200: Microsoft Security Operations Analyst certification.\n\nLearn more about this course and take the certification exam to test your new skills: https://aka.ms/SC-200onLearn"
 }

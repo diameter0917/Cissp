@@ -1,0 +1,2854 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.510 --> 00:00:05.950
+[ Music ]
+
+00:00:05.950 --> 00:00:07.120
+JEAN-FRANCOIS BILODEAU:
+If you've ever had
+
+00:00:07.120 --> 00:00:10.510
+that uneasy moment when
+you suspect an endpoint is
+
+00:00:10.510 --> 00:00:14.680
+compromised, but you don't yet
+know how far the attacker got,
+
+00:00:14.680 --> 00:00:19.140
+what they touched, or what to
+do next, you're not alone.
+
+00:00:19.140 --> 00:00:23.490
+Modern attacks move fast, and
+without the right visibility
+
+00:00:23.490 --> 00:00:28.590
+and response tool, small signals
+can turn into major incidents.
+
+00:00:28.590 --> 00:00:31.110
+Let me introduce you to a
+course where you will learn how
+
+00:00:31.110 --> 00:00:34.710
+to tackle these real-world
+scenarios using Microsoft
+
+00:00:34.710 --> 00:00:37.350
+Security Operations Platform.
+
+00:00:37.350 --> 00:00:38.820
+Hello and welcome.
+
+00:00:38.820 --> 00:00:40.980
+We're glad you could join us.
+
+00:00:40.980 --> 00:00:42.630
+My name is
+Jean-Fancois Bilodeau,
+
+00:00:42.630 --> 00:00:44.790
+a Microsoft Technical Trainer.
+
+00:00:44.790 --> 00:00:47.010
+In this session, we'll cover how
+
+00:00:47.010 --> 00:00:51.450
+to mitigate threats using
+Microsoft Defender for Endpoint,
+
+00:00:51.450 --> 00:00:54.930
+how it fits into
+Microsoft Defender XDR,
+
+00:00:54.930 --> 00:00:59.190
+and how you can use it to
+prevent, detect, investigate,
+
+00:00:59.190 --> 00:01:02.610
+and respond to advanced
+Endpoint threats.
+
+00:01:02.610 --> 00:01:05.370
+By the end, you'll understand
+the core capabilities
+
+00:01:05.370 --> 00:01:10.410
+of Defender for Endpoint, how
+to deploy and onboard devices,
+
+00:01:10.410 --> 00:01:14.460
+how to harden Windows with
+attack surface reduction,
+
+00:01:14.460 --> 00:01:20.660
+how to investigate devices,
+files, users, IPs, and domains.
+
+00:01:20.660 --> 00:01:23.720
+We'll also take a look
+at automation, alerting,
+
+00:01:23.720 --> 00:01:26.450
+and detection
+tuning, indicators,
+
+00:01:26.450 --> 00:01:30.350
+and vulnerability management,
+so you can reduce risk
+
+00:01:30.350 --> 00:01:34.920
+and respond confidently when
+something suspicious happens.
+
+00:01:34.920 --> 00:01:38.260
+So let's get started
+with this session.
+
+00:01:39.450 --> 00:01:42.390
+Here we set the stage for
+defending against cyber threat
+
+00:01:42.390 --> 00:01:46.500
+with Microsoft Security
+Operation Platform.
+
+00:01:46.500 --> 00:01:49.860
+Let's take a look at where this
+session fits into your journey.
+
+00:01:49.860 --> 00:01:52.110
+Learning Path 4 focuses
+
+00:01:52.110 --> 00:01:56.220
+on mitigating threats using
+Microsoft Defender for Endpoint,
+
+00:01:56.220 --> 00:01:59.370
+the Endpoint detection
+and response platform
+
+00:01:59.370 --> 00:02:03.960
+that helps security teams
+investigate attacks take action
+
+00:02:03.960 --> 00:02:07.230
+across devices in the industry.
+
+00:02:07.230 --> 00:02:09.060
+Here's what we'll cover.
+
+00:02:09.060 --> 00:02:11.460
+We'll start by protecting
+against threat
+
+00:02:11.460 --> 00:02:13.950
+with Microsoft Defender
+for Endpoints,
+
+00:02:13.950 --> 00:02:15.780
+then move into
+deploying Defender
+
+00:02:15.780 --> 00:02:17.790
+for Endpoint environment.
+
+00:02:17.790 --> 00:02:22.530
+From there, we'll implement
+Microsoft Security Enhancement,
+
+00:02:22.530 --> 00:02:24.870
+perform device investigation,
+
+00:02:24.870 --> 00:02:28.350
+and take action
+directly on a device.
+
+00:02:28.350 --> 00:02:32.010
+Next, we'll investigate
+evidence and entity,
+
+00:02:32.010 --> 00:02:36.390
+configure Manage Automation, and
+then we'll configure for alert
+
+00:02:36.390 --> 00:02:40.440
+and detection, including
+tuning and indicators.
+
+00:02:40.440 --> 00:02:42.990
+Finally, we'll wrap up
+by utilizing threats
+
+00:02:42.990 --> 00:02:47.400
+and vulnerability management
+to continuously understand
+
+00:02:47.400 --> 00:02:52.650
+and reduce exposure
+across your Endpoints.
+
+00:02:52.650 --> 00:02:56.310
+Now we begin the first module,
+Protecting Against Threat
+
+00:02:56.310 --> 00:02:59.550
+with Microsoft
+Defender for Endpoint.
+
+00:02:59.550 --> 00:03:03.210
+As with any technical training
+content, keep in mind
+
+00:03:03.210 --> 00:03:07.290
+that this material can evolve
+as the product evolves,
+
+00:03:07.290 --> 00:03:08.940
+and we'll want to
+validate detail
+
+00:03:08.940 --> 00:03:14.760
+against current documentation
+when implementing in production.
+
+00:03:14.760 --> 00:03:17.670
+After completing this
+module, you should be able
+
+00:03:17.670 --> 00:03:20.010
+to do three key things.
+
+00:03:20.010 --> 00:03:22.260
+First, define the capabilities
+
+00:03:22.260 --> 00:03:24.780
+of Microsoft Defender
+for Endpoint.
+
+00:03:24.780 --> 00:03:30.180
+Second, describe how to hunt for
+threats within your network.
+
+00:03:30.180 --> 00:03:32.670
+And third, understand
+how Defender
+
+00:03:32.670 --> 00:03:35.250
+for Endpoint can
+help remediate risk
+
+00:03:35.250 --> 00:03:39.210
+in your environment once
+a suspicious activity
+
+00:03:39.210 --> 00:03:42.000
+is identified.
+
+00:03:42.000 --> 00:03:45.330
+Microsoft Defender for Endpoint
+is a platform designed
+
+00:03:45.330 --> 00:03:50.070
+to help enterprise network
+prevent, detect, investigate,
+
+00:03:50.070 --> 00:03:54.690
+and respond to advanced
+threats on their Endpoint.
+
+00:03:54.690 --> 00:03:56.880
+The flow starts with onboarding.
+
+00:03:56.880 --> 00:04:00.570
+Devices are brought into
+the service through one
+
+00:04:00.570 --> 00:04:02.970
+of the supported
+management tools.
+
+00:04:02.970 --> 00:04:07.560
+Once onboarded, those devices
+begin providing signal,
+
+00:04:07.560 --> 00:04:10.560
+and they can also receive
+response instructions
+
+00:04:10.560 --> 00:04:14.610
+through Microsoft Defender
+for Endpoint signal data.
+
+00:04:14.610 --> 00:04:18.420
+In many organizations,
+managed devices are joined
+
+00:04:18.420 --> 00:04:23.280
+to and/or enrolled
+in Microsoft Entra.
+
+00:04:23.280 --> 00:04:27.360
+While unmanaged devices are
+not joined to Entra ID,
+
+00:04:27.360 --> 00:04:31.560
+four domains join Windows
+device synchronization
+
+00:04:31.560 --> 00:04:36.930
+into Entra ID is typically
+handled using Entre ID Connect.
+
+00:04:36.930 --> 00:04:41.160
+With that foundation in place,
+the alerts, investigation,
+
+00:04:41.160 --> 00:04:43.500
+and response action for Defender
+
+00:04:43.500 --> 00:04:46.080
+for Endpoint are
+managed centrally
+
+00:04:46.080 --> 00:04:49.320
+in Microsoft Defender XDR.
+
+00:04:49.320 --> 00:04:52.620
+If you want a deeper
+architecture walkthrough,
+
+00:04:52.620 --> 00:04:56.490
+there's also a supporting video
+titled Microsoft Defender
+
+00:04:56.490 --> 00:05:01.660
+for Endpoint Architecture,
+which runs about six minutes.
+
+00:05:03.210 --> 00:05:05.430
+Here we see a practical outcome.
+
+00:05:05.430 --> 00:05:09.390
+Microsoft Defender for Endpoint
+detecting a malicious payload
+
+00:05:09.390 --> 00:05:11.750
+on a compromised endpoint.
+
+00:05:11.750 --> 00:05:16.010
+The key idea is that endpoint
+signals and analytics combine
+
+00:05:16.010 --> 00:05:19.080
+to surface suspicious behavior
+
+00:05:19.080 --> 00:05:21.600
+and known bad
+indicators quickly.
+
+00:05:21.600 --> 00:05:26.430
+So responders can move from
+detection to investigation
+
+00:05:26.430 --> 00:05:30.330
+and containment before
+the attack spreads.
+
+00:05:30.330 --> 00:05:33.870
+This content is aligned with
+early learning path material,
+
+00:05:33.870 --> 00:05:40.410
+reinforcing the same detection
+and response story end to end.
+
+00:05:40.410 --> 00:05:43.440
+Let's take a look at what
+security operation feels
+
+00:05:43.440 --> 00:05:45.780
+like in Defender for Endpoint.
+
+00:05:45.780 --> 00:05:49.920
+Its detection and response
+capabilities provides advanced
+
+00:05:49.920 --> 00:05:55.230
+attack detection and are near
+real-time and actionable.
+
+00:05:55.230 --> 00:05:58.890
+When a threat is detected,
+the system creates alert
+
+00:05:58.890 --> 00:06:03.120
+for an analyst to
+investigate then alert
+
+00:06:03.120 --> 00:06:08.220
+that shares the same attack
+technique or that are attributed
+
+00:06:08.220 --> 00:06:11.610
+to the same attackers
+that are aggregated
+
+00:06:11.610 --> 00:06:15.360
+into a higher level entity
+called an incident.
+
+00:06:15.360 --> 00:06:20.400
+That aggregation matters because
+it helps analysts investigate
+
+00:06:20.400 --> 00:06:23.820
+and respond to threats
+collectively instead
+
+00:06:23.820 --> 00:06:27.600
+of chasing individual
+alerts in isolation.
+
+00:06:27.600 --> 00:06:32.010
+All of this is guided by
+an assume breach mindset.
+
+00:06:32.010 --> 00:06:35.520
+Defender for Endpoint
+continuously collects behavioral
+
+00:06:35.520 --> 00:06:41.610
+cyber telemetry, such as process
+information, network activities,
+
+00:06:41.610 --> 00:06:47.040
+deep visibility into the
+kernel and memory manager,
+
+00:06:47.040 --> 00:06:51.900
+user sign-in activity, and
+changes to the registry
+
+00:06:51.900 --> 00:06:54.060
+and file system, amongst others.
+
+00:06:54.060 --> 00:06:58.110
+If you'd like to see incident
+investigation in action,
+
+00:06:58.110 --> 00:07:01.680
+there's a supporting
+incident investigation video
+
+00:07:01.680 --> 00:07:04.140
+and a Microsoft Learn
+page that walks
+
+00:07:04.140 --> 00:07:08.260
+through the incident
+investigation process.
+
+00:07:09.450 --> 00:07:12.630
+Next, we move into deploying
+the Microsoft Defender
+
+00:07:12.630 --> 00:07:16.920
+for Endpoint Environment,
+setting up the service,
+
+00:07:16.920 --> 00:07:20.340
+onboarding devices, and
+configuring the environment
+
+00:07:20.340 --> 00:07:24.000
+so your team can start
+receiving meaningful signal
+
+00:07:24.000 --> 00:07:28.290
+and taking a response action.
+
+00:07:28.290 --> 00:07:30.720
+After completing this
+module, you'll be able
+
+00:07:30.720 --> 00:07:32.460
+to create a Microsoft Defender
+
+00:07:32.460 --> 00:07:36.750
+for Endpoint Environment onboard
+devices so they can be monitored
+
+00:07:36.750 --> 00:07:39.750
+and configured key
+environment setting
+
+00:07:39.750 --> 00:07:45.540
+that govern how the service
+operates in your organization.
+
+00:07:45.540 --> 00:07:48.270
+Let's start with creating
+your environment.
+
+00:07:48.270 --> 00:07:51.930
+Administration and
+investigation happens
+
+00:07:51.930 --> 00:07:54.720
+in a Microsoft
+Defender XDR portal
+
+00:07:54.720 --> 00:07:57.570
+at security.microsoft.com.
+
+00:07:57.570 --> 00:07:58.980
+During provisioning,
+
+00:07:58.980 --> 00:08:02.730
+your tenant's geolocation
+determines the data storage
+
+00:08:02.730 --> 00:08:07.500
+location, and it's important
+to note that you can't change
+
+00:08:07.500 --> 00:08:10.140
+that location after setup.
+
+00:08:10.140 --> 00:08:12.600
+In terms of data retention,
+
+00:08:12.600 --> 00:08:18.000
+Defender for Endpoint Data
+is returned for 180 days.
+
+00:08:18.000 --> 00:08:20.220
+But when you use the
+advanced hunting query,
+
+00:08:20.220 --> 00:08:23.490
+access is available for 30 days.
+
+00:08:23.490 --> 00:08:27.570
+You can also choose whether
+preview features are enabled.
+
+00:08:27.570 --> 00:08:29.520
+By default, they're on.
+
+00:08:29.520 --> 00:08:31.170
+And you can change that later.
+
+00:08:31.170 --> 00:08:37.680
+A practical tip, if the Defender
+XDR portal, selecting any item
+
+00:08:37.680 --> 00:08:39.090
+in the Endpoint section
+
+00:08:39.090 --> 00:08:42.480
+or any Endpoint feature
+will initiate the
+
+00:08:42.480 --> 00:08:44.190
+onboarding experience.
+
+00:08:44.190 --> 00:08:45.990
+That's all we need to do.
+
+00:08:45.990 --> 00:08:49.670
+Finally, keep the service
+footprint in mind.
+
+00:08:49.670 --> 00:08:53.450
+Defender for Endpoint operates
+in Microsoft Azure data center
+
+00:08:53.450 --> 00:08:57.740
+in the European Union, the
+United Kingdom, United States,
+
+00:08:57.740 --> 00:09:00.470
+and other regions as well.
+
+00:09:00.470 --> 00:09:02.780
+And customer data may be stored
+
+00:09:02.780 --> 00:09:06.320
+in the tenant geo-identified
+during provisioning,
+
+00:09:06.320 --> 00:09:10.460
+or if another Microsoft
+online service processes
+
+00:09:10.460 --> 00:09:15.300
+that data according to the
+service data storage rules.
+
+00:09:17.190 --> 00:09:20.790
+Here, we walk through the
+updated onboarding experience
+
+00:09:20.790 --> 00:09:23.910
+of the Microsoft
+Defender XDR portal.
+
+00:09:23.910 --> 00:09:28.740
+You'll navigate to the assets
+area and then into the devices
+
+00:09:28.740 --> 00:09:31.860
+to start initializing
+Defender for Endpoint.
+
+00:09:31.860 --> 00:09:35.760
+During this process, you may
+notice an in-progress message,
+
+00:09:35.760 --> 00:09:39.710
+often shown with a coffee cup,
+while the service prepares
+
+00:09:39.710 --> 00:09:43.680
+to the environment and the
+feature for your tenant.
+
+00:09:45.060 --> 00:09:47.970
+Now let's take a look at
+the device onboarding.
+
+00:09:47.970 --> 00:09:50.910
+You'll go to the onboarding
+section in the Defender
+
+00:09:50.910 --> 00:09:52.380
+for Endpoint experience
+
+00:09:52.380 --> 00:09:56.090
+to onboard any
+supported device type.
+
+00:09:56.090 --> 00:09:58.670
+Based on the platform you
+choose, you'll be guided
+
+00:09:58.670 --> 00:10:02.420
+through the right set of steps
+and presented with management
+
+00:10:02.420 --> 00:10:05.610
+and deployment tool option
+that fits that device.
+
+00:10:05.610 --> 00:10:07.800
+So the process is consistent,
+
+00:10:07.800 --> 00:10:10.950
+whether you're using
+enterprise management tooling
+
+00:10:10.950 --> 00:10:13.520
+or a more direct method.
+
+00:10:13.520 --> 00:10:15.530
+If you want a quick
+visual walkthrough,
+
+00:10:15.530 --> 00:10:19.250
+there's also a short supporting
+video called Microsoft Defender
+
+00:10:19.250 --> 00:10:23.060
+for Endpoint Onboarding
+Client, and we'll also demo
+
+00:10:23.060 --> 00:10:26.580
+that step later
+on in this video.
+
+00:10:30.180 --> 00:10:33.450
+As you plan onboarding,
+it helps to be clear
+
+00:10:33.450 --> 00:10:35.910
+on what platforms are supported.
+
+00:10:35.910 --> 00:10:40.290
+Defender for Endpoints works
+across Windows, macOS, Linux,
+
+00:10:40.290 --> 00:10:44.820
+Android, and iOS, so you can
+build consistent endpoint
+
+00:10:44.820 --> 00:10:49.020
+visibility and response
+across a diverse fleet.
+
+00:10:49.020 --> 00:10:51.840
+Now, let's focus
+on access control.
+
+00:10:51.840 --> 00:10:56.400
+Defender for Endpoint uses the
+Microsoft Defender XDR unified
+
+00:10:56.400 --> 00:11:00.870
+role-based access control model,
+giving you granular control
+
+00:11:00.870 --> 00:11:03.600
+over what different
+roles can see,
+
+00:11:03.600 --> 00:11:08.340
+which devices they can access,
+and what actions they can take.
+
+00:11:08.340 --> 00:11:12.090
+You can control who is allowed
+to take specific action
+
+00:11:12.090 --> 00:11:17.220
+by creating custom role and then
+selecting exactly which Defender
+
+00:11:17.220 --> 00:11:21.570
+for Endpoint capabilities
+those roles can use.
+
+00:11:21.570 --> 00:11:25.050
+You can also control who
+can see device information
+
+00:11:25.050 --> 00:11:28.290
+by creating device
+groups based on criteria
+
+00:11:28.290 --> 00:11:32.730
+like the device name,
+tag, domain, and more.
+
+00:11:32.730 --> 00:11:36.000
+And then granting role access
+to those device groups
+
+00:11:36.000 --> 00:11:40.260
+through a specific Microsoft
+Entra ID security group.
+
+00:11:40.260 --> 00:11:42.120
+If you want a
+guided walkthrough,
+
+00:11:42.120 --> 00:11:45.960
+there's a supported video on
+role-based access control
+
+00:11:45.960 --> 00:11:48.060
+for Microsoft Defender
+for Endpoint,
+
+00:11:48.060 --> 00:11:53.020
+and we'll also demonstrate
+this later on in this video.
+
+00:11:55.200 --> 00:11:59.280
+Here we highlight a newer
+approach to role management.
+
+00:11:59.280 --> 00:12:02.670
+Permission options you can
+assign including managed
+
+00:12:02.670 --> 00:12:05.760
+security operation,
+viewing data,
+
+00:12:05.760 --> 00:12:08.940
+performing active
+remediation action,
+
+00:12:08.940 --> 00:12:13.950
+using live response capability,
+investigating alert,
+
+00:12:13.950 --> 00:12:15.870
+managing portal settings,
+
+00:12:15.870 --> 00:12:18.960
+and managing security
+posture setting.
+
+00:12:18.960 --> 00:12:22.590
+What's important is
+where this is done now.
+
+00:12:22.590 --> 00:12:28.080
+Custom roles are set up in the
+Microsoft Defender XDR settings,
+
+00:12:28.080 --> 00:12:29.910
+bringing role configuration
+
+00:12:29.910 --> 00:12:34.540
+into a single unified
+place in the portal.
+
+00:12:36.270 --> 00:12:38.610
+Device groups are a powerful way
+
+00:12:38.610 --> 00:12:42.660
+to scope both visibility
+and automation.
+
+00:12:42.660 --> 00:12:46.770
+You can create device group and
+then use them to limit access
+
+00:12:46.770 --> 00:12:52.290
+to related alert and data to
+specific Entra ID user groups
+
+00:12:52.290 --> 00:12:55.410
+that have assigned RBAC role.
+
+00:12:55.410 --> 00:12:59.340
+You can also configure different
+auto-remediation settings
+
+00:12:59.340 --> 00:13:01.530
+for a different set of devices
+
+00:13:01.530 --> 00:13:04.440
+and assign specific
+remediation level
+
+00:13:04.440 --> 00:13:08.370
+that apply during
+automated investigations.
+
+00:13:08.370 --> 00:13:09.930
+During investigation,
+
+00:13:09.930 --> 00:13:13.560
+device group become a
+practical filter as well.
+
+00:13:13.560 --> 00:13:15.750
+You can narrow the device list
+
+00:13:15.750 --> 00:13:19.680
+to a specific group
+using the group filter.
+
+00:13:19.680 --> 00:13:21.660
+When you create a device group,
+
+00:13:21.660 --> 00:13:24.570
+you'll set the automated
+remediation level
+
+00:13:24.570 --> 00:13:28.290
+for that group, specify
+matching roles that determine
+
+00:13:28.290 --> 00:13:33.750
+which device belong based on
+things like the device name,
+
+00:13:33.750 --> 00:13:37.830
+the domain, tags,
+operating system platform,
+
+00:13:37.830 --> 00:13:42.120
+select the Entra ID user
+groups that should have access
+
+00:13:42.120 --> 00:13:45.750
+to the device, and then rank
+the device group relative
+
+00:13:45.750 --> 00:13:51.160
+to other groups so overlap
+is handled predictably.
+
+00:13:53.580 --> 00:13:55.470
+With the environment in place,
+
+00:13:55.470 --> 00:13:59.220
+let's shift into strengthening
+Windows Endpoint.
+
+00:13:59.220 --> 00:14:00.690
+In this module,
+we'll take a look
+
+00:14:00.690 --> 00:14:04.530
+at Windows security enhancement
+that reduces the likelihood
+
+00:14:04.530 --> 00:14:08.850
+of compromise and limit
+what attackers can do
+
+00:14:08.850 --> 00:14:11.940
+if they gain a foothold.
+
+00:14:11.940 --> 00:14:14.400
+After completing this
+module, you'll be able
+
+00:14:14.400 --> 00:14:18.630
+to understand attack surface
+reduction in Windows,
+
+00:14:18.630 --> 00:14:23.250
+enable attack surface reduction
+rules on Windows devices
+
+00:14:23.250 --> 00:14:25.020
+and configure those rules
+
+00:14:25.020 --> 00:14:30.790
+to match your organization risk
+tolerance and operational needs.
+
+00:14:33.960 --> 00:14:37.290
+Attack surface reduction
+in Windows is broader
+
+00:14:37.290 --> 00:14:39.330
+than just single control.
+
+00:14:39.330 --> 00:14:42.330
+It's a collection of
+capabilities designed
+
+00:14:42.330 --> 00:14:44.700
+to reduce common attack paths.
+
+00:14:44.700 --> 00:14:48.480
+These include attack
+surface reduction rule,
+
+00:14:48.480 --> 00:14:52.290
+hardware-based isolation,
+application control,
+
+00:14:52.290 --> 00:14:55.500
+exploit protection,
+network protection,
+
+00:14:55.500 --> 00:14:59.130
+Windows Defender
+firewall, web protection,
+
+00:14:59.130 --> 00:15:04.260
+control folder access, and
+removable storage protection.
+
+00:15:04.260 --> 00:15:07.020
+As you plan adoption,
+Microsoft's guidance
+
+00:15:07.020 --> 00:15:10.560
+on configuring attack
+surface reduction capability
+
+00:15:10.560 --> 00:15:13.050
+and which Windows
+versions support
+
+00:15:13.050 --> 00:15:16.530
+which features helps you
+choose the right control
+
+00:15:16.530 --> 00:15:18.730
+for a device fleet.
+
+00:15:21.150 --> 00:15:25.380
+Now, let's get concrete with
+attack surface reduction rule.
+
+00:15:25.380 --> 00:15:29.730
+Some common examples include
+blocking executable content
+
+00:15:29.730 --> 00:15:34.800
+from e-mail client and webmail,
+blocking all Office application
+
+00:15:34.800 --> 00:15:38.700
+from creating child processes,
+blocking Office app
+
+00:15:38.700 --> 00:15:43.020
+from creating executable
+content, blocking Office app
+
+00:15:43.020 --> 00:15:48.510
+from injecting code into other
+processes, blocking execution
+
+00:15:48.510 --> 00:15:51.270
+of potentially
+obfuscated script,
+
+00:15:51.270 --> 00:15:55.260
+and using advanced protection
+against ransomware.
+
+00:15:55.260 --> 00:15:58.800
+Each rule can operate
+in different mode.
+
+00:15:58.800 --> 00:16:04.470
+Off, not configured or
+disabled, which maps to zero.
+
+00:16:04.470 --> 00:16:08.730
+Block, which enables the
+rule maps to the number one.
+
+00:16:08.730 --> 00:16:13.650
+Audit, mapping to two,
+and warm, mapping to six.
+
+00:16:13.650 --> 00:16:17.700
+That range is useful because
+it lets you start with Audit
+
+00:16:17.700 --> 00:16:24.420
+or Warn to automate impact
+before enforcing block broadly.
+
+00:16:24.420 --> 00:16:29.580
+For deployment, you can use
+Microsoft Configuration Manager,
+
+00:16:29.580 --> 00:16:33.690
+Group Policy, PowerShell,
+Microsoft Intune,
+
+00:16:33.690 --> 00:16:37.410
+or other mobile device
+management option.
+
+00:16:37.410 --> 00:16:41.460
+In a hands-on demonstration,
+we're going to see later on how
+
+00:16:41.460 --> 00:16:45.720
+to navigate the Endpoint
+Manager Admin Center and work
+
+00:16:45.720 --> 00:16:48.660
+through Endpoint security
+policies to configure
+
+00:16:48.660 --> 00:16:52.300
+and deploy these role modes.
+
+00:16:55.110 --> 00:16:58.440
+Now that we've covered core
+protection and hardening,
+
+00:16:58.440 --> 00:17:01.230
+let's shift into investigation.
+
+00:17:01.230 --> 00:17:03.990
+This is where Defender for
+Endpoint helps you move
+
+00:17:03.990 --> 00:17:08.460
+from something looks wrong
+to a clear understanding
+
+00:17:08.460 --> 00:17:13.830
+of what happened, what's
+affected, and what to do next.
+
+00:17:13.830 --> 00:17:16.530
+After completing this
+module, you'll be able
+
+00:17:16.530 --> 00:17:20.130
+to use the device page in
+Microsoft Defender for Endpoint,
+
+00:17:20.130 --> 00:17:23.850
+describe the device forensic
+information that Defender
+
+00:17:23.850 --> 00:17:25.530
+for Endpoint collects,
+
+00:17:25.530 --> 00:17:29.100
+and explain how
+behavioral blocking works
+
+00:17:29.100 --> 00:17:32.220
+to stop threats based
+on what they do,
+
+00:17:32.220 --> 00:17:35.350
+not just what they look like.
+
+00:17:37.980 --> 00:17:40.560
+Let's start with the
+device inventory.
+
+00:17:40.560 --> 00:17:43.980
+The device inventory page
+shows you a list of devices
+
+00:17:43.980 --> 00:17:47.400
+in your network where
+alerts are generated.
+
+00:17:47.400 --> 00:17:51.330
+By default, the list focuses
+on device with alerts seen
+
+00:17:51.330 --> 00:17:55.290
+in the last 30 days, which
+helps you prioritize the most
+
+00:17:55.290 --> 00:17:56.880
+recent risk.
+
+00:17:56.880 --> 00:17:58.590
+In the current
+portal experience,
+
+00:17:58.590 --> 00:18:02.280
+you'll find this inventory
+under the assets section,
+
+00:18:02.280 --> 00:18:05.620
+specifically in devices.
+
+00:18:07.050 --> 00:18:09.690
+When you pivot into
+a specific device,
+
+00:18:09.690 --> 00:18:13.890
+Defender for Endpoint gives you
+an investigation workspace built
+
+00:18:13.890 --> 00:18:16.580
+around the context and action.
+
+00:18:16.580 --> 00:18:18.890
+You'll see each device detail,
+
+00:18:18.890 --> 00:18:24.170
+a set of response action you can
+execute, and a series of tabs
+
+00:18:24.170 --> 00:18:27.350
+such as overview,
+alerts, timeline,
+
+00:18:27.350 --> 00:18:31.470
+security recommendation,
+software inventory,
+
+00:18:31.470 --> 00:18:37.080
+discovered vulnerability, and
+missing knowledge base, KBs.
+
+00:18:37.080 --> 00:18:39.420
+You'll also see
+the summary cards
+
+00:18:39.420 --> 00:18:44.070
+that helps you quickly orient
+yourself, like active alerts,
+
+00:18:44.070 --> 00:18:47.820
+logged on user, and a
+security assessment,
+
+00:18:47.820 --> 00:18:51.720
+so you can decide whether you're
+dealing with a true incident
+
+00:18:51.720 --> 00:18:54.520
+and what your next
+step should be.
+
+00:18:56.400 --> 00:18:58.680
+Now let's talk about
+behavioral blocking
+
+00:18:58.680 --> 00:19:01.260
+and containment on decline.
+
+00:19:01.260 --> 00:19:06.270
+These capabilities help
+identify and stop threats based
+
+00:19:06.270 --> 00:19:09.180
+on behavior and process trees,
+
+00:19:09.180 --> 00:19:13.110
+even when the threat has
+already started running.
+
+00:19:13.110 --> 00:19:17.910
+The idea is that next generation
+protection, endpoint detection
+
+00:19:17.910 --> 00:19:19.890
+and response, and Defender
+
+00:19:19.890 --> 00:19:23.310
+for Endpoint components
+work together.
+
+00:19:23.310 --> 00:19:27.000
+Cloud intelligence and
+local sensors combine
+
+00:19:27.000 --> 00:19:32.100
+so suspicious behavior can be
+blocked or contained quickly.
+
+00:19:32.100 --> 00:19:35.070
+If you want an example
+focused on this concept,
+
+00:19:35.070 --> 00:19:36.960
+we'll see a couple of examples
+
+00:19:36.960 --> 00:19:42.460
+in demos we'll run
+later on in this video.
+
+00:19:44.520 --> 00:19:47.340
+Investigation is
+only half the story.
+
+00:19:47.340 --> 00:19:49.890
+You also need the
+ability to act.
+
+00:19:49.890 --> 00:19:52.770
+Next, we'll focus on
+the response action
+
+00:19:52.770 --> 00:19:56.970
+so it can take directly on a
+device, along with the option
+
+00:19:56.970 --> 00:20:01.710
+to collect forensic data
+and access system remotely
+
+00:20:01.710 --> 00:20:06.380
+when deeper triaging
+is required.
+
+00:20:06.380 --> 00:20:10.160
+After completing this module,
+you'll be able to perform action
+
+00:20:10.160 --> 00:20:15.050
+on the device using Defender for
+Endpoint, collect forensic data
+
+00:20:15.050 --> 00:20:17.120
+to support an investigation,
+
+00:20:17.120 --> 00:20:24.080
+and access device remotely using
+built-in response capabilities.
+
+00:20:24.080 --> 00:20:25.820
+When you're
+investigating a device,
+
+00:20:25.820 --> 00:20:30.350
+Defender for Endpoint gives you
+device control so it can respond
+
+00:20:30.350 --> 00:20:32.120
+without switching tools.
+
+00:20:32.120 --> 00:20:35.310
+You can perform
+action, collect data,
+
+00:20:35.310 --> 00:20:38.370
+or remotely access the machine.
+
+00:20:38.370 --> 00:20:41.850
+Common response action
+includes managing tags,
+
+00:20:41.850 --> 00:20:45.000
+initiating an automated
+investigation,
+
+00:20:45.000 --> 00:20:47.790
+starting a live
+response section,
+
+00:20:47.790 --> 00:20:50.820
+collecting an
+investigation package,
+
+00:20:50.820 --> 00:20:55.470
+running an antivirus scan,
+restricting app execution,
+
+00:20:55.470 --> 00:20:59.340
+isolating the device,
+containing the device,
+
+00:20:59.340 --> 00:21:01.320
+consulting a threat expert,
+
+00:21:01.320 --> 00:21:06.100
+and reviewing the activity
+in the Action Center.
+
+00:21:07.290 --> 00:21:11.100
+One of the most useful
+forensic options is collect an
+
+00:21:11.100 --> 00:21:13.170
+investigation package.
+
+00:21:13.170 --> 00:21:16.140
+As part of an
+investigation or response,
+
+00:21:16.140 --> 00:21:21.030
+you can gather a package that
+includes things like autorun,
+
+00:21:21.030 --> 00:21:25.680
+install program, network
+connection, prefetch files,
+
+00:21:25.680 --> 00:21:30.990
+running processes, scheduled
+tasks, the security event log,
+
+00:21:30.990 --> 00:21:35.480
+services, Windows Server,
+message block session,
+
+00:21:35.480 --> 00:21:40.730
+system information, temp
+directories, users and groups,
+
+00:21:40.730 --> 00:21:47.820
+and Defender support log, often
+referenced as WD support logs.
+
+00:21:47.820 --> 00:21:51.420
+This helps you capture a
+snapshot of the device state
+
+00:21:51.420 --> 00:21:56.200
+for deeper analysis and
+evidence preservation.
+
+00:21:58.050 --> 00:22:00.540
+For rapid, hands-on triage,
+
+00:22:00.540 --> 00:22:05.070
+Live Response gives security
+operation team a near-instant
+
+00:22:05.070 --> 00:22:08.970
+access to a device through
+a remote shell connection.
+
+00:22:08.970 --> 00:22:12.270
+You can use basic command to
+inspect what's happening.
+
+00:22:12.270 --> 00:22:17.700
+Commands like connection, file
+info, persistence, process,
+
+00:22:17.700 --> 00:22:22.380
+registry, schedule
+tasks, and services.
+
+00:22:22.380 --> 00:22:25.290
+When you need deeper
+capabilities,
+
+00:22:25.290 --> 00:22:29.910
+advanced command helps you move
+from observation to action.
+
+00:22:29.910 --> 00:22:35.460
+Commands such as analyze,
+get file, run, library,
+
+00:22:35.460 --> 00:22:38.310
+put file, and remediate.
+
+00:22:38.310 --> 00:22:41.820
+There's also a supporting
+video on Microsoft Defender
+
+00:22:41.820 --> 00:22:45.420
+for Endpoint Live Response
+just over four minutes
+
+00:22:45.420 --> 00:22:48.250
+that demonstrates
+the experience.
+
+00:22:49.560 --> 00:22:51.570
+Once you've
+investigated the device
+
+00:22:51.570 --> 00:22:56.040
+and taken immediate response
+action, the next step is often
+
+00:22:56.040 --> 00:23:01.290
+to pivot into the evidence
+itself, files, user account,
+
+00:23:01.290 --> 00:23:06.870
+IP addresses, domains, and URLs,
+so you can understand scope,
+
+00:23:06.870 --> 00:23:11.470
+impact, and potential
+attacker infrastructure.
+
+00:23:12.840 --> 00:23:15.180
+After completing this
+module, you'll be able
+
+00:23:15.180 --> 00:23:19.440
+to investigate file in Defender
+for Endpoint, investigate domain
+
+00:23:19.440 --> 00:23:23.610
+and IP addresses, and
+investigate user account,
+
+00:23:23.610 --> 00:23:27.570
+so you can correlate device
+activity with identities
+
+00:23:27.570 --> 00:23:30.790
+and external infrastructure.
+
+00:23:32.670 --> 00:23:35.820
+Let's take a look at
+file investigation.
+
+00:23:35.820 --> 00:23:39.900
+When a file is associated with
+an alert, suspicious behavior,
+
+00:23:39.900 --> 00:23:44.280
+or notable event, you can
+investigate its detail
+
+00:23:44.280 --> 00:23:48.480
+to determine whether it
+exhibits malicious activity,
+
+00:23:48.480 --> 00:23:52.020
+identifies the
+attacker's motivation,
+
+00:23:52.020 --> 00:23:55.830
+and understand the potential
+scope of the breach.
+
+00:23:55.830 --> 00:23:59.100
+This is where you validate
+whether the file is truly
+
+00:23:59.100 --> 00:24:03.780
+harmful, whether it's
+widespread, and how it connects
+
+00:24:03.780 --> 00:24:05.760
+to the larger attack chain.
+
+00:24:05.760 --> 00:24:09.390
+If you want to see deeper
+analysis capability,
+
+00:24:09.390 --> 00:24:12.930
+there's a supporting video
+called the Microsoft Defender
+
+00:24:12.930 --> 00:24:17.220
+for Endpoint Deep Analysis
+and additional guidance
+
+00:24:17.220 --> 00:24:20.260
+on a responding to file alert.
+
+00:24:23.100 --> 00:24:26.010
+Identity is often
+the real target,
+
+00:24:26.010 --> 00:24:29.700
+so investigating user
+account is critical.
+
+00:24:29.700 --> 00:24:31.770
+You can identify accounts
+
+00:24:31.770 --> 00:24:37.260
+which are the most active alerts
+commonly shown as users at risk
+
+00:24:37.260 --> 00:24:40.380
+on dashboards, and
+investigate scenarios
+
+00:24:40.380 --> 00:24:43.470
+like potentially
+compromised credentials.
+
+00:24:43.470 --> 00:24:47.610
+You can also pivot into a user
+account directly from an alert
+
+00:24:47.610 --> 00:24:51.840
+or device investigation
+to look for patterns
+
+00:24:51.840 --> 00:24:56.520
+such as lateral movement, where
+the same user account appears
+
+00:24:56.520 --> 00:25:01.530
+across multiple devices, or
+suspicious sign-in activity,
+
+00:25:01.530 --> 00:25:04.600
+such as account abuse.
+
+00:25:06.930 --> 00:25:10.320
+When an IP address
+shows up in telemetry,
+
+00:25:10.320 --> 00:25:14.310
+investigating it helps you
+determine whether it's benign,
+
+00:25:14.310 --> 00:25:17.610
+suspicious, or
+clearly malicious.
+
+00:25:17.610 --> 00:25:23.640
+In the IP view, you can examine
+where the IP is seen worldwide,
+
+00:25:23.640 --> 00:25:28.380
+look up reverse DNS names,
+review alerts related
+
+00:25:28.380 --> 00:25:32.970
+to that IP, check whether the
+IP appears in your organization
+
+00:25:32.970 --> 00:25:34.950
+and understand prevalence.
+
+00:25:34.950 --> 00:25:41.230
+How often is that IP is
+observed in your environment?
+
+00:25:43.860 --> 00:25:48.450
+Domain and URLs often
+connect endpoint behavior
+
+00:25:48.450 --> 00:25:50.940
+to attacker infrastructure.
+
+00:25:50.940 --> 00:25:56.730
+In the URL and domain view,
+you can review domain details
+
+00:25:56.730 --> 00:26:00.570
+and register contact
+information.
+
+00:26:00.570 --> 00:26:02.430
+See Microsoft's verdict
+
+00:26:02.430 --> 00:26:06.690
+and check incident related
+to the URL or domain.
+
+00:26:06.690 --> 00:26:10.350
+You can understand prevalence
+within your organization
+
+00:26:10.350 --> 00:26:13.560
+and see the most
+recently observed device
+
+00:26:13.560 --> 00:26:18.250
+that communicated with
+that URL or domain.
+
+00:26:19.320 --> 00:26:24.270
+Next, we'll focus on automation,
+because at enterprise-scale,
+
+00:26:24.270 --> 00:26:27.780
+consistent response
+depends on smart default,
+
+00:26:27.780 --> 00:26:30.960
+controlled remediation,
+and integration
+
+00:26:30.960 --> 00:26:36.300
+that helps enforce policy
+without slowing down analysts.
+
+00:26:36.300 --> 00:26:38.790
+After completing this
+module, you'll be able
+
+00:26:38.790 --> 00:26:41.910
+to configure advanced features
+in Microsoft Defender
+
+00:26:41.910 --> 00:26:45.750
+for Endpoint and manage
+automation settings,
+
+00:26:45.750 --> 00:26:50.460
+so investigation and remediation
+can be scaled safely
+
+00:26:50.460 --> 00:26:55.840
+across different device groups
+and operational requirements.
+
+00:26:56.910 --> 00:26:59.850
+Here we explore the
+advanced feature area,
+
+00:26:59.850 --> 00:27:03.150
+which provides a set
+of on/off switches
+
+00:27:03.150 --> 00:27:06.090
+for major feature
+within the product.
+
+00:27:06.090 --> 00:27:09.990
+In this context, we're focusing
+specifically on the settings
+
+00:27:09.990 --> 00:27:12.390
+that influences automation.
+
+00:27:12.390 --> 00:27:14.880
+So you can decide whether
+you want the service
+
+00:27:14.880 --> 00:27:19.260
+to act automatically, where
+you want human approval,
+
+00:27:19.260 --> 00:27:25.420
+and what data source automated
+investigation can use.
+
+00:27:28.230 --> 00:27:30.870
+Automation quality
+depends heavily
+
+00:27:30.870 --> 00:27:35.370
+on what data automated
+investigation can collect
+
+00:27:35.370 --> 00:27:37.020
+and analyze.
+
+00:27:37.020 --> 00:27:40.980
+With file content analysis,
+you can enable a capability
+
+00:27:40.980 --> 00:27:45.150
+where certain files and e-mail
+attachments are automatically
+
+00:27:45.150 --> 00:27:46.650
+uploaded to the cloud
+
+00:27:46.650 --> 00:27:51.810
+for additional inspection during
+an automated investigation.
+
+00:27:51.810 --> 00:27:54.030
+With memory content analysis,
+
+00:27:54.030 --> 00:27:57.540
+you can enable
+automated investigation
+
+00:27:57.540 --> 00:28:00.060
+of processed memory content.
+
+00:28:00.060 --> 00:28:03.900
+When this is turned on, memory
+content might be uploaded
+
+00:28:03.900 --> 00:28:06.990
+to Microsoft Defender
+for Endpoint as part
+
+00:28:06.990 --> 00:28:10.080
+of an automated investigation.
+
+00:28:10.080 --> 00:28:14.190
+You can also control what
+automation should skip
+
+00:28:14.190 --> 00:28:17.760
+by configuring automation
+folder exclusion.
+
+00:28:17.760 --> 00:28:20.970
+This exclusion lets
+you specify folder
+
+00:28:20.970 --> 00:28:24.390
+that automated
+investigation will bypass,
+
+00:28:24.390 --> 00:28:26.220
+and you can define attributes
+
+00:28:26.220 --> 00:28:30.090
+such as the folder paths
+themselves, file extension,
+
+00:28:30.090 --> 00:28:35.260
+and file names for fine
+tuning what gets excluded.
+
+00:28:36.420 --> 00:28:39.330
+Now let's take a look at
+automated investigation
+
+00:28:39.330 --> 00:28:41.340
+and remediation level.
+
+00:28:41.340 --> 00:28:46.140
+This is how you decide what
+the system can fix on its own
+
+00:28:46.140 --> 00:28:49.710
+versus what requires
+approval from us.
+
+00:28:49.710 --> 00:28:51.420
+Options include full,
+
+00:28:51.420 --> 00:28:55.320
+where threats can be
+remediated automatically,
+
+00:28:55.320 --> 00:28:59.490
+and several semi-level
+where approval is required,
+
+00:28:59.490 --> 00:29:03.810
+such as requiring approval
+for any remediation,
+
+00:29:03.810 --> 00:29:07.980
+requiring approval for
+curve folders remediation,
+
+00:29:07.980 --> 00:29:13.080
+or requiring approval for
+non-temp folder remediation.
+
+00:29:13.080 --> 00:29:15.960
+If you want no
+automated response,
+
+00:29:15.960 --> 00:29:18.060
+you can also set a level
+
+00:29:18.060 --> 00:29:22.410
+that disables automated
+remediation action.
+
+00:29:22.410 --> 00:29:25.470
+These settings are often
+applied by device group,
+
+00:29:25.470 --> 00:29:28.830
+so you can be more
+aggressive where appropriate
+
+00:29:28.830 --> 00:29:32.590
+and more cautious on
+sensitive systems.
+
+00:29:34.740 --> 00:29:38.400
+Here we connect Endpoint
+Risk to access control
+
+00:29:38.400 --> 00:29:41.940
+by using Microsoft
+Defender Endpoint Manager
+
+00:29:41.940 --> 00:29:46.860
+and conditional access to
+block at-risk devices.
+
+00:29:46.860 --> 00:29:51.000
+The flow starts by turning on
+the Microsoft Intune connection
+
+00:29:51.000 --> 00:29:54.240
+from the Microsoft
+Defender XDR portal.
+
+00:29:54.240 --> 00:29:58.410
+Next, you turn on the Defender
+for Endpoint Integration
+
+00:29:58.410 --> 00:30:01.200
+in the Intune Admin Center.
+
+00:30:01.200 --> 00:30:05.310
+And then you create a
+compliance policy in Intune,
+
+00:30:05.310 --> 00:30:10.140
+assign that policy to the right
+users or devices, and finally,
+
+00:30:10.140 --> 00:30:14.820
+create a Microsoft Entra ID
+conditional access policy
+
+00:30:14.820 --> 00:30:18.600
+that can enforce
+access decision based
+
+00:30:18.600 --> 00:30:21.270
+on device compliance or risk.
+
+00:30:21.270 --> 00:30:25.200
+There's also a supporting
+video on conditional access
+
+00:30:25.200 --> 00:30:27.820
+with Defender for Endpoint.
+
+00:30:29.070 --> 00:30:33.210
+Now we'll focus on how alerts
+are configured and managed.
+
+00:30:33.210 --> 00:30:35.250
+Because detection
+is only helpful
+
+00:30:35.250 --> 00:30:39.360
+if the right people are
+notified, noise is controlled,
+
+00:30:39.360 --> 00:30:42.180
+and your indicators
+and policies align
+
+00:30:42.180 --> 00:30:46.620
+to how your
+organization operates.
+
+00:30:46.620 --> 00:30:48.930
+After completing this
+module, you'll be able
+
+00:30:48.930 --> 00:30:53.190
+to configure alert settings in
+Microsoft Defender for Endpoint
+
+00:30:53.190 --> 00:30:58.110
+and manage indicators so you
+can improve signal-to-noise
+
+00:30:58.110 --> 00:31:01.560
+and enforce blocking or auditing
+
+00:31:01.560 --> 00:31:05.200
+for known indicators
+of compromise.
+
+00:31:06.240 --> 00:31:09.930
+Let's revisit advanced
+feature from a detection
+
+00:31:09.930 --> 00:31:12.540
+and investigation perspective.
+
+00:31:12.540 --> 00:31:15.390
+This area provides
+many on/off switch
+
+00:31:15.390 --> 00:31:18.660
+that controls how Defender
+for Endpoint connects
+
+00:31:18.660 --> 00:31:22.380
+with other services and
+how information is shared
+
+00:31:22.380 --> 00:31:24.870
+across the broader
+security stack.
+
+00:31:24.870 --> 00:31:26.160
+So your alerting
+
+00:31:26.160 --> 00:31:31.170
+and investigation
+experience is unified.
+
+00:31:31.170 --> 00:31:34.860
+Here are several key
+integrations you can enable.
+
+00:31:34.860 --> 00:31:39.540
+Microsoft Defender for Identity
+Integration retrieves enriched
+
+00:31:39.540 --> 00:31:43.410
+user and device data from
+Defender for Identity
+
+00:31:43.410 --> 00:31:46.560
+and forwards Defender
+for Endpoint Signal,
+
+00:31:46.560 --> 00:31:51.600
+improving correlation across
+identities and endpoints.
+
+00:31:51.600 --> 00:31:53.190
+Sharing endpoint alerts
+
+00:31:53.190 --> 00:31:57.330
+with Microsoft Compliance Center
+supports broader governance
+
+00:31:57.330 --> 00:31:59.940
+and compliance workflow.
+
+00:31:59.940 --> 00:32:03.270
+Microsoft Defender for Cloud
+App can receive Defender
+
+00:32:03.270 --> 00:32:07.860
+for Endpoint Signal, giving
+administrators deeper visibility
+
+00:32:07.860 --> 00:32:12.300
+into both sanctioned
+Cloud Apps and Shadow IT.
+
+00:32:12.300 --> 00:32:15.600
+The Microsoft Intune
+Connector enables sharing
+
+00:32:15.600 --> 00:32:20.550
+of device information and
+stronger policy enforcement.
+
+00:32:20.550 --> 00:32:25.500
+Web content filtering can be
+enabled to help control access
+
+00:32:25.500 --> 00:32:28.530
+to risky categories of content.
+
+00:32:28.530 --> 00:32:32.460
+And Microsoft Secure Score
+can receive Defender
+
+00:32:32.460 --> 00:32:36.780
+for Endpoint Single, so Secure
+Score reflects your device's
+
+00:32:36.780 --> 00:32:41.530
+security posture and
+improvement opportunities.
+
+00:32:43.440 --> 00:32:45.060
+Here we look at how Defender
+
+00:32:45.060 --> 00:32:49.320
+for Endpoint can notify the
+right people at the right time.
+
+00:32:49.320 --> 00:32:53.280
+You can configure the service
+to send e-mail notification
+
+00:32:53.280 --> 00:32:57.270
+to specific recipient whenever
+new alerts are generated.
+
+00:32:57.270 --> 00:33:01.230
+This ensures that the
+appropriate responders are
+
+00:33:01.230 --> 00:33:05.130
+immediately notified and
+can take action based
+
+00:33:05.130 --> 00:33:07.500
+on alert severity.
+
+00:33:07.500 --> 00:33:09.600
+Configuration is
+restricted to user
+
+00:33:09.600 --> 00:33:12.780
+with the managed security
+settings permission.
+
+00:33:12.780 --> 00:33:16.530
+In environment using basic
+permission management,
+
+00:33:16.530 --> 00:33:20.040
+this typically includes
+security administrator
+
+00:33:20.040 --> 00:33:22.470
+or global administrator.
+
+00:33:22.470 --> 00:33:26.550
+You can fine-tune which alert
+severity level triggers
+
+00:33:26.550 --> 00:33:31.530
+notifications and manage the
+recipient list over time,
+
+00:33:31.530 --> 00:33:35.460
+with new recipients only
+receiving alerts generated
+
+00:33:35.460 --> 00:33:37.930
+after they've been added.
+
+00:33:39.240 --> 00:33:43.470
+Not every alert
+represents a real risk,
+
+00:33:43.470 --> 00:33:46.260
+and alert tuning helps
+you reduce noise
+
+00:33:46.260 --> 00:33:48.840
+without losing visibility.
+
+00:33:48.840 --> 00:33:53.010
+Here, we explore how to create
+tuning rules for alerts
+
+00:33:53.010 --> 00:33:56.430
+that are known to be benign
+in your environment,
+
+00:33:56.430 --> 00:33:59.160
+such as an internally
+developed tool
+
+00:33:59.160 --> 00:34:02.340
+or a common
+administrative process.
+
+00:34:02.340 --> 00:34:07.650
+You can scope suppression rules
+to a specific user, a device,
+
+00:34:07.650 --> 00:34:12.750
+a device group, so only matching
+alerts are suppressed while
+
+00:34:12.750 --> 00:34:15.300
+others remain visible.
+
+00:34:15.300 --> 00:34:18.570
+In scenarios that requires
+broader suppression,
+
+00:34:18.570 --> 00:34:22.280
+such as an organization-wide
+benign tool,
+
+00:34:22.280 --> 00:34:27.050
+administrators can suppress
+alert across all devices.
+
+00:34:27.050 --> 00:34:30.230
+This approach helps
+analysts stay focused
+
+00:34:30.230 --> 00:34:37.030
+on meaningful threats instead
+of chasing expected activity.
+
+00:34:38.160 --> 00:34:41.760
+Indicators of
+compromise, or IoC,
+
+00:34:41.760 --> 00:34:46.200
+are a foundational capability
+in endpoint protection.
+
+00:34:46.200 --> 00:34:48.900
+Defender for Endpoint
+allows security teams
+
+00:34:48.900 --> 00:34:54.480
+to define indicators and enforce
+action, such as allowing,
+
+00:34:54.480 --> 00:34:56.490
+auditing, blocking,
+
+00:34:56.490 --> 00:35:01.130
+or remediating activities
+tied to those indicators.
+
+00:35:01.130 --> 00:35:07.040
+You can manage IOCs for
+files, IP addresses, URLs,
+
+00:35:07.040 --> 00:35:09.810
+domains, and certificates.
+
+00:35:09.810 --> 00:35:13.800
+This enables proactive
+blocking of known threats,
+
+00:35:13.800 --> 00:35:17.070
+consistent enforcement
+across devices,
+
+00:35:17.070 --> 00:35:21.420
+and tighter control during
+incident responses.
+
+00:35:21.420 --> 00:35:25.350
+There is also a supporting
+video on unified IOCs
+
+00:35:25.350 --> 00:35:29.430
+that demonstrates how those
+indicators work together
+
+00:35:29.430 --> 00:35:31.600
+across the platform.
+
+00:35:33.630 --> 00:35:37.470
+With detection and response
+covered, we now shift
+
+00:35:37.470 --> 00:35:41.430
+into understanding and
+reducing exposure.
+
+00:35:41.430 --> 00:35:45.870
+Microsoft Defender Vulnerability
+Management Tool helps you
+
+00:35:45.870 --> 00:35:50.940
+continuously identify weaknesses
+across your environment,
+
+00:35:50.940 --> 00:35:52.500
+providing visibility
+
+00:35:52.500 --> 00:35:57.810
+into vulnerabilities
+before they're exploited.
+
+00:35:57.810 --> 00:36:00.510
+After completing this
+module, you'll be able
+
+00:36:00.510 --> 00:36:04.290
+to describe how vulnerability
+management works in Defender
+
+00:36:04.290 --> 00:36:08.670
+for Endpoint, identity
+vulnerabilities in your devices,
+
+00:36:08.670 --> 00:36:10.680
+and track emerging threats
+
+00:36:10.680 --> 00:36:15.460
+so remediation can be
+prioritized effectively.
+
+00:36:16.770 --> 00:36:20.040
+Defender Vulnerability
+Management uses built-in
+
+00:36:20.040 --> 00:36:23.730
+and agentless scanners
+to continuously monitor
+
+00:36:23.730 --> 00:36:28.410
+and detect risk, even when
+devices aren't connected
+
+00:36:28.410 --> 00:36:30.150
+to the corporate network.
+
+00:36:30.150 --> 00:36:34.350
+This capability provides
+near real-time insights
+
+00:36:34.350 --> 00:36:36.360
+into vulnerabilities,
+
+00:36:36.360 --> 00:36:40.560
+misconfiguration,
+and exposure trends.
+
+00:36:40.560 --> 00:36:45.360
+The goal is to help security
+team move from reactive patching
+
+00:36:45.360 --> 00:36:49.010
+to proactive risk reduction.
+
+00:36:49.010 --> 00:36:51.950
+There's also an interactive
+guide available that walks
+
+00:36:51.950 --> 00:36:52.970
+through threats
+
+00:36:52.970 --> 00:36:56.760
+and vulnerability
+management end-to-end.
+
+00:36:59.370 --> 00:37:03.420
+Here we explore how
+vulnerability data is organized
+
+00:37:03.420 --> 00:37:05.160
+and consumed.
+
+00:37:05.160 --> 00:37:09.390
+The vulnerability management
+navigation pane provides
+
+00:37:09.390 --> 00:37:12.510
+multiple views,
+including a dashboard
+
+00:37:12.510 --> 00:37:17.160
+with overall exposure
+scores, threat awareness,
+
+00:37:17.160 --> 00:37:19.590
+and top recommendation.
+
+00:37:19.590 --> 00:37:22.950
+You can drill into
+security recommendations
+
+00:37:22.950 --> 00:37:25.230
+to see effective software,
+
+00:37:25.230 --> 00:37:29.280
+remediation option,
+and threat context.
+
+00:37:29.280 --> 00:37:34.170
+Remediation view helps track
+active fixes and exceptions,
+
+00:37:34.170 --> 00:37:37.440
+while inventory
+provides visibility
+
+00:37:37.440 --> 00:37:40.740
+into all organizational assets.
+
+00:37:40.740 --> 00:37:45.360
+Additional view highlights
+known weaknesses, recent events
+
+00:37:45.360 --> 00:37:49.020
+that impacts risk, and
+baseline assessment
+
+00:37:49.020 --> 00:37:51.550
+for compliance monitoring.
+
+00:37:52.800 --> 00:37:55.860
+Once risks are identified,
+
+00:37:55.860 --> 00:37:58.650
+remediation follows
+a clear flow.
+
+00:37:58.650 --> 00:38:04.040
+You select a recommendation,
+submit a remediation request,
+
+00:38:04.040 --> 00:38:08.510
+and then review progress
+as fixes are implemented.
+
+00:38:08.510 --> 00:38:12.060
+This structured
+approach helps security
+
+00:38:12.060 --> 00:38:15.060
+and IT team collaborate
+effectively
+
+00:38:15.060 --> 00:38:19.170
+and track risk
+reduction over time.
+
+00:38:19.170 --> 00:38:23.800
+Now, let's see Defender
+for Endpoint in action.
+
+00:38:25.170 --> 00:38:28.170
+Welcome to our Defender
+for Endpoint demo.
+
+00:38:28.170 --> 00:38:29.970
+In this demo, what we're going
+
+00:38:29.970 --> 00:38:32.310
+to do is set up
+device onboarding.
+
+00:38:32.310 --> 00:38:35.670
+We're going to onboard a
+device, and following that,
+
+00:38:35.670 --> 00:38:37.380
+let's configure a role,
+
+00:38:37.380 --> 00:38:41.310
+and we'll also configure
+a device group.
+
+00:38:41.310 --> 00:38:44.610
+We're already logged into
+Defender for Endpoint,
+
+00:38:44.610 --> 00:38:48.360
+so let's begin by setting
+up Device Discovery.
+
+00:38:48.360 --> 00:38:52.920
+We're going to go down to
+"System Settings," and here,
+
+00:38:52.920 --> 00:38:58.410
+let's go to "Device Discovery,"
+and let's make sure
+
+00:38:58.410 --> 00:39:01.740
+that standard discovery
+is turned on.
+
+00:39:01.740 --> 00:39:05.970
+It's already turned
+on by default.
+
+00:39:05.970 --> 00:39:07.680
+So there's nothing to change.
+
+00:39:07.680 --> 00:39:10.800
+So now we'll move to
+"Onboarding a Device."
+
+00:39:10.800 --> 00:39:13.260
+Let's head back to our settings.
+
+00:39:13.260 --> 00:39:17.340
+Let's go to "Endpoints,"
+scroll down,
+
+00:39:17.340 --> 00:39:20.140
+and let's select "Onboarding."
+
+00:39:23.370 --> 00:39:27.060
+Here we can choose what kind
+of device we want on board.
+
+00:39:27.060 --> 00:39:28.170
+Is it Windows?
+
+00:39:28.170 --> 00:39:29.160
+Is it Linux?
+
+00:39:29.160 --> 00:39:30.000
+Is it Mac?
+
+00:39:30.000 --> 00:39:31.740
+Is it Android?
+
+00:39:31.740 --> 00:39:35.760
+iOS? Choose whichever
+device you want to use.
+
+00:39:35.760 --> 00:39:40.130
+In our case, we're going
+to go with Windows 11.
+
+00:39:40.130 --> 00:39:43.190
+Connectivity type, we'll
+leave it as "Streamlined."
+
+00:39:43.190 --> 00:39:46.040
+There are different
+methods that we can use
+
+00:39:46.040 --> 00:39:49.670
+to deploy the onboarding,
+Group Policy,
+
+00:39:49.670 --> 00:39:54.300
+Microsoft Endpoint Configuration
+Manager, amongst others.
+
+00:39:54.300 --> 00:39:57.060
+But in our case,
+we'll keep it simple.
+
+00:39:57.060 --> 00:39:59.580
+We'll just go with
+a local script.
+
+00:39:59.580 --> 00:40:01.830
+It's not the most
+scalable approach.
+
+00:40:01.830 --> 00:40:06.180
+This is not what you want to use
+across a large organization,
+
+00:40:06.180 --> 00:40:07.980
+but adequate for a demo.
+
+00:40:07.980 --> 00:40:10.380
+Let's download the script.
+
+00:40:10.380 --> 00:40:16.980
+shouldn't take long,
+and let's open it.
+
+00:40:16.980 --> 00:40:21.660
+It's a zip file, so what
+we'll do is we'll unzip it
+
+00:40:21.660 --> 00:40:24.010
+in Explorer.
+
+00:40:25.380 --> 00:40:30.520
+Right-click and "Extract."
+
+00:40:34.350 --> 00:40:36.630
+Done. Next, let's run it.
+
+00:40:36.630 --> 00:40:38.760
+We're going to run
+it as administrator.
+
+00:40:38.760 --> 00:40:40.980
+We need administrator
+privileges.
+
+00:40:40.980 --> 00:40:42.450
+Run as administrator.
+
+00:40:42.450 --> 00:40:51.810
+Run. Yes. And there we go.
+
+00:40:51.810 --> 00:40:56.650
+Let's confirm that, yes, we
+want to onboard this device.
+
+00:40:59.000 --> 00:41:02.780
+And we've successfully
+onboarded this device
+
+00:41:02.780 --> 00:41:05.270
+in Defender for Endpoint.
+
+00:41:05.270 --> 00:41:11.010
+We can now close the window and
+continue working as we see fit.
+
+00:41:12.950 --> 00:41:16.430
+Now that we've onboarded
+our device, let's verify
+
+00:41:16.430 --> 00:41:19.100
+that it got onboarded
+successfully.
+
+00:41:19.100 --> 00:41:23.060
+What we're going to do here
+is navigate to our assets,
+
+00:41:23.060 --> 00:41:27.020
+select devices, and there we go.
+
+00:41:27.020 --> 00:41:29.270
+There's Base23B.
+
+00:41:29.270 --> 00:41:33.600
+That's the device we've
+onboarded over here.
+
+00:41:33.600 --> 00:41:37.050
+Let's run a test to make
+sure it's running correctly,
+
+00:41:37.050 --> 00:41:38.970
+that it's sending telemetry.
+
+00:41:38.970 --> 00:41:43.600
+So we're going to go back to our
+"System Settings," "Endpoints."
+
+00:41:46.260 --> 00:41:49.380
+Let's scroll down to
+"Onboarding" once again.
+
+00:41:49.380 --> 00:41:52.050
+Scroll past the
+onboarding strategy,
+
+00:41:52.050 --> 00:41:55.350
+section two, run
+a detection test.
+
+00:41:55.350 --> 00:42:00.210
+We've got a command we can
+run over here to test.
+
+00:42:00.210 --> 00:42:03.300
+Make sure that the
+onboarding was successful.
+
+00:42:03.300 --> 00:42:05.430
+We'll copy that
+to the clipboard.
+
+00:42:05.430 --> 00:42:10.980
+Let's start a command prompt
+using elevated privileges,
+
+00:42:10.980 --> 00:42:12.960
+run as administrator.
+
+00:42:12.960 --> 00:42:18.300
+Yes. And let's paste
+the command in here.
+
+00:42:18.300 --> 00:42:19.620
+"Execute."
+
+00:42:19.620 --> 00:42:22.020
+The prompt automatically closed.
+
+00:42:22.020 --> 00:42:23.820
+That's normal.
+
+00:42:23.820 --> 00:42:28.050
+And done. We've issued the test.
+
+00:42:28.050 --> 00:42:29.430
+And now let's see
+
+00:42:29.430 --> 00:42:33.850
+if we successfully
+simulated an attack.
+
+00:42:35.570 --> 00:42:38.720
+All right, let's make
+sure that our tests work.
+
+00:42:38.720 --> 00:42:42.740
+We'll go down to "Incidents
+and Alerts," "Incident,"
+
+00:42:42.740 --> 00:42:44.510
+and there's the test alert,
+
+00:42:44.510 --> 00:42:47.970
+suspicious PowerShell
+command line.
+
+00:42:47.970 --> 00:42:57.820
+Let's manage the incident and
+mark it as a security test.
+
+00:43:00.720 --> 00:43:03.120
+"Done." "Save."
+
+00:43:03.120 --> 00:43:06.330
+So we've tested that
+the device is onboarded
+
+00:43:06.330 --> 00:43:10.240
+and also actioned
+our first incident.
+
+00:43:12.720 --> 00:43:18.240
+In this demo, let's set up a
+security role and an assignment.
+
+00:43:18.240 --> 00:43:22.150
+We're going to head back
+down to our system settings.
+
+00:43:23.220 --> 00:43:28.470
+Under "System Settings," let's
+go to "Microsoft Defender XDR,"
+
+00:43:28.470 --> 00:43:30.850
+"Permissions and Role."
+
+00:43:32.220 --> 00:43:34.650
+Scroll down a little
+bit, and there's go
+
+00:43:34.650 --> 00:43:37.360
+to permissions and roles.
+
+00:43:41.370 --> 00:43:44.080
+Let's create a custom role.
+
+00:43:46.020 --> 00:43:48.810
+We'll use the name
+tier one support.
+
+00:43:48.810 --> 00:43:52.080
+Skip over the
+"Description," "Next."
+
+00:43:52.080 --> 00:43:56.400
+What permission group do I
+want to assign our team?
+
+00:43:56.400 --> 00:43:58.530
+Let's select
+"Security Operation,"
+
+00:43:58.530 --> 00:44:01.770
+and we'll give them all
+read and manage permission.
+
+00:44:01.770 --> 00:44:04.140
+"Apply." "Next."
+
+00:44:04.140 --> 00:44:06.360
+Who do we want to
+assign the role to?
+
+00:44:06.360 --> 00:44:08.010
+Let's create an assignment.
+
+00:44:08.010 --> 00:44:13.770
+We'll name the assignment
+Tier 1 Support,
+
+00:44:13.770 --> 00:44:18.370
+and let's assign this
+to the group SG-IT.
+
+00:44:22.140 --> 00:44:28.830
+"Done," "Add,"
+"Next," and "Submit."
+
+00:44:28.830 --> 00:44:31.860
+We've created our first role.
+
+00:44:31.860 --> 00:44:36.130
+and we've done our first
+assignment at the same time.
+
+00:44:38.280 --> 00:44:42.330
+All right, in this demo,
+let's create a device group,
+
+00:44:42.330 --> 00:44:46.440
+add devices, and select who
+can perform remediation.
+
+00:44:46.440 --> 00:44:49.590
+So we're going to go down
+to our "System "Settings."
+
+00:44:49.590 --> 00:44:52.750
+Let's head into "Endpoints."
+
+00:44:53.820 --> 00:44:56.910
+Let's select "Device Groups"
+
+00:44:56.910 --> 00:44:59.250
+when we'll create our
+first device group.
+
+00:44:59.250 --> 00:45:01.200
+"Add," let's choose a name.
+
+00:45:01.200 --> 00:45:03.870
+We'll simply call
+this one regular.
+
+00:45:03.870 --> 00:45:08.610
+Remediation level, let's
+select "Full remediation."
+
+00:45:08.610 --> 00:45:13.650
+Next, which devices should
+be part of that group?
+
+00:45:13.650 --> 00:45:14.970
+Let's keep it simple.
+
+00:45:14.970 --> 00:45:19.830
+We're going to select all
+of our Windows 11 devices.
+
+00:45:19.830 --> 00:45:24.010
+"Select OS," "Windows
+11," "Next."
+
+00:45:27.090 --> 00:45:30.690
+We can preview which devices
+would be in that group.
+
+00:45:30.690 --> 00:45:33.570
+There's only one that's the
+device we onboarded earlier
+
+00:45:33.570 --> 00:45:34.890
+in this demo.
+
+00:45:34.890 --> 00:45:36.150
+That's good.
+
+00:45:36.150 --> 00:45:39.660
+"Phase 23B."
+
+00:45:39.660 --> 00:45:46.500
+"Next." And finally, who can
+perform remediation action
+
+00:45:46.500 --> 00:45:48.060
+on that device?
+
+00:45:48.060 --> 00:45:50.220
+Let's select our support team.
+
+00:45:50.220 --> 00:45:53.100
+That will be SG-IT.
+
+00:45:53.100 --> 00:45:54.150
+There's the group.
+
+00:45:54.150 --> 00:45:59.370
+"Select." "Add Selected Groups."
+
+00:45:59.370 --> 00:46:02.160
+"Submit." And we're done.
+
+00:46:02.160 --> 00:46:04.740
+We've created our
+first device group,
+
+00:46:04.740 --> 00:46:08.190
+and now we can continue creating
+additional device group,
+
+00:46:08.190 --> 00:46:11.410
+reorder them as necessary.
+
+00:46:13.230 --> 00:46:16.530
+Let's recap what we've covered
+in this learning path.
+
+00:46:16.530 --> 00:46:21.450
+We explored how Defender for
+Endpoint helps prevent, detect,
+
+00:46:21.450 --> 00:46:26.370
+investigate, and responds to
+advanced endpoint threats.
+
+00:46:26.370 --> 00:46:30.510
+We looked at threat management
+through near real-time detection
+
+00:46:30.510 --> 00:46:35.670
+and incident, device
+onboarding, and configuration.
+
+00:46:35.670 --> 00:46:39.030
+Attack surface reduction
+to limit exposure,
+
+00:46:39.030 --> 00:46:43.740
+and vulnerability management
+to continuously identify
+
+00:46:43.740 --> 00:46:47.380
+and reduce risk across
+the environment.
+
+00:46:48.780 --> 00:46:50.670
+This concludes our session.
+
+00:46:50.670 --> 00:46:54.510
+There are many ways to continue
+your learning journey.
+
+00:46:54.510 --> 00:46:58.860
+We encourage you to watch other
+videos in this course or search
+
+00:46:58.860 --> 00:47:04.900
+out your next favorite topic on
+Microsoft Learn at aka.ms/learn.
+

@@ -4,13 +4,14 @@
   "url": "https://youtu.be/Nt7f2Bog89c",
   "title": "Mitigate threats using Microsoft Defender for Cloud | SC-200 | Episode 5",
   "channel": "Microsoft Learn",
-  "duration_sec": null,
-  "duration_string": null,
-  "upload_date": null,
-  "language": null,
+  "duration_sec": 2468,
+  "duration_string": "41:08",
+  "upload_date": "20260504",
+  "language": "en-US",
   "chapters": [],
-  "manual_sub_langs": [],
-  "auto_sub_has_zh_hant": null,
-  "description_head": "",
-  "source": "oembed_fallback"
+  "manual_sub_langs": [
+    "en"
+  ],
+  "auto_sub_has_zh_hant": true,
+  "description_head": "Episode 5 of 10\nFor the full video series, click here: https://aka.ms/SC-200onYouTube\n\nThis video explains how Microsoft Defender for Cloud helps security operations analysts protect Azure, hybrid, and multicloud workloads by unifying cloud security posture management with advanced threat detection and response. It covers planning and enabling Defender for Cloud, connecting Azure and non‑Azure resources, assessing and hardening cloud environments through Cloud Security Posture Management (CSPM), and understanding the protections available for different cloud workloads. Learners also practice investigating and remediating security alerts, gaining hands‑on experience with Defender for Cloud’s recommendations, analytics, and incident workflows. The path aligns with the SC‑200: Microsoft Security Operations Analyst certification and equips learners to strengthen cloud security across diverse environments.\n\nLearn more about this course and take the certification exam to test your new skills: https://aka.ms/SC-200onLearn"
 }

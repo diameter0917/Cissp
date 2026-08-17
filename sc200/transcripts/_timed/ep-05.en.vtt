@@ -1,0 +1,2447 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.060 --> 00:00:01.300
+[ Music ]
+
+00:00:06.150 --> 00:00:09.510
+JEAN-FRANCOIS BILODEAU: Think about
+how quickly a minor misconfiguration
+
+00:00:09.510 --> 00:00:13.530
+in the cloud can turn into
+a major security incident,
+
+00:00:13.530 --> 00:00:16.350
+a storage account
+exposed to the internet,
+
+00:00:16.350 --> 00:00:19.770
+an unpatched server spun
+up for a quick test,
+
+00:00:19.770 --> 00:00:24.840
+or an API that quietly starts
+leaking sensitive data.
+
+00:00:24.840 --> 00:00:30.330
+In a hybrid multi-cloud world,
+those gaps can be hard to spot
+
+00:00:30.330 --> 00:00:33.090
+until an attacker
+finds them first.
+
+00:00:33.090 --> 00:00:36.480
+Let me introduce you to a
+course where you will learn how
+
+00:00:36.480 --> 00:00:39.480
+to tackle these
+real-world scenarios
+
+00:00:39.480 --> 00:00:44.040
+by improving your security
+posture, protecting workload,
+
+00:00:44.040 --> 00:00:48.810
+and responding to threats with
+Microsoft Defender for Cloud.
+
+00:00:48.810 --> 00:00:50.490
+Hello and welcome.
+
+00:00:50.490 --> 00:00:52.500
+We are glad you've joined us.
+
+00:00:52.500 --> 00:00:56.490
+I am Jean-Francois Bilodeau, a
+Microsoft Technical Trainer.
+
+00:00:56.490 --> 00:01:00.420
+In this session, we will
+cover Learning Path 5,
+
+00:01:00.420 --> 00:01:04.590
+Mitigate Threats Using
+Microsoft Defender for Cloud.
+
+00:01:04.590 --> 00:01:09.030
+Together, we will look at what
+Microsoft Defender for Cloud is;
+
+00:01:09.030 --> 00:01:13.740
+how to enable it; how to connect
+Azure and non-Azure assets
+
+00:01:13.740 --> 00:01:17.790
+to it; how to use posture
+management features
+
+00:01:17.790 --> 00:01:21.120
+like Secure Score
+and recommendations;
+
+00:01:21.120 --> 00:01:24.840
+which workloads can be
+protected; and, finally,
+
+00:01:24.840 --> 00:01:30.870
+how to respond to and automate
+remediation for security alerts.
+
+00:01:30.870 --> 00:01:34.740
+By the end, you will know how
+to turn Defender for Cloud
+
+00:01:34.740 --> 00:01:39.810
+into a practical day-to-day tool
+for reducing risk and speeding
+
+00:01:39.810 --> 00:01:42.720
+up investigation and response.
+
+00:01:42.720 --> 00:01:45.670
+So let's get started
+with this session.
+
+00:01:47.310 --> 00:01:49.980
+Here, we set the stage
+for the broader goal,
+
+00:01:49.980 --> 00:01:53.880
+defending against cyberthreats
+using Microsoft Security
+
+00:01:53.880 --> 00:01:56.790
+Operations platform.
+
+00:01:56.790 --> 00:02:00.630
+We will focus our attention
+on Learning Path 5
+
+00:02:00.630 --> 00:02:01.920
+where the objective is
+
+00:02:01.920 --> 00:02:05.160
+to mitigate threats using
+Defender for Cloud.
+
+00:02:05.160 --> 00:02:09.720
+This Learning Path is designed
+to help you move from visibility
+
+00:02:09.720 --> 00:02:13.440
+to action so you can
+harden your cloud posture
+
+00:02:13.440 --> 00:02:19.260
+and respond effectively when
+something suspicious happens.
+
+00:02:19.260 --> 00:02:20.820
+Let's take a look at
+what we will cover
+
+00:02:20.820 --> 00:02:23.010
+across the learning Path.
+
+00:02:23.010 --> 00:02:26.160
+We will start by planning cloud
+workload protection using
+
+00:02:26.160 --> 00:02:28.770
+Microsoft Defender for Cloud.
+
+00:02:28.770 --> 00:02:32.310
+Then we'll connect Azure
+assets and we'll bring
+
+00:02:32.310 --> 00:02:36.150
+in non-Azure assets as well
+so you can see how Defender
+
+00:02:36.150 --> 00:02:40.830
+for Cloud supports hybrid and
+multi-cloud environments.
+
+00:02:40.830 --> 00:02:44.160
+Next, we'll manage Cloud
+Security Posture Management
+
+00:02:44.160 --> 00:02:48.120
+using a tool like the Secure
+Score, recommendation
+
+00:02:48.120 --> 00:02:50.490
+and compliance insights.
+
+00:02:50.490 --> 00:02:53.640
+From there, we'll walk through
+workload protection available
+
+00:02:53.640 --> 00:02:58.020
+in Defender for Cloud, and
+we'll wrap up by remediating
+
+00:02:58.020 --> 00:03:02.800
+and responding to security
+alerts using Defender for Cloud.
+
+00:03:04.560 --> 00:03:08.910
+Now, let's begin with planning
+for cloud workload protection.
+
+00:03:08.910 --> 00:03:11.640
+Before you enable anything,
+
+00:03:11.640 --> 00:03:13.950
+it helps to understand
+what Defender
+
+00:03:13.950 --> 00:03:15.810
+for Cloud actually does,
+
+00:03:15.810 --> 00:03:18.450
+what kind of protection
+it can provide,
+
+00:03:18.450 --> 00:03:23.160
+and how those protections align
+with the workload you run.
+
+00:03:23.160 --> 00:03:26.220
+In this module, the goals
+are straightforward.
+
+00:03:26.220 --> 00:03:27.900
+First, you will be able
+
+00:03:27.900 --> 00:03:31.560
+to describe Microsoft Defender
+for Cloud's features.
+
+00:03:31.560 --> 00:03:33.300
+Second, you will be able
+
+00:03:33.300 --> 00:03:35.940
+to explain the workload
+protection available
+
+00:03:35.940 --> 00:03:37.740
+in Defender for Cloud.
+
+00:03:37.740 --> 00:03:42.120
+And, third, you will learn how
+to enable Microsoft Defender
+
+00:03:42.120 --> 00:03:46.530
+for Cloud so those capabilities
+can actually be applied
+
+00:03:46.530 --> 00:03:49.530
+to your environment.
+
+00:03:49.530 --> 00:03:52.740
+Microsoft Defender for Cloud
+brings together several
+
+00:03:52.740 --> 00:03:55.620
+important security capabilities.
+
+00:03:55.620 --> 00:03:59.100
+From a development
+security operation,
+
+00:03:59.100 --> 00:04:04.320
+or a DevSecOps perspective, it
+unifies security management
+
+00:04:04.320 --> 00:04:07.080
+at the code level
+across multi-cloud
+
+00:04:07.080 --> 00:04:10.950
+and multiple pipeline
+environments, helping security
+
+00:04:10.950 --> 00:04:14.640
+and development teams
+work from the same set
+
+00:04:14.640 --> 00:04:17.520
+of signals and priorities.
+
+00:04:17.520 --> 00:04:21.750
+From a Cloud Security
+Posture Management, or CSPM,
+
+00:04:21.750 --> 00:04:27.420
+perspective, it surfaces actions
+you can take to prevent breaches
+
+00:04:27.420 --> 00:04:32.340
+by improving configuration
+and reducing exposure.
+
+00:04:32.340 --> 00:04:37.650
+And, from a Cloud Workload
+Protection Platform, or CWPP,
+
+00:04:37.650 --> 00:04:41.580
+perspective, it provides
+specific protection
+
+00:04:41.580 --> 00:04:47.060
+for common workload types like
+servers, containers, storage,
+
+00:04:47.060 --> 00:04:51.050
+database, and more, so
+you can detect threats
+
+00:04:51.050 --> 00:04:56.820
+and investigate suspicious
+activity where it matters most.
+
+00:04:58.890 --> 00:05:01.830
+As you evaluate Defender
+for Cloud, you'll notice
+
+00:05:01.830 --> 00:05:06.330
+that capabilities are organized
+into plans, typically aligning
+
+00:05:06.330 --> 00:05:10.410
+to posture management and
+workload protection needs.
+
+00:05:10.410 --> 00:05:13.530
+Here, we are looking
+at the plans option
+
+00:05:13.530 --> 00:05:16.830
+and the newer CSPM Plan Matrix,
+
+00:05:16.830 --> 00:05:21.180
+which helps you understand what
+features are included based
+
+00:05:21.180 --> 00:05:22.890
+on the plan you choose.
+
+00:05:22.890 --> 00:05:27.360
+This is important because
+enabling the right plan is what
+
+00:05:27.360 --> 00:05:30.600
+determines which
+controls, insights,
+
+00:05:30.600 --> 00:05:34.770
+and detection becomes
+available to your subscription
+
+00:05:34.770 --> 00:05:37.540
+and connected environments.
+
+00:05:39.060 --> 00:05:42.600
+To use all of Defender for
+Cloud features including threat
+
+00:05:42.600 --> 00:05:46.470
+protection, you need to enable
+enhanced security features
+
+00:05:46.470 --> 00:05:47.970
+on the subscription
+
+00:05:47.970 --> 00:05:50.910
+that contains the workload
+you want to protect.
+
+00:05:50.910 --> 00:05:54.210
+In practice, that means
+going into the Defender
+
+00:05:54.210 --> 00:05:58.140
+for Cloud experience in the
+Azure Portal and turning
+
+00:05:58.140 --> 00:06:01.650
+on the right plan for the
+right scope so onboarding
+
+00:06:01.650 --> 00:06:03.660
+and detection can start applying
+
+00:06:03.660 --> 00:06:07.570
+on the resource in
+that subscription.
+
+00:06:08.610 --> 00:06:10.770
+With Defender for Cloud enabled,
+
+00:06:10.770 --> 00:06:14.940
+the next step is making sure
+the right assets are actually
+
+00:06:14.940 --> 00:06:17.610
+connected because
+your security posture
+
+00:06:17.610 --> 00:06:20.610
+and threat signals
+are only as complete
+
+00:06:20.610 --> 00:06:24.120
+as the inventory
+you are monitoring.
+
+00:06:24.120 --> 00:06:27.300
+Let's take a look at how to
+connect both Azure resources
+
+00:06:27.300 --> 00:06:31.560
+and assets that live
+outside of Azure.
+
+00:06:31.560 --> 00:06:35.910
+In this module, you will learn
+how to explore Azure assets,
+
+00:06:35.910 --> 00:06:38.880
+configure settings, and
+monitoring onboarding
+
+00:06:38.880 --> 00:06:43.260
+in Defender for Cloud, and
+integrate Microsoft Defender
+
+00:06:43.260 --> 00:06:46.410
+for Endpoint with
+Defender for Cloud.
+
+00:06:46.410 --> 00:06:48.600
+Then, we'll cover
+how to connect Azure
+
+00:06:48.600 --> 00:06:51.600
+and non-Azure machines
+and, finally,
+
+00:06:51.600 --> 00:06:56.010
+how to connect AWS
+accounts and GCP projects
+
+00:06:56.010 --> 00:06:58.860
+so you can extend your
+security management
+
+00:06:58.860 --> 00:07:03.330
+across multi-cloud environments.
+
+00:07:03.330 --> 00:07:07.500
+Here, we use the asset inventory
+to get a practical view
+
+00:07:07.500 --> 00:07:10.380
+of what Defender for
+Cloud is tracking.
+
+00:07:10.380 --> 00:07:13.380
+You can start from
+an inventory summary
+
+00:07:13.380 --> 00:07:18.210
+that shows total resources,
+how many are unhealthy,
+
+00:07:18.210 --> 00:07:20.100
+how many are unmonitored,
+
+00:07:20.100 --> 00:07:24.480
+and even whether they are an
+unregistered subscription.
+
+00:07:24.480 --> 00:07:26.970
+From there, you can
+drill into the status
+
+00:07:26.970 --> 00:07:28.860
+of each resource looking
+
+00:07:28.860 --> 00:07:33.360
+at whether agent monitoring
+is enabled, whether Defender
+
+00:07:33.360 --> 00:07:35.880
+for Cloud protections
+are applied,
+
+00:07:35.880 --> 00:07:40.500
+and which recommendations are
+associated with that asset.
+
+00:07:40.500 --> 00:07:44.400
+As the onscreen flow animates
+through these areas,
+
+00:07:44.400 --> 00:07:49.080
+the key takeaway is that
+inventory isn't just a list,
+
+00:07:49.080 --> 00:07:53.880
+it's a way to prioritize
+coverage gaps and quickly focus
+
+00:07:53.880 --> 00:07:57.550
+on the resource that
+needs attention.
+
+00:08:00.570 --> 00:08:03.450
+Next, let's take a
+look at configuration.
+
+00:08:03.450 --> 00:08:07.530
+Microsoft Defender for Cloud
+can automatically onboard Azure
+
+00:08:07.530 --> 00:08:11.460
+resources and even
+non-Azure resources
+
+00:08:11.460 --> 00:08:14.280
+by installing the
+right extension.
+
+00:08:14.280 --> 00:08:18.060
+When you enable an extension,
+Defender for Cloud installs it
+
+00:08:18.060 --> 00:08:23.400
+on the new and existing resource
+by assigning a security policy.
+
+00:08:23.400 --> 00:08:28.530
+That means you are not manually
+touching every virtual machine
+
+00:08:28.530 --> 00:08:31.290
+or every service one by one.
+
+00:08:31.290 --> 00:08:35.880
+Instead, you set the
+onboarding behavior centrally
+
+00:08:35.880 --> 00:08:40.110
+in the environment setting
+and monitoring configuration,
+
+00:08:40.110 --> 00:08:43.860
+and Defender for Cloud
+applies it consistently
+
+00:08:43.860 --> 00:08:46.600
+across the selected scope.
+
+00:08:48.000 --> 00:08:52.920
+Now, let's shift from Azure-only
+to hybrid and multi-cloud.
+
+00:08:52.920 --> 00:08:56.580
+If you run servers
+on-premise, in other cloud,
+
+00:08:56.580 --> 00:09:01.110
+or in a mixed environment,
+you still want a single place
+
+00:09:01.110 --> 00:09:04.500
+to understand risk and
+respond to threat.
+
+00:09:04.500 --> 00:09:09.000
+And that's exactly what
+connecting to non-Azure assets
+
+00:09:09.000 --> 00:09:12.300
+to Defender for Cloud enables.
+
+00:09:12.300 --> 00:09:15.750
+In this module, we will
+focus on three outcomes:
+
+00:09:15.750 --> 00:09:20.580
+connecting a non-Azure machine
+to Microsoft Defender for Cloud,
+
+00:09:20.580 --> 00:09:25.740
+connecting an AWS account,
+and connecting GCP projects.
+
+00:09:25.740 --> 00:09:29.430
+The idea here is to extend
+the same posture management
+
+00:09:29.430 --> 00:09:33.450
+and threat protection
+capabilities beyond Azure
+
+00:09:33.450 --> 00:09:38.620
+so you can manage security
+across your entire estate.
+
+00:09:40.020 --> 00:09:45.150
+To protect non-Azure resources,
+Azure Arc plays a central role.
+
+00:09:45.150 --> 00:09:48.660
+Azure Arc simplifies
+governance and management
+
+00:09:48.660 --> 00:09:51.840
+by delivering a
+consistent multi-cloud
+
+00:09:51.840 --> 00:09:54.780
+and on-premise
+management platform.
+
+00:09:54.780 --> 00:10:01.220
+In other words, you can project
+servers and Kubernetes clusters
+
+00:10:01.220 --> 00:10:05.720
+that runs outside Azure
+into Azure management
+
+00:10:05.720 --> 00:10:08.870
+and then apply
+policies, monitoring,
+
+00:10:08.870 --> 00:10:12.680
+and security control,
+including Defender for Cloud,
+
+00:10:12.680 --> 00:10:18.060
+more consistently across
+all your environments.
+
+00:10:18.060 --> 00:10:21.480
+When connecting individual
+non-Azure machines,
+
+00:10:21.480 --> 00:10:24.720
+there's a few key
+paths to understand.
+
+00:10:24.720 --> 00:10:26.880
+With Azure Arc enabled,
+
+00:10:26.880 --> 00:10:30.000
+you install the
+Azure-connected machine agent
+
+00:10:30.000 --> 00:10:35.160
+on a non-Azure host to bring
+them under Azure Arc management.
+
+00:10:35.160 --> 00:10:39.870
+From there, you use a Sata
+Collection Rule, or DCR,
+
+00:10:39.870 --> 00:10:41.460
+to onboard monitoring
+
+00:10:41.460 --> 00:10:44.340
+by installing the Azure
+Monitoring Agent,
+
+00:10:44.340 --> 00:10:46.380
+often called AMA.
+
+00:10:46.380 --> 00:10:49.710
+You can add an Azure-connected
+Windows machine
+
+00:10:49.710 --> 00:10:54.150
+to a DCR resource
+to install AMA.
+
+00:10:54.150 --> 00:10:57.690
+And you can also add our
+connected Linux machine
+
+00:10:57.690 --> 00:11:02.070
+as a DCR resource
+to install AMA.
+
+00:11:02.070 --> 00:11:07.590
+Another important integration is
+Microsoft Defender for Endpoint.
+
+00:11:07.590 --> 00:11:12.870
+You can onboard at the tenant
+level using direct onboarding
+
+00:11:12.870 --> 00:11:16.650
+enabled in the Defender for
+Cloud management settings,
+
+00:11:16.650 --> 00:11:20.070
+and then use the standard
+Microsoft Defender
+
+00:11:20.070 --> 00:11:23.190
+for Endpoint onboarding method.
+
+00:11:23.190 --> 00:11:26.190
+You can also use Azure
+Portal-based onboarding
+
+00:11:26.190 --> 00:11:29.880
+approach, such as
+workspace-level direct
+
+00:11:29.880 --> 00:11:33.450
+onboarding, depending on
+how you manage monitoring
+
+00:11:33.450 --> 00:11:36.520
+and security operations today.
+
+00:11:37.860 --> 00:11:40.770
+Let's take a look
+at connecting AWS.
+
+00:11:40.770 --> 00:11:45.330
+When you onboard your AWS
+account in Microsoft Defender
+
+00:11:45.330 --> 00:11:49.650
+for Cloud, you integrate
+AWS Security Hub.
+
+00:11:49.650 --> 00:11:55.080
+The result is that Defender for
+Cloud can now provide visibility
+
+00:11:55.080 --> 00:11:58.980
+and protection signals
+across both environments
+
+00:11:58.980 --> 00:12:03.420
+so you can access posture
+and surface findings
+
+00:12:03.420 --> 00:12:06.630
+into a more unified
+way instead of jumping
+
+00:12:06.630 --> 00:12:11.800
+between separate
+portals and dashboards.
+
+00:12:13.320 --> 00:12:16.590
+And, for Google Cloud,
+the approach is similar.
+
+00:12:16.590 --> 00:12:20.640
+Onboarding your GCP account
+into Microsoft Defender
+
+00:12:20.640 --> 00:12:25.080
+for Cloud integrates GCP
+security command center,
+
+00:12:25.080 --> 00:12:29.040
+allowing Defender for Cloud
+to operate visibility
+
+00:12:29.040 --> 00:12:33.520
+and protection across
+both cloud environments.
+
+00:12:36.090 --> 00:12:38.100
+Once your assets are connected,
+
+00:12:38.100 --> 00:12:40.770
+the next priority
+is understanding
+
+00:12:40.770 --> 00:12:44.910
+and improving your
+overall security posture.
+
+00:12:44.910 --> 00:12:49.110
+Let's explore the Cloud Security
+Posture Management capabilities
+
+00:12:49.110 --> 00:12:53.940
+in Microsoft Defender for Cloud,
+including scoring, benchmark,
+
+00:12:53.940 --> 00:12:57.180
+recommendation,
+and risk analysis
+
+00:12:57.180 --> 00:12:59.640
+across your environment.
+
+00:12:59.640 --> 00:13:03.120
+In this module, we're
+aiming for three outcomes.
+
+00:13:03.120 --> 00:13:05.940
+First, you will be able
+to describe the Defender
+
+00:13:05.940 --> 00:13:08.250
+for Cloud Secure Score.
+
+00:13:08.250 --> 00:13:10.950
+Second, you will
+understand how Defender
+
+00:13:10.950 --> 00:13:14.370
+for Cloud implements the
+Microsoft Cloud Security
+
+00:13:14.370 --> 00:13:17.580
+Benchmark, or MCSB.
+
+00:13:17.580 --> 00:13:19.560
+And, third, you will be able
+
+00:13:19.560 --> 00:13:22.680
+to explain the posture
+management protection
+
+00:13:22.680 --> 00:13:26.670
+that Defender for Cloud applies
+to help you reduce risk
+
+00:13:26.670 --> 00:13:29.350
+across your resources.
+
+00:13:30.510 --> 00:13:33.360
+Secure Score gives
+you a measurable way
+
+00:13:33.360 --> 00:13:37.140
+to understand your
+current security posture
+
+00:13:37.140 --> 00:13:39.960
+and track improvement over time.
+
+00:13:39.960 --> 00:13:44.040
+Here, we are looking at the
+Security Score experience
+
+00:13:44.040 --> 00:13:45.720
+in Defender for Cloud
+
+00:13:45.720 --> 00:13:49.620
+where posture improvement
+actions are translated
+
+00:13:49.620 --> 00:13:51.090
+into points.
+
+00:13:51.090 --> 00:13:54.840
+The practical value
+is prioritization.
+
+00:13:54.840 --> 00:13:59.640
+You can identify high-impact
+recommendations,
+
+00:13:59.640 --> 00:14:04.770
+understand what's driving the
+score up or down, and then use
+
+00:14:04.770 --> 00:14:08.820
+that score as a simple
+consistent indicator
+
+00:14:08.820 --> 00:14:10.860
+of posture improvement
+
+00:14:10.860 --> 00:14:15.100
+across your connected
+subscription and environment.
+
+00:14:17.220 --> 00:14:21.240
+It's also helpful to compare
+how Secure Score is used
+
+00:14:21.240 --> 00:14:25.080
+across different Microsoft
+and cloud services.
+
+00:14:25.080 --> 00:14:28.050
+For a SaaS like Microsoft 365,
+
+00:14:28.050 --> 00:14:32.640
+the scoring experience is
+Microsoft's Secure Score focus
+
+00:14:32.640 --> 00:14:37.230
+on areas like identities,
+devices, and apps.
+
+00:14:37.230 --> 00:14:42.120
+And it's managed through the
+Microsoft 365 Security Center.
+
+00:14:42.120 --> 00:14:45.090
+For PaaS and IS scenarios,
+
+00:14:45.090 --> 00:14:48.030
+Defender for Cloud
+provides a Secure Score
+
+00:14:48.030 --> 00:14:50.820
+through the Defender
+for Cloud dashboard.
+
+00:14:50.820 --> 00:14:53.760
+And, when you connect
+other cloud providers,
+
+00:14:53.760 --> 00:14:58.410
+you will see the scoring maps
+to those ecosystems as well.
+
+00:14:58.410 --> 00:15:01.800
+For AWS, posture
+findings are provided
+
+00:15:01.800 --> 00:15:06.030
+through AWS Security
+Hub and, for GCP,
+
+00:15:06.030 --> 00:15:10.260
+through the GCP Security
+Command Center, while Defender
+
+00:15:10.260 --> 00:15:13.200
+for Cloud brings those
+signals together
+
+00:15:13.200 --> 00:15:15.990
+so you can manage
+them centrally.
+
+00:15:15.990 --> 00:15:19.830
+This comparison is also
+a useful optional moment
+
+00:15:19.830 --> 00:15:21.780
+to connect what you
+may have learned
+
+00:15:21.780 --> 00:15:25.710
+about Microsoft Secure
+Score earlier in the course
+
+00:15:25.710 --> 00:15:30.510
+with Defender for Cloud
+Secure Score here.
+
+00:15:30.510 --> 00:15:31.800
+Recommendations are
+
+00:15:31.800 --> 00:15:35.370
+where posture management
+becomes actionable.
+
+00:15:35.370 --> 00:15:39.510
+Here, we are looking at the
+Recommendation View in Defender
+
+00:15:39.510 --> 00:15:44.280
+for Cloud which consolidates
+the specific steps you can take
+
+00:15:44.280 --> 00:15:48.390
+to reduce risks, such as
+hardening configuration,
+
+00:15:48.390 --> 00:15:53.670
+addressing missing controls, or
+improving monitoring coverage.
+
+00:15:53.670 --> 00:15:56.280
+As you work with these
+recommendations,
+
+00:15:56.280 --> 00:16:01.380
+you typically prioritize
+based on severity and impact,
+
+00:16:01.380 --> 00:16:03.960
+assign ownership to
+the right teams,
+
+00:16:03.960 --> 00:16:07.110
+and track remediation
+progress as part
+
+00:16:07.110 --> 00:16:10.690
+of your ongoing
+security operations.
+
+00:16:11.940 --> 00:16:16.560
+Defender for Cloud also helps
+you align to a recognized set
+
+00:16:16.560 --> 00:16:20.310
+of security control through
+the Microsoft Cloud Security
+
+00:16:20.310 --> 00:16:23.460
+Benchmark, or MCSB.
+
+00:16:23.460 --> 00:16:28.170
+This benchmark is automatically
+assigned to your subscription
+
+00:16:28.170 --> 00:16:32.160
+and account when you
+onboard Defender for Cloud.
+
+00:16:32.160 --> 00:16:35.250
+It builds on the cloud
+security principle defined
+
+00:16:35.250 --> 00:16:39.120
+by the Azure Security
+Benchmark and extends them
+
+00:16:39.120 --> 00:16:43.950
+with detailed technical
+implementation guidance not only
+
+00:16:43.950 --> 00:16:48.630
+for Azure, but also for other
+cloud providers like AWS
+
+00:16:48.630 --> 00:16:53.520
+and GCP, and even for
+other Microsoft Cloud.
+
+00:16:53.520 --> 00:16:57.990
+The result is a consistent
+control framework you can use
+
+00:16:57.990 --> 00:17:02.340
+to drive posture improvement
+and compliance discussion
+
+00:17:02.340 --> 00:17:05.340
+across the environment.
+
+00:17:05.340 --> 00:17:09.150
+Building on that, you can
+measure compliance directly
+
+00:17:09.150 --> 00:17:11.010
+in Defender for Cloud.
+
+00:17:11.010 --> 00:17:16.140
+The Microsoft Cloud Security
+Benchmark is the default policy
+
+00:17:16.140 --> 00:17:19.140
+initiative for
+Defender for Cloud,
+
+00:17:19.140 --> 00:17:21.120
+and it forms the foundation
+
+00:17:21.120 --> 00:17:24.600
+of the security
+recommendations you see.
+
+00:17:24.600 --> 00:17:27.120
+This means compliance reporting
+
+00:17:27.120 --> 00:17:30.900
+and posture recommendations
+are connected.
+
+00:17:30.900 --> 00:17:34.380
+As you remediate findings
+and implement control,
+
+00:17:34.380 --> 00:17:38.070
+you are not only improving
+your Secure Score,
+
+00:17:38.070 --> 00:17:42.450
+you are also strengthening
+alignment to the benchmarks
+
+00:17:42.450 --> 00:17:46.420
+and the compliance
+requirement mapped to them.
+
+00:17:47.460 --> 00:17:49.740
+Beyond scores and checklists,
+
+00:17:49.740 --> 00:17:53.130
+Defender for Cloud can
+help you understand risk
+
+00:17:53.130 --> 00:17:58.730
+as an attacker would across
+identities, network exposure,
+
+00:17:58.730 --> 00:18:02.480
+permissions, and
+resource relationships.
+
+00:18:02.480 --> 00:18:06.020
+Here, we use Attack
+Path Analysis
+
+00:18:06.020 --> 00:18:08.750
+and Cloud Security
+Explorer to scan
+
+00:18:08.750 --> 00:18:11.910
+and query the Cloud
+Security Graph.
+
+00:18:11.910 --> 00:18:16.560
+The Cloud Security Graph is
+a graph-based context engine
+
+00:18:16.560 --> 00:18:20.550
+inside Defender for
+Cloud that collects data
+
+00:18:20.550 --> 00:18:24.600
+from your multi-cloud
+environment and other sources
+
+00:18:24.600 --> 00:18:28.440
+like the cloud assets
+inventory, connections,
+
+00:18:28.440 --> 00:18:32.880
+and potential lateral movement
+path between your resources,
+
+00:18:32.880 --> 00:18:37.410
+internet exposure, permissions,
+network connection,
+
+00:18:37.410 --> 00:18:40.740
+vulnerabilities, and more.
+
+00:18:40.740 --> 00:18:44.850
+That data is used to build
+a graph representing your
+
+00:18:44.850 --> 00:18:49.260
+environment which then
+supports richer risk analysis
+
+00:18:49.260 --> 00:18:51.240
+than isolated alert
+
+00:18:51.240 --> 00:18:55.630
+or individual
+configuration findings.
+
+00:18:56.790 --> 00:19:02.300
+Attack Path Analysis is designed
+to expose the chain of condition
+
+00:19:02.300 --> 00:19:05.360
+that would enable a
+successful breach.
+
+00:19:05.360 --> 00:19:09.560
+Instead of only telling you that
+something is misconfigured,
+
+00:19:09.560 --> 00:19:14.810
+it shows you how multiple
+weaknesses can connect turning a
+
+00:19:14.810 --> 00:19:19.860
+path from an entry point
+to a high-value target.
+
+00:19:19.860 --> 00:19:24.030
+Event suggests recommendations
+to remediate the issue
+
+00:19:24.030 --> 00:19:28.680
+that would break that path in
+helping you prioritize fixes
+
+00:19:28.680 --> 00:19:33.960
+that reduces real-world
+attack viabilities.
+
+00:19:33.960 --> 00:19:38.370
+Cloud Security Explorer gives
+you a query builder experience
+
+00:19:38.370 --> 00:19:42.690
+so you can run graph-based
+queries across your environment.
+
+00:19:42.690 --> 00:19:47.550
+This is especially useful when
+you want to answer questions
+
+00:19:47.550 --> 00:19:53.160
+like "show me internet exposed
+resources with high privileges"
+
+00:19:53.160 --> 00:19:57.630
+or "find path to sensitive
+data" without having
+
+00:19:57.630 --> 00:20:02.100
+to manually correlate dozens
+of separate findings.
+
+00:20:02.100 --> 00:20:06.630
+The query experience leverages
+the Cloud Security Graph
+
+00:20:06.630 --> 00:20:11.550
+to surface results with context.
+
+00:20:11.550 --> 00:20:15.510
+To visualize trend and
+operational insight,
+
+00:20:15.510 --> 00:20:17.640
+you can use workbooks.
+
+00:20:17.640 --> 00:20:21.840
+These give you the readymade
+dashboards for scenarios
+
+00:20:21.840 --> 00:20:26.220
+like Secure Score over
+time, system updates,
+
+00:20:26.220 --> 00:20:28.620
+vulnerability
+assessment finding,
+
+00:20:28.620 --> 00:20:33.030
+compliance over time,
+and active alerts.
+
+00:20:33.030 --> 00:20:37.620
+Workbooks help translate large
+volumes of security data
+
+00:20:37.620 --> 00:20:42.180
+in a format that's easier
+to track, report on,
+
+00:20:42.180 --> 00:20:45.220
+and review with stakeholders.
+
+00:20:47.430 --> 00:20:50.310
+Now that we've covered
+posture management,
+
+00:20:50.310 --> 00:20:53.910
+let's move into workload
+protection where Defender
+
+00:20:53.910 --> 00:20:58.800
+for Cloud shifts from how
+secure are we configured
+
+00:20:58.800 --> 00:21:03.480
+to how are we detecting
+and responding to threats
+
+00:21:03.480 --> 00:21:06.510
+against the workload we run.
+
+00:21:06.510 --> 00:21:10.440
+In this module, you will learn
+how workloads are protected
+
+00:21:10.440 --> 00:21:13.890
+by Microsoft Defender
+for Cloud, the benefits
+
+00:21:13.890 --> 00:21:17.870
+of those protections, and how
+the protections function.
+
+00:21:17.870 --> 00:21:21.950
+The goal is to help you
+understand not only what's
+
+00:21:21.950 --> 00:21:26.010
+covered, like servers,
+containers, and storage,
+
+00:21:26.010 --> 00:21:29.880
+but also how Defender for
+Cloud connects signals,
+
+00:21:29.880 --> 00:21:36.660
+generates alerts, and supports
+investigation and remediation.
+
+00:21:36.660 --> 00:21:38.970
+For server protection, Defender
+
+00:21:38.970 --> 00:21:43.290
+for Cloud offers a Microsoft
+Defender for Server plan.
+
+00:21:43.290 --> 00:21:47.070
+Plan 1 deploys Microsoft
+Defender for Endpoint
+
+00:21:47.070 --> 00:21:50.760
+to your servers and provides
+an important benefit.
+
+00:21:50.760 --> 00:21:53.220
+Licensing for Microsoft Defender
+
+00:21:53.220 --> 00:21:58.140
+for Endpoint is charged per
+hour instead of per seat,
+
+00:21:58.140 --> 00:22:02.100
+which can lower cost when you
+are protecting a virtual machine
+
+00:22:02.100 --> 00:22:04.560
+only while they are running.
+
+00:22:04.560 --> 00:22:08.760
+Defender for Endpoint can
+also deploy automatically
+
+00:22:08.760 --> 00:22:13.980
+to cloud workload, ensuring
+new workloads are protected
+
+00:22:13.980 --> 00:22:15.810
+as they spin up.
+
+00:22:15.810 --> 00:22:19.770
+And the alerts and vulnerability
+data coming from Defender
+
+00:22:19.770 --> 00:22:24.000
+for Endpoints are then shown
+directly in Microsoft Defender
+
+00:22:24.000 --> 00:22:30.150
+for Cloud so you can view from
+a more unified security view.
+
+00:22:30.150 --> 00:22:34.590
+Plan 2, which was formerly known
+simply as Defender for Servers,
+
+00:22:34.590 --> 00:22:39.300
+includes all the benefit
+of Plan 1 and adds support
+
+00:22:39.300 --> 00:22:43.350
+for the other Microsoft
+Defender for Servers feature,
+
+00:22:43.350 --> 00:22:45.780
+so it's the option you choose
+
+00:22:45.780 --> 00:22:48.570
+when you need the most
+comprehensive server
+
+00:22:48.570 --> 00:22:51.010
+protection capabilities.
+
+00:22:53.700 --> 00:22:57.330
+Here, we are looking at where
+server protection is configured
+
+00:22:57.330 --> 00:23:01.440
+through Defender for Cloud
+settings and Defender plans.
+
+00:23:01.440 --> 00:23:04.950
+This is where we assess
+our servers' inventory
+
+00:23:04.950 --> 00:23:09.390
+and see what's covered and
+where we configure provisioning
+
+00:23:09.390 --> 00:23:13.440
+so the right agents and
+extension are deployed.
+
+00:23:13.440 --> 00:23:18.120
+One important note, if you
+turn off autoprovisioning
+
+00:23:18.120 --> 00:23:19.950
+of the agent, you will need
+
+00:23:19.950 --> 00:23:23.670
+to manually install the
+Azure Monitoring Agent
+
+00:23:23.670 --> 00:23:25.890
+on your virtual machine.
+
+00:23:25.890 --> 00:23:28.950
+This setting can have a
+big impact on coverage
+
+00:23:28.950 --> 00:23:32.040
+so it's worth validating
+during rollout.
+
+00:23:32.040 --> 00:23:37.830
+For an application hosted
+on Azure App Services,
+
+00:23:37.830 --> 00:23:41.490
+Microsoft Defender for App
+Service uses the scale
+
+00:23:41.490 --> 00:23:46.980
+of the cloud to identify attacks
+targeting those applications.
+
+00:23:46.980 --> 00:23:50.730
+Attackers often probe
+web applications looking
+
+00:23:50.730 --> 00:23:53.400
+for weaknesses they can exploit.
+
+00:23:53.400 --> 00:23:57.060
+Before requests are routed
+to a specific environment,
+
+00:23:57.060 --> 00:24:01.410
+traffic to application
+running in Azure passes
+
+00:24:01.410 --> 00:24:03.450
+through multiple gateways
+
+00:24:03.450 --> 00:24:07.470
+where requests are
+inspected and logged.
+
+00:24:07.470 --> 00:24:13.950
+Defender uses that data to
+identify exploits and attackers,
+
+00:24:13.950 --> 00:24:17.100
+and to learn new patterns
+that can be used
+
+00:24:17.100 --> 00:24:21.060
+and applied later to
+improve detection.
+
+00:24:21.060 --> 00:24:23.700
+When something
+suspicious is detected,
+
+00:24:23.700 --> 00:24:26.580
+Defender for App Service
+generates an alert
+
+00:24:26.580 --> 00:24:30.490
+that you can
+investigate and remedy.
+
+00:24:32.340 --> 00:24:36.150
+Defender for Cloud also provides
+cloud workload protection
+
+00:24:36.150 --> 00:24:37.410
+for database.
+
+00:24:37.410 --> 00:24:40.920
+The idea here is to detect
+suspicious behavior
+
+00:24:40.920 --> 00:24:44.130
+and attack targeting
+database services
+
+00:24:44.130 --> 00:24:49.200
+so you can identify threats,
+such as abnormal access pattern
+
+00:24:49.200 --> 00:24:52.830
+or potential
+exploitation attempts.
+
+00:24:52.830 --> 00:24:55.560
+For Azure SQL Database
+specifically,
+
+00:24:55.560 --> 00:24:59.430
+Defender for Cloud provides
+a set of alerts designed
+
+00:24:59.430 --> 00:25:02.550
+to surface these
+database-related threats
+
+00:25:02.550 --> 00:25:06.510
+and guide investigation.
+
+00:25:06.510 --> 00:25:10.680
+Looking more broadly at database
+coverage, Microsoft Defender
+
+00:25:10.680 --> 00:25:16.140
+for Database includes threat
+protection for Azure Cosmos DB.
+
+00:25:16.140 --> 00:25:18.720
+It also provides
+threat protection
+
+00:25:18.720 --> 00:25:21.540
+for open-source
+relational databases,
+
+00:25:21.540 --> 00:25:25.440
+including Azure Database for
+PostgreS, Azure Database
+
+00:25:25.440 --> 00:25:29.970
+for MySQL and Azure
+Database for MariahDB.
+
+00:25:29.970 --> 00:25:33.990
+For each database type, there
+is additional documentation
+
+00:25:33.990 --> 00:25:37.560
+available to help you
+understand the detection,
+
+00:25:37.560 --> 00:25:42.030
+onboarding requirement, and
+the investigation workflow.
+
+00:25:42.030 --> 00:25:45.360
+And, for open-source
+relational databases,
+
+00:25:45.360 --> 00:25:50.550
+Defender for Cloud also provides
+a defined set of alerts
+
+00:25:50.550 --> 00:25:52.530
+that describe what kind
+
+00:25:52.530 --> 00:25:56.740
+of suspicious activities
+can be detected.
+
+00:25:58.590 --> 00:26:02.340
+Storage is another
+high-value target.
+
+00:26:02.340 --> 00:26:03.930
+And Microsoft Defender
+
+00:26:03.930 --> 00:26:08.700
+for Storage provides detection
+focused on suspicious access
+
+00:26:08.700 --> 00:26:12.030
+or activities involving
+storage accounts.
+
+00:26:12.030 --> 00:26:15.810
+When Defender detects
+potentially malicious behavior,
+
+00:26:15.810 --> 00:26:21.330
+such as unusual access
+pattern, it generates an alert
+
+00:26:21.330 --> 00:26:25.890
+that helps you investigate
+what happened and decides
+
+00:26:25.890 --> 00:26:30.370
+on remediation steps to
+reduce ongoing risks.
+
+00:26:31.740 --> 00:26:34.800
+For containerized environments,
+Microsoft Defender
+
+00:26:34.800 --> 00:26:37.110
+for Container protects
+your clusters
+
+00:26:37.110 --> 00:26:39.120
+across multiple platforms.
+
+00:26:39.120 --> 00:26:44.190
+That includes Azure
+Kubernetes Services, or AKS,
+
+00:26:44.190 --> 00:26:49.470
+Amazon Elastic Kubernetes
+Services, or EKS,
+
+00:26:49.470 --> 00:26:53.040
+when it's running in a
+connected AWS account,
+
+00:26:53.040 --> 00:26:56.070
+and unmanaged
+Kubernetes distribution
+
+00:26:56.070 --> 00:27:00.930
+when they are connected using
+Azure Arc-enabled Kubernetes.
+
+00:27:00.930 --> 00:27:03.180
+This coverage is important
+
+00:27:03.180 --> 00:27:07.530
+because Kubernetes clusters
+can host many workloads
+
+00:27:07.530 --> 00:27:12.090
+and identities, and the
+ability to detect threats
+
+00:27:12.090 --> 00:27:15.120
+and misconfiguration
+consistently
+
+00:27:15.120 --> 00:27:19.660
+across environment helps
+reduce blind spots.
+
+00:27:21.780 --> 00:27:25.350
+Microsoft Defender for
+Key Vault detects unusual
+
+00:27:25.350 --> 00:27:29.070
+and potentially harmful
+attempts to access
+
+00:27:29.070 --> 00:27:31.890
+or exploit Key Vault accounts.
+
+00:27:31.890 --> 00:27:34.830
+This layer of
+protection is designed
+
+00:27:34.830 --> 00:27:38.100
+to help you address
+threats without needing
+
+00:27:38.100 --> 00:27:42.420
+to be a security expert and
+without having to deploy
+
+00:27:42.420 --> 00:27:46.590
+and manage a third-party
+security monitoring system.
+
+00:27:46.590 --> 00:27:49.740
+When anomalous activities occur,
+
+00:27:49.740 --> 00:27:52.320
+Defender for Cloud
+shows an alert
+
+00:27:52.320 --> 00:27:55.620
+that can optionally
+send them by email
+
+00:27:55.620 --> 00:27:59.340
+to the relevant people
+in your organization.
+
+00:27:59.340 --> 00:28:04.530
+These alerts include detail of
+the suspicious activities along
+
+00:28:04.530 --> 00:28:07.650
+with recommendation
+on how to investigate
+
+00:28:07.650 --> 00:28:10.210
+and remediate the threats.
+
+00:28:12.060 --> 00:28:16.170
+Microsoft Defender for Resource
+Manager focuses on threats
+
+00:28:16.170 --> 00:28:21.030
+and suspicious activity at
+the Azure management layer.
+
+00:28:21.030 --> 00:28:24.540
+It helps protect against
+suspicious resource management
+
+00:28:24.540 --> 00:28:30.000
+operations like actions on
+malicious IP addresses,
+
+00:28:30.000 --> 00:28:33.000
+attempts to disable
+anti-malware,
+
+00:28:33.000 --> 00:28:37.800
+or suspicious script running
+in virtual machine extensions.
+
+00:28:37.800 --> 00:28:41.910
+It can also detect the
+use of exploitation kits,
+
+00:28:41.910 --> 00:28:46.680
+such as a microburst or a
+power surge, and, importantly,
+
+00:28:46.680 --> 00:28:51.660
+it helps address scenarios
+including lateral movement
+
+00:28:51.660 --> 00:28:53.850
+from the Azure management layer
+
+00:28:53.850 --> 00:28:57.240
+into the Azure
+resource data plane
+
+00:28:57.240 --> 00:29:00.240
+where attackers may
+attempt to pivot
+
+00:29:00.240 --> 00:29:05.080
+from control plane access
+to workload access.
+
+00:29:06.420 --> 00:29:10.080
+Defender for API helps
+you gain visibility
+
+00:29:10.080 --> 00:29:14.760
+in your business-critical
+APIs so you can investigate
+
+00:29:14.760 --> 00:29:20.460
+and improve security posture,
+prioritize vulnerability fixes,
+
+00:29:20.460 --> 00:29:25.320
+and detect against the
+top OWASP API threats.
+
+00:29:25.320 --> 00:29:29.940
+It provides a unified inventory
+of all APIs published
+
+00:29:29.940 --> 00:29:32.760
+within Azure API Management.
+
+00:29:32.760 --> 00:29:35.040
+It can monitor API traffic
+
+00:29:35.040 --> 00:29:39.540
+against top OWASP API threats
+using machine learning-based
+
+00:29:39.540 --> 00:29:44.280
+detection and threat
+intelligence-based detection.
+
+00:29:44.280 --> 00:29:47.340
+It also delivers
+security insights,
+
+00:29:47.340 --> 00:29:52.800
+such as identifying
+unauthenticated APIs, inactive
+
+00:29:52.800 --> 00:29:57.390
+or dormant APIs, and
+externally exposed APIs.
+
+00:29:57.390 --> 00:30:01.140
+And it can classify APIs
+that receive or respond
+
+00:30:01.140 --> 00:30:06.060
+with sensitive data, helping
+you focus protection
+
+00:30:06.060 --> 00:30:09.970
+where the business impact
+is at the highest.
+
+00:30:11.880 --> 00:30:14.370
+Workload protection also extends
+
+00:30:14.370 --> 00:30:17.730
+into the entire
+development pipeline.
+
+00:30:17.730 --> 00:30:22.410
+Defender for DevOps provides
+a unified visibility
+
+00:30:22.410 --> 00:30:27.180
+into the DevOps Security posture
+through a central console
+
+00:30:27.180 --> 00:30:31.320
+so a security administrator
+can see DevOps inventory
+
+00:30:31.320 --> 00:30:33.780
+and posture in one place.
+
+00:30:33.780 --> 00:30:37.500
+It helps strengthen cloud
+resources configuration
+
+00:30:37.500 --> 00:30:41.520
+throughout the development
+lifecycle by enabling security
+
+00:30:41.520 --> 00:30:46.590
+for infrastructure as Code
+templates and container images,
+
+00:30:46.590 --> 00:30:47.940
+reducing the chance
+
+00:30:47.940 --> 00:30:51.870
+that misconfiguration
+makes it to production.
+
+00:30:51.870 --> 00:30:56.340
+It also helps prioritize
+remediation of critical issues
+
+00:30:56.340 --> 00:31:00.090
+in Code using Pull
+Request annotations
+
+00:31:00.090 --> 00:31:02.910
+and assigning
+developer ownership
+
+00:31:02.910 --> 00:31:06.390
+so fixes can be
+tracked and completed.
+
+00:31:06.390 --> 00:31:10.350
+And it's worth noting that
+DevOps Security is available
+
+00:31:10.350 --> 00:31:14.970
+in commercial cloud across
+multiple regions including part
+
+00:31:14.970 --> 00:31:22.240
+of Asia, Australia, Canada,
+United States, UK, and Europe.
+
+00:31:24.540 --> 00:31:27.930
+Here, we can see what it
+looks like in practice.
+
+00:31:27.930 --> 00:31:31.860
+The DevOps Security page
+acts as a central console
+
+00:31:31.860 --> 00:31:35.940
+where you can view all
+onboarding environments along
+
+00:31:35.940 --> 00:31:37.680
+with key metrics.
+
+00:31:37.680 --> 00:31:41.220
+This gives you an
+at-a-glance understanding
+
+00:31:41.220 --> 00:31:47.400
+of where coverage exists, which
+posture issues are concentrated,
+
+00:31:47.400 --> 00:31:51.630
+and which environments may
+need immediate attention
+
+00:31:51.630 --> 00:31:55.240
+from security and
+development team.
+
+00:31:57.240 --> 00:32:01.560
+At this point, we have talked
+about postures and protections.
+
+00:32:01.560 --> 00:32:04.530
+Now we will focus on what
+happens when Defender
+
+00:32:04.530 --> 00:32:08.880
+for Cloud actually detects
+something suspicious.
+
+00:32:08.880 --> 00:32:13.680
+Let's walk through how alerts
+work, how you respond,
+
+00:32:13.680 --> 00:32:18.660
+and how you can automate part
+of your remediation workflow.
+
+00:32:18.660 --> 00:32:21.930
+In this module, you will
+learn how to describe alerts
+
+00:32:21.930 --> 00:32:26.700
+in Microsoft Defender for Cloud,
+how to respond to those alerts,
+
+00:32:26.700 --> 00:32:30.780
+and how to automate response
+in Defender for Cloud
+
+00:32:30.780 --> 00:32:35.910
+so that common remediation
+action can run consistently
+
+00:32:35.910 --> 00:32:37.890
+and quickly.
+
+00:32:37.890 --> 00:32:42.090
+Here, we focus on what security
+alerts really represent
+
+00:32:42.090 --> 00:32:44.460
+in Microsoft Defender for Cloud.
+
+00:32:44.460 --> 00:32:48.030
+Security alerts and
+incidents are generated
+
+00:32:48.030 --> 00:32:53.460
+when Defender detects behavior
+that may indicate a threat.
+
+00:32:53.460 --> 00:32:57.540
+These detections are based
+on continuous monitoring
+
+00:32:57.540 --> 00:33:02.190
+and ongoing security assessment
+across your environment.
+
+00:33:02.190 --> 00:33:05.760
+Alerts are classified to help
+you understand the nature
+
+00:33:05.760 --> 00:33:10.050
+and severity of the issue,
+and can represent anything
+
+00:33:10.050 --> 00:33:15.450
+from suspicious activity to
+confirmed malicious behavior.
+
+00:33:15.450 --> 00:33:17.550
+Understanding alert types
+
+00:33:17.550 --> 00:33:20.760
+and how they're generated
+is the first step
+
+00:33:20.760 --> 00:33:25.300
+in responding effectively
+and consistently.
+
+00:33:26.520 --> 00:33:29.430
+Once an alert is raised,
+Microsoft Defender
+
+00:33:29.430 --> 00:33:32.340
+for Cloud helps
+guide your response.
+
+00:33:32.340 --> 00:33:36.360
+Here, we see how alerts
+provide actionable tasks
+
+00:33:36.360 --> 00:33:41.040
+that helps you mitigate the
+threat, prevent similar attacks
+
+00:33:41.040 --> 00:33:45.450
+in the future, or trigger
+an automated response.
+
+00:33:45.450 --> 00:33:48.810
+You can also suppress
+alerts when appropriate,
+
+00:33:48.810 --> 00:33:53.250
+such as when you've confirmed
+an alert is a false positive.
+
+00:33:53.250 --> 00:33:57.870
+The goal is to move from
+detection to action quickly
+
+00:33:57.870 --> 00:34:02.490
+without losing
+important context.
+
+00:34:02.490 --> 00:34:06.540
+For recurring or
+well-understood scenarios,
+
+00:34:06.540 --> 00:34:11.340
+automation can significantly
+reduce response time.
+
+00:34:11.340 --> 00:34:15.180
+Here, we look at how you
+can create a logic app
+
+00:34:15.180 --> 00:34:16.860
+and define the condition
+
+00:34:16.860 --> 00:34:20.010
+under which it should
+automatically run.
+
+00:34:20.010 --> 00:34:22.890
+By automating alert responses,
+
+00:34:22.890 --> 00:34:27.660
+you ensure that remediation
+steps are applied consistently
+
+00:34:27.660 --> 00:34:33.520
+and immediately, even outside
+normal working hours.
+
+00:34:35.190 --> 00:34:39.720
+Not every alert requires
+action every time.
+
+00:34:39.720 --> 00:34:43.620
+Suppression rules are useful
+when alerts are identified
+
+00:34:43.620 --> 00:34:47.370
+as false positive or when
+they trigger too frequently
+
+00:34:47.370 --> 00:34:48.990
+to be useful.
+
+00:34:48.990 --> 00:34:52.860
+Here, we explore how suppression
+rules help reduce noise
+
+00:34:52.860 --> 00:34:56.550
+so security teams can
+stay focused on alerts
+
+00:34:56.550 --> 00:35:00.690
+that truly matter without
+losing visibility
+
+00:35:00.690 --> 00:35:03.730
+in the overall security health.
+
+00:35:05.220 --> 00:35:07.200
+Beyond individual alerts,
+
+00:35:07.200 --> 00:35:10.110
+Defender for Cloud
+also provides access
+
+00:35:10.110 --> 00:35:12.630
+to threat intelligence reports.
+
+00:35:12.630 --> 00:35:15.810
+These reports can
+include information
+
+00:35:15.810 --> 00:35:20.850
+such as activity groups,
+campaigns, threat summaries.
+
+00:35:20.850 --> 00:35:25.470
+When available, they may also
+contain attacker identity
+
+00:35:25.470 --> 00:35:30.270
+or association, attacker
+objectives, and current
+
+00:35:30.270 --> 00:35:33.090
+or historical attack campaigns.
+
+00:35:33.090 --> 00:35:37.290
+You will also find details
+against attackers' tactics,
+
+00:35:37.290 --> 00:35:41.550
+tools, and procedures,
+associated indicators
+
+00:35:41.550 --> 00:35:47.400
+of compromise like URLs or
+file hashes, victimology data,
+
+00:35:47.400 --> 00:35:51.450
+and guidance on mitigation
+and remediation.
+
+00:35:51.450 --> 00:35:55.710
+This broader context helps
+you understand not just what
+
+00:35:55.710 --> 00:36:00.030
+happened, but why it matters.
+
+00:36:00.030 --> 00:36:04.470
+Here, we bring everything
+together with a focus
+
+00:36:04.470 --> 00:36:09.270
+on responding to alerts from
+specific Azure resources.
+
+00:36:09.270 --> 00:36:13.170
+This includes responding
+to Azure Defender
+
+00:36:13.170 --> 00:36:18.810
+for Key Vault alerts, DNS
+alerts, resource manager alerts.
+
+00:36:18.810 --> 00:36:23.100
+This is also where we
+manage our alerts,
+
+00:36:23.100 --> 00:36:28.750
+review the alert details,
+and configure automation.
+
+00:36:31.110 --> 00:36:33.990
+At this point, we will
+move into a demonstration
+
+00:36:33.990 --> 00:36:37.830
+that ties together the concept
+from this Learning Path.
+
+00:36:37.830 --> 00:36:42.510
+Here, we will see how Microsoft
+Defender for Cloud is used end
+
+00:36:42.510 --> 00:36:46.320
+to end to mitigate
+threats from detection
+
+00:36:46.320 --> 00:36:50.410
+through investigation
+and response.
+
+00:36:51.870 --> 00:36:53.310
+In this demonstration,
+
+00:36:53.310 --> 00:36:56.700
+let's enable Microsoft
+Defender for Cloud.
+
+00:36:56.700 --> 00:36:59.880
+We have got the Azure Portal
+open so let's navigate
+
+00:36:59.880 --> 00:37:01.970
+to Defender for Cloud.
+
+00:37:01.970 --> 00:37:04.430
+We'll just search for
+it in the Search bar.
+
+00:37:04.430 --> 00:37:08.190
+There is Microsoft
+Defender for Cloud.
+
+00:37:08.190 --> 00:37:11.040
+What we need to do now
+is enable Defender
+
+00:37:11.040 --> 00:37:13.710
+for Cloud for our subscription.
+
+00:37:13.710 --> 00:37:16.290
+So let's head down to
+Environment Settings
+
+00:37:16.290 --> 00:37:18.990
+under the Management section.
+
+00:37:18.990 --> 00:37:23.310
+Here is our management group
+including our subscription.
+
+00:37:23.310 --> 00:37:26.940
+We'll just expand everything,
+select a subscription
+
+00:37:26.940 --> 00:37:30.820
+where we want to enable
+Defender for Cloud.
+
+00:37:32.430 --> 00:37:37.680
+Within the subscription, we
+can enable individual plan,
+
+00:37:37.680 --> 00:37:42.540
+like Defender CSPM, foundational
+is always turned on.
+
+00:37:42.540 --> 00:37:47.130
+But let's enable Defender Cloud
+Security Posture Management.
+
+00:37:47.130 --> 00:37:50.630
+Done. Let's do the
+same with our server.
+
+00:37:50.630 --> 00:37:53.300
+Let's activate Plan 2.
+
+00:37:53.300 --> 00:37:57.530
+On. Done. And we could
+activate additional plans
+
+00:37:57.530 --> 00:37:59.750
+if we wanted to for Defender.
+
+00:37:59.750 --> 00:38:03.180
+But, for now, let's just save.
+
+00:38:03.180 --> 00:38:04.260
+And we are good.
+
+00:38:04.260 --> 00:38:07.600
+We have activated
+Defender for Cloud.
+
+00:38:08.940 --> 00:38:11.790
+We could also click
+the "Enable All Plans"
+
+00:38:11.790 --> 00:38:13.410
+to turn on everything.
+
+00:38:13.410 --> 00:38:16.200
+Let's go back to
+Defender for Cloud
+
+00:38:16.200 --> 00:38:21.630
+and let's now explore some
+useful capability like the
+
+00:38:21.630 --> 00:38:24.900
+"What's New" button,
+keep yourself up to date
+
+00:38:24.900 --> 00:38:26.340
+with Defender for Cloud.
+
+00:38:26.340 --> 00:38:29.010
+It evolves very quickly.
+
+00:38:29.010 --> 00:38:35.310
+Next, let's review our
+regulatory compliance.
+
+00:38:35.310 --> 00:38:38.130
+Actually, we don't have any
+so let's activate those,
+
+00:38:38.130 --> 00:38:42.450
+Manage Regulatory Compliances.
+
+00:38:42.450 --> 00:38:44.910
+From here, once again,
+we'll select where we want
+
+00:38:44.910 --> 00:38:47.070
+to activate that compliance.
+
+00:38:47.070 --> 00:38:49.680
+We'll select "Our Subscription."
+
+00:38:49.680 --> 00:38:56.490
+And, under Security Policies,
+here is a list of compliances
+
+00:38:56.490 --> 00:38:59.580
+that are already built
+for you by Microsoft.
+
+00:38:59.580 --> 00:39:02.310
+They're included in
+Defender for Cloud.
+
+00:39:02.310 --> 00:39:08.630
+Let's select "ISO 27001-2013."
+
+00:39:08.630 --> 00:39:11.720
+And let's just enable it.
+
+00:39:11.720 --> 00:39:14.690
+Done. We are good.
+
+00:39:14.690 --> 00:39:18.260
+Now that we've assigned a
+standard, let's take a look
+
+00:39:18.260 --> 00:39:23.130
+at the recommendations
+brought on by this standard.
+
+00:39:23.130 --> 00:39:26.100
+We're going to head back
+to Defender for Cloud,
+
+00:39:26.100 --> 00:39:28.320
+just close our
+Environmental Settings,
+
+00:39:28.320 --> 00:39:32.250
+Regulatory Compliance,
+back to the overview.
+
+00:39:32.250 --> 00:39:33.990
+There is our recommendation.
+
+00:39:33.990 --> 00:39:36.120
+Now, we're not going
+to see recommendations
+
+00:39:36.120 --> 00:39:40.170
+yet because we don't really
+have resources onboarded,
+
+00:39:40.170 --> 00:39:44.730
+and also the policy is
+being applied right now.
+
+00:39:44.730 --> 00:39:49.140
+But this is where we would see
+the recommendations by Microsoft
+
+00:39:49.140 --> 00:39:53.410
+for our Cloud Security
+Posture Management.
+
+00:39:55.310 --> 00:39:57.740
+Let's take a moment to
+recap what we've covered
+
+00:39:57.740 --> 00:39:59.580
+in this Learning Path.
+
+00:39:59.580 --> 00:40:03.030
+We started by looking at
+Microsoft Defender for Cloud
+
+00:40:03.030 --> 00:40:08.190
+as a DevSecOps solution that
+unifies security management
+
+00:40:08.190 --> 00:40:12.780
+across multi-cloud and
+multiple-pipeline environments.
+
+00:40:12.780 --> 00:40:16.410
+We explored how it delivered
+Cloud Security Posture
+
+00:40:16.410 --> 00:40:19.770
+Management and cloud
+workload protection;
+
+00:40:19.770 --> 00:40:24.420
+how it protects workloads like
+servers, containers, storage,
+
+00:40:24.420 --> 00:40:28.110
+and databases; and how
+it extends protection
+
+00:40:28.110 --> 00:40:35.840
+to hybrid environments including
+non-Azure machines, AWS and GCP.
+
+00:40:35.840 --> 00:40:37.970
+Finally, we looked
+at how Defender
+
+00:40:37.970 --> 00:40:42.650
+for Cloud helps you remediate
+alerts with actionable guidance
+
+00:40:42.650 --> 00:40:45.840
+and automated responses.
+
+00:40:46.980 --> 00:40:49.110
+This concludes our session.
+
+00:40:49.110 --> 00:40:52.830
+There are many ways to continue
+your learning journey.
+
+00:40:52.830 --> 00:40:57.420
+We encourage you to watch other
+videos in this course or search
+
+00:40:57.420 --> 00:41:04.450
+for your own favorite topics on
+Microsoft Learn at aka.ms/learn.
+

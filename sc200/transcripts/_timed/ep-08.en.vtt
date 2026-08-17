@@ -1,0 +1,2355 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.510 --> 00:00:06.220
+[ Music ]
+
+00:00:06.220 --> 00:00:08.350
+JEAN-FRANCOIS BILODEAU:
+Have you ever set a SIEM,
+
+00:00:08.350 --> 00:00:11.470
+connected a few data
+sources, and still felt
+
+00:00:11.470 --> 00:00:14.280
+like you were operating
+with blind spots?
+
+00:00:14.280 --> 00:00:18.420
+Missing key signals,
+chasing incomplete alerts,
+
+00:00:18.420 --> 00:00:22.710
+and spending too much time
+normalizing data instead
+
+00:00:22.710 --> 00:00:24.720
+of investigating threats.
+
+00:00:24.720 --> 00:00:28.620
+The difference between
+reactive security operation
+
+00:00:28.620 --> 00:00:33.030
+and a confidence one often
+comes down to one thing,
+
+00:00:33.030 --> 00:00:35.610
+getting the right data in,
+
+00:00:35.610 --> 00:00:38.610
+in the right shape,
+at the right time.
+
+00:00:38.610 --> 00:00:41.370
+Let me introduce you to a
+session where you learn how
+
+00:00:41.370 --> 00:00:44.010
+to tackle these
+real-world scenarios
+
+00:00:44.010 --> 00:00:46.320
+by connecting the data sources
+
+00:00:46.320 --> 00:00:50.190
+that makes Microsoft
+Sentinel truly effective.
+
+00:00:50.190 --> 00:00:51.660
+Hello and welcome.
+
+00:00:51.660 --> 00:00:53.640
+We're glad you've joined us.
+
+00:00:53.640 --> 00:00:57.780
+I'm Jean-Francois Bilodeau, a
+Microsoft Technical Trainer.
+
+00:00:57.780 --> 00:01:01.680
+In this session, we'll
+cover for Learning Path 8,
+
+00:01:01.680 --> 00:01:05.700
+Connecting Data Source to
+Microsoft Sentinel SIEM.
+
+00:01:05.700 --> 00:01:10.170
+Together, we'll walk through how
+to manage and deploy content
+
+00:01:10.170 --> 00:01:14.610
+in Microsoft Sentinel,
+how data connectors work,
+
+00:01:14.610 --> 00:01:19.170
+and how to bring in signals
+from Microsoft Services,
+
+00:01:19.170 --> 00:01:24.750
+Microsoft Defender XDR, Windows
+Host, CAF-based appliances,
+
+00:01:24.750 --> 00:01:29.430
+syslog sources, and
+Threat Intelligence feed.
+
+00:01:29.430 --> 00:01:33.930
+By the end, you'll know what
+each connector path is for,
+
+00:01:33.930 --> 00:01:38.700
+what prerequisite to plan for,
+and what to expect in terms
+
+00:01:38.700 --> 00:01:42.000
+of the data that lands
+in your workspace.
+
+00:01:42.000 --> 00:01:45.120
+So you can move
+from we have logs
+
+00:01:45.120 --> 00:01:49.110
+to we have actionable detection.
+
+00:01:49.110 --> 00:01:52.870
+So let's get started
+with this session.
+
+00:01:54.180 --> 00:01:55.770
+Here we set the stage.
+
+00:01:55.770 --> 00:02:00.990
+Defending against cyber threats
+is a continuous operation,
+
+00:02:00.990 --> 00:02:05.610
+and Microsoft Security
+Operations Platform is designed
+
+00:02:05.610 --> 00:02:07.950
+to help you collect signal,
+
+00:02:07.950 --> 00:02:13.200
+correlate activities,
+and respond faster.
+
+00:02:13.200 --> 00:02:17.900
+In this learning path, the focus
+is on connecting data sources
+
+00:02:17.900 --> 00:02:19.670
+to Microsoft Sentinel.
+
+00:02:19.670 --> 00:02:23.570
+That means understanding
+the connector ecosystem
+
+00:02:23.570 --> 00:02:26.540
+and making sure the
+security signals you rely
+
+00:02:26.540 --> 00:02:31.010
+on across cloud,
+identity, endpoints,
+
+00:02:31.010 --> 00:02:36.050
+and third-party appliances
+are flowing into your scene
+
+00:02:36.050 --> 00:02:39.960
+in a consistent and usable way.
+
+00:02:39.960 --> 00:02:42.090
+Let's take a look at
+what we'll cover.
+
+00:02:42.090 --> 00:02:46.170
+We'll start by managing
+content in Microsoft Sentinel,
+
+00:02:46.170 --> 00:02:50.340
+then we'll connect data to
+Sentinel using data connectors,
+
+00:02:50.340 --> 00:02:55.770
+including Microsoft Services
+and Microsoft Defender XDR.
+
+00:02:55.770 --> 00:02:59.160
+From there, we'll walk through
+connecting Windows hosts,
+
+00:02:59.160 --> 00:03:03.780
+bringing in common event
+format logs, connecting syslog
+
+00:03:03.780 --> 00:03:07.110
+from Linux-based
+sources, and finally,
+
+00:03:07.110 --> 00:03:11.430
+connecting threat indicators
+so you're detection can match,
+
+00:03:11.430 --> 00:03:16.990
+again, known bad
+infrastructure and entities.
+
+00:03:18.060 --> 00:03:20.820
+Here, we begin with a key idea.
+
+00:03:20.820 --> 00:03:25.050
+Sentinel isn't just a
+place where logs land.
+
+00:03:25.050 --> 00:03:28.410
+It's a place where you
+manage security content,
+
+00:03:28.410 --> 00:03:32.310
+things like rules,
+workbooks, and playbooks
+
+00:03:32.310 --> 00:03:37.650
+that turn those logs into
+detection and response action.
+
+00:03:37.650 --> 00:03:41.490
+After completing this module,
+you'll be able to do two things.
+
+00:03:41.490 --> 00:03:45.570
+First, you'll be able to use
+solutions from the Content Hub
+
+00:03:45.570 --> 00:03:48.300
+to quickly bring in
+Microsoft-provided
+
+00:03:48.300 --> 00:03:50.910
+and partner-provided content.
+
+00:03:50.910 --> 00:03:54.630
+Second, you'll be able
+to connect repositories
+
+00:03:54.630 --> 00:03:57.390
+so you can deploy
+and manage content
+
+00:03:57.390 --> 00:04:01.530
+through source
+control workflows.
+
+00:04:01.530 --> 00:04:04.920
+Let's take a look at what
+a Content Hub solution
+
+00:04:04.920 --> 00:04:06.120
+can include.
+
+00:04:06.120 --> 00:04:12.180
+A single solution may bring in
+data connectors to ingest data,
+
+00:04:12.180 --> 00:04:16.530
+parsers to normalize it,
+workbooks for visualization,
+
+00:04:16.530 --> 00:04:20.040
+and analytics rule
+for detection.
+
+00:04:20.040 --> 00:04:25.560
+You can also get hunting queries
+for proactive investigation,
+
+00:04:25.560 --> 00:04:30.690
+notebooks for advanced analysis,
+watch lists for enrichment
+
+00:04:30.690 --> 00:04:33.240
+and correlation, and playbook,
+
+00:04:33.240 --> 00:04:36.300
+plus Azure Logic App
+custom connectors
+
+00:04:36.300 --> 00:04:41.190
+to automate responses
+and workflows.
+
+00:04:41.190 --> 00:04:44.430
+When you create custom
+content, you can store
+
+00:04:44.430 --> 00:04:48.270
+and manage it directly inside
+your Sentinel workspace,
+
+00:04:48.270 --> 00:04:50.220
+or you can manage it
+
+00:04:50.220 --> 00:04:53.130
+in an external source
+control repository,
+
+00:04:53.130 --> 00:04:57.030
+commonly GitHub or Azure DevOps.
+
+00:04:57.030 --> 00:05:01.350
+Managing content in an external
+repository is powerful
+
+00:05:01.350 --> 00:05:06.120
+because it lets you update that
+content outside of Sentinel,
+
+00:05:06.120 --> 00:05:08.430
+track changes with versioning,
+
+00:05:08.430 --> 00:05:13.490
+and then automatically deploy
+those updates in your workspace
+
+00:05:13.490 --> 00:05:17.840
+as part of a controlled
+release process.
+
+00:05:17.840 --> 00:05:21.810
+Now we shift from managing
+content to bringing data in.
+
+00:05:21.810 --> 00:05:24.090
+The goal is to connect
+your data source
+
+00:05:24.090 --> 00:05:28.200
+to Microsoft Sentinel using
+the right data connectors
+
+00:05:28.200 --> 00:05:31.530
+so your workspace receives
+the logs, alerts,
+
+00:05:31.530 --> 00:05:34.530
+and telemetry needed
+for detection,
+
+00:05:34.530 --> 00:05:38.550
+hunting, and responses.
+
+00:05:38.550 --> 00:05:40.980
+After completing this
+module, you'll be able
+
+00:05:40.980 --> 00:05:45.720
+to explain how data connectors
+are used in Microsoft Sentinel,
+
+00:05:45.720 --> 00:05:49.470
+and you'll be able to describe
+the different data connector
+
+00:05:49.470 --> 00:05:53.280
+provider categories so you
+can choose the right path
+
+00:05:53.280 --> 00:05:56.560
+for each type of data source.
+
+00:05:58.020 --> 00:06:00.960
+To collect log data in Sentinel,
+
+00:06:00.960 --> 00:06:04.650
+you connect your data source
+using Sentinel connectors.
+
+00:06:04.650 --> 00:06:07.350
+In practice, you typically start
+
+00:06:07.350 --> 00:06:10.890
+by installing the appropriate
+Content Hub solutions
+
+00:06:10.890 --> 00:06:15.600
+because that solution often
+includes the data connector
+
+00:06:15.600 --> 00:06:16.590
+you need.
+
+00:06:16.590 --> 00:06:18.600
+And then you configure
+that connector
+
+00:06:18.600 --> 00:06:24.090
+so it can begin streaming
+data in your workspace.
+
+00:06:24.090 --> 00:06:26.130
+Here are the main categories
+
+00:06:26.130 --> 00:06:29.580
+of data connector provider
+you'll work with.
+
+00:06:29.580 --> 00:06:33.060
+There are connectors for
+Microsoft Defender XDR
+
+00:06:33.060 --> 00:06:35.460
+and the related
+Defender services.
+
+00:06:35.460 --> 00:06:39.270
+There are connectors for
+Microsoft Azure services.
+
+00:06:39.270 --> 00:06:43.260
+There are also Windows
+Security Event connectors,
+
+00:06:43.260 --> 00:06:47.430
+commonly through the Azure
+Monitoring Agent, or AMA.
+
+00:06:47.430 --> 00:06:51.210
+You'll also see a broad
+set of vendor connectors
+
+00:06:51.210 --> 00:06:55.200
+and custom connectors,
+which we'll detail next.
+
+00:06:55.200 --> 00:07:00.240
+Finally, there's the Common
+Event Format, or CAF connectors,
+
+00:07:00.240 --> 00:07:03.960
+which is frequently used for
+third-party security appliance
+
+00:07:03.960 --> 00:07:08.370
+that can emit CAF over syslog.
+
+00:07:08.370 --> 00:07:11.340
+Let's dig into
+custom connectors.
+
+00:07:11.340 --> 00:07:13.620
+You have several
+approaches depending
+
+00:07:13.620 --> 00:07:15.810
+on how much control you need
+
+00:07:15.810 --> 00:07:20.040
+and how much development
+effort you can invest.
+
+00:07:20.040 --> 00:07:23.880
+Option includes the codeless
+connector platform,
+
+00:07:23.880 --> 00:07:28.380
+often called CCP, using
+a lock stream plugin,
+
+00:07:28.380 --> 00:07:33.030
+building integration with Logic
+App, using Azure Function
+
+00:07:33.030 --> 00:07:36.540
+for custom ingestion
+and processing,
+
+00:07:36.540 --> 00:07:40.530
+using Azure Monitor agent
+for collection scenarios
+
+00:07:40.530 --> 00:07:45.120
+or sending data via
+the Log Analytic API.
+
+00:07:45.120 --> 00:07:47.640
+The key here is to
+select a method
+
+00:07:47.640 --> 00:07:52.800
+that matches your source system,
+your transformation need,
+
+00:07:52.800 --> 00:07:55.720
+and your operational model.
+
+00:07:56.790 --> 00:08:01.350
+Next, we'll focus on
+connecting Microsoft Services.
+
+00:08:01.350 --> 00:08:05.580
+These connectors help you
+ingest high-value signal
+
+00:08:05.580 --> 00:08:09.450
+from Microsoft security
+and cloud service,
+
+00:08:09.450 --> 00:08:14.160
+and in many cases, enable
+streamlined incident creation
+
+00:08:14.160 --> 00:08:18.540
+and investigation
+workflows in Sentinel.
+
+00:08:18.540 --> 00:08:21.330
+After completing this
+module, you'll be able
+
+00:08:21.330 --> 00:08:24.750
+to connect Microsoft
+Service data connectors,
+
+00:08:24.750 --> 00:08:29.730
+explain how connectors can
+automatically create incidents
+
+00:08:29.730 --> 00:08:34.170
+in Microsoft Sentinel, and
+activate the Microsoft Defender
+
+00:08:34.170 --> 00:08:38.010
+for Cloud connector in Sentinel.
+
+00:08:38.010 --> 00:08:41.970
+Before you turn these
+connectors on, it's important
+
+00:08:41.970 --> 00:08:45.270
+to plan prerequisite
+and outcome.
+
+00:08:45.270 --> 00:08:47.820
+For Microsoft
+Defender for Cloud,
+
+00:08:47.820 --> 00:08:50.910
+you'll need the write
+permission on the workspace,
+
+00:08:50.910 --> 00:08:54.570
+specifically read and
+write permission.
+
+00:08:54.570 --> 00:08:57.330
+Also, keep in mind
+configuration detail.
+
+00:08:57.330 --> 00:09:01.020
+For example, the Windows
+Security Events via AMA
+
+00:09:01.020 --> 00:09:06.750
+Connectors, Create Data
+Connection Rule, or DCR.
+
+00:09:06.750 --> 00:09:11.310
+And when we talk about incident
+creation, a common pattern is
+
+00:09:11.310 --> 00:09:17.130
+that incidents are created from
+alert data, often specifically
+
+00:09:17.130 --> 00:09:20.850
+from alert store in
+security alert table.
+
+00:09:20.850 --> 00:09:25.890
+So understanding where alerts
+land helps you understand what
+
+00:09:25.890 --> 00:09:29.550
+can drive incidents.
+
+00:09:29.550 --> 00:09:33.780
+Let's take a look at Microsoft
+Defender for Cloud integration.
+
+00:09:33.780 --> 00:09:36.720
+There are two
+connectors available.
+
+00:09:36.720 --> 00:09:39.810
+The first is the
+subscription-based Microsoft
+
+00:09:39.810 --> 00:09:44.490
+Defender for Cloud, sometimes
+labeled as the legacy connector.
+
+00:09:44.490 --> 00:09:48.690
+This connector streams your
+security alerts from Defender
+
+00:09:48.690 --> 00:09:53.340
+for Cloud into Microsoft
+Sentinel, specifically
+
+00:09:53.340 --> 00:09:56.570
+into the security alert table.
+
+00:09:56.570 --> 00:10:00.560
+The second option is the
+tenant-based Microsoft Defender
+
+00:10:00.560 --> 00:10:02.120
+for Cloud Connector.
+
+00:10:02.120 --> 00:10:05.690
+This connector also streams
+your security alerts
+
+00:10:05.690 --> 00:10:09.410
+into the security alert
+table in Sentinel,
+
+00:10:09.410 --> 00:10:11.690
+but it can additionally stream
+
+00:10:11.690 --> 00:10:15.600
+into Defender XDR
+alerts and incidents.
+
+00:10:15.600 --> 00:10:18.990
+So your operation
+model includes working
+
+00:10:18.990 --> 00:10:23.100
+in the Defender portal
+as well as Sentinel.
+
+00:10:23.100 --> 00:10:25.140
+The tenant-based
+approach supports
+
+00:10:25.140 --> 00:10:27.970
+that broader integration.
+
+00:10:28.980 --> 00:10:32.880
+Here, we gain deeper insight
+into Microsoft Entra ID
+
+00:10:32.880 --> 00:10:37.370
+by connecting audit logs and
+sign-in logs to Sentinel.
+
+00:10:37.370 --> 00:10:41.480
+This helps you investigate
+identity-focused scenarios,
+
+00:10:41.480 --> 00:10:44.150
+like suspicious
+sign-in patterns,
+
+00:10:44.150 --> 00:10:49.280
+changes to privileged role,
+or risky user activities,
+
+00:10:49.280 --> 00:10:51.980
+using data that's
+already central
+
+00:10:51.980 --> 00:10:55.380
+to many incident investigations.
+
+00:10:55.380 --> 00:10:58.800
+This is marked as an
+optional topic, but it's one
+
+00:10:58.800 --> 00:11:04.180
+of the most commonly deployed
+connectors in real environments.
+
+00:11:06.090 --> 00:11:08.640
+Beyond Identity and
+Defender for Cloud,
+
+00:11:08.640 --> 00:11:11.430
+there are many
+Azure-focused solutions
+
+00:11:11.430 --> 00:11:14.100
+that include data connectors.
+
+00:11:14.100 --> 00:11:17.790
+Common examples include
+user activity logs,
+
+00:11:17.790 --> 00:11:22.980
+Azure DDoS Protection, Azure
+Firewall, Azure Key Vault,
+
+00:11:22.980 --> 00:11:28.860
+Azure SQL Database, Azure Web
+Application Firewall, or WAF.
+
+00:11:28.860 --> 00:11:31.560
+These connectors
+give you visibility
+
+00:11:31.560 --> 00:11:35.220
+into control plane
+action, network control,
+
+00:11:35.220 --> 00:11:39.480
+and data layer events signals
+that are often essential
+
+00:11:39.480 --> 00:11:42.640
+for cloud threats and detection.
+
+00:11:44.820 --> 00:11:49.170
+Next, we connect Microsoft
+Defender XDR to Sentinel.
+
+00:11:49.170 --> 00:11:54.000
+This integration helps you
+bring in Defender signals and,
+
+00:11:54.000 --> 00:11:57.690
+depending on configuration,
+enable Sentinel to work
+
+00:11:57.690 --> 00:11:59.940
+with Defender's alerting
+
+00:11:59.940 --> 00:12:04.920
+and incident ecosystem
+more seamlessly.
+
+00:12:04.920 --> 00:12:07.350
+After completing this
+module, you'll be able
+
+00:12:07.350 --> 00:12:11.220
+to activate the Microsoft
+Defender XDR connector
+
+00:12:11.220 --> 00:12:12.270
+in Sentinel.
+
+00:12:12.270 --> 00:12:16.890
+To enable it, you typically
+need security administrator
+
+00:12:16.890 --> 00:12:21.570
+permission in the tenant
+for Microsoft Entra ID.
+
+00:12:21.570 --> 00:12:24.870
+In many environments, this
+is enabled by default
+
+00:12:24.870 --> 00:12:29.460
+when Sentinel is onboarded
+to Defender XDR.
+
+00:12:29.460 --> 00:12:33.270
+And if you onboard Sentinel
+to the Defender portal
+
+00:12:33.270 --> 00:12:36.360
+and you're licensed
+for Defender XDR,
+
+00:12:36.360 --> 00:12:39.750
+the connection is
+automatically established,
+
+00:12:39.750 --> 00:12:44.220
+and the data connector
+is set up for you.
+
+00:12:44.220 --> 00:12:46.920
+When planning
+Defender-based connector,
+
+00:12:46.920 --> 00:12:52.080
+you'll commonly use Microsoft
+Defender XDR, Microsoft Defender
+
+00:12:52.080 --> 00:12:57.510
+for Office 365, and Microsoft
+Defender for Endpoint.
+
+00:12:57.510 --> 00:12:59.760
+A key point to emphasize here is
+
+00:12:59.760 --> 00:13:05.010
+that these Defender connectors
+generally send alert data
+
+00:13:05.010 --> 00:13:09.240
+into Sentinel, and that
+alert data can then be used
+
+00:13:09.240 --> 00:13:11.520
+to generate incident, depending
+
+00:13:11.520 --> 00:13:15.000
+on how you configure
+incident creation role
+
+00:13:15.000 --> 00:13:19.650
+and how you want
+your SOC to operate.
+
+00:13:19.650 --> 00:13:23.100
+Let's take a look at what
+the Microsoft Defender XDR
+
+00:13:23.100 --> 00:13:24.930
+Connector provides.
+
+00:13:24.930 --> 00:13:29.940
+It's installed as part of the
+Microsoft Defender XDR solution
+
+00:13:29.940 --> 00:13:33.540
+and lets you stream
+advanced hunting data.
+
+00:13:33.540 --> 00:13:36.450
+It's also helpful to
+remember what's included
+
+00:13:36.450 --> 00:13:41.340
+in the Defender XDR Suite,
+Microsoft Defender for Endpoint,
+
+00:13:41.340 --> 00:13:46.110
+Defender for Identity,
+Defender for Office 365,
+
+00:13:46.110 --> 00:13:49.290
+Defender for Cloud
+App, Defender Alert,
+
+00:13:49.290 --> 00:13:53.640
+Defender Vulnerability
+Management, Microsoft Purview,
+
+00:13:53.640 --> 00:13:58.980
+Data Loss Prevention, and
+Microsoft Entra ID Protection.
+
+00:13:58.980 --> 00:14:04.380
+Once connected, you can expect
+a wide range of data types
+
+00:14:04.380 --> 00:14:09.150
+to become available, including
+core incidents and alert tables
+
+00:14:09.150 --> 00:14:12.900
+like security incident
+and security alerts,
+
+00:14:12.900 --> 00:14:17.040
+plus a broad set of hunting
+and telemetry tables,
+
+00:14:17.040 --> 00:14:20.820
+such as device events,
+device file events,
+
+00:14:20.820 --> 00:14:25.110
+device info, and many more.
+
+00:14:25.110 --> 00:14:28.290
+In addition to the major
+Defender workload,
+
+00:14:28.290 --> 00:14:31.080
+Sentinel provides
+built-in connectors
+
+00:14:31.080 --> 00:14:34.320
+for other Microsoft
+Defender solutions.
+
+00:14:34.320 --> 00:14:38.820
+Examples include Microsoft
+Defender for Threat Intelligence
+
+00:14:38.820 --> 00:14:41.640
+and Microsoft Defender for IoT.
+
+00:14:41.640 --> 00:14:45.000
+These connectors broaden
+your visibility,
+
+00:14:45.000 --> 00:14:47.400
+bringing in intelligence context
+
+00:14:47.400 --> 00:14:50.640
+and operational
+technology signal
+
+00:14:50.640 --> 00:14:54.930
+where those are part
+of your environment.
+
+00:14:54.930 --> 00:14:57.420
+Now, let's focus
+on Windows host.
+
+00:14:57.420 --> 00:15:02.010
+Endpoint and server security
+events remain foundational
+
+00:15:02.010 --> 00:15:04.860
+for investigation,
+so the goal here is
+
+00:15:04.860 --> 00:15:09.630
+to connect both Azure-based
+and non-Azure Windows machine
+
+00:15:09.630 --> 00:15:12.900
+so that their security
+events can be collected
+
+00:15:12.900 --> 00:15:17.070
+and analyzed in Sentinel.
+
+00:15:17.070 --> 00:15:19.350
+After completing this
+module, you'll be able
+
+00:15:19.350 --> 00:15:23.100
+to connect Azure Windows
+Virtual Machine to Sentinel,
+
+00:15:23.100 --> 00:15:27.270
+connect non-Azure Windows
+host to Sentinel,
+
+00:15:27.270 --> 00:15:30.120
+and configure the
+Azure Monitoring Agent
+
+00:15:30.120 --> 00:15:33.430
+to collect security events.
+
+00:15:34.470 --> 00:15:38.400
+When you plan Windows
+Security event ingestion,
+
+00:15:38.400 --> 00:15:41.730
+you'll typically use the
+Content Hub solutions
+
+00:15:41.730 --> 00:15:44.100
+as part of your entry point.
+
+00:15:44.100 --> 00:15:49.680
+Common solution includes the
+Windows Security events via AMA,
+
+00:15:49.680 --> 00:15:55.200
+Windows Server DNS via AMA,
+and Windows forwarded events.
+
+00:15:55.200 --> 00:15:59.160
+These solutions install the
+required data connector
+
+00:15:59.160 --> 00:16:04.350
+from the Azure Monitoring Agent
+and uses Data Collection Rules,
+
+00:16:04.350 --> 00:16:08.310
+DCR, to define what
+gets collected.
+
+00:16:08.310 --> 00:16:10.590
+And just as a quick reminder,
+
+00:16:10.590 --> 00:16:14.470
+AMA stands for Azure
+Monitoring Agent.
+
+00:16:16.080 --> 00:16:19.980
+Here we look at the Windows
+security events via AMA
+
+00:16:19.980 --> 00:16:24.030
+connector and why it's
+commonly recommended.
+
+00:16:24.030 --> 00:16:27.960
+Benefits include being able
+to manage collection settings
+
+00:16:27.960 --> 00:16:31.920
+at scale, reusing the
+Azure Monitoring Agent
+
+00:16:31.920 --> 00:16:35.700
+across multiple solutions,
+improving security
+
+00:16:35.700 --> 00:16:39.090
+and performance,
+and saving costs
+
+00:16:39.090 --> 00:16:42.120
+by using the Data
+Collection Rule.
+
+00:16:42.120 --> 00:16:45.570
+There are also limitations
+to be aware of.
+
+00:16:45.570 --> 00:16:50.460
+Some features may be available
+only in public preview.
+
+00:16:50.460 --> 00:16:54.150
+In terms of requirement,
+you'll be working with DCR,
+
+00:16:54.150 --> 00:17:00.190
+and for non-Azure VMs or device,
+you'll typically need Azure Arc.
+
+00:17:01.230 --> 00:17:03.060
+Let's take a look
+at what it looks
+
+00:17:03.060 --> 00:17:06.600
+like when you install this
+from the Content Hub.
+
+00:17:06.600 --> 00:17:10.980
+You'll install the Windows
+security events via AMA
+
+00:17:10.980 --> 00:17:14.880
+connector solution,
+review the prerequisite,
+
+00:17:14.880 --> 00:17:20.460
+and then configure collection
+through a data collection role.
+
+00:17:20.460 --> 00:17:23.400
+Now we focus on
+selecting the resources
+
+00:17:23.400 --> 00:17:26.250
+that the DCR will apply to.
+
+00:17:26.250 --> 00:17:31.050
+For non-Azure machine, they must
+be connected through Azure Arc,
+
+00:17:31.050 --> 00:17:35.720
+and when you add machine,
+add DCR resources,
+
+00:17:35.720 --> 00:17:40.160
+any machine that doesn't already
+have an Azure Monitoring Agent,
+
+00:17:40.160 --> 00:17:44.420
+whether it's Windows or Linux,
+will have the agent installed
+
+00:17:44.420 --> 00:17:47.910
+as part of that
+onboarding process.
+
+00:17:48.990 --> 00:17:52.740
+Here, we examine the DCR
+configuration itself.
+
+00:17:52.740 --> 00:17:55.470
+This is where you
+specify exactly
+
+00:17:55.470 --> 00:17:58.950
+which Window Security
+event to collect
+
+00:17:58.950 --> 00:18:02.850
+and how they should be
+delivered into your workspace,
+
+00:18:02.850 --> 00:18:07.440
+giving you centralized
+control over volume, cost,
+
+00:18:07.440 --> 00:18:10.300
+and investigative value.
+
+00:18:11.700 --> 00:18:13.440
+Next, let's bring in log
+
+00:18:13.440 --> 00:18:18.690
+from external security solution
+using the Common Event Format,
+
+00:18:18.690 --> 00:18:20.150
+or CAF.
+
+00:18:20.150 --> 00:18:25.070
+This is a common scenario where
+you're integrating network,
+
+00:18:25.070 --> 00:18:29.540
+firewall, or third-party
+security appliances data
+
+00:18:29.540 --> 00:18:31.530
+into Sentinel.
+
+00:18:31.530 --> 00:18:33.960
+After completing this
+module, you'll be able
+
+00:18:33.960 --> 00:18:38.490
+to explain the CAF connector
+deployment option in Sentinel,
+
+00:18:38.490 --> 00:18:42.570
+and you'll be able to explain
+the difference between the CAF
+
+00:18:42.570 --> 00:18:46.740
+and Syslog connector, so you
+can choose the right approach
+
+00:18:46.740 --> 00:18:52.440
+for your source system and for
+the level of parsing you need.
+
+00:18:52.440 --> 00:18:56.670
+Here's the typical deployment
+model for CAF ingestion.
+
+00:18:56.670 --> 00:19:00.900
+You deploy a syslog forwarder
+server that acts as a bridge
+
+00:19:00.900 --> 00:19:03.630
+between your appliance
+and Sentinel.
+
+00:19:03.630 --> 00:19:06.990
+That forwarder is a
+dedicated Linux machine
+
+00:19:06.990 --> 00:19:10.680
+with the Azure Monitoring
+Agent for Linux installed.
+
+00:19:10.680 --> 00:19:14.790
+Many vendor-specific
+Sentinel connectors rely
+
+00:19:14.790 --> 00:19:17.460
+on the CAF connectors
+behind the scene.
+
+00:19:17.460 --> 00:19:22.260
+You can deploy this forwarder
+in Azure or on-premise,
+
+00:19:22.260 --> 00:19:26.310
+and importantly, CAF is
+generally recommended
+
+00:19:26.310 --> 00:19:32.040
+over basic syslog because CAF
+provides parse message data,
+
+00:19:32.040 --> 00:19:34.800
+which reduces the amount
+of parsing you need
+
+00:19:34.800 --> 00:19:39.600
+to do during queries
+and investigation.
+
+00:19:39.600 --> 00:19:43.590
+This architecture diagram
+illustrates how CAF logs
+
+00:19:43.590 --> 00:19:48.570
+collection data using the
+common event format using AMA
+
+00:19:48.570 --> 00:19:51.540
+connectors currently in preview.
+
+00:19:51.540 --> 00:19:55.320
+Your security appliance sends
+syslog to the forwarder.
+
+00:19:55.320 --> 00:19:58.590
+The forwarder uses
+its syslog daemon
+
+00:19:58.590 --> 00:20:01.950
+and the Azure monitoring
+agent for Linux to collect
+
+00:20:01.950 --> 00:20:05.520
+and securely send those
+events to Sentinel,
+
+00:20:05.520 --> 00:20:10.380
+where they're parsed and
+enriched for analysis.
+
+00:20:10.380 --> 00:20:13.590
+Let's walk through the
+connection process.
+
+00:20:13.590 --> 00:20:16.800
+You start by creating
+a Data Collection Rule
+
+00:20:16.800 --> 00:20:21.060
+and then use the link on the
+connector page to get a script.
+
+00:20:21.060 --> 00:20:24.480
+You run that script on the
+designated Linux machine
+
+00:20:24.480 --> 00:20:26.720
+that will act as your forwarder.
+
+00:20:26.720 --> 00:20:31.340
+That machine can be physical
+or virtual, could be on-prem,
+
+00:20:31.340 --> 00:20:34.100
+in Azure, or another cloud,
+
+00:20:34.100 --> 00:20:37.850
+as long as it can receive
+the syslog traffic
+
+00:20:37.850 --> 00:20:40.680
+from your security solution.
+
+00:20:40.680 --> 00:20:42.180
+When you run the script,
+
+00:20:42.180 --> 00:20:45.780
+it installs the Azure
+Monitoring Agent for Linux
+
+00:20:45.780 --> 00:20:49.320
+and configures it to
+listen to CAF messages
+
+00:20:49.320 --> 00:20:52.560
+from the built-in Linux
+syslog daemon running
+
+00:20:52.560 --> 00:20:55.620
+on TCP port 25226.
+
+00:20:55.620 --> 00:21:00.420
+It also configures secure
+transport over TLS
+
+00:21:00.420 --> 00:21:02.850
+to your Sentinel workspace,
+
+00:21:02.850 --> 00:21:06.510
+where the messages are
+parsed and enriched.
+
+00:21:06.510 --> 00:21:10.320
+At the same time, the script
+configures the syslog daemon,
+
+00:21:10.320 --> 00:21:16.800
+such as rsyslog or syslog-ng,
+to listen to syslog messages
+
+00:21:16.800 --> 00:21:21.720
+from your security
+solution on TCP port 514
+
+00:21:21.720 --> 00:21:26.100
+and then forwards only the
+messages identified as CAF
+
+00:21:26.100 --> 00:21:32.140
+to the agent locally
+on TCP port 25226.
+
+00:21:33.900 --> 00:21:38.300
+Now, let's move to
+syslog ingestion.
+
+00:21:38.300 --> 00:21:43.640
+While CAF is a structured format
+layered on top of syslog,
+
+00:21:43.640 --> 00:21:48.720
+many environments still need to
+connect to plain syslog events
+
+00:21:48.720 --> 00:21:52.770
+from Linux hosts and
+appliance and then parse them
+
+00:21:52.770 --> 00:21:55.950
+as needed into Sentinel.
+
+00:21:55.950 --> 00:21:58.560
+After completing this
+module, you'll be able
+
+00:21:58.560 --> 00:22:02.970
+to describe the Syslog Data
+Collection Rule configuration
+
+00:22:02.970 --> 00:22:07.650
+in Microsoft Azure, understand
+how the Azure Monitoring Agent
+
+00:22:07.650 --> 00:22:14.490
+for Linux is deployed, create
+and configure a DCR to send data
+
+00:22:14.490 --> 00:22:20.220
+to Sentinel, and create a
+parser using KQL in Sentinel.
+
+00:22:20.220 --> 00:22:23.100
+And that will reinforce
+that creating
+
+00:22:23.100 --> 00:22:26.430
+and configuring the DCR
+is the central step
+
+00:22:26.430 --> 00:22:31.110
+that ties collection
+to your workspace.
+
+00:22:31.110 --> 00:22:33.390
+Here's the overall approach.
+
+00:22:33.390 --> 00:22:37.380
+You stream events from your
+Linux-based syslog supporting
+
+00:22:37.380 --> 00:22:39.570
+machine or appliances
+
+00:22:39.570 --> 00:22:44.190
+into Sentinel using the Azure
+Monitoring Agent for Linux
+
+00:22:44.190 --> 00:22:46.650
+and Data Collection Rules.
+
+00:22:46.650 --> 00:22:50.430
+The host native syslog
+daemon collects local event
+
+00:22:50.430 --> 00:22:55.230
+of specified type and forwards
+them locally to the agent,
+
+00:22:55.230 --> 00:22:59.490
+and the agent streams them to
+your log analytic workspace.
+
+00:22:59.490 --> 00:23:02.940
+From a how it works perspective,
+
+00:23:02.940 --> 00:23:07.170
+syslog is a common Linux
+event logging protocol
+
+00:23:07.170 --> 00:23:11.430
+where the Azure monitoring
+agent for Linux is installed.
+
+00:23:11.430 --> 00:23:15.930
+It configures the local syslog
+daemon to forward message
+
+00:23:15.930 --> 00:23:21.000
+to the agent on TCP port 28330.
+
+00:23:21.000 --> 00:23:23.910
+The agent then sends
+those messages
+
+00:23:23.910 --> 00:23:30.450
+to your log analytic workspace
+over TCP 443 using HTTPS.
+
+00:23:30.450 --> 00:23:35.190
+Once ingested, the events
+are parsed into entries
+
+00:23:35.190 --> 00:23:40.710
+in the syslog table, which
+you can query using Sentinel
+
+00:23:40.710 --> 00:23:42.640
+under logs.
+
+00:23:44.220 --> 00:23:48.210
+This diagram shows the syslog
+collection architecture
+
+00:23:48.210 --> 00:23:49.860
+from a single source.
+
+00:23:49.860 --> 00:23:52.200
+The key takeaway is the flow.
+
+00:23:52.200 --> 00:23:54.780
+Source generates syslogs.
+
+00:23:54.780 --> 00:23:59.580
+The agent and local daemon
+cooperate to forward events,
+
+00:23:59.580 --> 00:24:03.090
+and the workspace receives
+and stores those events
+
+00:24:03.090 --> 00:24:06.870
+for Sentinel queries
+and detection.
+
+00:24:06.870 --> 00:24:11.880
+Here we focus on onboarding
+Azure Linux Virtual Machine.
+
+00:24:11.880 --> 00:24:17.040
+When you add Azure
+Linux VM as resources
+
+00:24:17.040 --> 00:24:19.680
+in Syslog Data Collection Rule,
+
+00:24:19.680 --> 00:24:22.920
+the Azure monitoring
+agent is deployed.
+
+00:24:22.920 --> 00:24:26.730
+So to connect an
+Azure based Linux VM,
+
+00:24:26.730 --> 00:24:30.540
+you add it as a DCR resource,
+
+00:24:30.540 --> 00:24:34.920
+and the platform handles agent
+deployment and association
+
+00:24:34.920 --> 00:24:38.200
+so events can start flowing.
+
+00:24:40.230 --> 00:24:45.390
+For non-Azure Linux host, the
+approach changes slightly.
+
+00:24:45.390 --> 00:24:48.750
+You provision those
+machines using Azure Arc.
+
+00:24:48.750 --> 00:24:52.800
+There are more steps involved
+compared to Azure Native VM,
+
+00:24:52.800 --> 00:24:56.220
+and you generally need to
+manually install the agent
+
+00:24:56.220 --> 00:24:59.460
+as part of bringing that
+host under management
+
+00:24:59.460 --> 00:25:04.800
+so it can participate in
+DCR-based collection.
+
+00:25:04.800 --> 00:25:08.820
+Now we configure what
+actually gets collected.
+
+00:25:08.820 --> 00:25:13.170
+The Data Collection Rule
+will only collect events
+
+00:25:13.170 --> 00:25:17.820
+that match the facilities
+and severities you specify.
+
+00:25:17.820 --> 00:25:21.030
+This is a critical
+control point.
+
+00:25:21.030 --> 00:25:23.910
+It lets you balance
+investigative coverage
+
+00:25:23.910 --> 00:25:27.930
+with data volume and
+cost, while ensuring
+
+00:25:27.930 --> 00:25:32.250
+that the event you do ingest
+are the ones your detection
+
+00:25:32.250 --> 00:25:35.650
+and hunting workflow
+actually need.
+
+00:25:37.380 --> 00:25:42.510
+Let's dive deeper into how
+syslog data is parsed once
+
+00:25:42.510 --> 00:25:43.950
+it's ingested.
+
+00:25:43.950 --> 00:25:48.330
+The syslog connector writes
+events into the syslog table,
+
+00:25:48.330 --> 00:25:53.040
+and unlike the CAF connector,
+the message payload is stored
+
+00:25:53.040 --> 00:25:57.690
+as a single string in the
+syslog message field.
+
+00:25:57.690 --> 00:26:02.400
+That means parsing is something
+you must do manually,
+
+00:26:02.400 --> 00:26:04.080
+you must handle.
+
+00:26:04.080 --> 00:26:06.600
+One effective approach is
+
+00:26:06.600 --> 00:26:10.470
+to create a reusable
+parser using KQL.
+
+00:26:10.470 --> 00:26:15.750
+In this example, a function
+name MyParser is created.
+
+00:26:15.750 --> 00:26:19.170
+The query starts from
+the syslog table,
+
+00:26:19.170 --> 00:26:23.340
+filters on a specific
+process name such as squid,
+
+00:26:23.340 --> 00:26:27.030
+and then uses the
+extract statement
+
+00:26:27.030 --> 00:26:29.220
+to pull structured field
+
+00:26:29.220 --> 00:26:32.220
+from the raw syslog
+message text field
+
+00:26:32.220 --> 00:26:38.130
+like URL source IP address,
+username, RemotePort,
+
+00:26:38.130 --> 00:26:42.630
+and domains are extracted
+and made available
+
+00:26:42.630 --> 00:26:45.090
+as individual columns.
+
+00:26:45.090 --> 00:26:48.660
+By saving this query as a
+function, you only need
+
+00:26:48.660 --> 00:26:51.270
+to write the parsing logic once.
+
+00:26:51.270 --> 00:26:54.630
+After that, you can
+refer MyParser just
+
+00:26:54.630 --> 00:26:57.780
+like any other
+table in Sentinel.
+
+00:26:57.780 --> 00:27:02.580
+In practice, you create the
+query in the log experience,
+
+00:27:02.580 --> 00:27:05.280
+select "Save,"
+choose "Function,"
+
+00:27:05.280 --> 00:27:08.640
+and then assign a
+function name and alias.
+
+00:27:08.640 --> 00:27:13.740
+From that point forward, calling
+MyParser gives you consistently
+
+00:27:13.740 --> 00:27:19.110
+parse syslog data without
+repeating the parsing logic
+
+00:27:19.110 --> 00:27:22.920
+in every query.
+
+00:27:22.920 --> 00:27:26.610
+Next, we shift focus to
+Threat Intelligence.
+
+00:27:26.610 --> 00:27:29.580
+Dissecting threat
+indicator allows Sentinel
+
+00:27:29.580 --> 00:27:36.060
+to match law data against known
+malicious IPs, domains, URL,
+
+00:27:36.060 --> 00:27:39.840
+and file hashes,
+turning raw telemetry
+
+00:27:39.840 --> 00:27:42.930
+into actionable detection.
+
+00:27:42.930 --> 00:27:46.320
+This capability help
+bridges the gap
+
+00:27:46.320 --> 00:27:51.120
+between external intelligence
+and internal telemetry,
+
+00:27:51.120 --> 00:27:53.940
+enabling detection
+that are informed
+
+00:27:53.940 --> 00:27:58.920
+by what's happening beyond
+your own environment.
+
+00:27:58.920 --> 00:28:01.830
+After completing this
+module, you'll be able
+
+00:28:01.830 --> 00:28:04.650
+to install the Threat
+Intelligence Content Hub
+
+00:28:04.650 --> 00:28:08.520
+solution, configure Threat
+Intelligence Connector,
+
+00:28:08.520 --> 00:28:13.410
+use analytic rules, hunting
+queries, and workbook,
+
+00:28:13.410 --> 00:28:17.280
+and view threat indicators
+in Sentinel logs
+
+00:28:17.280 --> 00:28:21.090
+through the Threat
+Intel indicator table.
+
+00:28:21.090 --> 00:28:25.620
+These skills are foundational
+for enriching detection
+
+00:28:25.620 --> 00:28:27.510
+with external context
+
+00:28:27.510 --> 00:28:32.670
+and improving
+investigation efficiency.
+
+00:28:32.670 --> 00:28:37.290
+Here we outline what the Threat
+Intelligence solution provides.
+
+00:28:37.290 --> 00:28:40.050
+It includes multiple
+data connectors
+
+00:28:40.050 --> 00:28:42.210
+such as TAXII-based feed,
+
+00:28:42.210 --> 00:28:46.440
+the Threat Intelligence
+Upload Indicator API,
+
+00:28:46.440 --> 00:28:51.600
+Microsoft Defender Threat
+Intelligence, and integration
+
+00:28:51.600 --> 00:28:55.650
+with third-party Threat
+Intelligence platform.
+
+00:28:55.650 --> 00:29:00.030
+Analytics rules use these
+indicators to generate alerts
+
+00:29:00.030 --> 00:29:05.790
+and incidents where match
+occurs in your log data.
+
+00:29:05.790 --> 00:29:10.350
+Workbook summarizes indicator
+activities and trends,
+
+00:29:10.350 --> 00:29:15.720
+while hunting queries allows
+analysts to proactively search
+
+00:29:15.720 --> 00:29:17.820
+for related activities.
+
+00:29:17.820 --> 00:29:22.140
+Together, these components
+help operationalize Threat
+
+00:29:22.140 --> 00:29:26.130
+Intelligence within Sentinel.
+
+00:29:26.130 --> 00:29:28.890
+Installing the Threat
+Intelligence solution
+
+00:29:28.890 --> 00:29:31.260
+from the Content Hub
+gives you access
+
+00:29:31.260 --> 00:29:33.720
+to five built-in connectors.
+
+00:29:33.720 --> 00:29:37.950
+These include Connector for
+Threat Intelligence Platform,
+
+00:29:37.950 --> 00:29:40.830
+the Upload Indicator API,
+
+00:29:40.830 --> 00:29:44.130
+Microsoft Defender
+Threat Intelligence,
+
+00:29:44.130 --> 00:29:47.700
+Premium Microsoft Defender
+Threat Intelligence,
+
+00:29:47.700 --> 00:29:49.830
+and TAXII feeds.
+
+00:29:49.830 --> 00:29:53.730
+Once installed, these
+connectors make it possible
+
+00:29:53.730 --> 00:29:58.710
+to ingest indicators from
+multiple sources into Sentinel
+
+00:29:58.710 --> 00:30:01.800
+in a standardized way.
+
+00:30:01.800 --> 00:30:07.500
+With indicators flowing in, the
+next step is enabling detection.
+
+00:30:07.500 --> 00:30:11.460
+Threat Intelligence analytic
+rule template allows you
+
+00:30:11.460 --> 00:30:13.980
+to create alerts and incident
+
+00:30:13.980 --> 00:30:17.520
+when log event matches
+known indicator.
+
+00:30:17.520 --> 00:30:20.820
+By enabling and tuning
+these templates,
+
+00:30:20.820 --> 00:30:25.920
+Sentinel can automatically
+service activities that align
+
+00:30:25.920 --> 00:30:30.480
+with known malicious
+infrastructure helping analysts
+
+00:30:30.480 --> 00:30:34.920
+focus on high-confidence
+threats.
+
+00:30:34.920 --> 00:30:37.080
+In addition to
+built-in connectors,
+
+00:30:37.080 --> 00:30:39.900
+you can also send
+indicators directly
+
+00:30:39.900 --> 00:30:44.040
+to Sentinel using the
+Upload Indicators API.
+
+00:30:44.040 --> 00:30:48.690
+This allows application or
+Threat Intelligence platform
+
+00:30:48.690 --> 00:30:54.030
+to push indicators in Sentinel
+using REST-based method.
+
+00:30:54.030 --> 00:30:59.010
+This approach is commonly used
+when integrating custom tooling
+
+00:30:59.010 --> 00:31:02.520
+or centralizing Threat
+Intelligence platforms
+
+00:31:02.520 --> 00:31:07.860
+that already manage
+indicator lifecycle.
+
+00:31:07.860 --> 00:31:10.740
+Once indicators are ingested,
+
+00:31:10.740 --> 00:31:13.200
+they're available
+in multiple places.
+
+00:31:13.200 --> 00:31:16.950
+You can view them directly in
+the Threat Intelligence Blade
+
+00:31:16.950 --> 00:31:23.830
+or query them from the Threat
+Intel Indicator table in Logs.
+
+00:31:25.920 --> 00:31:29.430
+At this point in the session,
+everything comes together.
+
+00:31:29.430 --> 00:31:34.260
+This demonstration shows how
+logs are connected to Sentinel
+
+00:31:34.260 --> 00:31:38.730
+across multiple sources,
+reinforcing how connectors,
+
+00:31:38.730 --> 00:31:40.440
+Data Collection Rules,
+
+00:31:40.440 --> 00:31:46.270
+and Content Hub solution
+work together in practice.
+
+00:31:47.910 --> 00:31:51.570
+In this demo, let's
+start connecting data
+
+00:31:51.570 --> 00:31:55.290
+to our Sentinel using
+Data Connector.
+
+00:31:55.290 --> 00:31:59.760
+We've already got our Sentinel
+workspace open over here.
+
+00:31:59.760 --> 00:32:03.700
+Let's navigate to the
+Content Management Hub.
+
+00:32:04.830 --> 00:32:07.470
+Let's select the Content Hub.
+
+00:32:07.470 --> 00:32:09.570
+And what we're going to do
+over here is we're going
+
+00:32:09.570 --> 00:32:12.210
+to connect Microsoft
+Defender for Cloud.
+
+00:32:12.210 --> 00:32:15.300
+Let's search for it,
+Defender for Cloud.
+
+00:32:15.300 --> 00:32:18.750
+It's already installed
+but not configured.
+
+00:32:18.750 --> 00:32:21.220
+So let's select it.
+
+00:32:22.800 --> 00:32:25.900
+And let's go down to "Manage."
+
+00:32:30.270 --> 00:32:32.310
+Here are our connectors.
+
+00:32:32.310 --> 00:32:36.390
+Let's select the
+subscription-based Defender.
+
+00:32:36.390 --> 00:32:38.940
+Let's configure it.
+
+00:32:38.940 --> 00:32:40.650
+And let's scroll down.
+
+00:32:40.650 --> 00:32:44.820
+What we're going to do here is
+connect it to our subscription.
+
+00:32:44.820 --> 00:32:48.180
+All I need to do is select
+a subscription, connect it,
+
+00:32:48.180 --> 00:32:50.010
+and optionally choose
+whether we want
+
+00:32:50.010 --> 00:32:53.880
+to enable bi-directional
+sync between Sentinel
+
+00:32:53.880 --> 00:32:56.100
+and Defender for Cloud.
+
+00:32:56.100 --> 00:33:01.770
+Done. We have connected Defender
+for Cloud with Sentinel.
+
+00:33:01.770 --> 00:33:05.340
+We can see status connected.
+
+00:33:05.340 --> 00:33:12.150
+Next, let's connect an Azure
+Activity data to Sentinel.
+
+00:33:12.150 --> 00:33:13.920
+We'll go back to
+our content hub.
+
+00:33:13.920 --> 00:33:17.070
+Let's search for Azure Activity.
+
+00:33:17.070 --> 00:33:20.500
+Let's select it,
+click on "Manage."
+
+00:33:22.890 --> 00:33:26.790
+Let's select the Azure Activity
+Connector, open connector page
+
+00:33:26.790 --> 00:33:30.150
+so we can do the configuration.
+
+00:33:30.150 --> 00:33:32.850
+And let's scroll down.
+
+00:33:32.850 --> 00:33:36.690
+We're not going to be able
+to do the full connection
+
+00:33:36.690 --> 00:33:43.410
+because we need to grant access
+to Sentinel to Azure Activity.
+
+00:33:43.410 --> 00:33:46.440
+And to do that, we'll
+set up a policy.
+
+00:33:46.440 --> 00:33:49.710
+We'll do that at the
+subscription level.
+
+00:33:49.710 --> 00:33:51.810
+We're not going to
+include everything.
+
+00:33:51.810 --> 00:33:54.690
+We're going to connect our
+log analytic workspace
+
+00:33:54.690 --> 00:33:57.250
+to Azure activity.
+
+00:33:59.490 --> 00:34:06.420
+Select. Remediation will let
+Azure do the heavy lifting.
+
+00:34:06.420 --> 00:34:09.150
+Create a remediation
+task to ensure
+
+00:34:09.150 --> 00:34:13.650
+that the connection
+can take place.
+
+00:34:13.650 --> 00:34:15.720
+For that connection
+to take place,
+
+00:34:15.720 --> 00:34:18.240
+identity will be necessary.
+
+00:34:18.240 --> 00:34:23.640
+So in the next step, we're going
+to select a managed identity
+
+00:34:23.640 --> 00:34:26.110
+and launch the creation.
+
+00:34:29.670 --> 00:34:33.210
+Now that this remediation
+has taken place,
+
+00:34:33.210 --> 00:34:38.710
+we can connect our Azure
+Activity Log to Defender.
+
+00:34:40.260 --> 00:34:43.980
+Next, let's connect virtual
+machines to Sentinel.
+
+00:34:43.980 --> 00:34:46.230
+We'll begin by creating
+a virtual machine
+
+00:34:46.230 --> 00:34:48.360
+in the Azure portal.
+
+00:34:48.360 --> 00:34:52.560
+So let's go ahead and
+create a new resource.
+
+00:34:52.560 --> 00:34:53.640
+In this case, we're going
+
+00:34:53.640 --> 00:34:57.430
+to create a Windows
+11 virtual machine.
+
+00:34:59.100 --> 00:35:02.940
+And let's pick, there we
+go, Windows 11 Enterprise.
+
+00:35:02.940 --> 00:35:09.460
+We'll go to slightly older
+version, 23H2, and create.
+
+00:35:11.010 --> 00:35:14.280
+We'll need to select a
+subscription, resource group.
+
+00:35:14.280 --> 00:35:16.470
+We'll pick an existing
+resource group.
+
+00:35:16.470 --> 00:35:19.450
+Let's give it a distinct name.
+
+00:35:22.760 --> 00:35:27.150
+AZWin01. And where do
+we want to run it?
+
+00:35:27.150 --> 00:35:31.320
+We don't need
+infrastructure redundancy.
+
+00:35:31.320 --> 00:35:34.470
+Let's select an adequate
+size for this one.
+
+00:35:34.470 --> 00:35:45.040
+A d2s_v4 should be adequate.
+
+00:35:48.960 --> 00:35:51.900
+And finally, username
+and password
+
+00:35:51.900 --> 00:35:53.130
+for the administrative account.
+
+00:35:53.130 --> 00:35:58.650
+Let's just create a sample
+administrative name, password,
+
+00:35:58.650 --> 00:36:01.090
+strong password, of course,
+
+00:36:03.090 --> 00:36:06.930
+and confirm that we have
+an eligible license
+
+00:36:06.930 --> 00:36:10.450
+for Windows 11
+available on hand.
+
+00:36:14.400 --> 00:36:16.590
+Let's launch the creation.
+
+00:36:16.590 --> 00:36:19.930
+It'll take a moment or
+two to create the VM.
+
+00:36:22.860 --> 00:36:27.600
+Deploying a VM deploys
+a lot of resources.
+
+00:36:27.600 --> 00:36:31.260
+And there we go, we are done.
+
+00:36:31.260 --> 00:36:34.920
+And now we've got our first
+virtual machine deployed.
+
+00:36:34.920 --> 00:36:39.000
+It's already got the Azure
+Monitoring Agent installed,
+
+00:36:39.000 --> 00:36:41.940
+so now we're ready to
+connect it to Sentinel.
+
+00:36:41.940 --> 00:36:44.800
+Let's do that next.
+
+00:36:46.700 --> 00:36:48.200
+All right, back in Sentinel,
+
+00:36:48.200 --> 00:36:51.620
+let's now connect our
+virtual machine to Sentinel
+
+00:36:51.620 --> 00:36:55.610
+so we can start receiving
+security events.
+
+00:36:55.610 --> 00:36:59.040
+We're going to head down
+to the Content Hub.
+
+00:37:00.560 --> 00:37:04.310
+And let's search for
+Windows Security Events.
+
+00:37:04.310 --> 00:37:06.510
+Let's find the connector.
+
+00:37:12.050 --> 00:37:12.800
+There it is.
+
+00:37:12.800 --> 00:37:15.200
+It's already installed, but
+it needs to be configured.
+
+00:37:15.200 --> 00:37:17.610
+Let's click on "Managed."
+
+00:37:21.890 --> 00:37:23.150
+And we're going to connect
+
+00:37:23.150 --> 00:37:27.320
+to our machine using Windows
+Security Event via AMA,
+
+00:37:27.320 --> 00:37:29.900
+Azure Monitoring Agent.
+
+00:37:29.900 --> 00:37:31.460
+To do that, we're going to need
+
+00:37:31.460 --> 00:37:35.480
+to create a Data
+Collection Rule, DCR.
+
+00:37:35.480 --> 00:37:37.250
+Let's go ahead and
+do that right now.
+
+00:37:37.250 --> 00:37:39.740
+Create Data Collection Rule.
+
+00:37:39.740 --> 00:37:42.330
+We're going to give it a name.
+
+00:37:43.650 --> 00:37:47.860
+Let's just call it AZWinDCR.
+
+00:37:49.890 --> 00:37:53.550
+And the subscription, resource
+group in which the machine
+
+00:37:53.550 --> 00:37:56.340
+and the DCR will exist.
+
+00:37:56.340 --> 00:38:00.750
+Next, which machine or
+machines do we want to connect
+
+00:38:00.750 --> 00:38:02.610
+to this Data Connection Rule?
+
+00:38:02.610 --> 00:38:07.860
+In this case, we'll pick the VM
+we've created just a moment ago.
+
+00:38:07.860 --> 00:38:12.700
+Collect. We're going to pick
+up every security event.
+
+00:38:14.670 --> 00:38:18.030
+And next, create.
+
+00:38:18.030 --> 00:38:21.120
+We've set up our Data
+Collection Rule.
+
+00:38:21.120 --> 00:38:25.320
+We've connected to the Azure
+Monitoring Agent on that VM.
+
+00:38:25.320 --> 00:38:29.880
+Now, Sentinel can
+receive telemetry
+
+00:38:29.880 --> 00:38:32.410
+from that virtual machine.
+
+00:38:35.190 --> 00:38:38.880
+If needs be, we can change
+the Data Collection Rule,
+
+00:38:38.880 --> 00:38:40.710
+going back to the collector.
+
+00:38:40.710 --> 00:38:42.360
+But let's refresh, make sure
+
+00:38:42.360 --> 00:38:46.470
+that we can now see our
+virtual machine in here.
+
+00:38:46.470 --> 00:38:49.570
+There's the rule
+that we've created.
+
+00:38:51.590 --> 00:38:54.830
+Let's recap what we've covered
+in this learning path.
+
+00:38:54.830 --> 00:38:59.060
+Microsoft Sentinel provides a
+wide range of data connectors
+
+00:38:59.060 --> 00:39:03.600
+to bring in logs and alerts
+from Microsoft services,
+
+00:39:03.600 --> 00:39:07.320
+Defender solution,
+Windows Analytics host,
+
+00:39:07.320 --> 00:39:11.520
+third-party appliances, and
+Threat Intelligence Source.
+
+00:39:11.520 --> 00:39:16.320
+We explored how Content Hub
+solution bundles connectors,
+
+00:39:16.320 --> 00:39:21.530
+parsers, workbooks, analytics
+rule, hunting queries,
+
+00:39:21.530 --> 00:39:25.040
+notebooks, watch
+lists, and playbook.
+
+00:39:25.040 --> 00:39:28.760
+We also emphasized the role
+of Data Collection Rule
+
+00:39:28.760 --> 00:39:33.120
+in managing collection at
+scale, improving performance,
+
+00:39:33.120 --> 00:39:35.070
+and controlling costs.
+
+00:39:35.070 --> 00:39:38.100
+Finally, we looked at
+how Threat Intelligence
+
+00:39:38.100 --> 00:39:42.450
+and Microsoft Defender
+integration enhances detection
+
+00:39:42.450 --> 00:39:48.330
+and investigation capabilities
+across the platform.
+
+00:39:48.330 --> 00:39:50.460
+This concludes our session.
+
+00:39:50.460 --> 00:39:54.600
+There are many ways to complete
+your learning journey.
+
+00:39:54.600 --> 00:39:59.790
+We encourage you to watch other
+videos in this course or search
+
+00:39:59.790 --> 00:40:07.120
+for your next favorite topic on
+Microsoft Learn at aka.ms/learn.
+

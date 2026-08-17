@@ -4,13 +4,14 @@
   "url": "https://youtu.be/0ydVILka3eg",
   "title": "Configure Microsoft Sentinel environment | SC-200 | Episode 7",
   "channel": "Microsoft Learn",
-  "duration_sec": null,
-  "duration_string": null,
-  "upload_date": null,
-  "language": null,
+  "duration_sec": 3021,
+  "duration_string": "50:21",
+  "upload_date": "20260504",
+  "language": "en-US",
   "chapters": [],
-  "manual_sub_langs": [],
-  "auto_sub_has_zh_hant": null,
-  "description_head": "",
-  "source": "oembed_fallback"
+  "manual_sub_langs": [
+    "en"
+  ],
+  "auto_sub_has_zh_hant": true,
+  "description_head": "Episode 7 of 10\nFor the full video series, click here: https://aka.ms/SC-200onYouTube\n\nThis video explains how to configure and operationalize a Microsoft Sentinel environment, guiding learners through the essential steps required to build a functional cloud‑native SIEM aligned with the SC‑200 Security Operations Analyst role. It covers the fundamentals of Microsoft Sentinel, the architecture and management of workspaces, techniques for querying log data, and the creation and use of watchlists to enrich investigations. Learners also explore how to manage threat intelligence within Sentinel and how to integrate Microsoft Defender XDR for unified incident correlation and response. Together, these modules provide a practical foundation for deploying Sentinel, connecting data sources, and preparing an environment optimized for threat detection and security operations.\n\nLearn more about this course and take the certification exam to test your new skills: https://aka.ms/SC-200onLearn"
 }

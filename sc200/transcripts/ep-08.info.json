@@ -4,13 +4,14 @@
   "url": "https://youtu.be/hOYpji940yw",
   "title": "Connect logs to Microsoft Sentinel | SC-200 | Episode 8",
   "channel": "Microsoft Learn",
-  "duration_sec": null,
-  "duration_string": null,
-  "upload_date": null,
-  "language": null,
+  "duration_sec": 2410,
+  "duration_string": "40:10",
+  "upload_date": "20260504",
+  "language": "en-US",
   "chapters": [],
-  "manual_sub_langs": [],
-  "auto_sub_has_zh_hant": null,
-  "description_head": "",
-  "source": "oembed_fallback"
+  "manual_sub_langs": [
+    "en"
+  ],
+  "auto_sub_has_zh_hant": false,
+  "description_head": "Episode 8 of 10\nFor the full video series, click here: https://aka.ms/SC-200onYouTube\n\nThis video focuses on how to connect and ingest log data into Microsoft Sentinel at cloud scale, giving Security Operations Analysts the skills to onboard diverse data sources and build a rich foundation for threat detection and investigation. It covers the full range of ingestion methods—using built‑in data connectors for Microsoft services, integrating Microsoft Defender XDR, onboarding Windows event logs and Sysmon, configuring Common Event Format (CEF) and Syslog ingestion for third‑party solutions, and connecting threat intelligence indicators—while also showing how to view connected hosts and validate data flow. Together, these modules help learners understand the architectural considerations, configuration steps, and operational practices required to unify logs from on‑premises, Azure, and multicloud environments, aligning directly with the competencies measured in the SC‑200: Microsoft Security Operations Analyst certification.\n\nLearn more about this course and take the certification exam to test your new skills: https://aka.ms/SC-200onLearn"
 }

@@ -4,13 +4,14 @@
   "url": "https://youtu.be/8gCUtYEpTe8",
   "title": "Mitigate threats using Microsoft Defender XDR | SC-200 | Episode 1",
   "channel": "Microsoft Learn",
-  "duration_sec": null,
-  "duration_string": null,
-  "upload_date": null,
-  "language": null,
+  "duration_sec": 3171,
+  "duration_string": "52:51",
+  "upload_date": "20260504",
+  "language": "en-US",
   "chapters": [],
-  "manual_sub_langs": [],
-  "auto_sub_has_zh_hant": null,
-  "description_head": "",
-  "source": "oembed_fallback"
+  "manual_sub_langs": [
+    "en"
+  ],
+  "auto_sub_has_zh_hant": true,
+  "description_head": "Episode 1 of 10\nFor the full video series, click here: https://aka.ms/SC-200onYouTube\n\nThis video introduces how to analyze, investigate, and mitigate threats using Microsoft Defender XDR, guiding learners through six modules that cover unified incident management, email and collaboration protection, identity risk mitigation, endpoint threat detection, and cloud app security. It explains how Microsoft Defender for Endpoint, Office 365, Identity, Cloud Apps, and Entra ID Protection work together to provide cross‑domain visibility and automated response capabilities, helping security analysts rapidly detect and remediate attacks. The path is designed for the Security Operations Analyst role and aligns with the SC‑200 certification, offering hands‑on experience with incident correlation, threat investigation, and modern cloud‑based defense strategies.\n\nLearn more about this course and take the certification exam to test your new skills: https://aka.ms/SC-200onLearn"
 }

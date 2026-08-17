@@ -4,13 +4,14 @@
   "url": "https://youtu.be/qlyEmMLif_M",
   "title": "Create detections and perform investigations in Microsoft Sentinel | SC-200 | Episode 9",
   "channel": "Microsoft Learn",
-  "duration_sec": null,
-  "duration_string": null,
-  "upload_date": null,
-  "language": null,
+  "duration_sec": 2369,
+  "duration_string": "39:29",
+  "upload_date": "20260504",
+  "language": "en-US",
   "chapters": [],
-  "manual_sub_langs": [],
-  "auto_sub_has_zh_hant": null,
-  "description_head": "",
-  "source": "oembed_fallback"
+  "manual_sub_langs": [
+    "en"
+  ],
+  "auto_sub_has_zh_hant": true,
+  "description_head": "Episode 9 of 10\nFor the full video series, click here: https://aka.ms/SC-200onYouTube\n\nThis video shows how to build analytics rules, automate threat response, and conduct end‑to‑end investigations in Microsoft Sentinel, giving Security Operations Analysts the skills to detect previously unseen threats and rapidly remediate incidents. It spans eight modules that cover Sentinel analytics, automation rules, playbooks, incident management, behavioral analytics, data normalization with ASIM parsers, and techniques for querying, visualizing, and monitoring security data. Learners also explore how to manage Sentinel content effectively, ensuring that detections, workbooks, and automation assets remain organized and operational. Together, these capabilities form a practical foundation for creating high‑fidelity detections and performing efficient, evidence‑driven investigations aligned with the SC‑200: Microsoft Security Operations Analyst certification.\n\nLearn more about this course and take the certification exam to test your new skills: https://aka.ms/SC-200onLearn"
 }
