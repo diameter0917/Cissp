@@ -42,7 +42,7 @@
       "podcast_url": "podcast/ep-002.mp3",
       "episode": 2,
       "video_eps": [
-        "EP2"
+        "EP6"
       ]
     },
     {
@@ -62,7 +62,7 @@
       "podcast_url": "podcast/ep-003.mp3",
       "episode": 3,
       "video_eps": [
-        "EP2"
+        "EP6"
       ]
     },
     {
@@ -102,7 +102,7 @@
       "podcast_url": "podcast/ep-005.mp3",
       "episode": 5,
       "video_eps": [
-        "EP3"
+        "EP4"
       ]
     },
     {
@@ -122,7 +122,7 @@
       "podcast_url": "podcast/ep-006.mp3",
       "episode": 6,
       "video_eps": [
-        "EP3"
+        "EP7"
       ]
     },
     {
@@ -142,7 +142,7 @@
       "podcast_url": "podcast/ep-007.mp3",
       "episode": 7,
       "video_eps": [
-        "EP4"
+        "EP8"
       ]
     },
     {
@@ -162,7 +162,7 @@
       "podcast_url": "podcast/ep-008.mp3",
       "episode": 8,
       "video_eps": [
-        "EP4"
+        "EP8"
       ]
     },
     {
@@ -182,7 +182,7 @@
       "podcast_url": "podcast/ep-009.mp3",
       "episode": 9,
       "video_eps": [
-        "EP4"
+        "EP7"
       ]
     },
     {
@@ -202,7 +202,7 @@
       "podcast_url": "podcast/ep-010.mp3",
       "episode": 10,
       "video_eps": [
-        "EP5"
+        "EP7"
       ]
     },
     {
@@ -222,7 +222,7 @@
       "podcast_url": "podcast/ep-011.mp3",
       "episode": 11,
       "video_eps": [
-        "EP5"
+        "EP2"
       ]
     },
     {
@@ -242,7 +242,7 @@
       "podcast_url": "podcast/ep-012.mp3",
       "episode": 12,
       "video_eps": [
-        "EP6"
+        "EP1"
       ]
     },
     {
@@ -262,7 +262,7 @@
       "podcast_url": "podcast/ep-013.mp3",
       "episode": 13,
       "video_eps": [
-        "EP6"
+        "EP4"
       ]
     },
     {
@@ -282,7 +282,7 @@
       "podcast_url": "podcast/ep-014.mp3",
       "episode": 14,
       "video_eps": [
-        "EP6"
+        "EP1"
       ]
     },
     {
@@ -302,7 +302,7 @@
       "podcast_url": "podcast/ep-015.mp3",
       "episode": 15,
       "video_eps": [
-        "EP6"
+        "EP1"
       ]
     },
     {
@@ -322,7 +322,7 @@
       "podcast_url": "podcast/ep-016.mp3",
       "episode": 16,
       "video_eps": [
-        "EP7"
+        "EP5"
       ]
     },
     {
@@ -342,7 +342,7 @@
       "podcast_url": "podcast/ep-017.mp3",
       "episode": 17,
       "video_eps": [
-        "EP7"
+        "EP9"
       ]
     },
     {
@@ -362,7 +362,7 @@
       "podcast_url": "podcast/ep-018.mp3",
       "episode": 18,
       "video_eps": [
-        "EP7"
+        "EP9"
       ]
     },
     {
@@ -382,7 +382,7 @@
       "podcast_url": "podcast/ep-019.mp3",
       "episode": 19,
       "video_eps": [
-        "EP8"
+        "EP9"
       ]
     },
     {
@@ -395,14 +395,15 @@
       "domain": "D2",
       "domain_name_zh": "回應安全性事件",
       "weight": "35-40%",
-      "title_zh": "Sentinel 事件調查與 Security Copilot 實戰",
-      "title_en": "Investigating Sentinel Incidents & Copilot in Action",
+      "title_zh": "Microsoft Purview 威脅調查與 Copilot 引導式回應",
+      "title_en": "Investigating Threats with Microsoft Purview & Copilot-guided Response",
       "quiz_url": "quiz.html?unit=P1-W4-5",
       "page_url": "newsletter/day-020.html",
       "podcast_url": "podcast/ep-020.mp3",
       "episode": 20,
       "video_eps": [
-        "EP8"
+        "EP3",
+        "EP2"
       ]
     },
     {
@@ -422,7 +423,8 @@
       "podcast_url": "podcast/ep-021.mp3",
       "episode": 21,
       "video_eps": [
-        "EP9"
+        "EP1",
+        "EP10"
       ]
     },
     {
@@ -442,7 +444,7 @@
       "podcast_url": "podcast/ep-022.mp3",
       "episode": 22,
       "video_eps": [
-        "EP9"
+        "EP10"
       ]
     },
     {
@@ -462,7 +464,7 @@
       "podcast_url": "podcast/ep-023.mp3",
       "episode": 23,
       "video_eps": [
-        "EP9"
+        "EP10"
       ]
     },
     {
@@ -502,6 +504,7 @@
       "podcast_url": "podcast/ep-025.mp3",
       "episode": 25,
       "video_eps": [
+        "EP9",
         "EP10"
       ]
     },
