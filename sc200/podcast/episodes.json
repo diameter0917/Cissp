@@ -1,0 +1,13 @@
+{
+  "episodes": {
+    "000": {
+      "episode": 0,
+      "unit": null,
+      "title_zh": "管線測試集（驗證後刪除）",
+      "file": "ep-000.mp3",
+      "bytes": 206301,
+      "duration_sec": 34,
+      "script_sha256": "cefb8270c784db70db8793530c65d0b54115c31d276f055091dac7937d6e38d7"
+    }
+  }
+}
