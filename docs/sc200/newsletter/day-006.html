@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 6｜Sentinel 工作區設計：架構、角色與成本管理｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 6 / 40 · 2026-08-25</div>
+    <h1>Sentinel 工作區設計：架構、角色與成本管理</h1>
+    <p class="sub"><em>Sentinel Workspace Design: Architecture, Roles & Cost</em></p>
+    <div class="meta-row">
+      <span class="pill d1">D1 管理安全性作業環境</span>
+      <span class="pill ghost">40-45%</span>
+      <span class="pill ghost">P1-W2-1</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:24%"></div></div>
+    <div class="progress-text">五週速成進度 6 / 25 · 距離考試（2026-10-17）還有 53 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP7｜Configure Microsoft Sentinel environment | SC-200 | Episode 7</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/0ydVILka3eg' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">Sentinel 工作區設計：先把地基打對，再談偵測</h2>
+<p>從今天起連續五天都在 Microsoft Sentinel 的主場。所有偵測、搜捕、自動化都建立在同一個地基上：<strong>Log Analytics 工作區（workspace）</strong>。地基設計錯了——區域選錯、工作區切太碎、權限給太大、成本失控——後面全部跟著痛。本日四個決策軸線：第一，<strong>架構</strong>：單一工作區還是多工作區？資料主權、租用戶邊界與 MSSP 代管怎麼影響答案；第二，<strong>角色</strong>：Microsoft Sentinel Reader／Responder／Contributor 的分界，以及 resource-context 與 table-level RBAC 兩種細粒度控制；第三，<strong>成本</strong>：承諾層級（commitment tier）、表方案（Analytics／Basic／Auxiliary）與免費資料來源三顆旋鈕；第四，<strong>保留（retention）</strong>：互動保留與長期保留的分界、search job 與還原（restore）何時登場。這些是 D1「管理安全性作業環境」（占比 40–45%）的核心題倉。</p>
+<div class="point">
+<strong>學習目標（對應官方考綱 D1「管理安全性作業環境」）：</strong>
+<ul>
+  <li>☐ 說明 Sentinel 與 Log Analytics 工作區的關係，並依資料主權／租用戶／成本因素做單一 vs 多工作區決策（對應考綱 <em>plan and configure a Microsoft Sentinel workspace</em>）</li>
+  <li>☐ 為不同 SOC 職能選出最小權限的 Sentinel 角色，並說明與 Log Analytics／Azure RBAC 角色的關係（對應考綱 <em>plan and configure Microsoft Sentinel roles</em>）</li>
+  <li>☐ 運用承諾層級、表方案與免費資料來源控制擷取（ingestion）成本</li>
+  <li>☐ 設計工作區預設與表級保留、互動 vs 長期保留，並判斷 search job／restore 的使用時機（對應考綱 <em>design and configure log storage, including log types and log retention</em>）</li>
+  <li>☐ 說明 Azure Lighthouse 跨租用戶管理、SentinelHealth 健康監控，與 Defender portal 統一體驗的定位</li>
+</ul>
+</div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP7 觀看重點指引：一支影片、三天課程</h2>
+<p>EP7「Configure Microsoft Sentinel environment」把整條「設定 Sentinel 環境」學習路徑濃縮成一集：工作區建立與設計、角色權限、成本管理、記錄保留，一路講到監視清單（Watchlist）與威脅情報。<strong>本單元聚焦前半段</strong>（工作區、RBAC、成本、保留），後半段先看過留個印象就好——監視清單與威脅情報是 Day 9 的主角，資料層與湖層則在 Day 10 深談。這一輪帶著四個問題看前半：</p>
+<ul>
+  <li><strong>工作區建立段落</strong>：講者建立工作區時，注意兩個「一選就定終身」的欄位——<strong>區域（region）</strong>與資源群組。資料存放在工作區所在區域，這就是資料主權考量的技術根源。</li>
+  <li><strong>權限段落</strong>：留意講者強調角色要指派在「工作區所在的資源群組」層級，以及 Reader／Responder／Contributor 的動詞差異：看、動事件、動內容。</li>
+  <li><strong>成本段落</strong>：抓三個關鍵字——ingestion（按 GB 計費）、commitment tier（量大打折）、free data sources（哪些來源不用錢）。</li>
+  <li><strong>保留段落</strong>：注意「工作區預設保留」與「表級保留」是兩層設定，以及超過互動保留之後資料去了哪裡、怎麼查回來。</li>
+</ul>
+<div class="info-box">📌 EP7 字幕尚未抓取完成；字幕到位後本節會回補精確時間碼（格式如 <span class="timestamp">EP7 08:20</span>）。目前請以上面「帶著問題看」的指引自行定位段落。</div>
+
+<div class="eyebrow">03 — 🏗️ 工作區架構決策</div>
+<h2 data-toc="工作區架構">單一還是多個？先懂關係，再做決策</h2>
+<p>先釐清一個常被考的關係：<strong>Microsoft Sentinel 不是獨立資料庫，它是「疊」在 Log Analytics 工作區上的一組安全功能</strong>。你在某個工作區上啟用 Sentinel，該工作區就多了分析規則、事件、搜捕、自動化這些能力；所有記錄仍存放在工作區的資料表裡，用 KQL 查。一個工作區只能啟用一個 Sentinel，工作區綁定一個 Azure 區域，也隸屬於一個 Entra 租用戶——這三個「綁定」正是架構題的出題來源。</p>
+<p>微軟的官方原則很明確：<strong>工作區數量越少越好</strong>。單一工作區讓所有資料可以直接關聯查詢、單一事件佇列、管理面最簡單。但下列因素會「逼」你切成多工作區：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>決策因素</th><th>傾向單一工作區</th><th>需要多工作區的訊號</th></tr></thead>
+  <tbody>
+    <tr><td><strong>資料主權／區域法規</strong></td><td>全部資料可存放在同一區域</td><td>法規要求記錄必須留在特定國家／區域（如歐盟資料須存放於歐盟）——工作區綁區域，只能一區一個工作區</td></tr>
+    <tr><td><strong>租用戶邊界</strong></td><td>單一 Entra 租用戶</td><td>多租用戶集團或 MSSP 客戶：Defender XDR 等第一方連接器只能連到同租用戶的工作區，跨租用戶必須各自建工作區＋Azure Lighthouse 代管</td></tr>
+    <tr><td><strong>計費拆帳</strong></td><td>單一成本中心吸收</td><td>各子公司／部門要各自負擔擷取費用，分開的工作區最乾淨</td></tr>
+    <tr><td><strong>存取隔離</strong></td><td>resource-context 或 table-level RBAC 就能滿足</td><td>不同團隊「連工作區的存在」都不能互看，或資料擁有權完全獨立</td></tr>
+    <tr><td><strong>網路頻寬成本</strong></td><td>來源集中或跨區流量可接受</td><td>大量記錄跨區傳送的頻寬費超過多工作區的管理成本</td></tr>
+  </tbody>
+</table>
+</div>
+<p>切成多工作區也不代表各自為政：同租用戶內可用 <strong>workspace() 跨工作區查詢</strong>把多個工作區的表 join 起來，事件也有跨工作區檢視；跨租用戶則交給下面補洞章節的 Azure Lighthouse。</p>
+<div class="point"><strong>一句話記憶</strong>：「能單一就單一；資料主權、租用戶邊界、拆帳需求三者出現任一個，才切多工作區。」考題給你一堆條件時，先掃有沒有這三個訊號。</div>
+
+<div class="eyebrow">04 — 🔐 Sentinel RBAC 角色</div>
+<h2 data-toc="RBAC角色">看、動事件、動內容：三個動詞決定角色</h2>
+<p>Sentinel 的權限走 <strong>Azure RBAC</strong>（跟昨天 Defender XDR 統一 RBAC 是兩套系統，各管各的資源）。角色建議指派在<strong>工作區所在的資源群組</strong>，讓權限同時涵蓋 Sentinel 與相關資源。四個專屬角色要背到反射：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>角色</th><th>能做什麼</th><th>不能做什麼</th><th>典型對象</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Microsoft Sentinel Reader</strong></td><td>檢視資料、事件、活頁簿（Workbook）與所有 Sentinel 資源</td><td>任何變更</td><td>稽核、管理層、資安顧問</td></tr>
+    <tr><td><strong>Microsoft Sentinel Responder</strong></td><td>Reader 的一切＋管理事件：指派、變更狀態與嚴重性、分類關閉</td><td>建立／編輯分析規則、活頁簿等內容</td><td>tier-1／tier-2 分析師（分診與調查）</td></tr>
+    <tr><td><strong>Microsoft Sentinel Contributor</strong></td><td>Responder 的一切＋建立與編輯分析規則、活頁簿、搜捕查詢等內容</td><td>指派角色、管理劇本（Playbook）的執行權限</td><td>偵測工程師、SOC 工程師</td></tr>
+    <tr><td><strong>Microsoft Sentinel Automation Contributor</strong></td><td>讓 <em>Sentinel 服務本身</em>把劇本加入自動化規則執行</td><td>不是給人用的角色</td><td>指派給 Sentinel 的服務身分（設定自動化時由系統要求）</td></tr>
+  </tbody>
+</table>
+</div>
+<p>兩個常見補充：執行與管理劇本另有 <strong>Microsoft Sentinel Playbook Operator</strong>（可檢視並手動執行劇本）與 Logic Apps 的角色；而 <strong>Log Analytics Contributor／Reader</strong> 這類工作區角色管的是「所有記錄資料與工作區設定」，範圍比 Sentinel 角色更廣——給了 Log Analytics Contributor，等於連非安全性的營運記錄都能動。最小權限題永遠優先選 Sentinel 專屬角色。</p>
+<p>還有兩種「不給整個工作區」的細粒度控制：</p>
+<ul>
+  <li><strong>Resource-context RBAC</strong>：非 SOC 的資源擁有者（例如某台 VM 的管理員）只要對「資源本身」有讀取權，就能查到「該資源產生的記錄」，完全不需要工作區權限。前提是工作區存取模式允許使用資源或工作區權限。適合「讓應用團隊看自己的記錄，但不開放整個工作區」。</li>
+  <li><strong>Table-level RBAC</strong>：用自訂角色把讀取權限縮到<strong>特定資料表</strong>，例如讓稽核團隊只能查 SigninLogs，看不到端點與網路表。適合「同一個工作區裡，不同團隊只能看不同表」。</li>
+</ul>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>最小權限選角公式</strong>：抓題幹的動詞。只「檢視／view」→ Reader；「指派事件、變更狀態、關閉事件」→ <strong>Responder</strong>；「建立或編輯分析規則／活頁簿」→ <strong>Contributor</strong>。兩個經典陷阱：（1）題目只要求分診事件，選 Contributor 就違反最小權限——Responder 才是正解；（2）Automation Contributor 看起來像「自動化工程師的角色」，其實是給 Sentinel 服務身分用的，凡是「指派給某位人員」的題目它都是干擾項。另外記住：「只能看特定資源的記錄」→ resource-context RBAC；「只能查特定資料表」→ table-level RBAC——兩個關鍵字對兩個機制，不要互換。</div>
+
+<div class="eyebrow">05 — 💰 成本三旋鈕</div>
+<h2 data-toc="成本管理">擷取按 GB 計費，省錢靠三顆旋鈕</h2>
+<p>Sentinel 的帳單主體是<strong>擷取量</strong>：資料進入工作區按 GB 計費（現行簡化計價已把 Log Analytics 與 Sentinel 合併成單一費率）。考試的成本題幾乎都繞著三顆旋鈕轉：</p>
+<p><strong>旋鈕一：承諾層級（commitment tier）</strong>。預設按用量付費（Pay-As-You-Go）；當每日擷取量穩定達 100 GB 以上，就能改選承諾層級——向微軟「承諾」每天至少吃下某個量（100、200、300⋯⋯GB/天，一路到數 TB），換取隨層級遞增的折扣。規則兩條：層級可以<strong>隨時往上調</strong>；要<strong>往下調或退出得等 31 天</strong>承諾期滿。用量低於承諾量仍按承諾量計費，所以先觀察實際量再承諾。</p>
+<p><strong>旋鈕二：表方案（table plan）</strong>。不是每種記錄都值得付「全功能」的價錢，按用途把表放進不同方案：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>面向</th><th>Analytics（分析）</th><th>Basic（基本）</th><th>Auxiliary（輔助）</th></tr></thead>
+  <tbody>
+    <tr><td>設計用途</td><td>高價值安全訊號：即時偵測與調查主力</td><td>中價值、高量記錄：偶爾調查會查</td><td>詳細（verbose）低價值記錄：合規留存、極少查詢</td></tr>
+    <tr><td>KQL 查詢</td><td>完整能力、可跨表關聯</td><td>受限運算子、查詢另計費</td><td>最受限（單表為主）、查詢另計費</td></tr>
+    <tr><td>分析規則</td><td>✔ 可觸發排程分析規則</td><td>✘ 不支援</td><td>✘ 不支援（可靠 summary rules 把聚合結果送回 Analytics 表）</td></tr>
+    <tr><td>互動保留</td><td>預設 90 天免費（Sentinel 工作區），可延至 730 天</td><td>30 天</td><td>30 天</td></tr>
+    <tr><td>擷取單價</td><td>最高</td><td>低</td><td>最低</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>旋鈕三：保留期</strong>。互動保留超過免費額度後按月計費，長期保留便宜得多——細節下一節。此外還有「根本不用錢」的來源要背：<strong>Azure 活動記錄、Office 365 稽核記錄（Exchange／SharePoint／Teams）、Microsoft Defender 系列產品的警示</strong>都免擷取費；新啟用的工作區前 31 天每天 10 GB 免費試用；Microsoft 365 E5 授權另有每人每天 5 MB 的特定資料贈與額度。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>「省錢題」答題心法</strong>：題幹喊「reduce cost」時，先辨認資料的<strong>性質</strong>再選旋鈕——（1）「每日擷取量大且穩定」→ 承諾層級；（2）「大量 verbose 記錄、不用於即時偵測、偶爾調查」→ Basic logs；「幾乎只為合規留存、極少查詢」→ Auxiliary logs；（3）「要留七年但不常查」→ 長期保留而非拉長互動保留。反向陷阱：把 SecurityEvent、SigninLogs 這類<strong>分析規則賴以運作的表</strong>改成 Basic/Auxiliary 是錯的——這些方案不支援排程分析規則，省了錢就瞎了偵測。免費來源（Azure 活動、O365 稽核、Defender 警示）出現在「該斷開哪個連接器省錢」的選項裡，一律不是答案——斷了也省不到錢。</div>
+
+<div class="eyebrow">06 — 🗄️ 保留與封存</div>
+<h2 data-toc="保留封存">兩層設定、兩種狀態、兩條回查路</h2>
+<p>保留設定有<strong>兩層</strong>：工作區<strong>預設保留期</strong>套用到所有表；<strong>表級保留</strong>可以覆寫預設——讓 SigninLogs 留兩年、讓防火牆表只留 90 天，各表各命。資料的生命週期則分<strong>兩種狀態</strong>：</p>
+<ul>
+  <li><strong>互動保留（interactive retention）</strong>：資料「熱」著，KQL 隨查隨到、分析規則正常吃。Analytics 表在 Sentinel 工作區預設 90 天免費，最長可設 730 天。</li>
+  <li><strong>長期保留（long-term／archive）</strong>：互動期滿後資料轉入低成本狀態，<strong>總保留期最長 12 年</strong>。資料還在，但不能直接查——要走以下兩條回查路。</li>
+</ul>
+<p><strong>兩條回查路</strong>怎麼選：<strong>search job</strong> 是非同步的大範圍掃描——用受限的 KQL 對長期保留資料跑一次搜尋，結果寫進新的 <em>*_SRCH</em> 表供你分析，適合「在一年前的記錄裡撈某個 IoC 的所有出現」；<strong>還原（restore）</strong>則是把某張表的特定時間範圍整段拉回互動狀態（<em>*_RST</em> 表），恢復完整 KQL 能力，適合「確定要對那兩週的資料做完整深度調查」，按還原的資料量與存續時間計費，查完記得刪。口訣：<strong>撈針用 search job，翻土用 restore</strong>。</p>
+<div class="case-box"><span class="case-label">🛡️ 實戰情境：三區域跨國企業＋MSSP 代管的工作區設計</span><br>
+<p>Contoso 集團總部在台北，營運據點分布美國、德國、新加坡三區；德國子公司受 GDPR 與當地法規約束，記錄不得離開歐盟；夜間監控外包給 MSSP「Fabrikam SOC」。你是安全架構師，走一遍決策：</p>
+<ol>
+  <li><strong>幾個工作區？</strong>資料主權訊號出現：德國資料必須留在歐盟 → 至少要在歐盟區域建一個獨立工作區。美國與新加坡若無資料駐留法規、跨區頻寬可接受，可合併成一個工作區；假設各區記錄量都大，最後落地<strong>三個工作區、各在當地區域</strong>，全數啟用 Sentinel。</li>
+  <li><strong>怎麼統一看？</strong>三個工作區同屬 Contoso 租用戶 → 分析師用跨工作區事件檢視與 workspace() 查詢做關聯，不需要把資料搬來搬去。</li>
+  <li><strong>MSSP 怎麼進來？</strong>Fabrikam 在<strong>自己的租用戶</strong>工作，透過 <strong>Azure Lighthouse</strong> 接受 Contoso 委派——只委派三個工作區所在資源群組的 <strong>Microsoft Sentinel Responder</strong>（夜間只分診、不改偵測內容），不建來賓帳號、不給 Contributor。</li>
+  <li><strong>成本怎麼調？</strong>美國工作區日擷取量穩定 150 GB → 選 100 GB 承諾層級觀察一個月再上調；防火牆與 Proxy 的 verbose 記錄改 <strong>Auxiliary logs</strong>，靠 summary rules 把每小時聚合統計送回 Analytics 表餵偵測。</li>
+  <li><strong>保留怎麼設？</strong>工作區預設互動保留 90 天（免費額度內）；SigninLogs 與 SecurityAlert 表級覆寫為 180 天；全部表總保留期設 1 年滿足稽核。稽核來查舊資料 → search job；真的出事要深挖 → restore 那兩週。</li>
+</ol>
+<p><strong>複盤</strong>：資料主權決定工作區數量、Lighthouse＋Responder 解 MSSP 最小權限、承諾層級＋Auxiliary 控成本、表級保留＋search job 收尾——四個決策軸線在一題裡全用上了。</p>
+</div>
+
+<div class="eyebrow">07 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">EP7 沒講透、考試會考的</h2>
+<p>三個考綱明列、影片著墨有限的主題，補在這裡：</p>
+<p><strong>1. Azure Lighthouse：跨租用戶的正規解</strong>。MSSP 或多租用戶集團的分析師要在單一入口管理多個租用戶的 Sentinel，靠的是 Azure Lighthouse 的<strong>委派資源管理</strong>：客戶把特定範圍（訂用帳戶或資源群組）的特定 Azure 角色委派給服務商租用戶的使用者群組；服務商人員在自己租用戶登入，就能同時查詢、分診多個客戶工作區（跨工作區查詢同樣適用）。與昨天的 GDAP 區分清楚：<strong>GDAP 管 Microsoft 365／Defender XDR 的 Entra 角色委派，Lighthouse 管 Azure 資源（含 Sentinel 工作區）的 Azure RBAC 委派</strong>——題目問「代管客戶的 Sentinel 工作區」，答案是 Lighthouse。</p>
+<p><strong>2. SentinelHealth：環境自己的健康檢查</strong>。偵測沒觸發，是沒攻擊、還是連接器斷了？在 Sentinel 設定啟用「健康狀態與稽核」後，<strong>SentinelHealth</strong> 資料表會記錄資料連接器、分析規則、自動化規則與劇本的健康事件（另有 SentinelAudit 表記錄誰改了什麼）。搭配一段常用查詢：</p>
+<pre class="kql">SentinelHealth
+| where TimeGenerated &gt; ago(3d)
+| where SentinelResourceType == "Data connector"
+| where Status != "Success"
+| project TimeGenerated, SentinelResourceName, Status, Description
+| sort by TimeGenerated desc</pre>
+<p class="kql-note">查最近三天「資料連接器」的非成功健康事件：SentinelResourceType 篩資源類型、Status 抓失敗狀態、Description 給出失敗原因。把這段做成排程警示，連接器一斷你比稽核員先知道。考點：健康監控要<strong>先在設定中啟用</strong>，不是預設全開。</p>
+<p><strong>3. Defender portal 統一體驗</strong> <span class="badge-2026">2026 新考點</span>。工作區設計好之後，別忘了它的「新家」：把 Sentinel 工作區<strong>連入 Defender portal</strong>，事件與 XDR 進同一條佇列、進階搜捕同一個介面；多個工作區可以都連入，其中指定一個<strong>主要工作區（primary workspace）</strong>與 XDR 資料做事件關聯。2026 年 7 月起 Azure portal 的 Sentinel 體驗退場，統一入口是唯一主要體驗——但底層的 Log Analytics 工作區、Azure RBAC 角色、成本與保留設定<strong>全部不變</strong>，今天學的每一顆旋鈕在統一入口裡照轉。</p>
+
+<div class="eyebrow">08 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深讀清單</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/azure-monitor/logs/workspace-design" target="_blank" rel="noopener">設計 Log Analytics 工作區架構</a> — 讀「單一 vs 多工作區」的官方決策準則，對照 §03 的決策表。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/roles" target="_blank" rel="noopener">Microsoft Sentinel 中的角色與權限</a> — 四個專屬角色＋Playbook 相關角色的完整權限矩陣，§04 表格的原始出處。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/billing" target="_blank" rel="noopener">Microsoft Sentinel 的成本規劃與計費</a> — 承諾層級、免費資料來源與簡化計價的官方說明。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/azure-monitor/logs/data-retention-configure" target="_blank" rel="noopener">設定資料保留與封存</a> — 工作區預設與表級保留的設定方式、互動與長期保留的分界數字。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/multiple-tenants-service-providers" target="_blank" rel="noopener">以 Azure Lighthouse 管理多租用戶的 Sentinel</a> — MSSP 場景的委派設定與限制，§06 實戰情境的延伸。</li>
+</ul>
+
+
+  <div class="eyebrow">09 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W2-1">到刷題頁練習 →</a></p>
+<div class='info-box'>本單元自測題建置中——先到<a href='../quiz.html'>刷題頁</a>練其他題組。</div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP6</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><div class='p-hint'>🎧 本集音檔生成中（push 腳本後由 GitHub Actions 自動合成）。</div><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-006'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="6">
+    <label for="doneChk">我讀完 Day 6 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-005.html'>← Day 5</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-007.html'>Day 7 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 6 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>
