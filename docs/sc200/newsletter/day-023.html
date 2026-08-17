@@ -74,7 +74,7 @@
 <div class="eyebrow">04 — 🧪 假說怎麼生出來</div>
 <h2 data-toc="假說形成">四個來源，一個句型，三種結局</h2>
 <p>最卡的一步是「我知道要寫假說，可是要假設什麼？」假說有四個穩定來源：<strong>威脅情報</strong>（某群組用合法遠端管理工具做持續性 → 我這裡有沒有非 IT 主機裝了這類工具）、<strong>ATT&amp;CK 技術</strong>（挑一個沒有規則覆蓋的格子當題目）、<strong>環境弱點</strong>（共用本機管理員密碼、沒 MFA 的服務帳號）、<strong>近期事件</strong>（上次沒查完的線頭）。</p>
-<div class="point"><strong>假說句型</strong>：如果〔對手行為／ATT&amp;CK 技術〕正在我的環境發生，那麼在〔資料表／訊號來源〕應可觀察到〔具體特徵〕，範圍限定〔時間窗〕與〔資產範圍〕。<br>
+<div class="point"><strong>假說句型</strong>：如果〔對手行為／ATT&amp;CK 技術〕正在我的環境發生，那麼在〔資料表／訊號來源〕應可觀察到〔具體特徵〕，範圍限定〔時間窗〕與〔資產〕。<br>
 <em>例</em>：如果有人用 DCSync（T1003.006）竊取憑證，目錄複寫紀錄應出現「非網域控制站帳號發起複寫請求」，範圍近 30 天、全部網域控制站。</div>
 <p>寫完拿影片那五條檢查，最常被違反的是「範圍夠窄」——「找出所有橫向移動」不是假說，是願望。也要接受<strong>三種結局都算成功</strong>：成立（存書籤、升級成事件）、不成立（存下查詢並記錄「查過、目前乾淨」）、資料不足（要看的欄位根本沒收，等於挖出能見度缺口）。沒抓到人不等於白做。</p>
 <div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
@@ -123,7 +123,7 @@ DeviceProcessEvents
   <thead><tr><th>ATT&amp;CK 戰術</th><th>對手目的</th><th>訊號來源</th><th>典型搜捕假說</th></tr></thead>
   <tbody>
     <tr><td>初始存取</td><td>取得第一個立足點</td><td>郵件事件、身分登入、VPN</td><td>近 7 天有無使用者自從未出現的國家成功登入</td></tr>
-    <tr><td>持續性</td><td>重開機後仍活著</td><td>登錄機碼、排程工作、服務建立</td><td>近 30 天有無非 IT 帳號建立自動啟動項目或信箱委派</td></tr>
+    <tr><td>持續性</td><td>重開機後仍活著</td><td>登錄機碼、排程工作、服務建立</td><td>近 30 天有無非 IT 帳號建立自動啟動項目</td></tr>
     <tr><td>憑證存取</td><td>拿到帳密或雜湊</td><td>身分目錄事件、LSASS 存取</td><td>近 30 天有無非網域控制站帳號發起目錄複寫（見 §04）</td></tr>
     <tr><td>橫向移動</td><td>從一台擴散到多台</td><td>登入事件、遠端服務、SMB／WMI</td><td>近 7 天有無帳號 1 小時內登入 5 台以上沒登過的主機</td></tr>
     <tr><td>命令與控制</td><td>維持外部通道</td><td>網路連線、DNS、Proxy</td><td>近 14 天有無主機對同一外部位址呈固定間隔的信標連線</td></tr>
@@ -163,7 +163,7 @@ DeviceProcessEvents
 <div class="eyebrow">08 — 🧩 考綱補洞</div>
 <h2 data-toc="考綱補洞">EP10 略過、考題卻會碰的</h2>
 <ul>
-  <li><strong>搜捕查詢範本客製</strong>（考綱 <em>customize content gallery hunting queries</em>）：社群查詢的正確用法是<strong>複製後改成自己的資料表與門檻</strong>（如排除已知服務帳號），再存成自己的查詢並標戰術，而不是原封不動跑完抱怨誤報高。</li>
+  <li><strong>搜捕查詢範本客製</strong>（考綱 <em>customize content gallery hunting queries</em>）：社群查詢的正確用法是<strong>複製後改成自己的資料表與門檻</strong>（如排除已知服務帳號），再存成自己的查詢並標戰術，而不是原封不動跑完嫌誤報高。</li>
   <li><strong>Hunts 與書籤的關係</strong>：hunt 把假說敘述、狀態（進行中／已驗證／已推翻）、多個查詢、書籤與筆記收在同一容器並指派負責人。問「如何追蹤多人協作的搜捕」→ 建立 hunt。</li>
   <li><strong>進階搜捕 vs Sentinel 搜捕</strong>：前者查 XDR 自己的表（預設 30 天）、可直接做成自訂偵測並附回應動作；後者查工作區全部資料源、可回溯更久。跨端點＋身分＋郵件的快問快答走進階搜捕，含第三方記錄走 Sentinel。</li>
   <li><strong>筆記本的權限與成本</strong>：需 Azure ML 工作區與 Sentinel 讀取權限；運算執行個體<strong>不用要停掉</strong>否則持續計費；MSTICPy 的工作區 ID 與 API 金鑰放設定檔，不該寫死在程式碼區塊。</li>
