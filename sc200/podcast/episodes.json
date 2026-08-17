@@ -44,6 +44,24 @@
       "bytes": 2575531,
       "duration_sec": 429,
       "script_sha256": "726caa608e93fa8bd6ec42a97a4a7e6a9de5f318147598de2b5667fd0faeeb46"
+    },
+    "006": {
+      "episode": 6,
+      "unit": "P1-W2-1",
+      "title_zh": "Sentinel 工作區設計與成本管理",
+      "file": "ep-006.mp3",
+      "bytes": 2949216,
+      "duration_sec": 491,
+      "script_sha256": "cc2015aa829c89f5005e7d29be1e91564a6a42302d72de7a2c2c0f1911c12e89"
+    },
+    "007": {
+      "episode": 7,
+      "unit": "P1-W2-2",
+      "title_zh": "資料連接器與 DCR",
+      "file": "ep-007.mp3",
+      "bytes": 2991103,
+      "duration_sec": 498,
+      "script_sha256": "ec2903279a90e82f37c84e0c1714cad9e62291713dc20884ef892fa58e3d0fcb"
     }
   }
 }

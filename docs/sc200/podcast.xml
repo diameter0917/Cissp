@@ -54,5 +54,23 @@
       <itunes:duration>7:09</itunes:duration>
       <itunes:episode>5</itunes:episode>
     </item>
+    <item>
+      <title>EP6｜Sentinel 工作區設計與成本管理</title>
+      <description>SC-200 速成 Day 對應單元：P1-W2-1。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-006.mp3" length="2949216" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-006</guid>
+      <pubDate>Tue, 25 Aug 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>8:11</itunes:duration>
+      <itunes:episode>6</itunes:episode>
+    </item>
+    <item>
+      <title>EP7｜資料連接器與 DCR</title>
+      <description>SC-200 速成 Day 對應單元：P1-W2-2。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-007.mp3" length="2991103" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-007</guid>
+      <pubDate>Wed, 26 Aug 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>8:18</itunes:duration>
+      <itunes:episode>7</itunes:episode>
+    </item>
   </channel>
 </rss>
