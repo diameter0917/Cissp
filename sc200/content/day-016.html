@@ -78,9 +78,9 @@
 <div class="tbl-scroll"><table class="data">
 <thead><tr><th>手段</th><th>作用對象與效果</th><th>適用時機</th><th>代價／風險</th></tr></thead>
 <tbody>
-<tr><td><strong>抑制規則（suppression rule）</strong></td><td>針對<strong>安全性警示</strong>。警示仍會產生，但依規則自動<strong>關閉／解除（dismiss）</strong>，不進入作用中佇列。可設定範圍（管理群組／訂用帳戶）、條件（警示名稱、資源、實體、來源 IP 等）、<strong>到期日</strong>與啟用狀態，並可先模擬看會命中哪些既有警示。</td><td>已確認為誤報或已知良性活動的<strong>特定警示樣態</strong>，且只想關掉那一種，其他威脅偵測照常</td><td>條件寫太寬會把真實攻擊一起吃掉；沒設到期日就會永久生效，需定期複審</td></tr>
-<tr><td><strong>豁免（exemption）</strong></td><td>針對<strong>安全性建議／安全分數</strong>。把資源標記為「已豁免」或「已由第三方緩解」，該資源不再影響分數與合規狀態，屬 Defender CSPM 能力。</td><td>設定面的例外：測試資源、已有補償控制、業務上無法套用該建議</td><td>與偵測無關，<strong>不會</strong>讓任何警示消失；豁免過多會讓分數失真</td></tr>
-<tr><td><strong>關閉方案／停用特定偵測</strong></td><td>把某個 Defender 方案在訂用帳戶或資源層級關掉，該範圍<strong>完全失去威脅偵測</strong>，不再產生任何警示。</td><td>該資源類型確定不需保護、或成本考量下的取捨——極少是考題正解</td><td>把整片偵測能力關掉來解決一種誤報，是典型「殺雞用牛刀」陷阱選項</td></tr>
+<tr><td><strong>抑制規則（suppression rule）</strong></td><td>針對<strong>安全性警示</strong>。警示仍會產生，但依規則自動<strong>關閉／解除（dismiss）</strong>，不進作用中佇列。可設範圍（管理群組／訂用帳戶）、條件（警示名稱、資源、實體、來源 IP）、<strong>到期日</strong>與啟用狀態，並可先模擬命中結果。</td><td>已確認為誤報或已知良性活動的<strong>特定警示樣態</strong>，只想關那一種，其他偵測照常</td><td>條件寫太寬會把真實攻擊一起吃掉；沒設到期日就永久生效，需定期複審</td></tr>
+<tr><td><strong>豁免（exemption）</strong></td><td>針對<strong>安全性建議／安全分數</strong>。把資源標記為已豁免或已由第三方緩解，不再影響分數與合規狀態，屬 Defender CSPM 能力。</td><td>設定面的例外：測試資源、已有補償控制、業務上無法套用該建議</td><td>與偵測無關，<strong>不會</strong>讓任何警示消失；豁免過多會讓分數失真</td></tr>
+<tr><td><strong>關閉方案</strong></td><td>把某個 Defender 方案在訂用帳戶或資源層級關掉，該範圍<strong>完全失去威脅偵測</strong>，不再產生任何警示。</td><td>該資源類型確定不需保護、或成本取捨——極少是考題正解</td><td>為了一種誤報關掉整片偵測，是典型「殺雞用牛刀」陷阱選項</td></tr>
 </tbody></table></div>
 <div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
 <p><strong>「弱點掃描器每晚觸發大量警示」的最佳解。</strong>正解是<strong>建立抑制規則</strong>，範圍限定在該訂用帳戶、條件鎖定<strong>該警示名稱＋掃描器的來源 IP 或資源</strong>，並<strong>設定到期日</strong>以便重新評估。其他三種常見干擾項的死法要背：關閉 Defender for Servers 方案＝整個訂用帳戶失去偵測；把掃描器主機從 Defender for Endpoint 移除＝端點失去保護且與此警示無關；建立豁免＝那是給建議與安全分數用的，對警示無效。<br>另一個高頻變體問「抑制規則建好了，昨天那些舊警示怎麼辦」——抑制規則是<strong>對之後產生的警示生效</strong>，既有警示要手動關閉；建立時的模擬功能只是預覽會命中哪些，並不會回頭清掉它們。</p></div>
@@ -89,9 +89,9 @@
 <h2 data-toc="整合實戰">警示流向 XDR 與 Sentinel：一次完整回應</h2>
 <p>Defender for Cloud 的警示不會只停在自己的入口網站，考試很愛問「分析師應該在哪裡看到它、怎麼接進來」：</p>
 <ul>
-<li><strong>流向 Defender XDR</strong>：啟用整合後，Defender for Cloud 的警示會進入 <strong>Defender 入口網站的事件佇列</strong>，與端點、身分、郵件、雲端應用的警示<strong>關聯成同一個事件</strong>。這正是它的價值——VM 上的挖礦警示可以和該伺服器管理員帳戶的可疑登入自動串起來，形成完整攻擊鏈。</li>
-<li><strong>流向 Microsoft Sentinel</strong>：透過<strong>資料連接器</strong>把警示送進工作區的 <code>SecurityAlert</code> 資料表。現在建議走<strong>租用戶層級的 Defender XDR 連接器</strong>一次帶入全部；訂用帳戶層級的 Defender for Cloud 連接器則是較舊、以訂用帳戶為單位的路徑，並可設定雙向同步警示狀態。進了 Sentinel 就能用分析規則、自動化規則與劇本（Playbook）接手。</li>
-<li><strong>多雲</strong>：在環境設定中以 <strong>AWS／GCP 連接器</strong>把 AWS 帳戶或 GCP 專案接進來（AWS 端部署 CloudFormation 範本、GCP 端執行上架指令碼），即可延伸 CSPM 與部分方案；地端與其他雲的伺服器則透過 <strong>Azure Arc</strong> 納管後套用 Defender for Servers。</li>
+<li><strong>流向 Defender XDR</strong>：啟用整合後，警示會進入 <strong>Defender 入口網站的事件佇列</strong>，與端點、身分、郵件、雲端應用的警示<strong>關聯成同一個事件</strong>——VM 上的挖礦警示因此能和該伺服器管理員帳戶的可疑登入自動串成完整攻擊鏈。</li>
+<li><strong>流向 Microsoft Sentinel</strong>：透過<strong>資料連接器</strong>把警示送進工作區的 <code>SecurityAlert</code> 資料表。現在建議走<strong>租用戶層級的 Defender XDR 連接器</strong>一次帶入；訂用帳戶層級的 Defender for Cloud 連接器是較舊路徑，可雙向同步警示狀態。進了 Sentinel 就由分析規則、自動化規則與劇本（Playbook）接手。</li>
+<li><strong>多雲</strong>：在環境設定中以 <strong>AWS／GCP 連接器</strong>接入 AWS 帳戶或 GCP 專案（AWS 端部署 CloudFormation 範本、GCP 端執行上架指令碼），延伸 CSPM 與部分方案；地端伺服器則以 <strong>Azure Arc</strong> 納管後套用 Defender for Servers。</li>
 </ul>
 <div class="case-box"><div class="case-label">🧪 實戰情境：對外的 Linux VM 遭入侵並外傳資料</div>
 <p>週一上午，Defender for Cloud 出現三則相關警示：某台對外的 Linux VM「<strong>SSH 暴力破解嘗試成功</strong>」（中）、同一台機器「<strong>偵測到加密貨幣挖礦活動</strong>」（高），以及該訂用帳戶的儲存體帳戶「<strong>異常大量資料被擷取</strong>」（高）。你是值班分析師——</p>

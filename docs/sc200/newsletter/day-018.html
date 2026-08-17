@@ -57,7 +57,7 @@
 <p><strong>Fusion（進階多階段攻擊偵測）</strong>是 Sentinel 內建的關聯型 ML 規則：它不看原始記錄，而是吃<strong>其他偵測產生的警示與異常</strong>，用機器學習判斷這些散落在不同產品、不同時間點的低嚴重性訊號，是否其實屬於同一條攻擊鏈（例如「可疑登入 → 異常的收件匣規則建立 → 大量檔案下載」）。命中時會產生一個高或中嚴重性的事件，名稱通常長得像「偵測到多個可能與……活動相關的警示」，而且事件描述會告訴你它把哪幾則警示串在一起、對應哪些 MITRE ATT&amp;CK 戰術。</p>
 <div class="point"><strong>三個必記的設計事實</strong>：<br>① Fusion <strong>預設啟用</strong>，而且每個工作區<strong>只有一條</strong>，你不能自己建第二條、也不能改它的查詢。<br>② 它只在<strong>訊號夠多元</strong>時才有價值——你必須先接上多個資料來源（Microsoft Entra ID Protection、Defender for Cloud Apps、Defender for Endpoint、Defender for Identity、Defender for Office 365、Defender for Cloud，以及你自己的 Scheduled 規則等）。只接一個來源的工作區，Fusion 幾乎永遠不會觸發。<br>③ 你自訂的 <strong>Scheduled 規則要被 Fusion 納入關聯，必須做好實體對應與 MITRE 戰術對照</strong>——沒有實體，模型就無法把它和其他警示縫在同一個使用者或主機上。</div>
 <p><strong>Fusion for emerging threats</strong>（新興威脅的 Fusion 偵測）是同一引擎的延伸：不依賴既有的攻擊情境樣板，而是從更廣的訊號裡找出「看起來像新型態攻擊」的組合，對應勒索軟體等快速演化的手法；代價是誤報率相對較高，實務上先觀察一段時間再納入正式 SLA。</p>
-<p><strong>調校怎麼做？</strong>你改不了模型，但有三個旋鈕：其一，在 Fusion 規則的設定裡<strong>排除特定偵測樣式或來源訊號</strong>——某條自家 Scheduled 規則一直帶進雜訊，就把它從 Fusion 的輸入中排除；其二，回頭<strong>修正上游規則</strong>（誤報的根在來源警示，不在 Fusion）；其三，若某類情境確定是預期行為（例如弱點掃描主機每晚的行為），用<strong>監視清單（Watchlist）搭配上游規則的排除條件</strong>處理，而不是把整條 Fusion 關掉。</p>
+<p><strong>調校怎麼做？</strong>你改不了模型，但有三個旋鈕：其一，在 Fusion 規則的設定裡<strong>排除特定偵測樣式或來源訊號</strong>——某條自家 Scheduled 規則一直帶進雜訊，就把它從 Fusion 的輸入中排除；其二，回頭<strong>修正上游規則</strong>（誤報的根在來源警示，不在 Fusion）；其三，若某情境確定是預期行為（例如弱點掃描主機每晚的動作），用<strong>監視清單（Watchlist）搭配上游規則的排除條件</strong>處理，而不是把整條 Fusion 關掉。</p>
 <div class="case-box"><span class="case-label">🛡️ 實戰情境：讀懂一個 Fusion 事件</span><br>
 <p>週四早上，佇列出現一個中嚴重性事件，來源顯示為 Fusion，標題是「偵測到多個可能與資料外洩活動相關的警示」。點開後，裡面有三則警示，單獨看每一則你昨天都會直接關掉：</p>
 <ol>
@@ -87,7 +87,7 @@
         by UserPrincipalName
 | order by TotalScore desc
 | take 20</pre>
-<p class="kql-note">這段是「本週最該看誰」的排行榜。重點在 <code>sum()</code> 而非 <code>max()</code>——單一高分活動可能只是出差，但一個帳號在七天內累積出一堆中高分活動，才是帳號被接管的樣子。<code>make_set(ActionType, 8)</code> 讓你不用點開就看到他做了哪幾類動作。分數本身<strong>不是判決</strong>，它只是排序工具：把它當成分診佇列的補充維度，接著仍要進實體頁面看行為時間軸與同儕比較。</p>
+<p class="kql-note">這段是「本週最該看誰」的排行榜。重點在 <code>sum()</code> 而非 <code>max()</code>——單一高分活動可能只是出差，但一個帳號在七天內累積出一堆中高分活動，才是帳號被接管的樣子。<code>make_set(ActionType, 8)</code> 讓你不用點開就看到他做了哪幾類動作。分數<strong>不是判決</strong>，只是排序工具：當成分診佇列的補充維度，接著仍要進實體頁面看行為時間軸與同儕比較。</p>
 <div class="point"><strong>peer group 分析的意義</strong>：同一個「存取財務共用資料夾」的動作，發生在財務部三十個人身上是常態，發生在剛報到的行銷實習生身上就是異常。UEBA 依目錄資料（同部門、同主管、同群組）建立同儕群組，讓「異常」有相對基準，而不是全公司一把尺。這也是為什麼<strong>目錄同步沒做好，UEBA 的判斷品質會直接崩掉</strong>。</div>
 <div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
 <strong>「UEBA 啟用兩週了，BehaviorAnalytics 幾乎沒有有意義的結果，為什麼？」</strong>這是高頻題，正解有兩層：<br>
@@ -97,14 +97,14 @@
 
 <div class="eyebrow">05 — 📈 異常規則</div>
 <h2 data-toc="異常規則">可調參數的 ML 範本與 flighting 模式</h2>
-<p><strong>Anomaly（異常）規則</strong>是介於 Scheduled 與 Fusion 之間的第三條路：模型由 Microsoft 提供並訓練（例如異常的登入、異常的資源建立、異常的 RDP 或 SSH 行為），但<strong>參數開放給你調</strong>——觀察窗長度、最少事件數、分數門檻、要不要排除特定帳號或 IP 範圍。範本本身標有需要的資料來源，接錯連接器就不會有結果。</p>
+<p><strong>Anomaly（異常）規則</strong>是介於 Scheduled 與 Fusion 之間的第三條路：模型由 Microsoft 提供並訓練（例如異常的登入、異常的資源建立、異常的 RDP 或 SSH 行為），但<strong>參數開放給你調</strong>——觀察窗長度、最少事件數、分數門檻、要不要排除特定帳號或 IP 範圍。範本標有需要的資料來源，接錯連接器就不會有結果。</p>
 <div class="point"><strong>兩個最會考的行為特性</strong>：<br>① <strong>異常規則預設不直接產生事件</strong>：命中結果寫進 <strong>Anomalies</strong> 表，供搜捕、調查擴充，或當成 Scheduled 規則的輸入（把 Anomalies 和其他表 join 起來再告警）。想讓它變成事件，就寫一條 Scheduled 規則去查 Anomalies。<br>② <strong>flighting（測試）模式</strong>：當你調整一條異常規則的參數，Sentinel 會保留原本的 production 版本，另外跑一份 flighting 版本。兩份結果同時寫進 Anomalies 表並以欄位標示來源版本，你可以在同一段時間窗裡直接比較「調參後噪音降了多少、真陽性有沒有被誤殺」，滿意後再把 flighting 版本推上 production。</div>
 <pre class="kql">Anomalies
 | where TimeGenerated &gt; ago(14d)
 | summarize Hits = count(), MaxScore = max(Score), Users = dcount(UserPrincipalName)
         by RuleName, RuleStatus
 | order by RuleName asc, RuleStatus asc</pre>
-<p class="kql-note">這是調參前後的對照表：同一條 <code>RuleName</code> 會出現 production 與 flighting 兩列，直接比 <code>Hits</code> 與涉及人數。判讀原則是「量要降、質要留」——若 flighting 的命中數從每天 300 降到 20，同時你已知的真陽性案例仍在名單裡，就可以推上 production；若真陽性也一起消失了，代表門檻拉過頭。這種<strong>先觀察、再生產</strong>的節奏，是 ML 規則和手寫規則最大的操作差異。</p>
+<p class="kql-note">這是調參前後的對照表：同一條 <code>RuleName</code> 會出現 production 與 flighting 兩列，直接比 <code>Hits</code> 與涉及人數。判讀原則是「量要降、質要留」——若 flighting 命中數從每天 300 降到 20，而已知的真陽性案例仍在名單裡，就可以推上 production；真陽性一起消失，代表門檻拉過頭。這種<strong>先觀察、再生產</strong>的節奏，是 ML 規則和手寫規則最大的操作差異。</p>
 
 <div class="eyebrow">06 — ⚖️ 四方對照</div>
 <h2 data-toc="規則分工">什麼時候寫規則，什麼時候交給 ML</h2>
@@ -122,15 +122,15 @@
 </div>
 <p><strong>一句話判準</strong>：<em>寫得出條件的，用 Scheduled；寫不出條件、只能說「這不像他平常會做的事」的，交給 UEBA 或 Anomaly；跨產品、跨時間的串鏈，交給 Fusion。</em>它們不是替代關係——你的 Scheduled 規則正是 Fusion 的原料，UEBA 分數與 Anomalies 結果又能回頭餵進 Scheduled 規則變成高信心告警。</p>
 <div class="point"><strong>誤報處理三段式（順序不能顛倒）</strong>：<br>① <strong>規則調校</strong>——治本。改查詢排除已知良性來源、拉高門檻、修好實體對應，或調整 Anomaly 參數。<br>② <strong>自動化規則自動關閉</strong>——治標但可稽核。當某類事件確定良性又無法完全排除（例如特定弱點掃描主機），用自動化規則依條件比對後自動變更狀態為已關閉並填上分類，事件仍留有紀錄可回溯。<br>③ <strong>抑制</strong>——最後手段。Scheduled 規則可設定「產生警示後暫停查詢一段時間」，避免同一波活動在短時間內重複產生大量事件；它壓的是<strong>數量</strong>不是<strong>對錯</strong>，用久了會遮住真攻擊。</div>
-<p><strong>資料品質是 ML 的天花板</strong>：連接器中斷幾天，UEBA 的基準線會出現空洞、Fusion 少了半條鏈；時間戳或時區錯誤會讓關聯的「時間鄰近性」判斷失準；自訂記錄沒有正規化欄位，實體就對應不上，等於不存在於模型眼中。所以題目問「ML 偵測品質不佳，第一步做什麼」，答案通常不是調模型，而是<strong>回頭確認資料完整性與實體對應</strong>。</p>
+<p><strong>資料品質是 ML 的天花板</strong>：連接器中斷幾天，UEBA 基準線會出現空洞、Fusion 少了半條鏈；時區或時間戳錯誤會讓「時間鄰近性」判斷失準；自訂記錄沒有正規化欄位，實體就對應不上，等於不存在於模型眼中。所以題目問「ML 偵測品質不佳，第一步做什麼」，答案通常不是調模型，而是<strong>確認資料完整性與實體對應</strong>。</p>
 
 <div class="eyebrow">07 — 🧩 考綱補洞</div>
 <h2 data-toc="考綱補洞">EP9 沒細講、考題卻會碰的</h2>
 <ul>
   <li><strong>Microsoft security 規則類型</strong>：把 Microsoft 安全性解決方案（Defender 各產品、Entra ID Protection 等）產生的警示<strong>原封不動</strong>轉成 Sentinel 事件，可依嚴重性或警示名稱篩選。它不做關聯也不做評分——這正是它和 Fusion 的分界。</li>
-  <li><strong>ML Behavior Analytics 範本</strong>：另有一類針對特定情境（例如異常的 SSH／RDP 登入）的機器學習範本，同樣不可改查詢，只能啟用或停用。</li>
-  <li><strong>威脅情報比對規則</strong>：拿威脅情報指標比對記錄產生警示，屬於「規則型」而非 ML，別和異常規則混淆。</li>
-  <li><strong>實體頁面的行為時間軸</strong>：使用者或主機的實體頁面會把警示、書籤與 UEBA 行為洞察畫在同一條時間軸上，並可切換時間範圍。調查帳號接管時，這裡比翻查詢快得多。</li>
+  <li><strong>ML Behavior Analytics 範本</strong>：針對特定情境（如異常的 SSH／RDP 登入）的機器學習範本，同樣不可改查詢，只能啟用或停用。</li>
+  <li><strong>威脅情報比對規則</strong>：拿威脅情報指標比對記錄產生警示，屬規則型而非 ML，別和異常規則混淆。</li>
+  <li><strong>實體頁面的行為時間軸</strong>：使用者或主機的實體頁面把警示、書籤與 UEBA 行為洞察畫在同一條時間軸上並可切換時間範圍，調查帳號接管時比翻查詢快得多。</li>
   <li><strong>UEBA 與 Defender XDR 的分工</strong>：Entra ID Protection 的使用者風險等級、Defender for Identity 的身分態勢，和 Sentinel UEBA 是<strong>三種不同來源的分數</strong>；UEBA 的優勢是涵蓋你自己接進工作區的記錄並做同儕比較。</li>
   <li><strong>成本觀點</strong>：UEBA 擴充資料與 Anomalies 都會寫進工作區，計入擷取與保留成本——勾選資料來源同時是成本決策。</li>
 </ul>

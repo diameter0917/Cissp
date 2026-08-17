@@ -1,12 +1,12 @@
 <div class="eyebrow">01 — 📌 本日導讀</div>
 <h2 data-toc="導讀">攻擊者不是駭進來的，是登入進來的</h2>
-<p>這一週守了裝置、守了信箱，今天守的是把所有資源串起來的那條線——身分。現代入侵幾乎都長同一個樣子：先釣到一組帳密，再在網域裡東翻西找、偷票證、跳機器，最後拿下網域管理員；整條路上多半沒有惡意程式，只有「看起來完全合法的驗證行為」。防毒攔不住合法登入，所以考綱 D2「回應安全性事件」給了身分兩個專屬武器：地端 Active Directory 交給 <strong>Microsoft Defender for Identity（MDI）</strong>，雲端交給 <strong>Microsoft Entra ID Protection</strong>。今天釘死四件事：感應器裝哪、攻擊鏈每階段亮什麼燈、兩邊能按哪些回應按鈕，以及最常被混淆的「使用者風險 vs 登入風險」。</p>
+<p>這一週守了裝置、守了信箱，今天守的是把所有資源串起來的那條線——身分。現代入侵幾乎都長同一個樣子：先釣到一組帳密，再在網域裡東翻西找、偷票證、跳機器，最後拿下網域管理員；整條路上多半沒有惡意程式，只有「看似完全合法的驗證行為」。防毒攔不住合法登入，所以考綱 D2「回應安全性事件」給了身分兩個專屬武器：地端 Active Directory 交給 <strong>Microsoft Defender for Identity（MDI）</strong>，雲端交給 <strong>Microsoft Entra ID Protection</strong>。今天釘死四件事：感應器裝哪、攻擊鏈每階段亮什麼燈、兩邊能按哪些回應按鈕，以及最常被混淆的「使用者風險 vs 登入風險」。</p>
 <p><strong>學習目標</strong>（對應官方 study guide D2「調查並修復由 Microsoft Defender for Identity 識別的威脅」與「調查並修復 Microsoft Entra ID Protection 中的身分風險」）：</p>
 <ul>
   <li>☐ 說明 MDI 感應器的部署位置（網域控制站、AD FS、AD CS）、目錄服務帳戶用途與 XDR 整合</li>
   <li>☐ 依攻擊鏈階段（偵察 → 認證竊取 → 橫向移動 → 網域支配）判讀 MDI 警示代表的攻擊技術</li>
   <li>☐ 用橫向移動路徑（lateral movement paths）評估帳戶曝險，依身分安全態勢（ISPM）建議修補</li>
-  <li>☐ 對遭盜用身分執行正確回應：停用使用者、要求密碼重設、暫停帳戶、確認遭入侵</li>
+  <li>☐ 對遭盜用身分執行正確回應：停用使用者、密碼重設、暫停帳戶、確認遭入侵</li>
   <li>☐ 分辨使用者風險與登入風險，設定風險型條件式存取政策並調查、關閉風險</li>
 </ul>
 
@@ -16,14 +16,14 @@
 <p>EP1 是 XDR 總覽，重點不在操作而在「訊號如何匯流」。帶三個任務去看：</p>
 <ul>
   <li><strong>任務一：看身分警示如何併進事件。</strong>一條完整攻擊故事通常是 MDO 的釣魚信、MDE 的可疑處理程序、MDI 的「可疑身分竊取」被自動關聯成同一起事件。身分警示很少單獨成案，它是攻擊鏈的中段。</li>
-  <li><strong>任務二：認使用者實體頁面。</strong>影片點開的 user entity page 上，同時有 MDI 的地端活動、Entra 的風險等級與回應動作，第 05 節會重用這一頁。</li>
+  <li><strong>任務二：認使用者實體頁面。</strong>影片點開的 user entity page 同時有 MDI 的地端活動、Entra 的風險等級與回應動作，第 05 節會重用這一頁。</li>
   <li><strong>任務三：帶詞彙表去聽。</strong>聽到 sensor、lateral movement path、pass-the-ticket、golden ticket、risky user 就打勾，看完檢查能否各用一句話解釋。</li>
 </ul>
 <div class="point">EP1 被本週三個單元共用，今天只重看身分相關段落。影片沒示範 Entra ID Protection 的風險報表，但它在考題的出現頻率比 MDI 還高。</div>
 
 <div class="eyebrow">03 — 🛰️ MDI 架構與部署</div>
 <h2 data-toc="MDI 架構">感應器裝在哪、靠什麼看見攻擊</h2>
-<p>MDI 沒有雲端 API 可以直接讀你的網域，必須<strong>把感應器（sensor）裝進伺服器</strong>——架構題的第一個考點：感應器直接安裝在<strong>網域控制站</strong>上，另外支援 <strong>AD FS（同盟服務）</strong>、<strong>AD CS（憑證服務）</strong>與 Entra Connect 伺服器。裝在 DC 是因為所有 Kerberos／NTLM 驗證、LDAP 查詢與目錄複寫都要經過它；裝在 AD FS 是為了看見同盟登入的暴力破解；裝在 AD CS 是盯憑證範本濫用。感應器輕量、自我更新，不必另備伺服器或做網路埠鏡像（早期的 standalone sensor 與 port mirroring 已淘汰）。</p>
+<p>MDI 沒有雲端 API 可以直接讀你的網域，必須<strong>把感應器（sensor）裝進伺服器</strong>——架構題的第一個考點：感應器直接安裝在<strong>網域控制站</strong>上，另外支援 <strong>AD FS（同盟服務）</strong>、<strong>AD CS（憑證服務）</strong>與 Entra Connect 伺服器。裝在 DC 是因為所有 Kerberos／NTLM 驗證、LDAP 查詢與目錄複寫都要經過它；裝在 AD FS 是為了看見同盟登入的暴力破解；AD CS 則盯憑證範本濫用。感應器輕量、自我更新，不必另備伺服器或做網路埠鏡像（早期的 standalone sensor 與 port mirroring 已淘汰）。</p>
 <p>感應器吃<strong>三種訊號</strong>：本機<strong>網路流量</strong>（解析 Kerberos、NTLM、DNS、LDAP）、<strong>Windows 安全性事件</strong>（需開進階稽核，例如物件存取稽核產生的 4662 是 DCSync 偵測關鍵）、以及對目錄的 <strong>LDAP 查詢</strong>（把帳戶群組解析成實體、判斷誰是敏感帳戶）。第三種需要能唯讀查詢網域的<strong>目錄服務帳戶（DSA）</strong>，官方建議用 <strong>gMSA</strong>，密碼由 AD 自動輪替。資料上傳雲端後，警示落進 Defender 入口網站並關聯成 XDR 事件；原始活動進入進階搜捕的 <strong>IdentityLogonEvents、IdentityQueryEvents、IdentityDirectoryEvents</strong> 三張表。</p>
 <div class="point"><strong>一句話架構圖：</strong>感應器（DC／AD FS／AD CS）解析驗證流量與事件 → 用 DSA 補查目錄 → 上傳雲端 → 警示進 XDR 事件、活動進 Identity* 搜捕表 → 分析師在使用者實體頁面調查與回應。</div>
 <div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>部署題三陷阱：</strong>（1）「要偵測橫向移動與票證攻擊，感應器裝哪？」→ <strong>網域控制站</strong>，不是防火牆或用戶端；裝在端點的是 MDE。（2）「已全面部署 MDE，還需要 MDI 嗎？」→ 需要，MDE 看不見 DC 上的票證異常與目錄複寫請求。（3）「MDI 需要什麼帳戶？」→ <strong>DSA（建議 gMSA）</strong>做目錄查詢；它與下一節的「動作帳戶」是兩件事——DSA 只要讀取權限，停用帳戶與重設密碼要另外委派寫入權限。</p></div>
@@ -37,15 +37,15 @@
   <thead><tr><th>階段</th><th>攻擊者目的</th><th>代表技術</th><th>典型偵測訊號</th></tr></thead>
   <tbody>
     <tr><td><strong>① 偵察</strong><br>Reconnaissance</td><td>畫網域地圖：有哪些帳戶群組、誰有特權</td><td>SMB／Kerberos 帳戶列舉、SAMR 群組查詢、LDAP 主體偵察（BloodHound）、DNS 區域傳輸</td><td>MDI：帳戶列舉偵察、使用者與群組成員資格偵察、安全性主體偵察、網路對應偵察</td></tr>
-    <tr><td><strong>② 認證竊取</strong><br>Credential Access</td><td>把密碼變成可重複使用的憑證</td><td>密碼噴灑、AS-REP Roasting、Kerberoasting、<strong>pass-the-hash／ticket</strong>、<strong>overpass-the-hash</strong></td><td>MDI：可疑暴力破解、可疑 AS-REP Roasting、Kerberos SPN 曝光、可疑身分竊取、加密降級活動</td></tr>
+    <tr><td><strong>② 認證竊取</strong><br>Credential Access</td><td>把密碼變成可重用的憑證</td><td>密碼噴灑、AS-REP Roasting、Kerberoasting、<strong>pass-the-hash／ticket</strong>、<strong>overpass-the-hash</strong></td><td>MDI：可疑暴力破解、可疑 AS-REP Roasting、Kerberos SPN 曝光、可疑身分竊取、加密降級</td></tr>
     <tr><td><strong>③ 橫向移動</strong><br>Lateral Movement</td><td>拿憑證跳到更有價值的主機</td><td>PsExec／WMI 遠端執行、以竊得票證存取伺服器</td><td>MDI：可疑遠端程式碼執行、資源存取異常、<strong>橫向移動路徑（LMP）</strong>；MDE：可疑處理程序建立</td></tr>
-    <tr><td><strong>④ 網域支配</strong><br>Domain Dominance</td><td>取得長期偽造任意身分的能力</td><td><strong>DCSync</strong>、<strong>黃金票證 golden ticket</strong>、<strong>skeleton key</strong>、DCShadow</td><td>MDI：可疑 DCSync（目錄服務複寫）、可疑黃金票證使用、可疑 skeleton key、可疑 DCShadow、敏感群組的可疑新增</td></tr>
-    <tr><td><strong>⑤ 雲端延伸</strong><br>Cloud Expansion</td><td>用同一個身分登入雲端與 SaaS</td><td>權杖竊取、AiTM 中間人釣魚、惡意 OAuth 同意</td><td>Entra ID Protection：異常權杖、AiTM、不可能的移動、匿名 IP、可疑瀏覽器</td></tr>
+    <tr><td><strong>④ 網域支配</strong><br>Domain Dominance</td><td>取得長期偽造身分的能力</td><td><strong>DCSync</strong>、<strong>黃金票證 golden ticket</strong>、<strong>skeleton key</strong>、DCShadow</td><td>MDI：可疑 DCSync（目錄服務複寫）、可疑黃金票證使用、可疑 skeleton key、可疑 DCShadow</td></tr>
+    <tr><td><strong>⑤ 雲端延伸</strong><br>Cloud Expansion</td><td>用同一個身分登入雲端與 SaaS</td><td>權杖竊取、AiTM 中間人釣魚、惡意 OAuth 同意</td><td>Entra ID Protection：異常權杖、AiTM、不可能的移動、匿名 IP</td></tr>
   </tbody>
 </table>
 </div>
 <p>四個最易混淆的技術用「偷到什麼」來記：<strong>pass-the-hash</strong> 偷 NTLM 雜湊，直接拿雜湊做驗證；<strong>pass-the-ticket</strong> 偷已簽發的 Kerberos 票證搬到別台機器用，MDI 抓的就是「同一張票證出現在兩台機器」；<strong>overpass-the-hash</strong> 拿 NTLM 雜湊換合法的 Kerberos TGT，常伴隨加密降級（硬要用 RC4）；<strong>黃金票證</strong>是偷到 krbtgt 雜湊後自己簽票，票裡的授權資料與存留時間不合常理。</p>
-<p>MDI 的活動資料也能自己下手搜捕，下面找 pass-the-hash 的足跡：</p>
+<p>MDI 的活動資料也能自己搜捕，下面找 pass-the-hash 的足跡：</p>
 <pre class="kql">// 一組認證同時在多台機器上活動＝憑證被複製使用的訊號
 IdentityLogonEvents
 | <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(<span class="n">7d</span>)
@@ -60,9 +60,9 @@ IdentityLogonEvents
 <div class="eyebrow">05 — 🚑 MDI 回應與態勢</div>
 <h2 data-toc="MDI 回應">按哪個按鈕，與 ISPM 的預防面</h2>
 <p>MDI 的回應動作掛在<strong>使用者實體頁面</strong>上，三類都針對身分本身：<strong>停用 Active Directory 中的使用者</strong>是最快的止血，帳戶當場無法驗證；<strong>要求使用者重設密碼</strong>強制下次登入變更密碼、讓被偷走的雜湊失效，適合要讓人盡快回到工作又得斷掉攻擊者；<strong>暫停 Entra ID 中的使用者</strong>則在混合情境把雲端那一半一起關掉。</p>
-<p>高頻考點藏在後面：<strong>這些動作不會自己生效</strong>。MDI 是雲端服務，要回頭改地端 AD 物件，必須配置具權限的<strong>動作帳戶（action account）</strong>——可沿用 gMSA，但要另外委派「重設密碼」與「停用帳戶」的寫入權限。把使用者<strong>標記為遭入侵（confirm compromised）</strong>則會把訊號送進 Entra ID Protection，使該帳戶的使用者風險直接升為高。</p>
+<p>高頻考點藏在後面：<strong>這些動作不會自己生效</strong>。MDI 是雲端服務，要回頭改地端 AD 物件，必須配置具權限的<strong>動作帳戶（action account）</strong>——可沿用 gMSA，但要另外委派重設密碼與停用帳戶的寫入權限。把使用者<strong>標記為遭入侵（confirm compromised）</strong>則會把訊號送進 Entra ID Protection，使該帳戶的使用者風險直接升為高。</p>
 <div class="point"><strong>別記錯歸屬：</strong>MDI 能停用帳戶、重設密碼，但<strong>不能隔離裝置</strong>——裝置隔離是 MDE 的動作；「包含使用者（contain user）」屬於 XDR 的<strong>自動攻擊中斷</strong>。考題描述「無人核准就自動停用了受害帳戶」→ 自動攻擊中斷，不是 MDI 的手動回應。</div>
-<p>回應是止血，<strong>身分安全態勢管理（ISPM）</strong>才是止痛。MDI 持續評估 AD 組態並把問題寫成建議，呈現在安全分數與曝險管理清單裡：明文傳輸認證的舊協定、不安全的 Kerberos 委派、敏感群組中的閒置帳戶、AD CS 憑證範本的危險組態、風險最高的橫向移動路徑。考題問「如何主動降低身分攻擊面」，答案在 ISPM，不在警示。</p>
+<p>回應是止血，<strong>身分安全態勢管理（ISPM）</strong>才是止痛。MDI 持續評估 AD 組態並把問題寫成建議，呈現在安全分數與曝險管理清單裡：明文傳輸認證的舊協定、不安全的 Kerberos 委派、敏感群組中的閒置帳戶、AD CS 憑證範本弱點、風險最高的橫向移動路徑。考題問「如何主動降低身分攻擊面」，答案在 ISPM，不在警示。</p>
 <div class="case-box"><div class="case-label">💼 實戰情境</div><p>週四 15:20，XDR 跳出中度事件：MDI 警示「Suspected identity theft (pass-the-ticket)」，主體是財務部 <code>k.wang</code>，來源 <code>FIN-WS041</code>、目標 <code>SRV-FILE02</code>。<strong>①</strong> 先看事件全貌——同時關聯了兩小時前 MDE 的「LSASS 記憶體讀取」，故事成形：先在工作站偷票證，再拿票證打檔案伺服器。<strong>②</strong> 打開使用者實體頁面，同一張票證在兩台工作站都出現過，排除單機誤判。<strong>③</strong> 查<strong>橫向移動路徑</strong>：k.wang 非特權帳戶，卻在三台工作站是本機管理員，其中一台曾有網域管理員登入——離網域支配只剩兩步，嚴重性當場調高。<strong>④</strong> 止血：<strong>要求密碼重設</strong>並撤銷工作階段、由 MDE <strong>隔離 FIN-WS041</strong>、把帳戶<strong>標記為遭入侵</strong>讓 Entra 側升為高風險。<strong>⑤</strong> 用上一節的查詢確認沒有第三台機器牽涉。<strong>⑥</strong> 把「本機管理員權限過度發放」開成 ISPM 待辦——這條 LMP 不砍掉，下次還是同一齣戲。</p></div>
 
 <div class="eyebrow">06 — ☁️ Entra ID Protection</div>
@@ -119,7 +119,7 @@ SigninLogs
 <div class="eyebrow">08 — 🧩 考綱補洞</div>
 <h2 data-toc="考綱補洞">影片沒講到的考綱角落</h2>
 <ul>
-  <li><strong>誘餌帳戶（honeytoken）：</strong>可把閒置帳戶或群組標記為 honeytoken 實體，正常情況絕不會有人碰，一旦出現驗證或查詢就直接產生警示——零誤報的偵察偵測器。相關的還有實體標籤（敏感、VIP），標為敏感會提高警示嚴重性並納入 LMP 分析。</li>
+  <li><strong>誘餌帳戶（honeytoken）：</strong>可把閒置帳戶或群組標記為 honeytoken 實體，正常情況絕不會有人碰，一旦出現驗證或查詢就產生警示——零誤報的偵察偵測器。相關的還有實體標籤（敏感、VIP），標為敏感會提高警示嚴重性並納入 LMP 分析。</li>
   <li><strong>LMP 需要權限才算得出來：</strong>MDI 必須能查詢各機器的本機系統管理員群組成員；若環境限制了遠端 SAM-R 呼叫又沒把 MDI 的帳戶加進允許清單，LMP 會是空的。考題說「LMP 頁面沒資料」，方向是權限與組態。</li>
   <li><strong>持續存取評估（CAE）：</strong>條件式存取原本只在發權杖時判定一次，權杖有效期內即使帳戶被停用也可能仍可存取。CAE 讓支援的服務近乎即時重新評估，帳戶停用、密碼重設、風險升高時就地終止工作階段——這是「已經停用帳戶了，他為什麼還在讀信」的答案。</li>
   <li><strong>MDI 與 Sentinel 的關係：</strong>MDI 警示透過 Defender XDR 連接器一併流進 Sentinel，不需要單獨的 MDI 連接器。</li>
