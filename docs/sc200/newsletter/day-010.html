@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 10｜Sentinel data lake：資料層、Summary Rules 與 KQL Jobs｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 10 / 40 · 2026-08-31</div>
+    <h1>Sentinel data lake：資料層、Summary Rules 與 KQL Jobs</h1>
+    <p class="sub"><em>Sentinel Data Lake: Tiers, Summary Rules & KQL Jobs</em></p>
+    <div class="meta-row">
+      <span class="pill d1">D1 管理安全性作業環境</span>
+      <span class="pill ghost">40-45%</span>
+      <span class="pill ghost">P1-W2-5</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+    <div class="progress-text">五週速成進度 10 / 25 · 距離考試（2026-10-17）還有 47 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP7｜Configure Microsoft Sentinel environment | SC-200 | Episode 7</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/0ydVILka3eg' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">本日導讀：偵測要快、保留要久、預算有限——data lake 一次解 <span class="badge-2026">2026 新考點</span></h2>
+<p>第二週最後一天，我們來讀整份 2026-07-28 考綱更新裡最「新」的主題：<strong>Microsoft Sentinel data lake</strong>。SOC 的老難題是三選二：偵測要即時、資料要留得久（合規與回溯獵捕）、帳單要付得起。過去的答案是「只擷取高價值資料、其餘丟掉或冷凍進 archive」，代價是事後想查查不到。data lake 用<strong>雙層架構</strong>破解：高價值資料進分析層（analytics tier）餵即時偵測，全量資料低成本入湖（data lake tier）留到最長 12 年，還能直接用 KQL 查。今天先弄懂兩層各自為誰服務，再學三個新工具——lake 互動查詢與筆記本（Notebook）、<strong>KQL jobs</strong>、<strong>summary rules</strong>——最後用一張比較表把考試最愛的「三選一」收乾淨。</p>
+<div class="info-box">學習目標（對應官方考綱 D1「管理安全性作業環境」條目）：
+<ul>
+<li>☐ <strong>管理資料層（data tiers）</strong>：分析層（analytics tier）與資料湖層（data lake tier）的選擇與切換 <span class="badge-2026">2026 新考點</span></li>
+<li>☐ 規劃並設定 Microsoft Sentinel 的<strong>資料儲存與保留</strong>（log types and log retention），含最長 12 年的長期保留</li>
+<li>☐ 建立與管理 <strong>summary rules</strong>，將大量 verbose 資料彙總成摘要表供偵測使用 <span class="badge-2026">2026 新考點</span></li>
+<li>☐ 建立與管理 <strong>KQL jobs</strong>，在 lake 上排程查詢並將結果升階（promote）回分析層 <span class="badge-2026">2026 新考點</span></li>
+<li>☐ 以 search jobs（搜尋工作）、lake 查詢完成<strong>歷史回溯獵捕（retro-hunting）</strong>與大範圍搜尋</li>
+</ul></div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP7 觀看重點指引：影片打地基，本文蓋新樓</h2>
+<p>本單元對應官方影片 <strong>EP7「Configure Microsoft Sentinel environment」</strong>（字幕尚未到位，先提供觀看指引）。要先說清楚：<strong>Sentinel data lake、KQL jobs、summary rules 是比這部影片更新的功能，影片幾乎不會涵蓋——這部分請以本文為準</strong>。EP7 的價值在於「傳統成本與保留模型」的地基，週一（工作區設計）你已看過全片，今天回看與資料儲存相關的段落，帶著四個問題：</p>
+<ul>
+<li><strong>計價段落</strong>：講者說明擷取（ingestion）計費與承諾層級（commitment tier）折扣時，記下「分析層是按 GB 擷取付費」——待會你會發現 lake 層的計價邏輯完全不同（低價入湖＋用多少查詢算多少）。</li>
+<li><strong>保留設定段落</strong>：影片示範工作區與資料表層級的保留（retention）設定。注意「互動保留」與「總保留」是兩個數字——總保留延長出去的那一段，正是今天 data lake 接手的地盤。</li>
+<li><strong>資料表管理</strong>：影片若提到 table-level 設定或 basic／auxiliary logs，把它當成 lake 層的「前身」——考綱補洞一節會講兩者關係。</li>
+<li><strong>對照練習</strong>：影片講的每一種「省錢手段」（少收資料、縮短保留、承諾層級），都問自己一句：改用 data lake 雙層架構後，這題還需要犧牲資料嗎？</li>
+</ul>
+
+<div class="eyebrow">03 — 🏔️ 雙層架構全景</div>
+<h2 data-toc="雙層架構">分析層 vs data lake 層：冰箱與冷凍庫 <span class="badge-2026">2026 新考點</span></h2>
+<p>Sentinel data lake 是建在 Defender 入口網站統一平台上的<strong>低成本安全資料湖</strong>，把「儲存」與「運算」拆開計價。啟用（onboard）之後，工作區的每張資料表都能選擇要進哪一層；你可以把它想成廚房：<strong>分析層是冰箱</strong>——常開常拿、隨手就用，但空間貴；<strong>lake 層是冷凍庫</strong>——便宜、能塞、放得久，要吃之前多一道解凍工序。</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th></th><th>分析層（analytics tier）</th><th>資料湖層（data lake tier）</th></tr></thead>
+<tbody>
+<tr><td><strong>定位</strong></td><td>即時偵測與調查的工作面</td><td>全量、長期、低成本的安全資料湖</td></tr>
+<tr><td><strong>成本模型</strong></td><td>按 GB 擷取計費（隨用隨付或承諾層級折扣），查詢不另計費</td><td>低價擷取＋儲存費，<strong>查詢／jobs／筆記本按用量計費</strong>（pay-per-use）</td></tr>
+<tr><td><strong>查詢能力</strong></td><td>完整 KQL、互動即時、進階搜捕與活頁簿（Workbook）直接可用</td><td>lake exploration 互動 KQL、KQL jobs、Jupyter 筆記本（Notebook），延遲較高</td></tr>
+<tr><td><strong>偵測能力</strong></td><td><strong>分析規則／NRT 規則只在這層執行</strong></td><td>不能直接餵分析規則——要靠 KQL jobs 升階或 summary rules 彙總回分析層</td></tr>
+<tr><td><strong>保留</strong></td><td>互動保留（Sentinel 資料表含 90 天）</td><td>總保留最長 <strong>12 年</strong></td></tr>
+<tr><td><strong>典型資料</strong></td><td>身分識別登入、端點警示、SecurityEvent 等高價值訊號</td><td>netflow、防火牆、Proxy、DNS 等高量 verbose 記錄；合規保留資料</td></tr>
+</tbody></table></div>
+<p>還有一個關鍵設計：<strong>鏡射（mirrored data）</strong>。凡是進了分析層的資料，都會<strong>自動鏡射一份到 lake，不另收擷取費</strong>。所以 lake 永遠擁有「全量」——你用筆記本或 KQL jobs 做跨資料分析時，不必擔心分析層的資料缺席；反過來不成立，只進 lake 的資料不會出現在分析層。</p>
+<div class="point">💡 一句話記架構：<strong>「分析層管『現在』，lake 管『全部』。」</strong>分析層是偵測引擎唯一看得到的地方；lake 是所有資料（含分析層鏡射）的長期家。資料只會「由湖升階回分析層」，不會自動反向流動。</div>
+
+<div class="eyebrow">04 — 🧭 資料該進哪層</div>
+<h2 data-toc="資料分層">分層決策：先問「這份資料要拿來做什麼」</h2>
+<p>資料表層級的層選擇（table management）是新考綱的操作重點。決策只看兩個問題：<strong>①這份資料需要驅動即時偵測嗎？②它的查詢頻率配得上分析層的擷取單價嗎？</strong></p>
+<ul>
+<li><strong>進分析層</strong>：分析規則、NRT 規則要用的表（登入記錄、端點事件、警示類）；SOC 每天互動查詢的表；需要跑 UEBA、進階搜捕的高價值訊號。</li>
+<li><strong>進 lake 層</strong>：量大、單筆價值低、偶爾才查的 verbose 記錄（netflow、防火牆 allow 流量、DNS、TLS/CDN 記錄）；純合規保留（「留三年備查」但平常沒人看）；要供 AI／筆記本做歷史建模的資料。</li>
+<li><strong>兩邊都要？</strong>不必重複擷取——進分析層就自動鏡射進 lake。真正的組合技是：<strong>原始資料進 lake、用 summary rules 把摘要送進分析層</strong>，偵測與儀表板用摘要，回溯獵捕用原始。</li>
+</ul>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦：分層決策題心法</div>
+<p>題幹關鍵字直接對映答案：出現「<strong>real-time detection／analytics rule 要用</strong>」→ 分析層，沒有第二個選擇，因為偵測引擎不讀 lake。出現「<strong>high-volume／rarely queried／compliance retention／minimize cost</strong>」→ lake 層。出現「<strong>既要長期保留、又要偶爾能查、成本最低</strong>」→ lake 層（不要選 archive／匯出到儲存體帳戶——那些是舊解法，查詢體驗差）。陷阱選項常是「全部進分析層＋調高承諾層級」（付不起，違反 minimize cost）與「全部進 lake」（偵測斷炊）。記住：<strong>雙層不是二選一，是各司其職。</strong></p></div>
+
+<div class="eyebrow">05 — ⚙️ 在 lake 上查詢與 KQL jobs</div>
+<h2 data-toc="KQL jobs">lake 的三種打開方式與 KQL jobs 深入 <span class="badge-2026">2026 新考點</span></h2>
+<p>冷凍庫裡的資料怎麼吃？lake 提供三條路：<strong>①lake exploration</strong>——在 Defender 入口網站直接對 lake 資料表下互動 KQL（適合臨時查證，按查詢用量計費）；<strong>②Jupyter 筆記本（Notebook）</strong>——用 Python＋Spark 對湖中全量資料做大規模分析與機器學習；<strong>③KQL jobs</strong>——把 KQL 查詢設成<strong>一次性或排程執行的工作</strong>，在 lake 上跑完後，把結果<strong>升階（promote）寫回分析層的自訂資料表</strong>。先看互動查詢：</p>
+<pre class="kql">// Lake exploration：臨時查證——去年 9 月是否有主機解析過可疑網域
+DnsEvents
+| where TimeGenerated between (datetime(2025-09-01) .. datetime(2025-10-01))
+| where Name has_any ("update-check.badcdn.example", "telemetry.evil.example")
+| summarize Hits = count(), FirstSeen = min(TimeGenerated) by Name, ClientIP</pre>
+<div class="kql-note">逐行解說：這條查詢跑在 <strong>lake 層</strong>的 DnsEvents 上——資料早已超出分析層的互動保留，但不需要還原（restore）就能直接查。<strong>between</strong> 限定歷史時間窗（lake 查詢務必收窄範圍，因為按用量計費）；<strong>has_any</strong> 一次比對多個 IoC 網域；<strong>summarize</strong> 收斂成「哪台主機、第一次解析是何時」——回溯獵捕的起手式。</div>
+<p>互動查詢適合「查一次」；當你需要<strong>定期</strong>在湖裡撈東西、而且撈到的要能觸發偵測，就升級成 KQL job：</p>
+<pre class="kql">// KQL job（每日排程）：掃描 lake 中 180 天防火牆記錄，比對已知 C2 位址
+CommonSecurityLog
+| where TimeGenerated &gt; ago(180d)
+| where DestinationIP in ("203.0.113.10", "203.0.113.77", "198.51.100.23")
+| project TimeGenerated, SourceIP, DestinationIP, DestinationPort,
+          DeviceAction, DeviceVendor</pre>
+<div class="kql-note">逐行解說：這是 KQL job 的查詢本體，支援<strong>完整 KQL</strong>（join、summarize 都可以，這點與 search jobs 不同）。<strong>ago(180d)</strong> 的時間窗遠超分析層保留——這正是 job 存在的理由；<strong>in()</strong> 比對威脅情報給的 C2 清單；job 執行後，<strong>project</strong> 出的結果會升階寫入分析層的自訂資料表（例如 RetroHuntC2_CL），接著你就能對這張表開分析規則、進事件佇列走正常分診流程。「湖裡撈到的魚，放回冰箱才能上菜。」</div>
+<div class="point">💡 KQL jobs 的考試指紋：<strong>「lake 資料」＋「排程／定期」＋「結果要供偵測或分析規則使用」</strong>三個條件同時出現，答案就是 KQL job＋promote。少了「定期」是一次性 job 或 search job；少了「餵偵測」可能互動查詢就夠。</div>
+
+<div class="eyebrow">06 — 🧃 Summary rules</div>
+<h2 data-toc="Summary rules">Summary rules：把 verbose 洪流濃縮成偵測可用的果汁 <span class="badge-2026">2026 新考點</span></h2>
+<p><strong>Summary rules（摘要規則）</strong>解決另一半問題：防火牆、netflow 這種每天數百 GB 的資料，就算進了 lake，偵測與儀表板還是需要「即時可查的統計面」。summary rule 以固定間隔（bin，<strong>20 分鐘到 24 小時</strong>）持續執行你定義的彙總查詢，把結果寫進<strong>分析層的自訂資料表</strong>——原始資料留在低成本層，分析層只付「摘要」的擷取費，量級常常差百倍。</p>
+<pre class="kql">// Summary rule（每小時 bin）：防火牆連線彙總
+CommonSecurityLog
+| where DeviceVendor == "Fortinet"
+| summarize ConnCount = count(),
+            DeniedCount = countif(DeviceAction == "deny"),
+            SentBytes = sum(SentBytes)
+  by SourceIP, DestinationIP, DestinationPort, bin(TimeGenerated, 1h)</pre>
+<div class="kql-note">逐行解說：<strong>summarize ... by bin(TimeGenerated, 1h)</strong> 把每小時的原始流量壓成一列統計；<strong>countif(deny)</strong> 順手算出封鎖數——「單一來源、大量 deny」正是掃描行為的特徵。規則存檔後指定目的資料表（例如 FirewallSummary_CL，分析層方案），之後分析規則就對這張輕量表寫偵測（例如 DeniedCount &gt; 500 告警）、活頁簿拿它畫趨勢，完全不必碰原始洪流。</div>
+<p>與 KQL jobs 的分工要抓準：<strong>summary rules 是「持續進行式」</strong>——資料一邊進來一邊濃縮，低延遲、永遠跑下去，服務「日常偵測與儀表板」；<strong>KQL jobs 是「回頭看」</strong>——對湖中歷史大範圍做一次或排程分析，服務「回溯獵捕與歷史研究」。一個向前看、一個向後看。</p>
+
+<div class="eyebrow">07 — 🔀 三兄弟比較與實戰</div>
+<h2 data-toc="三兄弟比較">Summary rules vs KQL jobs vs search jobs：考試最愛的三選一</h2>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th></th><th>Summary rules</th><th>KQL jobs</th><th>Search jobs（搜尋工作）</th></tr></thead>
+<tbody>
+<tr><td><strong>本質</strong></td><td>持續排程彙總（bin 20 分鐘–24 小時）</td><td>lake 上的一次性或排程 KQL 工作</td><td>非同步大範圍搜尋工作</td></tr>
+<tr><td><strong>作用資料</strong></td><td>持續流入的高量資料（含低成本層）</td><td>lake 層歷史資料（任意長時間窗）</td><td>巨量／長期保留資料</td></tr>
+<tr><td><strong>KQL 能力</strong></td><td>完整彙總查詢</td><td><strong>完整 KQL</strong>（join／summarize）</td><td><strong>受限 KQL</strong>（以篩選為主）</td></tr>
+<tr><td><strong>結果去向</strong></td><td>分析層自訂表（_CL）</td><td>升階（promote）至分析層自訂表</td><td>分析層 <strong>_SRCH</strong> 結尾資料表</td></tr>
+<tr><td><strong>典型場景</strong></td><td>netflow／防火牆每小時彙總供偵測與儀表板</td><td>定期用新 IoC 回掃數月歷史、結果餵分析規則</td><td>一次性在一年資料裡撈特定 IP／帳號的所有記錄</td></tr>
+<tr><td><strong>一句話</strong></td><td>濃縮果汁（邊進邊濃縮）</td><td>定時撈魚（湖裡撈、冰箱上菜）</td><td>大海撈針（撈完就收工）</td></tr>
+</tbody></table></div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦：三選一裁決順序</div>
+<p>拿到題目先抓三個訊號詞。<strong>①持續性</strong>：題幹說「ongoing／每小時彙總／供儀表板與偵測長期使用」→ summary rule。<strong>②歷史＋排程＋餵偵測</strong>：「scan the data lake／過去 N 個月／結果要能建立分析規則」→ KQL job（promote 回分析層）。<strong>③一次性撈記錄</strong>：「one-time／找出某 IP 出現過的所有記錄／不需複雜查詢」→ search job。兩個高頻陷阱：把 search job 選給「需要 join 的複雜歷史分析」（它的 KQL 受限，正解是 KQL job）；把 summary rule 選給「回掃過去六個月」（它只從啟用後向前彙總，回不了頭，正解也是 KQL job）。最後記一條鐵律：<strong>三兄弟的產出全都落在分析層</strong>——因為只有分析層能餵偵測、能被日常互動查詢。</p></div>
+<div class="case-box"><div class="case-label">🧪 實戰情境：一年份防火牆記錄的低成本合規保留＋回溯獵捕設計</div>
+<p>你所在的金融業 SOC 每天產生約 300 GB 防火牆與 netflow 記錄。法遵要求<strong>保留 12 個月備查</strong>；SOC 只需要對連線統計做偵測；預算擋不住全量進分析層。設計如下——</p>
+<ol>
+<li><strong>分層</strong>：CommonSecurityLog 等防火牆表設為 <strong>data lake 層</strong>，總保留 12 個月（需要的話最長可到 12 年）。高價值的身分識別與端點表留在分析層，反正會自動鏡射入湖，不用二選一。</li>
+<li><strong>偵測面</strong>：建 <strong>summary rule</strong> 每小時彙總連線數、deny 數、傳輸量寫入 FirewallSummary_CL；對摘要表建立分析規則（異常連線量、大量 deny）與活頁簿。分析層每天只多付摘要那幾 GB。</li>
+<li><strong>回溯獵捕</strong>：威脅情報發布新 C2 清單時——先用 <strong>lake exploration</strong> 互動查證熱點；確認要持續監控後，建<strong>每日排程 KQL job</strong> 回掃 180 天並把命中升階回分析層開規則；法遵要求「調出某 IP 十二個月內全部原始記錄」時，跑一次 <strong>search job</strong> 產出 _SRCH 表交件。</li>
+<li><strong>成本檢核</strong>：對比舊解法（全量分析層＋archive）：擷取費從「每 GB 全價」變成「湖價＋摘要」，查歷史從「先還原再查」變成「直接查湖」。三個工具各自出現在該出現的位置——這一段就是考試想看你做的完整決策。</li>
+</ol></div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">Auxiliary logs 與傳統 archive：舊詞彙怎麼對映新架構</h2>
+<ul>
+<li><strong>Auxiliary logs（輔助記錄）與 lake 的關係</strong>：auxiliary 是 Log Analytics 的低成本資料表方案，可視為 lake 層的「前身與入口」——同樣主打便宜擷取、受限查詢、verbose 資料。工作區<strong>接入 data lake 後，auxiliary 方案資料表的資料就存放於 lake 層</strong>，並獲得 lake 的完整查詢工具（exploration／jobs／筆記本）。考題看到 auxiliary logs，就往「低成本層」歸類，與分析層對舉。</li>
+<li><strong>與傳統 archive（長期封存）的差異</strong>：舊模型裡超過互動保留的資料進入封存狀態——<strong>不能直接查詢</strong>，必須先跑 search job 或還原（restore）成暫存表，才碰得到。lake 的關鍵進步是「<strong>長期資料維持可查</strong>」：互動 KQL、筆記本、KQL jobs 直接打在湖上，不需還原程序。接入 lake 後，長期保留即由 lake 提供；「archive＋restore」在考題中若與 lake 並列，通常是被淘汰的干擾項。</li>
+<li><strong>Restore（還原）還會考嗎</strong>：仍可能以舊題型出現——「需要對封存資料做高效能完整 KQL 調查」的傳統答案是 restore。但在標明「已接入 data lake」的題幹裡，直接查 lake 或跑 KQL job 幾乎總是更省事的正解。</li>
+<li><strong>前提條件</strong>：Sentinel data lake 建立在 <strong>Defender 入口網站統一平台</strong>上——工作區要先連入 Defender 入口網站（第四天講過的統一 SOC 平台），才能接入 lake。這也解釋了為什麼 2026 考綱把「入口統一」與「data lake」綁在同一波更新。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 延伸閱讀</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-lake-overview" target="_blank" rel="noopener">Microsoft Sentinel data lake 概觀</a>——雙層架構、鏡射與計價模型的官方總覽，本文第 03 節的原典。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/kql-jobs" target="_blank" rel="noopener">在 data lake 上建立 KQL jobs</a>——一次性與排程 job 的建立流程、升階（promote）目的資料表設定。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/summary-rules" target="_blank" rel="noopener">使用 summary rules 彙總資料</a>——bin 間隔、目的資料表與 netflow／防火牆彙總範例，讀完再回看本文的果汁比喻。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/search-jobs" target="_blank" rel="noopener">使用 search jobs 搜尋大型資料集</a>——受限 KQL 的範圍與 _SRCH 資料表行為，三兄弟比較表的第三欄補完。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/notebooks-overview" target="_blank" rel="noopener">在 data lake 上使用 Jupyter 筆記本</a>——Python＋Spark 對湖中資料做大規模分析的入門，搭捕獵場景延伸閱讀。</li>
+</ul>
+
+
+  <div class="eyebrow">10 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W2-5">到刷題頁練習 →</a></p>
+<div class='info-box'>本單元自測題建置中——先到<a href='../quiz.html'>刷題頁</a>練其他題組。</div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP10</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><div class='p-hint'>🎧 本集音檔生成中（push 腳本後由 GitHub Actions 自動合成）。</div><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-010'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="10">
+    <label for="doneChk">我讀完 Day 10 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-009.html'>← Day 9</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-011.html'>Day 11 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 10 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

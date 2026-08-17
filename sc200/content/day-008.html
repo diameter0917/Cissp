@@ -1,0 +1,123 @@
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">本日導讀：接住「沒有現成連接器」的那一群</h2>
+<p>昨天我們把有服務對服務連接器的來源接上了；今天處理比較「野」的三類：講 syslog 的 Linux 與網路設備、講 CEF（Common Event Format）的資安設備、只會吐 JSON 的自研應用程式。三條路徑都繞著同一套機制轉——Azure Monitor Agent（AMA，Azure 監視代理程式）與資料收集規則（DCR）。接完之後還有一個大魔王：十種來源十種欄位格式，偵測規則難道要寫十份？這就輪到 ASIM（Advanced Security Information Model，進階安全性資訊模型）出場，把所有來源翻譯成同一套結構描述，讓一支查詢跨所有來源。今天是 kql_focus 單元，ASIM 查詢請務必動手跑。</p>
+<div class="info-box">學習目標（對應官方考綱 D1「管理安全性作業環境」條目）：
+<ul>
+<li>☐ 規劃並設定 <strong>Syslog 與 Common Event Format（CEF）事件收集</strong>（plan and configure Syslog and CEF event collections），含轉送器（log forwarder）架構</li>
+<li>☐ 以<strong>資料收集規則（DCR）</strong>設定收集範圍（facility／嚴重性）並套用擷取時轉換</li>
+<li>☐ 在工作區<strong>建立自訂記錄資料表</strong>以儲存擷取資料（create custom log tables in the workspace to store ingested data），會走 Logs Ingestion API 路徑</li>
+<li>☐ 設定並使用 <strong>ASIM 剖析器（parsers）</strong>：unifying／來源特定、filtering／無參數的差異與效能考量</li>
+<li>☐ <strong>監視並最佳化資料擷取</strong>（monitor and optimize data ingestion）：健康檢查查詢與去重複策略</li>
+</ul></div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP8 觀看重點指引</h2>
+<p>本單元對應官方影片 <strong>EP8「Connect logs to Microsoft Sentinel」</strong>（字幕尚未到位，先提供觀看指引；字幕匯入後回補時間碼整理）。EP8 前半的連接器基礎與服務對服務連接器已在昨天消化，今天聚焦<strong>後半的 Syslog／CEF／自訂記錄段落</strong>。觀看時帶著五個問題：</p>
+<ul>
+<li><strong>AMA 與 DCR 的關係</strong>：講者示範建立 DCR 時，「收什麼」（facility、嚴重性）與「送到哪」（工作區）分別定義在哪裡？注意 AMA 本身沒有設定檔，一切由 DCR 驅動。</li>
+<li><strong>轉送器架構圖</strong>：CEF 段落的架構圖上，AMA 裝在哪台機器？防火牆與轉送器之間走什麼協定與連接埠？對照本文第 03 節。</li>
+<li><strong>Syslog 與 CEF 的落表差異</strong>：兩種資料最後分別進了哪張資料表？欄位長相差在哪（整段文字 vs 結構化欄位）？</li>
+<li><strong>自訂記錄示範</strong>：如果影片示範了自訂表或 Logs Ingestion API，注意表名結尾的 <strong>_CL</strong> 與 DCR 轉換的角色。</li>
+<li><strong>驗證步驟</strong>：講者接完連接器後用什麼查詢確認資料進來了？把那條查詢跟本文的健康檢查查詢比一比。</li>
+</ul>
+
+<div class="eyebrow">03 — 📡 Syslog 與 CEF 收集架構</div>
+<h2 data-toc="收集架構">AMA＋DCR：Syslog 與 CEF 的兩條進貨路線</h2>
+<p>先把地基講清楚。<strong>AMA 是目前唯一支援的收集代理程式</strong>——舊版 Log Analytics 代理程式（MMA）已於 2024 年 8 月退場，考題選項出現 MMA 一律是干擾項。AMA 自己不帶設定，行為完全由<strong>資料收集規則（DCR）</strong>定義：收哪些 facility、幾級以上的嚴重性、送到哪個工作區，甚至在擷取前先做 KQL 轉換過濾。地端或其他雲的機器要先用 <strong>Azure Arc</strong> 註冊，才能安裝 AMA 並關聯 DCR。</p>
+<p>Syslog 與 CEF 是兩條不同的進貨路線，考試最愛比較它們：</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>面向</th><th>Syslog（原始）</th><th>CEF（Common Event Format）</th></tr></thead>
+<tbody>
+<tr><td>格式／協定</td><td>標準 syslog 訊息，內文自由格式</td><td>架在 syslog 之上的結構化格式：標頭＋key=value 延伸欄位</td></tr>
+<tr><td>目的資料表</td><td><strong>Syslog</strong>（內文整段塞在 SyslogMessage，用時自己剖析）</td><td><strong>CommonSecurityLog</strong>（DeviceVendor、SourceIP 等欄位已拆好）</td></tr>
+<tr><td>代理程式</td><td>AMA 裝在 Linux 機器本機，或集中收多台的轉送器上</td><td>AMA 一律裝在 <strong>Linux 轉送器</strong>（rsyslog／syslog-ng）上，設備本身不裝</td></tr>
+<tr><td>DCR 設定</td><td>選 facility＋最低嚴重性等級</td><td>同樣選 facility／等級，但走 CEF via AMA 連接器的 DCR</td></tr>
+<tr><td>典型場景</td><td>Linux 伺服器系統日誌、網路設備原生 syslog</td><td>防火牆、Proxy、WAF 等資安設備（Palo Alto、Fortinet、Check Point…）</td></tr>
+</tbody></table></div>
+<p><strong>轉送器（log forwarder）架構</strong>是本節核心：防火牆這類 appliance 裝不了代理程式，所以你要架一台 Linux 機器當集散中心——上面跑 rsyslog 或 syslog-ng 監聽 514 連接埠（TCP/UDP），再裝 AMA。官方提供安裝指令碼，會自動把 syslog 精靈的轉送設定接到 AMA。所有設備把 CEF over syslog 指向轉送器，AMA 依 DCR 送上 CommonSecurityLog。量大時依 EPS（每秒事件數）規劃多台轉送器與負載平衡。</p>
+<div class="point">💡 <strong>去重複陷阱</strong>：同一台轉送器同時收原始 Syslog 與 CEF 時，若兩條 DCR 勾了重疊的 facility，同一則訊息會同時寫進 Syslog 與 CommonSecurityLog——資料重複、費用雙倍。正解是讓兩條 DCR 的 facility 互不重疊。</div>
+<pre class="kql">CommonSecurityLog
+| where TimeGenerated &gt; ago(1h)
+| summarize Events = count(), LastSeen = max(TimeGenerated)
+    by DeviceVendor, DeviceProduct, Computer
+| order by LastSeen desc</pre>
+<div class="kql-note">接完 CEF 後的健康檢查：<strong>DeviceVendor／DeviceProduct</strong> 來自 CEF 標頭，能一眼看出哪些設備在回報；<strong>Computer</strong> 是轉送器主機名稱，多台轉送器時可分辨哪條管線斷了；<strong>LastSeen</strong> 若停在幾小時前，代表設備端或轉送器端出了問題。這條查詢也是考綱「監視資料擷取」的實作起手式。</div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>「選 Syslog 還是 CEF？AMA 裝哪裡？」</strong>判斷公式：題幹說設備支援 CEF 輸出（資安設備幾乎都支援）→ 走 CEF via AMA、查 CommonSecurityLog；只有原生 syslog → 走 Syslog 連接器、查 Syslog 表。架構題的鐵律：<strong>AMA 永遠裝在轉送器（或 Linux 主機本身），不裝在 appliance 上</strong>；地端轉送器要先 Azure Arc 註冊。陷阱選項常見三種：把 AMA 裝上防火牆（裝不了）、用 MMA（已退場）、叫防火牆直接呼叫 API（appliance 做不到）。</p></div>
+
+<div class="eyebrow">04 — 📥 自訂記錄擷取路徑</div>
+<h2 data-toc="自訂記錄">自研應用的日誌：Logs Ingestion API 全路徑</h2>
+<p>自研應用程式沒有 syslog 也沒有 CEF，只會透過 HTTPS 吐 JSON——這時走 <strong>Logs Ingestion API</strong>（記錄擷取 API），它取代了舊版 HTTP Data Collector API。完整路徑五個零件：</p>
+<div class="info-box">Logs Ingestion API 擷取管線：
+<ol>
+<li><strong>Entra 應用程式註冊</strong>：應用程式以 Entra ID 權杖驗證身分，並被授與對 DCR 送資料的角色。</li>
+<li><strong>資料收集端點（DCE）</strong>：API 的收件地址，應用程式把 JSON POST 到這裡。</li>
+<li><strong>DCR</strong>：定義結構描述與 <strong>KQL 轉換</strong>（transformKql）——過濾雜訊、拆欄位、遮罩敏感資料，再指定目標表。</li>
+<li><strong>自訂資料表</strong>：表名結尾固定是 <strong>_CL</strong>（custom log），結構描述需事先建立。</li>
+<li><strong>驗證查詢</strong>：資料落地後用 KQL 抽查筆數與欄位。</li>
+</ol></div>
+<p>兩個補充路徑：機器上的<strong>自訂文字／JSON 檔案</strong>（應用程式寫本機 log 檔）可由 AMA＋DCR 直接尾隨收集，不必自己呼叫 API；而<strong>無程式碼連接器框架（Codeless Connector Framework）</strong>則是給 SaaS 來源用的——用 JSON 宣告式定義 API 輪詢邏輯，由微軟代管的基礎結構去拉資料，完全不需要代理程式或程式碼，內容中樞裡許多合作夥伴連接器就是這樣做的。方向要分清楚：<strong>CCF 是 Sentinel 去「拉」SaaS 的 API；Logs Ingestion API 是你的應用程式主動「推」資料進來</strong>。</p>
+<p><span class="badge-2026">2026 新考點</span> 自訂表現在可以選層級：SOC 常查的放分析（Analytics）層；量大、很少查、但合規要求可查的 verbose 記錄，改放 <strong>Sentinel data lake</strong>（資料湖層），擷取成本大幅降低，需要調查時再以 KQL 查詢或用 KQL job 撈回分析層。考題給「200 GB／日、偶爾調查、成本最小化」這種條件組合，就是在考層級選擇。</p>
+<div class="point">💡 一句話收斂：<strong>設備走轉送器、應用走 API、SaaS 走 CCF</strong>——三條路的終點都是「DCR 決定形狀、資料表決定家」。</div>
+
+<div class="eyebrow">05 — 🧬 ASIM 正規化</div>
+<h2 data-toc="ASIM">ASIM：讓一支查詢跨所有來源</h2>
+<p>資料都進來了，新問題浮現：同樣是「來源 IP」，Infoblox 叫一個名字、Azure Firewall 叫另一個、Windows DNS 又不一樣。沒有正規化，一條 DNS 偵測規則就得為每個來源各寫一份、來源一換就全部重寫。<strong>ASIM 的解法是在查詢時套一層標準結構描述（schema）</strong>：欄位統一叫 SrcIpAddr、DvcHostname、EventResult，偵測內容「一次寫、處處用」，微軟內建的許多分析規則與搜捕查詢也直接建在 ASIM 上，並向開源的 OCSF 標準靠攏。常考的 schema 家族：</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>Schema</th><th>涵蓋事件</th><th>unifying 剖析器（內建）</th></tr></thead>
+<tbody>
+<tr><td>Network Session</td><td>防火牆／NSG 等網路工作階段</td><td>_Im_NetworkSession</td></tr>
+<tr><td>DNS</td><td>DNS 查詢與回應</td><td>_Im_Dns</td></tr>
+<tr><td>Authentication</td><td>各來源的登入成功／失敗</td><td>_Im_Authentication</td></tr>
+<tr><td>Process Event</td><td>處理程序建立／終止</td><td>_Im_ProcessCreate 等</td></tr>
+<tr><td>Web Session</td><td>Proxy／WAF 的 HTTP 工作階段</td><td>_Im_WebSession</td></tr>
+<tr><td>File Event、Registry Event、Audit Event…</td><td>檔案、登錄、稽核等其餘家族</td><td>依 schema 命名</td></tr>
+</tbody></table></div>
+<p>翻譯工作由<strong>剖析器（parser）</strong>完成，命名規則是考點：<strong>vim 開頭＝來源特定剖析器</strong>（如 vimDnsInfoblox，只翻一個產品）；<strong>im 開頭＝unifying 剖析器</strong>，把該 schema 所有來源的 vim 剖析器 union 起來——查一支等於查全部。<strong>底線開頭（_Im_／_ASim_）是內建版</strong>，隨工作區提供並由微軟自動更新；無底線版本（imDns、ASimDns）是你自己從 GitHub 部署到工作區的。</p>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦：im／vim／ASim 三兄弟怎麼選</div>
+<p><strong>im 與 vim 都是 filtering 剖析器</strong>：接受 starttime、endtime、srcipaddr、domain_has_any 等參數，把過濾條件<strong>推進剖析階段之前</strong>執行，效能最好。<strong>ASim 開頭是無參數（parameter-less）剖析器</strong>，先翻完全部資料才讓你 where，適合互動探索、不適合大範圍排程查詢。答題公式：<strong>跨來源→im；單一來源→vim；效能要求→帶參數的 filtering 剖析器</strong>。陷阱：題目要跨來源卻放 vimDnsInfoblox 當選項（只涵蓋一家）；或把「改用 ASim 無參數版」包裝成效能解法（其實更慢）。另外可用 <strong>ASimDisabledParsers 監視清單（Watchlist）</strong>把用不到的來源剖析器排除在 unifying 剖析器之外，進一步省時間。</p></div>
+<pre class="kql">_Im_Dns(starttime=ago(1d),
+        domain_has_any=dynamic(["contoso-c2.net", "evil-cdn.io"]))
+| summarize Queries = count(), Sources = make_set(EventProduct)
+    by SrcIpAddr, DnsQuery
+| order by Queries desc</pre>
+<div class="kql-note">unifying 剖析器實戰：<strong>_Im_Dns(...)</strong> 用「函數呼叫」的寫法把 <strong>starttime</strong> 與 <strong>domain_has_any</strong>（可疑網域清單）當參數傳入——過濾在剖析前發生，掃描量大減；<strong>make_set(EventProduct)</strong> 列出命中事件來自哪些產品（Infoblox？Azure Firewall？），親眼驗證「一支查詢、多個來源」；<strong>SrcIpAddr、DnsQuery</strong> 都是 DNS schema 的標準欄位，不管來源是誰，名字都一樣。</div>
+<pre class="kql">imAuthentication(starttime=ago(7d))
+| where EventResult == "Failure"
+| summarize Failures = count(), SrcIPs = dcount(SrcIpAddr),
+    Products = make_set(EventProduct)
+    by TargetUsername
+| where Failures &gt; 50 and SrcIPs &gt; 10
+| order by Failures desc</pre>
+<div class="kql-note">跨來源密碼噴灑（password spray）搜捕：<strong>imAuthentication</strong> 是工作區部署版的 unifying 剖析器（內建版叫 _Im_Authentication），一次涵蓋 Windows、Linux、Entra ID、VPN 等所有登入來源；<strong>EventResult == "Failure"</strong> 是正規化後的標準值，不必記各來源的失敗代碼；<strong>dcount(SrcIpAddr) &gt; 10</strong> 抓「同一帳號被大量不同 IP 嘗試」的特徵。同一條邏輯若不用 ASIM，你得為每個登入來源各寫一版。</div>
+<p><strong>自訂剖析器</strong>的概念也要會：新來源沒有現成剖析器時，照 schema 規格寫一支 KQL 函數，把自家欄位對應成標準名稱（輸出欄位、值的正規化都要照規格），再掛進 unifying 剖析器——之後所有建立在 ASIM 上的偵測內容自動涵蓋你的來源，不必逐條改規則。</p>
+
+<div class="eyebrow">06 — 🧪 實戰情境</div>
+<h2 data-toc="實戰">一天接兩種來源：防火牆與自研應用</h2>
+<div class="case-box"><div class="case-label">🧪 實戰情境：Fortinet 防火牆（CEF）＋自研訂單系統（API）完整接入</div>
+<p>你是 SOC 工程師，今天要把地端 Fortinet 防火牆與自研訂單應用程式接進 Sentinel。走兩條路：</p>
+<ol>
+<li><strong>防火牆——CEF 路線</strong>：建一台 Linux VM 當轉送器 → 以 Azure Arc 註冊（地端機器）→ 安裝 AMA 與 rsyslog → 執行官方安裝指令碼接通 syslog 精靈與 AMA → 在 Sentinel 啟用 CEF via AMA 連接器、建 DCR 選 facility 與嚴重性 → 防火牆管理介面把 CEF 日誌輸出指向轉送器 514 埠 → 用第 03 節的 CommonSecurityLog 健康查詢驗證 → 因為 Fortinet 有現成 vim 剖析器，_Im_NetworkSession 立刻涵蓋這批資料，既有 ASIM 分析規則零修改直接生效。</li>
+<li><strong>訂單應用——API 路線</strong>：與開發團隊定義 JSON 欄位 → 建自訂表 OrderAudit_CL（依查詢頻率決定分析層或資料湖層）→ 建 DCE 與 DCR，轉換中先濾掉 debug 雜訊、遮罩卡號欄位 → Entra 註冊應用程式並授與 DCR 送資料的角色 → 開發者把日誌 POST 到 DCE → KQL 抽查落地資料 → 訂單系統的登入事件另寫一支自訂剖析器對應 Authentication schema，讓密碼噴灑搜捕查詢自動涵蓋它。</li>
+<li><strong>收尾檢查</strong>：確認轉送器上 Syslog 與 CEF 的 DCR facility 不重疊（防重複計費）；把兩條管線的健康查詢存成排程告警，資料斷流時主動通知，而不是等事件漏接才發現。</li>
+</ol></div>
+
+<div class="eyebrow">07 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">影片之外，考綱還要你會這些</h2>
+<ul>
+<li><strong>Windows 安全性事件收集</strong>：Windows 主機走「Windows Security Events via AMA」連接器進 SecurityEvent 表，DCR 可選 <strong>All／Common／Minimal／Custom（xPath 篩選）</strong>四種事件集——「只收登入相關事件以省成本」→ Custom xPath。</li>
+<li><strong>擷取時轉換的另一個用法</strong>：除了自訂表，DCR 轉換也能套在內建表上（workspace transformation），在資料入庫前過濾雜訊、丟棄欄位，是「監視並最佳化資料擷取」的主要省錢手段。</li>
+<li><strong>連接器健康監視</strong>：SentinelHealth 資料表與資料收集健康活頁簿（Workbook）可監看連接器狀態；Usage 表查各表擷取量，找出成本大戶。</li>
+<li><span class="badge-2026">2026 新考點</span> <strong>Summary rules（彙總規則）</strong>：對資料湖層／高量低價值資料先做排程彙總，把統計結果寫進分析層小表，偵測與報表查小表即可——與資料湖層搭配是新版考題的成本最佳化組合技。</li>
+<li><strong>退場清單要記牢</strong>：MMA／OMS 代理程式、HTTP Data Collector API 都已退場；看到它們出現在選項，直接淘汰。</li>
+</ul>
+
+<div class="eyebrow">08 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 延伸閱讀</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/connect-cef-syslog-ama" target="_blank" rel="noopener">透過 AMA 擷取 Syslog 與 CEF 訊息</a>——轉送器部署、DCR 設定與安裝指令碼的官方完整流程，把第 03 節讀成操作版。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/azure-monitor/logs/logs-ingestion-api-overview" target="_blank" rel="noopener">Logs Ingestion API 概觀</a>——DCE、DCR、應用程式驗證的全鏈路說明，對照第 04 節的五個零件。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/normalization" target="_blank" rel="noopener">ASIM 正規化概觀</a>——為什麼正規化、schema 家族全清單，理解「一次寫、處處用」的設計。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/normalization-about-parsers" target="_blank" rel="noopener">ASIM 剖析器</a>——unifying／來源特定、內建／工作區部署、filtering 參數與效能，考前把命名規則再唸一遍。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/create-codeless-connector" target="_blank" rel="noopener">無程式碼連接器框架（CCF）</a>——宣告式連接器怎麼定義、適用哪些 SaaS 場景，分清「拉」與「推」。</li>
+</ul>

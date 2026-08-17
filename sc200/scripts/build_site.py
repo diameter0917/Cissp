@@ -11,8 +11,10 @@ sc200/content/day-NNN.html（電子報本文片段）＋ sc200/drill/day-NNN.htm
   - Podcast 框：音檔存在 → <audio>；不存在 → 「生成中」占位
   - 複製 bank/*.json → docs/sc200/bank/ 並產生 index.json（quiz.js 讀取）
 
-用法：python sc200/scripts/build_site.py [--check]
-      --check：組建後執行內容驗證（章節數、KQL、字數、內部連結、自測題covered）
+用法：python sc200/scripts/build_site.py [--check] [--strict]
+      --check：組建後執行內容驗證（章節數、KQL、字數、自測題覆蓋、placeholder 殘留）
+      --strict：內容分批產製期間的「尚未補齊」類警告（自測題 <5）升級為錯誤，
+                供 M9 收尾全量驗證使用；CI 平時只跑 --check。
 """
 
 import argparse
@@ -160,7 +162,7 @@ def render(template, mapping):
     return out
 
 
-def check_fragment(name, body, unit, bank_by_unit):
+def check_fragment(name, body, unit, bank_by_unit, strict=False):
     tocs = len(re.findall(r"<h2[^>]*data-toc", body))
     if tocs < 3:
         problems.append(f"{name}: data-toc 章節僅 {tocs} 個（需 ≥3）")
@@ -169,14 +171,20 @@ def check_fragment(name, body, unit, bank_by_unit):
     n = zh_char_count(body)
     if not (2600 <= n <= 4600):
         notes.append(f"{name}: 繁中字數 {n}（目標 3000-4000）")
-    if len(bank_by_unit.get(unit["code"], [])) < 5:
-        problems.append(f"{name}: 單元自測題 <5（bank 中 unit={unit['code']}）")
+    got = len(bank_by_unit.get(unit["code"], []))
+    if got < 5:
+        msg = f"{name}: 單元自測題 {got}/5（bank 中 unit={unit['code']}）"
+        (problems if strict else notes).append(msg)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true")
+    ap.add_argument("--strict", action="store_true",
+                    help="「尚未補齊」類警告升級為錯誤（收尾全量驗證用）")
     args = ap.parse_args()
+    if args.strict:
+        args.check = True
 
     curriculum = load(SC200 / "sc200_curriculum.json")
     schedule = load(SC200 / "schedule.json")
@@ -273,7 +281,8 @@ def main():
             if leftovers:
                 problems.append(f"{out.name}: 未替換的 placeholder {sorted(set(leftovers))}")
             if is_study:
-                check_fragment(f"content/day-{seq:03d}.html", body, unit, bank_by_unit)
+                check_fragment(f"content/day-{seq:03d}.html", body, unit,
+                               bank_by_unit, strict=args.strict)
 
     print(f"✅ 組建完成：{built} 頁（尚無片段 {skipped} 天）")
     if args.check:

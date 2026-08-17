@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 11｜Security Copilot 設定與管理：SCU、外掛與 Agents｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 11 / 40 · 2026-09-01</div>
+    <h1>Security Copilot 設定與管理：SCU、外掛與 Agents</h1>
+    <p class="sub"><em>Configuring Microsoft Security Copilot: SCU, Plugins & Agents</em></p>
+    <div class="meta-row">
+      <span class="pill d1">D1 管理安全性作業環境</span>
+      <span class="pill ghost">40-45%</span>
+      <span class="pill ghost">P1-W3-1</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:44%"></div></div>
+    <div class="progress-text">五週速成進度 11 / 25 · 距離考試（2026-10-17）還有 46 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP2｜Mitigate threats using Microsoft Security Copilot | SC-200 | Episode 2</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/QmvVYOG4uWI' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">AI 副駕駛上工前，先把它「管」起來</h2>
+<p>第三週開場，我們迎來全課程含金量最高的新內容：<strong>Microsoft Security Copilot 的設定與管理</strong>。先說清楚定位——本單元從頭到尾都是 <span class="badge-2026">2026 新考點</span>：2026-07-28 版考綱正式把 Security Copilot 的管理面納入 D1「管理安全性作業環境」（40–45%）。注意考的重心不是「怎麼跟 AI 聊天」，而是<strong>安全性作業分析師怎麼把這個 AI 副駕駛佈建好、餵對資料、管好權限與成本</strong>。今天四條主線：standalone（獨立）與 embedded（內嵌）兩種體驗的分工、SCU（Security Compute Unit）容量佈建與 overage、外掛（plugin）與 promptbook 生態，以及 2026 年最搶戲的 agentic AI——會自主分診的 Copilot agents。</p>
+<div class="point">
+<strong>學習目標（對應官方考綱 D1「管理安全性作業環境」的 Security Copilot 項目）：</strong>
+<ul>
+  <li>☐ 分辨 standalone 獨立入口與 embedded 內嵌體驗的適用場景（對應考綱 <em>describe the standalone and embedded experiences</em>）</li>
+  <li>☐ 說明 SCU 的計費邏輯：佈建式容量、每小時計費、overage 超額單位與用量監控（對應 <em>manage Security Compute Unit capacity and usage</em>）</li>
+  <li>☐ 列舉 Microsoft 外掛（Defender XDR／Sentinel／Entra／Intune／MDTI）與非 Microsoft 外掛、檔案上傳知識庫的用途（對應 <em>manage plugins and data sources</em>）</li>
+  <li>☐ 使用內建 promptbook 並知道何時該自訂（對應 <em>use and create promptbooks</em>）</li>
+  <li>☐ 描述 Copilot agents 的自主分診概念與人工覆核機制 <span class="badge-2026">2026 新考點</span></li>
+  <li>☐ 依最小權限原則指派 Copilot owner／contributor 角色，並說明提示與回應的稽核與隱私處理</li>
+</ul>
+</div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP2 觀看重點指引</h2>
+<p>本單元的主軸影片是官方系列第二集 <strong>「Mitigate threats using Microsoft Security Copilot」</strong>。它是一支功能導覽型影片，示範多、講理論少，很適合「帶著任務看」。建議三個任務：</p>
+<ul>
+  <li><strong>任務一：分清兩個舞台。</strong>整支影片講者會在兩種畫面間切換——securitycopilot.microsoft.com 的<strong>獨立入口</strong>（完整聊天介面、promptbook、設定與用量頁），以及 Defender 入口網站裡的<strong>內嵌卡片</strong>（事件頁旁邊的 Copilot 窗格）。每次畫面切換，先在心裡標記「現在是 standalone 還是 embedded」，看完你就自然記住兩者長相與分工。</li>
+  <li><strong>任務二：收集提示（prompt）模式。</strong>把講者示範的每一種用法記下來：事件摘要、指令碼分析、KQL 生成、威脅情資查詢……看完對照本文第 05 節的 promptbook 表格，你會發現示範內容幾乎就是內建 promptbook 的場景清單。</li>
+  <li><strong>任務三：特別留意「管理面」畫面。</strong>影片帶到外掛開關、資料來源設定、用量儀表板的片段請放慢看——SC-200 把 Security Copilot 放在 D1，考題重心正是這些設定與管理畫面，而不是聊天技巧。</li>
+</ul>
+<div class="info-box">📌 EP2 字幕尚未抓取完成；字幕到位後本節會回補逐段時間碼整理（格式如 <span class="timestamp">EP2 08:45</span>）。另外提醒：影片錄製時間早於部分 2026 考點（如 overage 與 agents 的最新樣貌），影片沒講的部分本文與「考綱補洞」會補齊。</div>
+
+<div class="eyebrow">03 — 🖥️ 核心概念</div>
+<h2 data-toc="兩種體驗">Standalone 與 Embedded：一個大腦、兩種上場方式</h2>
+<p>Security Copilot 是橫跨整個 Microsoft 安全生態系的生成式 AI 助手，底層是同一個服務、同一份容量，但有兩種「上場方式」，考題最愛考你選哪一種：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>比較面</th><th>Standalone 獨立體驗</th><th>Embedded 內嵌體驗</th></tr></thead>
+  <tbody>
+    <tr><td>入口</td><td>securitycopilot.microsoft.com 專屬入口</td><td>嵌在各產品內：Defender 入口、Microsoft Entra、Intune、Purview 等的 Copilot 窗格／卡片</td></tr>
+    <tr><td>形態</td><td>完整聊天工作台：session（工作階段）、promptbook、外掛管理、用量儀表板</td><td>跟著當下畫面走：事件頁給摘要、搜捕頁生 KQL、政策頁做分析</td></tr>
+    <tr><td>適用情境</td><td>跨產品長調查、串多個資料來源、執行與建立 promptbook、所有管理設定</td><td>不離開工作畫面的即時輔助：一鍵摘要、引導式回應、就地分析</td></tr>
+    <tr><td>典型使用者</td><td>Tier 2／3 深度調查者、Copilot 管理者</td><td>Tier 1 分診分析師、各產品的日常操作者</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Embedded 在 Defender 入口的實戰能力，就是考綱點名的那幾件事：<strong>事件摘要</strong>（把跨產品警示組成攻擊敘事）、<strong>引導式回應（guided response）</strong>（依事件內容列出建議回應動作，逐步帶你執行）、<strong>指令碼與檔案分析</strong>（把混淆的 PowerShell／Base64 還原成白話）、<strong>進階搜捕的 KQL 輔助生成</strong>（自然語言轉查詢），以及 Intune 端的<strong>政策分析</strong>與 Entra 端的風險使用者摘要。以 KQL 輔助為例，你在進階搜捕輸入一句自然語言：</p>
+<pre class="kql">// 提示：「過去 7 天有哪些裝置執行過 Base64 編碼的 PowerShell？」
+// Copilot 產生的查詢：
+DeviceProcessEvents
+| where Timestamp &gt; ago(7d)
+| where FileName =~ "powershell.exe"
+| where ProcessCommandLine has "-enc"
+| summarize Executions = count() by DeviceName, AccountName
+| sort by Executions desc</pre>
+<div class="kql-note">Copilot 負責把需求翻譯成 KQL，但「審查再執行」是你的責任——考題會考這個觀念：生成的查詢應先確認資料表與篩選條件是否符合意圖，而不是盲目執行。這也是課程 W1 先教 KQL 的原因：看得懂，AI 才是副駕駛而不是代駕。</div>
+<div class="case-box"><div class="case-label">💼 實戰情境：用 Copilot 走完一次釣魚事件調查</div><p>上午 10:20，事件佇列跳出高嚴重性事件：「使用者回報的網路釣魚郵件，關聯端點上的可疑 PowerShell」。你是 Tier 1，全程沒離開 Defender 入口：<strong>第一步「事件摘要」</strong>——打開事件即見 Copilot 摘要卡片：釣魚郵件→使用者開啟附件→附件產生 PowerShell 下載程序，涉及 1 個信箱、2 台裝置，攻擊敘事一分鐘讀完。<strong>第二步「指令碼分析」</strong>——對警示裡那串混淆的 PowerShell 按下分析，Copilot 還原 Base64：這是一支下載器，會連往外部網址抓取第二階段酬載。<strong>第三步「KQL 輔助」</strong>——你用自然語言問「還有哪些裝置執行過相同雜湊的檔案」，確認影響範圍就是那 2 台。<strong>第四步「引導式回應」</strong>——依 guided response 建議逐項執行：隔離 2 台裝置、軟刪除全租用戶同主旨郵件、封鎖寄件網域、要求使用者重設密碼。收尾前再請 Copilot 產生事件報告貼進工單。原本要跨三個入口、翻兩份 SOP 的調查，一個畫面走完——而下一節你會看到，這條流程未來甚至可以交給 agent 自己跑。</p></div>
+
+<div class="eyebrow">04 — 💰 核心概念</div>
+<h2 data-toc="SCU 容量">SCU：Security Copilot 的水電表</h2>
+<p>Security Copilot 不是按人頭賣授權，而是賣<strong>算力</strong>：計價單位叫 <strong>SCU（Security Compute Unit）</strong>。你在 Azure 訂用帳戶下建立一個「容量（capacity）」資源（從 Azure 入口或 Security Copilot 入口都能建），選定地理區域，設定每小時要佈建幾顆 SCU——之後<strong>按小時計費</strong>，不管當小時有沒有用滿。最低 1 SCU，官方建議從 3 SCU 起步再依用量調整；佈建量可以隨時調高調低，變更在一小時內生效，所以「上班時段調高、下班調低」是合法的省錢策略。</p>
+<p>每次提示消耗多少 SCU，取決於任務複雜度——跑一本 promptbook 或一次深度事件調查，吃的算力遠多於一句簡單提問；agents 執行任務同樣消耗 SCU。當小時的佈建量用完會發生什麼？沒有配套的話，<strong>提示會被拒絕</strong>，直到下一個小時容量重置。這就是 <span class="badge-2026">2026 新考點</span> <strong>overage（超額單位）</strong>登場的理由：啟用後，佈建量用罄改以「用多少付多少」的 overage SCU 繼續服務，單價比佈建式高，可設定無上限或月上限——本質是拿單價換彈性，避免關鍵調查在月底斷線。用量則靠獨立入口的<strong>用量監控儀表板</strong>掌握：能看每小時消耗、依使用者／功能／外掛切分，並在逼近容量時收到通知。</p>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦：SCU 佈建題的三種問法</div><p>第一種問「症狀」：分析師抱怨提示被拒或月底特別容易失敗——診斷是佈建容量不足，解法是調高 SCU 或啟用 overage。第二種問「成本最佳化」：要避免中斷、又不想整月按尖峰量佈建——最佳答案是<strong>基準佈建＋啟用 overage</strong>（或按時段調整佈建量），選「全天按尖峰佈建」是浪費錢的陷阱。第三種問「誰能佈建」：建立容量需要 Azure 訂用帳戶上的 Owner／Contributor 權限——這是 Azure RBAC 的事，跟 Copilot 自己的 owner／contributor 角色是兩回事（第 07 節細講，考題超愛混著考）。另外記住：SCU 是佈建式＋按小時計費，選項寫「按使用者授權計費」「按查詢次數買斷」都是干擾項。</p></div>
+
+<div class="eyebrow">05 — 🔌 核心概念</div>
+<h2 data-toc="外掛生態">外掛、知識庫與 promptbooks：餵料與食譜</h2>
+<p>Copilot 本身不儲存你的安全資料，它的「知識」來自<strong>外掛（plugins）</strong>——每個外掛就是一條伸進資料來源的手。三大類：<strong>Microsoft 外掛</strong>（Defender XDR、Microsoft Sentinel、Microsoft Entra、Intune、MDTI＝Microsoft Defender Threat Intelligence、Purview、自然語言轉 KQL 等，多數隨授權自動可用）；<strong>非 Microsoft 外掛</strong>（ServiceNow、VirusTotal、AbuseIPDB 這類第三方服務，通常要填 API 金鑰）；<strong>自訂外掛</strong>（用 OpenAPI 規格把自家內部系統接進來）。另外還有<strong>檔案上傳知識庫（knowledge base）</strong>：把公司的事件回應 SOP、網路架構文件上傳，Copilot 回答時就能引用你組織自己的脈絡——這是「讓 AI 講你家的話」的關鍵功能，owner 可以整體開關檔案上傳能力。</p>
+<div class="point"><strong>權限鐵律：</strong>Copilot 透過外掛查資料時，用的是<strong>你的身分（on-behalf-of）</strong>。你在 Sentinel 沒讀取權限，Copilot 也替你查不到——它不會幫任何人越權。考題問「為什麼某分析師的 Copilot 查不到 Sentinel 事件」，先想他本人的資料權限，而不是 Copilot 設定。</div>
+<p>外掛解決「資料從哪來」，<strong>promptbook</strong> 則解決「調查怎麼跑」：它是把一連串提示打包成可重複執行的工作流程——你可以把它想成食譜，輸入參數（如事件編號、指令碼內容）後逐步執行。內建 promptbook 涵蓋 SOC 最常見的場景，也可以從自己的 session 把有效的提示序列存成自訂 promptbook 分享給團隊：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>常用 promptbook</th><th>輸入</th><th>適用場景</th></tr></thead>
+  <tbody>
+    <tr><td>事件調查（Incident investigation）</td><td>事件編號</td><td>Tier 1／2 接手事件時產出摘要、影響實體、回應建議的標準首查</td></tr>
+    <tr><td>可疑指令碼分析（Suspicious script analysis）</td><td>指令碼內容</td><td>還原混淆的 PowerShell／Bash，解釋行為並評估意圖</td></tr>
+    <tr><td>威脅執行者設定檔（Threat actor profile）</td><td>執行者名稱</td><td>產出威脅情資摘要：慣用手法、目標產業、相關 IoC</td></tr>
+    <tr><td>弱點影響評估（Vulnerability impact assessment）</td><td>CVE 編號</td><td>摘要弱點原理與緩解建議，評估對環境的影響</td></tr>
+    <tr><td>自訂 promptbook</td><td>自訂參數</td><td>把團隊反覆使用的調查流程標準化，新手也能跑出資深品質</td></tr>
+  </tbody>
+</table>
+</div>
+
+<div class="eyebrow">06 — 🤖 核心概念</div>
+<h2 data-toc="AI 代理">Agentic AI：從「你問我答」到自主分診</h2>
+<p><span class="badge-2026">2026 新考點</span> 2026 考綱最有時代感的一塊：<strong>Copilot agents</strong>。前面講的一切——提示、promptbook——都是「你發球、AI 回球」；<strong>agentic AI</strong> 則是把整個任務交付出去：agent 會自主規劃步驟、呼叫工具與資料、產出結論與理由，人類保留最終決定權（human-in-the-loop）。最具代表性的是<strong>自主分診 agent</strong> 概念：以 Phishing Triage Agent 為例，使用者回報的釣魚郵件動輒每天數百封，其中九成是誤報，它自動逐封調查——分析寄件者、連結、附件行為——給出真偽判定與白話理由，分析師只覆核判定並在不同意時給回饋，agent 會<strong>從回饋中學習</strong>調整後續判準。這正是它與傳統自動化規則（automation rule）的本質差異：規則按固定條件動作，agent 會推理、會解釋、會迭代。</p>
+<p>其他代表性 agents 也認個臉：<strong>Conditional Access Optimization Agent</strong>（Entra：盯著新使用者與應用程式，主動建議條件式存取政策的涵蓋缺口）、<strong>Vulnerability Remediation Agent</strong>（Intune：協助排定弱點修補優先序）、<strong>Threat Intelligence Briefing Agent</strong>（自動產出與你環境相關的威脅情資簡報）。管理面三件事要記：agents <strong>消耗 SCU</strong>（自主調查不是免費的，佈建容量要把 agent 用量算進去）；agents 有<strong>自己的識別與權限</strong>，依最小權限原則只授與完成任務所需的存取；agents 的每一步<strong>行動有紀錄可稽核</strong>，出錯時能回溯它「為什麼這樣判」。</p>
+
+<div class="eyebrow">07 — 🔐 核心概念</div>
+<h2 data-toc="權限稽核">權限模型與稽核隱私：三層權限別打架</h2>
+<p>Security Copilot 的權限題幾乎都在考「三層分清楚」：<strong>第一層 Azure RBAC</strong>——佈建 SCU 容量需要 Azure 訂用帳戶的 Owner／Contributor，首次設定（first-run setup）由 Entra 的 Global Administrator 或 Security Administrator 執行。<strong>第二層 Copilot 平台角色</strong>——<strong>Copilot owner</strong> 管平台：外掛開放範圍、檔案上傳開關、用量監控、資料共用設定；<strong>Copilot contributor</strong> 用平台：建立 session、執行 promptbook、日常調查。<strong>第三層資料存取</strong>——就是第 05 節的鐵律：on-behalf-of，回應內容受使用者本人在各產品的權限限制。</p>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦：最小權限選角</div><p>題目給角色與任務，選「剛好夠用」的權限：SOC 分析師要用 Copilot 調查、跑 promptbook——<strong>Copilot contributor</strong>，給 owner 就是過度授權；要管理外掛與檔案上傳設定——<strong>Copilot owner</strong>；要建立或調整 SCU 容量——<strong>Azure 訂用帳戶的 Owner／Contributor</strong>（Copilot 角色辦不到）。看到「直接給 Global Administrator 比較方便」這種選項一律淘汰——SC-200 的最小權限哲學與 Day 4 統一 RBAC 一脈相承。</p></div>
+<p>最後是稽核與隱私——提示（prompt）與回應如何被處理：session 內容屬於<strong>客戶資料</strong>，儲存在租用戶所在地理區域，<strong>不會拿去訓練基礎模型</strong>；管理者可透過稽核機制（與 Microsoft Purview 稽核整合）追查誰在何時下了什麼提示；owner 可決定是否參加選擇性的資料共用（協助改善產品）。</p>
+<div class="info-box">🛡️ 面對「AI 會不會把我們的機密學走」這類質疑，標準答案三件套：客戶資料不用於訓練基礎模型、資料留在租用戶地理區域、提示與回應可稽核。這組敘述本身就可能入題。</div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">影片沒講到的考綱角落</h2>
+<p>EP2 以功能示範為主，且錄製時間早於 2026 考綱定稿，下列項目影片著墨少或根本沒有，請以本文為準：</p>
+<ul>
+  <li><strong>Overage 超額計費：</strong>佈建量用罄後的隨用隨付機制、可設上限、單價較高——影片時代還沒有這個選項，但它是 SCU 考題的新寵（見第 04 節）。</li>
+  <li><strong>Copilot agents 全家福：</strong>Phishing Triage、Conditional Access Optimization、Vulnerability Remediation 等 agents 與「自主分診＋人工覆核＋回饋學習」概念是考綱明文的 agentic AI 重點，影片幾乎未涵蓋（見第 06 節）。</li>
+  <li><strong>檔案上傳知識庫：</strong>把組織自己的 SOP 與文件餵給 Copilot 引用，以及 owner 端的開關管理。</li>
+  <li><strong>稽核與隱私敘述：</strong>提示與回應的儲存位置、不用於訓練基礎模型、Purview 稽核整合——管理面必背三件套。</li>
+  <li><strong>與自動化的分界：</strong>考題可能拿 Sentinel 自動化規則、劇本（Playbook）當干擾項——固定條件的自動動作用規則與劇本；需要推理、解釋與回饋學習的分診交給 agent。這條分界線 W4 講自動化時會再回頭印證。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深入連結</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/security-copilot/microsoft-security-copilot" target="_blank" rel="noopener">什麼是 Microsoft Security Copilot</a>——讀 standalone 與 embedded 兩種體驗的官方定義與適用場景。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/security-copilot/get-started-security-copilot" target="_blank" rel="noopener">開始使用 Security Copilot（佈建容量）</a>——讀 SCU 容量建立流程與首次設定所需的角色。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/security-copilot/manage-usage" target="_blank" rel="noopener">管理 SCU 用量</a>——讀用量儀表板、容量調整與 overage 超額單位的設定方式。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/security-copilot/manage-plugins" target="_blank" rel="noopener">管理外掛</a>——讀 Microsoft／非 Microsoft／自訂外掛的啟用管理與 owner 的控制範圍。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/security-copilot/agents-overview" target="_blank" rel="noopener">Security Copilot agents 概觀</a>——讀 agents 清單、觸發方式與權限模型，2026 新考點的第一手資料。</li>
+</ul>
+
+
+  <div class="eyebrow">10 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W3-1">到刷題頁練習 →</a></p>
+<div class='info-box'>本單元自測題建置中——先到<a href='../quiz.html'>刷題頁</a>練其他題組。</div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP11</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><div class='p-hint'>🎧 本集音檔生成中（push 腳本後由 GitHub Actions 自動合成）。</div><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-011'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="11">
+    <label for="doneChk">我讀完 Day 11 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-010.html'>← Day 10</a>
+    <a href="../index.html">回儀表板</a>
+    <a class='disabled'>沒有下一天 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 11 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>
