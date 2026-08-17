@@ -23,6 +23,7 @@ import re
 import subprocess
 import sys
 import time
+import urllib.request
 from pathlib import Path
 
 YTDLP = [sys.executable, "-m", "yt_dlp"]
@@ -49,6 +50,7 @@ CLIENT_ATTEMPTS = [
     None,
     "youtube:player_client=android,web",
     "youtube:player_client=web_embedded,web",
+    "youtube:player_client=tv",
 ]
 
 TRANSCRIPTS = Path(__file__).resolve().parents[1] / "transcripts"
@@ -108,6 +110,29 @@ def fetch_info(ep, vid):
 def ep_slug(ep):
     """EP1 → ep-01（排序友善）。"""
     return f"ep-{int(ep[2:]):02d}"
+
+
+def fetch_title_oembed(ep, vid):
+    """yt-dlp 被 bot 偵測擋下時的退路：oEmbed 端點通常不設 bot 檢查，可拿到標題/頻道。"""
+    url = f"https://www.youtube.com/oembed?url=https://youtu.be/{vid}&format=json"
+    try:
+        req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
+        with urllib.request.urlopen(req, timeout=20) as r:
+            data = json.loads(r.read().decode("utf-8"))
+    except Exception as e:  # noqa: BLE001 - 任何失敗都視為拿不到
+        print(f"    ⚠️ oEmbed 也失敗：{e}")
+        return None
+    info = {
+        "ep": ep, "id": vid, "url": f"https://youtu.be/{vid}",
+        "title": data.get("title"), "channel": data.get("author_name"),
+        "duration_sec": None, "duration_string": None, "upload_date": None,
+        "language": None, "chapters": [], "manual_sub_langs": [],
+        "auto_sub_has_zh_hant": None, "description_head": "",
+        "source": "oembed_fallback",
+    }
+    (TRANSCRIPTS / f"{ep_slug(ep)}.info.json").write_text(
+        json.dumps(info, ensure_ascii=False, indent=2), encoding="utf-8")
+    return info
 
 
 def sub_to_text(path):
@@ -182,9 +207,15 @@ def main():
             continue
         info = fetch_info(ep, vid)
         if info is None:
-            index.append({"ep": ep, "id": vid, "title": None,
-                          "status": "metadata_failed", "langs": {}})
-            print("    ✗ metadata 抓取失敗（可能被 bot 偵測擋下）")
+            info = fetch_title_oembed(ep, vid)
+            if info is not None:
+                index.append({"ep": ep, "id": vid, "title": info["title"],
+                              "status": "title_only", "langs": {}})
+                print(f"    △ 僅取得標題（oEmbed）：{info['title']}")
+            else:
+                index.append({"ep": ep, "id": vid, "title": None,
+                              "status": "metadata_failed", "langs": {}})
+                print("    ✗ metadata 抓取失敗（可能被 bot 偵測擋下）")
             continue
         print(f"    《{info['title']}》 {info['duration_string']}，章節 {len(info['chapters'])} 個")
         langs = fetch_subs(ep, vid)
