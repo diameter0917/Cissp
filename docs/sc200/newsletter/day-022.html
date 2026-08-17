@@ -57,7 +57,7 @@
 
 <div class="eyebrow">03 — 🔍 搜捕頁面全景</div>
 <h2 data-toc="搜捕頁面">查詢清單怎麼挑：戰術、結果數與批次跑</h2>
-<p>搜捕頁面分成 <strong>Queries</strong>、<strong>Livestream</strong>、<strong>Bookmarks</strong> 幾個頁籤，新版再加 <strong>Hunts</strong>。查詢有兩種來源：<strong>內建範本</strong>（微軟與社群提供，隨內容中樞 Content Hub 的解決方案安裝，裝了哪些解決方案就有哪些查詢）與你的<strong>自訂查詢</strong>。清單標示提供者、資料來源與 <strong>MITRE 戰術／技術</strong>——這是最實用的瀏覽維度：懷疑有人橫向移動，就篩 Lateral Movement 那一欄。</p>
+<p>搜捕頁面分成 <strong>Queries</strong>、<strong>Livestream</strong>、<strong>Bookmarks</strong> 幾個頁籤，新版再加 <strong>Hunts</strong>。查詢有兩種來源：<strong>內建範本</strong>（微軟與社群提供，隨內容中樞 Content Hub 的解決方案安裝）與你的<strong>自訂查詢</strong>。清單標示提供者、資料來源與 <strong>MITRE 戰術／技術</strong>——最實用的瀏覽維度：懷疑有人橫向移動，就篩 Lateral Movement 那一欄。</p>
 <div class="point">💡 三個常被忽略的操作：<strong>①Run all queries 批次執行</strong>——跑完先看「結果數」，有數字的才展開；<strong>②結果差異（Results delta）</strong>——「昨天 0 筆、今天 47 筆」比絕對數字更有訊號；<strong>③我的最愛</strong>——標記後進頁面自動執行，等於個人化搜捕儀表板。注意：搜捕查詢<strong>不會自己排程、不會產生警示</strong>，跑不跑取決於有沒有人按下去。</div>
 <p>自訂查詢有兩條路：複製（Clone）既有範本後改寫，或直接新建。除了 KQL，還要填<strong>實體對應</strong>（把輸出欄位對應成 Account／Host／IP 實體）與<strong>戰術、技術</strong>：有實體對應，書籤才進得了調查圖；標了戰術，查詢才會出現在按戰術瀏覽的清單裡。先看一支典型查詢：</p>
 <pre class="kql">// 假說：帳號遭接管後，攻擊者會在短時間內把 SharePoint／OneDrive 檔案整批帶走
@@ -97,7 +97,7 @@ OfficeActivity
 </table>
 </div>
 <div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
-<strong>「監控 hunts」題怎麼看</strong>：題幹提到「多位分析師協作、要追蹤搜捕進度與發現」→ 指向 <strong>Hunts</strong>，不是書籤或活頁簿。書籤是<strong>單筆證據</strong>、hunt 是<strong>整個專案</strong>，兩者是包含關係而非替代關係。另一陷阱：問「假說被推翻要怎麼辦」，正解是<strong>標為 Invalidated 並結案</strong>，不是刪掉 hunt——刪掉等於丟掉「這條路已經查過」的記憶，下一季有人會再查一次。</div>
+<strong>「監控 hunts」題怎麼看</strong>：題幹提到「多位分析師協作、要追蹤搜捕進度與發現」→ 指向 <strong>Hunts</strong>，不是書籤或活頁簿：書籤是<strong>單筆證據</strong>、hunt 是<strong>整個專案</strong>，兩者是包含關係。另一陷阱：「假說被推翻要怎麼辦」，正解是<strong>標為 Invalidated 並結案</strong>，不是刪掉 hunt——刪掉等於丟掉「這條路查過了」的記憶。</div>
 
 <div class="eyebrow">05 — 🔖 書籤留證</div>
 <h2 data-toc="書籤">可疑但還不確定？先存起來</h2>
@@ -125,7 +125,7 @@ HuntingBookmark
 <h2 data-toc="Livestream">盯著現在：即時串流一支查詢</h2>
 <p>前面的工具都在看<strong>過去</strong>。<strong>Livestream（搜捕即時串流）</strong>把鏡頭轉向<strong>現在</strong>：開一個互動式工作階段掛上查詢，資料一進工作區就比對，命中時在入口網站近即時通知你。可以從既有搜捕查詢直接建立（影片就是這樣做），也可以貼一段 KQL 從頭開始。</p>
 <p><strong>四個典型用途</strong>：<strong>①測試新規則邏輯</strong>——與其把沒把握的查詢設成排程規則、隔天收到一百張誤判，不如先串流幾小時看雜訊多不多，滿意再升級。<strong>②等攻擊者回來</strong>——剛清掉被入侵的主機，對方通常會再試一次，掛一支針對該 IoC 的串流，回來當下就知道。<strong>③事件期間盯梢</strong>——盯住特定帳號或主機，取代手動重新整理。<strong>④驗證圍堵</strong>——封帳號、隔離裝置後持續零命中，就是圍堵生效的即時證據。</p>
-<div class="point">💡 <strong>一鍵轉正式規則</strong>：Livestream 工作階段可<strong>升級成警示（elevate to alert）</strong>，直接用同一段查詢建立排程分析規則，不必重打 KQL。這就是搜捕成果轉正的最短路徑：假說 → 搜捕查詢 → Livestream 驗證雜訊 → 排程規則 → 自動化規則／劇本接手。</div>
+<div class="point">💡 <strong>一鍵轉正式規則</strong>：Livestream 工作階段可<strong>升級成警示（elevate to alert）</strong>，直接用同一段查詢建立排程分析規則，不必重打 KQL。這是搜捕成果轉正的最短路徑：假說 → 搜捕查詢 → Livestream 驗證雜訊 → 排程規則 → 自動化規則／劇本。</div>
 <p>同一段 KQL 在搜捕與在 Livestream 裡該長得不一樣：搜捕常做長視窗聚合，Livestream 每次只面對剛進來的一小批資料，聚合與長視窗篩選會失去意義甚至誤導。把第 03 節那支改寫成串流版：</p>
 <pre class="kql">// Livestream 版：不看歷史、不聚合，只問「現在這個帳號還在下載嗎」
 OfficeActivity
@@ -186,11 +186,11 @@ OfficeActivity
 <div class="eyebrow">09 — 📚 延伸閱讀</div>
 <h2 data-toc="延伸閱讀">MS Learn 深讀清單</h2>
 <ul>
-  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/hunting" target="_blank" rel="noopener">使用 Microsoft Sentinel 搜捕威脅</a> — 總覽主文：搜捕頁面組成與查詢清單欄位，對照 §03。</li>
-  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/hunts" target="_blank" rel="noopener">進行端對端主動威脅搜捕（Hunts）</a> — hunt 的建立流程、狀態與假說欄位，補齊 §04。</li>
-  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/bookmarks" target="_blank" rel="noopener">使用書籤在搜捕期間追蹤資料</a> — 書籤能保存什麼、實體對應與升級成事件的步驟。</li>
-  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/livestream" target="_blank" rel="noopener">使用搜捕即時串流偵測威脅</a> — 本日必讀：工作階段建立、通知設定與升級成警示。</li>
-  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/detect-threats-custom" target="_blank" rel="noopener">建立自訂分析規則以偵測威脅</a> — 搜捕查詢轉排程規則時，實體對應與事件設定怎麼填。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/hunting" target="_blank" rel="noopener">使用 Microsoft Sentinel 搜捕威脅</a> — 總覽：搜捕頁面組成與查詢清單欄位（§03）。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/hunts" target="_blank" rel="noopener">進行端對端主動威脅搜捕（Hunts）</a> — hunt 建立流程、狀態與假說欄位（§04）。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/bookmarks" target="_blank" rel="noopener">使用書籤在搜捕期間追蹤資料</a> — 實體對應與升級成事件的步驟。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/livestream" target="_blank" rel="noopener">使用搜捕即時串流偵測威脅</a> — 本日必讀：工作階段、通知與升級成警示。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/detect-threats-custom" target="_blank" rel="noopener">建立自訂分析規則以偵測威脅</a> — 搜捕查詢轉排程規則怎麼填。</li>
 </ul>
 
 
