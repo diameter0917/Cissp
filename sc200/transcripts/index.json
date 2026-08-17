@@ -1,0 +1,74 @@
+{
+  "episodes": [
+    {
+      "ep": "EP1",
+      "id": "8gCUtYEpTe8",
+      "title": null,
+      "status": "metadata_failed",
+      "langs": {}
+    },
+    {
+      "ep": "EP2",
+      "id": "QmvVYOG4uWI",
+      "title": null,
+      "status": "metadata_failed",
+      "langs": {}
+    },
+    {
+      "ep": "EP3",
+      "id": "5ln3fMECedU",
+      "title": null,
+      "status": "metadata_failed",
+      "langs": {}
+    },
+    {
+      "ep": "EP4",
+      "id": "e7UxqMgb1zk",
+      "title": null,
+      "status": "metadata_failed",
+      "langs": {}
+    },
+    {
+      "ep": "EP5",
+      "id": "Nt7f2Bog89c",
+      "title": null,
+      "status": "metadata_failed",
+      "langs": {}
+    },
+    {
+      "ep": "EP6",
+      "id": "3DHcnk9obfk",
+      "title": null,
+      "status": "metadata_failed",
+      "langs": {}
+    },
+    {
+      "ep": "EP7",
+      "id": "0ydVILka3eg",
+      "title": null,
+      "status": "metadata_failed",
+      "langs": {}
+    },
+    {
+      "ep": "EP8",
+      "id": "hOYpji940yw",
+      "title": null,
+      "status": "metadata_failed",
+      "langs": {}
+    },
+    {
+      "ep": "EP9",
+      "id": "qlyEmMLif_M",
+      "title": null,
+      "status": "metadata_failed",
+      "langs": {}
+    },
+    {
+      "ep": "EP10",
+      "id": "z6QbN4rpAvA",
+      "title": null,
+      "status": "metadata_failed",
+      "langs": {}
+    }
+  ]
+}
