@@ -59,7 +59,7 @@
     {"speaker": "host_m", "text": "MITRE ATT&CK 涵蓋率檢視。注意它回答的是「我對哪些技術有偵測」，不是「我被哪些技術打過」，這兩句不一樣。"},
     {"speaker": "host_f", "text": "三題都很乾脆。明天預告？"},
     {"speaker": "host_m", "text": "明天講 Sentinel Graph 跟 MCP Server，還有 data lake 上的長期搜捕。今天提到 notebook 接 MCP 那一段，明天會完整拆開。"},
-    {"speaker": "host_f", "text": "腦補完了，明天換更大的資料量。我們明天見！"},
+    {"speaker": "host_f", "text": "腦補完了，明天換更大的資料量。明天見！"},
     {"speaker": "host_m", "text": "明天見！"}
   ]
 }

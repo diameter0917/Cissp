@@ -201,13 +201,13 @@
     "options": [
       {
         "key": "A",
-        "text_en": "A brute-force attack against a single privileged account from many different IP addresses.",
-        "text_zh": "多個不同 IP 位址對單一特權帳號進行的暴力破解攻擊。"
+        "text_en": "A password spray attack, where one source IP attempts sign-ins against many distinct accounts.",
+        "text_zh": "Password spray 攻擊：單一來源 IP 對大量不同帳號嘗試登入。"
       },
       {
         "key": "B",
-        "text_en": "A password spray attack, where one source IP attempts sign-ins against many distinct accounts.",
-        "text_zh": "Password spray 攻擊：單一來源 IP 對大量不同帳號嘗試登入。"
+        "text_en": "A brute-force attack against a single privileged account from many different IP addresses.",
+        "text_zh": "多個不同 IP 位址對單一特權帳號進行的暴力破解攻擊。"
       },
       {
         "key": "C",
@@ -221,13 +221,13 @@
       }
     ],
     "answer": [
-      "B"
+      "A"
     ],
     "explanation_zh": "拆解查詢：ResultType \"50126\" 是「帳號或密碼錯誤」的失敗登入；summarize ... by IPAddress 以「來源 IP」分組；dcount(UserPrincipalName) 計算每個 IP 打過的「不重複帳號數」；Targets > 20 篩出 24 小時內對超過 20 個不同帳號嘗試的 IP。「一個來源、大量不同帳號、各少量嘗試」正是 password spray 的特徵——攻擊者用常見密碼廣撒帳號，以避開單一帳號的鎖定門檻。",
     "why_wrong_zh": {
-      "A": "暴力破解單一帳號的偵測方向相反：應以帳號分組、計算不重複來源 IP 或失敗次數（例如 dcount(IPAddress) by UserPrincipalName）；本查詢是以 IP 分組數帳號。",
       "C": "釣魚郵件活動要查 EmailEvents 等 Defender for Office 365 的郵件資料表；SigninLogs 只有登入行為，看不到郵件投遞。",
-      "D": "橫向移動的證據在裝置與身分識別遙測（如 DeviceLogonEvents、IdentityLogonEvents），且特徵是裝置對裝置的驗證行為，不是雲端登入的密碼錯誤統計。"
+      "D": "橫向移動的證據在裝置與身分識別遙測（如 DeviceLogonEvents、IdentityLogonEvents），且特徵是裝置對裝置的驗證行為，不是雲端登入的密碼錯誤統計。",
+      "B": "暴力破解單一帳號的偵測方向相反：應以帳號分組、計算不重複來源 IP 或失敗次數（例如 dcount(IPAddress) by UserPrincipalName）；本查詢是以 IP 分組數帳號。"
     },
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/dcount-aggregation-function",
     "tags": [
@@ -662,13 +662,13 @@
       },
       {
         "key": "B",
-        "text_en": "Run a search job in Microsoft Sentinel against the long-term retained logs, restoring the historical data if deeper interactive analysis is needed.",
-        "text_zh": "在 Microsoft Sentinel 對長期保留的日誌執行搜尋作業（search job），若需要更深入的互動分析再還原歷史資料。"
+        "text_en": "Create a custom detection rule that runs every 24 hours, because that frequency uses a 30-day lookup period.",
+        "text_zh": "建立每 24 小時執行的自訂偵測規則，因為該頻率使用過去 30 天的回看期。"
       },
       {
         "key": "C",
-        "text_en": "Create a custom detection rule that runs every 24 hours, because that frequency uses a 30-day lookup period.",
-        "text_zh": "建立每 24 小時執行的自訂偵測規則，因為該頻率使用過去 30 天的回看期。"
+        "text_en": "Run a search job in Microsoft Sentinel against the long-term retained logs, restoring the historical data if deeper interactive analysis is needed.",
+        "text_zh": "在 Microsoft Sentinel 對長期保留的日誌執行搜尋作業（search job），若需要更深入的互動分析再還原歷史資料。"
       },
       {
         "key": "D",
@@ -677,13 +677,13 @@
       }
     ],
     "answer": [
-      "B"
+      "C"
     ],
     "explanation_zh": "Defender XDR 進階搜捕的原生資料表只保留過去 30 天，因此 ago(150d) 不會有結果，這是資料範圍的必然結果，與權限、逾時或查詢寫法無關。要查更久以前的資料，正解是走 Microsoft Sentinel 這一側：對長期／輔助保留的日誌執行搜尋作業（search job），它專為大範圍、長時間跨度的搜尋設計，作業完成後再檢視結果；若需要對那段歷史資料做反覆互動查詢，則進一步使用資料還原（data restore）把它帶回可查詢狀態。",
     "why_wrong_zh": {
       "A": "逾時（10 分鐘）與結果筆數（30,000 筆）是租用戶固定配額，不能自行調高；就算調得動也無濟於事，因為 30 天以外的資料根本不在進階搜捕的查詢範圍內。",
-      "C": "每 24 小時的自訂偵測確實使用 30 天回看期，但那是「持續偵測未來事件」的機制，且同樣受 30 天限制，無法回答「五個月前發生了什麼」這個歷史調查問題。",
-      "D": "引導模式只是讓不熟 KQL 的分析師用查詢建立器組條件，資料來源與 30 天保留範圍完全相同，換模式不會讓更舊的資料變得可查。"
+      "D": "引導模式只是讓不熟 KQL 的分析師用查詢建立器組條件，資料來源與 30 天保留範圍完全相同，換模式不會讓更舊的資料變得可查。",
+      "B": "每 24 小時的自訂偵測確實使用 30 天回看期，但那是「持續偵測未來事件」的機制，且同樣受 30 天限制，無法回答「五個月前發生了什麼」這個歷史調查問題。"
     },
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-limits",
     "tags": [
@@ -977,8 +977,8 @@
       },
       {
         "key": "B",
-        "text_en": "Use Sentinel Graph and express the question as a variable-length path pattern over entities and relationships.",
-        "text_zh": "使用 Sentinel Graph，把問題寫成跨實體與關係的可變長度路徑樣式。"
+        "text_en": "Enable UEBA and review the anomaly score of the exposed virtual machine.",
+        "text_zh": "啟用 UEBA，檢視這台對外虛擬機的異常分數。"
       },
       {
         "key": "C",
@@ -987,18 +987,18 @@
       },
       {
         "key": "D",
-        "text_en": "Enable UEBA and review the anomaly score of the exposed virtual machine.",
-        "text_zh": "啟用 UEBA，檢視這台對外虛擬機的異常分數。"
+        "text_en": "Use Sentinel Graph and express the question as a variable-length path pattern over entities and relationships.",
+        "text_zh": "使用 Sentinel Graph，把問題寫成跨實體與關係的可變長度路徑樣式。"
       }
     ],
     "answer": [
-      "B"
+      "D"
     ],
     "explanation_zh": "題幹的三個條件——跳數未知、要涵蓋任意關係鏈、不想每次改查詢——正好是圖查詢存在的理由。Sentinel Graph 以節點（實體）與邊（關係與行為）表達環境，路徑樣式比對可描述「任意幾跳之內」的可達性，一次問完整條攻擊路徑（attack path），不必為每一跳維護一個 join。這也是「往前看」的推演，與爆炸半徑的「往外看」互為一組。",
     "why_wrong_zh": {
       "A": "多重 join 正是題幹要避免的做法：查詢會隨跳數線性增長且難以維護，更關鍵的是你必須事先知道要跳幾次，無法回答跳數未知的問題。",
       "C": "活頁簿負責視覺化既有統計，呈現的是量與趨勢，不會推演實體之間是否存在可行的橫向移動路徑。",
-      "D": "UEBA 針對單一實體給出行為異常評分，回答「這個實體是否可疑」，不回答「從這裡能不能走到網域管理員」。"
+      "B": "UEBA 針對單一實體給出行為異常評分，回答「這個實體是否可疑」，不回答「從這裡能不能走到網域管理員」。"
     },
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-graph-overview",
     "tags": [
