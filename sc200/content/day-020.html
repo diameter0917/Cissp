@@ -40,7 +40,6 @@
 </div>
 <p>DLP 警示怎麼調查？在 Purview 的 DLP 警示頁要回答四件事：<strong>比對到哪條規則與哪類敏感資訊、發生在哪個位置</strong>（Exchange、SharePoint、OneDrive、Teams、端點或雲端應用程式）<strong>、是誰、系統採取什麼動作</strong>（封鎖、僅稽核，或使用者填商業理由後覆寫）。有這四項，才判斷得出是<strong>意外、危險習慣，還是需要升級的入侵</strong>。而在 Defender XDR 這邊，DLP 警示會與其他訊號一起進入事件佇列：DLP 說某人外寄客戶名單、MDE 說他插了 USB、Entra 說他從陌生 IP 登入，三則警示關聯成同一起事件，故事才完整——這就是整合的價值。</p>
 
-
 <div class="eyebrow">04 — 🔍 核心概念</div>
 <h2 data-toc="稽核調查">Audit：沒開就什麼都沒有</h2>
 <p>Purview Audit 是<strong>統一稽核記錄</strong>，橫跨 Exchange、SharePoint、OneDrive、Teams、Entra ID 等工作負載。<strong>Audit Standard 預設啟用</strong>，保留 <strong>180 天</strong>，可從 Purview 入口、PowerShell（<code>Search-UnifiedAuditLog</code>）或 API 查詢並匯出 CSV。<strong>Audit Premium</strong>（需 Microsoft 365 E5、E5 合規性或附加元件）多三件事：核心服務<strong>預設一年保留</strong>、可建立<strong>自訂保留政策</strong>、更深的智慧型洞察與更高的 API 頻寬。</p>
