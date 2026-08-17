@@ -1,0 +1,41 @@
+name: SC-200 Validate
+
+# sc200/ 內容變動時跑題庫與站台驗證（不影響 CISSP daily.yml）。
+
+on:
+  push:
+    branches: ['main', 'claude/**']
+    paths:
+      - 'sc200/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sc200-validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate JSON sources
+        run: |
+          for f in sc200/sc200_curriculum.json sc200/site_config.json sc200/schedule.json; do
+            python -m json.tool "$f" > /dev/null && echo "OK $f"
+          done
+
+      - name: Validate question bank
+        run: python sc200/scripts/validate_questions.py
+
+      - name: Build site (with checks)
+        run: |
+          python sc200/scripts/build_schedule.py
+          python sc200/scripts/build_site.py --check

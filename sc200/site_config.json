@@ -1,0 +1,20 @@
+{
+  "base_url": "https://diameter0917.github.io/Cissp",
+  "site_root": "/Cissp/sc200",
+  "start_date": "2026-08-18",
+  "exam_date": "2026-10-17",
+  "mock_minutes": 100,
+  "mock_questions": 55,
+  "pass_score_note": "700/1000（量尺分數，約等於 70% 答對率）",
+  "podcast": {
+    "title": "SC-200 速成電台",
+    "subtitle": "雙主持人帶你 8 週通過 Microsoft Security Operations Analyst",
+    "author": "SC-200 學習專案（AI 生成）",
+    "language": "zh-TW",
+    "category": "Education",
+    "voice_host_f": "zh-TW-HsiaoChenNeural",
+    "voice_host_m": "zh-TW-YunJheNeural",
+    "bitrate": "48k",
+    "sample_rate": 24000
+  }
+}
