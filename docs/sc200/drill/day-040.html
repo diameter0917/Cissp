@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 40｜考前總複習：速記表與考試日攻略｜SC-200 刷題</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 刷題階段 · Day 40 / 40 · 2026-10-12</div>
+    <h1>考前總複習：速記表與考試日攻略</h1>
+    <p class="sub"><em>Final Review: Cheat Sheet & Exam-day Strategy</em></p>
+    <div class="meta-row">
+      <span class="pill mix">跨領域綜合</span>
+      <span class="pill ghost">P2-W8-5</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div>
+    <div class="progress-text">總進度 40 / 40 · 距離考試（2026-10-17）還有 5 天</div>
+  </header>
+
+  <article>
+<div class="eyebrow">01 — 📋 考前最後一日</div>
+<h2 data-toc="今日任務">只做三件事</h2>
+<p>今天不做新題。① 讀完這張速記表（30 分鐘）② 重讀你的審題陷阱清單（10 分鐘）③ 錯題本若還有殘留，只「看」不「做」——讀題目與解析即可。早點睡。</p>
+
+<div class="eyebrow">02 — ⚡ 速記表：D1 管理安全性作業環境（40–45%）</div>
+<h2 data-toc="D1 速記">環境管理關鍵事實</h2>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>主題</th><th>一句話記住</th></tr></thead>
+<tbody>
+<tr><td>資料進 Sentinel 三層</td><td>連接器（來源）→ DCR（收什麼、擷取時轉換）→ 資料表（分析層或 data lake 層）</td></tr>
+<tr><td>DCR 擷取時轉換</td><td>用 KQL 在<strong>寫入前</strong>過濾/遮罩/瘦身，省成本；transformKql</td></tr>
+<tr><td>ASIM</td><td>正規化<strong>查詢層</strong>統一結構描述（im/vim 剖析器），跨來源一支查詢</td></tr>
+<tr><td>承諾層級 vs 保留期</td><td>承諾層級＝每日擷取量折扣；保留＝存多久（工作區預設＋表級覆蓋）</td></tr>
+<tr><td>Data lake vs 分析層</td><td>lake 便宜、查詢用 KQL jobs／summary rules 撈重點回分析層 <span class="badge-2026">2026</span></td></tr>
+<tr><td>Summary rules</td><td>排程把大量原始資料聚合成小表，供便宜長期分析 <span class="badge-2026">2026</span></td></tr>
+<tr><td>MDE 上線</td><td>AD 網域→GPO/ConfigMgr；雲管→Intune；測試→本機腳本；VDI 專用套件</td></tr>
+<tr><td>裝置群組</td><td>決定自動化層級（full＝自動修復）＋ RBAC 範圍；規則由上而下首符合</td></tr>
+<tr><td>ASR 規則</td><td>先 audit 觀察再 block；LSASS/Office 巨集/指令碼類最常考</td></tr>
+<tr><td>排除 vs 指標</td><td>排除＝AV 不掃（效能/誤判）；指標＝allow/block 特定 IoC（檔案雜湊/IP/URL/憑證）</td></tr>
+<tr><td>威脅情報</td><td>STIX/TAXII 匯入、MDTI 情資、watchlist 是你自己的參考資料表（_GetWatchlist）</td></tr>
+<tr><td>統一 RBAC</td><td>Defender XDR 統一角色取代各產品舊 RBAC；最小權限：分診給 Security Operator 類</td></tr>
+<tr><td>Security Copilot</td><td>SCU 容量計費；獨立入口＋內嵌體驗；promptbook＝可重用提示流程 <span class="badge-2026">2026</span></td></tr>
+</tbody></table></div>
+
+<div class="eyebrow">03 — ⚡ 速記表：D2 回應安全性事件（35–40%）</div>
+<h2 data-toc="D2 速記">事件回應關鍵事實</h2>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>主題</th><th>一句話記住</th></tr></thead>
+<tbody>
+<tr><td>Incident vs Alert</td><td>事件＝關聯後的警示集合；分診從事件層開始，別逐條追警示</td></tr>
+<tr><td>裝置隔離</td><td>Isolate device＝斷網保留 MDE 通道；selective isolation 留 Teams/Outlook</td></tr>
+<tr><td>Live Response</td><td>遠端 shell：取證（getfile、collect package）＋修復（remediate）；進階命令要開權限</td></tr>
+<tr><td>AIR 自動調查</td><td>自動化層級 full＝自動修復；semi＝待核准；結果進 Action center</td></tr>
+<tr><td>郵件修復</td><td>Threat Explorer 查 → soft delete/hard delete/move；ZAP 事後自動清已投遞郵件</td></tr>
+<tr><td>MDI 偵測</td><td>身分攻擊鏈：偵察→認證竊取（pass-the-hash/ticket）→橫向移動→網域支配（DCSync/黃金票證）</td></tr>
+<tr><td>Entra ID Protection</td><td>使用者風險（身分被盜）vs 登入風險（這次登入可疑）；風險型條件式存取自動修復</td></tr>
+<tr><td>Defender for Cloud</td><td>CWP 工作負載警示；抑制規則消誤報；連 Sentinel 用連接器</td></tr>
+<tr><td>分析規則類型</td><td>Scheduled（KQL＋排程）／NRT（近即時、單表限制）／Fusion（ML 多階段）／Microsoft 安全性（產品警示直升事件）</td></tr>
+<tr><td>誤報處理順序</td><td>調整規則查詢/門檻 → 自動化規則自動關閉 → 抑制；別直接刪規則</td></tr>
+<tr><td>自動化規則 vs Playbook</td><td>改事件屬性用自動化規則；跟外部互動（通知/工單/封鎖）用 playbook（Logic Apps）</td></tr>
+<tr><td>Playbook 權限</td><td>Sentinel 要有 Microsoft Sentinel Automation Contributor 授權才能由自動化規則跑 playbook</td></tr>
+<tr><td>UEBA</td><td>實體行為基線→異常分數；養成期後才準；entity pages 看時間軸</td></tr>
+</tbody></table></div>
+
+<div class="eyebrow">04 — ⚡ 速記表：D3 執行威脅搜捕（20–25%）</div>
+<h2 data-toc="D3 速記">威脅搜捕關鍵事實</h2>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>主題</th><th>一句話記住</th></tr></thead>
+<tbody>
+<tr><td>KQL 心法</td><td>先 where 縮小再 join；has 優於 contains；arg_max(Timestamp, *) 取最新</td></tr>
+<tr><td>join 預設</td><td>innerunique（左表去重）；找「沒發生」用 leftanti；保留左全量用 leftouter</td></tr>
+<tr><td>Advanced hunting 表</td><td>Device*／Email*／Identity*／Alert*；跨產品關聯是它的強項；30 天資料</td></tr>
+<tr><td>自訂偵測</td><td>advanced hunting 查詢 → custom detection rule（要有 Timestamp/ReportId/實體欄）＋自動回應動作</td></tr>
+<tr><td>搜捕鏈</td><td>假說（MITRE 技術）→ 查詢 → <strong>書籤</strong>保存證據 → 升級成事件或轉分析規則</td></tr>
+<tr><td>Hunts 功能</td><td>Sentinel 把假說/查詢/書籤/結果打包成一個獵捕專案</td></tr>
+<tr><td>Livestream</td><td>即時盯一支查詢（測新規則/等攻擊者回來）；一鍵升級成分析規則</td></tr>
+<tr><td>Notebooks</td><td>Jupyter＋MSTICPy：要機器學習/外部富化/可重複調查時才用</td></tr>
+<tr><td>MITRE ATT&amp;CK</td><td>戰術＝目的（橫向移動）；技術＝手法（T1021 遠端服務）；規則與搜捕都對應到技術層</td></tr>
+<tr><td>Sentinel Graph／MCP</td><td>圖形關聯跨實體攻擊路徑；MCP Server 讓 AI 代理接 Sentinel 資料 <span class="badge-2026">2026</span></td></tr>
+</tbody></table></div>
+
+<div class="eyebrow">05 — 🎯 考試日攻略</div>
+<h2 data-toc="考試日攻略">當天流程與答題紀律</h2>
+<div class="point">
+<strong>行政</strong>：提早 30 分鐘（線上監考：淨空桌面、關多餘程式、備妥證件）。考試中可用 <strong>Microsoft Learn</strong>（部分題型開放查閱）——但把它當救生圈，不是拐杖：每查一次燒 3–5 分鐘。
+</div>
+<div class="point">
+<strong>時間紀律</strong>：55–60 題／100 分鐘出頭。第一輪 60 分鐘掃完（會的秒殺、猶豫的先選＋標記）；第二輪處理標記題；最後 10 分鐘只檢查「看漏否定詞」。單題絕不超過 3 分鐘。
+</div>
+<div class="exam-box"><span class="exam-label">最後三條答題鐵律</span>
+① 題目問「<strong>first / least / minimize</strong>」時，答案通常是最不可逆性低、成本最低、最自動化的選項。<br>
+② 兩個選項都對 → 選<strong>更符合題幹限定詞</strong>的那個（重讀題幹最後一句）。<br>
+③ 完全沒把握 → 刪掉兩個明顯錯的再猜，不留空白。
+</div>
+<div class="case-box"><span class="case-label">考完之後</span>
+<p style="margin:6px 0 0">無論結果如何，回來把心得記在儀表板筆記裡。過了：恭喜你完成 8 週衝刺，記得下載數位徽章；差一點：成績單會列出各領域百分比，對照本專案的領域頁立刻知道要補哪裡，改期重考的錢花在刀口上。🎉</p>
+</div>
+
+  </article>
+
+  
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="40">
+    <label for="doneChk">我完成 Day 40 的任務了</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../drill/day-039.html'>← Day 39</a>
+    <a href="../index.html">回儀表板</a>
+    <a class='disabled'>沒有下一天 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 刷題階段 · Day 40 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>
