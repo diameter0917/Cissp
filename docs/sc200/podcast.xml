@@ -9,6 +9,50 @@
     <itunes:author>SC-200 學習專案（AI 生成）</itunes:author>
     <itunes:category text="Education"/>
     <itunes:explicit>false</itunes:explicit>
-
+    <item>
+      <title>EP1｜SC-200 考試全景與 Microsoft 安全生態系</title>
+      <description>SC-200 速成 Day 對應單元：P1-W1-1。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-001.mp3" length="2420889" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-001</guid>
+      <pubDate>Tue, 18 Aug 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>6:43</itunes:duration>
+      <itunes:episode>1</itunes:episode>
+    </item>
+    <item>
+      <title>EP2｜KQL 基礎 I：查詢結構與三大運算子</title>
+      <description>SC-200 速成 Day 對應單元：P1-W1-2。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-002.mp3" length="2413542" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-002</guid>
+      <pubDate>Wed, 19 Aug 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>6:42</itunes:duration>
+      <itunes:episode>2</itunes:episode>
+    </item>
+    <item>
+      <title>EP3｜KQL 基礎 II：join、union 與時間序列</title>
+      <description>SC-200 速成 Day 對應單元：P1-W1-3。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-003.mp3" length="2663093" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-003</guid>
+      <pubDate>Thu, 20 Aug 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>7:24</itunes:duration>
+      <itunes:episode>3</itunes:episode>
+    </item>
+    <item>
+      <title>EP4｜Defender XDR 統一入口與 RBAC</title>
+      <description>SC-200 速成 Day 對應單元：P1-W1-4。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-004.mp3" length="2705994" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-004</guid>
+      <pubDate>Fri, 21 Aug 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>7:31</itunes:duration>
+      <itunes:episode>4</itunes:episode>
+    </item>
+    <item>
+      <title>EP5｜Defender for Endpoint 部署實戰</title>
+      <description>SC-200 速成 Day 對應單元：P1-W1-5。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-005.mp3" length="2575531" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-005</guid>
+      <pubDate>Mon, 24 Aug 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>7:09</itunes:duration>
+      <itunes:episode>5</itunes:episode>
+    </item>
   </channel>
 </rss>
