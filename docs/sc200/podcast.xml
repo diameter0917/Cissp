@@ -135,5 +135,23 @@
       <itunes:duration>7:31</itunes:duration>
       <itunes:episode>14</itunes:episode>
     </item>
+    <item>
+      <title>EP15｜身分威脅：MDI 與 Entra ID Protection</title>
+      <description>SC-200 速成 Day 對應單元：P1-W3-5。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-015.mp3" length="2848997" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-015</guid>
+      <pubDate>Mon, 07 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>7:55</itunes:duration>
+      <itunes:episode>15</itunes:episode>
+    </item>
+    <item>
+      <title>EP18｜Fusion、UEBA 與異常偵測</title>
+      <description>SC-200 速成 Day 對應單元：P1-W4-3。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-018.mp3" length="2913208" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-018</guid>
+      <pubDate>Thu, 10 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>8:05</itunes:duration>
+      <itunes:episode>18</itunes:episode>
+    </item>
   </channel>
 </rss>

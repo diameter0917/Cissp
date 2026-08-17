@@ -125,6 +125,24 @@
       "bytes": 2599580,
       "duration_sec": 433,
       "script_sha256": "fcf82aa42d2b96e28aa9a94d282aad75d49ab3188f2c4528f5deb5d7c9f85c95"
+    },
+    "015": {
+      "episode": 15,
+      "unit": "P1-W3-5",
+      "title_zh": "身分威脅：MDI 與 Entra ID Protection",
+      "file": "ep-015.mp3",
+      "bytes": 2848997,
+      "duration_sec": 475,
+      "script_sha256": "c4ae58b72085e291823f6b7904b565de9f7143ca470528c9730b67ff141f2ee0"
+    },
+    "018": {
+      "episode": 18,
+      "unit": "P1-W4-3",
+      "title_zh": "Fusion、UEBA 與異常偵測",
+      "file": "ep-018.mp3",
+      "bytes": 2913208,
+      "duration_sec": 485,
+      "script_sha256": "3e23ed3e8a3b9809cbc4d76589d636be3cac7687b9ee208bbab13b0eedde19aa"
     }
   }
 }
