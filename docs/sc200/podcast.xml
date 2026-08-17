@@ -172,6 +172,24 @@
       <itunes:episode>21</itunes:episode>
     </item>
     <item>
+      <title>EP22｜Sentinel 威脅搜捕：Hunts 與 Livestream</title>
+      <description>SC-200 速成 Day 對應單元：P1-W5-2。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-022.mp3" length="2755255" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-022</guid>
+      <pubDate>Wed, 16 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>7:39</itunes:duration>
+      <itunes:episode>22</itunes:episode>
+    </item>
+    <item>
+      <title>EP23｜假說驅動搜捕與 MITRE ATT&amp;CK</title>
+      <description>SC-200 速成 Day 對應單元：P1-W5-3。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-023.mp3" length="3533277" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-023</guid>
+      <pubDate>Thu, 17 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>9:49</itunes:duration>
+      <itunes:episode>23</itunes:episode>
+    </item>
+    <item>
       <title>EP24｜Sentinel Graph、MCP Server 與 data lake 搜捕（2026 新考點）</title>
       <description>SC-200 速成 Day 對應單元：P1-W5-4。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-024.mp3" length="2694079" type="audio/mpeg"/>
