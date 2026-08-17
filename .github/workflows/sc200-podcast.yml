@@ -1,0 +1,61 @@
+name: SC-200 Podcast
+
+# Podcast 腳本 push 後自動合成音檔（edge-tts 需連微軟語音端點，
+# 開發環境 proxy 會擋，所以放在 Actions runner 執行）。
+
+on:
+  workflow_dispatch:
+    inputs:
+      episodes:
+        description: '集數（空白分隔，如 "1 2 3"）；留空＝全部缺漏'
+        type: string
+        default: ''
+      force:
+        description: '忽略 manifest 全部重做'
+        type: boolean
+        default: false
+  push:
+    branches: ['main', 'claude/**']
+    paths:
+      - 'sc200/podcast/scripts/**'
+      - 'sc200/scripts/gen_podcast.py'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: sc200-podcast
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install edge-tts
+        run: pip install "edge-tts>=7"
+
+      - name: Render audio
+        run: |
+          python sc200/scripts/gen_podcast.py ${{ inputs.episodes }} ${{ inputs.force == true && '--force' || '' }}
+
+      - name: Build RSS & episode page
+        run: python sc200/scripts/build_rss.py
+
+      - name: Commit audio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/sc200/podcast docs/sc200/podcast.xml sc200/podcast/episodes.json
+          if git diff --cached --quiet; then
+            echo "No audio changes to commit."
+          else
+            git commit -m "chore(sc200): render podcast audio [skip ci]"
+            git pull --rebase origin "${GITHUB_REF_NAME}"
+            git push origin "HEAD:${GITHUB_REF_NAME}"
+          fi
