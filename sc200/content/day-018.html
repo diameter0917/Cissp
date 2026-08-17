@@ -1,6 +1,6 @@
 <div class="eyebrow">01 — 📌 本日導讀</div>
 <h2 data-toc="導讀">當偵測邏輯不是你寫的：把 ML 規則收進 SOC 流程</h2>
-<p>昨天你手寫了 Scheduled 與 NRT 規則——條件是你定的、門檻是你設的、誤報也是你自己扛。今天要看 Microsoft Sentinel 裡<strong>另外三種你寫不出來的規則</strong>：<strong>Fusion</strong>（多階段攻擊偵測，用機器學習把跨來源的低訊號串成一條攻擊鏈）、<strong>UEBA</strong>（實體行為分析，替每個使用者與裝置養出行為基準線）、<strong>Anomaly</strong>（異常規則，Microsoft 提供、參數可調的 ML 範本）。三者的共同特徵是：邏輯封裝在模型裡，你能調的是<strong>輸入的資料、門檻與例外</strong>，不是查詢本身。考試最愛問這個分界——什麼情況該寫 Scheduled 規則、什麼情況該交給 ML，以及 UEBA 啟用後為什麼前幾週安安靜靜。另一條主線是<strong>誤報處理三段式</strong>：先調規則、再用自動化規則自動關閉、最後才動抑制。</p>
+<p>昨天你手寫了 Scheduled 與 NRT 規則——條件你定、門檻你設、誤報也你自己扛。今天要看 Microsoft Sentinel 裡<strong>另外三種你寫不出來的規則</strong>：<strong>Fusion</strong>（多階段攻擊偵測，用機器學習把跨來源的低訊號串成一條攻擊鏈）、<strong>UEBA</strong>（實體行為分析，替每個使用者與裝置養出行為基準線）、<strong>Anomaly</strong>（異常規則，Microsoft 提供、參數可調的 ML 範本）。三者的共同特徵是：邏輯封裝在模型裡，你能調的是<strong>輸入的資料、門檻與例外</strong>，不是查詢本身。考試最愛問這個分界——什麼情況該寫 Scheduled 規則、什麼情況該交給 ML，以及 UEBA 啟用後為什麼前幾週安安靜靜。另一條主線是<strong>誤報處理三段式</strong>：先調規則、再用自動化規則自動關閉、最後才動抑制。</p>
 <div class="point">
 <strong>學習目標（對應官方考綱 D2「回應安全性事件」）：</strong>
 <ul>
@@ -17,10 +17,10 @@
 <h2 data-toc="影片伴讀">EP9 觀看重點指引（第二輪：看規則類型清單）</h2>
 <p>今天第二次回到 EP9，請把注意力放在講者在<strong>Analytics 頁面建立新規則時彈出的類型清單</strong>，以及左側 Configuration 區塊。帶著四個問題看：</p>
 <ul>
-  <li><strong>規則類型清單</strong>：數一數建立規則時有幾種類型。Scheduled 與 NRT 昨天講完了，今天要的是清單裡那幾個「你只能開關與調參」的類型，注意 Fusion 為什麼在清單裡是灰的（每個工作區只有一條）。</li>
+  <li><strong>規則類型清單</strong>：數一數建立規則時有幾種類型。Scheduled 與 NRT 昨天講完了，今天要看清單裡那幾個「只能開關與調參」的類型，並注意 Fusion 為何是灰的（每工作區只有一條）。</li>
   <li><strong>規則範本庫（Rule templates）</strong>：看範本上的類型標籤與「資料來源」欄位，自問：「這條範本要先接哪個連接器才會有結果？」這正是考題最常設的陷阱。</li>
   <li><strong>Entity behavior／UEBA 設定頁</strong>：留意啟用時要勾選的資料來源清單，以及畫面上關於目錄同步的說明。啟用是一個「選資料」的動作，不是單純按開關。</li>
-  <li><strong>實體頁面</strong>：講者點開使用者實體時，看時間軸與 insights 面板長什麼樣，對照第 04 節講的 investigation priority score。</li>
+  <li><strong>實體頁面</strong>：講者點開使用者實體時，看時間軸與 insights 面板長什麼樣，對照第 04 節的 investigation priority score。</li>
 </ul>
 <div class="info-box">📌 EP9 字幕尚未抓取完成，本節依規格寫成觀看重點指引；字幕到位後會回補精確時間碼（格式如 <span class="timestamp">EP9 12:35</span>）。</div>
 
@@ -99,7 +99,7 @@
 <div class="eyebrow">07 — 🧩 考綱補洞</div>
 <h2 data-toc="考綱補洞">EP9 沒細講、考題卻會碰的</h2>
 <ul>
-  <li><strong>Microsoft security 規則類型</strong>：把 Microsoft 安全性解決方案（Defender 各產品、Entra ID Protection 等）產生的警示<strong>原封不動</strong>轉成 Sentinel 事件，可依嚴重性或警示名稱篩選。它不做關聯也不做評分——這正是它和 Fusion 的分界。</li>
+  <li><strong>Microsoft security 規則類型</strong>：把 Microsoft 安全性解決方案（Defender 各產品、Entra ID Protection 等）的警示<strong>原封不動</strong>轉成 Sentinel 事件，可依嚴重性或名稱篩選；它不做關聯也不評分，這就是它和 Fusion 的分界。</li>
   <li><strong>ML Behavior Analytics 範本</strong>：針對特定情境（如異常的 SSH／RDP 登入）的機器學習範本，同樣不可改查詢，只能啟用或停用。</li>
   <li><strong>威脅情報比對規則</strong>：拿威脅情報指標比對記錄產生警示，屬規則型而非 ML，別和異常規則混淆。</li>
   <li><strong>實體頁面的行為時間軸</strong>：使用者或主機的實體頁面把警示、書籤與 UEBA 行為洞察畫在同一條時間軸上並可切換時間範圍，調查帳號接管時比翻查詢快得多。</li>

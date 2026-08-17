@@ -180,7 +180,9 @@ python3 sc200/scripts/check_coverage.py
 
 | 症狀 | 原因與解法 |
 |---|---|
-| `Sign in to confirm you're not a bot` | 你的 IP 被判定為機器人。① 先 `python3 -m pip install -U yt-dlp` 升級；② 換網路（改用手機熱點）；③ 用瀏覽器 cookies：先在 Chrome 登入 YouTube，然後執行 `python3 -m yt_dlp --cookies-from-browser chrome --write-auto-subs --sub-langs "zh-Hant,en" --skip-download -o "sc200/transcripts/ep-01.%(ext)s" https://youtu.be/8gCUtYEpTe8`（其餘影片比照，影片 ID 見 `sc200/sc200_curriculum.json`） |
+| **`HTTP Error 429: Too Many Requests`** | **最常見**。不是被封鎖，是短時間請求太多被限流。腳本已內建退避重試（60→180→420 秒），若仍失敗：① 隔 10–30 分鐘再跑一次（已抓好的會自動略過、只續抓沒抓到的）；② 改用慢速模式 `python3 sc200/scripts/fetch_transcripts.py --slow`；③ 一次只抓幾支 `--only EP1 EP2 EP3`，分批進行；④ 加瀏覽器 cookies（見下一列）大幅提高額度 |
+| `This video is DRM protected` / `Requested format is not available` | 舊版腳本切換 player client 造成的誤導訊息，**已修正**。請 `git pull` 取得最新版腳本後重跑 |
+| `Sign in to confirm you're not a bot` | IP 被判定為機器人。① `python3 -m pip install -U yt-dlp` 升級；② 換網路（手機熱點）；③ 用瀏覽器 cookies：先在瀏覽器登入 YouTube，然後 `python3 sc200/scripts/fetch_transcripts.py --cookies-from-browser chrome`（可換 `edge`／`firefox`；Windows 用 Edge 通常最順） |
 | `找不到 yt-dlp` | 沒裝或裝到別的 Python。重跑步驟 1，並確認用同一個 `python3` |
 | 某幾支顯示「⚠️ 無字幕」 | 該影片可能真的沒開自動字幕。其餘照常可用，不影響流程 |
 | 只拿到 `en` 沒有 `zh-Hant` | YouTube 的自動翻譯軌偶爾不供給。英文字幕已足夠做教材對齊與覆蓋度比對 |

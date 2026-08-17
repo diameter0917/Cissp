@@ -42,16 +42,22 @@ EPISODES = {
     "EP10": "z6QbN4rpAvA",
 }
 
-# 想要的字幕語言（會同時嘗試人工字幕與自動字幕；zh-Hant 含 YouTube 自動翻譯軌）
-SUB_LANGS = "zh-Hant,zh-TW,zh,en,en-US,en-GB"
+# 想要的字幕語言，**逐一**下載（一次要求多語會連發請求，容易觸發 429 限流）。
+# zh-Hant 是 YouTube 的自動翻譯軌；en 是原文自動字幕。兩者取到任一支即可用。
+SUB_LANGS = ["zh-Hant", "en"]
 
-# YouTube 對資料中心 IP 的 bot 偵測趨嚴：逐次換 player client 重試
+# player client 輪替**只用於 metadata**：bot 偵測擋 metadata 時換 client 有效。
+# 字幕不可輪替——web_embedded／tv 這些 client 不供應字幕軌，換過去只會得到
+# 「Requested format is not available」「This video is DRM protected」等誤導訊息。
 CLIENT_ATTEMPTS = [
     None,
     "youtube:player_client=android,web",
     "youtube:player_client=web_embedded,web",
     "youtube:player_client=tv",
 ]
+
+# 429（Too Many Requests）退避秒數：限流要等，換 client 沒用。
+BACKOFF_429 = [0, 60, 180, 420]
 
 TRANSCRIPTS = Path(__file__).resolve().parents[1] / "transcripts"
 TIMED = TRANSCRIPTS / "_timed"
@@ -155,14 +161,47 @@ def sub_to_text(path):
     return " ".join(dedup)
 
 
-def fetch_subs(ep, vid):
-    """抓人工＋自動字幕（zh-Hant 為自動翻譯軌）→ 清理存 txt、保留帶時間碼 vtt。"""
+def fetch_one_lang(ep, vid, lang, slug, cookies=None, slow=False):
+    """抓單一語言字幕。遇 429 限流就等待重試（**不**換 player client）。"""
+    for i, wait in enumerate(BACKOFF_429, 1):
+        if wait:
+            print(f"    ⏳ {ep} {lang} 被限流，等 {wait} 秒再試（第 {i}/{len(BACKOFF_429)} 次）…")
+            time.sleep(wait)
+        cmd = YTDLP + [
+            "--skip-download", "--write-subs", "--write-auto-subs",
+            "--sub-langs", lang, "--sub-format", "vtt",
+            "--sleep-requests", "8" if slow else "3",
+            "--retry-sleep", "http:exp=10:300",
+            "--extractor-retries", "5",
+            "-o", str(TRANSCRIPTS / f"{slug}.%(ext)s"),
+        ]
+        if cookies:
+            cmd += ["--cookies-from-browser", cookies]
+        cmd.append(f"https://youtu.be/{vid}")
+        r = subprocess.run(cmd, capture_output=True, text=True)
+        if r.returncode == 0 and list(TRANSCRIPTS.glob(f"{slug}.{lang}*.vtt")):
+            return True
+        err = (r.stderr or "").strip().splitlines()
+        last = err[-1][:130] if err else "未知錯誤"
+        if "429" in last or "Too Many Requests" in last:
+            continue                       # 限流 → 退避後重試
+        if "no subtitles" in last.lower() or "requested format" in last.lower():
+            print(f"    ℹ️ {ep} 沒有 {lang} 字幕軌")
+            return False                   # 這個語言真的沒有 → 不必再試
+        print(f"    ⚠️ {ep} {lang} 失敗：{last}")
+        return False
+    print(f"    ✗ {ep} {lang} 持續被限流，稍後再跑一次即可續抓")
+    return False
+
+
+def fetch_subs(ep, vid, cookies=None, slow=False):
+    """逐語言抓字幕（zh-Hant 自動翻譯軌 + en 原文）→ 清理存 txt、保留帶時間碼 vtt。"""
     slug = ep_slug(ep)
-    run_with_retry(
-        ["--skip-download", "--write-subs", "--write-auto-subs",
-         "--sub-langs", SUB_LANGS, "--sub-format", "vtt",
-         "-o", str(TRANSCRIPTS / f"{slug}.%(ext)s"), f"https://youtu.be/{vid}"],
-        f"{ep} subtitles")
+    for lang in SUB_LANGS:
+        if (TRANSCRIPTS / f"{slug}.{lang}.txt").exists():
+            continue                       # 這語言已抓過（支援中斷續跑）
+        fetch_one_lang(ep, vid, lang, slug, cookies=cookies, slow=slow)
+        time.sleep(5 if slow else 2)       # 語言之間也留間隔，別連發
     got = {}
     for vtt in sorted(TRANSCRIPTS.glob(f"{slug}.*.vtt")):
         lang = vtt.name[len(slug) + 1:-4]  # ep-01.<lang>.vtt → <lang>
@@ -178,14 +217,22 @@ def fetch_subs(ep, vid):
 
 
 def already_done(ep):
+    """兩種語言都到手才算完成——只抓到一種時重跑會續抓另一種。"""
     slug = ep_slug(ep)
-    return (TRANSCRIPTS / f"{slug}.info.json").exists() and \
-        any(TRANSCRIPTS.glob(f"{slug}.*.txt"))
+    if not (TRANSCRIPTS / f"{slug}.info.json").exists():
+        return False
+    return all((TRANSCRIPTS / f"{slug}.{lang}.txt").exists() for lang in SUB_LANGS)
 
 
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--force", action="store_true", help="忽略已存在檔案全部重抓")
+    ap.add_argument("--slow", action="store_true",
+                    help="放慢請求（被 429 限流時用；每支影片間也多等一會）")
+    ap.add_argument("--cookies-from-browser", dest="cookies", metavar="BROWSER",
+                    help="用瀏覽器 cookies（chrome/edge/firefox…）；先在該瀏覽器登入 YouTube")
+    ap.add_argument("--only", nargs="*", metavar="EP",
+                    help="只抓指定影片，如 --only EP1 EP2")
     args = ap.parse_args()
 
     r = subprocess.run(YTDLP + ["--version"], capture_output=True, text=True)
@@ -194,8 +241,15 @@ def main():
     print("yt-dlp 版本:", r.stdout.strip())
 
     TRANSCRIPTS.mkdir(parents=True, exist_ok=True)
+    targets = {k: v for k, v in EPISODES.items()
+               if not args.only or k.upper() in {s.upper() for s in args.only}}
+    if not targets:
+        sys.exit(f"✗ --only 沒有對到任何影片。可用：{', '.join(EPISODES)}")
+
     index = []
-    for ep, vid in EPISODES.items():
+    for n, (ep, vid) in enumerate(targets.items()):
+        if n:
+            time.sleep(15 if args.slow else 5)   # 影片之間留間隔，降低被限流機率
         print(f"\n[{ep}] https://youtu.be/{vid}")
         if not args.force and already_done(ep):
             info = json.loads((TRANSCRIPTS / f"{ep_slug(ep)}.info.json").read_text(encoding="utf-8"))
@@ -218,7 +272,7 @@ def main():
                 print("    ✗ metadata 抓取失敗（可能被 bot 偵測擋下）")
             continue
         print(f"    《{info['title']}》 {info['duration_string']}，章節 {len(info['chapters'])} 個")
-        langs = fetch_subs(ep, vid)
+        langs = fetch_subs(ep, vid, cookies=args.cookies, slow=args.slow)
         status = "ok" if langs else "no_subs"
         index.append({"ep": ep, "id": vid, "title": info["title"],
                       "status": status, "langs": langs})

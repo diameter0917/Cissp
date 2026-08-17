@@ -438,5 +438,445 @@
     },
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/live-response",
     "tags": []
+  },
+  {
+    "id": "D2-0011",
+    "domain": "D2",
+    "topic": "safe-links",
+    "unit": "P1-W3-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Attackers send your users messages whose links point to a harmless page at the moment of delivery, and replace that page with a credential harvesting form a few hours later. You must make sure that the destination of a link is verified again at the moment a user clicks it, including links opened in Microsoft Teams. Which Microsoft Defender for Office 365 capability provides this?",
+    "stem_zh": "攻擊者寄給你們使用者的郵件，郵件送達當下連結指向的是無害頁面，幾小時後才把該頁面換成竊取認證的表單。你必須確保使用者「點擊當下」會再驗證一次連結的目的地，且防護要涵蓋在 Microsoft Teams 中開啟的連結。這要靠 Microsoft Defender for Office 365 的哪一項功能？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Safe Attachments with the Dynamic Delivery action",
+        "text_zh": "採用 Dynamic Delivery 動作的 Safe Attachments（安全附件）"
+      },
+      {
+        "key": "B",
+        "text_en": "Zero-hour auto purge (ZAP)",
+        "text_zh": "零時差自動清除（ZAP）"
+      },
+      {
+        "key": "C",
+        "text_en": "Tenant Allow/Block List URL block entries",
+        "text_zh": "租用戶允許/封鎖清單（TABL）的 URL 封鎖項目"
+      },
+      {
+        "key": "D",
+        "text_en": "Safe Links time-of-click protection",
+        "text_zh": "Safe Links（安全連結）的點擊時（time-of-click）防護"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "題幹描述的正是「延遲武裝（delayed weaponization）」：寄信時 URL 乾淨、通過過濾後才換成釣魚頁。Safe Links 會改寫郵件中的 URL，在使用者點擊的當下重新驗證一次目的地，可疑 URL 還會被送去引爆（detonation）分析，防護範圍延伸到 Teams 與 Office 應用程式內的連結。Safe Links 屬於 MDO Plan 1 的能力。",
+    "why_wrong_zh": {
+      "A": "Safe Attachments 針對的是「附件」：在虛擬沙箱中引爆觀察行為；Dynamic Delivery 只是先把本文送達、附件掃完再補上，與郵件中 URL 的點擊時檢查無關。",
+      "B": "ZAP 是 EOP 內建的事後補救：郵件送達之後情報更新才發現有問題，回頭把信搬到垃圾郵件資料夾或隔離區。它處理的是「整封信」，不會在使用者按下連結的瞬間重新驗證目的地。",
+      "C": "TABL 的 URL 封鎖項目只能擋你「已經知道」的網址，對寄達時還乾淨、事後才變惡意的未知 URL 無法預先建立項目。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/safe-links-about",
+    "tags": []
+  },
+  {
+    "id": "D2-0012",
+    "domain": "D2",
+    "topic": "threat-explorer",
+    "unit": "P1-W3-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "A user reports a phishing message. In Threat Explorer you filter the past 48 hours by the sender domain and find 63 matching messages. Before you take action, you must build the list of messages that still require remediation. Which combination of values should you filter on?",
+    "stem_zh": "一名使用者回報了一封釣魚郵件。你在 Threat Explorer（威脅總管）中以寄件者網域篩選過去 48 小時，找到 63 封符合的郵件。在採取動作之前，你必須先整理出「仍需修復」的郵件清單。你應該篩選哪一組欄位值？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Delivery action Blocked and latest delivery location Quarantine",
+        "text_zh": "傳遞動作為 Blocked（已封鎖）、最新傳遞位置為隔離區"
+      },
+      {
+        "key": "B",
+        "text_en": "Delivery action Replaced and latest delivery location Deleted items",
+        "text_zh": "傳遞動作為 Replaced（附件已取代）、最新傳遞位置為刪除的郵件"
+      },
+      {
+        "key": "C",
+        "text_en": "Delivery action Delivered and latest delivery location Inbox",
+        "text_zh": "傳遞動作為 Delivered（已傳遞）、最新傳遞位置為收件匣"
+      },
+      {
+        "key": "D",
+        "text_en": "Delivery action Junked and latest delivery location Junk folder",
+        "text_zh": "傳遞動作為 Junked（已進垃圾郵件）、最新傳遞位置為垃圾郵件資料夾"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "修復對象是「使用者現在還碰得到、而且會信以為真」的郵件，也就是傳遞動作 Delivered 且最新傳遞位置仍在收件匣的那批。欄位之所以叫「最新」傳遞位置，是因為 ZAP 或管理員動作可能已經事後搬移過郵件。接著再交叉 URL 點擊檢視，找出「不只收到、還點了」的使用者優先處置，最後才勾選郵件按「採取動作」。",
+    "why_wrong_zh": {
+      "A": "Blocked 代表郵件在郵件流當下就被攔下、根本沒進到使用者信箱，位置在隔離區由管理員控管，不需要再做郵件修復。",
+      "B": "Replaced 指附件已被安全附件取代成安全的替代檔，且郵件已在刪除的郵件資料夾；風險已被降低，不是優先修復的集合。",
+      "D": "Junked 表示郵件已被判為垃圾並落在垃圾郵件資料夾，使用者看到它的機率與信任度都低得多；真正待處理的是仍躺在收件匣裡的那些。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/threat-explorer-real-time-detections-about",
+    "tags": []
+  },
+  {
+    "id": "D2-0013",
+    "domain": "D2",
+    "topic": "mdo-remediation",
+    "unit": "P1-W3-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You must remove 58 phishing messages from user mailboxes in a single batch remediation. The legal team may need to review the original messages later, and if any message turns out to be a false positive it must be possible to restore it. Which remediation action should you select in the Take action wizard?",
+    "stem_zh": "你必須用一次批次修復，把 58 封釣魚郵件從使用者信箱移除。法務團隊之後可能需要調閱原始郵件，而且若其中有郵件其實是誤判，必須能夠還原。你應該在「採取動作」精靈中選擇哪一種修復動作？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Soft delete, which moves the messages to Recoverable Items",
+        "text_zh": "虛刪除（soft delete），把郵件移到可復原刪除項目"
+      },
+      {
+        "key": "B",
+        "text_en": "Hard delete, which purges the messages permanently",
+        "text_zh": "實刪除（hard delete），永久清除郵件"
+      },
+      {
+        "key": "C",
+        "text_en": "Move to junk folder",
+        "text_zh": "移至垃圾郵件資料夾"
+      },
+      {
+        "key": "D",
+        "text_en": "Move to deleted items",
+        "text_zh": "移至刪除的郵件資料夾"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "虛刪除把郵件移入可復原刪除項目（Recoverable Items），使用者或管理員都還救得回來，是釣魚修復的預設選擇——既把信從信箱清掉、又保留還原與存證的餘地，正好對應「法務可能調閱」與「誤判要能還原」兩項要求。判斷句型：題幹說「若屬誤判使用者必須能復原」→ soft delete；說「必須確保無法復原」→ hard delete。",
+    "why_wrong_zh": {
+      "B": "實刪除是永久清除、不可復原，一旦誤判就再也救不回原始郵件，也讓法務無從調閱，只適用於惡意程式碼或法遵要求徹底移除的內容。",
+      "C": "移至垃圾郵件只是把信搬到使用者自己看得到、也能自行移回收件匣的資料夾，郵件仍在信箱中，達不到「移除」的修復標準，適用對象是低風險的灰色郵件。",
+      "D": "移至刪除的郵件同樣只是換資料夾，使用者能直接把信拉回來，通常用在還需要使用者自行檢視的可疑信，而不是已確認的釣魚郵件批次修復。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/remediate-malicious-email-delivered-office-365",
+    "tags": []
+  },
+  {
+    "id": "D2-0014",
+    "domain": "D2",
+    "topic": "mdo-remediation",
+    "unit": "P1-W3-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "An analyst who is assigned the Security Administrator role in Microsoft Entra ID can open Threat Explorer, preview the malicious messages, and select them, but the option to purge the messages is unavailable. You must grant the analyst the ability to run the purge while following the principle of least privilege. Which Email & collaboration role should you add?",
+    "stem_zh": "一名在 Microsoft Entra ID 中被指派 Security Administrator 角色的分析師，可以開啟 Threat Explorer、預覽惡意郵件並勾選它們，但清除（purge）郵件的選項無法使用。你必須在遵循最小權限原則的前提下，讓這名分析師能執行清除。你應該加上哪一個 Email & collaboration 角色？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Preview",
+        "text_zh": "Preview（預覽）"
+      },
+      {
+        "key": "B",
+        "text_en": "Search and Purge",
+        "text_zh": "Search and Purge（搜尋與清除）"
+      },
+      {
+        "key": "C",
+        "text_en": "Quarantine",
+        "text_zh": "Quarantine（隔離區）"
+      },
+      {
+        "key": "D",
+        "text_en": "Security Reader",
+        "text_zh": "Security Reader（安全性讀取者）"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "從 Threat Explorer 或動作中心對郵件執行、或核准修復動作，需要 Defender 入口網站 Email & collaboration 權限體系中的 Search and Purge 角色；它預設包含在 Data Investigator 與 Organization Management 角色群組中。常見陷阱正是本題情境：Entra ID 的 Security Administrator／Security Operator 角色不會自動附帶 Search and Purge，所以按鈕按不動。只加這一個角色，也是最小權限的作法。",
+    "why_wrong_zh": {
+      "A": "Preview 角色只允許預覽與下載信箱中的郵件內容，本題分析師已經能預覽，缺的是執行清除的權限。",
+      "C": "Quarantine 角色管的是隔離區中郵件的檢視、放行與刪除，處理的是「還沒進到信箱」的郵件，無法對已送達使用者信箱的郵件執行修復。",
+      "D": "Security Reader 是唯讀角色，只能檢視警示、報表與設定，加了它並不會多出任何執行動作的能力，反而離題目的需求更遠。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/remediate-malicious-email-delivered-office-365",
+    "tags": []
+  },
+  {
+    "id": "D2-0015",
+    "domain": "D2",
+    "topic": "threat-explorer",
+    "unit": "P1-W3-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "Your organization is licensed for Microsoft Defender for Office 365 Plan 1 only, and management refuses to buy additional licences during the current budget year. After a phishing wave, your analysts must still query recent mail flow, list every recipient of the malicious sender domain, and see where each message was delivered. Which tool should they use?",
+    "stem_zh": "你的組織只買了 Microsoft Defender for Office 365 Plan 1，且管理層在本年度預算內拒絕加購授權。一波釣魚攻擊之後，分析師仍必須查詢近期的郵件流、列出惡意寄件網域的所有收件者，並看出每封郵件被送到哪裡。他們應該使用哪一個工具？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Threat Explorer with the Campaigns view",
+        "text_zh": "Threat Explorer 的 Campaigns（攻擊活動）檢視"
+      },
+      {
+        "key": "B",
+        "text_en": "The EmailEvents table in advanced hunting",
+        "text_zh": "進階搜捕中的 EmailEvents 資料表"
+      },
+      {
+        "key": "C",
+        "text_en": "Real-time detections",
+        "text_zh": "即時偵測（Real-time detections）"
+      },
+      {
+        "key": "D",
+        "text_en": "Attack simulation training",
+        "text_zh": "Attack simulation training（攻擊模擬訓練）"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Real-time detections 是 MDO Plan 1 隨附的郵件查詢工具，可說是 Threat Explorer 的縮水版：一樣能依寄件者、寄件網域、主旨、URL 或附件雜湊篩選近期郵件，看到傳遞動作與傳遞位置，足以整理出收件者清單與待修復對象。功能歸屬是 MDO 的高頻考點——Threat Explorer、campaign views、AIR、attack simulation training 與進階搜捕的郵件資料表一律是 Plan 2。",
+    "why_wrong_zh": {
+      "A": "Threat Explorer（含 Campaigns 檢視）是 MDO Plan 2 專屬功能，本題不得加購授權，分析師開不了這個檢視。",
+      "B": "進階搜捕的郵件資料表（EmailEvents、EmailPostDeliveryEvents 等）同樣要有 MDO Plan 2 才會出現，Plan 1 租用戶查不到這些表。",
+      "D": "Attack simulation training 是 Plan 2 的事前韌性訓練工具，用無害的模擬 payload 訓練使用者，既不是調查工具，也無法回答「誰收到了這封信」。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/threat-explorer-real-time-detections-about",
+    "tags": []
+  },
+  {
+    "id": "D2-0016",
+    "domain": "D2",
+    "topic": "mdi",
+    "unit": "P1-W3-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Your organization must detect pass-the-ticket, DCSync and LDAP reconnaissance activity inside an on-premises Active Directory forest. Defender for Endpoint is already deployed on every workstation. Where must the Microsoft Defender for Identity sensors be installed?",
+    "stem_zh": "你的組織必須偵測地端 Active Directory 樹系內的 pass-the-ticket、DCSync 與 LDAP 偵察活動。所有工作站上都已部署 Defender for Endpoint。Microsoft Defender for Identity 的感應器（sensor）必須安裝在哪裡？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "On the domain controllers, and optionally on the AD FS and AD CS servers",
+        "text_zh": "安裝在網域控制站上，並可視需要一併安裝在 AD FS 與 AD CS 伺服器上"
+      },
+      {
+        "key": "B",
+        "text_en": "On every managed workstation, next to the Defender for Endpoint agent",
+        "text_zh": "安裝在每一台受管工作站上，與 Defender for Endpoint 代理程式並存"
+      },
+      {
+        "key": "C",
+        "text_en": "On a dedicated standalone server that receives port-mirrored traffic from the core switch",
+        "text_zh": "安裝在一台專用的獨立伺服器上，由核心交換器做網路埠鏡像把流量送過來"
+      },
+      {
+        "key": "D",
+        "text_en": "On the member file servers that host the most sensitive shares",
+        "text_zh": "安裝在存放最敏感共用資料夾的成員檔案伺服器上"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "MDI 沒有雲端 API 可以直接讀你的網域，必須把感應器裝進伺服器。所有 Kerberos／NTLM 驗證、LDAP 查詢與目錄複寫都要經過網域控制站，所以 DC 是必裝位置；AD FS 是為了看見同盟登入的暴力破解，AD CS 則是盯憑證範本濫用。感應器輕量、自我更新並會自我限制資源用量。另外要記得感應器需要目錄服務帳戶（DSA，建議 gMSA）才能唯讀查詢目錄。",
+    "why_wrong_zh": {
+      "B": "裝在端點上的是 MDE：它看端點的處理程序與檔案行為，看不見 DC 上的票證異常與目錄複寫請求；MDI 感應器也不是給用戶端作業系統安裝的。",
+      "C": "獨立感應器（standalone sensor）搭配網路埠鏡像是早期架構，已經淘汰；現行 MDI 直接把感應器裝在網域控制站上解析本機流量，不必額外準備伺服器或設定鏡像。",
+      "D": "檔案伺服器只看得到自己被存取的紀錄，看不到驗證與目錄複寫流量，無法偵測票證偽造與 DCSync 這類針對 AD 本體的攻擊。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-for-identity/what-is",
+    "tags": []
+  },
+  {
+    "id": "D2-0017",
+    "domain": "D2",
+    "topic": "entra-id-protection",
+    "unit": "P1-W3-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Microsoft Entra ID Protection reports a Leaked credentials detection for a marketing employee: the password of the account was found in a public credential dump. You must make sure that the leaked password can no longer be used, and the employee should be able to restore access without calling the help desk. Which policy should you configure?",
+    "stem_zh": "Microsoft Entra ID Protection 針對一名行銷部員工回報「外洩認證（leaked credentials）」偵測：該帳戶的密碼出現在公開的認證外洩資料中。你必須確保這組外洩的密碼再也無法被使用，同時讓該員工不必打電話給服務台就能恢復存取。你應該設定哪一種政策？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A sign-in risk policy that requires multifactor authentication at medium risk and above",
+        "text_zh": "登入風險政策：風險達中以上時要求多重要素驗證（MFA）"
+      },
+      {
+        "key": "B",
+        "text_en": "A Conditional Access policy that blocks legacy authentication protocols",
+        "text_zh": "封鎖舊版驗證通訊協定的條件式存取政策"
+      },
+      {
+        "key": "C",
+        "text_en": "An Entra ID Protection MFA registration policy",
+        "text_zh": "Entra ID Protection 的 MFA 註冊政策"
+      },
+      {
+        "key": "D",
+        "text_en": "A user risk policy that requires a secure password change at high user risk",
+        "text_zh": "使用者風險政策：使用者風險為高時要求安全密碼變更"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "「外洩認證」是使用者風險（user risk）偵測，描述的是「這個帳號是不是已經被盜了」的帳戶狀態，而不是某一次登入。對應的處置是使用者風險政策要求安全密碼變更：使用者自行完成變更後風險歸零，既有的更新權杖也會失效，屬於自動修復（self-remediation），不必人工介入。前提是使用者已完成 MFA 註冊，且完整風險明細與風險型政策需要 Microsoft Entra ID P2。",
+    "why_wrong_zh": {
+      "A": "登入風險政策評估的是「這一次登入是不是本人」，只要求 MFA 並不會讓已經外洩的那組密碼失效——攻擊者仍握有可用的密碼，只是暫時被 MFA 擋住。",
+      "B": "封鎖舊版驗證是很好的基本強化措施，可防止繞過 MFA，但它不針對風險訊號，也不會強制這個帳戶更換已外洩的密碼。",
+      "C": "MFA 註冊政策只是要求使用者完成 MFA 註冊，屬於前置準備（也是安全密碼變更能自助完成的前提），本身不會處置已外洩的認證。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/entra/id-protection/howto-identity-protection-configure-risk-policies",
+    "tags": []
+  },
+  {
+    "id": "D2-0018",
+    "domain": "D2",
+    "topic": "entra-id-protection",
+    "unit": "P1-W3-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A junior analyst reviewed a risky user in Microsoft Entra ID Protection, judged the detections to be noise, and selected Dismiss user risk. Your later investigation proves that the account really was taken over and that the attacker still holds a valid refresh token. Which action should you take to remediate the account?",
+    "stem_zh": "一名資淺分析師檢視 Microsoft Entra ID Protection 中的一個有風險使用者，判斷那些偵測只是雜訊，於是選了「關閉使用者風險（dismiss user risk）」。你後續的調查證明該帳戶確實已遭接管，而且攻擊者手上仍握有有效的更新權杖（refresh token）。你應該採取哪一個動作來修復這個帳戶？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Dismiss the user risk again so that the risk state stays clean, and keep monitoring the account",
+        "text_zh": "再次關閉使用者風險，讓風險狀態保持乾淨，並持續監控該帳戶"
+      },
+      {
+        "key": "B",
+        "text_en": "Reset the password of the user and revoke the sessions and refresh tokens of the user, then confirm the user as compromised",
+        "text_zh": "重設該使用者的密碼並撤銷其工作階段與更新權杖，然後將該使用者標記為遭入侵（confirm compromised）"
+      },
+      {
+        "key": "C",
+        "text_en": "Mark the related risky sign-ins as safe so that the model learns from the correction",
+        "text_zh": "把相關的有風險登入標記為安全，讓模型從這次更正中學習"
+      },
+      {
+        "key": "D",
+        "text_en": "Exclude the user from the user risk policy so that repeated prompts do not block their work",
+        "text_zh": "把該使用者從使用者風險政策中排除，避免反覆提示影響他工作"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "關閉風險（dismiss）只是把風險狀態清為零，**不做任何修復**：密碼沒換、工作階段與更新權杖也沒撤銷，因此攻擊者手上的權杖依然有效。真正的修復是重設密碼並撤銷工作階段／更新權杖，讓既有權杖立刻失效；再把使用者標記為遭入侵（confirm compromised），使用者風險會被拉到高並回饋給風險模型，同時觸發風險型條件式存取。（相對地，若帳戶已被停用卻仍能讀信，答案通常是持續存取評估 CAE 尚未生效。）",
+    "why_wrong_zh": {
+      "A": "再關閉一次只是重複同一個沒有修復效果的動作；dismiss 只適用於「已確認的誤判」，本題已證實帳戶真的被接管，這樣做等於放任攻擊者繼續使用權杖。",
+      "C": "把有風險登入標記為安全，是在告訴模型那些訊號判斷錯誤，會污染後續的風險評分，而且同樣不會撤銷任何權杖或變更密碼。",
+      "D": "把使用者排除在風險政策之外，等於拿掉這個帳戶最後一道自動防線；只有緊急存取（break-glass）帳戶才應該被排除在風險政策外。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/entra/id-protection/howto-identity-protection-remediate-unblock",
+    "tags": []
+  },
+  {
+    "id": "D2-0019",
+    "domain": "D2",
+    "topic": "identity-response",
+    "unit": "P1-W3-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "From the user entity page in the Microsoft Defender portal, you attempt to run the Defender for Identity action that disables a user in Active Directory, and the action fails. The group managed service account that the sensors use for directory queries has read-only rights on the directory. What should you configure?",
+    "stem_zh": "你在 Microsoft Defender 入口網站的使用者實體頁面上，嘗試執行 Defender for Identity 的「停用 Active Directory 中的使用者」動作，結果動作失敗。感應器用來查詢目錄的群組受管理服務帳戶（gMSA）對目錄只有唯讀權限。你應該設定什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Install an additional Defender for Identity sensor on a second domain controller",
+        "text_zh": "在第二台網域控制站上再安裝一個 Defender for Identity 感應器"
+      },
+      {
+        "key": "B",
+        "text_en": "Assign the Security Operator role in Microsoft Entra ID to the analyst",
+        "text_zh": "在 Microsoft Entra ID 中把 Security Operator 角色指派給該分析師"
+      },
+      {
+        "key": "C",
+        "text_en": "An action account with delegated permissions to disable accounts and reset passwords in Active Directory",
+        "text_zh": "設定具備委派權限、能在 Active Directory 中停用帳戶並重設密碼的動作帳戶（action account）"
+      },
+      {
+        "key": "D",
+        "text_en": "Use Defender for Endpoint to isolate the device of the user instead",
+        "text_zh": "改用 Defender for Endpoint 隔離該使用者的裝置"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "MDI 是雲端服務，要回頭修改地端 AD 物件（停用帳戶、要求密碼重設）必須透過具備寫入權限的動作帳戶（action account）。它可以沿用感應器的 gMSA，但必須另外委派「停用帳戶」與「重設密碼」的權限——目錄服務帳戶（DSA）只需要唯讀權限，兩者是不同用途，只有唯讀權限時回應按鈕就會按不動。",
+    "why_wrong_zh": {
+      "A": "再加一台感應器只會擴大偵測涵蓋範圍，動作失敗的原因是缺少對 AD 物件的寫入權限，多裝感應器完全沒有幫助。",
+      "B": "Entra ID 的 Security Operator 角色決定的是分析師在入口網站裡能不能看到與觸發回應動作，與 MDI 服務回頭修改地端 AD 物件所需的目錄權限是兩回事。",
+      "D": "裝置隔離是 MDE 的動作，處理的是端點而非身分；本題要求的是停用帳戶，隔離裝置無法阻止攻擊者從別台機器使用這組認證。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-for-identity/remediation-actions",
+    "tags": []
+  },
+  {
+    "id": "D2-0020",
+    "domain": "D2",
+    "topic": "identity-response",
+    "unit": "P1-W3-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Defender for Identity raises a Suspected identity theft (pass-the-ticket) alert for a finance user, and the same Kerberos ticket was observed on two workstations. Management requires that the stolen ticket and any issued tokens stop working, but the employee must be able to return to work as quickly as possible. Which response action best meets both requirements?",
+    "stem_zh": "Defender for Identity 針對一名財務部使用者發出「可疑身分竊取（pass-the-ticket）」警示，同一張 Kerberos 票證在兩台工作站上被觀察到。管理層要求被竊的票證與已簽發的權杖都必須失效，但該員工必須能盡快回到工作崗位。哪一個回應動作最能同時滿足這兩項要求？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Require the user to reset their password and revoke the sessions of the user",
+        "text_zh": "要求該使用者重設密碼，並撤銷其工作階段"
+      },
+      {
+        "key": "B",
+        "text_en": "Disable the user in Active Directory",
+        "text_zh": "停用 Active Directory 中的該使用者"
+      },
+      {
+        "key": "C",
+        "text_en": "Suspend the user in Microsoft Entra ID",
+        "text_zh": "暫停 Microsoft Entra ID 中的該使用者"
+      },
+      {
+        "key": "D",
+        "text_en": "Mark the user as compromised in Microsoft Defender for Identity",
+        "text_zh": "在 Microsoft Defender for Identity 中把該使用者標記為遭入侵"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "要求密碼重設會強制使用者在下次登入時變更密碼，被偷走的雜湊與已簽發的票證因此失效，搭配撤銷工作階段可讓雲端權杖一併作廢；使用者換完密碼馬上就能繼續工作，是「既止血又不癱瘓業務」的最佳解。停用帳戶則屬於更激烈的止血手段，留給無法立即聯絡使用者或攻擊仍在擴散的情況。",
+    "why_wrong_zh": {
+      "B": "停用 AD 帳戶確實能當場阻斷驗證，但該員工完全無法工作，超出「盡快回到工作崗位」的要求；而且若未搭配持續存取評估（CAE），既有權杖在有效期內仍可能被使用。",
+      "C": "暫停 Entra ID 帳戶只關掉混合身分的雲端那一半，地端 Kerberos 票證照樣能用來存取檔案伺服器，本題的攻擊路徑正是地端票證重放。",
+      "D": "標記為遭入侵是把訊號送進 Entra ID Protection、讓使用者風險升為高並觸發風險型政策，是很好的補強動作，但它本身不會讓被竊的票證或現有權杖失效。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-for-identity/remediation-actions",
+    "tags": []
   }
 ]
