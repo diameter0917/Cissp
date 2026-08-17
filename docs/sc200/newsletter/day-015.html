@@ -28,7 +28,7 @@
   <article>
 <div class="eyebrow">01 — 📌 本日導讀</div>
 <h2 data-toc="導讀">攻擊者不是駭進來的，是登入進來的</h2>
-<p>這一週守了裝置、守了信箱，今天守的是把所有資源串起來的那條線——身分。現代入侵幾乎都長同一個樣子：先釣到一組帳密，再在網域裡東翻西找、偷票證、跳機器，最後拿下網域管理員；整條路上多半沒有惡意程式，只有「看起來完全合法的驗證行為」。防毒攔不住合法登入，所以考綱 D2「回應安全性事件」給了身分兩個專屬武器：地端 Active Directory 交給 <strong>Microsoft Defender for Identity（MDI）</strong>，雲端交給 <strong>Microsoft Entra ID Protection</strong>。今天釘死四件事：感應器裝在哪、攻擊鏈每階段亮什麼燈、兩邊能按哪些回應按鈕，以及最常被混淆的「使用者風險 vs 登入風險」。</p>
+<p>這一週守了裝置、守了信箱，今天守的是把所有資源串起來的那條線——身分。現代入侵幾乎都長同一個樣子：先釣到一組帳密，再在網域裡東翻西找、偷票證、跳機器，最後拿下網域管理員；整條路上多半沒有惡意程式，只有「看起來完全合法的驗證行為」。防毒攔不住合法登入，所以考綱 D2「回應安全性事件」給了身分兩個專屬武器：地端 Active Directory 交給 <strong>Microsoft Defender for Identity（MDI）</strong>，雲端交給 <strong>Microsoft Entra ID Protection</strong>。今天釘死四件事：感應器裝哪、攻擊鏈每階段亮什麼燈、兩邊能按哪些回應按鈕，以及最常被混淆的「使用者風險 vs 登入風險」。</p>
 <p><strong>學習目標</strong>（對應官方 study guide D2「調查並修復由 Microsoft Defender for Identity 識別的威脅」與「調查並修復 Microsoft Entra ID Protection 中的身分風險」）：</p>
 <ul>
   <li>☐ 說明 MDI 感應器的部署位置（網域控制站、AD FS、AD CS）、目錄服務帳戶用途與 XDR 整合</li>
@@ -53,7 +53,7 @@
 <h2 data-toc="MDI 架構">感應器裝在哪、靠什麼看見攻擊</h2>
 <p>MDI 沒有雲端 API 可以直接讀你的網域，必須<strong>把感應器（sensor）裝進伺服器</strong>——架構題的第一個考點：感應器直接安裝在<strong>網域控制站</strong>上，另外支援 <strong>AD FS（同盟服務）</strong>、<strong>AD CS（憑證服務）</strong>與 Entra Connect 伺服器。裝在 DC 是因為所有 Kerberos／NTLM 驗證、LDAP 查詢與目錄複寫都要經過它；裝在 AD FS 是為了看見同盟登入的暴力破解；裝在 AD CS 是盯憑證範本濫用。感應器輕量、自我更新、會自我限制資源用量，不必另備伺服器或做網路埠鏡像（早期的 standalone sensor 與 port mirroring 已淘汰）。</p>
 <p>感應器吃<strong>三種訊號</strong>：本機<strong>網路流量</strong>（解析 Kerberos、NTLM、DNS、LDAP）、<strong>Windows 安全性事件</strong>（需開進階稽核，例如物件存取稽核產生的 4662 是 DCSync 偵測關鍵）、以及對目錄的 <strong>LDAP 查詢</strong>（把帳戶群組解析成實體、判斷誰是敏感帳戶）。第三種需要能唯讀查詢網域的<strong>目錄服務帳戶（DSA）</strong>，官方建議用 <strong>gMSA</strong>，密碼由 AD 自動輪替。資料上傳雲端後，警示落進 Defender 入口網站並自動關聯成 XDR 事件；原始活動進入進階搜捕的 <strong>IdentityLogonEvents、IdentityQueryEvents、IdentityDirectoryEvents</strong> 三張表。</p>
-<div class="point"><strong>一句話架構圖：</strong>感應器（DC／AD FS／AD CS）解析驗證流量與事件 → 用 DSA 補查目錄 → 上傳 MDI 雲端 → 警示進 XDR 事件、活動進 Identity* 搜捕表 → 分析師在使用者實體頁面調查與回應。</div>
+<div class="point"><strong>一句話架構圖：</strong>感應器（DC／AD FS／AD CS）解析驗證流量與事件 → 用 DSA 補查目錄 → 上傳雲端 → 警示進 XDR 事件、活動進 Identity* 搜捕表 → 分析師在使用者實體頁面調查與回應。</div>
 <div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>部署題三陷阱：</strong>（1）「要偵測網域內的橫向移動與票證攻擊，感應器裝哪？」→ <strong>網域控制站</strong>，不是防火牆或用戶端；裝在端點的是 MDE。（2）「已全面部署 MDE，還需要 MDI 嗎？」→ 需要，MDE 看端點行為，看不見 DC 上的票證異常與目錄複寫請求。（3）「MDI 需要什麼帳戶？」→ <strong>DSA（建議 gMSA）</strong>做目錄查詢；它與下一節的「動作帳戶」是兩件事——DSA 只要讀取權限，停用帳戶與重設密碼要另外委派寫入權限。</p></div>
 
 <div class="eyebrow">04 — ⛓️ 身分攻擊鏈</div>
