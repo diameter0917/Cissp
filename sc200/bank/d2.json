@@ -7,232 +7,217 @@
     "set": "A",
     "difficulty": 1,
     "type": "single",
-    "stem_en": "You are a security operations analyst reviewing the incident queue in the Microsoft Defender portal. One incident contains 12 low-severity alerts and one high-severity alert. Which severity does Microsoft Defender XDR display for the incident?",
-    "stem_zh": "你是安全性作業分析師，正在 Microsoft Defender 入口網站檢視事件佇列。某個事件包含 12 則低嚴重性警示與 1 則高嚴重性警示。Microsoft Defender XDR 會將此事件顯示為哪一種嚴重性？",
+    "stem_en": "You are a security operations analyst reviewing the incident queue in the Microsoft Defender portal. One incident groups 12 low-severity alerts from Microsoft Defender for Endpoint together with 1 high-severity alert from Microsoft Defender for Office 365. Which severity does Microsoft Defender XDR show for the incident itself?",
+    "stem_zh": "你是安全性作業分析師，正在 Microsoft Defender 入口網站檢視事件佇列。某個事件把 Microsoft Defender for Endpoint 的 12 則低嚴重性警示，與 Microsoft Defender for Office 365 的 1 則高嚴重性警示關聯在一起。Microsoft Defender XDR 會把這個事件本身顯示為哪一種嚴重性？",
     "options": [
       {
         "key": "A",
-        "text_en": "High",
-        "text_zh": "高"
+        "text_en": "Low, because most of the correlated alerts are low severity",
+        "text_zh": "低，因為關聯進來的警示大多是低嚴重性"
       },
       {
         "key": "B",
-        "text_en": "Medium",
-        "text_zh": "中"
+        "text_en": "Medium, because the incident severity is the average of the alert severities",
+        "text_zh": "中，因為事件嚴重性是各警示嚴重性的平均值"
       },
       {
         "key": "C",
-        "text_en": "Low",
-        "text_zh": "低"
+        "text_en": "High, because an incident inherits the highest severity among the alerts it contains",
+        "text_zh": "高，因為事件會沿用所含警示中最高的嚴重性"
       },
       {
         "key": "D",
-        "text_en": "Informational",
-        "text_zh": "資訊"
+        "text_en": "Informational, because the severity is calculated only after an analyst assigns the incident",
+        "text_zh": "資訊，因為嚴重性要等分析師指派事件之後才會計算"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "事件（incident）的嚴重性＝所含警示（alert）中的**最高**嚴重性，與警示數量、平均值或指派狀態都無關。因此 12 低＋1 高的組合，事件會顯示為「高」。延伸考點：日後若有新的高嚴重性警示關聯進來，事件嚴重性會被往上拉；反之把個別警示標成誤判，並不會自動把事件嚴重性往下修——要調整得由分析師處理事件本身。",
+    "why_wrong_zh": {
+      "A": "警示數量多寡不是嚴重性的計算依據；12 則低嚴重性警示不會把事件壓成低，關聯引擎看的是最高值。",
+      "B": "Defender XDR 不對嚴重性取平均。若採平均值，重大的單一高嚴重性訊號就會被大量雜訊稀釋掉，違反分診的設計目的。",
+      "D": "嚴重性在事件產生時就由關聯的警示決定，與指派給誰、狀態是「作用中」還是「進行中」都無關；「資訊」是警示層級的嚴重性選項，不是未分診的預設值。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/incidents-overview",
+    "tags": []
+  },
+  {
+    "id": "D2-0002",
+    "domain": "D2",
+    "topic": "incident-triage",
+    "unit": "P1-W3-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are a tier-1 analyst starting your shift. Five unassigned high-severity incidents are waiting in the Microsoft Defender XDR queue, so severity alone no longer tells you where to start. Which incident should you work on FIRST?",
+    "stem_zh": "你是 tier-1 分析師，剛開始輪班。Microsoft Defender XDR 佇列中有五個未指派的高嚴重性事件，嚴重性已經無法幫你排序。你應該「最先」處理哪一個事件？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The incident whose alerts come from multiple service sources, whose affected assets include a finance server, and whose categories already cover credential access",
+        "text_zh": "警示來自多重服務來源、受影響資產含財務伺服器，且類別已涵蓋憑證存取的那個事件"
+      },
+      {
+        "key": "B",
+        "text_en": "The incident that contains the largest number of alerts",
+        "text_zh": "包含最多警示的那個事件"
+      },
+      {
+        "key": "C",
+        "text_en": "The incident that was created most recently",
+        "text_zh": "建立時間最新的那個事件"
+      },
+      {
+        "key": "D",
+        "text_en": "The incident that automatic attack disruption has already contained by disabling the account",
+        "text_zh": "自動攻擊中斷已經停用帳戶、完成遏制的那個事件"
       }
     ],
     "answer": [
       "A"
     ],
-    "explanation_zh": "事件嚴重性等於其所含警示中「最高」的嚴重性，不是平均值，也與警示數量無關。因此只要事件裡有一則高嚴重性警示，事件就顯示為高。這個規則的實務意義是：關聯引擎把一則高嚴重性的憑證竊取警示併進原本全是低嚴重性雜訊的事件時，整個事件會立刻浮到佇列上方。反向也要記住——把個別警示分類為誤判並不會自動下修事件嚴重性，要調整處理順序請改用狀態、指派與標籤。",
+    "explanation_zh": "嚴重性相同時，優先序來自綜合判斷：攻擊階段（是否已推進到憑證存取、橫向移動、外洩或影響）、資產與帳號重要性（網域控制站、財務系統、特權帳號）、訊號多樣性（多重服務來源幾乎等同真攻擊）、影響廣度。選項 A 同時命中三個提高優先度的訊號，是最該先做的一件。",
     "why_wrong_zh": {
-      "B": "「中」不是任何計算方式的結果；事件嚴重性不會取警示嚴重性的平均或中位數。",
-      "C": "「低」是多數警示的嚴重性，但多數決不是規則；只要有一則更高的警示，事件就跟著提高。",
-      "D": "「資訊」是警示嚴重性的最低一級，通常用於預期中的活動，本題事件內已有高嚴重性警示，不可能顯示為資訊。"
+      "B": "警示數量多常常只是同一則雜訊重複觸發，或某條偵測邏輯過於敏感，數量本身不代表風險。",
+      "C": "事件的新舊與風險無關；只挑最新的處理，反而容易讓早幾分鐘產生、已經推進到深層戰術的攻擊被晾在佇列裡。",
+      "D": "自動攻擊中斷已經切斷攻擊路徑，該事件的任務是驗證處置結果與清理收尾，不必插隊；尚未被任何自動化處置的事件才需要人先介入。"
     },
-    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/incidents-overview",
-    "tags": [
-      "incident",
-      "severity"
-    ]
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/incident-queue",
+    "tags": []
   },
   {
-    "id": "D2-0002",
+    "id": "D2-0003",
     "domain": "D2",
     "topic": "incident-classification",
     "unit": "P1-W3-2",
     "set": "A",
     "difficulty": 2,
     "type": "single",
-    "stem_en": "You are a security operations analyst. Your organization's red team ran an authorized penetration test last night, and Microsoft Defender XDR correctly detected the activity and raised an incident. You must close the incident so that reporting and detection tuning stay accurate. How should you classify the incident?",
-    "stem_zh": "你是安全性作業分析師。貴組織的紅隊昨晚執行了經授權的滲透測試，Microsoft Defender XDR 正確偵測到該活動並產生事件。你必須關閉此事件，同時讓報表與偵測調校維持正確。應如何分類此事件？",
+    "stem_en": "Your organization hired an external red team to run an authorized penetration test last night. This morning Microsoft Defender XDR raised an incident that accurately recorded the red team credential dumping activity on two servers. You must resolve the incident so that the detection quality metrics of the SOC stay accurate. How should you classify it?",
+    "stem_zh": "你的組織昨晚委託外部紅隊執行經授權的滲透測試。今天早上 Microsoft Defender XDR 產生一個事件，正確記錄了紅隊在兩台伺服器上傾印認證的活動。你必須解決這個事件，同時讓 SOC 的偵測品質指標保持正確。你應該如何分類（classification）？",
     "options": [
       {
         "key": "A",
-        "text_en": "Classify the incident as a false positive with the determination 'Not malicious'.",
-        "text_zh": "分類為 false positive（誤判），判定選「非惡意」。"
+        "text_en": "False positive with the determination Not malicious",
+        "text_zh": "False positive（誤判），判定為「非惡意」"
       },
       {
         "key": "B",
-        "text_en": "Classify the incident as informational, expected activity with the determination 'Security testing'.",
-        "text_zh": "分類為 informational, expected activity（資訊性、預期中的活動），判定選「安全性測試」。"
+        "text_en": "False positive with the determination Not enough data to validate",
+        "text_zh": "False positive（誤判），判定為「資料不足以驗證」"
       },
       {
         "key": "C",
-        "text_en": "Classify the incident as a true positive with the determination 'Multistage attack'.",
-        "text_zh": "分類為 true positive（真陽性），判定選「多階段攻擊」。"
+        "text_en": "True positive with the determination Malicious user activity",
+        "text_zh": "True positive（真陽性），判定為「惡意使用者活動」"
       },
       {
         "key": "D",
-        "text_en": "Leave the classification as 'Not set' and create an alert-tuning rule that hides the alerts.",
-        "text_zh": "分類維持「未設定」，並建立警示調整規則隱藏這些警示。"
+        "text_en": "Informational, expected activity with the determination Security testing",
+        "text_zh": "Informational, expected activity（資訊性、預期中的活動），判定為「安全性測試」"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "判斷公式只有一句：「那件事真的發生了嗎？」紅隊確實執行了認證傾印，偵測完全正確，只是行為是預期且經授權的，因此分類為 Informational, expected activity，判定選「安全性測試（security testing）」。填對很重要：分類與判定是警示調校的依據，也是誤判率等 SOC 績效指標的來源，部分偵測還會把判定回饋給偵測引擎。",
+    "why_wrong_zh": {
+      "A": "誤判代表「偵測認錯了、那件事根本沒發生」。這裡活動真的發生過，標成誤判等於教錯引擎，也會虛增誤判率、誤導後續調校。",
+      "B": "「資料不足以驗證」用在證據不足、無法判定真偽的情況。本題已確知是紅隊演練，事實清楚，不適用。",
+      "C": "真陽性用於確實發生的「惡意」活動。紅隊演練經過授權、非惡意，若標成真陽性會虛增真實攻擊數量並污染事件統計。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/manage-incidents",
+    "tags": []
+  },
+  {
+    "id": "D2-0004",
+    "domain": "D2",
+    "topic": "incident-classification",
+    "unit": "P1-W3-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Each morning the queue of your SOC fills with the same benign alert, which a scheduled IT management script triggers on 300 devices. Analysts waste time closing the same alert every day. You must prevent these alerts from filling the queue in the future while keeping a record that you can review later. What should you do?",
+    "stem_zh": "你的 SOC 佇列每天早上都被同一種良性警示塞爆——來源是一支排程執行的 IT 管理指令碼，在 300 台裝置上觸發。分析師每天都在關掉同一種警示。你必須讓這類警示未來不再塞爆佇列，同時保留日後可回查的紀錄。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Classify each incident as Informational, expected activity and resolve them again every morning",
+        "text_zh": "每天早上照樣把每個事件分類為 Informational, expected activity 後解決"
+      },
+      {
+        "key": "B",
+        "text_en": "Create an alert tuning rule that automatically hides or resolves the alerts that match the conditions",
+        "text_zh": "建立警示調整（alert tuning）規則，讓符合條件的警示自動隱藏或標記解決"
+      },
+      {
+        "key": "C",
+        "text_en": "Merge the incidents into one parent incident every morning",
+        "text_zh": "每天早上把這些事件合併成一個主事件"
+      },
+      {
+        "key": "D",
+        "text_en": "Add a tag to the incidents and create a Microsoft Sentinel automation rule that assigns them to a tier-1 analyst",
+        "text_zh": "為這些事件加標籤，並建立 Microsoft Sentinel 自動化規則把它們指派給 tier-1 分析師"
       }
     ],
     "answer": [
       "B"
     ],
-    "explanation_zh": "分類的判斷公式只有一句：「那件事真的發生了嗎？」滲透測試的活動確實發生了、偵測也完全正確，只是它是預期中且無害的內部活動，因此正確分類是 informational, expected activity，判定選「安全性測試」（同層級的判定還有確認的活動、企業營運（LOB）應用程式、其他）。這樣填，報表才不會把偵測記成失誤，也不會誤導後續的偵測調校。",
+    "explanation_zh": "分類（classification）處理的是「已經發生的這一件」，警示調整（alert tuning）處理的是「未來所有同型警示」。針對已知良性的內部工具，建立警示調整規則（依偵測名稱、實體、檔案路徑等條件）讓符合的警示自動隱藏或標為解決，才是治本作法；規則仍留有設定與命中紀錄可回查，需要時可停用規則恢復顯示。",
     "why_wrong_zh": {
-      "A": "false positive 代表「偵測認錯了、那件事根本不是它說的那回事」。本題偵測完全正確，標成誤判會讓誤判率失真，也可能誤導調校方向。",
-      "C": "true positive 用於確實的惡意活動。授權的紅隊演練不是惡意攻擊，標成真陽性會虛增真實攻擊統計並可能觸發不必要的事故程序。",
-      "D": "警示調整（alert tuning）規則管的是「未來的同型警示」，且維持未設定會讓事件無法正確結案；本題要的是替這一起已發生的事件填上正確分類。"
-    },
-    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/manage-incidents",
-    "tags": [
-      "classification",
-      "determination"
-    ]
-  },
-  {
-    "id": "D2-0003",
-    "domain": "D2",
-    "topic": "incident-triage",
-    "unit": "P1-W3-2",
-    "set": "A",
-    "difficulty": 2,
-    "type": "single",
-    "stem_en": "You are a security operations analyst. A scheduled administrative script on one backup server triggers the same benign alert every night, and the resulting incidents flood the queue each morning. You must stop the noise while keeping the same detection active for all other devices. What should you do?",
-    "stem_zh": "你是安全性作業分析師。某台備份伺服器上的排程管理指令碼每晚都會觸發同一則良性警示，產生的事件每天早上塞爆佇列。你必須止住噪音，同時讓相同偵測在其他所有裝置上維持作用。應該怎麼做？",
-    "options": [
-      {
-        "key": "A",
-        "text_en": "Classify each new incident as a false positive as it arrives.",
-        "text_zh": "每天把新產生的事件逐一分類為誤判。"
-      },
-      {
-        "key": "B",
-        "text_en": "Set the incidents to Resolved without providing a classification.",
-        "text_zh": "把事件狀態改為已解決，不填分類。"
-      },
-      {
-        "key": "C",
-        "text_en": "Create an alert-tuning rule in Microsoft Defender XDR settings that is scoped to that alert and that server.",
-        "text_zh": "在 Microsoft Defender XDR 設定中建立警示調整規則，範圍限定該則警示與該台伺服器。"
-      },
-      {
-        "key": "D",
-        "text_en": "Add a custom tag to the incidents and filter the tag out of the queue view.",
-        "text_zh": "替這些事件加上自訂標籤，並在佇列檢視中把該標籤篩掉。"
-      }
-    ],
-    "answer": [
-      "C"
-    ],
-    "explanation_zh": "警示調整（alert tuning，早期稱為警示抑制）就是為這種已知良性噪音設計的：以警示名稱、裝置或使用者等條件建立規則，讓符合條件的警示自動被隱藏或標為誤判，而相同偵測邏輯在其他裝置上照常運作。分界要記牢：分類處理的是「已經發生的這一件」，警示調整處理的是「未來還會再發生的同型警示」。題幹只要出現「避免同樣的良性警示反覆塞爆佇列」，答案就是建立調整規則。",
-    "why_wrong_zh": {
-      "A": "逐一分類只是收拾昨天的殘局，明天還是會再產生一批事件，無法降低分析師的重複工作量。",
-      "B": "不填分類就結案會讓誤判率、真陽性比例等指標失真，也留不下調校依據；而且同樣阻止不了新事件產生。",
-      "D": "標籤只是視覺與自動化用的標記，篩掉標籤僅改變個人檢視，事件仍會持續產生，其他分析師的佇列照樣被塞爆。"
+      "A": "分類只結掉今天這批，明天同樣的警示還是會進佇列，人力成本沒有下降，也不符合「未來不再塞爆佇列」的要求。",
+      "C": "合併是把「同一起攻擊」被拆開的多個事件收成一件，用在重複的良性警示上並不會阻止新事件產生，而且入口網站沒有拆分事件的動作，誤併風險高。",
+      "D": "標籤與自動化規則只是改變事件流向（誰被指派、跑什麼劇本），警示照樣產生、佇列照樣變長，只是把負擔換個人扛。"
     },
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/investigate-alerts",
-    "tags": [
-      "alert-tuning",
-      "queue-management"
-    ]
+    "tags": []
   },
   {
-    "id": "D2-0004",
+    "id": "D2-0005",
     "domain": "D2",
     "topic": "incident-triage",
     "unit": "P1-W3-2",
     "set": "A",
     "difficulty": 3,
     "type": "single",
-    "stem_en": "You are a tier-1 security operations analyst starting your shift. Four incidents are waiting in the Microsoft Defender XDR queue. Which incident should you investigate first?",
-    "stem_zh": "你是 tier-1 安全性作業分析師，剛開始輪班，Microsoft Defender XDR 佇列中有四個待處理事件。應該先調查哪一個？",
+    "stem_en": "Triage is complete on an incident you own: a delivered phishing message led to credential access on a finance server, a Go hunt query confirms that 43 mailboxes received the same message, and the affected account is privileged. The runbook of your SOC states that device isolation and account disablement are tier-2 actions only. Which combination of actions should you take next?",
+    "stem_zh": "你負責的事件已完成分診：一封成功遞送的釣魚郵件導致財務伺服器上發生憑證存取，Go hunt 查詢確認同一封信寄達 43 個信箱，受影響帳戶又是特權帳號。你們 SOC 的作業手冊規定，裝置隔離與停用帳戶只能由 tier-2 執行。接下來你應該採取哪一組動作？",
     "options": [
       {
         "key": "A",
-        "text_en": "An incident containing 40 informational alerts from a single detection source on an isolated lab virtual machine.",
-        "text_zh": "某個事件含 40 則資訊性警示，全部來自單一偵測來源，資產是一台隔離的實驗室虛擬機器。"
+        "text_en": "Isolate the device, reset the password of the user, and then resolve the incident as a true positive",
+        "text_zh": "自行隔離裝置、重設該使用者密碼，然後把事件解決為真陽性"
       },
       {
         "key": "B",
-        "text_en": "The most recently created incident: a medium-severity impossible-travel alert for a contractor account.",
-        "text_zh": "最新建立的事件：一名約聘人員帳號的中嚴重性「不可能的旅行」警示。"
+        "text_en": "Record your findings on the incident, add an escalation tag, reassign the incident to tier 2, and keep the status as In progress",
+        "text_zh": "在事件上記錄你的發現、加上升級標籤、把事件重新指派給 tier 2，並把狀態維持在「進行中」"
       },
       {
         "key": "C",
-        "text_en": "A high-severity incident that automatic attack disruption already contained by disabling the affected account, now awaiting verification.",
-        "text_zh": "某個高嚴重性事件，自動攻擊中斷已停用受影響帳號完成處置，目前待驗證。"
+        "text_en": "Resolve the incident as True positive with the determination Phishing so that tier 2 can reopen it later",
+        "text_zh": "把事件解決為 True positive、判定為網路釣魚，讓 tier 2 之後再重新開啟"
       },
       {
         "key": "D",
-        "text_en": "A high-severity incident with alerts from Defender for Endpoint, Defender for Identity, and Microsoft Entra ID Protection showing credential access and lateral movement toward a domain controller.",
-        "text_zh": "某個高嚴重性事件，警示同時來自 Defender for Endpoint、Defender for Identity 與 Microsoft Entra ID Protection，顯示憑證存取並朝網域控制站橫向移動。"
+        "text_en": "Leave the incident unassigned with the status Active and email the tier-2 distribution list",
+        "text_zh": "讓事件維持未指派、狀態「作用中」，改用電子郵件通知 tier-2 群組信箱"
       }
     ],
     "answer": [
-      "D"
+      "B"
     ],
-    "explanation_zh": "優先排序要綜合四個因素：攻擊階段、資產與帳號重要性、訊號多樣性、影響廣度。選項 D 同時滿足三項最強訊號——已推進到憑證存取與橫向移動（攻擊者正在環境內前進）、目標是網域控制站（關鍵資產）、且警示來自三個不同服務來源（多重服務來源幾乎等於真攻擊而非單點雜訊），因此必須最先處理。",
+    "explanation_zh": "本題同時命中多條升級判準：已出現憑證存取戰術、涉及特權帳號與財務系統、影響超過單一使用者，且所需回應動作超出 tier-1 權限。正確作法是把調查結果寫進事件、貼上可篩選的升級標籤、把擁有者改成 tier-2，並把狀態維持在「進行中」——升級是交棒，不是結案；狀態留在進行中，SLA 與擁有權才追得下去，也避免事件掉出佇列。",
     "why_wrong_zh": {
-      "A": "警示數量多不代表風險高，40 則資訊性警示來自單一來源、資產又是隔離的實驗室機器，典型的環境雜訊，應留待批次收斂。",
-      "B": "「最新」不是優先度指標。中嚴重性的不可能旅行警示值得查，但攻擊階段與資產重要性都不及 D，應排在後面。",
-      "C": "自動攻擊中斷已切斷攻擊路徑、帳號也已停用，該事件的剩餘工作是驗證與清理，風險已被壓下，不需插隊在仍在進行中的攻擊之前。"
-    },
-    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/incident-queue",
-    "tags": [
-      "prioritization",
-      "triage"
-    ]
-  },
-  {
-    "id": "D2-0005",
-    "domain": "D2",
-    "topic": "alert-correlation",
-    "unit": "P1-W3-2",
-    "set": "A",
-    "difficulty": 2,
-    "type": "single",
-    "stem_en": "You are a security operations analyst investigating two separate incidents in the Microsoft Defender portal. Your analysis confirms that both incidents involve the same threat actor, the same malicious file hash, and the same compromised user account, and that they are part of a single attack. You must ensure the attack is tracked as one investigation with a single owner. What should you do?",
-    "stem_zh": "你是安全性作業分析師，正在 Microsoft Defender 入口網站調查兩個各自獨立的事件。分析確認兩者涉及相同的攻擊者、相同的惡意檔案雜湊與相同的遭入侵使用者帳號，屬於同一起攻擊。你必須讓這起攻擊以單一調查、單一擁有者的方式追蹤。應該怎麼做？",
-    "options": [
-      {
-        "key": "A",
-        "text_en": "Select both incidents in the incident queue and merge them into a single incident.",
-        "text_zh": "在事件佇列中選取兩個事件，將它們合併為單一事件。"
-      },
-      {
-        "key": "B",
-        "text_en": "Resolve one incident as a false positive and continue the investigation in the other one.",
-        "text_zh": "把其中一個事件分類為誤判並解決，在另一個事件中繼續調查。"
-      },
-      {
-        "key": "C",
-        "text_en": "Apply the same custom tag to both incidents and continue working them separately.",
-        "text_zh": "替兩個事件加上相同的自訂標籤，然後各自分別處理。"
-      },
-      {
-        "key": "D",
-        "text_en": "Run Go hunt on the shared file hash so that the two incidents are correlated automatically.",
-        "text_zh": "對共用的檔案雜湊執行 Go hunt，讓兩個事件自動被關聯起來。"
-      }
-    ],
-    "answer": [
-      "A"
-    ],
-    "explanation_zh": "關聯引擎不是萬能的，同一波攻擊可能因為時間間隔太長或實體沒接上而被拆成兩個事件。此時的正確動作是在佇列中勾選這些事件執行「合併」：合併後成為單一事件，被併入者轉為已解決並指向主事件，攻擊故事、警示與資產也集中在一處，符合「單一調查、單一擁有者」的要求。注意入口並未提供拆分事件的動作，因此合併前務必確認確實屬於同一起攻擊。",
-    "why_wrong_zh": {
-      "B": "該事件是真實攻擊的一部分，標為誤判會讓統計與調校依據失真，也會把該事件內的證據與警示從調查視野中移除。",
-      "C": "標籤只是分群與自動化用的標記，兩個事件仍各自獨立、可各有擁有者與狀態，達不到「以單一調查追蹤」的要求。",
-      "D": "Go hunt 是把某個實體帶進進階搜捕、擴大調查範圍的動作，用來確認擴散情形，它不會合併事件，也不會改變事件的關聯結果。"
+      "A": "裝置隔離與帳戶處置超出 tier-1 被授權的範圍，違反最小權限原則與作業手冊；而且攻擊尚未確認清除完畢就結案，等於提早關掉追蹤。",
+      "C": "把仍在進行中的攻擊標成已解決，會讓事件離開作用中佇列、SLA 計時中止，指標也會失真；分類與判定應在回應完成、確認清除後才填。",
+      "D": "事件留在未指派、作用中狀態，會被別的分析師重複認領造成重工；交接資訊寫在信裡而不寫在事件上，稽核軌跡與後續調查都接不上。"
     },
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/manage-incidents",
-    "tags": [
-      "incident",
-      "merge"
-    ]
+    "tags": []
   },
   {
     "id": "D2-0006",
@@ -242,38 +227,38 @@
     "set": "A",
     "difficulty": 1,
     "type": "single",
-    "stem_en": "You are a security operations analyst. From the Microsoft Defender portal, you apply full isolation to a compromised Windows 11 device. Which statement describes the connectivity of the device after the action completes?",
-    "stem_zh": "你是安全性作業分析師。你在 Microsoft Defender 入口網站對一台遭入侵的 Windows 11 裝置套用完全隔離（full isolation）。動作完成後，該裝置的連線狀態為何？",
+    "stem_en": "You are a security operations analyst. Malware is confirmed on the Windows 11 laptop of a remote employee. You must stop the laptop from reaching other network resources, but the service desk must still be able to contact the employee through Microsoft Teams and Outlook while you investigate. Which response action in Microsoft Defender for Endpoint should you use?",
+    "stem_zh": "你是安全性作業分析師。一名遠端員工的 Windows 11 筆電已確認感染惡意程式。你必須阻止這台筆電存取其他網路資源，但在調查期間服務台仍必須能透過 Microsoft Teams 與 Outlook 聯絡到該員工。你應該使用 Microsoft Defender for Endpoint 的哪一個回應動作？",
     "options": [
       {
         "key": "A",
-        "text_en": "The device is cut off from the network but keeps its connection to the Defender for Endpoint service, so investigation can continue.",
-        "text_zh": "裝置與網路斷開，但保留與 Defender for Endpoint 服務的連線，因此仍可繼續調查。"
+        "text_en": "Isolate the device by using full isolation",
+        "text_zh": "以完全隔離（full isolation）隔離裝置"
       },
       {
         "key": "B",
-        "text_en": "All connectivity is severed, including the connection to the Defender for Endpoint service.",
-        "text_zh": "所有連線都被切斷，包含與 Defender for Endpoint 服務的連線。"
+        "text_en": "Isolate the device by using selective isolation",
+        "text_zh": "以選擇性隔離（selective isolation）隔離裝置"
       },
       {
         "key": "C",
-        "text_en": "Only a limited set of applications is blocked, while Outlook, Microsoft Teams, and Skype for Business keep working.",
-        "text_zh": "只有一組有限的應用程式被封鎖，Outlook、Microsoft Teams 與 Skype for Business 仍可正常運作。"
+        "text_en": "Restrict app execution on the device",
+        "text_zh": "對裝置套用限制應用程式執行（restrict app execution）"
       },
       {
         "key": "D",
-        "text_en": "Network connectivity is preserved, but only files signed by a Microsoft-issued certificate are allowed to run.",
-        "text_zh": "網路連線保留，但只有由 Microsoft 簽發憑證簽章的檔案才允許執行。"
+        "text_en": "Contain the device from the neighbouring onboarded devices",
+        "text_zh": "由周邊已上線的裝置對它執行 contain device（圍堵裝置）"
       }
     ],
     "answer": [
-      "A"
+      "B"
     ],
-    "explanation_zh": "MDE 的完全隔離會切斷裝置對外的網路通訊，但「刻意」保留裝置與 Defender for Endpoint 雲端服務的通道，因此隔離後你仍能收集調查套件、開啟即時回應（Live Response）工作階段、執行防毒掃描。這正是考試「先隔離還是先取證」排序題的關鍵理由：先遏制不會犧牲取證能力。動作本身可逆，調查完成後從裝置頁解除隔離即可。",
+    "explanation_zh": "選擇性隔離只封鎖一組應用程式的對外網路存取，刻意保留 Outlook、Teams 與 Skype for Business，正好符合「要遏制、又不能讓使用者完全失聯」的需求（僅較新版 Windows 用戶端支援）。無論完全或選擇性隔離，裝置與 Defender 雲端服務的通道都會保留，所以隔離後仍可繼續調查、收集調查套件或開啟即時回應（Live Response）。",
     "why_wrong_zh": {
-      "B": "若連 Defender 服務通道都切斷，分析師將無法遠端調查與解除隔離，這是拔網路線或關機造成的效果，不是 MDE 隔離的行為。",
-      "C": "這是選擇性隔離（selective isolation）的行為，只封鎖有限的一組應用程式對外連線並刻意保留 Outlook／Teams／Skype for Business，不是完全隔離。",
-      "D": "這是 restrict app execution（限制應用程式執行）的效果，它套用程式碼完整性原則限制可執行的檔案，網路仍然暢通。"
+      "A": "完全隔離會切斷除了 Defender 通道以外的所有網路連線，Teams 與 Outlook 都不通，服務台無法聯絡使用者，不符合題目要求。",
+      "C": "限制應用程式執行套用的是程式碼完整性原則，只允許 Microsoft 簽章的檔案執行，網路照樣暢通——它擋的是「執行權」而不是「連線」，達不到阻止裝置存取其他資源的目的。",
+      "D": "contain device 是給「探索到但未上線、裝不了代理程式」的裝置用的：命令已上線裝置拒絕與它通訊。本題筆電已上線，可以直接下隔離動作。"
     },
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/respond-machine-alerts",
     "tags": []
@@ -281,133 +266,133 @@
   {
     "id": "D2-0007",
     "domain": "D2",
-    "topic": "device-response",
-    "unit": "P1-W3-3",
-    "set": "A",
-    "difficulty": 2,
-    "type": "single",
-    "stem_en": "You are a security operations analyst. An alert indicates that an unknown unsigned binary is executing on a Windows server that controls a manufacturing line. Operations state that the server must not lose network connectivity, but the unknown binary must be prevented from running. Which response action should you take?",
-    "stem_zh": "你是安全性作業分析師。一則警示顯示某台控制生產線的 Windows 伺服器上正在執行不明的未簽章二進位檔。營運單位表示該伺服器不得中斷網路連線，但必須阻止該不明程式執行。你應採取哪一個回應動作？",
-    "options": [
-      {
-        "key": "A",
-        "text_en": "Isolate the device by using full isolation.",
-        "text_zh": "對該裝置執行完全隔離（full isolation）。"
-      },
-      {
-        "key": "B",
-        "text_en": "Restrict app execution on the device.",
-        "text_zh": "對該裝置執行限制應用程式執行（restrict app execution）。"
-      },
-      {
-        "key": "C",
-        "text_en": "Collect an investigation package from the device.",
-        "text_zh": "從該裝置收集調查套件（investigation package）。"
-      },
-      {
-        "key": "D",
-        "text_en": "Run a full antivirus scan on the device.",
-        "text_zh": "對該裝置執行完整防毒掃描。"
-      }
-    ],
-    "answer": [
-      "B"
-    ],
-    "explanation_zh": "restrict app execution 會對裝置套用程式碼完整性原則，只允許由 Microsoft 簽發憑證簽章的檔案執行，未簽章或攻擊者投放的二進位檔會被擋下，而「網路連線完全不受影響」。題幹同時給了「不能斷網」與「要擋執行」兩個條件，只有這個動作同時滿足。此動作僅適用 Windows，且可逆（remove app restriction）。",
-    "why_wrong_zh": {
-      "A": "完全隔離會切斷裝置對外的所有網路連線，直接違反題幹「不得中斷網路連線」的限制條件。",
-      "C": "收集調查套件是唯讀的取證動作，只把鑑識資料打包供下載，完全不會阻止任何程式繼續執行。",
-      "D": "防毒掃描只能清除被特徵或雲端判定為惡意的項目；對尚未有判定的不明二進位檔，掃描不保證能阻止它執行。"
-    },
-    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/respond-machine-alerts",
-    "tags": []
-  },
-  {
-    "id": "D2-0008",
-    "domain": "D2",
     "topic": "live-response",
     "unit": "P1-W3-3",
     "set": "A",
     "difficulty": 2,
     "type": "single",
-    "stem_en": "You are a security operations analyst. You can start a live response session on an onboarded device and successfully run the dir and processes commands, but the run command fails when you try to execute your own PowerShell collection script. You must be able to execute the script during live response sessions. What should you do?",
-    "stem_zh": "你是安全性作業分析師。你可以對一台已上線的裝置啟動即時回應（Live Response）工作階段，並成功執行 dir 與 processes 命令，但要以 run 命令執行自己的 PowerShell 蒐證指令碼時卻失敗。你必須能在即時回應工作階段中執行該指令碼。你應該怎麼做？",
+    "stem_en": "During an investigation you open a live response session on a compromised device. The session connects and the processes and getfile commands work, but you cannot execute your own unsigned PowerShell collection script. You must be able to run that script on the device during this investigation. What should you request?",
+    "stem_zh": "調查期間你在受害裝置上開啟即時回應（Live Response）工作階段。工作階段順利連上，processes 與 getfile 命令也能用，但你無法執行自己撰寫、未簽章的 PowerShell 蒐證指令碼。你必須能在這次調查中於該裝置上執行這支指令碼。你應該要求什麼？",
     "options": [
       {
         "key": "A",
-        "text_en": "Enable EDR in block mode in the advanced features settings.",
-        "text_zh": "在進階功能設定中啟用 EDR in block mode。"
+        "text_en": "Unrestricted (advanced) live response permissions for your role, the Live response unsigned script execution advanced feature turned on, and the script uploaded to the live response library",
+        "text_zh": "為你的角色授予進階（unrestricted）即時回應權限、開啟「Live response unsigned script execution」進階功能，並把指令碼上傳到 live response library"
       },
       {
         "key": "B",
-        "text_en": "Assign the live response basic commands permission to your account.",
-        "text_zh": "為你的帳戶指派即時回應「基本命令」權限。"
+        "text_en": "The Live response for servers advanced feature turned on for the tenant",
+        "text_zh": "為租用戶開啟「Live response for servers」進階功能"
       },
       {
         "key": "C",
-        "text_en": "Grant the unrestricted (advanced) live response permission and upload the script to the live response library.",
-        "text_zh": "取得不受限制（unrestricted，進階命令）的即時回應權限，並將指令碼上傳到即時回應 library。"
+        "text_en": "A collect investigation package action on the device so that you can analyse the output offline",
+        "text_zh": "改對裝置執行收集調查套件（collect investigation package），把輸出帶回離線分析"
       },
       {
         "key": "D",
-        "text_en": "Isolate the device first, then retry the run command.",
-        "text_zh": "先對裝置執行隔離，再重試 run 命令。"
+        "text_en": "The active remediation actions permission that is required to isolate devices",
+        "text_zh": "取得執行裝置隔離所需的「主動修復動作」權限"
       }
     ],
     "answer": [
-      "C"
+      "A"
     ],
-    "explanation_zh": "dir 與 processes 屬於「基本命令」，能執行它們代表工作階段與基本權限都正常；run、putfile、remediate、library、undo 則屬於「進階（unrestricted）命令」，需要更高的權限層級。此外 run 只能執行已上傳到 live response library 的檔案，不能直接貼上一段程式碼；若指令碼未簽章，還必須開啟進階功能中的「live response unsigned script execution」。因此正確做法是同時補齊權限與 library 上傳。",
+    "explanation_zh": "即時回應命令分兩級：唯讀類（cd、dir、fileinfo、processes、connections、registry、getfile 等）屬基本（basic），會改變裝置或把東西放進裝置的（putfile、run、remediate、undo、library、analyze）屬進階（unrestricted）。指令碼跑不動的三層檢查正好對應本題：缺進階權限、未簽章指令碼需要開啟 Live response unsigned script execution、以及 run 只能執行 library 內的檔案，所以指令碼必須先上傳。",
     "why_wrong_zh": {
-      "A": "EDR in block mode 是讓第三方防毒當家時 EDR 仍能攔截惡意行為的開關，與即時回應的命令權限無關。",
-      "B": "分析師已經能執行 dir 與 processes，代表基本命令權限已具備；缺的是執行 run 所需的進階（unrestricted）權限。",
-      "D": "隔離與能否執行即時回應命令無關——裝置在隔離狀態下仍保留 Defender 服務通道，本來就能開啟工作階段與下命令。"
+      "B": "Live response for servers 決定的是「能不能對伺服器開工作階段」。本題工作階段已經成功建立，問題出在命令層級的權限與指令碼來源，不是伺服器開關。",
+      "C": "調查套件是一次性打包 autoruns、處理程序、網路連線、排程工作與事件記錄檔的唯讀鑑識快照，無法執行你的自訂邏輯，也不能在裝置上互動蒐證。",
+      "D": "主動修復動作權限管的是隔離、限制執行、防毒掃描這類裝置動作，與即時回應的基本／進階命令權限是不同的權限項目，給了也不會讓 run 可用。"
     },
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/live-response",
     "tags": []
   },
   {
-    "id": "D2-0009",
+    "id": "D2-0008",
     "domain": "D2",
     "topic": "air",
     "unit": "P1-W3-3",
     "set": "A",
-    "difficulty": 3,
+    "difficulty": 2,
     "type": "single",
-    "stem_en": "You are a security operations analyst. Workstations are in a device group set to full automation and threats on them are remediated automatically. Domain controllers are in a separate device group whose automation level requires approval for any remediation. Automated investigations on two domain controllers have finished, but the malicious files are still present. You must remove the files now while keeping the approval requirement for domain controllers. What should you do?",
-    "stem_zh": "你是安全性作業分析師。工作站所在的裝置群組設為完全自動化，威脅都會自動修復；網域控制站則位於另一個裝置群組，其自動化層級設定為「任何修復都需要核准」。兩台網域控制站上的自動調查已經完成，惡意檔案卻仍然存在。你必須立刻移除這些檔案，同時保留網域控制站的核准要求。你應該怎麼做？",
+    "stem_en": "An automated investigation that was triggered by a malware alert has been in the Pending approval state for two hours, and the malicious file is still present on the device. You must complete the remediation with the least delay and keep an audit trail of who authorized it. What should you do FIRST?",
+    "stem_zh": "由惡意程式碼警示觸發的自動調查已經停在「Pending approval（待核准）」狀態兩小時，惡意檔案仍留在裝置上。你必須以最短的延遲完成修復，並保留是誰核准的稽核軌跡。你應該「最先」做什麼？",
     "options": [
       {
         "key": "A",
-        "text_en": "Change the automation level of the domain controller device group to full automation.",
-        "text_zh": "把網域控制站裝置群組的自動化層級改為完全自動化。"
+        "text_en": "Set the automation level of the device group to No automated response and remediate the file manually",
+        "text_zh": "把該裝置群組的自動化層級改為 No automated response，改以人工修復該檔案"
       },
       {
         "key": "B",
-        "text_en": "Turn off automated investigation and response for the domain controllers and remediate them manually later.",
-        "text_zh": "對網域控制站關閉自動調查與修復，之後再以手動方式修復。"
+        "text_en": "Start another automated investigation from the device page",
+        "text_zh": "從裝置頁再啟動一次自動調查"
       },
       {
         "key": "C",
-        "text_en": "Create a block-and-remediate file indicator for the file hashes.",
-        "text_zh": "為這些檔案雜湊建立 Block and remediate 檔案指標。"
+        "text_en": "Open the Action center, review the pending remediation actions, and approve them",
+        "text_zh": "開啟 Action center，檢視待核准的修復動作並核准它們"
       },
       {
         "key": "D",
-        "text_en": "Approve the pending remediation actions in the Action center.",
-        "text_zh": "在 Action center 的待核准動作中核准這些修復動作。"
+        "text_en": "Use the History tab of the Action center to undo the actions of the investigation",
+        "text_zh": "使用 Action center 的歷史紀錄（History）索引標籤復原（undo）該調查的動作"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "「Pending approval」代表裝置群組的自動化層級是 semi，自動調查已經完成判定、也備好修復動作，只是卡在等人核准。最快的路徑是到 Action center 的待核准清單檢視並核准；Action center 會記錄誰在何時核准了哪個動作，同時滿足稽核需求，而且事後若判定有誤還能從歷史紀錄 undo。若這類延遲常態化，再考慮把該群組調成 full。",
+    "why_wrong_zh": {
+      "A": "No automated response 會讓自動調查完全不啟動，等於連現成的判定與修復建議都放棄，只會讓後續每一次事件都更慢，不是「最短延遲」的作法。",
+      "B": "再跑一次調查同樣會停在待核准，因為卡住的原因是自動化層級需要核准，不是調查失敗；重跑只是浪費時間。",
+      "D": "undo 用於復原「已經執行完」的動作（例如解除隔離、從隔離區還原檔案）。這裡動作根本還沒執行，沒有東西可以復原。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/m365d-action-center",
+    "tags": []
+  },
+  {
+    "id": "D2-0009",
+    "domain": "D2",
+    "topic": "device-response",
+    "unit": "P1-W3-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A production line controller that runs Windows Server generates alerts for an unknown binary. The operations team states that the server must keep its network connections to the line equipment, because losing them halts manufacturing. You must stop the unknown binary from running while you preserve volatile evidence. What should you do?",
+    "stem_zh": "一台執行 Windows Server 的產線控制器針對一個不明二進位檔產生警示。維運團隊表示這台伺服器必須保持與產線設備的網路連線，一旦中斷就會停產。你必須在保留揮發性證據的前提下，阻止這個不明二進位檔繼續執行。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Isolate the server by using full isolation, then collect an investigation package",
+        "text_zh": "先以完全隔離隔離該伺服器，再收集調查套件"
+      },
+      {
+        "key": "B",
+        "text_en": "Isolate the server by using selective isolation so that Outlook and Teams keep working",
+        "text_zh": "以選擇性隔離隔離該伺服器，讓 Outlook 與 Teams 仍可運作"
+      },
+      {
+        "key": "C",
+        "text_en": "Run a full antivirus scan and wait for the result before taking any other action",
+        "text_zh": "先執行完整防毒掃描，等結果出來再決定其他動作"
+      },
+      {
+        "key": "D",
+        "text_en": "Restrict app execution on the server, then collect an investigation package",
+        "text_zh": "對該伺服器套用限制應用程式執行，再收集調查套件"
       }
     ],
     "answer": [
       "D"
     ],
-    "explanation_zh": "semi 自動化層級的意思是：AIR 照樣完成調查並產生修復動作，但動作會停在 「Action center 的待核准（pending）區」等待人工批准。題幹要「立刻移除且保留核准要求」，唯一同時滿足的做法就是進 Action center 核准這些待核准動作。核准後動作立即執行，且仍留在歷史紀錄中可供稽核與 undo。",
+    "explanation_zh": "一般情況下順序是「先隔離再取證」，因為 MDE 的隔離保留了與 Defender 服務的通道，取證能力不受影響。但題幹明說「網路服務不能中斷」，此時最佳解是限制應用程式執行：它套用程式碼完整性原則，只允許 Microsoft 簽發憑證簽章的檔案執行，擋掉不明二進位檔卻不動網路，再立刻收集調查套件保存 autoruns、處理程序、網路連線與事件記錄檔等揮發性證據。事後要解除也有對應的 Remove app restriction。",
     "why_wrong_zh": {
-      "A": "改成完全自動化確實會讓後續修復自動執行，但直接違反題幹「保留網域控制站的核准要求」這個限制條件。",
-      "B": "關閉自動調查會讓 AIR 連調查都不做，官方明確不建議；而且既有的待核准動作仍不會被執行，問題沒有解決。",
-      "C": "檔案指標是面向未來的持續性封鎖規則，雖然 Block and remediate 會影響後續遭遇，但它不是核准既有 AIR 待核准動作的正確途徑，也繞過了原本設計的核准流程。"
+      "A": "完全隔離會切斷除 Defender 通道外的所有連線，等於讓產線停擺，直接違反題目給的營運限制。",
+      "B": "選擇性隔離只是保留 Outlook／Teams／Skype for Business，與產線設備的通訊照樣被切斷；而且它僅限較新版 Windows 用戶端，伺服器不支援。",
+      "C": "只跑防毒掃描既不保證能立刻攔下未知的二進位檔（可能沒有對應偵測），等待期間程式仍在執行，遏制被延後，也沒有先保存揮發性證據。"
     },
-    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/m365d-action-center",
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/respond-machine-alerts",
     "tags": []
   },
   {
@@ -418,38 +403,38 @@
     "set": "A",
     "difficulty": 2,
     "type": "single",
-    "stem_en": "You are a security operations analyst investigating a device that is currently isolated. You must retrieve one specific suspicious executable from the device so that a malware analyst can detonate it in an external sandbox. You must not remove the file from the device yet. Which capability should you use?",
-    "stem_zh": "你是安全性作業分析師，正在調查一台目前處於隔離狀態的裝置。你必須從該裝置取回「一個」特定的可疑執行檔，讓惡意程式分析師在外部沙箱中引爆分析，而且暫時不能把檔案從裝置上移除。你應使用哪一項功能？",
+    "stem_en": "Your malware analysis team asks you to hand over the actual suspicious executable from an infected device so that they can detonate it in their own sandbox. The device is currently isolated, and the file must remain unchanged on the device for now. Which action retrieves the file for offline analysis?",
+    "stem_zh": "惡意程式分析小組要求你把受害裝置上那個可疑執行檔本體交給他們，讓他們在自家沙箱中引爆分析。該裝置目前處於隔離狀態，而且該檔案暫時必須原封不動留在裝置上。哪一個動作可以取回檔案供離線分析？",
     "options": [
       {
         "key": "A",
-        "text_en": "The getfile command in a live response session.",
-        "text_zh": "在即時回應（Live Response）工作階段中使用 getfile 命令。"
+        "text_en": "Start a live response session and use the getfile command",
+        "text_zh": "開啟即時回應工作階段，使用 getfile 命令"
       },
       {
         "key": "B",
-        "text_en": "Collect investigation package from the device page.",
-        "text_zh": "在裝置頁面執行收集調查套件（collect investigation package）。"
+        "text_en": "Run Collect investigation package on the device and download the ZIP package",
+        "text_zh": "對裝置執行收集調查套件，再下載該 ZIP 封裝"
       },
       {
         "key": "C",
-        "text_en": "Stop and quarantine file for the file hash.",
-        "text_zh": "對該檔案雜湊執行 stop and quarantine file。"
+        "text_en": "Run Stop and quarantine file on the file hash",
+        "text_zh": "針對該檔案雜湊執行 stop and quarantine file"
       },
       {
         "key": "D",
-        "text_en": "The putfile command in a live response session.",
-        "text_zh": "在即時回應工作階段中使用 putfile 命令。"
+        "text_en": "Create a Block and remediate file indicator for the SHA256 of the file",
+        "text_zh": "為該檔案的 SHA256 建立 Block and remediate 檔案指標"
       }
     ],
     "answer": [
       "A"
     ],
-    "explanation_zh": "getfile 是即時回應的「基本命令」，用途正是把裝置上的特定檔案取回供離線分析，而且不會改變裝置上的檔案狀態。裝置處於隔離狀態不影響操作——隔離保留了 Defender 服務通道，工作階段照樣能建立。記住這組對比：要「一個特定檔案」用 getfile，要「整台機器的鑑識快照」用調查套件。",
+    "explanation_zh": "getfile 是把裝置上的單一檔案取回供離線分析的取證主力命令，屬基本（basic）權限層級；而且裝置在隔離狀態下仍保有與 Defender 服務的通道，即時回應照常可用。高頻對比句型：「把可疑執行檔送沙箱分析」→ getfile；「保存整台機器的完整鑑識資料」→ collect investigation package。",
     "why_wrong_zh": {
-      "B": "調查套件是整台裝置的鑑識打包（autoruns、處理程序、網路連線、排程工作、事件記錄檔等），用來取得全機快照，不是取回單一指定檔案的工具。",
-      "C": "stop and quarantine file 會停止相關處理程序並把檔案隔離起來，違反題幹「暫時不能把檔案從裝置上移除」的條件，且它的目的是清除而非取證。",
-      "D": "putfile 的方向相反——它是把 live response library 中的檔案「放到」裝置上（例如下放蒐證工具），而且屬於進階命令。"
+      "B": "調查套件打包的是 autoruns、處理程序、網路連線與 DNS／ARP 快取、排程工作、服務、prefetch、安全性事件記錄檔等鑑識產物，不含你指定的那個惡意執行檔本體。",
+      "C": "stop and quarantine file 會停止處理程序並在租用戶範圍內把檔案移入隔離區，等於改變了裝置上的檔案狀態，違反「暫時原封不動」的要求，也不會把檔案交到分析小組手上。",
+      "D": "檔案指標是持續性的封鎖規則，讓同一個雜湊未來再出現就被擋下（Block and remediate 還會一併清除），屬於預防擴散的手段，不是取檔手段。"
     },
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/live-response",
     "tags": []

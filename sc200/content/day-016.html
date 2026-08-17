@@ -1,0 +1,127 @@
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">本日導讀：雲端工作負載也會發警示</h2>
+<p>前三天我們把端點、郵件、身分三條線的回應動作走完了，今天換第四個入口：<strong>Microsoft Defender for Cloud</strong>。這個產品有點分裂——一半在做「你的雲端組態有沒有漏洞」（CSPM，雲端安全態勢管理），一半在做「你的虛擬機、儲存體、資料庫現在有沒有被打」（CWPP，雲端工作負載保護）。SC-200 考的是 SOC 分析師，重心永遠落在後面那一半：<strong>警示怎麼查、怎麼回應、怎麼消誤報、怎麼流進 Defender XDR 與 Microsoft Sentinel</strong>。D2「回應安全性事件」占 35–40%，Defender for Cloud 幾乎必出情境題，而且很愛考「該用抑制規則、還是把方案關掉」這種取捨。今天把方案地圖、調查流程、回應工具與誤報治理一次收齊。</p>
+<div class="info-box">學習目標（對應官方考綱 D2「回應安全性事件」條目）：
+<ul>
+<li>☐ <strong>調查 Microsoft Defender for Cloud 的警示與事件</strong>（investigate alerts and incidents），讀懂警示詳細資料、嚴重性與 MITRE ATT&amp;CK 對應</li>
+<li>☐ 說明各<strong>雲端工作負載保護方案</strong>（Defender for Servers／Storage／SQL／Containers／App Service／Key Vault／Resource Manager／APIs）保護什麼、產生什麼警示</li>
+<li>☐ 對雲端資源<strong>執行回應動作</strong>：JIT VM 存取、資源隔離／停用、以<strong>工作流程自動化</strong>（workflow automation）串接 Logic Apps</li>
+<li>☐ 以<strong>警示抑制規則</strong>（alert suppression rules）管理誤報，並與豁免（exemption）、停用方案區分</li>
+<li>☐ 將 Defender for Cloud 警示<strong>連線至 Defender XDR 與 Microsoft Sentinel</strong>，並理解多雲（AWS／GCP）連接器的角色</li>
+</ul></div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP5 觀看重點指引</h2>
+<p>本單元對應官方影片 <strong>EP5「Mitigate threats using Microsoft Defender for Cloud」</strong>（字幕尚未到位，先提供觀看指引；字幕匯入後會回補含時間碼的伴讀整理）。這集橫跨態勢與工作負載兩半，請刻意把注意力調到「警示」那一側，帶著這五個問題看：</p>
+<ul>
+<li><strong>總覽儀表板</strong>：畫面同時有 secure score（安全分數）與 security alerts（安全性警示）兩塊，先分清楚哪一塊來自建議、哪一塊來自威脅偵測——這就是 CSPM 與 CWPP 的分界線。</li>
+<li><strong>方案開關頁</strong>：環境設定裡逐一列出的 Defender 方案（Servers、Storage、SQL、Containers…）。注意方案是<strong>按訂用帳戶啟用</strong>、計價單位各不相同，以及 Servers 有 Plan 1／Plan 2 兩種。</li>
+<li><strong>警示詳細資料頁</strong>：點進一則警示後看它顯示什麼——描述、嚴重性、受影響資源、活動時間、MITRE 戰術、相關實體，以及「採取動作」（Take action）分頁。</li>
+<li><strong>Take action 的四段式</strong>：檢查資源內容 → 降低威脅（手動處置步驟）→ 防止未來攻擊（相關建議）→ 觸發自動回應／抑制類似警示。這四段幾乎就是考題的選項來源。</li>
+<li><strong>JIT 與自動化</strong>：示範即時（just-in-time）VM 存取請求時，注意「要求了哪個連接埠、來源 IP、多久」；示範工作流程自動化時，注意觸發條件與後端接的是 Logic App。</li>
+</ul>
+
+<div class="eyebrow">03 — 🧭 兩個半邊</div>
+<h2 data-toc="態勢與負載">CSPM 與 CWPP：分析師該顧哪一半</h2>
+<p>Defender for Cloud 的功能可以乾淨地切成兩半，考試也是照這條線出題：</p>
+<ul>
+<li><strong>CSPM（雲端安全態勢管理）＝預防面</strong>。輸出物是<strong>建議（recommendations）</strong>與<strong>安全分數（secure score）</strong>、法規合規儀表板、攻擊路徑分析。基礎 CSPM 免費內建於所有 Azure 訂用帳戶；<strong>Defender CSPM</strong> 是付費強化版（攻擊路徑分析、資料感知態勢）。它回答的是「我哪裡沒關好」。</li>
+<li><strong>CWPP（雲端工作負載保護）＝偵測回應面</strong>。輸出物是<strong>安全性警示（security alerts）</strong>，由各個付費的 <strong>Defender 方案</strong>產生。它回答的是「我現在正在被打」。</li>
+</ul>
+<div class="point">💡 一句話分界：<strong>建議與分數＝CSPM，警示＝CWPP。</strong>安全分數是一個「加權後的百分比」，衡量你完成了多少項安全性建議，用來排修補優先順序——它<strong>不是</strong>威脅嚴重性指標，也不會因為出現一則高嚴重性警示而下降。SOC 分析師的日常在 CWPP 那一半，但要看得懂 secure score 是誰的 KPI。</div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>題幹關鍵字決定你走哪一半。</strong>看到「降低攻擊面」「提升法規合規狀態」「哪一台 VM 沒開磁碟加密」→ 建議／安全分數／豁免，屬 CSPM。看到「偵測到」「疑似」「正在」「該如何回應」→ 警示，屬 CWPP，答案往方案、警示調查、抑制規則、JIT、工作流程自動化走。<br>常見陷阱：選項寫「提高安全分數以解決這則警示」——分數與警示是兩條不同的管線，改善建議不會讓已產生的警示消失，這種選項一律刪掉。反過來也一樣：問「如何讓某台測試機不要一直出現在建議清單裡」，答案是<strong>豁免（exemption）</strong>，不是抑制規則。</p></div>
+
+<div class="eyebrow">04 — 🗺️ 方案地圖</div>
+<h2 data-toc="方案警示">Defender 方案 × 保護對象 × 典型警示</h2>
+<p>方案題的解法很機械：先認出題幹裡的<strong>資源類型</strong>，再對應到方案。下表把每個方案的保護對象與最具代表性的警示樣態整理起來，考前掃一遍就夠：</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>Defender 方案</th><th>保護對象</th><th>典型警示樣態</th></tr></thead>
+<tbody>
+<tr><td><strong>Defender for Servers Plan 1</strong></td><td>Azure／AWS／GCP／Arc 上的 Windows 與 Linux 伺服器；核心是<strong>整合 MDE</strong></td><td>端點式威脅：惡意軟體、可疑 PowerShell 命令列、憑證竊取工具執行</td></tr>
+<tr><td><strong>Defender for Servers Plan 2</strong></td><td>Plan 1 全部，再加<strong>JIT VM 存取、檔案完整性監控（FIM）、無代理程式弱點與惡意軟體掃描</strong></td><td>Plan 1 全部＋主機層異常：SSH 暴力破解成功、加密貨幣挖礦、敏感檔案遭竄改</td></tr>
+<tr><td><strong>Defender for Storage</strong></td><td>Blob／檔案／佇列儲存體帳戶；含<strong>上傳時惡意軟體掃描</strong>與敏感資料威脅偵測</td><td>上傳惡意檔案、自 Tor 離開節點存取、異常大量資料被下載外流</td></tr>
+<tr><td><strong>Defender for SQL</strong></td><td>Azure SQL Database、SQL 受控執行個體、機器上的 SQL Server</td><td>疑似 SQL 資料隱碼（SQL injection）、暴力破解登入、異常資料存取模式</td></tr>
+<tr><td><strong>Defender for Containers</strong></td><td>Kubernetes 叢集（AKS／EKS／GKE／Arc）的<strong>控制平面稽核記錄＋節點執行階段</strong>與影像弱點掃描</td><td>暴露在外的 Kubernetes 儀表板、建立特權容器、滲透測試工具、容器內挖礦</td></tr>
+<tr><td><strong>Defender for App Service</strong></td><td>App Service 上的 Web 應用程式與其基礎結構</td><td>Web 指紋探測、可疑 WordPress 佈景主題呼叫、託管釣魚內容、懸置 DNS 記錄</td></tr>
+<tr><td><strong>Defender for Key Vault</strong></td><td>金鑰、祕密與憑證的<strong>存取行為</strong></td><td>來自可疑 IP／Tor 的不尋常存取、異常的祕密列舉與大量查詢</td></tr>
+<tr><td><strong>Defender for Resource Manager</strong></td><td><strong>控制平面</strong>：透過 ARM／入口網站／CLI 發出的管理作業</td><td>雲端攻擊工具組（MicroBurst、PowerZure）、可疑的高風險執行作業</td></tr>
+<tr><td><strong>Defender for APIs</strong></td><td>發佈在 API Management 中的 API</td><td>API 流量異常暴增、可疑參數操弄、疑似敏感資料經由 API 外洩</td></tr>
+</tbody></table></div>
+<div class="point">💡 兩個最容易被混淆的方案：<strong>Resource Manager 管「誰對 Azure 下了什麼管理命令」（控制平面）</strong>，Servers 管「VM 裡面發生什麼事」（資料平面）。題幹說「有人用可疑工具列舉整個訂用帳戶的資源」→ Resource Manager；說「VM 上跑起了挖礦程序」→ Servers。另外，Key Vault 警示看的是<strong>存取行為異常</strong>，不是祕密本身外洩。</div>
+
+<div class="eyebrow">05 — 🔍 調查與回應</div>
+<h2 data-toc="調查回應">警示調查：從詳細資料到按下按鈕</h2>
+<p>一則警示點開後，你要在三十秒內抓到五件事：<strong>嚴重性</strong>（高／中／低／資訊，決定插隊順序）、<strong>受影響資源</strong>（哪個訂用帳戶下的哪台機器或儲存體帳戶）、<strong>MITRE ATT&amp;CK 戰術與技術對應</strong>（攻擊者走到哪一階段）、<strong>相關實體與證據</strong>（IP、帳戶、處理程序、檔案），以及<strong>相關警示的關聯</strong>——Defender for Cloud 會把時間相近、資源相關的多則警示<strong>關聯成一個安全性事件</strong>，這是判斷「單點誤報」還是「攻擊鏈」的關鍵。</p>
+<p>接著是 <strong>Take action（採取動作）</strong>分頁，它把回應選項排成四段，也就是考題的選項池：</p>
+<ul>
+<li><strong>檢查資源內容</strong>：跳到該資源的活動記錄，確認誰在什麼時間做了什麼。</li>
+<li><strong>降低威脅</strong>：警示自帶的手動處置步驟，例如停止可疑處理程序、輪替遭外洩的金鑰、<strong>停用或隔離受影響資源</strong>（收回網路安全性群組規則、停止 VM、撤銷儲存體帳戶金鑰、停用帳戶）。</li>
+<li><strong>防止未來攻擊</strong>：對應的安全性建議，把設定面補起來（這一段跨回 CSPM）。</li>
+<li><strong>觸發自動回應／抑制類似警示</strong>：接 Logic App，或建立抑制規則（下一節專講）。</li>
+</ul>
+<p><strong>JIT VM 存取（just-in-time VM access）</strong>是最常單獨出題的回應／預防工具，屬 <strong>Defender for Servers Plan 2</strong>：平時以拒絕規則把 RDP（3389）、SSH（22）、WinRM 等管理埠<strong>完全關閉</strong>；要維運時由使用者提出請求，指定<strong>連接埠、來源 IP 範圍與時間長度</strong>，核准後系統暫時開一條規則，時間到自動收回，全程留下稽核紀錄。它解的是「管理埠長期暴露在網際網路上被暴力破解」這個經典題型。</p>
+<p><strong>工作流程自動化（workflow automation）</strong>則是把回應變成反射動作：以<strong>警示產生、建議變更或法規合規狀態改變</strong>為觸發條件，套用篩選（例如只針對高嚴重性或特定警示名稱），後端呼叫 <strong>Logic Apps</strong> 執行動作——寄信、開工單、發 Teams 訊息、隔離資源。旁路則是<strong>連續匯出（continuous export）</strong>，把警示與建議持續送到 Log Analytics 工作區或事件中樞，供第三方 SIEM 取用。</p>
+<p>警示流入 Microsoft Sentinel 後會落在 <code>SecurityAlert</code> 資料表，用一段查詢就能看出「哪個方案在吵、吵哪個資源」：</p>
+<pre class="kql">SecurityAlert
+| where TimeGenerated &gt; ago(7d)
+| where ProviderName has "Azure Security Center" or ProductName has "Defender for Cloud"
+| extend Resource = tostring(parse_json(ExtendedProperties)["Resource"])
+| summarize Alerts = count(), Last = max(TimeGenerated)
+          by AlertName, AlertSeverity, Resource
+| order by Alerts desc</pre>
+<div class="kql-note">逐行解說：<strong>SecurityAlert</strong> 是 Sentinel 統一收納各產品警示的資料表，Defender for Cloud 的警示連進來後就落在這裡；<strong>ProviderName／ProductName</strong> 兩個欄位都要留意，Defender for Cloud 改過名，歷史資料可能仍寫著舊名 Azure Security Center，考題問「為何篩不到警示」時，欄位值不符是標準答案之一；<strong>ExtendedProperties</strong> 是 JSON 字串，要用 <code>parse_json</code> 展開才取得到受影響資源；<strong>summarize … by AlertName, AlertSeverity</strong> 依名稱與嚴重性彙總，排最前面、次數特別高的那幾筆，通常就是下一節要處理的<strong>誤報常客</strong>。</div>
+
+<div class="eyebrow">06 — 🔕 誤報治理</div>
+<h2 data-toc="抑制規則">抑制規則 vs 豁免 vs 關閉方案</h2>
+<p>雲端環境最耗損分析師的不是攻擊，是<strong>每天早上那三十則一樣的誤報</strong>——弱點掃描器每晚掃全網段、備份服務固定下載大量 Blob、DevOps 從固定 IP 連進管理埠。處理它們有三種手段，選錯就是扣分點：</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>手段</th><th>作用對象與效果</th><th>適用時機</th><th>代價／風險</th></tr></thead>
+<tbody>
+<tr><td><strong>抑制規則（suppression rule）</strong></td><td>針對<strong>安全性警示</strong>。警示仍會產生，但依規則自動<strong>關閉／解除（dismiss）</strong>，不進入作用中佇列。可設定範圍（管理群組／訂用帳戶）、條件（警示名稱、資源、實體、來源 IP 等）、<strong>到期日</strong>與啟用狀態，並可先模擬看會命中哪些既有警示。</td><td>已確認為誤報或已知良性活動的<strong>特定警示樣態</strong>，且只想關掉那一種，其他威脅偵測照常</td><td>條件寫太寬會把真實攻擊一起吃掉；沒設到期日就會永久生效，需定期複審</td></tr>
+<tr><td><strong>豁免（exemption）</strong></td><td>針對<strong>安全性建議／安全分數</strong>。把資源標記為「已豁免」或「已由第三方緩解」，該資源不再影響分數與合規狀態，屬 Defender CSPM 能力。</td><td>設定面的例外：測試資源、已有補償控制、業務上無法套用該建議</td><td>與偵測無關，<strong>不會</strong>讓任何警示消失；豁免過多會讓分數失真</td></tr>
+<tr><td><strong>關閉方案／停用特定偵測</strong></td><td>把某個 Defender 方案在訂用帳戶或資源層級關掉，該範圍<strong>完全失去威脅偵測</strong>，不再產生任何警示。</td><td>該資源類型確定不需保護、或成本考量下的取捨——極少是考題正解</td><td>把整片偵測能力關掉來解決一種誤報，是典型「殺雞用牛刀」陷阱選項</td></tr>
+</tbody></table></div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>「弱點掃描器每晚觸發大量警示」的最佳解。</strong>正解是<strong>建立抑制規則</strong>，範圍限定在該訂用帳戶、條件鎖定<strong>該警示名稱＋掃描器的來源 IP 或資源</strong>，並<strong>設定到期日</strong>以便重新評估。其他三種常見干擾項的死法要背：關閉 Defender for Servers 方案＝整個訂用帳戶失去偵測；把掃描器主機從 Defender for Endpoint 移除＝端點失去保護且與此警示無關；建立豁免＝那是給建議與安全分數用的，對警示無效。<br>另一個高頻變體問「抑制規則建好了，昨天那些舊警示怎麼辦」——抑制規則是<strong>對之後產生的警示生效</strong>，既有警示要手動關閉；建立時的模擬功能只是預覽會命中哪些，並不會回頭清掉它們。</p></div>
+
+<div class="eyebrow">07 — 🧪 整合與實戰</div>
+<h2 data-toc="整合實戰">警示流向 XDR 與 Sentinel：一次完整回應</h2>
+<p>Defender for Cloud 的警示不會只停在自己的入口網站，考試很愛問「分析師應該在哪裡看到它、怎麼接進來」：</p>
+<ul>
+<li><strong>流向 Defender XDR</strong>：啟用整合後，Defender for Cloud 的警示會進入 <strong>Defender 入口網站的事件佇列</strong>，與端點、身分、郵件、雲端應用的警示<strong>關聯成同一個事件</strong>。這正是它的價值——VM 上的挖礦警示可以和該伺服器管理員帳戶的可疑登入自動串起來，形成完整攻擊鏈。</li>
+<li><strong>流向 Microsoft Sentinel</strong>：透過<strong>資料連接器</strong>把警示送進工作區的 <code>SecurityAlert</code> 資料表。現在建議走<strong>租用戶層級的 Defender XDR 連接器</strong>一次帶入全部；訂用帳戶層級的 Defender for Cloud 連接器則是較舊、以訂用帳戶為單位的路徑，並可設定雙向同步警示狀態。進了 Sentinel 就能用分析規則、自動化規則與劇本（Playbook）接手。</li>
+<li><strong>多雲</strong>：在環境設定中以 <strong>AWS／GCP 連接器</strong>把 AWS 帳戶或 GCP 專案接進來（AWS 端部署 CloudFormation 範本、GCP 端執行上架指令碼），即可延伸 CSPM 與部分方案；地端與其他雲的伺服器則透過 <strong>Azure Arc</strong> 納管後套用 Defender for Servers。</li>
+</ul>
+<div class="case-box"><div class="case-label">🧪 實戰情境：對外的 Linux VM 遭入侵並外傳資料</div>
+<p>週一上午，Defender for Cloud 出現三則相關警示：某台對外的 Linux VM「<strong>SSH 暴力破解嘗試成功</strong>」（中）、同一台機器「<strong>偵測到加密貨幣挖礦活動</strong>」（高），以及該訂用帳戶的儲存體帳戶「<strong>異常大量資料被擷取</strong>」（高）。你是值班分析師——</p>
+<ol>
+<li><strong>先看關聯，不要單看一則。</strong>三則警示被關聯成同一個安全性事件，時間軸顯示「暴力破解成功 → 挖礦程序 → 資料外流」，MITRE 戰術橫跨初始存取、影響與外流。判定為真實入侵，不是誤報。</li>
+<li><strong>確認來源與範圍。</strong>從警示詳細資料取出攻擊者 IP、成功登入的帳戶與挖礦處理程序名稱；到 Defender XDR 事件頁確認同一 IP 有沒有打過其他資源，並檢查該儲存體帳戶被下載了哪些容器。</li>
+<li><strong>遏制。</strong>用網路安全性群組規則切斷該 VM 對外連線（或直接停止 VM，但要先確認是否需要保留記憶體證據）；輪替／撤銷儲存體帳戶存取金鑰與 SAS 權杖；停用遭破解的本機與雲端帳戶。若該伺服器已上線 MDE，可直接對它執行<strong>裝置隔離</strong>與 Live Response 取證。</li>
+<li><strong>清除與復原。</strong>移除挖礦程式與其持續性機制（cron 排程、systemd 服務、被植入的 SSH 授權金鑰），必要時由已知良好的映像重建 VM。</li>
+<li><strong>防止再發生。</strong>對這台與同群組的 VM 啟用 <strong>JIT VM 存取</strong>，讓 SSH 埠平時關閉、要用才開；處理 Take action 分頁列出的相關建議（限制管理埠、開啟 MFA）。</li>
+<li><strong>自動化。</strong>建立<strong>工作流程自動化</strong>：高嚴重性警示一產生就呼叫 Logic App，自動開工單並通知 Teams 值班頻道；同時確認警示已流入 Sentinel，把事件的分類與結案理由記錄完整。</li>
+</ol></div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>「要讓 Defender for Cloud 警示與端點、身分警示自動關聯成單一事件，該做什麼？」</strong>答案是<strong>啟用 Defender for Cloud 與 Defender XDR 的整合</strong>，在 Defender 入口網站的統一事件佇列中處理，不是「在 Sentinel 建一條分析規則自己關聯」，也不是「用連續匯出送到事件中樞」。<br>相對地，題幹若強調「要與防火牆、AWS CloudTrail 等<strong>第三方或非 Microsoft 來源</strong>的記錄一起做關聯分析與長期保留」，那才輪到 <strong>Microsoft Sentinel</strong>——用資料連接器帶入 <code>SecurityAlert</code>，再以分析規則與劇本自動化。<strong>連續匯出</strong>只在題幹點名「送到第三方 SIEM 或事件中樞」時才是正解。</p></div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">影片之外，考綱還要你會這些</h2>
+<ul>
+<li><strong>警示驗證與樣本警示</strong>：Defender for Cloud 可以產生<strong>範例警示（sample alerts）</strong>來測試自動化與連接器是否通；驗證 Defender for Servers 的偵測則用官方測試檔案／指令。考題問「如何在不製造真實攻擊的前提下驗證工作流程自動化」→ 產生範例警示。</li>
+<li><strong>警示狀態與生命週期</strong>：警示有<strong>作用中（Active）／已關閉（Dismissed）／已解決（Resolved）</strong>等狀態；與 Sentinel 雙向同步時，一端關閉會反映到另一端。分析師結案時要留下分類理由，這是稽核依據。</li>
+<li><strong>權限模型</strong>：Defender for Cloud 走 Azure RBAC——<strong>Security Reader</strong> 只能看警示與建議，<strong>Security Admin</strong> 才能關閉警示、改方案設定與建立抑制規則；核准 <strong>JIT 存取請求</strong>又需要對該 VM 的特定權限。「看得到警示 ≠ 動得了資源」在雲端同樣成立。</li>
+<li><strong>無代理程式掃描與 FIM</strong>：Plan 2 的無代理程式（agentless）掃描直接讀取磁碟快照做弱點與惡意軟體偵測，<strong>不需在 VM 內裝任何東西、不影響效能</strong>；檔案完整性監控（FIM）則負責「重要系統檔案或登錄被改」這類警示。題幹說「不能在生產 VM 上安裝代理程式」→ 無代理程式掃描。</li>
+<li><strong>Security Copilot 與 Defender for Cloud</strong> <span class="badge-2026">2026 新考點</span>：可用自然語言摘要一則雲端警示的來龍去脈、產生受影響資源的修復腳本，並在 Defender XDR 事件頁提供跨雲端與端點的引導式回應建議，加速 Tier 1 分診。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 延伸閱讀</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/defender-for-cloud/alerts-overview" target="_blank" rel="noopener">Defender for Cloud 的安全性警示與事件</a>——警示如何產生、嚴重性定義與事件關聯邏輯，第 05 節的原文版。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/defender-for-cloud/alerts-reference" target="_blank" rel="noopener">安全性警示參考索引</a>——依方案分類的完整警示清單與 MITRE 對應，考前掃過各方案的代表性警示名稱。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/defender-for-cloud/alerts-suppression-rules" target="_blank" rel="noopener">使用抑制規則隱藏警示</a>——範圍、條件、到期日與模擬功能的操作細節，第 06 節必讀。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/defender-for-cloud/just-in-time-access-overview" target="_blank" rel="noopener">即時（JIT）VM 存取概觀</a>——運作原理、所需方案層級與請求／核准流程。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/defender-for-cloud/workflow-automation" target="_blank" rel="noopener">工作流程自動化與 Logic Apps</a>——觸發條件、篩選設定，以及與連續匯出的差異。</li>
+</ul>
