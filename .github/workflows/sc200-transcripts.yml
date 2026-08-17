@@ -10,6 +10,11 @@ on:
         description: '重抓全部（忽略已存在檔案）'
         type: boolean
         default: false
+  push:
+    branches: ['claude/**']
+    paths:
+      - 'sc200/scripts/fetch_transcripts.py'
+      - '.github/workflows/sc200-transcripts.yml'
 
 permissions:
   contents: write
