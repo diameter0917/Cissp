@@ -83,7 +83,7 @@
 <p><strong>週一 09:40 情資進來</strong>：某鎖定製造業的群組慣用手法是先取得有複寫權限的服務帳號，再用 DCSync 拉出全網域雜湊。你們正是製造業，對得上威脅模型。</p>
 <ol>
   <li><strong>寫假說（09:50）</strong>：即上面那句 DCSync 假說，五條檢核全過。</li>
-  <li><strong>選資料（09:55）</strong>：首選 Microsoft Defender for Identity（MDI）的身分目錄事件；只有 Windows 安全性事件記錄時就看物件存取事件（4662）與複寫控制存取碼。先確認資料真的有在收，否則結論只會是「資料不足」。</li>
+  <li><strong>選資料（09:55）</strong>：首選 Microsoft Defender for Identity（MDI）的身分目錄事件；只有 Windows 安全性事件記錄時就看物件存取事件（4662）與複寫控制存取碼。先確認資料有在收，否則結論只會是「資料不足」。</li>
   <li><strong>第一次查詢（10:05）</strong>：看有誰做過複寫，把網域控制站電腦帳號排除。</li>
 </ol>
 <pre class="kql">IdentityDirectoryEvents
@@ -94,10 +94,10 @@
             Attempts = count(), Sources = make_set(DeviceName, 10)
         by AccountName, AccountDomain
 | order by Attempts desc</pre>
-<p class="kql-note">30 天時間窗呼應假說；只留「目錄服務複寫」動作；<code>!endswith "$"</code> 濾掉電腦帳號，因為網域控制站彼此複寫是正常的；summarize 算出首見／末見、次數與來源主機——<strong>首見時間</strong>最關鍵，它區分「一直都有」與「這週才冒出來」。</p>
+<p class="kql-note">30 天時間窗呼應假說；只留「目錄服務複寫」動作；<strong>!endswith "$"</strong> 濾掉電腦帳號，因為網域控制站彼此複寫是正常的；summarize 算出首見／末見與來源主機——<strong>首見時間</strong>最關鍵，它區分「一直都有」與「這週才冒出來」。</p>
 <ol start="4">
   <li><strong>結果（10:12）</strong>：<em>svc-backup</em> 十四個月來每天出現、來源固定是備份伺服器，屬於基準線；<em>svc-print</em> 只在上週四凌晨 02:11 出現 3 次，來源是財務部工作站——印表服務帳號、半夜、從使用者工作站發起複寫，三個條件同時不合理。</li>
-  <li><strong>轉向（10:20）</strong>：pivot 到那台工作站，看同時段前後發生了什麼。</li>
+  <li><strong>轉向（10:20）</strong>：pivot 到那台工作站，看前後發生了什麼。</li>
 </ol>
 <pre class="kql">let SuspectWindow = datetime(2026-08-13 01:30) .. datetime(2026-08-13 03:30);
 DeviceProcessEvents
@@ -106,9 +106,9 @@ DeviceProcessEvents
 | project Timestamp, DeviceName, AccountName, FileName,
           InitiatingProcessFileName, ProcessCommandLine
 | order by Timestamp asc</pre>
-<p class="kql-note">用 <code>let</code> 命名時間區間再以 <code>between</code> 套用，是轉向時最省事的寫法；只投影必要欄位讓時間軸讀得順，父程序與命令列往往就是判斷惡意與否的關鍵。</p>
+<p class="kql-note">用 <strong>let</strong> 命名時間區間再以 <strong>between</strong> 套用，是轉向時最省事的寫法；只投影必要欄位讓時間軸讀得順，父程序與命令列往往就是判斷惡意與否的關鍵。</p>
 <ol start="6">
-  <li><strong>結論（10:35）</strong>：複寫前 6 分鐘，有人以遠端管理工具在該機啟動了一個從暫存目錄執行的程式，父程序是瀏覽器下載。假說<strong>成立</strong>。</li>
+  <li><strong>結論（10:35）</strong>：複寫前 6 分鐘，有人以遠端管理工具在該機啟動一個從暫存目錄執行的程式，父程序是瀏覽器下載。假說<strong>成立</strong>。</li>
   <li><strong>收尾（10:40）</strong>：關鍵結果列存成<strong>書籤</strong>，對應實體（svc-print、FIN-WS-042），戰術標<strong>憑證存取</strong>、技術標 T1003.006，升級成事件交二線；第一段查詢存成搜捕查詢並排程每日重跑。順帶收穫是建立了「哪些帳號可以合法複寫」的基準線。</li>
 </ol>
 </div>
@@ -117,7 +117,7 @@ DeviceProcessEvents
 <h2 data-toc="ATTACK">戰術是目的，技術是手法</h2>
 <p>ATT&amp;CK 是對手行為的公開知識庫，三層結構常拿來出分辨題：<strong>戰術（tactic）＝對手<em>為什麼</em>做</strong>，是階段性目的（初始存取、持續性、憑證存取…），企業矩陣共 14 個，Sentinel 的規則與書籤標的就是這層；<strong>技術（technique）＝<em>怎麼</em>做</strong>，有 T 編號（T1003 OS Credential Dumping）；<strong>子技術</strong>更細（T1003.006 DCSync）；<strong>程序</strong>是某對手的實際實作。</p>
 <p><strong>MITRE ATT&amp;CK 涵蓋率檢視</strong>把矩陣畫在你的環境上：顏色深淺代表<strong>有多少偵測對應到該技術</strong>，並可切換兩種來源——<strong>已啟用的分析規則</strong>與<strong>規則範本及搜捕查詢</strong>，兩者差距就是「馬上補得起來的缺口」。缺口分兩種：<strong>沒資料</strong>（連接器沒接、記錄層級沒開）要補資料源，<strong>有資料沒規則</strong>則啟用範本或自己寫。</p>
-<p>另一個實務重點：<strong>搜捕成果要自己標上去</strong>。影片建書籤與搜捕查詢時都做了對應實體與選戰術兩件事；沒標的查詢不會進涵蓋率統計，那張圖也就退化成裝飾品。</p>
+<p>另一個實務重點：<strong>搜捕成果要自己標上去</strong>。影片建書籤與搜捕查詢時都做了對應實體與選戰術；沒標的查詢不會進涵蓋率統計，那張圖也就退化成裝飾品。</p>
 <div class="tbl-scroll">
 <table class="data">
   <thead><tr><th>ATT&amp;CK 戰術</th><th>對手目的</th><th>訊號來源</th><th>典型搜捕假說</th></tr></thead>
@@ -164,7 +164,7 @@ DeviceProcessEvents
 <h2 data-toc="考綱補洞">EP10 略過、考題卻會碰的</h2>
 <ul>
   <li><strong>搜捕查詢範本客製</strong>（考綱 <em>customize content gallery hunting queries</em>）：社群查詢的正確用法是<strong>複製後改成自己的資料表與門檻</strong>（如排除已知服務帳號），再存成自己的查詢並標戰術，而不是原封不動跑完抱怨誤報高。</li>
-  <li><strong>Hunts 與書籤的關係</strong>：hunt 把假說敘述、狀態（進行中／已驗證／已推翻）、多個查詢、書籤與筆記收在同一容器並指派負責人。問「如何追蹤多人協作的搜捕」→ 建立 hunt，不是各存各的書籤。</li>
+  <li><strong>Hunts 與書籤的關係</strong>：hunt 把假說敘述、狀態（進行中／已驗證／已推翻）、多個查詢、書籤與筆記收在同一容器並指派負責人。問「如何追蹤多人協作的搜捕」→ 建立 hunt。</li>
   <li><strong>進階搜捕 vs Sentinel 搜捕</strong>：前者查 XDR 自己的表（預設 30 天）、可直接做成自訂偵測並附回應動作；後者查工作區全部資料源、可回溯更久。跨端點＋身分＋郵件的快問快答走進階搜捕，含第三方記錄走 Sentinel。</li>
   <li><strong>筆記本的權限與成本</strong>：需 Azure ML 工作區與 Sentinel 讀取權限；運算執行個體<strong>不用要停掉</strong>否則持續計費；MSTICPy 的工作區 ID 與 API 金鑰放設定檔，不該寫死在程式碼區塊。</li>
   <li><strong>Security Copilot 協助搜捕</strong> <span class="badge-2026">2026 新考點</span>：可用自然語言生成 KQL 搜捕查詢、摘要結果。定位照舊——它加速<strong>把想法變成查詢</strong>，假說品質與是否升級仍由分析師負責。</li>

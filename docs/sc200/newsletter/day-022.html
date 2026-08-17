@@ -84,7 +84,7 @@ OfficeActivity
 
 <div class="eyebrow">04 — 📦 Hunts 專案</div>
 <h2 data-toc="Hunts">把一次獵捕包成可交接的專案</h2>
-<p>單支查詢跑完就沒了，但真實獵捕常要跑一兩週、動用十幾支查詢，中途還可能換人接手。<strong>Hunts</strong> 就是為此存在的容器：把<strong>假說、查詢、書籤、備註與發現</strong>綁在同一個工作項目下，讓「這次獵捕」變成可追蹤、可結案的專案。建立時填名稱、<strong>假說</strong>、擁有者、狀態與 MITRE 戰術；之後在 hunt 內執行查詢，把有價值的結果列存成書籤，自動掛在該 hunt 底下形成證據夾。</p>
+<p>單支查詢跑完就沒了，但真實獵捕常跑一兩週、動用十幾支查詢，中途還換人接手。<strong>Hunts</strong> 就是為此存在的容器：把<strong>假說、查詢、書籤、備註與發現</strong>綁在同一個工作項目下，讓「這次獵捕」變成可追蹤、可結案的專案。建立時填名稱、<strong>假說</strong>、擁有者、狀態與 MITRE 戰術；之後在 hunt 內執行查詢，把有價值的結果列存成書籤，自動掛在該 hunt 底下形成證據夾。</p>
 <div class="tbl-scroll">
 <table class="data">
   <thead><tr><th>面向</th><th>取值</th><th>營運意義</th></tr></thead>
@@ -107,7 +107,7 @@ OfficeActivity
   <li><strong>實體對應</strong>：把欄位對應成帳號、主機、IP。影片示範中最關鍵的一步——<strong>有對應才進得了調查圖</strong>。</li>
   <li><strong>MITRE 戰術／技術</strong>：讓證據帶著攻擊階段語意（影片把可疑 PowerShell 標成 command and control）。</li>
 </ul>
-<p>下游有三條路：<strong>升級成新事件</strong>、<strong>加入既有事件</strong>、<strong>留著繼續觀察</strong>。書籤本身也是工作區的一張表，可以直接查，盤點與交接特別好用：</p>
+<p>下游有三條路：<strong>升級成新事件</strong>、<strong>加入既有事件</strong>、<strong>留著繼續觀察</strong>。書籤本身也是工作區的一張表，盤點與交接時直接查就行：</p>
 <pre class="kql">// 盤點本次獵捕留下的書籤：哪些已升級成事件、哪些還躺著沒人處理
 HuntingBookmark
 | where TimeGenerated &gt; ago(30d)
@@ -121,9 +121,9 @@ HuntingBookmark
 <p class="kql-note">逐段解說：<code>HuntingBookmark</code> 存的就是書籤本身，含名稱、原始查詢、被保存的結果列與標籤；第 3 行濾掉已刪除的。第 5 行 <code>arg_max(TimeGenerated, *) by BookmarkId</code> 是重點：<strong>書籤每次被編輯都會新增一列</strong>，取最新一列才是現況。<code>IncidentInfo</code> 是動態欄位，書籤已升級或加入事件時帶有該事件資訊。做成活頁簿磚就是「搜捕待辦清單」。</p>
 
 <div class="eyebrow">06 — 📡 Livestream</div>
-<h2 data-toc="Livestream">盯著現在：即時串流一支查詢</h2>
+<h2 data-toc="即時串流">盯著現在：即時串流一支查詢</h2>
 <p>前面的工具都在看<strong>過去</strong>。<strong>Livestream（搜捕即時串流）</strong>把鏡頭轉向<strong>現在</strong>：開一個互動式工作階段掛上查詢，資料一進工作區就比對，命中時在入口網站近即時通知你。可以從既有搜捕查詢直接建立，也可以貼一段 KQL 從頭開始。</p>
-<p><strong>四個典型用途</strong>：<strong>①測試新規則邏輯</strong>——與其把沒把握的查詢設成排程規則、隔天收到一百張誤判，不如先串流幾小時看雜訊多不多，滿意再升級。<strong>②等攻擊者回來</strong>——剛清掉被入侵的主機，對方通常會再試一次，掛一支針對該 IoC 的串流，回來當下就知道。<strong>③事件期間盯梢</strong>——盯住特定帳號或主機，取代手動重新整理。<strong>④驗證圍堵</strong>——封帳號、隔離裝置後持續零命中，就是圍堵生效的即時證據。</p>
+<p><strong>四個典型用途</strong>：<strong>①測試新規則邏輯</strong>——與其把沒把握的查詢設成排程規則、隔天收到一百張誤判，不如先串流幾小時看雜訊量，滿意再升級。<strong>②等攻擊者回來</strong>——剛清掉被入侵的主機，對方通常會再試一次，掛一支針對該 IoC 的串流，回來當下就知道。<strong>③事件期間盯梢</strong>——盯住特定帳號或主機，取代手動重新整理。<strong>④驗證圍堵</strong>——封帳號、隔離裝置後持續零命中，就是圍堵生效的即時證據。</p>
 <div class="point">💡 <strong>一鍵轉正式規則</strong>：Livestream 工作階段可<strong>升級成警示（elevate to alert）</strong>，直接用同一段查詢建立排程分析規則，不必重打 KQL。這是搜捕成果轉正的最短路徑：假說 → 搜捕查詢 → Livestream 驗證雜訊 → 排程規則 → 自動化規則／劇本。</div>
 <p>同一段 KQL 在搜捕與在 Livestream 裡該長得不一樣：搜捕常做長視窗聚合，Livestream 每次只面對剛進來的一小批資料，聚合與長視窗篩選會失去意義甚至誤導。把第 03 節那支改寫成串流版：</p>
 <pre class="kql">// Livestream 版：不看歷史、不聚合，只問「現在這個帳號還在下載嗎」
@@ -138,7 +138,7 @@ OfficeActivity
 <table class="data">
   <thead><tr><th>面向</th><th>搜捕查詢</th><th>書籤</th><th>Livestream</th><th>排程分析規則</th></tr></thead>
   <tbody>
-    <tr><td>時間軸與觸發</td><td>過去（自訂視窗）；分析師手動或批次跑</td><td>過去的某一刻；分析師手動保存</td><td><strong>現在</strong>（新進資料）；分析師開工作階段</td><td>依排程週期回看；平台自動 24×7</td></tr>
+    <tr><td>時間軸與觸發</td><td>過去（自訂視窗）；手動或批次跑</td><td>過去的某一刻；手動保存</td><td><strong>現在</strong>（新進資料）；分析師開工作階段</td><td>依排程週期回看；平台自動 24×7</td></tr>
     <tr><td>何時用</td><td>驗證假說、找沒有警示的行為</td><td>有價值但無法定論，要留證與交接</td><td>測試規則邏輯、等攻擊者回來、事件期間盯梢</td><td>邏輯已驗證、雜訊可接受、要長期自動偵測</td></tr>
     <tr><td>輸出到哪</td><td>結果表格 → 書籤／Livestream／轉規則</td><td>調查圖、事件、hunt 專案</td><td>入口網站通知 → 可升級成警示／規則</td><td><strong>警示與事件</strong> → 分診佇列、自動化規則、劇本</td></tr>
     <tr><td>會產生事件嗎</td><td>不會</td><td>不會（要手動升級）</td><td>不會（只通知）</td><td><strong>會</strong>（可設定事件建立與分組）</td></tr>
@@ -152,7 +152,7 @@ OfficeActivity
 <div class="eyebrow">07 — 🛡️ 完整獵捕</div>
 <h2 data-toc="實戰情境">從一句假說到一條偵測規則</h2>
 <div class="case-box"><span class="case-label">🛡️ SOC Walkthrough：AiTM 釣魚後的資料外洩獵捕</span><br>
-<p>威脅情報通報：一波 AiTM（adversary-in-the-middle）釣魚鎖定你的產業，得手後用竊得的工作階段權杖登入並整批下載檔案。你的環境沒有任何相關警示——正好是搜捕的主場。</p>
+<p>威脅情報通報：一波 AiTM（adversary-in-the-middle）釣魚鎖定你的產業，得手後用竊得的工作階段權杖登入並整批下載檔案。環境沒有相關警示——正好是搜捕的主場。</p>
 <ol>
   <li><strong>寫假說並開 hunt</strong>：假說＝「過去 7 天內有帳號在<strong>非慣用 IP</strong> 上出現<strong>遠高於自身基準</strong>的下載量，且未觸發警示」——範圍窄、有時間界線、現有資料就能驗證。在 Hunts 建專案，狀態 <strong>New</strong>，標 Exfiltration。</li>
   <li><strong>跑內建查詢暖身</strong>：按戰術篩出 Exfiltration 與 Initial Access 的內建查詢，<strong>Run all queries</strong>，看哪幾支有結果、哪幾支的 <strong>Results delta</strong> 在跳動。狀態改 <strong>Active</strong>。</li>
@@ -162,11 +162,11 @@ OfficeActivity
   <li><strong>掛 Livestream</strong>：把「這帳號的下載動作」做成串流，一邊處置一邊盯——唯一能回答「他<strong>現在</strong>還在下載嗎」的工具。同時請身分小組撤銷權杖。</li>
   <li><strong>升級成事件</strong>：把書籤<strong>升級成事件</strong>（若已有相關事件，改<strong>加入既有事件</strong>），嚴重性 High，進正式分診與 SLA；Livestream 續開，驗證撤銷權杖後是否歸零。</li>
   <li><strong>轉成偵測規則</strong>：收尾不是報告，是<strong>讓它下次自動被抓到</strong>。把驗證過的查詢建成排程分析規則（或從 Livestream 直接 elevate to alert），設好實體對應與自動化規則，命中就自動指派並跑撤銷權杖的劇本。</li>
-  <li><strong>結案</strong>：hunt 改 <strong>Closed</strong>、假說標 <strong>Validated</strong>，備註寫下產出：1 張事件、1 條新規則、3 個書籤。下次有人問「我們查過 AiTM 外洩嗎」，打開 hunt 就有答案。</li>
+  <li><strong>結案</strong>：hunt 改 <strong>Closed</strong>、假說標 <strong>Validated</strong>，備註寫下產出：1 張事件、1 條新規則、3 個書籤，下次有人問「查過 AiTM 外洩嗎」就有答案。</li>
 </ol>
 </div>
 <div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
-<strong>書籤何時該升級成事件</strong>：判準只有一個——<strong>需不需要進入正式處理流程</strong>。要指派負責人、要 SLA 與稽核軌跡、要多人協作或自動回應 → <strong>升級成事件</strong>；若同一批活動已有事件在跑，正解通常是<strong>加入既有事件</strong>而非新開一張（重複開會破壞關聯與統計，考題愛在此設陷阱）。只是「以後可能有用」→ 留在書籤加標籤與備註。也別把所有書籤都升級成事件，那是自製誤判洪水。</div>
+<strong>書籤何時該升級成事件</strong>：判準只有一個——<strong>需不需要進入正式處理流程</strong>。要指派負責人、要 SLA 與稽核軌跡、要多人協作或自動回應 → <strong>升級成事件</strong>；若同一批活動已有事件在跑，正解通常是<strong>加入既有事件</strong>而非新開一張（重複開會破壞關聯與統計，考題愛在此設陷阱）。只是「以後可能有用」→ 留在書籤加標籤與備註；把所有書籤都升級成事件，等於自製誤判洪水。</div>
 
 <div class="eyebrow">08 — 🧩 考綱補洞</div>
 <h2 data-toc="考綱補洞">EP10 沒講到、考試會考的</h2>
@@ -178,7 +178,7 @@ OfficeActivity
   <li><strong>書籤加入既有事件</strong>：影片只示範新增書籤；考題常在「新開事件 vs 加入既有事件」上分勝負（§07）。</li>
   <li><strong>搜捕成果三去向</strong>：轉分析規則（自動偵測）、接自動化規則與劇本（自動回應）、留書籤存證（知識累積）。</li>
   <li><strong>規模化工具留待後續</strong>：search job、資料還原、data lake KQL jobs 與 Sentinel MCP Server <span class="badge-2026">2026 新考點</span> 屬 Day 24；notebooks 與 MSTICPy 屬 Day 23。</li>
-  <li><strong>明日預告</strong>：Day 23 回到 EP10 開頭那五個假說原則，配合 ATT&amp;CK 矩陣覆蓋度圖例，練「怎麼想出值得查的問題」。</li>
+  <li><strong>明日預告</strong>：Day 23 回到那五個假說原則，配合 ATT&amp;CK 矩陣覆蓋度圖例，練「怎麼想出值得查的問題」。</li>
 </ul>
 
 <div class="eyebrow">09 — 📚 延伸閱讀</div>
