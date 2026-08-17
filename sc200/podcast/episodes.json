@@ -143,6 +143,33 @@
       "bytes": 2913208,
       "duration_sec": 485,
       "script_sha256": "3e23ed3e8a3b9809cbc4d76589d636be3cac7687b9ee208bbab13b0eedde19aa"
+    },
+    "020": {
+      "episode": 20,
+      "unit": "P1-W4-5",
+      "title_zh": "Purview 威脅調查與 Copilot 引導式回應",
+      "file": "ep-020.mp3",
+      "bytes": 3841594,
+      "duration_sec": 640,
+      "script_sha256": "731653166b3c76d947d880cddec1795a820a33b9d37c699a5603323bcd985d58"
+    },
+    "021": {
+      "episode": 21,
+      "unit": "P1-W5-1",
+      "title_zh": "Advanced Hunting 與自訂偵測",
+      "file": "ep-021.mp3",
+      "bytes": 2840491,
+      "duration_sec": 473,
+      "script_sha256": "1ac1d1ea665eb4560e7d089eb8cac0e8cb54e8ad8b359e6cdaad8132aa89f741"
+    },
+    "024": {
+      "episode": 24,
+      "unit": "P1-W5-4",
+      "title_zh": "Sentinel Graph、MCP Server 與 data lake 搜捕（2026 新考點）",
+      "file": "ep-024.mp3",
+      "bytes": 2694079,
+      "duration_sec": 449,
+      "script_sha256": "dcb5a134f7fbd593839c3c5af0d0a81cf081ec944fa7eaec3d513f3a1b07ec23"
     }
   }
 }

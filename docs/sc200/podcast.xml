@@ -153,5 +153,32 @@
       <itunes:duration>8:05</itunes:duration>
       <itunes:episode>18</itunes:episode>
     </item>
+    <item>
+      <title>EP20｜Purview 威脅調查與 Copilot 引導式回應</title>
+      <description>SC-200 速成 Day 對應單元：P1-W4-5。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-020.mp3" length="3841594" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-020</guid>
+      <pubDate>Mon, 14 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>10:40</itunes:duration>
+      <itunes:episode>20</itunes:episode>
+    </item>
+    <item>
+      <title>EP21｜Advanced Hunting 與自訂偵測</title>
+      <description>SC-200 速成 Day 對應單元：P1-W5-1。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-021.mp3" length="2840491" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-021</guid>
+      <pubDate>Tue, 15 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>7:53</itunes:duration>
+      <itunes:episode>21</itunes:episode>
+    </item>
+    <item>
+      <title>EP24｜Sentinel Graph、MCP Server 與 data lake 搜捕（2026 新考點）</title>
+      <description>SC-200 速成 Day 對應單元：P1-W5-4。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-024.mp3" length="2694079" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-024</guid>
+      <pubDate>Fri, 18 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>7:29</itunes:duration>
+      <itunes:episode>24</itunes:episode>
+    </item>
   </channel>
 </rss>
