@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 21｜Advanced Hunting：Defender XDR 結構描述與自訂偵測｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 21 / 40 · 2026-09-15</div>
+    <h1>Advanced Hunting：Defender XDR 結構描述與自訂偵測</h1>
+    <p class="sub"><em>Advanced Hunting: XDR Schema & Custom Detections</em></p>
+    <div class="meta-row">
+      <span class="pill d3">D3 執行威脅搜捕</span>
+      <span class="pill ghost">20-25%</span>
+      <span class="pill ghost">P1-W5-1</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:84%"></div></div>
+    <div class="progress-text">五週速成進度 21 / 25 · 距離考試（2026-10-17）還有 32 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP1｜Mitigate threats using Microsoft Defender XDR | SC-200 | Episode 1</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/8gCUtYEpTe8' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+<div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP10｜Perform threat hunting in Microsoft Sentinel | SC-200 | Episode 10</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><div class='vm'>本日對應段落：<a href='https://youtu.be/z6QbN4rpAvA?t=60' target='_blank' rel='noopener'><span class='timestamp'>1:00</span></a> hunts、incident vs alert、livestream、<a href='https://youtu.be/z6QbN4rpAvA?t=210' target='_blank' rel='noopener'><span class='timestamp'>3:30</span></a> hunts、incident vs alert、livestream、<a href='https://youtu.be/z6QbN4rpAvA?t=360' target='_blank' rel='noopener'><span class='timestamp'>6:00</span></a> hunts、incident vs alert、livestream</div><a class='vbtn' href='https://youtu.be/z6QbN4rpAvA' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">本日導讀：把 KQL 開回 Defender XDR 的家</h2>
+<p>第五週開始，我們正式進入 D3「執行威脅搜捕」（占分 20–25%）。前面幾天你在 Microsoft Sentinel 裡練 KQL、寫分析規則；今天把場景換到 <strong>Defender XDR 的進階搜捕（advanced hunting）</strong>——同一套 KQL 語法，資料表卻完全不同：這裡是 Microsoft 正規化好的<strong>原始事件</strong>，端點、郵件、身分、雲端應用各成一個家族，欄位命名高度一致，所以「一封釣魚信怎麼變成端點上的一支行程」可以用一段查詢串起來。</p>
+<p>更關鍵的是，一段查得漂亮的查詢可以按一個鈕變成<strong>自訂偵測規則（custom detection）</strong>：自動排程執行、自動產生警示、自動隔離裝置或停用帳號。這是把搜捕成果產品化的官方路徑，也是考試最愛出的主題。對應官方考綱（study guide 2026-07-28 版）「Perform threat hunting／hunt for threats by using Microsoft Defender XDR」，今天結束你應該能：</p>
+<ul>
+  <li>☑ 說出 Device*／Email*／Identity*／Alert*／Cloud 與 App 各家族涵蓋什麼訊號、關鍵欄位有哪些（考綱：analyze threats by using the Defender XDR advanced hunting schema）</li>
+  <li>☑ 用共用鍵（<code>NetworkMessageId</code>、<code>SHA256</code>、<code>AccountObjectId</code>、<code>DeviceId</code>）寫出跨產品攻擊鏈查詢（考綱：hunt for threats across data sources）</li>
+  <li>☑ 說明資料範圍、逾時與結果筆數限制，並知道超出時該換什麼工具</li>
+  <li>☑ 從查詢建立自訂偵測規則，帶出 <code>Timestamp</code>、<code>ReportId</code> 與實體欄位，設定頻率與回應動作（考綱：create custom detections）</li>
+  <li>☑ 分辨何時用自訂偵測、何時用 Sentinel 分析規則，並會用 Go hunt 與引導模式加速調查</li>
+</ul>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">影片伴讀：EP10 打底、EP1 補位</h2>
+<p>今天掛兩支影片，角色不同。<strong>EP1</strong>（Defender XDR 總覽）沒有字幕，請帶著問題看它的 advanced hunting 段落：「這些表分別來自哪個工作負載？」<strong>EP10</strong>（Perform threat hunting in Microsoft Sentinel）字幕完整，講 Sentinel 那一側的搜捕；觀念層今天完全適用，工具層（書籤、Livestream、搜尋作業、筆記本）是<strong>明天 Day 22 的主場</strong>。依影片推進順序整理：</p>
+<ul>
+  <li><span class="timestamp">EP10 開場</span> 講者 Jean Francois Bilodeau 的破題：環境每分鐘產生海量訊號，那些<strong>還沒有規則對得上、也不會有警示</strong>的低速潛伏行為怎麼辦？答案是主動搜捕——這正是進階搜捕與自訂偵測存在的理由。</li>
+  <li><span class="timestamp">EP10 概念段</span> 搜捕的定義：<strong>主動</strong>翻找「先前未被偵測到」的威脅活動。這句話劃清了它與事件回應、警示分診的界線——後者從已被標記的東西開始，搜捕從問題開始，而且是循環的，目的是壓縮攻擊者停留時間。</li>
+  <li><span class="timestamp">EP10 假說段</span> 好假說的五個條件：<strong>做得完</strong>、<strong>範圍窄</strong>（現有資料就能證實或推翻）、<strong>有時間界線</strong>（過去 24 小時、7 天或某事件前後）、<strong>有用且有效率</strong>（產出可行動洞見而非雜訊）、<strong>貼合威脅模型</strong>。每寫一段查詢前先跑一遍這五點。</li>
+  <li><span class="timestamp">EP10 工具段</span> Sentinel 側四件武器：搜捕查詢（反覆提問、依發現轉向）、<strong>書籤</strong>（查詢與關鍵結果一起保存並分享）、<strong>Livestream</strong>（拿假說對「正在發生」的事件驗證，可設近即時通知）、<strong>MITRE ATT&amp;CK 矩陣</strong>（顏色標示偵測涵蓋、看出缺口）。</li>
+  <li><span class="timestamp">EP10 規模段</span> 資料量大、時間跨度長時的三個名字：<strong>搜尋作業（search job）</strong>、<strong>歷史資料還原</strong>、<strong>data lake KQL 作業</strong>。<span class="badge-2026">2026 新考點</span> 進階搜捕只看得到 30 天，超出範圍的考題正解常在這三個裡。</li>
+  <li><span class="timestamp">EP10 筆記本段</span> 三者分工：劇本（Playbook）＝自動化、活頁簿（Workbook）＝視覺化、筆記本（Notebook）＝深度分析與機器學習。另提到 KQLMagic、MSTICPy、Azure-Sentinel-Notebooks 社群倉庫，以及在 VS Code 掛 <strong>Sentinel MCP server</strong> 做資料探索。<span class="badge-2026">2026 新考點</span></li>
+  <li><span class="timestamp">EP10 示範段</span> 實機流程：查可疑 PowerShell → 那一列<strong>加書籤</strong> → 主機<strong>對應成實體</strong>並標上 Command and Control 戰術 → 存成搜捕查詢執行 → 丟進 Livestream 盯著 → 回書籤開<strong>實體圖</strong>往下鑽。「有對應實體才有得調查」，跟今天自訂偵測的實體欄位規則同一個道理。</li>
+</ul>
+<div class="info-box">💡 看片策略：觀念段與假說段今天吸收，工具段先建立印象、明天細嚼。看完立刻打開進階搜捕頁面把本文三段查詢跑一次——語法你已經會了，今天練的是「欄位長在哪張表」的手感。</div>
+
+<div class="eyebrow">03 — 🗂️ 結構描述家族</div>
+<h2 data-toc="資料表家族">結構描述家族：六個家族，一組共用鍵</h2>
+<p>結構描述（schema）三十幾張表，死背沒有意義，<strong>按家族記</strong>才記得住：表名前綴告訴你訊號來自哪個工作負載，欄位命名則跨家族一致（<code>Timestamp</code>、<code>ReportId</code>、<code>DeviceId</code>、<code>AccountObjectId</code>、<code>InitiatingProcess*</code>）——這份一致性就是跨產品關聯查詢的基礎。</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>家族</th><th>代表資料表</th><th>涵蓋什麼</th><th>關鍵欄位</th><th>典型搜捕用途</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Device*</strong><br>（MDE 端點）</td><td>DeviceInfo、DeviceProcessEvents、DeviceNetworkEvents、DeviceFileEvents、DeviceRegistryEvents、DeviceLogonEvents、DeviceImageLoadEvents、DeviceEvents</td><td>端點的行程建立、網路連線、檔案讀寫、登錄檔變更、登入與各式感測器事件</td><td>DeviceId、DeviceName、ReportId、FileName、SHA256、ProcessCommandLine、InitiatingProcess*</td><td>追父子行程鏈、LOLBin 濫用、C2 外連、持久化</td></tr>
+    <tr><td><strong>Email*</strong><br>（MDO 郵件）</td><td>EmailEvents、EmailAttachmentInfo、EmailUrlInfo、EmailPostDeliveryEvents、UrlClickEvents</td><td>郵件收送與判定、夾檔、內含網址、送達後動作、安全連結點擊</td><td>NetworkMessageId、RecipientEmailAddress、SenderFromAddress、DeliveryAction、ThreatTypes、SHA256、Url</td><td>釣魚 campaign 盤點、誰真的點了連結、送達後清除是否成功</td></tr>
+    <tr><td><strong>Identity*</strong><br>（MDI／目錄）</td><td>IdentityInfo、IdentityLogonEvents、IdentityQueryEvents、IdentityDirectoryEvents</td><td>帳號屬性、AD 與雲端登入、目錄查詢（SAMR／LDAP）、目錄物件變更</td><td>AccountObjectId、AccountUpn、AccountSid、DeviceName、Protocol、TargetAccountUpn</td><td>橫向移動、內部偵察、權限異動追蹤</td></tr>
+    <tr><td><strong>Alert*</strong><br>（跨產品）</td><td>AlertInfo、AlertEvidence</td><td>各產品的警示本身，以及每則警示牽連的實體（檔案、行程、帳號、IP、信箱）</td><td>AlertId、Title、Category、Severity、ServiceSource、DetectionSource、EntityType、EvidenceRole</td><td>從警示反查實體、統計偵測涵蓋</td></tr>
+    <tr><td><strong>Cloud／App</strong><br>（MDA、Entra）</td><td>CloudAppEvents、AADSignInEventsBeta、AADSpnSignInEventsBeta</td><td>雲端應用（Exchange Online、SharePoint、Teams）活動、互動式與服務主體登入</td><td>AccountObjectId、Application、ActionType、IPAddress、RawEventData</td><td>惡意收件匣規則、大量下載、OAuth 同意</td></tr>
+    <tr><td><strong>曝險與弱點</strong></td><td>DeviceTvmSoftwareInventory、DeviceTvmSoftwareVulnerabilities、ExposureGraphNodes／ExposureGraphEdges</td><td>軟體清冊與 CVE 對應、資產與關係組成的曝險圖</td><td>DeviceId、SoftwareName、CveId、NodeId、EdgeLabel</td><td>弱點與攻擊觸及交叉比對、攻擊路徑分析</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="point">🔑 <strong>四把跨表鑰匙先背起來</strong>：<code>NetworkMessageId</code> 串所有 Email*（同一封信各表共用，每位收件者一列）；<code>SHA256</code>／<code>SHA1</code> 把郵件夾檔接到端點檔案與行程；<code>DeviceId</code> 串 Device*（比 <code>DeviceName</code> 可靠，改名不影響）；<code>AccountObjectId</code> 串身分與雲端應用（UPN 會改，它不會）。考題問「哪個欄位能把郵件事件關聯到端點事件」，答案幾乎都是檔案雜湊。</div>
+
+<div class="eyebrow">04 — 🔗 跨產品攻擊鏈</div>
+<h2 data-toc="跨表關聯">跨產品攻擊鏈：郵件 → 端點 → 身分</h2>
+<p>單看一張表只能看到攻擊的一個切片。真正展現 XDR 價值的查詢，是把三張表的時間軸接起來——考綱說的「跨資料來源搜捕」就長這樣。</p>
+<div class="case-box"><span class="case-label">🔍 SOC 實戰：釣魚郵件落地之後，我到底該追什麼</span>
+<p>情境：MDO（Microsoft Defender for Office 365）標記一波夾帶檔案的釣魚郵件，其中若干封在原則調整前<strong>已送達</strong>。假說（套用 EP10 的五條件）：「過去 7 天內已送達的惡意郵件夾檔，其雜湊在 24 小時內出現在端點行程執行紀錄」——範圍窄、有時間界線、資料現成、結論可行動。</p>
+<pre class="kql"><span class="c">// 攻擊鏈：惡意郵件 → 夾檔雜湊 → 端點上真的被執行</span>
+<span class="k">let</span> lookback = <span class="n">7d</span>;
+<span class="k">let</span> BadMail = EmailEvents
+    | <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(lookback)
+    | <span class="k">where</span> ThreatTypes <span class="k">has_any</span> (<span class="s">"Malware"</span>, <span class="s">"Phish"</span>)
+    | <span class="k">where</span> DeliveryAction == <span class="s">"Delivered"</span>
+    | <span class="k">project</span> NetworkMessageId, MailTime = Timestamp,
+              SenderFromAddress, RecipientEmailAddress, Subject;
+BadMail
+| <span class="k">join</span> <span class="k">kind</span>=inner (
+    EmailAttachmentInfo
+    | <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(lookback)
+    | <span class="k">where</span> <span class="f">isnotempty</span>(SHA256)
+    | <span class="k">project</span> NetworkMessageId, FileName, SHA256
+) <span class="k">on</span> NetworkMessageId
+| <span class="k">join</span> <span class="k">kind</span>=inner (
+    DeviceProcessEvents
+    | <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(lookback)
+    | <span class="k">project</span> ExecTime = Timestamp, DeviceId, DeviceName, AccountUpn,
+              SHA256, ProcessCommandLine, InitiatingProcessFileName
+) <span class="k">on</span> SHA256
+| <span class="k">where</span> ExecTime <span class="k">between</span> (MailTime .. (MailTime + <span class="n">24h</span>))
+| <span class="k">project</span> MailTime, SenderFromAddress, RecipientEmailAddress, Subject,
+          FileName, SHA256, ExecTime, DeviceName, AccountUpn, ProcessCommandLine
+| <span class="k">order by</span> MailTime <span class="k">asc</span></pre>
+<p class="kql-note">逐行解說：<code>let BadMail</code> 先把已送達的惡意郵件濾成小左表（小表放左、先過濾再 join，Day 3 三原則照用）；第一段 join 用 <code>NetworkMessageId</code> 接夾檔表拿到 <code>SHA256</code>；第二段 join 用 <code>SHA256</code> 把郵件世界接到端點世界——同一個雜湊在兩個工作負載間穿針引線，這就是 XDR 的精髓；<code>kind=inner</code> 明確寫出，避免預設 <code>innerunique</code> 把左表重複列去掉；<code>between (MailTime .. MailTime + 24h)</code> 限制執行發生在送達後 24 小時內，沒有時間窗會撈到大量不相關配對。輸出一列＝一條「誰收到信、什麼檔案、在哪台機器上被誰執行」的完整故事。</p>
+<p><strong>接下來的分診與回應</strong>：① 查出的 <code>DeviceName</code> 點進裝置頁看時間軸，確認執行後有無外連或憑證存取；② 把 <code>AccountUpn</code> 丟回 <code>IdentityLogonEvents</code>／<code>CloudAppEvents</code>，看帳號有沒有去登其他資源或建收件匣規則；③ 回應分三層：端點隔離＋封鎖雜湊、身分重設密碼並撤銷工作階段、郵件把同 campaign 信件硬刪除；④ 最後把這段查詢<strong>存成自訂偵測</strong>，讓下次同型攻擊自動告警——正是下一節要做的事。</p>
+</div>
+
+<div class="eyebrow">05 — 🚨 自訂偵測規則</div>
+<h2 data-toc="自訂偵測">自訂偵測：把查詢變成會自己上工的規則</h2>
+<p>查詢跑到滿意後選「建立自訂偵測規則」，精靈依序問四件事：<strong>警示細節</strong>（標題、嚴重性、類別、MITRE 技術）、<strong>受影響的實體</strong>（哪些欄位代表裝置／使用者／信箱／檔案）、<strong>自動回應動作</strong>、<strong>執行頻率與範圍</strong>（可限定裝置群組）。觸發產生的警示進入 XDR 事件佇列，和內建偵測一樣會被關聯成事件。</p>
+<pre class="kql"><span class="c">// 可直接存成自訂偵測：Office 文件孵出的編碼命令（頻率設「每小時」，查詢窗對齊回看期）</span>
+DeviceProcessEvents
+| <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(<span class="n">2h</span>)
+| <span class="k">where</span> InitiatingProcessFileName <span class="k">in~</span> (<span class="s">"winword.exe"</span>, <span class="s">"excel.exe"</span>, <span class="s">"powerpnt.exe"</span>, <span class="s">"outlook.exe"</span>)
+| <span class="k">where</span> FileName <span class="k">in~</span> (<span class="s">"powershell.exe"</span>, <span class="s">"pwsh.exe"</span>, <span class="s">"cmd.exe"</span>, <span class="s">"wscript.exe"</span>, <span class="s">"mshta.exe"</span>)
+| <span class="k">where</span> ProcessCommandLine <span class="k">has_any</span> (<span class="s">"-enc"</span>, <span class="s">"EncodedCommand"</span>, <span class="s">"FromBase64String"</span>, <span class="s">"DownloadString"</span>)
+| <span class="k">project</span> Timestamp, ReportId, DeviceId, DeviceName, AccountObjectId, AccountUpn,
+          FileName, ProcessCommandLine, InitiatingProcessFileName, SHA256
+<span class="c">// ❌ 若在最後加上 | summarize Cnt = count() by DeviceName —— Timestamp 與 ReportId 全被聚合掉，規則存不了</span>
+<span class="c">// ✅ 需要每台裝置只留一筆時，改用 | summarize arg_max(Timestamp, *) by DeviceId</span></pre>
+<p class="kql-note">逐行解說：<code>ago(2h)</code> 是刻意的——頻率選「每小時」時官方回看期就是過去 2 小時，查詢窗<strong>對齊回看期</strong>才不會漏事件或重複評估；<code>in~</code> 不分大小寫，惡意程式常混寫檔名；<code>InitiatingProcessFileName</code> 是「誰啟動了這支行程」，Office 應用生出腳本直譯器是典型巨集手法；<code>has_any</code> 比 <code>contains</code> 快；最後的 <code>project</code> 才是重點——<code>Timestamp</code> 與 <code>ReportId</code>（該事件的唯一識別）是平台去重與定位事件的必要欄位，<code>DeviceId</code>／<code>AccountObjectId</code> 則讓自動回應動作有對象可作用。</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>執行頻率</th><th>回看資料範圍</th><th>怎麼選</th></tr></thead>
+  <tbody>
+    <tr><td><strong>連續（NRT）</strong></td><td>事件擷取後近即時評估</td><td>反應最快、限制最多：只支援單一資料表且限定表清單，不能 join／union</td></tr>
+    <tr><td>每小時</td><td>過去 2 小時</td><td>高價值、需快速處置的偵測（本節查詢的選擇）</td></tr>
+    <tr><td>每 3 小時</td><td>過去 6 小時</td><td>一般行為型偵測的折衷</td></tr>
+    <tr><td>每 12 小時</td><td>過去 48 小時</td><td>需較長觀察窗才成立的樣態</td></tr>
+    <tr><td>每 24 小時</td><td>過去 30 天</td><td>長週期比對、低頻但重要的偵測</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>自動回應動作</strong>依「受影響的實體」對應了哪種欄位而解鎖：裝置欄位→隔離裝置、收集調查封包、防毒掃描、限制應用程式執行、啟動自動調查；檔案雜湊→封鎖／隔離檔案；使用者欄位→標示為已入侵、停用帳號、強制重設密碼；郵件欄位（<code>NetworkMessageId</code>＋收件者）→把郵件移到垃圾／刪除項目或刪除。<strong>沒有對應實體欄位，就沒有對應動作可選</strong>——跟 EP10 示範裡「有對應實體才開得了實體圖」是同一個因果。規則清單頁還能手動執行一次（Run）、看上次執行與觸發時間。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br><strong>「規則建立失敗／動作反灰」怎麼判？</strong>三步驟：① 結果有沒有 <code>Timestamp</code> 與 <code>ReportId</code>——<code>summarize</code>、<code>distinct</code>、只留部分欄位的 <code>project</code> 最常把它們砍掉，補救寫法是 <code>summarize arg_max(Timestamp, *) by 實體欄</code>；② 有沒有至少一個實體欄位（<code>DeviceId</code>／<code>AccountObjectId</code>／<code>AccountSid</code>／<code>AccountUpn</code>／<code>RecipientEmailAddress</code>／檔案雜湊）並在精靈完成對應；③ 選不到「隔離裝置」，代表你對應的是使用者而非裝置欄位。題幹出現「規則存不了」或「無法設定自動回應」就往這三點想，別被權限、授權類選項帶走。</div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br><strong>自訂偵測 vs Sentinel 分析規則怎麼選？</strong>看三個關鍵詞。① <strong>資料在哪</strong>：只用 XDR 原始表（Device*／Email*／Identity*／Alert*）→ 自訂偵測；要關聯第三方防火牆、Syslog、自訂日誌或跨工作區 → 分析規則。② <strong>要什麼回應</strong>：直接對端點／帳號／郵件下手（隔離、停用、刪信）→ 自訂偵測最短；要跑劇本（Playbook）、開票、通知 → 分析規則＋自動化規則。③ <strong>誰產生事件</strong>：自訂偵測的警示在 XDR 事件佇列，分析規則的在 Sentinel（統一入口下兩者匯流）。陷阱敘述「不想再寫一次同樣邏輯」——兩邊都建同一條會產生<strong>重複警示</strong>，正解通常是二選一，或讓 XDR 偵測、Sentinel 只做關聯與自動化。</div>
+
+<div class="eyebrow">06 — ⏱️ 配額、Go hunt 與引導模式</div>
+<h2 data-toc="配額與技巧">配額、Go hunt 與引導模式</h2>
+<p>進階搜捕不是無限制的資料庫，考試很愛考這幾條界線：<strong>資料只有過去 30 天</strong>、單次查詢<strong>逾時上限 10 分鐘</strong>、結果<strong>最多 30,000 筆</strong>，另有依租用戶規模分配的 CPU 配額（短時間狂跑重查詢會被限流）。實務最常踩到的是 30 天——要查半年前的資料，答案不在進階搜捕，而在 Sentinel 工作區的長期保留、搜尋作業（search job）、資料還原或 data lake。</p>
+<pre class="kql"><span class="c">// Go hunt 的手寫版：最近 30 天被多種警示重複點名的裝置</span>
+AlertInfo
+| <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(<span class="n">30d</span>)
+| <span class="k">where</span> Severity <span class="k">in</span> (<span class="s">"High"</span>, <span class="s">"Medium"</span>)
+| <span class="k">join</span> <span class="k">kind</span>=inner (
+    AlertEvidence
+    | <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(<span class="n">30d</span>)
+    | <span class="k">where</span> EntityType <span class="k">in</span> (<span class="s">"Process"</span>, <span class="s">"File"</span>, <span class="s">"User"</span>)
+    | <span class="k">where</span> <span class="f">isnotempty</span>(DeviceName)
+    | <span class="k">project</span> AlertId, EntityType, DeviceName, FileName, AccountUpn
+) <span class="k">on</span> AlertId
+| <span class="k">summarize</span> Alerts = <span class="f">dcount</span>(AlertId), Sources = <span class="f">make_set</span>(ServiceSource, <span class="n">5</span>),
+            Titles = <span class="f">make_set</span>(Title, <span class="n">5</span>) <span class="k">by</span> DeviceName
+| <span class="k">where</span> Alerts &gt;= <span class="n">3</span>
+| <span class="k">order by</span> Alerts <span class="k">desc</span></pre>
+<p class="kql-note">逐行解說：<code>AlertInfo</code> 一列一則警示（標題、類別、嚴重性、來源產品），<code>AlertEvidence</code> 一列一個被牽連的實體，兩者用 <code>AlertId</code> 相接——Alert* 家族的標準用法；<code>dcount(AlertId)</code> 算不重複警示則數，避免同一則警示因多個實體被重複計算；<code>make_set(欄位, 5)</code> 第二個參數限制集合大小，結果表才不會被灌爆；<code>Alerts &gt;= 3</code> 是搜捕門檻——同一台裝置 30 天內被三則以上中高嚴重性警示點名，值得人工複核。</p>
+<div class="point">🧭 <strong>Go hunt 與引導模式</strong>：在事件、警示或實體頁面按 <strong>Go hunt</strong>（從這裡搜捕），入口網站會自動產生「以該實體為條件、限定在事件時間前後」的查詢，省去手寫過濾——把事件佇列與搜捕頁面黏起來的標準跳板。不熟 KQL 的人可用<strong>引導模式（guided hunting mode）</strong>：查詢建立器選資料網域（端點、郵件與協作、應用程式與身分），下拉選單堆疊條件與聚合，不寫程式碼也能跑出結果，再切到進階模式用 KQL 接手。考試角度：引導模式是降門檻功能，複雜跨表關聯與自訂偵測仍以 KQL 為主。</div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>「分析師要查六個月前的活動，但進階搜捕查不到」——不是權限也不是連接器問題，而是<strong>30 天資料範圍</strong>的必然結果，正解往 Sentinel 長期／輔助保留＋搜尋作業或資料還原走。另一題型「查詢逾時或結果被截斷」，正解是縮小時間窗、先 <code>where</code> 再 join、只 <code>project</code> 需要欄位、用 <code>has_any</code> 取代 <code>contains</code>，不是「申請提高配額」。</div>
+
+<div class="eyebrow">07 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">考綱補洞：影片沒講、考試會考</h2>
+<ul>
+  <li><strong>統一入口把兩套結構描述併在一起</strong>：<span class="badge-2026">2026 新考點</span> 工作區上線到 Defender 入口網站後，Sentinel 的表也會出現在進階搜捕頁面，可和 Device*／Email* 一起 join。注意 Sentinel 表的保留期依工作區設定，XDR 原生表仍是 30 天；跨兩邊 join 成本高，先各自過濾再接。</li>
+  <li><strong>Security Copilot 在搜捕頁的角色</strong>：<span class="badge-2026">2026 新考點</span> 用自然語言產生 KQL 草稿、解釋既有查詢，定位是加速起草，產出仍須人工驗證欄位與時間窗——考題問「Copilot 的查詢可否直接上線為偵測」，答案是先審閱與測試。</li>
+  <li><strong>權限與範圍</strong>：建立與管理自訂偵測需要管理安全性設定層級的權限；規則可限定<strong>裝置群組範圍</strong>，分析師看得到的資料也受角色與裝置群組限制——同一段查詢不同人跑出不同筆數，通常是範圍問題。</li>
+  <li><strong>規則數量與維運</strong>：租用戶的自訂偵測規則有數量上限（官方文件目前列為 200 條），別把每個小假說都變成規則；上線後定期看觸發次數與誤報率、調門檻或加白名單。</li>
+  <li><strong>結果頁直接動手</strong>：勾選結果列即可採取動作（隔離裝置、封鎖檔案、標示使用者），也能匯出 CSV；查詢可存成共用或私人查詢，團隊查詢庫是搜捕成熟度的一部分。</li>
+  <li><strong>API 與自動化</strong>：進階搜捕提供 API（Microsoft Graph security 的 runHuntingQuery）供外部腳本執行查詢，同樣受配額與速率限制；要大規模可重複的排程分析，答案往 data lake KQL 作業走。</li>
+  <li><strong>欄位不用背</strong>：左側結構描述樹展開就能看每張表的欄位型別與說明——考試考的是「不確定欄位名稱時去哪裡查」。</li>
+</ul>
+
+<div class="eyebrow">08 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">延伸閱讀（MS Learn）</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-overview" target="_blank" rel="noopener">進階搜捕概觀</a>——資料範圍、兩種模式與整體定位，先讀這篇建立地圖。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-schema-tables" target="_blank" rel="noopener">進階搜捕結構描述參考</a>——每張表的用途與完整欄位，對照第 03 節家族表逐一點開。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/custom-detection-rules" target="_blank" rel="noopener">建立與管理自訂偵測規則</a>——必要欄位、頻率與回看期、可用回應動作的官方出處。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-limits" target="_blank" rel="noopener">進階搜捕配額與使用參數</a>——逾時、結果筆數與 CPU 配額的官方數字。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-best-practices" target="_blank" rel="noopener">進階搜捕最佳做法</a>——先過濾再關聯、慎用 contains，效能題的答案庫。</li>
+</ul>
+
+
+  <div class="eyebrow">09 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W5-1">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D3-0011</div><div class='q-stem'>You are a security operations analyst investigating a phishing campaign in Microsoft Defender XDR advanced hunting. Several malicious messages were delivered before the policy was tightened. You need the SHA256 hash of the files that were attached to those messages so you can check whether the files later ran on any endpoint. Which advanced hunting table contains the attachment file hashes?</div><div class='q-zh'>（你是資安維運分析師，正在 Microsoft Defender XDR 的進階搜捕中調查一波釣魚郵件，其中數封在原則調整前已送達。你需要這些郵件夾帶檔案的 SHA256 雜湊，才能回頭確認檔案有沒有在端點上被執行。哪一張進階搜捕資料表存有夾檔的檔案雜湊？）</div><div class='q-opt'><strong>A.</strong> EmailEvents<div style='font-size:12.5px;color:var(--muted)'>EmailEvents</div></div><div class='q-opt'><strong>B.</strong> EmailAttachmentInfo<div style='font-size:12.5px;color:var(--muted)'>EmailAttachmentInfo</div></div><div class='q-opt'><strong>C.</strong> EmailUrlInfo<div style='font-size:12.5px;color:var(--muted)'>EmailUrlInfo</div></div><div class='q-opt'><strong>D.</strong> EmailPostDeliveryEvents<div style='font-size:12.5px;color:var(--muted)'>EmailPostDeliveryEvents</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>Email* 家族依「郵件的哪一面」拆表：EmailAttachmentInfo 專門記錄每封郵件夾帶的檔案，包含 FileName、FileType 與 SHA256／SHA1，因此是取得夾檔雜湊的正確來源。實務標準流程是先用 EmailEvents 篩出已送達的惡意郵件，再以共用鍵 NetworkMessageId 關聯 EmailAttachmentInfo 取得雜湊，最後用 SHA256 接到 DeviceFileEvents 或 DeviceProcessEvents，確認檔案是否落地並執行——這就是跨產品攻擊鏈查詢的骨架。</p><ul><li><strong>A</strong>：EmailEvents 記錄郵件本身的收送與判定（寄件者、收件者、主旨、DeliveryAction、ThreatTypes），是攻擊鏈的起點，但不含夾檔的檔案雜湊欄位。</li><li><strong>C</strong>：EmailUrlInfo 記錄郵件內含的網址，用來追「信裡放了什麼連結」；要看誰真的點了連結是 UrlClickEvents，兩者都與夾檔雜湊無關。</li><li><strong>D</strong>：EmailPostDeliveryEvents 記錄郵件送達之後系統採取的動作（例如自動清除 ZAP 是否成功），用於驗證處置結果，不提供夾檔雜湊。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-emailattachmentinfo-table' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D3-0012</div><div class='q-stem'>You are hunting in Microsoft Defender XDR and have written the following query:
+
+EmailEvents
+| where Timestamp > ago(7d)
+| where DeliveryAction == "Delivered" and ThreatTypes has "Malware"
+| join kind=inner (EmailAttachmentInfo | where Timestamp > ago(7d)) on NetworkMessageId
+
+You must now extend the query to determine whether the attached files were actually executed on managed devices. Which column should you use to join DeviceProcessEvents?</div><div class='q-zh'>（你在 Microsoft Defender XDR 進階搜捕中寫了一段查詢：EmailEvents 篩出過去 7 天已送達且判定為惡意程式的郵件，再以 NetworkMessageId 關聯 EmailAttachmentInfo。現在你要延伸查詢，判斷這些夾檔是否真的在受管裝置上被執行。關聯 DeviceProcessEvents 時應該用哪個欄位？）</div><div class='q-opt'><strong>A.</strong> NetworkMessageId<div style='font-size:12.5px;color:var(--muted)'>NetworkMessageId</div></div><div class='q-opt'><strong>B.</strong> ReportId<div style='font-size:12.5px;color:var(--muted)'>ReportId</div></div><div class='q-opt'><strong>C.</strong> AccountObjectId<div style='font-size:12.5px;color:var(--muted)'>AccountObjectId</div></div><div class='q-opt'><strong>D.</strong> SHA256<div style='font-size:12.5px;color:var(--muted)'>SHA256</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>檔案雜湊是唯一同時存在於郵件世界與端點世界的識別碼：EmailAttachmentInfo 的 SHA256 對上 DeviceProcessEvents 的 SHA256，就能確認「郵件夾帶的那個檔案」是否被建立成行程執行。實務上還要加時間窗（例如 where ExecTime between (MailTime .. MailTime + 24h)），限制執行發生在郵件送達之後，否則會撈到大量與本案無關的同名或同雜湊舊檔案，產生假關聯。</p><ul><li><strong>A</strong>：NetworkMessageId 只在 Email* 家族內共用（EmailEvents、EmailAttachmentInfo、EmailUrlInfo、EmailPostDeliveryEvents），Device* 資料表沒有這個欄位，join 不起來。</li><li><strong>B</strong>：ReportId 是單一事件在其所屬資料表中的識別碼，用於定位與去重（也是自訂偵測的必要輸出欄位），並非跨資料表關聯用的共用鍵。</li><li><strong>C</strong>：AccountObjectId 串的是身分與雲端應用活動（Identity*、CloudAppEvents），可以回答「這個帳號還做了什麼」，但無法證明某個夾檔在端點上被執行。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-schema-tables' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D3-0013</div><div class='q-stem'>You want to turn a proven hunting query into a custom detection rule in Microsoft Defender XDR. The query currently ends with:
+
+DeviceProcessEvents
+| where Timestamp > ago(2h)
+| where InitiatingProcessFileName in~ ("winword.exe", "excel.exe")
+| where ProcessCommandLine has_any ("-enc", "FromBase64String")
+| summarize Hits = count() by DeviceName
+
+The portal will not let you create the rule from this query. What should you change first?</div><div class='q-zh'>（你想把一段已驗證的搜捕查詢在 Microsoft Defender XDR 中轉成自訂偵測規則。查詢最後是 summarize Hits = count() by DeviceName，但入口網站不讓你用這段查詢建立規則。你應該先修改什麼？）</div><div class='q-opt'><strong>A.</strong> Make the query return Timestamp and ReportId together with a device identifier, for example by using summarize arg_max(Timestamp, *) by DeviceId.<div style='font-size:12.5px;color:var(--muted)'>讓查詢輸出 Timestamp 與 ReportId 以及裝置識別欄位，例如改用 summarize arg_max(Timestamp, *) by DeviceId。</div></div><div class='q-opt'><strong>B.</strong> Change the rule frequency to Continuous (NRT) so that aggregation is evaluated in near real time.<div style='font-size:12.5px;color:var(--muted)'>把規則執行頻率改成連續（NRT），讓聚合結果以近即時方式評估。</div></div><div class='q-opt'><strong>C.</strong> Save the query as a shared hunting query first, then create the detection rule from the saved query.<div style='font-size:12.5px;color:var(--muted)'>先把查詢存成共用搜捕查詢，再從已儲存的查詢建立偵測規則。</div></div><div class='q-opt'><strong>D.</strong> Extend the time filter to ago(30d) so the rule has enough data to evaluate.<div style='font-size:12.5px;color:var(--muted)'>把時間篩選放寬到 ago(30d)，讓規則有足夠資料可以評估。</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>自訂偵測規則的查詢結果必須包含 Timestamp（事件時間）與 ReportId（事件唯一識別），平台才能定位事件並避免重複告警；同時至少要有一個可對應的實體欄位（DeviceId／DeviceName／AccountObjectId／AccountSid／AccountUpn／收件者信箱或檔案雜湊），自動回應動作才有作用對象。summarize count() by DeviceName 會把 Timestamp 與 ReportId 一併聚合掉，因此規則無法建立。標準補救寫法是 summarize arg_max(Timestamp, *) by DeviceId，取每台裝置最新的一整列，所有必要欄位都會被帶回結果。</p><ul><li><strong>B</strong>：頻率不是問題所在，缺欄位在任何頻率下都存不了規則；而且連續（NRT）模式限制更嚴，只支援單一資料表且不支援 join／union，改成 NRT 不會讓缺欄位的查詢變得合法。</li><li><strong>C</strong>：把查詢存成共用搜捕查詢只是方便團隊重複使用，並不會改變結果集的欄位；規則建立時檢查的仍是查詢輸出是否含 Timestamp、ReportId 與實體欄位。</li><li><strong>D</strong>：放寬時間篩選反而會出問題：查詢的時間窗應該對齊所選頻率的回看期（例如每小時對應過去 2 小時），把窗拉到 30 天既無法解決缺欄位，也會造成重複評估與效能負擔。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/custom-detection-rules' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D3-0014</div><div class='q-stem'>A custom detection rule you are creating in Microsoft Defender XDR returns Timestamp, ReportId, AccountUpn and AccountObjectId. Your SOC lead requires the rule to automatically isolate the affected endpoint when it triggers, but the device actions are unavailable in the response actions step. What should you do?</div><div class='q-zh'>（你在 Microsoft Defender XDR 建立的自訂偵測規則目前輸出 Timestamp、ReportId、AccountUpn 與 AccountObjectId。SOC 主管要求規則觸發時自動隔離受影響的端點，但在回應動作步驟中裝置類動作無法選取。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Change the rule frequency to Continuous (NRT), because device response actions are only offered for near real-time rules.<div style='font-size:12.5px;color:var(--muted)'>把規則頻率改成連續（NRT），因為裝置回應動作只提供給近即時規則。</div></div><div class='q-opt'><strong>B.</strong> Create an automation rule in Microsoft Sentinel that runs an isolation playbook when the alert arrives.<div style='font-size:12.5px;color:var(--muted)'>在 Microsoft Sentinel 建立自動化規則，當警示進來時執行隔離劇本（Playbook）。</div></div><div class='q-opt'><strong>C.</strong> Modify the query to also return a device identifier such as DeviceId, then map it as the impacted device entity in the rule.<div style='font-size:12.5px;color:var(--muted)'>修改查詢讓結果也輸出 DeviceId 之類的裝置識別欄位，並在規則中把它對應成受影響的裝置實體。</div></div><div class='q-opt'><strong>D.</strong> Set the rule scope to all device groups so that every managed device is in scope for the action.<div style='font-size:12.5px;color:var(--muted)'>把規則範圍設為所有裝置群組，讓所有受管裝置都納入動作範圍。</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>自訂偵測的自動回應動作是依「受影響的實體」對應到哪一類欄位而解鎖：對應到裝置欄位（DeviceId／DeviceName）才會出現隔離裝置、收集調查封包、執行防毒掃描、限制應用程式執行等裝置動作；對應到使用者欄位才有停用帳號、強制重設密碼；對應到郵件欄位才能刪信。目前查詢只輸出帳號欄位，平台不知道要對哪台裝置動手，因此裝置動作反灰。正解是讓查詢帶出裝置識別欄位並完成實體對應。</p><ul><li><strong>A</strong>：頻率與可用動作無關；連續（NRT）只是評估時機更即時，而且限制更多（單一資料表、不支援 join／union），改頻率不會讓裝置動作出現。</li><li><strong>B</strong>：這是可行的替代路徑，但屬於 Sentinel 端的自動化，不是本題要解的問題；題目要的是讓這條自訂偵測規則自己執行隔離，最短且正確的做法是補上裝置實體欄位。</li><li><strong>D</strong>：規則範圍（裝置群組）決定規則對哪些裝置生效，不會讓裝置類回應動作變成可選；沒有對應的裝置實體欄位，範圍設多大都沒有作用對象。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/custom-detection-rules' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D3-0015</div><div class='q-stem'>During an investigation, threat intelligence indicates that an adversary may have first accessed your environment about five months ago. You run an advanced hunting query in the Microsoft Defender portal with a filter of ago(150d), but no events are returned even though the workspace retains the relevant logs for one year. You must confirm the earliest sign of the activity. What should you do?</div><div class='q-zh'>（調查期間，威脅情報顯示攻擊者可能在約五個月前就首次進入你的環境。你在 Microsoft Defender 入口網站的進階搜捕中以 ago(150d) 執行查詢，卻查不到任何事件，儘管工作區對相關日誌保留了一年。你必須確認該活動最早的跡象。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Increase the query timeout and rerun the advanced hunting query with a larger result limit.<div style='font-size:12.5px;color:var(--muted)'>提高查詢逾時上限並加大結果筆數限制後，重新執行同一段進階搜捕查詢。</div></div><div class='q-opt'><strong>B.</strong> Run a search job in Microsoft Sentinel against the long-term retained logs, restoring the historical data if deeper interactive analysis is needed.<div style='font-size:12.5px;color:var(--muted)'>在 Microsoft Sentinel 對長期保留的日誌執行搜尋作業（search job），若需要更深入的互動分析再還原歷史資料。</div></div><div class='q-opt'><strong>C.</strong> Create a custom detection rule that runs every 24 hours, because that frequency uses a 30-day lookup period.<div style='font-size:12.5px;color:var(--muted)'>建立每 24 小時執行的自訂偵測規則，因為該頻率使用過去 30 天的回看期。</div></div><div class='q-opt'><strong>D.</strong> Rebuild the query in guided hunting mode so the query builder can address the older data domains.<div style='font-size:12.5px;color:var(--muted)'>改用引導模式（guided hunting mode）的查詢建立器重寫查詢，以便涵蓋較舊的資料網域。</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>Defender XDR 進階搜捕的原生資料表只保留過去 30 天，因此 ago(150d) 不會有結果，這是資料範圍的必然結果，與權限、逾時或查詢寫法無關。要查更久以前的資料，正解是走 Microsoft Sentinel 這一側：對長期／輔助保留的日誌執行搜尋作業（search job），它專為大範圍、長時間跨度的搜尋設計，作業完成後再檢視結果；若需要對那段歷史資料做反覆互動查詢，則進一步使用資料還原（data restore）把它帶回可查詢狀態。</p><ul><li><strong>A</strong>：逾時（10 分鐘）與結果筆數（30,000 筆）是租用戶固定配額，不能自行調高；就算調得動也無濟於事，因為 30 天以外的資料根本不在進階搜捕的查詢範圍內。</li><li><strong>C</strong>：每 24 小時的自訂偵測確實使用 30 天回看期，但那是「持續偵測未來事件」的機制，且同樣受 30 天限制，無法回答「五個月前發生了什麼」這個歷史調查問題。</li><li><strong>D</strong>：引導模式只是讓不熟 KQL 的分析師用查詢建立器組條件，資料來源與 30 天保留範圍完全相同，換模式不會讓更舊的資料變得可查。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-limits' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP21</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><div class='p-hint'>🎧 本集音檔生成中（push 腳本後由 GitHub Actions 自動合成）。</div><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-021'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="21">
+    <label for="doneChk">我讀完 Day 21 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-020.html'>← Day 20</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-022.html'>Day 22 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 21 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

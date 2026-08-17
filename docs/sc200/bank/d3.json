@@ -455,5 +455,240 @@
       "D": "計算登入總次數是 summarize count() by AccountUpn 的行為；arg_max 回傳的是整列紀錄，不是次數。"
     },
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/arg-max-aggregation-function"
+  },
+  {
+    "id": "D3-0011",
+    "domain": "D3",
+    "topic": "xdr-schema",
+    "unit": "P1-W5-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "You are a security operations analyst investigating a phishing campaign in Microsoft Defender XDR advanced hunting. Several malicious messages were delivered before the policy was tightened. You need the SHA256 hash of the files that were attached to those messages so you can check whether the files later ran on any endpoint. Which advanced hunting table contains the attachment file hashes?",
+    "stem_zh": "你是資安維運分析師，正在 Microsoft Defender XDR 的進階搜捕中調查一波釣魚郵件，其中數封在原則調整前已送達。你需要這些郵件夾帶檔案的 SHA256 雜湊，才能回頭確認檔案有沒有在端點上被執行。哪一張進階搜捕資料表存有夾檔的檔案雜湊？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "EmailEvents",
+        "text_zh": "EmailEvents"
+      },
+      {
+        "key": "B",
+        "text_en": "EmailAttachmentInfo",
+        "text_zh": "EmailAttachmentInfo"
+      },
+      {
+        "key": "C",
+        "text_en": "EmailUrlInfo",
+        "text_zh": "EmailUrlInfo"
+      },
+      {
+        "key": "D",
+        "text_en": "EmailPostDeliveryEvents",
+        "text_zh": "EmailPostDeliveryEvents"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Email* 家族依「郵件的哪一面」拆表：EmailAttachmentInfo 專門記錄每封郵件夾帶的檔案，包含 FileName、FileType 與 SHA256／SHA1，因此是取得夾檔雜湊的正確來源。實務標準流程是先用 EmailEvents 篩出已送達的惡意郵件，再以共用鍵 NetworkMessageId 關聯 EmailAttachmentInfo 取得雜湊，最後用 SHA256 接到 DeviceFileEvents 或 DeviceProcessEvents，確認檔案是否落地並執行——這就是跨產品攻擊鏈查詢的骨架。",
+    "why_wrong_zh": {
+      "A": "EmailEvents 記錄郵件本身的收送與判定（寄件者、收件者、主旨、DeliveryAction、ThreatTypes），是攻擊鏈的起點，但不含夾檔的檔案雜湊欄位。",
+      "C": "EmailUrlInfo 記錄郵件內含的網址，用來追「信裡放了什麼連結」；要看誰真的點了連結是 UrlClickEvents，兩者都與夾檔雜湊無關。",
+      "D": "EmailPostDeliveryEvents 記錄郵件送達之後系統採取的動作（例如自動清除 ZAP 是否成功），用於驗證處置結果，不提供夾檔雜湊。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-emailattachmentinfo-table",
+    "tags": [
+      "hunting",
+      "xdr"
+    ]
+  },
+  {
+    "id": "D3-0012",
+    "domain": "D3",
+    "topic": "advanced-hunting",
+    "unit": "P1-W5-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are hunting in Microsoft Defender XDR and have written the following query:\n\nEmailEvents\n| where Timestamp > ago(7d)\n| where DeliveryAction == \"Delivered\" and ThreatTypes has \"Malware\"\n| join kind=inner (EmailAttachmentInfo | where Timestamp > ago(7d)) on NetworkMessageId\n\nYou must now extend the query to determine whether the attached files were actually executed on managed devices. Which column should you use to join DeviceProcessEvents?",
+    "stem_zh": "你在 Microsoft Defender XDR 進階搜捕中寫了一段查詢：EmailEvents 篩出過去 7 天已送達且判定為惡意程式的郵件，再以 NetworkMessageId 關聯 EmailAttachmentInfo。現在你要延伸查詢，判斷這些夾檔是否真的在受管裝置上被執行。關聯 DeviceProcessEvents 時應該用哪個欄位？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "NetworkMessageId",
+        "text_zh": "NetworkMessageId"
+      },
+      {
+        "key": "B",
+        "text_en": "ReportId",
+        "text_zh": "ReportId"
+      },
+      {
+        "key": "C",
+        "text_en": "AccountObjectId",
+        "text_zh": "AccountObjectId"
+      },
+      {
+        "key": "D",
+        "text_en": "SHA256",
+        "text_zh": "SHA256"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "檔案雜湊是唯一同時存在於郵件世界與端點世界的識別碼：EmailAttachmentInfo 的 SHA256 對上 DeviceProcessEvents 的 SHA256，就能確認「郵件夾帶的那個檔案」是否被建立成行程執行。實務上還要加時間窗（例如 where ExecTime between (MailTime .. MailTime + 24h)），限制執行發生在郵件送達之後，否則會撈到大量與本案無關的同名或同雜湊舊檔案，產生假關聯。",
+    "why_wrong_zh": {
+      "A": "NetworkMessageId 只在 Email* 家族內共用（EmailEvents、EmailAttachmentInfo、EmailUrlInfo、EmailPostDeliveryEvents），Device* 資料表沒有這個欄位，join 不起來。",
+      "B": "ReportId 是單一事件在其所屬資料表中的識別碼，用於定位與去重（也是自訂偵測的必要輸出欄位），並非跨資料表關聯用的共用鍵。",
+      "C": "AccountObjectId 串的是身分與雲端應用活動（Identity*、CloudAppEvents），可以回答「這個帳號還做了什麼」，但無法證明某個夾檔在端點上被執行。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-schema-tables",
+    "tags": [
+      "hunting",
+      "kql"
+    ]
+  },
+  {
+    "id": "D3-0013",
+    "domain": "D3",
+    "topic": "custom-detections",
+    "unit": "P1-W5-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You want to turn a proven hunting query into a custom detection rule in Microsoft Defender XDR. The query currently ends with:\n\nDeviceProcessEvents\n| where Timestamp > ago(2h)\n| where InitiatingProcessFileName in~ (\"winword.exe\", \"excel.exe\")\n| where ProcessCommandLine has_any (\"-enc\", \"FromBase64String\")\n| summarize Hits = count() by DeviceName\n\nThe portal will not let you create the rule from this query. What should you change first?",
+    "stem_zh": "你想把一段已驗證的搜捕查詢在 Microsoft Defender XDR 中轉成自訂偵測規則。查詢最後是 summarize Hits = count() by DeviceName，但入口網站不讓你用這段查詢建立規則。你應該先修改什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Make the query return Timestamp and ReportId together with a device identifier, for example by using summarize arg_max(Timestamp, *) by DeviceId.",
+        "text_zh": "讓查詢輸出 Timestamp 與 ReportId 以及裝置識別欄位，例如改用 summarize arg_max(Timestamp, *) by DeviceId。"
+      },
+      {
+        "key": "B",
+        "text_en": "Change the rule frequency to Continuous (NRT) so that aggregation is evaluated in near real time.",
+        "text_zh": "把規則執行頻率改成連續（NRT），讓聚合結果以近即時方式評估。"
+      },
+      {
+        "key": "C",
+        "text_en": "Save the query as a shared hunting query first, then create the detection rule from the saved query.",
+        "text_zh": "先把查詢存成共用搜捕查詢，再從已儲存的查詢建立偵測規則。"
+      },
+      {
+        "key": "D",
+        "text_en": "Extend the time filter to ago(30d) so the rule has enough data to evaluate.",
+        "text_zh": "把時間篩選放寬到 ago(30d)，讓規則有足夠資料可以評估。"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "自訂偵測規則的查詢結果必須包含 Timestamp（事件時間）與 ReportId（事件唯一識別），平台才能定位事件並避免重複告警；同時至少要有一個可對應的實體欄位（DeviceId／DeviceName／AccountObjectId／AccountSid／AccountUpn／收件者信箱或檔案雜湊），自動回應動作才有作用對象。summarize count() by DeviceName 會把 Timestamp 與 ReportId 一併聚合掉，因此規則無法建立。標準補救寫法是 summarize arg_max(Timestamp, *) by DeviceId，取每台裝置最新的一整列，所有必要欄位都會被帶回結果。",
+    "why_wrong_zh": {
+      "B": "頻率不是問題所在，缺欄位在任何頻率下都存不了規則；而且連續（NRT）模式限制更嚴，只支援單一資料表且不支援 join／union，改成 NRT 不會讓缺欄位的查詢變得合法。",
+      "C": "把查詢存成共用搜捕查詢只是方便團隊重複使用，並不會改變結果集的欄位；規則建立時檢查的仍是查詢輸出是否含 Timestamp、ReportId 與實體欄位。",
+      "D": "放寬時間篩選反而會出問題：查詢的時間窗應該對齊所選頻率的回看期（例如每小時對應過去 2 小時），把窗拉到 30 天既無法解決缺欄位，也會造成重複評估與效能負擔。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/custom-detection-rules",
+    "tags": [
+      "custom-detection",
+      "hunting"
+    ]
+  },
+  {
+    "id": "D3-0014",
+    "domain": "D3",
+    "topic": "custom-detections",
+    "unit": "P1-W5-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "A custom detection rule you are creating in Microsoft Defender XDR returns Timestamp, ReportId, AccountUpn and AccountObjectId. Your SOC lead requires the rule to automatically isolate the affected endpoint when it triggers, but the device actions are unavailable in the response actions step. What should you do?",
+    "stem_zh": "你在 Microsoft Defender XDR 建立的自訂偵測規則目前輸出 Timestamp、ReportId、AccountUpn 與 AccountObjectId。SOC 主管要求規則觸發時自動隔離受影響的端點，但在回應動作步驟中裝置類動作無法選取。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Change the rule frequency to Continuous (NRT), because device response actions are only offered for near real-time rules.",
+        "text_zh": "把規則頻率改成連續（NRT），因為裝置回應動作只提供給近即時規則。"
+      },
+      {
+        "key": "B",
+        "text_en": "Create an automation rule in Microsoft Sentinel that runs an isolation playbook when the alert arrives.",
+        "text_zh": "在 Microsoft Sentinel 建立自動化規則，當警示進來時執行隔離劇本（Playbook）。"
+      },
+      {
+        "key": "C",
+        "text_en": "Modify the query to also return a device identifier such as DeviceId, then map it as the impacted device entity in the rule.",
+        "text_zh": "修改查詢讓結果也輸出 DeviceId 之類的裝置識別欄位，並在規則中把它對應成受影響的裝置實體。"
+      },
+      {
+        "key": "D",
+        "text_en": "Set the rule scope to all device groups so that every managed device is in scope for the action.",
+        "text_zh": "把規則範圍設為所有裝置群組，讓所有受管裝置都納入動作範圍。"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "自訂偵測的自動回應動作是依「受影響的實體」對應到哪一類欄位而解鎖：對應到裝置欄位（DeviceId／DeviceName）才會出現隔離裝置、收集調查封包、執行防毒掃描、限制應用程式執行等裝置動作；對應到使用者欄位才有停用帳號、強制重設密碼；對應到郵件欄位才能刪信。目前查詢只輸出帳號欄位，平台不知道要對哪台裝置動手，因此裝置動作反灰。正解是讓查詢帶出裝置識別欄位並完成實體對應。",
+    "why_wrong_zh": {
+      "A": "頻率與可用動作無關；連續（NRT）只是評估時機更即時，而且限制更多（單一資料表、不支援 join／union），改頻率不會讓裝置動作出現。",
+      "B": "這是可行的替代路徑，但屬於 Sentinel 端的自動化，不是本題要解的問題；題目要的是讓這條自訂偵測規則自己執行隔離，最短且正確的做法是補上裝置實體欄位。",
+      "D": "規則範圍（裝置群組）決定規則對哪些裝置生效，不會讓裝置類回應動作變成可選；沒有對應的裝置實體欄位，範圍設多大都沒有作用對象。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/custom-detection-rules",
+    "tags": [
+      "custom-detection",
+      "response"
+    ]
+  },
+  {
+    "id": "D3-0015",
+    "domain": "D3",
+    "topic": "advanced-hunting",
+    "unit": "P1-W5-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "During an investigation, threat intelligence indicates that an adversary may have first accessed your environment about five months ago. You run an advanced hunting query in the Microsoft Defender portal with a filter of ago(150d), but no events are returned even though the workspace retains the relevant logs for one year. You must confirm the earliest sign of the activity. What should you do?",
+    "stem_zh": "調查期間，威脅情報顯示攻擊者可能在約五個月前就首次進入你的環境。你在 Microsoft Defender 入口網站的進階搜捕中以 ago(150d) 執行查詢，卻查不到任何事件，儘管工作區對相關日誌保留了一年。你必須確認該活動最早的跡象。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Increase the query timeout and rerun the advanced hunting query with a larger result limit.",
+        "text_zh": "提高查詢逾時上限並加大結果筆數限制後，重新執行同一段進階搜捕查詢。"
+      },
+      {
+        "key": "B",
+        "text_en": "Run a search job in Microsoft Sentinel against the long-term retained logs, restoring the historical data if deeper interactive analysis is needed.",
+        "text_zh": "在 Microsoft Sentinel 對長期保留的日誌執行搜尋作業（search job），若需要更深入的互動分析再還原歷史資料。"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a custom detection rule that runs every 24 hours, because that frequency uses a 30-day lookup period.",
+        "text_zh": "建立每 24 小時執行的自訂偵測規則，因為該頻率使用過去 30 天的回看期。"
+      },
+      {
+        "key": "D",
+        "text_en": "Rebuild the query in guided hunting mode so the query builder can address the older data domains.",
+        "text_zh": "改用引導模式（guided hunting mode）的查詢建立器重寫查詢，以便涵蓋較舊的資料網域。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Defender XDR 進階搜捕的原生資料表只保留過去 30 天，因此 ago(150d) 不會有結果，這是資料範圍的必然結果，與權限、逾時或查詢寫法無關。要查更久以前的資料，正解是走 Microsoft Sentinel 這一側：對長期／輔助保留的日誌執行搜尋作業（search job），它專為大範圍、長時間跨度的搜尋設計，作業完成後再檢視結果；若需要對那段歷史資料做反覆互動查詢，則進一步使用資料還原（data restore）把它帶回可查詢狀態。",
+    "why_wrong_zh": {
+      "A": "逾時（10 分鐘）與結果筆數（30,000 筆）是租用戶固定配額，不能自行調高；就算調得動也無濟於事，因為 30 天以外的資料根本不在進階搜捕的查詢範圍內。",
+      "C": "每 24 小時的自訂偵測確實使用 30 天回看期，但那是「持續偵測未來事件」的機制，且同樣受 30 天限制，無法回答「五個月前發生了什麼」這個歷史調查問題。",
+      "D": "引導模式只是讓不熟 KQL 的分析師用查詢建立器組條件，資料來源與 30 天保留範圍完全相同，換模式不會讓更舊的資料變得可查。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-limits",
+    "tags": [
+      "hunting",
+      "sentinel"
+    ]
   }
 ]

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 24｜Sentinel Graph、MCP Server 與 data lake 進階搜捕｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 24 / 40 · 2026-09-18</div>
+    <h1>Sentinel Graph、MCP Server 與 data lake 進階搜捕</h1>
+    <p class="sub"><em>Sentinel Graph, MCP Server & Data Lake Hunting</em></p>
+    <div class="meta-row">
+      <span class="pill d3">D3 執行威脅搜捕</span>
+      <span class="pill ghost">20-25%</span>
+      <span class="pill ghost">P1-W5-4</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:96%"></div></div>
+    <div class="progress-text">五週速成進度 24 / 25 · 距離考試（2026-10-17）還有 29 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP10｜Perform threat hunting in Microsoft Sentinel | SC-200 | Episode 10</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><div class='vm'>本日對應段落：<a href='https://youtu.be/z6QbN4rpAvA?t=60' target='_blank' rel='noopener'><span class='timestamp'>1:00</span></a> KQL jobs、Sentinel data lake、search job、<a href='https://youtu.be/z6QbN4rpAvA?t=360' target='_blank' rel='noopener'><span class='timestamp'>6:00</span></a> KQL jobs、Sentinel data lake、search job、<a href='https://youtu.be/z6QbN4rpAvA?t=540' target='_blank' rel='noopener'><span class='timestamp'>9:00</span></a> KQL jobs、Sentinel data lake、search job</div><a class='vbtn' href='https://youtu.be/z6QbN4rpAvA' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">搜捕的三個新軸：關係、規模、時間 <span class="badge-2026">2026 新考點</span></h2>
+<p>第五週第四天，<strong>整個單元都是 2026-07-28 考綱更新才長出來的新地</strong>。前三天你已把搜捕的傳統工法練熟——假說、KQL、書籤、Livestream、MITRE ATT&amp;CK 對應。今天要看的是三個正在把搜捕工作流換掉的能力：<strong>Sentinel Graph</strong> 把實體與關係建成圖，讓你問「誰連到誰」；<strong>Sentinel MCP Server</strong> 用標準協定把 Sentinel 的資料與工具開放給 AI 代理，讓自然語言調查與<strong>代理式搜捕（agentic hunting）</strong>成真；<strong>data lake 進階搜捕</strong>把時間軸拉到一年以上，新的入侵指標（IoC）一到手就能回頭掃歷史。三者是同一件事的三個面向：<strong>圖負責關係、代理負責規模、湖負責時間</strong>。這類新功能題通常停在概念與適用場景層級——考你分辨哪種問題該用哪種工具，而不是背按鈕路徑。</p>
+<div class="info-box">學習目標（對應考綱 D3「執行威脅搜捕」條目）：
+<ul>
+<li>☐ 使用 <strong>Sentinel Graph</strong> 做實體關聯分析，評估攻擊路徑（attack path）與爆炸半徑（blast radius） <span class="badge-2026">2026 新考點</span></li>
+<li>☐ 說明 <strong>Sentinel MCP Server</strong> 的用途：讓 AI 代理與 Security Copilot 以標準協定存取 Sentinel 資料與工具 <span class="badge-2026">2026 新考點</span></li>
+<li>☐ 在 <strong>data lake</strong> 上執行歷史回溯獵捕（retro-hunting），用 <strong>KQL jobs</strong> 排程搜捕並將結果升階（promote）回分析層 <span class="badge-2026">2026 新考點</span></li>
+<li>☐ 比較表格查詢、圖查詢、湖上回溯的<strong>適用場景與成本取捨</strong></li>
+<li>☐ 以筆記本（Notebook）與外部工具存取 data lake 資料進行進階搜捕</li>
+</ul></div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP10 只講到一半：湖有、MCP 有、Graph 沒有</h2>
+<p>本單元對應官方影片 <strong>EP10「Perform threat hunting in Microsoft Sentinel」</strong>。先把話說在前面：<strong>這三個新主題，影片只覆蓋了大約兩個</strong>——湖上的搜捕工具講得完整，MCP Server 只以「操作步驟」的形式出現一次，Sentinel Graph 則完全沒有。以下是可以直接對照的段落。</p>
+<ul>
+<li><span class="timestamp">EP10 08:17</span> 起切到「更大的時間範圍與不同資料層」，點名 <strong>search jobs、還原歷史資料（restore）、data lake KQL jobs</strong>。<span class="timestamp">EP10 08:47</span> 說 search job 適合跨大型資料集或長時間軸；<span class="timestamp">EP10 09:19</span> 的還原用來驗證「可疑行為最早出現在什麼時候」。</li>
+<li><span class="timestamp">EP10 09:55</span> 最貼近今天主題——<strong>data lake KQL job</strong> 設計來對湖中資料源大規模執行 KQL，把可重複的搜捕<strong>工作流程化</strong>，不必只靠互動探索；講者的「定義工作、執行、再拿輸出繼續調查」正對應第 06 節的升階（promote）。</li>
+<li><span class="timestamp">EP10 11:15</span> 把筆記本與劇本（Playbook）、活頁簿（Workbook）分開定位：劇本管自動化、活頁簿管視覺化、<strong>筆記本管深度分析與彈性調查</strong>，使用者是搜捕者與 T2/T3 分析師。</li>
+<li><span class="timestamp">EP10 15:17</span> 談湖上的筆記本，是全片<strong>唯一一次提到 MCP</strong>：在筆記本裡直接使用 Sentinel 的 Visual Studio Code 擴充功能與 <strong>model context protocol 伺服器</strong>，對湖中資料源做探索與搜捕；<span class="timestamp">EP10 15:49</span> 起的實作裝好 VS Code、GitHub Copilot 與 Sentinel 擴充功能，再加入一台 HTTP 型的 MCP 伺服器並用公司帳號登入授權。<strong>但這裡只有「怎麼接」，沒有「為什麼」</strong>——MCP 的設計意義、agentic hunting 的價值與權限稽核，影片一句都沒說，請看第 05 節。</li>
+<li><span class="timestamp">EP10 20:59</span> 出現了「圖」的影子：因為書籤對應了實體，講者得以打開<strong>實體圖（entity graph）</strong>往下鑽、串接其他訊號。那是單一事件的關聯視圖，<strong>不是</strong> Sentinel Graph——差別由第 03 節與 🧩 考綱補洞補齊。</li>
+</ul>
+
+<div class="eyebrow">03 — 🕸️ Sentinel Graph</div>
+<h2 data-toc="Graph">從表格思維換成圖思維 <span class="badge-2026">2026 新考點</span></h2>
+<p>過去五週你所有的查詢都是<strong>表格思維</strong>：用 where 篩、summarize 算、join 併，擅長回答「<strong>有沒有、幾次、什麼時候</strong>」。但 SOC 真正卡住的問題長這樣：「這個被釣魚的帳號，順著它能走到哪台伺服器？」「這台淪陷的裝置往外還碰得到誰？」——這些是<strong>關係問題</strong>。</p>
+<p><strong>Sentinel Graph</strong> 把安全資料重新組織成一張圖：<strong>節點是實體</strong>（使用者、裝置、檔案、IP、信箱、雲端資源、權限指派），<strong>邊是關係與行為</strong>（登入了、執行了、外連了、擁有、可存取）。圖建好之後，兩種問題突然可以直接問：</p>
+<ul>
+<li><strong>攻擊路徑（attack path）</strong>：從一個立足點（暴露的資產、被盜的帳號）出發，攻擊者<strong>可能沿著哪條關係鏈</strong>走到高價值目標。這是「往前看」的推演。</li>
+<li><strong>爆炸半徑（blast radius）</strong>：反過來問，這個已確定被入侵的實體<strong>往外能觸及多大範圍</strong>——哪些帳號共用憑證、哪些資源它有權限。這是回應決策（隔離到什麼程度、重設哪些密碼）的直接依據。</li>
+</ul>
+<p>為什麼表格做不到？因為<strong>多跳（multi-hop）</strong>。從帳號到裝置到伺服器到資料，每多一跳就多一個 join，而且你得<strong>事先知道要跳幾次</strong>。圖查詢把「跳」變成語意：KQL 的圖語意運算子（<code>make-graph</code> 建圖、<code>graph-match</code> 比對路徑樣式）讓你描述<strong>可變長度的路徑</strong>，一次問完「任意幾跳內連得到的所有目標」。</p>
+<div class="point">💡 一句話分工：<strong>表格回答「發生了什麼」，圖回答「誰連到誰、還會波及誰」。</strong>兩者互補不是取代——先用表格查詢找到起點，再用圖把起點展開成路徑與範圍。</div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦：什麼時候該選 Graph</div>
+<p>題幹關鍵字直接對映：出現「<strong>lateral movement path／which assets could an attacker reach／who has access to this resource／blast radius</strong>」→ Sentinel Graph 的關聯與路徑分析。出現「<strong>how many times／list all sign-ins in the last 24 hours</strong>」→ 一般 KQL 表格查詢。兩個陷阱：①把「實體圖上的單一事件關聯視圖」當成攻擊路徑分析的答案——它給的是這次調查的相鄰訊號，不是跨環境的路徑推演；②看到「圖」就選 Graph，但題幹其實一次 <code>join</code> 就能回答——最佳答案永遠是<strong>剛好夠用的工具</strong>。</p></div>
+
+<div class="eyebrow">04 — 🔀 三種搜捕型態對照</div>
+<h2 data-toc="三方對照">表格查詢 vs Graph 關聯 vs 湖上回溯</h2>
+<p>這張表是本單元最可能變成考題的一頁。三者不是競爭關係，而是<strong>問題型態不同</strong>——先認出問題屬於哪一類，工具就自己浮出來。</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th></th><th>傳統 KQL 表格查詢</th><th>Sentinel Graph 關聯</th><th>data lake 回溯搜捕</th></tr></thead>
+<tbody>
+<tr><td><strong>問題型態</strong></td><td>有沒有、幾次、什麼時候（事件與統計）</td><td>誰連到誰、經過幾跳、還會波及誰（關係與路徑）</td><td>過去曾不曾發生過（時間回溯）</td></tr>
+<tr><td><strong>資料範圍</strong></td><td>分析層，互動保留期內（常見 90 天）</td><td>實體與關係圖，建於湖上的長期關聯資料</td><td>湖層全量資料，總保留可達 12 年</td></tr>
+<tr><td><strong>速度／延遲</strong></td><td>互動、秒級回應</td><td>路徑展開較重，適合調查中而非即時告警</td><td>非互動為主，job 完成才看結果</td></tr>
+<tr><td><strong>成本模型</strong></td><td>已含在分析層擷取費中，查詢不另計</td><td>依湖上查詢與運算用量</td><td><strong>按查詢／job 用量計費</strong>，時間窗越寬越貴</td></tr>
+<tr><td><strong>典型場景</strong></td><td>假說驗證、可疑 PowerShell、登入異常統計</td><td>攻擊路徑推演、爆炸半徑評估、權限鏈盤點</td><td>新 IoC 回掃一年、法遵調閱、起始點定位</td></tr>
+<tr><td><strong>限制</strong></td><td>多跳關聯難寫、看不到保留期外歷史</td><td>只回答關係，統計趨勢仍需表格查詢</td><td>結果不會自動觸發偵測，須升階回分析層</td></tr>
+</tbody></table></div>
+
+<div class="eyebrow">05 — 🤖 Sentinel MCP Server</div>
+<h2 data-toc="MCP">讓 AI 代理接得上 SOC 資料 <span class="badge-2026">2026 新考點</span></h2>
+<p><strong>Model Context Protocol（MCP）</strong>是讓 AI 代理連接外部資料與工具的<strong>開放標準協定</strong>，解決整合的組合爆炸：過去每個 AI 助手接每個系統都得寫專用整合；有了 MCP，資料源那側架一台 <strong>MCP server</strong> 把能力包成標準化的「工具」，任何支援 MCP 的代理（Security Copilot、VS Code 裡的 Copilot、自寫的代理）都能直接用。</p>
+<p><strong>Sentinel MCP Server</strong> 就是 Sentinel 這側的標準門面，把資料探索與搜捕能力開放給代理：探索有哪些資料表與結構描述、依自然語言意圖產生並執行 KQL、查詢 data lake 資料、取得實體脈絡。落到 SOC 場景是三件事：</p>
+<ul>
+<li><strong>自然語言驅動的調查</strong>：分析師問「過去 90 天哪些帳號從新國家登入、之後又存取財務共用資料夾」，代理自己找表、組 KQL、執行、整理結果，人力留給判斷。</li>
+<li><strong>代理式搜捕（agentic hunting）</strong>：代理不只答一題，而是跑完整個搜捕迴圈——提假說、查證、依結果修正再查一輪，最後把值得升級的發現整理成書籤或事件交給人。</li>
+<li><strong>開發與搜捕的副手</strong>：如 EP10 示範，在 VS Code 筆記本裡接上 MCP server，寫查詢、探索湖中資料、驗證邏輯都在同一介面完成。</li>
+</ul>
+<p><strong>權限與稽核是考點核心。</strong>代理透過 MCP 存取資料時，是以<strong>呼叫者的 Microsoft Entra ID 身分</strong>驗證與授權（EP10 的設定流程就是用公司帳號登入並同意授權），因此代理<strong>看不到該身分本來就看不到的資料</strong>，RBAC 與最小權限仍是主要防線。風險也就很明確：<strong>給代理用的身分若權限開太大，等於把整份 SOC 資料交給一個會自己下查詢的程式</strong>。代理發出的查詢仍留稽核軌跡，而生成式輸出<strong>必須由人覆核</strong>——它可能寫出語法對但語意錯的查詢，或從不足的證據過度推論。</p>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦：MCP 題的兩種問法</div>
+<p><strong>問法一（用途）</strong>：「要讓自訂 AI 代理／Security Copilot 以標準化方式存取 Sentinel 資料與搜捕工具，應該用什麼？」→ <strong>Sentinel MCP Server</strong>。干擾項很像：劇本（Playbook）是自動化回應流程、不是給代理查資料的協定；REST API 做得到，但要為每個代理自寫整合，正是 MCP 要取代的；資料連接器是把資料<strong>收進</strong> Sentinel，方向相反。</p>
+<p><strong>問法二（治理）</strong>：「導入代理式搜捕時，如何確保代理不會存取不該看的資料？」→ 答案永遠是「<strong>代理繼承呼叫者身分，以 Entra ID 與 RBAC 最小權限控管，保留稽核並由人覆核輸出</strong>」。標準錯誤選項是「另建高權限服務帳號給代理用」與「靠提示詞限制代理別查敏感資料」——前者放大爆炸半徑，後者不是存取控制。</p></div>
+
+<div class="eyebrow">06 — 🕰️ 湖上的回溯獵捕</div>
+<h2 data-toc="回溯獵捕">新 IoC 到手，回頭掃一年 <span class="badge-2026">2026 新考點</span></h2>
+<p><strong>回溯獵捕（retro-hunting）</strong>是很具體的動作：威脅情報發布新 IoC（網域、雜湊、C2 位址），你回頭問「<strong>我們過去有沒有碰過它</strong>」。難處在時間——分析層互動保留常只有 90 天，入侵駐留數個月卻是常態，最該回答的問題偏偏落在保留期外。<strong>data lake 解除了這個限制</strong>：全量資料低成本留在湖裡（最長 12 年）且<strong>直接可查，不必先還原</strong>。先用互動查詢探路：</p>
+<pre class="kql">// Lake 互動查詢：新收到的 C2 網域，過去 12 個月有沒有人解析過
+let NewIoCs = dynamic(["cdn-sync.badhost.example", "ota-update.badhost.example"]);
+DeviceNetworkEvents
+| where TimeGenerated between (ago(365d) .. now())
+| where RemoteUrl has_any (NewIoCs)
+| summarize Hits = count(), FirstSeen = min(TimeGenerated), LastSeen = max(TimeGenerated)
+          by DeviceName, RemoteUrl, InitiatingProcessFileName
+| order by FirstSeen asc</pre>
+<div class="kql-note">逐行解說：<strong>let</strong> 把情資清單抽成變數，換一批 IoC 只改一行。<strong>between (ago(365d) .. now())</strong> 是回溯的核心——這段時間窗遠超分析層保留，只有湖查得到；但湖<strong>按用量計費</strong>，時間窗要有意識地收。<strong>has_any</strong> 一次比對整份清單。<strong>summarize</strong> 收斂出三個關鍵答案：哪台裝置、<strong>第一次出現在什麼時候</strong>（定位入侵起點）、由哪個處理程序發起。<strong>order by FirstSeen asc</strong> 讓最早那列排最上面——通常就是「零號病人」。</div>
+<p>互動查詢適合「先看有沒有」。一旦確認這批 IoC 值得<strong>持續監控</strong>，就把它變成排程 <strong>KQL job</strong>，讓結果<strong>升階（promote）回分析層</strong>——分析規則只讀分析層，湖裡的發現不回去就無法觸發偵測：</p>
+<pre class="kql">// KQL job（每日排程，結果升階至分析層自訂資料表 RetroHuntIoC_CL）
+let NewIoCs = dynamic(["cdn-sync.badhost.example", "ota-update.badhost.example"]);
+DeviceNetworkEvents
+| where TimeGenerated &gt; ago(1d)
+| where RemoteUrl has_any (NewIoCs)
+| join kind=inner (
+    DeviceLogonEvents
+    | where TimeGenerated &gt; ago(1d)
+    | project DeviceName, AccountName, LogonTime = TimeGenerated
+  ) on DeviceName
+| project TimeGenerated, DeviceName, AccountName, RemoteUrl,
+          InitiatingProcessFileName, LogonTime</pre>
+<div class="kql-note">逐行解說：KQL job 支援<strong>完整 KQL</strong>（<code>join</code>、<code>summarize</code> 都能用，這點與受限 KQL 的 search job 不同），所以這裡把命中的裝置 <strong>join</strong> 回登入記錄，直接產出「哪台裝置、哪個帳號、連到哪個 C2」。<strong>project</strong> 出的欄位就是升階後寫入分析層自訂資料表的結構——資料一落到分析層，你就能建分析規則、產生事件、走正常分診流程。鐵律：<strong>湖裡撈到的魚，要放回分析層才能上菜。</strong></div>
+<div class="point">💡 成本與時間取捨三原則：<strong>①先窄後寬</strong>——先用一週驗證查詢寫得對再放大到一年；<strong>②先探後排</strong>——一次性用互動查詢，確定要長期看才排程；<strong>③只留要用的欄位</strong>——升階回分析層要付擷取費。</div>
+<div class="case-box"><div class="case-label">🧪 實戰情境：一封情資信件引發的回溯獵捕</div>
+<p>週二早上，ISAC 發布一批供應鏈攻擊相關 IoC：兩個 C2 網域、三個檔案雜湊。環境已接入 Sentinel data lake，端點與網路記錄在湖層保留 12 個月。</p>
+<ol>
+<li><strong>先問時間（湖）</strong>：跑上面那段互動查詢，時間窗設過去 12 個月。結果：一台開發用筆電在<strong>七個月前</strong>解析過其中一個網域三次——遠在分析層保留期外，沒有湖就永遠不會被發現。</li>
+<li><strong>再問關係（圖）</strong>：拿這台裝置當起點做<strong>爆炸半徑</strong>評估——它登入過哪些帳號、那些帳號有哪些權限、順著權限鏈能走到哪些伺服器。圖指出其中一個帳號在某台檔案伺服器有寫入權，這條路徑決定了接下來查什麼、要不要提前重設密碼。</li>
+<li><strong>再問規模（MCP／代理）</strong>：把「同樣行為樣式，環境裡還有沒有第二台」交給代理式搜捕，讓它依假說在湖上跑多輪查詢，你專心處理已知那台。</li>
+<li><strong>保存與升階</strong>：關鍵結果存成書籤並對應實體以接進事件調查；同時建立<strong>每日排程 KQL job</strong>，把命中升階回分析層自訂資料表並建分析規則——之後再有裝置碰到這批 IoC 會直接變成事件進佇列，不必等下一封情資信。</li>
+<li><strong>回頭看</strong>：湖負責「七個月前」，圖負責「還有誰會被波及」，代理負責「其他地方還有沒有」——<strong>三個新能力各補上傳統搜捕的一個缺口</strong>。</li>
+</ol></div>
+
+<div class="eyebrow">07 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">影片沒講的：Graph 的定位、預覽期心態與治理</h2>
+<ul>
+<li><strong>Sentinel Graph 與既有「圖」怎麼分</strong>：你早看過兩種——調查中的<strong>實體圖（entity graph）</strong>把單一事件相關的實體與訊號攤開（EP10 <span class="timestamp">20:59</span> 就是它），以及曝險管理的攻擊路徑分析，側重「由資產設定與弱點推導出可能被走的路」。Sentinel Graph 的新意在<strong>建於 data lake 之上</strong>：吃長期全量的活動與關係資料，能把「設定上的可達性」與「實際發生過的行為」放進同一張圖。這幾個選項同時出現時，看題幹要的是<strong>單一事件的鄰居</strong>還是<strong>跨環境的路徑範圍</strong>。</li>
+<li><strong>三者合起來改變了什麼</strong>：傳統搜捕是「假說 → 寫 KQL → 看結果 → 存書籤」的手工迴圈，受限於 KQL 熟練度與保留期長度。新工作流是<strong>湖給時間、圖給關係、代理給規模</strong>，人負責定義假說、驗證證據、決定升級。<strong>人沒被拿掉，位置往上移了。</strong></li>
+<li><strong>預覽期功能的應試心態</strong>：這三項都還在快速演進，介面與計費細節可能已經變了，因此<strong>考題停在能力與場景層級</strong>——問「哪個功能適合這個需求」，不問「按鈕在第幾層選單」。請記能力邊界（誰能餵偵測、誰吃長期資料、誰用什麼身分），別背 UI 路徑或價格。</li>
+<li><strong>治理與成本不會因新工具消失</strong>：湖上的互動查詢、KQL jobs、筆記本都<strong>按用量計費</strong>，代理式搜捕更可能在無人盯著時放大用量。「誰能在湖上跑 job、範圍多大」是情境題最愛藏的取捨條件。</li>
+<li><strong>舊工具沒被取代</strong>：書籤、Livestream、search job、還原（restore）仍是 D3 考點，常跟新工具擺同一題當干擾項。判準很單純：<strong>一次性大範圍撈記錄</strong>→ search job；<strong>需要 join 的歷史分析且要餵偵測</strong>→ KQL job；<strong>即時驗證假說</strong>→ Livestream；<strong>關係與路徑</strong>→ Graph。</li>
+</ul>
+
+<div class="eyebrow">08 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 延伸閱讀</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-graph-overview" target="_blank" rel="noopener">Microsoft Sentinel graph 概觀</a>——實體與關係如何建成圖、攻擊路徑與爆炸半徑分析，本文第 03 節的原典。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-mcp-server" target="_blank" rel="noopener">Microsoft Sentinel MCP server</a>——可用工具集、支援的代理用戶端與驗證流程，讀完回看第 05 節權限段。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/kql-jobs" target="_blank" rel="noopener">在 data lake 上建立 KQL jobs</a>——一次性與排程 job 的建立方式、升階（promote）目的資料表設定。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/notebooks-overview" target="_blank" rel="noopener">在 data lake 上使用筆記本</a>——VS Code 擴充功能與湖中資料整合，EP10 <span class="timestamp">15:17</span> 段落的完整版。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/kusto/query/graph-match-operator" target="_blank" rel="noopener">KQL graph-match 運算子</a>——圖語意查詢怎麼寫路徑樣式，想動手驗證多跳查詢請從這裡開始。</li>
+</ul>
+
+
+  <div class="eyebrow">09 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W5-4">到刷題頁練習 →</a></p>
+<div class='info-box'>本單元自測題建置中——先到<a href='../quiz.html'>刷題頁</a>練其他題組。</div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP24</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><div class='p-hint'>🎧 本集音檔生成中（push 腳本後由 GitHub Actions 自動合成）。</div><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-024'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="24">
+    <label for="doneChk">我讀完 Day 24 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-023.html'>← Day 23</a>
+    <a href="../index.html">回儀表板</a>
+    <a class='disabled'>沒有下一天 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 24 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>
