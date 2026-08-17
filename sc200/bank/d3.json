@@ -912,6 +912,241 @@
     "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/livestream"
   },
   {
+    "id": "D3-0021",
+    "domain": "D3",
+    "unit": "P1-W5-3",
+    "set": "A",
+    "topic": "hypothesis-hunting",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "hunting",
+      "sentinel"
+    ],
+    "stem_en": "You are a security operations analyst at Contoso. During a SOC review, your manager asks you to explain how threat hunting in Microsoft Sentinel differs from the team's daily incident response work. Which statement best describes threat hunting?",
+    "stem_zh": "你是 Contoso 的資安維運分析師。在 SOC 檢討會上，主管要你說明 Microsoft Sentinel 的威脅搜捕與團隊每天做的事件回應有何不同。下列哪一項最能描述威脅搜捕？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It is the process of triaging incidents in the unified queue and assigning each one to the correct analyst tier.",
+        "text_zh": "它是在統一佇列中分診事件，並把每一件指派給正確層級分析師的流程。"
+      },
+      {
+        "key": "B",
+        "text_en": "It is the tuning of analytics rules and alert suppression so that benign alerts stop reaching the incident queue.",
+        "text_zh": "它是調整分析規則與抑制警示，讓良性警示不再進入事件佇列的工作。"
+      },
+      {
+        "key": "C",
+        "text_en": "It is the proactive search of the environment for threats and activity that have not previously been detected.",
+        "text_zh": "它是主動在環境中搜尋先前未被偵測到的威脅或活動。"
+      },
+      {
+        "key": "D",
+        "text_en": "It is the automated containment of confirmed threats by running playbooks against the affected entities.",
+        "text_zh": "它是對已確認的威脅執行劇本（Playbook），自動遏制受影響實體的動作。"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "官方定義的關鍵字是「先前未被偵測到（not previously detected）」與「主動（proactively）」。搜捕從分析師的問題或假說出發，去找還沒有任何警示的行為；事件回應與分診則從「已經被標記出來」的警示或事件開始。兩者互補：搜捕的成果（書籤、確認的可疑活動）可以升級成事件進入回應流程，有效的搜捕邏輯也可以轉成排程分析規則，變成日後的自動偵測。",
+    "why_wrong_zh": {
+      "A": "分診（triage）是處理佇列中已存在的事件並排定優先順序、指派擁有者，起點是既有警示，屬於事件回應的一環，不是搜捕。",
+      "B": "調整分析規則與抑制良性警示屬於偵測調校（alert tuning），目的在降低雜訊，同樣以既有偵測為起點，不會找出未被偵測到的行為。",
+      "D": "以劇本自動遏制威脅是 SOAR 的自動化回應，發生在威脅已被確認之後，屬於回應階段而非搜捕。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/hunting"
+  },
+  {
+    "id": "D3-0022",
+    "domain": "D3",
+    "unit": "P1-W5-3",
+    "set": "A",
+    "topic": "hypothesis-hunting",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "hunting",
+      "sentinel"
+    ],
+    "stem_en": "A threat intelligence report states that an adversary group targeting your industry obtains a service account with replication rights and then uses DCSync to extract domain credentials. You have Microsoft Defender for Identity data in your workspace and one afternoon to hunt. Which hunting hypothesis should you use?",
+    "stem_zh": "一份威脅情報報告指出，鎖定你所屬產業的對手群組會先取得具備複寫權限的服務帳號，再以 DCSync 竊取網域憑證。你的工作區已有 Microsoft Defender for Identity（MDI）資料，而你只有一個下午的時間可以搜捕。你應該採用哪一個搜捕假說？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Determine whether any malicious activity is currently taking place anywhere in the environment.",
+        "text_zh": "判斷環境中目前是否有任何地方正在發生惡意活動。"
+      },
+      {
+        "key": "B",
+        "text_en": "In the last 30 days, did any account other than a domain controller computer account request directory replication from a domain controller?",
+        "text_zh": "在過去 30 天內，是否有網域控制站電腦帳號以外的帳號，向網域控制站發起目錄複寫請求？"
+      },
+      {
+        "key": "C",
+        "text_en": "Determine whether the adversary group described in the report has also attacked other companies in the same industry.",
+        "text_zh": "判斷報告中描述的對手群組是否也攻擊過同業的其他公司。"
+      },
+      {
+        "key": "D",
+        "text_en": "Determine whether every privileged account in the forest has been compromised at some point since the domain was created.",
+        "text_zh": "判斷樹系中每一個特權帳號自網域建立以來是否曾在某個時間點遭到入侵。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "好的搜捕假說要同時滿足五個條件：做得完、範圍夠窄（能用手上的資料證實或推翻）、有明確時間界線、產出可行動的洞察、並且對齊你要防禦的威脅模型。選項 B 指名一個技術（DCSync／目錄複寫）、指定資料來源（MDI 的身分目錄事件）、限定 30 天時間窗與網域控制站範圍，一個下午就能跑完並得到「成立／不成立／資料不足」其中一種明確結論。",
+    "why_wrong_zh": {
+      "A": "沒有時間窗、沒有範圍、沒有指名技術，無法用一次查詢證實或推翻，屬於願望而非假說。",
+      "C": "問題的答案不在你的環境資料裡，用工作區的記錄無法驗證；那是威脅情報研究，不是對自家環境的搜捕。",
+      "D": "範圍涵蓋整個樹系與全部歷史，既做不完，資料保留期通常也不足以回答，違反「做得完」與「有時間界線」。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/hunting"
+  },
+  {
+    "id": "D3-0023",
+    "domain": "D3",
+    "unit": "P1-W5-3",
+    "set": "A",
+    "topic": "mitre-attack",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "hunting",
+      "mitre"
+    ],
+    "stem_en": "While hunting in Microsoft Sentinel you find a row showing a process that opened LSASS memory on a domain-joined server and wrote the contents to a file in a temporary folder. You create a bookmark for the row and must select the MITRE ATT&CK tactic for it. Which tactic should you select?",
+    "stem_zh": "你在 Microsoft Sentinel 搜捕時，發現一列紀錄顯示某程序在已加入網域的伺服器上開啟 LSASS 記憶體，並把內容寫入暫存資料夾的檔案。你要為這一列建立書籤，並選擇對應的 MITRE ATT&CK 戰術。你應該選哪一個戰術？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Credential Access",
+        "text_zh": "憑證存取（Credential Access）"
+      },
+      {
+        "key": "B",
+        "text_en": "Lateral Movement",
+        "text_zh": "橫向移動（Lateral Movement）"
+      },
+      {
+        "key": "C",
+        "text_en": "Persistence",
+        "text_zh": "持續性（Persistence）"
+      },
+      {
+        "key": "D",
+        "text_en": "Command and Control",
+        "text_zh": "命令與控制（Command and Control）"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "分辨戰術與技術的訣竅是分別問「對手想達成什麼」與「他用什麼手段」。傾印 LSASS 記憶體的目的是取得帳號密碼或雜湊，因此戰術是憑證存取；手段（技術）是 OS Credential Dumping，子技術是 LSASS Memory。書籤與搜捕查詢上標好戰術與技術有兩個好處：實體與戰術會被帶進事件與 MITRE 涵蓋率統計，團隊也才看得出這格其實有人在人工搜捕。",
+    "why_wrong_zh": {
+      "B": "橫向移動描述的是拿到憑證之後往其他主機擴散的階段（例如遠端服務建立、Pass-the-Hash 登入），本題的行為仍停留在取得憑證。",
+      "C": "持續性指的是讓存取在重開機或憑證變更後仍然有效，例如建立排程工作、服務或自動啟動項目，與讀取 LSASS 記憶體無關。",
+      "D": "命令與控制是維持與外部控制端的通道（例如信標式連線、DNS 通道），本題沒有任何對外通訊的跡象。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/mitre-coverage"
+  },
+  {
+    "id": "D3-0024",
+    "domain": "D3",
+    "unit": "P1-W5-3",
+    "set": "A",
+    "topic": "mitre-attack",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "hunting",
+      "mitre"
+    ],
+    "stem_en": "Your SOC must plan next quarter's detection engineering work. The team needs to see which MITRE ATT&CK techniques are already covered by enabled analytics rules, which are only covered by rule templates or hunting queries, and which have no coverage at all. What should you use?",
+    "stem_zh": "你的 SOC 要規劃下一季的偵測工程工作。團隊需要看出哪些 MITRE ATT&CK 技術已經有「已啟用的分析規則」覆蓋、哪些只有規則範本或搜捕查詢覆蓋、哪些完全沒有覆蓋。你應該使用什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A workbook that charts incident counts by severity and product over the last quarter.",
+        "text_zh": "一份活頁簿（Workbook），依嚴重性與產品繪出上一季的事件數量圖表。"
+      },
+      {
+        "key": "B",
+        "text_en": "The Anomalies table produced by UEBA and the anomaly analytics rules.",
+        "text_zh": "由 UEBA 與異常分析規則產生的 Anomalies 資料表。"
+      },
+      {
+        "key": "C",
+        "text_en": "Livestream sessions for the hunting queries that the team runs most often.",
+        "text_zh": "為團隊最常執行的搜捕查詢建立 Livestream 工作階段。"
+      },
+      {
+        "key": "D",
+        "text_en": "The MITRE ATT&CK coverage view in Microsoft Sentinel, switching the legend between active analytics rules and rule templates or hunting queries.",
+        "text_zh": "Microsoft Sentinel 的 MITRE ATT&CK 涵蓋率檢視，並切換圖例在「已啟用的分析規則」與「規則範本或搜捕查詢」之間比較。"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "MITRE ATT&CK 涵蓋率檢視把 ATT&CK 矩陣畫在你自己的環境上，格子顏色深淺代表對應到該技術的偵測數量，並可切換來源：已啟用的分析規則代表現在真的在保護你，規則範本與搜捕查詢代表隨手就能補上的部分，兩者的差距就是可以最快補齊的缺口。要特別記住它回答的是「我對哪些技術有偵測」，而不是「我被哪些技術攻擊過」。",
+    "why_wrong_zh": {
+      "A": "活頁簿呈現的是已產生事件的統計，只看得到「有偵測到什麼」，看不出哪些技術根本沒有任何規則覆蓋。",
+      "B": "Anomalies 資料表存放 UEBA 與異常規則的離群結果，屬於異常驅動搜捕的輸入，與偵測涵蓋率盤點無關。",
+      "C": "Livestream 是把查詢對正在發生的事件做近乎即時的比對與通知，用於驗證單一假說，不會產生技術涵蓋率的全景。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/mitre-coverage"
+  },
+  {
+    "id": "D3-0025",
+    "domain": "D3",
+    "unit": "P1-W5-3",
+    "set": "A",
+    "topic": "notebooks",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "hunting",
+      "notebooks"
+    ],
+    "stem_en": "A hunt produced roughly 800 external IP addresses. A tier-3 hunter must enrich every address with GeoIP and Whois data plus three external threat intelligence providers, then apply clustering to identify beacon-like groups, and keep the whole workflow repeatable and shareable for future hunts. Which approach meets the requirement, and what must be provisioned first?",
+    "stem_zh": "一次搜捕產出約 800 個外部 IP 位址。三線搜捕人員必須為每個位址加上 GeoIP 與 Whois 資料，再比對三家外部威脅情報，接著用分群找出疑似信標的群組，而且整套流程要能重複執行並分享給日後的搜捕使用。哪一種做法符合需求，且必須先佈建什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Build a workbook with parameterized queries and custom visualizations; provision a dedicated Log Analytics workspace for the workbook first.",
+        "text_zh": "建立一份含參數化查詢與自訂視覺化的活頁簿（Workbook）；先為該活頁簿佈建專屬的 Log Analytics 工作區。"
+      },
+      {
+        "key": "B",
+        "text_en": "Create a Microsoft Sentinel notebook that uses MSTICPy for enrichment and machine learning; provision an Azure Machine Learning workspace with compute first.",
+        "text_zh": "建立 Microsoft Sentinel 筆記本（Notebook），以 MSTICPy 進行富化與機器學習；先佈建含運算資源的 Azure Machine Learning 工作區。"
+      },
+      {
+        "key": "C",
+        "text_en": "Create an Azure Logic Apps playbook with an entity trigger that loops over the addresses; provision a Standard hosting plan for the playbook first.",
+        "text_zh": "建立以實體觸發程序逐一處理這些位址的 Azure Logic Apps 劇本（Playbook）；先為劇本佈建 Standard 主控方案。"
+      },
+      {
+        "key": "D",
+        "text_en": "Save the hunting query as a scheduled analytics rule and store the addresses in a watchlist; provision an additional commitment tier for the workspace first.",
+        "text_zh": "把搜捕查詢存成排程分析規則，並將這些位址放入監視清單（Watchlist）；先為工作區佈建額外的承諾層級。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "同時要求外部資料富化、跨多個外部來源合併、機器學習分群，以及一套可重複、可分享的調查流程，這正是筆記本的定位：以 Python 透過 API 讀取 Sentinel 資料，用 MSTICPy 做威脅情報、GeoIP、Whois 查詢與異常分析，把程式碼、說明與圖表留在同一份文件裡。從 Sentinel 的筆記本頁面建立時，必須先有 Azure Machine Learning 工作區並配置運算資源（運算執行個體或叢集），不用時要停掉以免持續計費。",
+    "why_wrong_zh": {
+      "A": "活頁簿是視覺化與儀表板工具，無法呼叫外部 API 做逐筆富化，也不能執行機器學習；而且它直接使用既有工作區，不需要另建工作區。",
+      "C": "劇本擅長的是自動化與回應動作（通知、開單、封鎖、隔離），可做簡單富化，但不適合大量統計與分群分析；Standard 方案只是 Logic Apps 的計費與託管選項，不是本情境的關鍵。",
+      "D": "排程分析規則與監視清單解決的是「持續偵測」與「清單比對」，無法做多來源富化與分群；承諾層級是資料擷取的計價方式，與分析能力無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/notebooks"
+  },
+  {
     "id": "D3-0026",
     "domain": "D3",
     "topic": "sentinel-graph",

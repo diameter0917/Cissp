@@ -721,19 +721,19 @@
           "ep": "EP10",
           "start": 60,
           "title": "livestream、bookmarks、hunts",
-          "score": 26.2
+          "score": 25.6
         },
         {
           "ep": "EP10",
           "start": 360,
           "title": "livestream、bookmarks、hunts",
-          "score": 25.3
+          "score": 24.7
         },
         {
           "ep": "EP10",
           "start": 1140,
           "title": "livestream、bookmarks、hunts",
-          "score": 25.1
+          "score": 24.5
         }
       ],
       "kql_focus": true,
@@ -758,19 +758,19 @@
           "ep": "EP10",
           "start": 60,
           "title": "notebooks (Jupyter/MSTICPy)、bookmarks、hunts",
-          "score": 11.3
+          "score": 10.9
         },
         {
           "ep": "EP10",
           "start": 1140,
           "title": "notebooks (Jupyter/MSTICPy)、bookmarks、hunts",
-          "score": 12.2
+          "score": 11.6
         },
         {
           "ep": "EP10",
           "start": 1410,
           "title": "notebooks (Jupyter/MSTICPy)、bookmarks、MITRE ATT&CK mapping",
-          "score": 10.0
+          "score": 9.8
         }
       ],
       "kql_focus": false,
