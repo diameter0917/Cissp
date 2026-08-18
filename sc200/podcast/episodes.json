@@ -188,6 +188,24 @@
       "bytes": 3087453,
       "duration_sec": 515,
       "script_sha256": "42da0a7b19e295cb88b29ec376f19c90b32d81b6edc9420d72965527012d9906"
+    },
+    "016": {
+      "episode": 16,
+      "unit": "P1-W4-1",
+      "title_zh": "Defender for Cloud 警示回應",
+      "file": "ep-016.mp3",
+      "bytes": 2895066,
+      "duration_sec": 482,
+      "script_sha256": "67c128cde46fa46f8cc57df4ef6056a064159f777ab6b00a37c9752eef9c4d6b"
+    },
+    "017": {
+      "episode": 17,
+      "unit": "P1-W4-2",
+      "title_zh": "Sentinel 分析規則 I：Scheduled 與 NRT",
+      "file": "ep-017.mp3",
+      "bytes": 2922582,
+      "duration_sec": 487,
+      "script_sha256": "b15f16b8a31ca5363ac2961d18dcc070079a39ad9f18666be3b0a922267f413c"
     }
   }
 }

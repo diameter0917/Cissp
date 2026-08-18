@@ -145,6 +145,24 @@
       <itunes:episode>15</itunes:episode>
     </item>
     <item>
+      <title>EP16｜Defender for Cloud 警示回應</title>
+      <description>SC-200 速成 Day 對應單元：P1-W4-1。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-016.mp3" length="2895066" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-016</guid>
+      <pubDate>Tue, 08 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>8:02</itunes:duration>
+      <itunes:episode>16</itunes:episode>
+    </item>
+    <item>
+      <title>EP17｜Sentinel 分析規則 I：Scheduled 與 NRT</title>
+      <description>SC-200 速成 Day 對應單元：P1-W4-2。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-017.mp3" length="2922582" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-017</guid>
+      <pubDate>Wed, 09 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>8:07</itunes:duration>
+      <itunes:episode>17</itunes:episode>
+    </item>
+    <item>
       <title>EP18｜Fusion、UEBA 與異常偵測</title>
       <description>SC-200 速成 Day 對應單元：P1-W4-3。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-018.mp3" length="2913208" type="audio/mpeg"/>
