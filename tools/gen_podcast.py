@@ -48,6 +48,10 @@ SPEECH_SUBS = [
     ("DAD", "D A D"), ("AAA", "triple A"), ("NDA", "N D A"), ("AUP", "A U P"),
     ("DBA", "D B A"), ("CEO", "C E O"), ("CIO", "C I O"), ("CSO", "C S O"),
     ("CISO", "C I S O"), ("COO", "C O O"),
+    # Domain 6 評估與稽核
+    ("KPI", "K P I"), ("KRI", "K R I"), ("ROE", "R O E"), ("EOL", "E O L"),
+    ("PDCA", "P D C A"), ("SSAE", "S S A E"), ("ISAE", "I S A E"), ("ISO", "I S O"),
+    ("Type I", "Type one"), ("Type II", "Type two"),
     # Domain 3 密碼學與實體安全
     ("HSM", "H S M"), ("ICS", "I C S"), ("UPS", "U P S"), ("CA", "C A"),
     ("AES", "A E S"), ("DES", "D E S"), ("TB", "T B"), ("CPTED", "C P T E D"),
