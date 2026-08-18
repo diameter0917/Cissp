@@ -194,9 +194,9 @@
       "unit": "P1-W4-1",
       "title_zh": "Defender for Cloud 警示回應",
       "file": "ep-016.mp3",
-      "bytes": 2895066,
-      "duration_sec": 482,
-      "script_sha256": "67c128cde46fa46f8cc57df4ef6056a064159f777ab6b00a37c9752eef9c4d6b"
+      "bytes": 2898234,
+      "duration_sec": 483,
+      "script_sha256": "444895420d595bbffd66462bc3b9fd441f764d5a5fc5b87b4c1da61576368d7a"
     },
     "017": {
       "episode": 17,
@@ -206,6 +206,24 @@
       "bytes": 2922582,
       "duration_sec": 487,
       "script_sha256": "b15f16b8a31ca5363ac2961d18dcc070079a39ad9f18666be3b0a922267f413c"
+    },
+    "019": {
+      "episode": 19,
+      "unit": "P1-W4-4",
+      "title_zh": "Sentinel 自動化：規則與 Playbook",
+      "file": "ep-019.mp3",
+      "bytes": 2930498,
+      "duration_sec": 488,
+      "script_sha256": "0ee6fbaf579a58642f2ce752cb0be719ab961761336e90e0f69b7f002958f89c"
+    },
+    "025": {
+      "episode": 25,
+      "unit": "P1-W5-5",
+      "title_zh": "五週總複習與考試策略",
+      "file": "ep-025.mp3",
+      "bytes": 2820329,
+      "duration_sec": 470,
+      "script_sha256": "d5af30ca2f47b6c07404e02f4a4584bb153c1d7652629930a9069a3b69d862b3"
     }
   }
 }

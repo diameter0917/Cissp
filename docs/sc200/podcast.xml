@@ -147,10 +147,10 @@
     <item>
       <title>EP16｜Defender for Cloud 警示回應</title>
       <description>SC-200 速成 Day 對應單元：P1-W4-1。雙主持人帶你複習當日考點。</description>
-      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-016.mp3" length="2895066" type="audio/mpeg"/>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-016.mp3" length="2898234" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-016</guid>
       <pubDate>Tue, 08 Sep 2026 07:00:00 +0800</pubDate>
-      <itunes:duration>8:02</itunes:duration>
+      <itunes:duration>8:03</itunes:duration>
       <itunes:episode>16</itunes:episode>
     </item>
     <item>
@@ -170,6 +170,15 @@
       <pubDate>Thu, 10 Sep 2026 07:00:00 +0800</pubDate>
       <itunes:duration>8:05</itunes:duration>
       <itunes:episode>18</itunes:episode>
+    </item>
+    <item>
+      <title>EP19｜Sentinel 自動化：規則與 Playbook</title>
+      <description>SC-200 速成 Day 對應單元：P1-W4-4。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-019.mp3" length="2930498" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-019</guid>
+      <pubDate>Fri, 11 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>8:08</itunes:duration>
+      <itunes:episode>19</itunes:episode>
     </item>
     <item>
       <title>EP20｜Purview 威脅調查與 Copilot 引導式回應</title>
@@ -215,6 +224,15 @@
       <pubDate>Fri, 18 Sep 2026 07:00:00 +0800</pubDate>
       <itunes:duration>7:29</itunes:duration>
       <itunes:episode>24</itunes:episode>
+    </item>
+    <item>
+      <title>EP25｜五週總複習與考試策略</title>
+      <description>SC-200 速成 Day 對應單元：P1-W5-5。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-025.mp3" length="2820329" type="audio/mpeg"/>
+      <guid isPermaLink="false">sc200-ep-025</guid>
+      <pubDate>Mon, 21 Sep 2026 07:00:00 +0800</pubDate>
+      <itunes:duration>7:50</itunes:duration>
+      <itunes:episode>25</itunes:episode>
     </item>
   </channel>
 </rss>
