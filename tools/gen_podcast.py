@@ -48,6 +48,17 @@ SPEECH_SUBS = [
     ("DAD", "D A D"), ("AAA", "triple A"), ("NDA", "N D A"), ("AUP", "A U P"),
     ("DBA", "D B A"), ("CEO", "C E O"), ("CIO", "C I O"), ("CSO", "C S O"),
     ("CISO", "C I S O"), ("COO", "C O O"),
+    # Domain 3 密碼學與實體安全
+    ("HSM", "H S M"), ("ICS", "I C S"), ("UPS", "U P S"), ("CA", "C A"),
+    ("AES", "A E S"), ("DES", "D E S"), ("TB", "T B"), ("CPTED", "C P T E D"),
+    ("MD5", "M D five"), ("SHA-1", "SHA one"), ("SHA-2", "SHA two"),
+    # Domain 5 身分與存取管理
+    ("IAAA", "I triple A"), ("MFA", "M F A"), ("OTP", "O T P"), ("SSO", "S S O"),
+    ("PAM", "P A M"), ("JIT", "J I T"), ("ABAC", "A BACK"),
+    ("FAR", "F A R"), ("FRR", "F R R"), ("CER", "C E R"),
+    ("IdP", "I D P"), ("SCIM", "S C I M"), ("OIDC", "O I D C"), ("SAML", "SAM L"),
+    ("API", "A P I"), ("HR", "H R"), ("AuthN", "Auth N"), ("AuthZ", "Auth Z"),
+    ("FIDO2", "FIDO two"), ("TACACS+", "TACACS plus"),
     # Domain 2 資產安全
     ("CASB", "C A S B"), ("DLP", "D L P"), ("DRM", "D R M"), ("DPA", "D P A"),
     ("DPO", "D P O"), ("SSD", "S S D"), ("CRM", "C R M"), ("SaaS", "SASS"),
