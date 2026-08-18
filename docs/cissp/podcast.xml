@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CISSP 螺旋電台</title>
+    <link>https://diameter0917.github.io/Cissp/cissp/podcast/index.html</link>
+    <description>一週一集，把當週五封電子報串成一個主題</description>
+    <language>zh-TW</language>
+    <atom:link href="https://diameter0917.github.io/Cissp/cissp/podcast.xml" rel="self" type="application/rss+xml"/>
+    <itunes:author>CISSP 學習專案（AI 生成）</itunes:author>
+    <itunes:category text="Education"/>
+    <itunes:explicit>false</itunes:explicit>
+
+  </channel>
+</rss>

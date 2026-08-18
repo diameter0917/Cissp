@@ -11,7 +11,7 @@ sc200/podcast/scripts/ep-NNN.json（雙主持人對談腳本）
 注意：edge-tts 需連微軟語音端點——本開發環境的 proxy 會擋，
       請在 GitHub Actions（sc200-podcast.yml）或能連網的本機執行。
 
-用法：python sc200/scripts/gen_podcast.py [ep ...] [--force] [--no-ffmpeg]
+用法：python tools/gen_podcast.py --project sc200|cissp [ep ...] [--force]
       不給參數＝合成所有「腳本 hash 與 manifest 不符或音檔缺失」的集數。
 """
 
@@ -26,17 +26,30 @@ import sys
 import tempfile
 from pathlib import Path
 
-SC200 = Path(__file__).resolve().parents[1]
-ROOT = SC200.parent
-SCRIPTS = SC200 / "podcast" / "scripts"
-MANIFEST = SC200 / "podcast" / "episodes.json"
-OUT_DIR = ROOT / "docs" / "sc200" / "podcast"
+ROOT = Path(__file__).resolve().parents[1]
 
-CONFIG = json.loads((SC200 / "site_config.json").read_text(encoding="utf-8"))["podcast"]
+# 專案由命令列指定（sc200／cissp），兩套課程共用同一條合成管線
+_ap = argparse.ArgumentParser(add_help=False)
+_ap.add_argument("--project", default="sc200")
+PROJECT = _ap.parse_known_args()[0].project
+PROJ = ROOT / PROJECT
+SCRIPTS = PROJ / "podcast" / "scripts"
+MANIFEST = PROJ / "podcast" / "episodes.json"
+OUT_DIR = ROOT / "docs" / PROJECT / "podcast"
+
+CONFIG = json.loads((PROJ / "site_config.json").read_text(encoding="utf-8"))["podcast"]
 VOICES = {"host_f": CONFIG["voice_host_f"], "host_m": CONFIG["voice_host_m"]}
 
 # 發音替換表（見 SC200_CONTENT_SPEC.md §3；只影響 TTS，不影響顯示文字）
 SPEECH_SUBS = [
+    # CISSP 常用縮寫
+    ("BIA", "B I A"), ("RTO", "R T O"), ("RPO", "R P O"), ("MTD", "M T D"),
+    ("SOD", "S O D"), ("DAC", "D A C"), ("MAC", "M A C"), ("RBAC", "R BACK"),
+    ("ALE", "A L E"), ("SLE", "S L E"), ("ARO", "A R O"), ("BCP", "B C P"),
+    ("DRP", "D R P"), ("SLA", "S L A"), ("PII", "P I I"), ("IAM", "I A M"),
+    ("PKI", "P K I"), ("TPM", "T P M"), ("SDLC", "S D L C"), ("SAST", "SAST"),
+    ("DAST", "DAST"), ("CIA", "C I A"), ("GDPR", "G D P R"), ("NIST", "NIST"),
+    # SC-200 常用縮寫
     ("ATT&CK", "attack"), ("KQL", "K Q L"), ("XDR", "X D R"), ("SIEM", "SIM"),
     ("SOAR", "SORE"), ("MDE", "M D E"), ("MDO", "M D O"), ("MDI", "M D I"),
     ("MDTI", "M D T I"), ("SCU", "S C U"), ("DCR", "D C R"), ("ASIM", "A SIM"),
@@ -142,6 +155,7 @@ def main():
     ap.add_argument("episodes", nargs="*", type=int, help="集數（如 1 2 3）；空＝全部缺漏")
     ap.add_argument("--force", action="store_true", help="忽略 manifest hash 全部重做")
     ap.add_argument("--no-ffmpeg", action="store_true", help="無 ffmpeg 時的直接串接後備")
+    ap.add_argument("--project", default="sc200", help="sc200 或 cissp")
     args = ap.parse_args()
 
     try:

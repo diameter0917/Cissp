@@ -6,18 +6,22 @@ sc200/podcast/episodes.json（gen_podcast.py 的 manifest）
 → docs/sc200/podcast.xml（RSS 2.0 + itunes namespace，可用 Podcast App 訂閱）
 → docs/sc200/podcast/index.html（集數列表：播放器＋逐字稿摺疊）
 
-用法：python sc200/scripts/build_rss.py
+用法：python tools/build_rss.py --project sc200|cissp
 """
 
+import argparse
 import email.utils
 import json
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 from xml.sax.saxutils import escape
 
-SC200 = Path(__file__).resolve().parents[1]
-ROOT = SC200.parent
-DOCS = ROOT / "docs" / "sc200"
+ROOT = Path(__file__).resolve().parents[1]
+_ap = argparse.ArgumentParser(add_help=False)
+_ap.add_argument("--project", default="sc200")
+PROJECT = _ap.parse_known_args()[0].project
+SC200 = ROOT / PROJECT          # 專案目錄（sc200／cissp），沿用原變數名以免大改
+DOCS = ROOT / "docs" / PROJECT
 TAIPEI = timezone(timedelta(hours=8))
 
 
@@ -41,7 +45,7 @@ def main():
     ep_date = {it.get("episode"): it["date"] for it in schedule["items"] if it.get("episode")}
     ep_title = {it.get("episode"): it["title_zh"] for it in schedule["items"] if it.get("episode")}
 
-    site = f"{base}/sc200"
+    site = f"{base}/{PROJECT}"
     items_xml = []
     episodes = sorted(manifest["episodes"].values(), key=lambda e: e["episode"])
     for e in episodes:
@@ -55,9 +59,9 @@ def main():
         url = f"{site}/podcast/{e['file']}"
         items_xml.append(f"""    <item>
       <title>{escape(title)}</title>
-      <description>{escape(f"SC-200 速成 Day 對應單元：{e.get('unit') or ''}。雙主持人帶你複習當日考點。")}</description>
+      <description>{escape(f"對應單元：{e.get('unit') or ''}。雙主持人帶你複習當日考點。")}</description>
       <enclosure url="{escape(url)}" length="{e['bytes']}" type="audio/mpeg"/>
-      <guid isPermaLink="false">sc200-ep-{n:03d}</guid>
+      <guid isPermaLink="false">{PROJECT}-ep-{n:03d}</guid>
       <pubDate>{email.utils.format_datetime(dt)}</pubDate>
       <itunes:duration>{fmt_dur(e.get('duration_sec'))}</itunes:duration>
       <itunes:episode>{n}</itunes:episode>
@@ -114,8 +118,8 @@ def main():
 <div class="wrap">
   <header class="masthead">
     <div class="kicker">🎧 {escape(pod['title'])}</div>
-    <h1>用聽的過 SC-200</h1>
-    <p class="sub">{escape(pod['subtitle'])}。每個學習日一集，通勤時把當天考點聽一遍。</p>
+    <h1>{escape(pod.get("headline") or pod["title"])}</h1>
+    <p class="sub">{escape(pod['subtitle'])}。{escape(pod.get("blurb") or "")}</p>
     <div class="meta-row">
       <span class="pill ghost">共 {len(episodes)} 集</span>
       <span class="pill ghost">AI 生成（edge-tts 曉臻×雲哲）</span>

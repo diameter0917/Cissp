@@ -1,4 +1,4 @@
-name: SC-200 Podcast
+name: CISSP Podcast
 
 # Podcast 腳本 push 後自動合成音檔（edge-tts 需連微軟語音端點，
 # 開發環境 proxy 會擋，所以放在 Actions runner 執行）。
@@ -17,15 +17,15 @@ on:
   push:
     branches: ['main', 'claude/**']
     paths:
-      - 'sc200/podcast/scripts/**'
-      - 'sc200/scripts/gen_podcast.py'
-      - '.github/workflows/sc200-podcast.yml'
+      - 'cissp/podcast/scripts/**'
+      - 'tools/gen_podcast.py'
+      - '.github/workflows/cissp-podcast.yml'
 
 permissions:
   contents: write
 
 concurrency:
-  group: sc200-podcast
+  group: cissp-podcast
   cancel-in-progress: false
 
 jobs:
@@ -59,15 +59,15 @@ jobs:
             git fetch origin "${GITHUB_REF_NAME}"
             git reset --hard "origin/${GITHUB_REF_NAME}"
 
-            python tools/gen_podcast.py --project sc200 ${{ inputs.episodes }} ${{ inputs.force == true && '--force' || '' }}
-            python tools/build_rss.py --project sc200
+            python tools/gen_podcast.py --project cissp ${{ inputs.episodes }} ${{ inputs.force == true && '--force' || '' }}
+            python tools/build_rss.py --project cissp
 
-            git add docs/sc200/podcast docs/sc200/podcast.xml sc200/podcast/episodes.json
+            git add docs/cissp/podcast docs/cissp/podcast.xml cissp/podcast/episodes.json
             if git diff --cached --quiet; then
               echo "沒有音檔變更，結束。"
               exit 0
             fi
-            git commit -m "chore(sc200): render podcast audio [skip ci]"
+            git commit -m "chore(cissp): render podcast audio [skip ci]"
 
             if git push origin "HEAD:${GITHUB_REF_NAME}"; then
               echo "✅ 已推送音檔。"
