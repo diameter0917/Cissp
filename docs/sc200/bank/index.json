@@ -6,6 +6,7 @@
   ],
   "mock_files": {
     "1": "mock-01.json",
-    "2": "mock-02.json"
+    "2": "mock-02.json",
+    "3": "mock-03.json"
   }
 }
