@@ -173,6 +173,12 @@ def main():
 
     manifest = load_manifest()
     OUT_DIR.mkdir(parents=True, exist_ok=True)
+    # manifest 是專案的狀態檔，即使這次沒有任何集數要合成也要存在——
+    # workflow 的 git add 會指名它，檔案不存在會直接 fatal。
+    MANIFEST.parent.mkdir(parents=True, exist_ok=True)
+    if not MANIFEST.exists():
+        MANIFEST.write_text(json.dumps(manifest, ensure_ascii=False, indent=2),
+                            encoding="utf-8")
 
     all_scripts = sorted(SCRIPTS.glob("ep-*.json"))
     if args.episodes:
