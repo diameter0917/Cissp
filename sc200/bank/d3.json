@@ -1387,5 +1387,52 @@
       "data-lake",
       "retro-hunting"
     ]
+  },
+  {
+    "id": "D3-0031",
+    "domain": "D3",
+    "topic": "cross-domain",
+    "unit": "P1-W5-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "After closing a phishing incident you write a hunting query that correlates EmailEvents, UrlClickEvents and IdentityLogonEvents to list recipients who clicked the malicious link and then signed in successfully within four hours. The query finds two additional victims that never generated an alert. Going forward the same pattern must raise an alert automatically, with the least administrative effort. What should you create?",
+    "stem_zh": "結案一起釣魚事件後，你寫了一支搜捕查詢，關聯 EmailEvents、UrlClickEvents 與 IdentityLogonEvents，找出點了惡意連結、且在四小時內成功登入的收件者，結果多找到兩位從未產生警示的受害者。從現在起，同樣的樣式必須自動產生警示，而且要用最少的管理工作量。你應該建立什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A Microsoft Sentinel watchlist that stores the affected recipients so that later queries can reference them.",
+        "text_zh": "建立 Microsoft Sentinel 監視清單（Watchlist）保存受影響的收件者，供後續查詢引用。"
+      },
+      {
+        "key": "B",
+        "text_en": "A near-real-time (NRT) analytics rule in Microsoft Sentinel that runs the same three-table query every minute.",
+        "text_zh": "在 Microsoft Sentinel 建立近即時（NRT）分析規則，每分鐘執行同一支三張表的查詢。"
+      },
+      {
+        "key": "C",
+        "text_en": "A custom detection rule in Microsoft Defender XDR that is based on the hunting query and returns Timestamp, ReportId and the entity columns.",
+        "text_zh": "在 Microsoft Defender XDR 依這支搜捕查詢建立自訂偵測規則，並讓查詢輸出 Timestamp、ReportId 與實體欄位。"
+      },
+      {
+        "key": "D",
+        "text_en": "A search job that replays the query over the retained data once a week.",
+        "text_zh": "建立搜尋作業（search job），每週對保留的資料重跑一次這支查詢。"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "判準是「查詢用到哪些資料」：EmailEvents、UrlClickEvents、IdentityLogonEvents 全部都是 Defender XDR 進階搜捕的資料表，所以把已驗證的搜捕查詢直接升級成 XDR 自訂偵測規則最省事——查詢只要輸出 Timestamp、ReportId 與可對應的實體欄位，就能定期執行、產生警示，甚至自動採取回應動作。這正是 D3 搜捕回饋 D2 偵測的閉環：搜捕補到的盲區，要變成長期偵測。",
+    "why_wrong_zh": {
+      "A": "監視清單是你自備的參考資料表，用來在查詢中比對名單，本身不會執行、也不會產生警示。它可以輔助查詢，但無法滿足「自動產生警示」的需求。",
+      "B": "NRT 規則的查詢有明顯限制，並不適合這種需要關聯多張表的邏輯；而且這些是 XDR 資料表，要在 Sentinel 用還得先確保已串流進工作區，管理工作量反而更大。",
+      "D": "搜尋作業是一次性、針對大範圍或長時間資料的檢索工具，結果寫成資料表供人檢視，不會持續執行也不會產生警示，無法滿足「從現在起自動偵測」。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/custom-detection-rules",
+    "tags": [
+      "cross-domain",
+      "attack-chain"
+    ]
   }
 ]

@@ -29,6 +29,22 @@ def main():
         print("ℹ️ _staging 為空，跳過。")
         return
 
+    # 已用過的 id（用來替未知前綴的題目重編號）
+    used = {}
+    for prefix, fname in PREFIX_FILE.items():
+        target = BANK / fname
+        if target.exists():
+            used[prefix] = {q["id"] for q in json.loads(target.read_text(encoding="utf-8"))}
+        else:
+            used[prefix] = set()
+
+    def next_id(prefix):
+        """替 prefix 找下一個沒被用過的流水號。"""
+        n = 1
+        while f"{prefix}-{n:04d}" in used[prefix]:
+            n += 1
+        return f"{prefix}-{n:04d}"
+
     buckets = {}
     bad = []
     for sp in staged:
@@ -41,9 +57,20 @@ def main():
             prefix = str(q.get("id", ""))[:2]
             fname = PREFIX_FILE.get(prefix)
             if not fname:
-                bad.append(f"{sp.name}: 未知 id 前綴 {q.get('id')}")
-                continue
+                # 跨領域題（例如總複習的 MIX-* id）沒有對應檔案——
+                # 改依 domain 欄位歸檔並重編 id，驗證器才不會因前綴不符報錯。
+                dom = q.get("domain")
+                fname = PREFIX_FILE.get(dom)
+                if not fname:
+                    bad.append(f"{sp.name}: {q.get('id')} 的 id 前綴與 domain 都無法歸檔")
+                    continue
+                old_id = q["id"]
+                q["id"] = next_id(dom)
+                used[dom].add(q["id"])
+                print(f"   ↻ {old_id} → {q['id']}（依 domain={dom} 歸入 {fname}）")
+                prefix = dom
             buckets.setdefault(fname, {})[q["id"]] = q
+            used.setdefault(prefix, set()).add(q["id"])
 
     if bad:
         for b in bad:

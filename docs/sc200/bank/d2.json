@@ -1982,5 +1982,99 @@
     "tags": [
       "2026"
     ]
+  },
+  {
+    "id": "D2-0046",
+    "domain": "D2",
+    "topic": "attack-chain",
+    "unit": "P1-W5-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "A user submitted credentials to a phishing page. You confirmed a successful sign-in from an anonymous IP address, reset the user's password and blocked the sender domain. Three hours later the attacker is still reading the mailbox and creating inbox rules from the same session. Which required step was missed?",
+    "stem_zh": "一位使用者在釣魚頁面輸入了帳密。你已確認有一次來自匿名 IP 的成功登入，重設了該使用者的密碼，也封鎖了寄件網域。三小時後，攻擊者仍在用同一個工作階段讀取信箱並建立收件匣規則。少做了哪一個必要步驟？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Zero-hour auto purge (ZAP) was not triggered against the original phishing message.",
+        "text_zh": "沒有對原始釣魚郵件觸發零時差自動清除（ZAP）。"
+      },
+      {
+        "key": "B",
+        "text_en": "The user's existing sessions and refresh tokens were never revoked, so the stolen token still authenticates.",
+        "text_zh": "沒有撤銷該使用者現有的工作階段與更新權杖，被竊的權杖仍然通得過驗證。"
+      },
+      {
+        "key": "C",
+        "text_en": "Safe Attachments was not configured with the Dynamic Delivery action for the mailbox.",
+        "text_zh": "沒有為該信箱把 Safe Attachments 設定成 Dynamic Delivery 動作。"
+      },
+      {
+        "key": "D",
+        "text_en": "The user's device was not isolated in Microsoft Defender for Endpoint.",
+        "text_zh": "沒有在 Microsoft Defender for Endpoint（MDE）把該使用者的裝置隔離。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "攻擊鏈第二段最常見的漏洞：重設密碼只擋住「下一次用舊密碼登入」，攻擊者手上已經拿到的存取權杖與更新權杖仍然有效，可以繼續存取信箱直到權杖過期。正確的身分回應是重設密碼＋撤銷工作階段與更新權杖，必要時再用風險型條件式存取讓後續高風險登入自動被擋。考試很愛用「做不夠」型的干擾項——動作方向對，但只做了一半。",
+    "why_wrong_zh": {
+      "A": "ZAP 處理的是已投遞到信箱的惡意郵件本身，能把後來判定為惡意的信件從信箱移除；但它完全不影響攻擊者手上的存取權杖，也阻止不了現有工作階段。",
+      "C": "Safe Attachments 的 Dynamic Delivery 針對的是附件引爆與投遞體驗，本題的攻擊媒介是連結與認證竊取，且事件已經發生，調整郵件防護設定救不了進行中的工作階段。",
+      "D": "本次入侵發生在雲端身分與信箱層，攻擊者是以權杖存取 Exchange Online，不是從該使用者的端點。隔離裝置對雲端工作階段沒有作用，也不符合最小必要處置。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/entra/id-protection/howto-identity-protection-remediate-unblock",
+    "tags": [
+      "attack-chain",
+      "cross-domain"
+    ]
+  },
+  {
+    "id": "D2-0047",
+    "domain": "D2",
+    "topic": "exam-strategy",
+    "unit": "P1-W5-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A scheduled analytics rule that detects mass file downloads opens roughly 15 incidents every night. Every one of them comes from a single backup service account doing its normal work, but the same rule also caught two genuine data-staging attempts by user accounts this quarter. You must remove the recurring noise, keep the detection effective for user accounts, and minimize ongoing administrative effort. What should you do?",
+    "stem_zh": "一條偵測大量檔案下載的排程分析規則，每晚產生約 15 件事件。這些事件全部來自同一個備份服務帳號的例行工作，但這一季同一條規則也抓到兩次使用者帳號真實的資料集結行為。你必須消除這些反覆出現的雜訊、保留對使用者帳號的偵測效力，並讓後續的管理工作量最小。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Modify the analytics rule query so that the known backup service account is excluded from the results.",
+        "text_zh": "修改分析規則的查詢，把這個已知的備份服務帳號從結果中排除。"
+      },
+      {
+        "key": "B",
+        "text_en": "Disable the analytics rule and rely on Fusion multistage attack detection to surface the behaviour instead.",
+        "text_zh": "停用這條分析規則，改由 Fusion 多階段攻擊偵測來浮出這類行為。"
+      },
+      {
+        "key": "C",
+        "text_en": "Create an automation rule that closes every incident produced by this rule as a false positive.",
+        "text_zh": "建立自動化規則，把這條規則產生的所有事件都當成誤報自動關閉。"
+      },
+      {
+        "key": "D",
+        "text_en": "Delete the rule now and rebuild it later as a near-real-time (NRT) rule with a higher threshold.",
+        "text_zh": "現在先刪掉這條規則，之後再用較高門檻改建成近即時（NRT）規則。"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "誤報處理有固定順序：先調規則、再自動關閉、最後才考慮抑制，永遠不刪規則。本題雜訊來源單一且明確（一個已知服務帳號），最乾淨的做法就是在查詢裡排除它——雜訊從源頭消失，使用者帳號的偵測完全不受影響，之後也不必再人工處理。題幹的「keep the detection effective」與「minimize ongoing administrative effort」兩個限定詞，就是把答案指向「調查詢」而不是「事後補救」。",
+    "why_wrong_zh": {
+      "B": "停用規則會連使用者帳號的真實偵測一起關掉，本季那兩次資料集結就抓不到了。Fusion 是關聯多個既有訊號的 ML 偵測，不能拿來替代一條特定的自訂偵測邏輯。",
+      "C": "自動關閉能讓佇列變乾淨，但事件仍會被建立，噪音只是被藏起來；更危險的是，若哪天該服務帳號真的被冒用，事件也會被一併自動關閉。它是無法修改查詢時的次佳做法，不是本題最佳解。",
+      "D": "刪除規則會失去偵測與其歷史脈絡，改成 NRT 也解決不了問題——雜訊來自特定帳號而非執行頻率，NRT 的查詢限制反而讓這類邏輯更難實作。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/false-positives",
+    "tags": [
+      "exam-strategy",
+      "cross-domain"
+    ]
   }
 ]
