@@ -48,6 +48,14 @@ SPEECH_SUBS = [
     ("DAD", "D A D"), ("AAA", "triple A"), ("NDA", "N D A"), ("AUP", "A U P"),
     ("DBA", "D B A"), ("CEO", "C E O"), ("CIO", "C I O"), ("CSO", "C S O"),
     ("CISO", "C I S O"), ("COO", "C O O"),
+    # Domain 8 軟體開發安全
+    # CI/CD 必須排在 CI 之前：斜線不是英數字，邊界判斷會放行，
+    # 所以 CI 規則若先套用會把 CI/CD 切成「C I /CD」。
+    ("CI/CD", "C I C D"), ("CI", "C I"),
+    ("DevSecOps", "Dev Sec Ops"), ("DevOps", "Dev Ops"),
+    ("SBOM", "S BOM"), ("SCA", "S C A"), ("XSS", "X S S"),
+    ("CSRF", "C S R F"), ("CSP", "C S P"), ("SameSite", "Same Site"),
+    ("Log4Shell", "Log four Shell"), ("Log4j", "Log four J"),
     # Domain 6 評估與稽核
     ("KPI", "K P I"), ("KRI", "K R I"), ("ROE", "R O E"), ("EOL", "E O L"),
     ("PDCA", "P D C A"), ("SSAE", "S S A E"), ("ISAE", "I S A E"), ("ISO", "I S O"),
