@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 12｜Defender XDR 事件分診：Incidents、Alerts 與調查優先排序｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 12 / 40 · 2026-09-02</div>
+    <h1>Defender XDR 事件分診：Incidents、Alerts 與調查優先排序</h1>
+    <p class="sub"><em>Incident Triage in Defender XDR</em></p>
+    <div class="meta-row">
+      <span class="pill d2">D2 回應安全性事件</span>
+      <span class="pill ghost">35-40%</span>
+      <span class="pill ghost">P1-W3-2</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:48%"></div></div>
+    <div class="progress-text">五週速成進度 12 / 25 · 距離考試（2026-10-17）還有 45 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP1｜Mitigate threats using Microsoft Defender XDR | SC-200 | Episode 1</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/8gCUtYEpTe8' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">分診：把一堆警示收斂成一個講得清楚的攻擊故事</h2>
+<p>今天進入第二大領域 D2「回應安全性事件」（35–40%），第一道關卡是<strong>分診（triage）</strong>：打開 defender.microsoft.com，佇列裡幾十個事件、幾百則警示，你先看哪一個、怎麼判斷、判斷完留下什麼紀錄。重點有三：第一，<strong>警示（alert）與事件（incident）的關係</strong>——關聯引擎如何把跨產品警示縫成攻擊故事（attack story）；第二，<strong>佇列管理動作</strong>——篩選、指派、狀態流、標籤、合併、命名，以及 <span class="badge-2026">2026 新考點</span> 內嵌 Security Copilot 的事件摘要；第三，<strong>分類（classification）與判定（determination）</strong>對照，加上 tier-1 收斂與升級 tier-2 的判準。考題幾乎都是情境題：給你一個多警示事件，問「下一步做什麼」或「該如何分類」。</p>
+<div class="point">
+<strong>學習目標（對應官方考綱 D2「回應安全性事件」）：</strong>
+<ul>
+  <li>☐ 說明警示如何關聯成事件、嚴重性如何決定（對應考綱 <em>respond to alerts and incidents identified by Microsoft Defender XDR</em>）</li>
+  <li>☐ 用篩選、指派、狀態與標籤管理佇列，並判斷何時該合併事件</li>
+  <li>☐ 依資產重要性、攻擊階段、使用者風險與訊號多樣性排出處理順序</li>
+  <li>☐ 用攻擊故事圖、警示時間軸、實體窗格與 Go hunt 完成一次調查</li>
+  <li>☐ 正確選擇 true positive／informational, expected activity／false positive 及其子判定</li>
+  <li>☐ 說明內嵌 Security Copilot 事件摘要在分診中的定位（對應考綱 <em>manage and investigate threats by using Microsoft Security Copilot</em>）</li>
+</ul>
+</div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP1 觀看重點指引（這輪只看「事件頁」）</h2>
+<p>第三次回到 EP1，這輪請快轉到講者<strong>點開單一事件之後</strong>的畫面，帶四個問題定位段落。</p>
+<ul>
+  <li><strong>佇列畫面</strong>：數一數欄位——名稱、標籤、嚴重性、狀態、被指派者、受影響資產、服務來源。這些同時也是篩選條件。</li>
+  <li><strong>事件內頁</strong>：記住上方那排索引標籤（攻擊故事、警示、資產、調查、證據與回應、摘要），第 06 節會逐一拆解。</li>
+  <li><strong>攻擊故事圖</strong>：圖上同時有裝置、使用者、信箱、檔案節點，警示來自不同產品。自問：「這些原本分屬三個入口的警示，是什麼縫起來的？」</li>
+  <li><strong>動作選單</strong>：看講者從節點直接叫出的動作（隔離裝置、Go hunt、查看實體）——分診的精神就是「不換頁把判斷做完」。</li>
+</ul>
+<div class="info-box">📌 EP1 字幕尚未抓取完成，本節依規格寫成觀看重點指引；字幕到位後會回補精確時間碼（格式如 <span class="timestamp">EP1 12:35</span>）。</div>
+
+<div class="eyebrow">03 — 🧵 警示與事件</div>
+<h2 data-toc="警示事件">關聯引擎怎麼縫出攻擊故事</h2>
+<p>先排好名詞階梯：遙測（raw event）被偵測邏輯命中後產生一則<strong>警示</strong>（「這個行為可疑」）；關聯引擎再把相關警示歸成一個<strong>事件</strong>（「這是同一起攻擊」）。分析師的工作單位是事件——題目問「橫跨郵件與端點的攻擊該從哪裡開始查」，答案永遠是<strong>統一佇列中的那個事件</strong>，不是逐一翻各產品的警示清單。</p>
+<p>關聯依據有三類：<strong>共同實體</strong>（同一裝置、使用者、信箱、檔案雜湊、IP／URL）、<strong>時間鄰近性</strong>、<strong>攻擊鏈邏輯</strong>（前後警示分屬 MITRE ATT&amp;CK 相鄰戰術）。因此一個事件裡可同時出現 MDO 的釣魚郵件、MDE 的惡意程序、MDI 的帳號列舉、MDA 的異常下載、Entra ID Protection 的高風險登入，甚至 Purview DLP 的原則命中；工作區連入統一入口後，Microsoft Sentinel 分析規則的事件也進同一條佇列。</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>面向</th><th>警示（alert）</th><th>事件（incident）</th></tr></thead>
+  <tbody>
+    <tr><td>產生者</td><td>各產品偵測邏輯、自訂偵測、分析規則</td><td>關聯引擎自動產生，或分析師手動合併</td></tr>
+    <tr><td>語意</td><td>單點訊號</td><td>完整攻擊故事</td></tr>
+    <tr><td>嚴重性</td><td>偵測邏輯給定：高／中／低／資訊</td><td>取所含警示的<strong>最高</strong>嚴重性</td></tr>
+    <tr><td>狀態</td><td>新增 → 進行中 → 已解決</td><td>作用中 → 進行中 → 已解決</td></tr>
+    <tr><td>分診角色</td><td>證據與時間軸的來源</td><td>指派、SLA 與結案單位</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>手動合併（merge）</strong>：同一波攻擊可能因時間拉長或實體沒接上而被拆成兩件，可在佇列勾選多個事件合併，被併入者轉為已解決並指向主事件。但入口沒有「拆分事件」的動作，<strong>合併前務必確認是同一起攻擊</strong>。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>嚴重性怎麼算</strong>：事件嚴重性＝所含警示的最高嚴重性，不是平均、不是數量多寡。題幹寫「事件含 12 則低嚴重性與 1 則高嚴重性警示」→ 事件嚴重性是<strong>高</strong>。延伸：新的高嚴重性警示關聯進來會把事件拉高；反之把警示標為誤判不會自動下修事件嚴重性。</div>
+
+<div class="eyebrow">04 — 🚦 佇列管理</div>
+<h2 data-toc="佇列管理">篩選、指派、狀態流與標籤</h2>
+<p>佇列動作分兩半：篩選排序決定<strong>你怎麼看</strong>，指派、狀態與標籤決定<strong>團隊怎麼記</strong>。</p>
+<ul>
+  <li><strong>篩選：嚴重性／狀態／指派對象</strong>是三件組。「指派給我 ＋ 進行中」是個人工作清單；「未指派 ＋ 作用中 ＋ 高」是 tier-1 每天要清空的收件匣。</li>
+  <li><strong>篩選：服務來源與偵測來源</strong>（MDE、MDO、MDI、MDA、Entra ID Protection、Defender for Cloud、Sentinel），並可篩「<strong>多重服務來源</strong>」——幾乎等於「跨產品的真攻擊」。其餘維度：受影響資產／裝置群組、標籤、分類、自動調查狀態、資料敏感度。</li>
+  <li><strong>指派</strong>：一個事件一個擁有者，認領當下就把狀態改為「進行中」避免重工，這是「下一步該做什麼」的常見正解。</li>
+  <li><strong>狀態流</strong>：作用中 → 進行中 → 已解決。解決時要填分類，並可把結果套用到事件內的警示；日後若有新的相關警示關聯進來，已解決的事件可能被重新啟動。</li>
+  <li><strong>標籤</strong>：自訂文字標記（如 <em>VIP-user</em>、<em>phishing-0817</em>）可作篩選條件，Sentinel 自動化規則也能拿它當觸發條件；系統也會自動貼標籤（例如自動攻擊中斷）。</li>
+  <li><strong>命名</strong>：系統依偵測來源、攻擊類別與受影響資產自動命名（如「涉及多個端點的多階段事件」），可改成團隊看得懂的描述。</li>
+</ul>
+<div class="point"><strong>2026 的新同事：內嵌 Security Copilot</strong> <span class="badge-2026">2026 新考點</span><br>事件的摘要面板可由 Security Copilot 產生自然語言<strong>事件摘要</strong>（把警示、實體與時序寫成一段人話），並以<strong>引導式回應</strong>建議下一步；另有代理式（agentic）分診能力，例如自動處理使用者回報的釣魚郵件並附上判定理由。考點記法：Copilot 產出的是<strong>摘要與建議</strong>，不是判決——分類、指派與回應仍由分析師負責，且只呈現使用者權限內的資料。</div>
+
+<div class="eyebrow">05 — ⚖️ 優先排序</div>
+<h2 data-toc="優先排序">嚴重性只是起點，不是順序</h2>
+<p>佇列裡同時躺著五個高嚴重性事件時，嚴重性就沒有排序能力了。真正的順序來自下表的綜合判斷。</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>判斷因素</th><th>怎麼看</th><th>提高優先度的訊號</th></tr></thead>
+  <tbody>
+    <tr><td>資產重要性</td><td>網域控制站、財務系統，還是訪客筆電</td><td>命中被標記為<strong>關鍵資產</strong>的系統或特權帳號</td></tr>
+    <tr><td>攻擊階段</td><td>類別欄顯示涵蓋哪些 MITRE 戰術</td><td>已推進到憑證存取、橫向移動、外洩或影響</td></tr>
+    <tr><td>使用者風險</td><td>Entra ID Protection 風險等級、是否特權帳號</td><td>高風險使用者、全域管理員</td></tr>
+    <tr><td>訊號多樣性</td><td>是否含多個服務來源的警示</td><td>「多重服務來源」通常代表真攻擊</td></tr>
+    <tr><td>影響廣度</td><td>受影響裝置、使用者、信箱數</td><td>同一封信寄給 200 人、多台裝置同雜湊</td></tr>
+    <tr><td>自動化狀態</td><td>自動調查或自動攻擊中斷是否已介入</td><td>尚未被處置者優先，已中斷者跟進即可</td></tr>
+  </tbody>
+</table>
+</div>
+<p>一句話原則：<strong>先看「已推進到深層戰術、打在重要資產或特權帳號、又有多產品同時示警」的事件</strong>；單一低嚴重性、來源單一的，留到批次時間再收斂。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>解題順序</strong>：(1) 刪掉純資訊性與環境雜訊；(2) 比<em>攻擊階段</em>——有橫向移動或外洩跡象的贏過只有初始存取嘗試的；(3) 比<em>資產與帳號重要性</em>；(4) 平手看影響廣度。陷阱選項：「先處理警示數量最多的」（可能只是同一則雜訊重複觸發）、「先處理最新的」（時間新舊不代表風險）、「先處理已被自動攻擊中斷處置的」（路徑已切斷，該做的是驗證收尾，不是插隊）。</div>
+
+<div class="eyebrow">06 — 🔍 調查工具</div>
+<h2 data-toc="調查工具">攻擊故事圖、時間軸、實體窗格與 Go hunt</h2>
+<p>點進事件後，上方索引標籤就是工具箱——要知道哪個標籤回答哪個問題：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>工具</th><th>回答什麼</th><th>分診怎麼用</th></tr></thead>
+  <tbody>
+    <tr><td><strong>攻擊故事圖</strong></td><td>發生了什麼、順序、牽連到誰</td><td>第一眼看：節點是實體、連線是關係，可展開程序樹</td></tr>
+    <tr><td><strong>警示清單</strong></td><td>哪些偵測命中、來源與嚴重性</td><td>確認是否為多產品關聯</td></tr>
+    <tr><td><strong>警示時間軸</strong></td><td>單一警示的前因後果</td><td>找出真正的初始存取點</td></tr>
+    <tr><td><strong>資產</strong></td><td>哪些裝置、使用者、信箱受影響</td><td>估算影響廣度與是否升級</td></tr>
+    <tr><td><strong>實體側邊窗格</strong></td><td>這個節點的來歷與可執行動作</td><td>點任一節點就開，看風險等級並就地動作</td></tr>
+    <tr><td><strong>調查／證據與回應</strong></td><td>自動調查做了什麼、牽涉哪些檔案與 IP</td><td>避免重工，逐項確認實體</td></tr>
+    <tr><td><strong>摘要</strong></td><td>一頁看完重點</td><td>交接與寫紀錄最省時，Copilot 摘要也在此</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>Go hunt</strong> 是分診與搜捕之間的橋：在圖上對某實體按 Go hunt，系統會帶著它生成一段進階搜捕查詢，把範圍從「這個事件」擴大到「整個租用戶還有誰中了」。例如對寄件者做擴散確認：</p>
+<pre class="kql">EmailEvents
+| where Timestamp &gt; ago(7d)
+| where SenderFromAddress == "billing@contoso-invoices.com"
+| summarize Recipients = dcount(RecipientEmailAddress),
+            Delivered = countif(DeliveryAction == "Delivered")
+        by Subject
+| order by Recipients desc</pre>
+<p class="kql-note">這段回答分診最關鍵的問題：「這是一封信，還是一波攻擊？」dcount 算收件人數、countif 算真的進到信箱（而非被攔截）的數量。若是 1 人且已攔截，可低調收尾；若是 180 人、60 封成功遞送，那就是該升級的釣魚 campaign。</p>
+<div class="point"><strong>分診的節奏感</strong>：攻擊故事圖看全貌（30 秒）→ 警示清單確認來源組成（30 秒）→ 對最可疑實體開側邊窗格（1 分鐘）→ Go hunt 確認擴散（2 分鐘）→ 決定收斂或升級。五步五分鐘走完，就是 tier-1 的標準節奏。</div>
+
+<div class="eyebrow">07 — 🏷️ 分類與結案</div>
+<h2 data-toc="分類結案">真陽性、資訊性、誤判的正確用法</h2>
+<p>結案不是把狀態改成「已解決」就好，還要選<strong>分類</strong>與底下的<strong>判定</strong>。這是 SC-200 高頻細節，因為它牽動報表品質與調校依據。</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>分類</th><th>意思</th><th>判定（子分類）</th><th>典型情境</th></tr></thead>
+  <tbody>
+    <tr><td><strong>True positive</strong></td><td>偵測正確，確實是惡意活動</td><td>多階段攻擊、惡意使用者活動、遭入侵帳戶、惡意程式碼、網路釣魚、不需要的軟體、其他</td><td>使用者點了釣魚連結、帳號被接管</td></tr>
+    <tr><td><strong>Informational, expected activity</strong></td><td>偵測正確、行為真的發生，但預期且無害</td><td>安全性測試、確認的活動、企業營運（LOB）應用程式、其他</td><td>紅隊演練、IT 管理工具批次操作</td></tr>
+    <tr><td><strong>False positive</strong></td><td>偵測錯了，那件事根本不是它說的那回事</td><td>非惡意、資料不足以驗證、其他</td><td>正常檔案被誤判為惡意</td></tr>
+    <tr><td><strong>Not set</strong></td><td>尚未分類</td><td>—</td><td>仍在調查，或忘了結案</td></tr>
+  </tbody>
+</table>
+</div>
+<p>為什麼要認真填？其一，它是<strong>調校依據</strong>——大量同型警示被標成誤判，就是該建警示調整（alert tuning）規則的訊號；其二，它是 SOC 的<strong>績效指標來源</strong>（誤判率、平均處理時間），且部分偵測會把判定回饋給引擎，填錯等於教錯。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>資訊性 vs 誤判是最會考的分岔</strong>，公式只有一句：<em>「那件事真的發生了嗎？」</em>發生了、只是無害或預期中（紅隊演練、內部工具、LOB 應用）→ <strong>Informational, expected activity</strong>；根本沒發生、偵測認錯了 → <strong>False positive</strong>。經典陷阱：「安全團隊執行滲透測試，事件確實記錄到該活動，應如何分類？」正解是資訊性＋判定「安全性測試」；選誤判是錯的，因為偵測完全正確。其次，「證據不足」不等於誤判——選 false positive 底下的「資料不足以驗證」，或維持未設定繼續調查。第三，分類是<strong>結案動作</strong>：問「解決事件時還必須做什麼」，答案就是分類與判定。</div>
+<div class="case-box"><span class="case-label">🛡️ 實戰情境：一起多警示事件的完整分診</span><br>
+<p>週二 09:12，你是 tier-1 分析師。佇列頂端出現未指派的高嚴重性事件「涉及多個端點的多階段事件」，服務來源顯示<strong>多重來源</strong>。</p>
+<ol>
+  <li><strong>掃描（09:12）</strong>：三個高優先訊號同時成立——多重服務來源、受影響資產含財務伺服器、類別涵蓋初始存取與憑證存取。決定先做它。</li>
+  <li><strong>認領（09:13）</strong>：指派給自己、狀態改「進行中」、加標籤 <em>fin-dept</em>。</li>
+  <li><strong>看攻擊故事（09:14）</strong>：四則警示——MDO「使用者點擊惡意 URL」、MDE「可疑 PowerShell 下載活動」、MDE「嘗試存取 LSASS 記憶體」、Entra ID Protection「陌生位置的高風險登入」。順序一目瞭然：郵件 → 端點執行 → 憑證竊取 → 帳號被用。</li>
+  <li><strong>看細節（09:17）</strong>：時間軸顯示 PowerShell 的父程序是 Outlook 開啟的附件；使用者帳號屬財務群組、風險高；自動調查已封鎖惡意檔案，但帳號尚未處置。</li>
+  <li><strong>Go hunt（09:21）</strong>：從寄件者按 Go hunt，確認同一封信寄給 43 人、9 封成功遞送、1 人點擊——是小型 campaign。</li>
+  <li><strong>升級（09:25）</strong>：命中判準——憑證存取戰術、財務系統、已擴散。tier-1 不自行處置帳號與裝置，改為加註發現、貼標籤 <em>escalated-t2</em>、重新指派給 tier-2。狀態維持「進行中」——<strong>升級不是結案</strong>。</li>
+  <li><strong>tier-2 收尾（11:40）</strong>：裝置隔離、密碼重設與工作階段撤銷、其餘 8 封信郵件修復後，狀態改「已解決」，分類 <strong>True positive</strong>、判定 <strong>網路釣魚</strong>，並套用到四則警示。</li>
+</ol>
+<p><strong>回顧</strong>：全程只有一個分岔——若 Go hunt 顯示信只寄給一人、來源是資安團隊自家的釣魚演練平台，分類就變成 <strong>Informational, expected activity ＋ 安全性測試</strong>。同樣的畫面、不同的事實，導向不同的分類。</p>
+</div>
+<div class="point"><strong>tier-1 → tier-2 升級判準（可抄成 SOP）</strong>：符合任一項就升級——(1) 出現憑證存取、橫向移動、外洩或影響戰術；(2) 涉及網域控制站、特權帳號或關鍵資產；(3) 影響超過單一使用者／裝置；(4) 需要超出 tier-1 權限的回應動作（裝置隔離、帳號停用、即時回應）；(5) 30 分鐘內無法判定真偽。反之，單一來源、單一低嚴重性、資產不重要且自動調查已處理完畢者，tier-1 直接分類收斂。</div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">EP1 沒講、分診題卻會考的</h2>
+<ul>
+  <li><strong>警示調整（alert tuning）</strong>：建規則讓符合條件的警示自動隱藏或標為誤判。分界：警示調整管<strong>未來的同型警示</strong>，分類管<strong>已發生的這一件</strong>；題目說「避免良性警示每天塞爆佇列」→ 建警示調整規則。</li>
+  <li><strong>動作中心（Action center）</strong>：考綱明列 <em>manage actions and submissions in the Action center</em>，它集中「待核准」與「歷史」兩類回應動作，可追蹤與復原（undo）。動作卡在待核准，往往就是事件沒收斂的原因。</li>
+  <li><strong>自動攻擊中斷</strong>：對高信心的勒索軟體、商業電子郵件詐騙，系統會自動停用帳號或隔離裝置並貼標籤。看到這類事件，任務是<strong>驗證處置與清理</strong>，不是從零重查。</li>
+  <li><strong>Sentinel 事件同步</strong>：工作區連入統一入口後共用一條佇列，狀態、擁有者與分類雙向同步；Sentinel 自動化規則仍可依標籤與嚴重性自動指派或執行劇本（Playbook）。</li>
+  <li><strong>多租用戶與保留</strong>：MSSP 可在多租用戶入口一次分診多個租用戶的事件，權限仍受各租用戶授權限制；XDR 事件與警示保留 180 天，要更長回溯請走 Sentinel 與資料湖層。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深讀清單</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/incidents-overview" target="_blank" rel="noopener">Microsoft Defender XDR 中的事件</a> — 讀「警示如何關聯成事件」與嚴重性定義，補強 §03。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/incident-queue" target="_blank" rel="noopener">排定事件的優先順序</a> — 佇列完整篩選維度，可對照 §05 自我測驗。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/manage-incidents" target="_blank" rel="noopener">管理事件</a> — 指派、狀態、標籤、合併與分類／判定的官方選項對照。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/investigate-incidents" target="_blank" rel="noopener">調查事件</a> — 逐一走過各索引標籤的畫面與可執行動作。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/security-copilot-m365d-incident-summary" target="_blank" rel="noopener">以 Security Copilot 摘要事件</a> — 2026 新考點主文：摘要面板與引導式回應。</li>
+</ul>
+
+
+  <div class="eyebrow">10 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W3-2">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D2-0001</div><div class='q-stem'>You are a security operations analyst reviewing the incident queue in the Microsoft Defender portal. One incident groups 12 low-severity alerts from Microsoft Defender for Endpoint together with 1 high-severity alert from Microsoft Defender for Office 365. Which severity does Microsoft Defender XDR show for the incident itself?</div><div class='q-zh'>（你是安全性作業分析師，正在 Microsoft Defender 入口網站檢視事件佇列。某個事件把 Microsoft Defender for Endpoint 的 12 則低嚴重性警示，與 Microsoft Defender for Office 365 的 1 則高嚴重性警示關聯在一起。Microsoft Defender XDR 會把這個事件本身顯示為哪一種嚴重性？）</div><div class='q-opt'><strong>A.</strong> Low, because most of the correlated alerts are low severity<div style='font-size:12.5px;color:var(--muted)'>低，因為關聯進來的警示大多是低嚴重性</div></div><div class='q-opt'><strong>B.</strong> Medium, because the incident severity is the average of the alert severities<div style='font-size:12.5px;color:var(--muted)'>中，因為事件嚴重性是各警示嚴重性的平均值</div></div><div class='q-opt'><strong>C.</strong> High, because an incident inherits the highest severity among the alerts it contains<div style='font-size:12.5px;color:var(--muted)'>高，因為事件會沿用所含警示中最高的嚴重性</div></div><div class='q-opt'><strong>D.</strong> Informational, because the severity is calculated only after an analyst assigns the incident<div style='font-size:12.5px;color:var(--muted)'>資訊，因為嚴重性要等分析師指派事件之後才會計算</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>事件（incident）的嚴重性＝所含警示（alert）中的**最高**嚴重性，與警示數量、平均值或指派狀態都無關。因此 12 低＋1 高的組合，事件會顯示為「高」。延伸考點：日後若有新的高嚴重性警示關聯進來，事件嚴重性會被往上拉；反之把個別警示標成誤判，並不會自動把事件嚴重性往下修——要調整得由分析師處理事件本身。</p><ul><li><strong>A</strong>：警示數量多寡不是嚴重性的計算依據；12 則低嚴重性警示不會把事件壓成低，關聯引擎看的是最高值。</li><li><strong>B</strong>：Defender XDR 不對嚴重性取平均。若採平均值，重大的單一高嚴重性訊號就會被大量雜訊稀釋掉，違反分診的設計目的。</li><li><strong>D</strong>：嚴重性在事件產生時就由關聯的警示決定，與指派給誰、狀態是「作用中」還是「進行中」都無關；「資訊」是警示層級的嚴重性選項，不是未分診的預設值。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/incidents-overview' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D2-0002</div><div class='q-stem'>You are a tier-1 analyst starting your shift. Five unassigned high-severity incidents are waiting in the Microsoft Defender XDR queue, so severity alone no longer tells you where to start. Which incident should you work on FIRST?</div><div class='q-zh'>（你是 tier-1 分析師，剛開始輪班。Microsoft Defender XDR 佇列中有五個未指派的高嚴重性事件，嚴重性已經無法幫你排序。你應該「最先」處理哪一個事件？）</div><div class='q-opt'><strong>A.</strong> The incident whose alerts come from multiple service sources, whose affected assets include a finance server, and whose categories already cover credential access<div style='font-size:12.5px;color:var(--muted)'>警示來自多重服務來源、受影響資產含財務伺服器，且類別已涵蓋憑證存取的那個事件</div></div><div class='q-opt'><strong>B.</strong> The incident that contains the largest number of alerts<div style='font-size:12.5px;color:var(--muted)'>包含最多警示的那個事件</div></div><div class='q-opt'><strong>C.</strong> The incident that was created most recently<div style='font-size:12.5px;color:var(--muted)'>建立時間最新的那個事件</div></div><div class='q-opt'><strong>D.</strong> The incident that automatic attack disruption has already contained by disabling the account<div style='font-size:12.5px;color:var(--muted)'>自動攻擊中斷已經停用帳戶、完成遏制的那個事件</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>嚴重性相同時，優先序來自綜合判斷：攻擊階段（是否已推進到憑證存取、橫向移動、外洩或影響）、資產與帳號重要性（網域控制站、財務系統、特權帳號）、訊號多樣性（多重服務來源幾乎等同真攻擊）、影響廣度。選項 A 同時命中三個提高優先度的訊號，是最該先做的一件。</p><ul><li><strong>B</strong>：警示數量多常常只是同一則雜訊重複觸發，或某條偵測邏輯過於敏感，數量本身不代表風險。</li><li><strong>C</strong>：事件的新舊與風險無關；只挑最新的處理，反而容易讓早幾分鐘產生、已經推進到深層戰術的攻擊被晾在佇列裡。</li><li><strong>D</strong>：自動攻擊中斷已經切斷攻擊路徑，該事件的任務是驗證處置結果與清理收尾，不必插隊；尚未被任何自動化處置的事件才需要人先介入。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/incident-queue' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D2-0003</div><div class='q-stem'>Your organization hired an external red team to run an authorized penetration test last night. This morning Microsoft Defender XDR raised an incident that accurately recorded the red team credential dumping activity on two servers. You must resolve the incident so that the detection quality metrics of the SOC stay accurate. How should you classify it?</div><div class='q-zh'>（你的組織昨晚委託外部紅隊執行經授權的滲透測試。今天早上 Microsoft Defender XDR 產生一個事件，正確記錄了紅隊在兩台伺服器上傾印認證的活動。你必須解決這個事件，同時讓 SOC 的偵測品質指標保持正確。你應該如何分類（classification）？）</div><div class='q-opt'><strong>A.</strong> False positive with the determination Not malicious<div style='font-size:12.5px;color:var(--muted)'>False positive（誤判），判定為「非惡意」</div></div><div class='q-opt'><strong>B.</strong> False positive with the determination Not enough data to validate<div style='font-size:12.5px;color:var(--muted)'>False positive（誤判），判定為「資料不足以驗證」</div></div><div class='q-opt'><strong>C.</strong> True positive with the determination Malicious user activity<div style='font-size:12.5px;color:var(--muted)'>True positive（真陽性），判定為「惡意使用者活動」</div></div><div class='q-opt'><strong>D.</strong> Informational, expected activity with the determination Security testing<div style='font-size:12.5px;color:var(--muted)'>Informational, expected activity（資訊性、預期中的活動），判定為「安全性測試」</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>判斷公式只有一句：「那件事真的發生了嗎？」紅隊確實執行了認證傾印，偵測完全正確，只是行為是預期且經授權的，因此分類為 Informational, expected activity，判定選「安全性測試（security testing）」。填對很重要：分類與判定是警示調校的依據，也是誤判率等 SOC 績效指標的來源，部分偵測還會把判定回饋給偵測引擎。</p><ul><li><strong>A</strong>：誤判代表「偵測認錯了、那件事根本沒發生」。這裡活動真的發生過，標成誤判等於教錯引擎，也會虛增誤判率、誤導後續調校。</li><li><strong>B</strong>：「資料不足以驗證」用在證據不足、無法判定真偽的情況。本題已確知是紅隊演練，事實清楚，不適用。</li><li><strong>C</strong>：真陽性用於確實發生的「惡意」活動。紅隊演練經過授權、非惡意，若標成真陽性會虛增真實攻擊數量並污染事件統計。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/manage-incidents' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D2-0004</div><div class='q-stem'>Each morning the queue of your SOC fills with the same benign alert, which a scheduled IT management script triggers on 300 devices. Analysts waste time closing the same alert every day. You must prevent these alerts from filling the queue in the future while keeping a record that you can review later. What should you do?</div><div class='q-zh'>（你的 SOC 佇列每天早上都被同一種良性警示塞爆——來源是一支排程執行的 IT 管理指令碼，在 300 台裝置上觸發。分析師每天都在關掉同一種警示。你必須讓這類警示未來不再塞爆佇列，同時保留日後可回查的紀錄。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Classify each incident as Informational, expected activity and resolve them again every morning<div style='font-size:12.5px;color:var(--muted)'>每天早上照樣把每個事件分類為 Informational, expected activity 後解決</div></div><div class='q-opt'><strong>B.</strong> Create an alert tuning rule that automatically hides or resolves the alerts that match the conditions<div style='font-size:12.5px;color:var(--muted)'>建立警示調整（alert tuning）規則，讓符合條件的警示自動隱藏或標記解決</div></div><div class='q-opt'><strong>C.</strong> Merge the incidents into one parent incident every morning<div style='font-size:12.5px;color:var(--muted)'>每天早上把這些事件合併成一個主事件</div></div><div class='q-opt'><strong>D.</strong> Add a tag to the incidents and create a Microsoft Sentinel automation rule that assigns them to a tier-1 analyst<div style='font-size:12.5px;color:var(--muted)'>為這些事件加標籤，並建立 Microsoft Sentinel 自動化規則把它們指派給 tier-1 分析師</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>分類（classification）處理的是「已經發生的這一件」，警示調整（alert tuning）處理的是「未來所有同型警示」。針對已知良性的內部工具，建立警示調整規則（依偵測名稱、實體、檔案路徑等條件）讓符合的警示自動隱藏或標為解決，才是治本作法；規則仍留有設定與命中紀錄可回查，需要時可停用規則恢復顯示。</p><ul><li><strong>A</strong>：分類只結掉今天這批，明天同樣的警示還是會進佇列，人力成本沒有下降，也不符合「未來不再塞爆佇列」的要求。</li><li><strong>C</strong>：合併是把「同一起攻擊」被拆開的多個事件收成一件，用在重複的良性警示上並不會阻止新事件產生，而且入口網站沒有拆分事件的動作，誤併風險高。</li><li><strong>D</strong>：標籤與自動化規則只是改變事件流向（誰被指派、跑什麼劇本），警示照樣產生、佇列照樣變長，只是把負擔換個人扛。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/investigate-alerts' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D2-0005</div><div class='q-stem'>Triage is complete on an incident you own: a delivered phishing message led to credential access on a finance server, a Go hunt query confirms that 43 mailboxes received the same message, and the affected account is privileged. The runbook of your SOC states that device isolation and account disablement are tier-2 actions only. Which combination of actions should you take next?</div><div class='q-zh'>（你負責的事件已完成分診：一封成功遞送的釣魚郵件導致財務伺服器上發生憑證存取，Go hunt 查詢確認同一封信寄達 43 個信箱，受影響帳戶又是特權帳號。你們 SOC 的作業手冊規定，裝置隔離與停用帳戶只能由 tier-2 執行。接下來你應該採取哪一組動作？）</div><div class='q-opt'><strong>A.</strong> Isolate the device, reset the password of the user, and then resolve the incident as a true positive<div style='font-size:12.5px;color:var(--muted)'>自行隔離裝置、重設該使用者密碼，然後把事件解決為真陽性</div></div><div class='q-opt'><strong>B.</strong> Record your findings on the incident, add an escalation tag, reassign the incident to tier 2, and keep the status as In progress<div style='font-size:12.5px;color:var(--muted)'>在事件上記錄你的發現、加上升級標籤、把事件重新指派給 tier 2，並把狀態維持在「進行中」</div></div><div class='q-opt'><strong>C.</strong> Resolve the incident as True positive with the determination Phishing so that tier 2 can reopen it later<div style='font-size:12.5px;color:var(--muted)'>把事件解決為 True positive、判定為網路釣魚，讓 tier 2 之後再重新開啟</div></div><div class='q-opt'><strong>D.</strong> Leave the incident unassigned with the status Active and email the tier-2 distribution list<div style='font-size:12.5px;color:var(--muted)'>讓事件維持未指派、狀態「作用中」，改用電子郵件通知 tier-2 群組信箱</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>本題同時命中多條升級判準：已出現憑證存取戰術、涉及特權帳號與財務系統、影響超過單一使用者，且所需回應動作超出 tier-1 權限。正確作法是把調查結果寫進事件、貼上可篩選的升級標籤、把擁有者改成 tier-2，並把狀態維持在「進行中」——升級是交棒，不是結案；狀態留在進行中，SLA 與擁有權才追得下去，也避免事件掉出佇列。</p><ul><li><strong>A</strong>：裝置隔離與帳戶處置超出 tier-1 被授權的範圍，違反最小權限原則與作業手冊；而且攻擊尚未確認清除完畢就結案，等於提早關掉追蹤。</li><li><strong>C</strong>：把仍在進行中的攻擊標成已解決，會讓事件離開作用中佇列、SLA 計時中止，指標也會失真；分類與判定應在回應完成、確認清除後才填。</li><li><strong>D</strong>：事件留在未指派、作用中狀態，會被別的分析師重複認領造成重工；交接資訊寫在信裡而不寫在事件上，稽核軌跡與後續調查都接不上。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/manage-incidents' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP12</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><audio controls preload='none' src='../podcast/ep-012.mp3'></audio><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-012'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="12">
+    <label for="doneChk">我讀完 Day 12 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-011.html'>← Day 11</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-013.html'>Day 13 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 12 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

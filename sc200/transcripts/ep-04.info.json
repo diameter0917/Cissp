@@ -1,0 +1,17 @@
+{
+  "ep": "EP4",
+  "id": "e7UxqMgb1zk",
+  "url": "https://youtu.be/e7UxqMgb1zk",
+  "title": "Mitigate threats using Microsoft Defender for Endpoint | SC-200 | Episode 4",
+  "channel": "Microsoft Learn",
+  "duration_sec": 2830,
+  "duration_string": "47:10",
+  "upload_date": "20260504",
+  "language": "en-US",
+  "chapters": [],
+  "manual_sub_langs": [
+    "en"
+  ],
+  "auto_sub_has_zh_hant": false,
+  "description_head": "Episode 4 of 10\nFor the full video series, click here: https://aka.ms/SC-200onYouTube\n\nThis video teaches how to detect, investigate, and respond to advanced threats using Microsoft Defender for Endpoint, guiding learners through deployment, configuration, threat hunting, device investigations, evidence analysis, automation, alert management, and vulnerability management. It covers the full Defender for Endpoint workflow—from onboarding devices and configuring attack surface reduction, to performing live response actions, analyzing artifacts such as files, domains, and IPs, and enabling automated investigation and remediation—helping security analysts strengthen endpoint protection and streamline incident response. The path aligns with the SC‑200: Microsoft Security Operations Analyst certification and provides practical, scenario‑driven experience with the tools and techniques used to secure Windows devices and reduce organizational risk.\n\nLearn more about this course and take the certification exam to test your new skills: https://aka.ms/SC-200onLearn"
+}

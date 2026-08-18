@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day {{SEQ}}｜{{TITLE_ZH}}｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day {{SEQ}} / 40 · {{DATE}}</div>
+    <h1>{{TITLE_ZH}}</h1>
+    <p class="sub"><em>{{TITLE_EN}}</em></p>
+    <div class="meta-row">
+      <span class="pill {{DOMAIN_CLASS}}">{{DOMAIN}} {{DOMAIN_NAME_ZH}}</span>
+      <span class="pill ghost">{{WEIGHT}}</span>
+      <span class="pill ghost">{{CODE}}</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:{{PROGRESS_PCT}}%"></div></div>
+    <div class="progress-text">五週速成進度 {{SEQ}} / 25 · 距離考試（{{EXAM_DATE}}）還有 {{DAYS_TO_EXAM}} 天</div>
+  </header>
+
+  {{VIDEO_BLOCK}}
+
+  <article>
+{{BODY}}
+
+  <div class="eyebrow">{{SELFTEST_NO}} — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit={{CODE}}">到刷題頁練習 →</a></p>
+{{SELFTEST_BLOCK}}
+  </article>
+
+  {{PODCAST_BLOCK}}
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="{{SEQ}}">
+    <label for="doneChk">我讀完 Day {{SEQ}} 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    {{PREV_LINK}}
+    <a href="../index.html">回儀表板</a>
+    {{NEXT_LINK}}
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day {{SEQ}} / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,2840 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.500 --> 00:00:03.500
+[ Music ]
+
+00:00:06.340 --> 00:00:07.630
+JEAN-FRANCOIS BILODEAU:
+Have you ever pulled
+
+00:00:07.630 --> 00:00:11.670
+up your security logs knowing
+the clues are in there,
+
+00:00:11.670 --> 00:00:17.940
+somewhere, but the data feels
+too big, too noisy, and too slow
+
+00:00:17.940 --> 00:00:21.810
+to sift through when
+time matters most?
+
+00:00:21.810 --> 00:00:24.810
+In a real incident the
+difference between,
+
+00:00:24.810 --> 00:00:29.760
+"We think it's fine," and, "We
+can prove that what happened,"
+
+00:00:29.760 --> 00:00:34.260
+often comes down to how quickly
+you can ask the right question
+
+00:00:34.260 --> 00:00:36.210
+of your data.
+
+00:00:36.210 --> 00:00:39.240
+In this session, you'll
+learn how to turn that flood
+
+00:00:39.240 --> 00:00:44.880
+of telemetry into clear answers
+using the Kusto Query Language,
+
+00:00:44.880 --> 00:00:48.990
+or KQL, in Microsoft Sentinel.
+
+00:00:48.990 --> 00:00:50.400
+Hello, and welcome.
+
+00:00:50.400 --> 00:00:52.920
+We're glad you could join us.
+
+00:00:52.920 --> 00:00:56.760
+I'm Jean-Francois Bilodeau, a
+Microsoft Technical Trainer.
+
+00:00:56.760 --> 00:01:00.510
+In this session, we'll
+cover creating queries
+
+00:01:00.510 --> 00:01:04.860
+for Microsoft Sentinel using
+the Kusto Query Language,
+
+00:01:04.860 --> 00:01:07.610
+also known as KQL.
+
+00:01:07.610 --> 00:01:10.220
+Together we'll build
+a strong foundation
+
+00:01:10.220 --> 00:01:14.570
+of how KQL statements are
+structured, how data flows
+
+00:01:14.570 --> 00:01:19.790
+through a query, and how to
+apply the important operators
+
+00:01:19.790 --> 00:01:25.140
+to your search, filter, shape,
+and analyze the result.
+
+00:01:25.140 --> 00:01:29.430
+You will also see how to combine
+data from multiple tables
+
+00:01:29.430 --> 00:01:32.400
+and how to extract value
+from both structured
+
+00:01:32.400 --> 00:01:37.380
+and unstructured string
+field, aka, text field,
+
+00:01:37.380 --> 00:01:40.740
+skills you'll use constantly
+when hunting threats
+
+00:01:40.740 --> 00:01:45.120
+and investigating incident
+in Microsoft Sentinel.
+
+00:01:45.120 --> 00:01:49.030
+So let's get started
+with this session.
+
+00:01:50.220 --> 00:01:53.190
+Here we set the stage
+for the broader mission,
+
+00:01:53.190 --> 00:01:57.120
+defending against cyberthreat
+using Microsoft Security
+
+00:01:57.120 --> 00:01:58.950
+Operation Platform.
+
+00:01:58.950 --> 00:02:02.100
+As you work through this
+learning path, keep that goal
+
+00:02:02.100 --> 00:02:06.480
+in mind, helping a security
+operation team detect,
+
+00:02:06.480 --> 00:02:11.460
+investigate, and
+respond effectively.
+
+00:02:11.460 --> 00:02:14.040
+Let's take a look at where
+we are in the course.
+
+00:02:14.040 --> 00:02:17.880
+This is Learning Path 6,
+focused on creating queries
+
+00:02:17.880 --> 00:02:23.460
+for Microsoft Sentinel using the
+Kusto Query Language, or KQL.
+
+00:02:23.460 --> 00:02:25.050
+Here's the roadmap
+for this session.
+
+00:02:25.050 --> 00:02:27.930
+We'll start by constructing
+KQL statements
+
+00:02:27.930 --> 00:02:29.910
+from Microsoft Sentinel,
+
+00:02:29.910 --> 00:02:34.350
+then move into analyzing
+query result using KQL.
+
+00:02:34.350 --> 00:02:37.560
+Next we'll build multi-table
+statement using KQL,
+
+00:02:37.560 --> 00:02:42.390
+so you can combine dataset when
+a single table isn't enough.
+
+00:02:42.390 --> 00:02:45.690
+And we'll wrap things up by
+working with string data,
+
+00:02:45.690 --> 00:02:50.790
+also known as "text," in KQL
+statement, including extracting
+
+00:02:50.790 --> 00:02:54.900
+and shaping text and
+JSON like content.
+
+00:02:54.900 --> 00:02:59.250
+As we go, expect a lot
+of hands-on querying.
+
+00:02:59.250 --> 00:03:03.120
+The intent is to demonstrate
+each KQL example,
+
+00:03:03.120 --> 00:03:08.220
+often by typing the KQL, rather
+than relying on copy and paste,
+
+00:03:08.220 --> 00:03:10.620
+except for a larger sample.
+
+00:03:10.620 --> 00:03:14.490
+You'll also notice the learning
+flow emphases practice.
+
+00:03:14.490 --> 00:03:19.230
+That repetition is what
+helps KQL become natural
+
+00:03:19.230 --> 00:03:22.980
+in real investigation.
+
+00:03:22.980 --> 00:03:26.220
+Now we begin our first module,
+Constructing KQL statements
+
+00:03:26.220 --> 00:03:28.230
+for Microsoft Sentinel.
+
+00:03:28.230 --> 00:03:31.440
+This is where you'll learn
+the core building blocks,
+
+00:03:31.440 --> 00:03:35.520
+how to write queries that
+are readable, repeatable,
+
+00:03:35.520 --> 00:03:39.540
+and effective when
+you're under pressure.
+
+00:03:39.540 --> 00:03:40.860
+By the end of this module,
+
+00:03:40.860 --> 00:03:42.660
+you'll be able to
+do three things.
+
+00:03:42.660 --> 00:03:46.410
+First, you will construct KQL
+statements using the standard
+
+00:03:46.410 --> 00:03:51.570
+pattern that Sentinel and log
+analytics expect; second,
+
+00:03:51.570 --> 00:03:55.680
+you'll use KQL to search log
+files for a security event
+
+00:03:55.680 --> 00:04:00.450
+so you can find the signals
+in the noise; and third,
+
+00:04:00.450 --> 00:04:02.730
+you will filter searches based
+
+00:04:02.730 --> 00:04:07.230
+on meaningful investigation
+criteria, like event time,
+
+00:04:07.230 --> 00:04:11.220
+severity, domain, and any
+other relevant field,
+
+00:04:11.220 --> 00:04:18.510
+so you can narrow quickly from
+everything down to this matters.
+
+00:04:18.510 --> 00:04:21.960
+KQL query are
+read-only requests.
+
+00:04:21.960 --> 00:04:24.900
+You're asking the
+system to process data
+
+00:04:24.900 --> 00:04:29.790
+and return a result, not to
+modify the underlying data.
+
+00:04:29.790 --> 00:04:32.130
+The language is
+written as plain text,
+
+00:04:32.130 --> 00:04:36.600
+and follows a data flow model
+that is designed to be easy
+
+00:04:36.600 --> 00:04:39.780
+to read, write, and automate.
+
+00:04:39.780 --> 00:04:42.360
+In practice, you'll build
+a query that starts
+
+00:04:42.360 --> 00:04:47.520
+with a dataset, usually a table,
+and then you stream that dataset
+
+00:04:47.520 --> 00:04:50.040
+through a sequence of operators.
+
+00:04:50.040 --> 00:04:54.330
+It also helps to remember
+the schema organization.
+
+00:04:54.330 --> 00:04:59.040
+KQL works with entities
+arranged in a hierarchy similar
+
+00:04:59.040 --> 00:05:02.670
+to SQL database,
+tables and columns.
+
+00:05:02.670 --> 00:05:06.270
+The most important mental
+model, though, is the pipe.
+
+00:05:06.270 --> 00:05:11.280
+Everything to the left of a
+pipe symbol is processed first
+
+00:05:11.280 --> 00:05:15.630
+and the result then flows to the
+right into the next operator.
+
+00:05:15.630 --> 00:05:20.610
+If you understand that flow,
+you can read almost any query
+
+00:05:20.610 --> 00:05:24.840
+like a story, start here,
+refine this, compute that,
+
+00:05:24.840 --> 00:05:28.680
+and then return the final
+shape of the result.
+
+00:05:28.680 --> 00:05:31.230
+During demonstration,
+you'll typically begin
+
+00:05:31.230 --> 00:05:34.500
+by accessing a Log
+Analytics demo environment
+
+00:05:34.500 --> 00:05:37.980
+and working directly
+in the query window.
+
+00:05:37.980 --> 00:05:41.670
+And if you want additional
+support as you practice,
+
+00:05:41.670 --> 00:05:45.720
+Microsoft provides a KQL
+quick reference and a set
+
+00:05:45.720 --> 00:05:47.820
+of query best practices
+
+00:05:47.820 --> 00:05:51.670
+in the Azure Data
+Explorer documentation.
+
+00:05:54.300 --> 00:05:56.100
+Let's start with
+the simplest way
+
+00:05:56.100 --> 00:05:58.980
+to query, referencing a table.
+
+00:05:58.980 --> 00:06:01.620
+In Sentinel you'll
+commonly work with tables
+
+00:06:01.620 --> 00:06:04.710
+like security events,
+security alerts.
+
+00:06:04.710 --> 00:06:09.000
+Most of what you write will be
+a tabular expression, columns
+
+00:06:09.000 --> 00:06:14.340
+and rows, statements,
+meaning the input is a table
+
+00:06:14.340 --> 00:06:16.890
+and the output is also a table.
+
+00:06:16.890 --> 00:06:20.520
+When you chain operators
+together using pipes,
+
+00:06:20.520 --> 00:06:24.720
+passing the tabular result
+from one step to the next,
+
+00:06:24.720 --> 00:06:28.230
+at the most basic level
+you could run a query
+
+00:06:28.230 --> 00:06:30.840
+by entering only the table name,
+
+00:06:30.840 --> 00:06:33.090
+but that approach is
+usually inefficient,
+
+00:06:33.090 --> 00:06:37.620
+because you'll pull back far
+more data than you need.
+
+00:06:37.620 --> 00:06:41.130
+The real power comes
+from immediately shaping
+
+00:06:41.130 --> 00:06:44.260
+and filtering what you retrieve.
+
+00:06:46.440 --> 00:06:49.890
+When you need to quickly
+hunt for a term across data,
+
+00:06:49.890 --> 00:06:53.070
+the search operator is
+a fast way to begin.
+
+00:06:53.070 --> 00:06:56.280
+For example, you might
+use something as simple
+
+00:06:56.280 --> 00:07:01.110
+as "Search 'New'" to find
+records containing that word.
+
+00:07:01.110 --> 00:07:04.080
+You can also sculpt the
+search to a specific table
+
+00:07:04.080 --> 00:07:08.310
+like searching within "Security
+Event" and any table that starts
+
+00:07:08.310 --> 00:07:11.460
+with "App" by using
+the pattern such as
+
+00:07:11.460 --> 00:07:14.820
+"Search Event, App," "New".
+
+00:07:14.820 --> 00:07:18.840
+This is especially useful
+early in an investigation
+
+00:07:18.840 --> 00:07:20.100
+where you're still figuring
+
+00:07:20.100 --> 00:07:24.580
+out where the relevant
+evidence might live.
+
+00:07:25.710 --> 00:07:30.510
+Most investigations rely heavily
+on the "Where" operator.
+
+00:07:30.510 --> 00:07:34.170
+Because filtering is how you
+get from broad telemetry
+
+00:07:34.170 --> 00:07:36.840
+down to events that matter.
+
+00:07:36.840 --> 00:07:40.800
+A common first filter
+is "Time," for example,
+
+00:07:40.800 --> 00:07:44.490
+starting with "Security Event"
+and then narrowing to "Event,"
+
+00:07:44.490 --> 00:07:48.810
+where time generated is
+within the last hour using
+
+00:07:48.810 --> 00:07:54.630
+"Time generated greater than
+ago 1h," as in one hour.
+
+00:07:54.630 --> 00:07:58.170
+From there, you can combine
+condition into a single step,
+
+00:07:58.170 --> 00:08:00.090
+such as filtering the last hour
+
+00:08:00.090 --> 00:08:06.300
+and also matching an event ID
+like, "Event ID equal, equal,
+
+00:08:06.300 --> 00:08:10.530
+double quote, 4624,"
+for a logon event.
+
+00:08:10.530 --> 00:08:15.720
+You can also express the same
+logic as multiple "where" steps,
+
+00:08:15.720 --> 00:08:18.300
+which can be easier to read.
+
+00:08:18.300 --> 00:08:21.750
+First filter by time,
+then by event ID,
+
+00:08:21.750 --> 00:08:24.480
+then maybe by account
+type, for example,
+
+00:08:24.480 --> 00:08:28.110
+using the case insensitive
+equality operators,
+
+00:08:28.110 --> 00:08:32.370
+the equal tail, with
+a value like "User".
+
+00:08:32.370 --> 00:08:35.070
+And when you want to
+match several event IDs,
+
+00:08:35.070 --> 00:08:40.620
+you can use "In," such as
+filtering, "Where event ID in,"
+
+00:08:40.620 --> 00:08:46.860
+and then specify the event ID,
+4624, 4625, as an example,
+
+00:08:46.860 --> 00:08:51.850
+put them in bracket for
+successful and failed login.
+
+00:08:53.310 --> 00:08:55.650
+Using the LET statement.
+
+00:08:55.650 --> 00:08:58.860
+As your query grows,
+you'll want them
+
+00:08:58.860 --> 00:09:01.770
+to be easier to
+read and maintain.
+
+00:09:01.770 --> 00:09:04.950
+And that's where the LET
+statement comes into play.
+
+00:09:04.950 --> 00:09:09.600
+With LET, you can declare
+variables and reuse them.
+
+00:09:09.600 --> 00:09:13.410
+For example, you might design,
+"Time offset equals --
+
+00:09:13.410 --> 00:09:19.950
+" what age, what hour, and,
+"Discard Event ID equals 4688,"
+
+00:09:19.950 --> 00:09:23.520
+then filter "Security Event"
+to a specific window,
+
+00:09:23.520 --> 00:09:28.580
+events between time ago, time
+offset times two, so two hours,
+
+00:09:28.580 --> 00:09:34.350
+and ago time offset also
+excludes a noisy event ID
+
+00:09:34.350 --> 00:09:37.980
+by checking that this event
+ID, exclamation mark,
+
+00:09:37.980 --> 00:09:40.500
+equal discarded event ID,
+
+00:09:40.500 --> 00:09:45.450
+so not equal event --
+discarded event ID.
+
+00:09:45.450 --> 00:09:49.560
+You can also use LET to
+define a reusable dataset.
+
+00:09:49.560 --> 00:09:52.290
+For example, you could
+build a table called
+
+00:09:52.290 --> 00:09:57.450
+"Low Activity Accounts" by
+summarizing count by "Account",
+
+00:09:57.450 --> 00:10:03.480
+and then keeping only accounts
+with fewer than 1,000 events.
+
+00:10:03.480 --> 00:10:07.680
+After that, you can reference
+the low-activity account
+
+00:10:07.680 --> 00:10:12.840
+like any other table and further
+filter, such as finding account
+
+00:10:12.840 --> 00:10:16.320
+where the name contains
+the string "SQL".
+
+00:10:16.320 --> 00:10:20.100
+This pattern helps you
+declare and reuse variables,
+
+00:10:20.100 --> 00:10:23.130
+and also declare
+dynamic table or lists
+
+00:10:23.130 --> 00:10:26.980
+that can simplify
+complex hunting logic.
+
+00:10:28.440 --> 00:10:31.260
+Next let's create new
+fields on the fly
+
+00:10:31.260 --> 00:10:33.450
+with the "Extend" operator.
+
+00:10:33.450 --> 00:10:37.260
+"Extend" adds calculated
+column to your result,
+
+00:10:37.260 --> 00:10:41.400
+which is incredibly useful when
+you need to derive a value
+
+00:10:41.400 --> 00:10:45.180
+that doesn't exist
+directly in the data.
+
+00:10:45.180 --> 00:10:49.370
+For example is starting
+with security events,
+
+00:10:49.370 --> 00:10:53.210
+filtering on the last hour and
+ensuring both process name
+
+00:10:53.210 --> 00:10:55.770
+and "Process aren't empty."
+
+00:10:55.770 --> 00:11:00.570
+From there you can compute a
+new column called "StartDir,"
+
+00:11:00.570 --> 00:11:03.540
+by using the
+"Substring" function
+
+00:11:03.540 --> 00:11:07.800
+and "String Size" function
+to strip the process name
+
+00:11:07.800 --> 00:11:11.070
+down to just the starting
+directory portion.
+
+00:11:11.070 --> 00:11:14.370
+Another powerful pattern
+is normalizing value
+
+00:11:14.370 --> 00:11:16.140
+into a sortable order.
+
+00:11:16.140 --> 00:11:18.630
+For example, using
+security alert
+
+00:11:18.630 --> 00:11:24.210
+over the last seven days you
+can extend a new column called
+
+00:11:24.210 --> 00:11:29.250
+"Severity Order" using the
+"Case" function, mapping high
+
+00:11:29.250 --> 00:11:34.830
+to three, medium to two, low to
+one, and informational to zero,
+
+00:11:34.830 --> 00:11:37.770
+and using minus
+one as a default,
+
+00:11:37.770 --> 00:11:40.380
+for example, for missing values.
+
+00:11:40.380 --> 00:11:43.800
+This makes it much
+easier to sort, group,
+
+00:11:43.800 --> 00:11:51.450
+or threshold alert consistently
+in later steps in the demo.
+
+00:11:51.450 --> 00:11:55.380
+Once you filter and enrich
+your dataset, you often need
+
+00:11:55.380 --> 00:11:57.990
+to sort it to spot patterns.
+
+00:11:57.990 --> 00:12:02.100
+The "Order By" operator
+does exactly that.
+
+00:12:02.100 --> 00:12:07.470
+Building on the previous example
+where we computed "StartDir,"
+
+00:12:07.470 --> 00:12:12.750
+you can order the result with
+"StartDir Descending", D-E-S-C,
+
+00:12:12.750 --> 00:12:16.800
+and then "Process
+Ascending," A-S-C.
+
+00:12:16.800 --> 00:12:21.300
+Sorting like this can quickly
+reveal unusual directories,
+
+00:12:21.300 --> 00:12:24.660
+rare processes, or
+anything that stands
+
+00:12:24.660 --> 00:12:28.870
+out once the noise
+has been reduced.
+
+00:12:30.390 --> 00:12:33.900
+Another essential set of
+tools is the "Project" family
+
+00:12:33.900 --> 00:12:37.800
+of operator, which controls
+the shape of your output.
+
+00:12:37.800 --> 00:12:42.060
+With "Project," you choose
+which column is included
+
+00:12:42.060 --> 00:12:45.180
+in the output, and
+you can rename, drop,
+
+00:12:45.180 --> 00:12:48.540
+or answer
+newly-computed columns.
+
+00:12:48.540 --> 00:12:51.360
+If you want to exclude
+a certain column,
+
+00:12:51.360 --> 00:12:53.670
+you can use "Project Away".
+
+00:12:53.670 --> 00:12:57.120
+If you want to keep
+only a specific column,
+
+00:12:57.120 --> 00:12:59.250
+use "Project Keep".
+
+00:12:59.250 --> 00:13:02.880
+To rename fields cleanly,
+use "Project Rename".
+
+00:13:02.880 --> 00:13:07.170
+And if you want to just reorder
+the columns in the output,
+
+00:13:07.170 --> 00:13:09.360
+use "Project Reorder".
+
+00:13:09.360 --> 00:13:13.440
+For example, you might start
+a security event and simply
+
+00:13:13.440 --> 00:13:18.150
+"Project Computer" and
+"Account" to focus your view.
+
+00:13:18.150 --> 00:13:21.630
+Or you can take a longer
+query filtering by time,
+
+00:13:21.630 --> 00:13:26.340
+ensuring process fields are
+present, extending "StartDir",
+
+00:13:26.340 --> 00:13:28.950
+sorting the result,
+and then finish
+
+00:13:28.950 --> 00:13:31.620
+by removing a
+verbose column like
+
+00:13:31.620 --> 00:13:34.620
+"Process Name" using
+"Project Away".
+
+00:13:34.620 --> 00:13:39.240
+This is a great habit for making
+your result easier to read
+
+00:13:39.240 --> 00:13:42.490
+and easier to share
+with your teammate.
+
+00:13:43.860 --> 00:13:46.020
+With the fundamentals in place,
+
+00:13:46.020 --> 00:13:50.580
+let's move into analyzing
+query results with KQL.
+
+00:13:50.580 --> 00:13:56.640
+This is where KQL becomes more
+than "Find Event," it's a way
+
+00:13:56.640 --> 00:14:02.820
+to summarize what's happening
+and communicate it clearly.
+
+00:14:02.820 --> 00:14:05.340
+After completing this
+module, you'll be able
+
+00:14:05.340 --> 00:14:08.340
+to summarize data
+using KQL statement
+
+00:14:08.340 --> 00:14:13.260
+and render visualization
+using KQL statement.
+
+00:14:13.260 --> 00:14:17.040
+These capabilities help you
+answer high-level questions
+
+00:14:17.040 --> 00:14:22.470
+like, "How often is this
+happening, who is most impacted,
+
+00:14:22.470 --> 00:14:26.310
+and is the situation
+getting better
+
+00:14:26.310 --> 00:14:30.000
+or is it getting
+worse over time?"
+
+00:14:30.000 --> 00:14:35.220
+The "Summarize" operator is
+the heart of analysis in KQL.
+
+00:14:35.220 --> 00:14:37.980
+It groups records and
+calculate aggregates
+
+00:14:37.980 --> 00:14:41.790
+so you can understand
+patterns at scale.
+
+00:14:41.790 --> 00:14:46.620
+Common functions include "tell,"
+"count if" to count records,
+
+00:14:46.620 --> 00:14:51.120
+"dcount" and "dcount if" to
+estimate distinct value.
+
+00:14:51.120 --> 00:14:54.810
+We've got "average" and
+"average if" for average,
+
+00:14:54.810 --> 00:14:57.660
+"max" and "max if" for maximums,
+
+00:14:57.660 --> 00:15:00.270
+"sum" and "sum if"
+for a total value.
+
+00:15:00.270 --> 00:15:03.480
+For a quick example, you
+could take security events
+
+00:15:03.480 --> 00:15:06.000
+from the last hour and
+summarize a number
+
+00:15:06.000 --> 00:15:11.640
+of distinct IP addresses using
+"Summarize Distinct IP".
+
+00:15:11.640 --> 00:15:15.780
+In a more investigation-focused
+scenario,
+
+00:15:15.780 --> 00:15:20.790
+you might define a timeframe,
+like 30 days, and a threshold
+
+00:15:20.790 --> 00:15:24.090
+that queries sign-in logs
+for sign-in attempts
+
+00:15:24.090 --> 00:15:28.260
+where the result description
+contains invalid password.
+
+00:15:28.260 --> 00:15:30.840
+From there, you can summarize
+the distinct number
+
+00:15:30.840 --> 00:15:34.320
+of applications being
+targeted by counting
+
+00:15:34.320 --> 00:15:36.990
+"Distinct App
+Display Name" value
+
+00:15:36.990 --> 00:15:41.100
+or "User Principal Name"
+and "IP Addresses".
+
+00:15:41.100 --> 00:15:43.500
+And finally, filter to a case
+
+00:15:43.500 --> 00:15:48.330
+where the application count
+meets or exceeds your threshold.
+
+00:15:48.330 --> 00:15:52.740
+This kind of query helps
+highlight suspicious patterns
+
+00:15:52.740 --> 00:15:57.850
+such as password spray
+activity across many apps.
+
+00:15:59.490 --> 00:16:01.980
+Beyond counting and
+distinct values,
+
+00:16:01.980 --> 00:16:04.200
+"Summarize" can help you filter
+
+00:16:04.200 --> 00:16:08.610
+by keeping only the most
+relevant record in each group.
+
+00:16:08.610 --> 00:16:13.230
+Two key functions are
+"Arg Max," "Arg Min."
+
+00:16:13.230 --> 00:16:16.110
+For example, if you
+filter a security event
+
+00:16:16.110 --> 00:16:22.800
+to a specific host like
+"SQL10.na.contosohotels.com,"
+
+00:16:22.800 --> 00:16:28.890
+you can use "summarize
+arg_max(TimeGenerated,*)
+
+00:16:28.890 --> 00:16:33.900
+by Computer" to keep the most
+recent records by computers;
+
+00:16:33.900 --> 00:16:37.470
+or you can use
+"arg_min(TimeGenerated,*)
+
+00:16:37.470 --> 00:16:43.000
+by Computer" to keep only
+the earliest record.
+
+00:16:44.100 --> 00:16:48.330
+Sometimes the goal isn't
+just to calculate a number,
+
+00:16:48.330 --> 00:16:53.550
+it's to prepare unstructured
+output so you can reuse or pivot
+
+00:16:53.550 --> 00:16:59.010
+on to function to help our
+"make_list" and "make_set".
+
+00:16:59.010 --> 00:17:02.100
+For example, you might
+query "Security Event"
+
+00:17:02.100 --> 00:17:06.750
+for the last hour, filter
+to successful logon with
+
+00:17:06.750 --> 00:17:13.320
+"Event ID equals 4624," and then
+summarize "Make List Account
+
+00:17:13.320 --> 00:17:18.570
+by Computer," to create a list
+of accounts seen on each host.
+
+00:17:18.570 --> 00:17:21.240
+If you want unique values only,
+
+00:17:21.240 --> 00:17:25.240
+you can use
+"Make_set(Account)" instead.
+
+00:17:27.750 --> 00:17:30.810
+Once your data is
+summarized, you can turn it
+
+00:17:30.810 --> 00:17:34.650
+into visual using the
+"Render" operator.
+
+00:17:34.650 --> 00:17:39.180
+Common visualization includes
+area chart, pie chart,
+
+00:17:39.180 --> 00:17:43.140
+column chart, scatter
+chart, time chart.
+
+00:17:43.140 --> 00:17:45.900
+For example, you could
+take the security events
+
+00:17:45.900 --> 00:17:50.220
+over the last hour,
+summarize count by account,
+
+00:17:50.220 --> 00:17:53.070
+and then render a
+bar chart to see
+
+00:17:53.070 --> 00:17:56.180
+which account appears
+more frequently.
+
+00:17:56.180 --> 00:17:59.750
+Or you can summarize count
+over time using a bin,
+
+00:17:59.750 --> 00:18:04.490
+such as "bin(TimeGenerated,
+1m)," meaning one minute,
+
+00:18:04.490 --> 00:18:06.350
+and then render a time chart
+
+00:18:06.350 --> 00:18:11.580
+to visualize activity
+trend minute by minute.
+
+00:18:11.580 --> 00:18:15.450
+Now, let's move beyond
+single-table query and focus
+
+00:18:15.450 --> 00:18:19.410
+on building multi-table
+statements using KQL.
+
+00:18:19.410 --> 00:18:21.750
+In a real Sentinel
+investigation,
+
+00:18:21.750 --> 00:18:26.070
+the story is often spread
+across multiple data sources.
+
+00:18:26.070 --> 00:18:28.590
+So you need to merge
+and correlate table
+
+00:18:28.590 --> 00:18:30.940
+to see the full picture.
+
+00:18:32.120 --> 00:18:34.880
+After completing this
+module, you'll be able
+
+00:18:34.880 --> 00:18:37.820
+to create query using
+unions to merge results
+
+00:18:37.820 --> 00:18:41.900
+from multiple tables and you'll
+be able to merge two tables
+
+00:18:41.900 --> 00:18:43.970
+with the "Join" operator.
+
+00:18:43.970 --> 00:18:46.760
+These two techniques,
+using "Union"
+
+00:18:46.760 --> 00:18:51.680
+and "Join" are foundational
+for correlating activities
+
+00:18:51.680 --> 00:18:56.940
+across identity logs and
+point events, alerts,
+
+00:18:56.940 --> 00:19:00.810
+and application telemetry.
+
+00:19:00.810 --> 00:19:03.420
+The "Union" operator
+lets you combine rows
+
+00:19:03.420 --> 00:19:08.580
+from multiple tables into a
+single unified result set.
+
+00:19:08.580 --> 00:19:10.380
+As a simple example is
+
+00:19:10.380 --> 00:19:15.360
+"SecurityEvent / union
+SigninLogs," which pulls events
+
+00:19:15.360 --> 00:19:18.390
+from both sources
+into one stream
+
+00:19:18.390 --> 00:19:20.810
+so you can continue the process.
+
+00:19:20.810 --> 00:19:24.500
+Once you've unioned
+tables, you can summarize
+
+00:19:24.500 --> 00:19:27.410
+across the combined
+dataset, for instance,
+
+00:19:27.410 --> 00:19:31.220
+running "Summarize Count," and
+then projecting that count
+
+00:19:31.220 --> 00:19:34.710
+into a clean output column.
+
+00:19:34.710 --> 00:19:37.860
+You can also union in
+a more advanced way,
+
+00:19:37.860 --> 00:19:41.820
+like unioning a base table
+with the summarized output
+
+00:19:41.820 --> 00:19:44.130
+of another query in parentheses.
+
+00:19:44.130 --> 00:19:47.460
+For example, unioning
+"Security Event"
+
+00:19:47.460 --> 00:19:51.240
+with a summarized count
+from sign-in log.
+
+00:19:51.240 --> 00:19:54.810
+Another common technique
+is using wild card such as
+
+00:19:54.810 --> 00:19:59.550
+"Union App*" and then
+summarizing count by type
+
+00:19:59.550 --> 00:20:02.520
+to understand how many
+records are coming
+
+00:20:02.520 --> 00:20:06.490
+in from each matching table.
+
+00:20:07.680 --> 00:20:12.660
+While union stacks result,
+"Join" correlates them.
+
+00:20:12.660 --> 00:20:17.190
+The "Join" operator combines
+records from two datasets based
+
+00:20:17.190 --> 00:20:20.490
+on a matching key,
+such as account name
+
+00:20:20.490 --> 00:20:24.270
+and a device name, a
+session identifier.
+
+00:20:24.270 --> 00:20:28.200
+In this example, we started
+with "Security Event" filtered
+
+00:20:28.200 --> 00:20:32.970
+to log-on event, for example,
+where Event ID is 4624,
+
+00:20:32.970 --> 00:20:37.080
+then summarized a
+log-on count by account
+
+00:20:37.080 --> 00:20:40.830
+and project log-on
+count and account.
+
+00:20:40.830 --> 00:20:45.830
+Next we join, using
+"Kind equals inner,"
+
+00:20:45.830 --> 00:20:50.000
+which a second dataset
+built from log-off event,
+
+00:20:50.000 --> 00:20:56.010
+where Event ID equals 4634,
+summarizing a log-off count
+
+00:20:56.010 --> 00:20:59.310
+by account and
+projecting the same key.
+
+00:20:59.310 --> 00:21:02.370
+Joining one account
+gives a combined view
+
+00:21:02.370 --> 00:21:08.850
+where you can compare log-ons
+and log-off side by side.
+
+00:21:08.850 --> 00:21:12.930
+When you join table, a specific
+join kind, sometimes called
+
+00:21:12.930 --> 00:21:16.200
+"Join flavor" determines
+which record are kept
+
+00:21:16.200 --> 00:21:20.790
+on the left side, the right
+side, or both, it's essential
+
+00:21:20.790 --> 00:21:23.460
+to understand the
+impact of that choice.
+
+00:21:23.460 --> 00:21:28.350
+With some join kinds you'll keep
+only the matches with the other,
+
+00:21:28.350 --> 00:21:31.560
+you'll preserve unmatched
+record from one side.
+
+00:21:31.560 --> 00:21:36.360
+As you build correlated query
+for investigation, always pause
+
+00:21:36.360 --> 00:21:39.900
+and confirm what should
+happen to records
+
+00:21:39.900 --> 00:21:42.060
+that don't have a match.
+
+00:21:42.060 --> 00:21:45.600
+That's one decision that can
+completely change the conclusion
+
+00:21:45.600 --> 00:21:48.490
+you draw from the data.
+
+00:21:50.250 --> 00:21:54.330
+Next, we'll focus on
+working with string data,
+
+00:21:54.330 --> 00:21:59.280
+also known as text, plain
+text, using KQL statements.
+
+00:21:59.280 --> 00:22:04.830
+Security data often contains
+key information embedded inside
+
+00:22:04.830 --> 00:22:10.800
+text, things like command line,
+account, strings, JSON blob,
+
+00:22:10.800 --> 00:22:12.630
+and even event message.
+
+00:22:12.630 --> 00:22:14.010
+So being able to extract
+
+00:22:14.010 --> 00:22:17.940
+and transform text
+is a major advantage
+
+00:22:17.940 --> 00:22:22.140
+in hunting an incident response.
+
+00:22:22.140 --> 00:22:25.770
+After completing this module,
+you'll be able to extract data
+
+00:22:25.770 --> 00:22:29.100
+from unstructured
+field, extract data
+
+00:22:29.100 --> 00:22:34.740
+from structured string data,
+and create functions using KQL.
+
+00:22:34.740 --> 00:22:37.800
+These skills help
+you turn nasty text
+
+00:22:37.800 --> 00:22:42.600
+into a clean field you can
+filter, summarize, and join,
+
+00:22:42.600 --> 00:22:46.680
+just like any other columns.
+
+00:22:46.680 --> 00:22:50.100
+To pull value out of
+unstructured text,
+
+00:22:50.100 --> 00:22:53.760
+KQL provides the
+"Extract" function,
+
+00:22:53.760 --> 00:22:56.460
+which uses regular expression.
+
+00:22:56.460 --> 00:22:59.790
+A simple illustration
+is printing the result
+
+00:22:59.790 --> 00:23:07.530
+of the example we have onscreen
+and confirming it returns 45.6.
+
+00:23:07.530 --> 00:23:12.360
+That pattern defines a
+regex, regular expression.
+
+00:23:12.360 --> 00:23:15.780
+Choose a capture
+group, the brackets,
+
+00:23:15.780 --> 00:23:18.060
+and apply it to a string.
+
+00:23:18.060 --> 00:23:21.870
+Scale directly into
+real security data.
+
+00:23:21.870 --> 00:23:25.170
+For example, you might
+query security event
+
+00:23:25.170 --> 00:23:30.180
+for a privileged activity
+event, like Event ID 4672,
+
+00:23:30.180 --> 00:23:34.860
+and focus on a record where
+"Account Type" equals "User".
+
+00:23:34.860 --> 00:23:38.190
+From there you can create
+a normalized account field
+
+00:23:38.190 --> 00:23:43.410
+by extending a new column, such
+as "Account Name," and using the
+
+00:23:43.410 --> 00:23:47.310
+"Extract" function
+with a regex designed
+
+00:23:47.310 --> 00:23:50.490
+to pull just the
+username portion
+
+00:23:50.490 --> 00:23:53.640
+from a different account
+format, converting the input
+
+00:23:53.640 --> 00:23:56.010
+to lowercase for consistency.
+
+00:23:56.010 --> 00:23:58.920
+Once the account
+name is extracted,
+
+00:23:58.920 --> 00:24:02.940
+you can summarize a login
+count by account name,
+
+00:24:02.940 --> 00:24:06.840
+exclude empty result, and
+then filter to account
+
+00:24:06.840 --> 00:24:09.720
+with fewer than,
+let's say, 10 logins,
+
+00:24:09.720 --> 00:24:13.470
+an approach that can help
+highlight rare privilege login
+
+00:24:13.470 --> 00:24:15.790
+worth investigating.
+
+00:24:17.550 --> 00:24:21.150
+Another approach for
+unstructured string is the
+
+00:24:21.150 --> 00:24:23.850
+"Parse" function, which is great
+
+00:24:23.850 --> 00:24:26.970
+when the text follows
+a consistent pattern.
+
+00:24:26.970 --> 00:24:31.110
+In this example, we create
+a small data table called
+
+00:24:31.110 --> 00:24:34.770
+"Traces," with a column
+named, "Event Text,"
+
+00:24:34.770 --> 00:24:38.670
+containing a structured
+message like, "Event:
+
+00:24:38.670 --> 00:24:44.250
+NotifySliceRelease," as we
+see onscreen over here.
+
+00:24:44.250 --> 00:24:49.290
+When we parse event text,
+mapping part of the string into
+
+00:24:49.290 --> 00:24:52.860
+"Name" field like, "Resource
+name," "Total slice,"
+
+00:24:52.860 --> 00:24:58.410
+as a long slice number, as a
+long, which is a 64-bit value,
+
+00:24:58.410 --> 00:25:04.020
+and "Time Stand," such as log
+time, release time as a date,
+
+00:25:04.020 --> 00:25:07.770
+and previous log time as
+a date, after parsing,
+
+00:25:07.770 --> 00:25:10.740
+we project those
+extracted fields
+
+00:25:10.740 --> 00:25:16.540
+so the output becomes a
+clean table you can analyze.
+
+00:25:17.880 --> 00:25:21.660
+Now let's take a look at
+structured string data,
+
+00:25:21.660 --> 00:25:25.440
+especially dynamic
+fields and JSON.
+
+00:25:25.440 --> 00:25:29.610
+In sign-in logs, some properties
+are already available
+
+00:25:29.610 --> 00:25:31.530
+as dynamic object.
+
+00:25:31.530 --> 00:25:33.990
+So you can extend
+fields directly.
+
+00:25:33.990 --> 00:25:38.850
+For example, you can extend
+a new column OS from the
+
+00:25:38.850 --> 00:25:43.950
+"Device Detail" columns,
+"DeviceDetail.operatingSystem"
+
+00:25:43.950 --> 00:25:48.300
+to quickly analyze sign-in
+by operating system.
+
+00:25:48.300 --> 00:25:52.080
+When JSON in stored as a
+string, you can convert it
+
+00:25:52.080 --> 00:25:56.700
+into a dynamic object
+using "parse_json."
+
+00:25:56.700 --> 00:26:02.160
+For instance, you might extend
+the "AuthDetail" by parsing the
+
+00:26:02.160 --> 00:26:06.420
+"Authentication Detail"
+field, then extracting value
+
+00:26:06.420 --> 00:26:10.350
+from the first elements,
+like "AuthMethod" from
+
+00:26:10.350 --> 00:26:16.140
+"AuthDetail[0]," authentication
+method, and "AuthResult"
+
+00:26:16.140 --> 00:26:20.790
+from a nested field, such as
+"AuthDetails[0]," the first one,
+
+00:26:20.790 --> 00:26:23.220
+and then the field name
+
+00:26:23.220 --> 00:26:26.760
+"Authentication Step
+Result Detail".
+
+00:26:26.760 --> 00:26:31.260
+Finally, you can project
+"AuthMethod," "AuthResult,"
+
+00:26:31.260 --> 00:26:36.280
+and default "AuthDetailObject"
+to validate your parsing.
+
+00:26:37.980 --> 00:26:41.130
+In some scenarios, you'll
+want to enrich your query
+
+00:26:41.130 --> 00:26:46.740
+with external data, like a
+watchlist of user ID hashes
+
+00:26:46.740 --> 00:26:50.550
+or known indicators
+stored outside Sentinel.
+
+00:26:50.550 --> 00:26:55.320
+KQL supports this with the
+external data capability.
+
+00:26:55.320 --> 00:26:59.580
+For example, you might query
+a user table and filter
+
+00:26:59.580 --> 00:27:02.940
+where user ID is
+in a list returned
+
+00:27:02.940 --> 00:27:07.110
+by your external
+data user ID string.
+
+00:27:07.110 --> 00:27:10.920
+Pulling value from a text file
+holds it an Azure Blog Storage.
+
+00:27:10.920 --> 00:27:15.390
+In practice, access to that blob
+typically requires a secret
+
+00:27:15.390 --> 00:27:19.080
+token, such as a SaaS
+token, so always plan
+
+00:27:19.080 --> 00:27:24.460
+for secure access control when
+integrating external sources.
+
+00:27:26.460 --> 00:27:32.010
+To make your KQL reusable, you
+can save queries as functions,
+
+00:27:32.010 --> 00:27:34.380
+especially useful for parsers
+
+00:27:34.380 --> 00:27:37.140
+and common
+investigation pattern.
+
+00:27:37.140 --> 00:27:41.430
+For example, you might start
+from, "Security event filtered
+
+00:27:41.430 --> 00:27:46.950
+by event ID equals 4672 and
+account type equals user,"
+
+00:27:46.950 --> 00:27:52.140
+and then save the query as a
+function name privileged login.
+
+00:27:52.140 --> 00:27:55.710
+After it's saved, you can
+invoke it by simply calling
+
+00:27:55.710 --> 00:28:01.120
+"PrivLogins," just like you
+would reference a table.
+
+00:28:02.640 --> 00:28:05.850
+Now, it's time to bring
+everything together
+
+00:28:05.850 --> 00:28:08.040
+in a focused demonstration.
+
+00:28:08.040 --> 00:28:12.630
+Here we'll create and run KQL
+query in Microsoft Sentinel,
+
+00:28:12.630 --> 00:28:16.420
+applying the patterns
+we've seen so far.
+
+00:28:18.000 --> 00:28:21.990
+In this demo, let's take a look
+at Log Analytics workspace,
+
+00:28:21.990 --> 00:28:28.020
+how to query with KQL through
+our defender workspace.
+
+00:28:28.020 --> 00:28:32.160
+First thing I'll do here is
+crack open Microsoft Sentinel,
+
+00:28:32.160 --> 00:28:36.420
+open our workspace, and under
+"Log," enter the query hub.
+
+00:28:36.420 --> 00:28:41.610
+So let's select "Sentinel,"
+let's go into "Logs."
+
+00:28:41.610 --> 00:28:43.830
+Let's close the query hub.
+
+00:28:43.830 --> 00:28:45.600
+This is useful to get started,
+
+00:28:45.600 --> 00:28:47.880
+but we're going to
+get started raw.
+
+00:28:47.880 --> 00:28:52.230
+This brings us to the query
+history in "Simple Mode."
+
+00:28:52.230 --> 00:28:54.510
+Let's switch to "KQL Mode".
+
+00:28:54.510 --> 00:28:59.370
+KQL mode will allow us
+to write raw KQL query,
+
+00:28:59.370 --> 00:29:02.100
+great for learning,
+great for understanding.
+
+00:29:02.100 --> 00:29:06.330
+It's also, in my opinion, the
+fastest way to write query.
+
+00:29:06.330 --> 00:29:07.680
+On the left over here,
+
+00:29:07.680 --> 00:29:10.890
+we can select tables
+we'd like to query.
+
+00:29:10.890 --> 00:29:13.320
+But in our case, I'll just
+start typing the name
+
+00:29:13.320 --> 00:29:15.240
+of the table I want to query.
+
+00:29:15.240 --> 00:29:19.410
+Let's go with "Security Events".
+
+00:29:19.410 --> 00:29:22.290
+This is about the simplest
+query you can create.
+
+00:29:22.290 --> 00:29:26.310
+Type in the name of a table,
+hit the "Run" button, boom,
+
+00:29:26.310 --> 00:29:29.370
+here's a list of
+results for you.
+
+00:29:29.370 --> 00:29:34.920
+We're seeing all of the rows in
+our Security Events CL table.
+
+00:29:34.920 --> 00:29:36.840
+Actually, we're not
+seeing all the rows
+
+00:29:36.840 --> 00:29:39.150
+because there are
+filters at the top.
+
+00:29:39.150 --> 00:29:42.810
+We can see we're only showing
+the first 1,000 results
+
+00:29:42.810 --> 00:29:48.000
+and the last 24 hours as well.
+
+00:29:48.000 --> 00:29:51.810
+If necessary, we can change the
+time range or choose the number
+
+00:29:51.810 --> 00:29:53.940
+of results that show up.
+
+00:29:53.940 --> 00:29:57.360
+We can do that either
+through the toolbar
+
+00:29:57.360 --> 00:30:00.840
+or we can do it directly
+inside the query interface,
+
+00:30:00.840 --> 00:30:02.970
+which we'll see later on.
+
+00:30:02.970 --> 00:30:05.460
+Another way that we can query --
+
+00:30:05.460 --> 00:30:08.910
+start a query in KQL
+is by doing a search.
+
+00:30:08.910 --> 00:30:16.410
+Let me give you an example
+over here search, "Computer."
+
+00:30:16.410 --> 00:30:20.940
+What this does over here is it
+will take a look at every table
+
+00:30:20.940 --> 00:30:24.000
+and every entry,
+and pull up results
+
+00:30:24.000 --> 00:30:27.840
+that have the word,
+"Computer" in them.
+
+00:30:27.840 --> 00:30:28.770
+Here we go.
+
+00:30:28.770 --> 00:30:35.460
+Notice the dollar sign table
+in the columns over here.
+
+00:30:35.460 --> 00:30:39.240
+That tells me which table
+see the results come from.
+
+00:30:39.240 --> 00:30:42.120
+Some come from the
+office activity,
+
+00:30:42.120 --> 00:30:45.160
+others from security event.
+
+00:30:47.310 --> 00:30:51.090
+We can see why those rows were
+included, they have the word,
+
+00:30:51.090 --> 00:30:53.850
+"Computer" in them
+under the account.
+
+00:30:53.850 --> 00:30:56.130
+When it comes to the one
+for office activity,
+
+00:30:56.130 --> 00:30:59.040
+would be somewhere
+else in the entry.
+
+00:30:59.040 --> 00:31:01.380
+Well, let's take a look at
+a variant on the search.
+
+00:31:01.380 --> 00:31:06.000
+We're going to say now search in
+"Security Event" and any table
+
+00:31:06.000 --> 00:31:09.270
+that begins with "App," App*,
+and we're going to look
+
+00:31:09.270 --> 00:31:12.240
+for the word, "New" this time.
+
+00:31:12.240 --> 00:31:17.710
+Let's run the query, and
+here are our results.
+
+00:31:19.890 --> 00:31:23.310
+Again, same principle,
+because it's a search,
+
+00:31:23.310 --> 00:31:26.370
+it's going to break up
+a variety of table,
+
+00:31:26.370 --> 00:31:28.500
+look in all tables
+that we've selected.
+
+00:31:28.500 --> 00:31:32.100
+We can see which table
+the results we're seeing
+
+00:31:32.100 --> 00:31:36.640
+over here come from using the
+dollar sign table column.
+
+00:31:38.640 --> 00:31:41.250
+Now, let's start
+adding some filter.
+
+00:31:41.250 --> 00:31:46.200
+We know that we can filter using
+time range at the top over here.
+
+00:31:46.200 --> 00:31:50.850
+But let's filter right in the
+core, very useful especially
+
+00:31:50.850 --> 00:31:53.940
+if you're going to save
+queries and reuse them.
+
+00:31:53.940 --> 00:31:57.750
+So we're going to search
+query "Security Event,"
+
+00:31:57.750 --> 00:31:59.700
+but now we're going
+to add a predicate
+
+00:31:59.700 --> 00:32:06.150
+where time generated
+greater than "ago 7 days."
+
+00:32:06.150 --> 00:32:11.910
+So let's go back one week,
+so from now to one week ago.
+
+00:32:11.910 --> 00:32:15.300
+Notice because we are now
+adding a predicate based
+
+00:32:15.300 --> 00:32:21.000
+on time generated, time range
+now says, "Set in query."
+
+00:32:21.000 --> 00:32:22.410
+Here are the results.
+
+00:32:22.410 --> 00:32:26.760
+So now we are seeing the
+last seven days of activity
+
+00:32:26.760 --> 00:32:29.520
+in "SecurityEvent_CL".
+
+00:32:29.520 --> 00:32:31.920
+We can filter further.
+
+00:32:31.920 --> 00:32:36.480
+For example, in the table, we
+have an "Event ID" column.
+
+00:32:36.480 --> 00:32:38.500
+Let's filter by that one.
+
+00:32:39.750 --> 00:32:45.840
+I'll add an "and clause"
+over here and "Event ID,"
+
+00:32:45.840 --> 00:32:53.220
+and we're going to put in two
+equals and let's go with 4624.
+
+00:32:53.220 --> 00:32:57.930
+Run event, and now we're looking
+at the last seven days of events
+
+00:32:57.930 --> 00:33:03.150
+and all the event
+IDs that are 4624.
+
+00:33:03.150 --> 00:33:04.350
+To make it easier to read,
+
+00:33:04.350 --> 00:33:06.990
+let me put that on
+two separate rows.
+
+00:33:06.990 --> 00:33:09.990
+So we'll have one row
+to filter the duration,
+
+00:33:09.990 --> 00:33:13.320
+another row to
+filter by event ID.
+
+00:33:13.320 --> 00:33:16.800
+Makes it a little
+bit easier to read.
+
+00:33:16.800 --> 00:33:19.800
+We're going to add another
+word clause over here,
+
+00:33:19.800 --> 00:33:24.750
+where we're going to search
+by account, by account type.
+
+00:33:24.750 --> 00:33:28.020
+And let me use a different
+operator this time.
+
+00:33:28.020 --> 00:33:32.340
+I'll use the equal tail
+and the word, "User."
+
+00:33:32.340 --> 00:33:36.870
+The equal tail does a
+case insensitive search.
+
+00:33:36.870 --> 00:33:40.890
+Notice over here how the
+word, "User" has a capital U,
+
+00:33:40.890 --> 00:33:44.550
+but in the query, I wrote
+it with a lowercase U.
+
+00:33:44.550 --> 00:33:46.620
+So that's a good
+operator to know.
+
+00:33:46.620 --> 00:33:52.540
+It's an operator you'll see very
+often in sample KQL queries.
+
+00:33:54.120 --> 00:33:57.420
+Another useful operator
+I'd like to introduce you
+
+00:33:57.420 --> 00:33:59.940
+to is the "In" operator.
+
+00:33:59.940 --> 00:34:03.480
+What if I'd like to look
+at multiple event IDs,
+
+00:34:03.480 --> 00:34:09.360
+not just 4624, but
+say, 2645 as well?
+
+00:34:09.360 --> 00:34:12.900
+Let me use the "In"
+operator where Event ID
+
+00:34:12.900 --> 00:34:17.730
+in an inside bracket, let me
+put in all the values I'd
+
+00:34:17.730 --> 00:34:21.270
+like to use, 4624, 4625.
+
+00:34:21.270 --> 00:34:25.050
+There we go, now we've
+got both event IDs coming
+
+00:34:25.050 --> 00:34:27.890
+up in the result.
+
+00:34:27.890 --> 00:34:30.470
+We could also negate the
+condition by saying,
+
+00:34:30.470 --> 00:34:36.810
+"Where Event ID not in," and
+provide a list of events.
+
+00:34:36.810 --> 00:34:39.300
+Now, as our queries get
+more sophisticated,
+
+00:34:39.300 --> 00:34:42.540
+we'll want to make it easier
+for us to make changes
+
+00:34:42.540 --> 00:34:45.810
+to values we provide in here.
+
+00:34:45.810 --> 00:34:48.150
+And I'd like to
+explore with you how
+
+00:34:48.150 --> 00:34:50.400
+to use variables
+in your queries.
+
+00:34:50.400 --> 00:34:52.470
+Here's a quick example for you.
+
+00:34:52.470 --> 00:34:55.150
+Let me drop that in here.
+
+00:34:56.250 --> 00:34:59.850
+And notice in this query we're
+adding two LET statements,
+
+00:34:59.850 --> 00:35:03.000
+"Let -- time offset
+equals 10 minutes,
+
+00:35:03.000 --> 00:35:08.220
+let discarded Event
+ID equal 4688."
+
+00:35:08.220 --> 00:35:09.330
+And following that,
+
+00:35:09.330 --> 00:35:13.140
+we are querying our
+security event CL table.
+
+00:35:13.140 --> 00:35:14.970
+But what's different now is
+
+00:35:14.970 --> 00:35:16.590
+where we have our
+condition like,
+
+00:35:16.590 --> 00:35:21.030
+"Where time generated greater
+than ago time offset,"
+
+00:35:21.030 --> 00:35:26.130
+time offset is our variable
+we've defined as a name
+
+00:35:26.130 --> 00:35:29.610
+that we've chosen to
+represent 10 minutes.
+
+00:35:29.610 --> 00:35:31.500
+There it is.
+
+00:35:31.500 --> 00:35:33.480
+So we don't have to repeat it,
+
+00:35:33.480 --> 00:35:36.900
+we are creating a
+one-minute window at 10
+
+00:35:36.900 --> 00:35:41.970
+and 11 minutes here, so we don't
+have to repeat 10 minutes.
+
+00:35:41.970 --> 00:35:43.800
+And furthermore, if
+we want to change it,
+
+00:35:43.800 --> 00:35:48.880
+there's only one place where we
+need to go now, the variable.
+
+00:35:49.940 --> 00:35:54.780
+Let's run the query and see
+that while the same will apply
+
+00:35:54.780 --> 00:35:59.670
+to discarded event IDs,
+"Discarded event ID" is now
+
+00:35:59.670 --> 00:36:03.390
+at the top, making
+it easy to change.
+
+00:36:03.390 --> 00:36:08.670
+There we go, here is the result
+of our query, time-generated.
+
+00:36:08.670 --> 00:36:10.770
+We're looking at
+just one minute,
+
+00:36:10.770 --> 00:36:13.620
+10 minutes ago, 11 minutes ago.
+
+00:36:13.620 --> 00:36:20.190
+And the event ID we should see
+every event ID except 4688.
+
+00:36:20.190 --> 00:36:24.750
+We're using the exclamation mark
+equal over here, not equal,
+
+00:36:24.750 --> 00:36:28.560
+so give me everything
+except 4688.
+
+00:36:28.560 --> 00:36:33.210
+So this gives us a convenient
+way to improve the readability
+
+00:36:33.210 --> 00:36:37.650
+of our query, make it
+easier to change our query,
+
+00:36:37.650 --> 00:36:42.000
+avoid duplication when
+we modify the query
+
+00:36:42.000 --> 00:36:45.470
+when we write the query.
+
+00:36:45.470 --> 00:36:48.950
+Let's continue our
+exploration of KQL.
+
+00:36:48.950 --> 00:36:50.300
+Now let's take a look at how
+
+00:36:50.300 --> 00:36:55.170
+to summarize an aggregate
+result in our query.
+
+00:36:55.170 --> 00:36:57.540
+Instead of seeing
+individual rows,
+
+00:36:57.540 --> 00:37:01.650
+I'd like to see
+aggregates of those rows.
+
+00:37:01.650 --> 00:37:04.650
+So we're going to start with our
+same table, "Security Event".
+
+00:37:04.650 --> 00:37:11.430
+We're going to clamp it to seven
+days a week and Event ID 4688.
+
+00:37:11.430 --> 00:37:13.860
+But notice the next line
+now, we're adding the
+
+00:37:13.860 --> 00:37:18.540
+"Summarize" operation,
+"Summarize count by computer."
+
+00:37:18.540 --> 00:37:20.250
+So what I'd like to
+know over here is
+
+00:37:20.250 --> 00:37:25.860
+in our security event how many
+times has a computer shown
+
+00:37:25.860 --> 00:37:27.930
+up in here?
+
+00:37:27.930 --> 00:37:29.310
+Let's run the query.
+
+00:37:29.310 --> 00:37:30.600
+There's our result.
+
+00:37:30.600 --> 00:37:33.270
+We could see over here which
+for our computers show
+
+00:37:33.270 --> 00:37:39.180
+up more often, less often,
+based on the count by computer
+
+00:37:39.180 --> 00:37:41.680
+that we have over here.
+
+00:37:44.640 --> 00:37:49.380
+We can see the
+VictimPCContosoAzure has a lot
+
+00:37:49.380 --> 00:37:52.800
+of activity, giving us a sense
+that hey, maybe we'll want
+
+00:37:52.800 --> 00:37:56.490
+to take a look at this machine.
+
+00:37:56.490 --> 00:37:59.460
+Notice as well how
+"count" is spelled
+
+00:37:59.460 --> 00:38:01.320
+with an underscore over here.
+
+00:38:01.320 --> 00:38:03.480
+We can change the
+name to "column".
+
+00:38:03.480 --> 00:38:06.330
+For example, I'll use "CNT".
+
+00:38:06.330 --> 00:38:09.540
+I cannot use the word, "Count,"
+because that's a built-in word.
+
+00:38:09.540 --> 00:38:14.250
+But let me say, "CNT equals
+count by account type,"
+
+00:38:14.250 --> 00:38:20.040
+and notice that the count column
+is now simply known as "CNT,"
+
+00:38:20.040 --> 00:38:23.340
+or any other name I
+would've chosen to select.
+
+00:38:23.340 --> 00:38:27.330
+There is the account
+type, the computer,
+
+00:38:27.330 --> 00:38:29.160
+and the count of events.
+
+00:38:29.160 --> 00:38:32.880
+So now we're looking at the
+account type, the computer,
+
+00:38:32.880 --> 00:38:36.330
+and how many times does
+that combination come
+
+00:38:36.330 --> 00:38:38.430
+up in the last seven days,
+
+00:38:38.430 --> 00:38:44.210
+so "user@victimPC"
+shows up 10 times.
+
+00:38:44.210 --> 00:38:46.430
+Here's a variant for you.
+
+00:38:46.430 --> 00:38:50.030
+Let's explore a new
+query with sign-in logs
+
+00:38:50.030 --> 00:38:53.450
+where time generated is one
+week ago, but now we're going
+
+00:38:53.450 --> 00:38:58.320
+to summarize not by count but
+by dcount, distinct count.
+
+00:38:58.320 --> 00:39:02.670
+I want to know how many distinct
+IP addresses do I have,
+
+00:39:02.670 --> 00:39:05.400
+and in this case,
+in my sign-in logs,
+
+00:39:05.400 --> 00:39:09.480
+I can see that only one
+IP address is used.
+
+00:39:09.480 --> 00:39:12.300
+That's what the one
+represents over here.
+
+00:39:12.300 --> 00:39:15.930
+If I saw two, that would mean
+there are two different IP
+
+00:39:15.930 --> 00:39:19.770
+addresses that shows
+up in that log.
+
+00:39:19.770 --> 00:39:24.090
+Let's continue to refine this.
+
+00:39:24.090 --> 00:39:27.690
+Here's a slightly more
+sophisticated query over here.
+
+00:39:27.690 --> 00:39:31.800
+We're still going to use dcount,
+and we're going to use variables
+
+00:39:31.800 --> 00:39:35.970
+at the top going back,
+in this case, 30 days.
+
+00:39:35.970 --> 00:39:38.490
+We're going to look for
+a result description,
+
+00:39:38.490 --> 00:39:41.940
+the result description
+column that has the text,
+
+00:39:41.940 --> 00:39:45.960
+"User account is disabled,"
+and we're in the column.
+
+00:39:45.960 --> 00:39:50.160
+And now we're going to summarize
+using dcount over here.
+
+00:39:50.160 --> 00:39:55.040
+We're going to name the column
+"Application count equals dcount
+
+00:39:55.040 --> 00:39:58.640
+at display name," so
+let's display the number
+
+00:39:58.640 --> 00:40:02.300
+of times a specific
+application name shows up,
+
+00:40:02.300 --> 00:40:03.770
+and we're also going to group
+
+00:40:03.770 --> 00:40:10.070
+that by user principal
+name and by an IP address.
+
+00:40:10.070 --> 00:40:14.690
+And then we're going to add
+a filter to the result.
+
+00:40:14.690 --> 00:40:19.550
+What we care about is any
+application count whose name
+
+00:40:19.550 --> 00:40:22.830
+shows up one or more times.
+
+00:40:22.830 --> 00:40:25.650
+And there we go, in this
+case, there is only one.
+
+00:40:25.650 --> 00:40:31.470
+We can see that John with their
+IP address has one application
+
+00:40:31.470 --> 00:40:33.180
+showing up in here.
+
+00:40:33.180 --> 00:40:38.640
+John's entry with that specific
+address may actually show
+
+00:40:38.640 --> 00:40:42.120
+up multiple times in the logs.
+
+00:40:42.120 --> 00:40:44.130
+But because we're using dcount,
+
+00:40:44.130 --> 00:40:48.720
+it shows us that this specific
+combination exists only once,
+
+00:40:48.720 --> 00:40:53.030
+shows up only once in our log.
+
+00:40:53.030 --> 00:40:57.920
+Last example I'd like
+to give you over here.
+
+00:40:57.920 --> 00:41:02.180
+Let's talk about "make_list"
+and "make_sense".
+
+00:41:02.180 --> 00:41:04.340
+That may seem
+intimidating at first,
+
+00:41:04.340 --> 00:41:06.960
+but I highly recommend
+play around with them,
+
+00:41:06.960 --> 00:41:08.700
+make sure you're
+familiar with them.
+
+00:41:08.700 --> 00:41:12.300
+Here's an example,
+"SecurityEvent_CL".
+
+00:41:12.300 --> 00:41:14.460
+Again, we're going to
+go back seven days.
+
+00:41:14.460 --> 00:41:17.910
+We're going to look
+at Event ID 4624,
+
+00:41:17.910 --> 00:41:20.220
+but now summarized
+by "make_list".
+
+00:41:20.220 --> 00:41:22.920
+So we're going to
+create a little table,
+
+00:41:22.920 --> 00:41:26.730
+a sub-table over here,
+
+00:41:26.730 --> 00:41:27.780
+"Make_list(Account_s)
+by computer."
+
+00:41:27.780 --> 00:41:31.410
+So we could see over here a
+list of computers and beside
+
+00:41:31.410 --> 00:41:34.410
+that we have a list
+of all accounts
+
+00:41:34.410 --> 00:41:37.020
+that were found
+on that computer.
+
+00:41:37.020 --> 00:41:41.160
+We can expand those
+list accounts to see
+
+00:41:41.160 --> 00:41:44.790
+which accounts are
+used by this computer.
+
+00:41:44.790 --> 00:41:48.000
+So this is a table
+within a table.
+
+00:41:48.000 --> 00:41:50.580
+We're creating a
+list of accounts.
+
+00:41:50.580 --> 00:41:55.530
+Duplicate accounts will show up
+multiple times in the table.
+
+00:41:55.530 --> 00:41:56.880
+Let's expand it.
+
+00:41:56.880 --> 00:42:00.440
+And notice how we can see
+the same account more
+
+00:42:00.440 --> 00:42:02.060
+than once in the list.
+
+00:42:02.060 --> 00:42:04.620
+Let's crack that open again,
+
+00:42:04.620 --> 00:42:05.450
+and notice
+
+00:42:05.450 --> 00:42:10.980
+"CONTOSOAZURE/AATPService"
+shows up a couple of times.
+
+00:42:10.980 --> 00:42:12.090
+That's "make_list".
+
+00:42:12.090 --> 00:42:15.540
+"Make_list" does not
+remove duplicate,
+
+00:42:15.540 --> 00:42:19.710
+it shows us all
+individual value.
+
+00:42:19.710 --> 00:42:21.990
+But what if I don't care
+about the duplicate,
+
+00:42:21.990 --> 00:42:26.040
+I just want to know if
+that account is present
+
+00:42:26.040 --> 00:42:30.660
+on that system, I want
+to get rid of duplicate.
+
+00:42:30.660 --> 00:42:33.720
+Well, let's make one quick
+change to our query.
+
+00:42:33.720 --> 00:42:37.410
+Let's use "make_set"
+instead of "make_list".
+
+00:42:37.410 --> 00:42:42.330
+Same thing, but the difference
+now is all duplicates will
+
+00:42:42.330 --> 00:42:43.500
+be removed.
+
+00:42:43.500 --> 00:42:46.320
+Let's crack open our Victim PC.
+
+00:42:46.320 --> 00:42:47.880
+Let's take a look
+at the account.
+
+00:42:47.880 --> 00:42:53.430
+And notice now how
+"CONTOSOAZURE/AATPService" shows
+
+00:42:53.430 --> 00:42:56.490
+up only once, even
+though we know
+
+00:42:56.490 --> 00:42:58.950
+that it's there multiple
+times in the table.
+
+00:42:58.950 --> 00:43:02.550
+So "make_list" shows, me
+all the individual values,
+
+00:43:02.550 --> 00:43:07.300
+"make_set" shows me
+only distinct values.
+
+00:43:09.600 --> 00:43:12.690
+For our last set of KQL demo,
+
+00:43:12.690 --> 00:43:15.660
+let's get into something
+a little bit fun.
+
+00:43:15.660 --> 00:43:18.690
+Let's get into visual.
+
+00:43:18.690 --> 00:43:21.690
+We'll start with our
+security events.
+
+00:43:21.690 --> 00:43:23.520
+We've seen that a
+couple of times.
+
+00:43:23.520 --> 00:43:27.970
+We're going to filter
+by the last seven days.
+
+00:43:31.380 --> 00:43:35.530
+There is a result,
+nothing really new.
+
+00:43:38.640 --> 00:43:43.680
+But what I'd like to do next
+is let's summarize count
+
+00:43:43.680 --> 00:43:48.240
+by account, so let's see
+which accounts were used
+
+00:43:48.240 --> 00:43:49.620
+in the last seven days.
+
+00:43:49.620 --> 00:43:50.730
+Here is the result.
+
+00:43:50.730 --> 00:43:53.970
+But what I'm seeing over here
+is the name of an account
+
+00:43:53.970 --> 00:43:56.430
+and the number of
+times they're used.
+
+00:43:56.430 --> 00:43:59.070
+I'm going to change the
+sort over here order
+
+00:43:59.070 --> 00:44:01.350
+by account going descending,
+
+00:44:01.350 --> 00:44:04.770
+the account that has the most
+activity down to the one
+
+00:44:04.770 --> 00:44:06.990
+that has the least activity.
+
+00:44:06.990 --> 00:44:08.940
+Administrator is at the top,
+
+00:44:08.940 --> 00:44:12.510
+which is always a
+bit concerning.
+
+00:44:12.510 --> 00:44:16.020
+But what I'd like to do over
+here is to make it easier for me
+
+00:44:16.020 --> 00:44:20.130
+to read and evaluate, understand
+what's happening over here,
+
+00:44:20.130 --> 00:44:22.560
+especially in terms of ratio.
+
+00:44:22.560 --> 00:44:25.560
+Let's generate a visual.
+
+00:44:25.560 --> 00:44:28.500
+Let's render a bar chart.
+
+00:44:28.500 --> 00:44:32.910
+Let me add over here at the
+end, "Render bar chart."
+
+00:44:32.910 --> 00:44:38.610
+And there we go, KQL now
+generates a bar chart for us,
+
+00:44:38.610 --> 00:44:41.820
+much nicer visual, allowing
+you to get a good sense
+
+00:44:41.820 --> 00:44:46.560
+as to really how much more
+the administrator account is
+
+00:44:46.560 --> 00:44:48.720
+being used.
+
+00:44:48.720 --> 00:44:51.570
+And if I'd like to look at
+it more from a ratio side,
+
+00:44:51.570 --> 00:44:55.480
+how about we render
+a pie chart instead?
+
+00:44:57.450 --> 00:45:00.600
+And there we go,
+here's our pie chart.
+
+00:45:00.600 --> 00:45:02.760
+Again, administrator
+represents, what,
+
+00:45:02.760 --> 00:45:08.130
+42.97% of all account activity.
+
+00:45:08.130 --> 00:45:11.820
+Not too surprising, but
+maybe a bit concerning.
+
+00:45:11.820 --> 00:45:15.060
+Either there's privilege, abuse,
+
+00:45:15.060 --> 00:45:18.300
+or maybe something
+else is happening.
+
+00:45:18.300 --> 00:45:20.790
+But one way or another,
+we've seen over here how
+
+00:45:20.790 --> 00:45:25.570
+to generate visual using KQL.
+
+00:45:27.240 --> 00:45:29.130
+Let's recap what
+you've accomplished
+
+00:45:29.130 --> 00:45:30.660
+in this learning path.
+
+00:45:30.660 --> 00:45:33.180
+You have learned how to
+construct KQL statement
+
+00:45:33.180 --> 00:45:36.330
+from Microsoft Sentinel,
+building queries
+
+00:45:36.330 --> 00:45:38.700
+that follows the dataflow model.
+
+00:45:38.700 --> 00:45:43.800
+You practiced key KQL operators,
+like "Summarize," "Render,"
+
+00:45:43.800 --> 00:45:48.390
+"Union," "Join," and "Extend"
+to filter, shape, analyze,
+
+00:45:48.390 --> 00:45:50.730
+and visualize your result.
+
+00:45:50.730 --> 00:45:54.780
+You also learned how to
+extract data from unstructured
+
+00:45:54.780 --> 00:45:58.860
+and structured text fields,
+which is critical for working
+
+00:45:58.860 --> 00:46:01.590
+with real-world
+security telemetry.
+
+00:46:01.590 --> 00:46:05.340
+And finally, you saw how to
+create functions and "Parser,"
+
+00:46:05.340 --> 00:46:10.870
+using KQL so your best
+queries can be reused.
+
+00:46:12.000 --> 00:46:16.830
+As we close out, take a moment
+to reflect on the key outcome.
+
+00:46:16.830 --> 00:46:22.410
+You now have practical KQL
+skill you can apply immediately
+
+00:46:22.410 --> 00:46:24.450
+in Microsoft Sentinel.
+
+00:46:24.450 --> 00:46:27.750
+Whether you're hunting,
+triaging alerts,
+
+00:46:27.750 --> 00:46:30.510
+or investigating an incident,
+
+00:46:30.510 --> 00:46:34.140
+the more you practice writing
+queries and reading the pipeline
+
+00:46:34.140 --> 00:46:37.920
+from left to right, the
+faster you'll be able to move
+
+00:46:37.920 --> 00:46:42.180
+from raw logs with
+confident solution.
+
+00:46:42.180 --> 00:46:43.950
+This concludes our session.
+
+00:46:43.950 --> 00:46:48.060
+There are many more ways to
+continue your learning journey.
+
+00:46:48.060 --> 00:46:52.410
+We encourage you to watch other
+videos in Discourse or search
+
+00:46:52.410 --> 00:46:59.980
+out your next favorite topic on
+Microsoft Learn at aka.ms/learn.
+

@@ -1,0 +1,1987 @@
+WEBVTT
+Kind: captions
+Language: en
+
+00:00:00.500 --> 00:00:03.500
+[ Music ]
+
+00:00:06.130 --> 00:00:07.360
+JEAN-FRANCOIS BILODEAU:
+Picture this,
+
+00:00:07.360 --> 00:00:12.780
+a sensitive file leaves your
+organization, nobody realizes it
+
+00:00:12.780 --> 00:00:16.440
+until a week later, and now
+you're piecing together what
+
+00:00:16.440 --> 00:00:21.060
+happened with incomplete
+evidence and a ticking clock.
+
+00:00:21.060 --> 00:00:24.900
+In security operation
+those moments are exactly
+
+00:00:24.900 --> 00:00:28.920
+when you need fast answer
+what data was exposed,
+
+00:00:28.920 --> 00:00:32.040
+who touched it, and
+what to do next.
+
+00:00:32.040 --> 00:00:35.670
+Let me introduce you to a
+session where we'll learn how
+
+00:00:35.670 --> 00:00:40.140
+to tackle these real-world
+scenarios using Microsoft
+
+00:00:40.140 --> 00:00:43.920
+Purview and connected
+investigation tool.
+
+00:00:43.920 --> 00:00:47.250
+Hello, and welcome, we're
+glad you've joined us.
+
+00:00:47.250 --> 00:00:51.150
+I am Jean-Francois Bilodeau, a
+Microsoft Technical Trainer.
+
+00:00:51.150 --> 00:00:55.590
+In this session, let's
+explore Learning Path 3,
+
+00:00:55.590 --> 00:00:58.680
+Mitigate Threat Using
+Microsoft Purview.
+
+00:00:58.680 --> 00:01:03.180
+Together we'll walk through how
+security operation analysts can
+
+00:01:03.180 --> 00:01:06.450
+support compliance and
+investigation workflow,
+
+00:01:06.450 --> 00:01:10.040
+starting with data loss
+prevention alerts,
+
+00:01:10.040 --> 00:01:12.710
+moving into insider
+risk management,
+
+00:01:12.710 --> 00:01:17.030
+and then using eDiscovery
+and Auditing to investigate,
+
+00:01:17.030 --> 00:01:20.840
+validate, and export
+the evidence you need.
+
+00:01:20.840 --> 00:01:23.550
+So let's get started
+with this session.
+
+00:01:24.990 --> 00:01:27.750
+Here we set the stage
+for the bigger mission,
+
+00:01:27.750 --> 00:01:31.830
+defending against cyberthreats
+using Microsoft Security
+
+00:01:31.830 --> 00:01:33.660
+Operations platform.
+
+00:01:33.660 --> 00:01:36.480
+The goal isn't just
+to detect threats,
+
+00:01:36.480 --> 00:01:39.990
+it's to investigate
+them efficiently,
+
+00:01:39.990 --> 00:01:44.880
+connect security signals
+together, compliance, evidence,
+
+00:01:44.880 --> 00:01:51.240
+and take action with confidence
+when data or users are at risk.
+
+00:01:51.240 --> 00:01:52.830
+Let's take a look at
+what we'll cover.
+
+00:01:52.830 --> 00:01:56.340
+We'll begin with Microsoft
+Purview Compliance Solution,
+
+00:01:56.340 --> 00:01:58.740
+then move into investigating
+
+00:01:58.740 --> 00:02:02.760
+and remediating compromised
+entities identified
+
+00:02:02.760 --> 00:02:06.360
+by Microsoft Purview data
+loss prevention policies.
+
+00:02:06.360 --> 00:02:09.900
+From there, we'll explore
+how to investigate
+
+00:02:09.900 --> 00:02:12.960
+and remediate insider
+risk threat identified
+
+00:02:12.960 --> 00:02:15.210
+by Microsoft Purview policies.
+
+00:02:15.210 --> 00:02:16.560
+Next we'll shift
+
+00:02:16.560 --> 00:02:20.760
+into investigation techniques
+using Microsoft Purview
+
+00:02:20.760 --> 00:02:23.100
+eDiscovery Content Search.
+
+00:02:23.100 --> 00:02:24.180
+And then we'll finish
+
+00:02:24.180 --> 00:02:27.990
+with investigation using
+Microsoft Purview Audit,
+
+00:02:27.990 --> 00:02:33.430
+first Audit Standard, then
+we'll move into Audit Premium.
+
+00:02:34.950 --> 00:02:36.090
+Here we transition
+
+00:02:36.090 --> 00:02:39.030
+into Microsoft Purview
+Compliance Solutions
+
+00:02:39.030 --> 00:02:43.890
+capabilities, designed to help
+organizations protect sensitive
+
+00:02:43.890 --> 00:02:47.640
+information, meet
+regulatory obligations,
+
+00:02:47.640 --> 00:02:52.020
+and investigate issues
+when something goes wrong.
+
+00:02:52.020 --> 00:02:55.470
+For security operation
+analysts, like us,
+
+00:02:55.470 --> 00:03:00.480
+the key is understanding how
+these tools complement security
+
+00:03:00.480 --> 00:03:05.530
+detection with compliance-grade
+evidence and control.
+
+00:03:06.750 --> 00:03:09.390
+To access these
+compliance capabilities,
+
+00:03:09.390 --> 00:03:12.300
+you'll work with the
+Microsoft Purview portal
+
+00:03:12.300 --> 00:03:15.270
+at purview.microsoft.com.
+
+00:03:15.270 --> 00:03:18.660
+From this centralized portal,
+you can navigate into areas
+
+00:03:18.660 --> 00:03:22.380
+like data loss prevention,
+insider risk management,
+
+00:03:22.380 --> 00:03:27.540
+eDiscovery, and Audit, each one
+supporting a different part
+
+00:03:27.540 --> 00:03:32.700
+of the investigation and
+response life cycle.
+
+00:03:32.700 --> 00:03:36.840
+Let's clarify how security
+operation analysts often partner
+
+00:03:36.840 --> 00:03:40.320
+with compliance and
+eDiscovery administrators.
+
+00:03:40.320 --> 00:03:46.110
+One major area is eDiscovery,
+especially "Content Search,"
+
+00:03:46.110 --> 00:03:47.970
+which supports finding
+
+00:03:47.970 --> 00:03:51.690
+and exporting relevant
+electronic information
+
+00:03:51.690 --> 00:03:58.170
+that may be needed as evidence
+in legal or in internal cases.
+
+00:03:58.170 --> 00:04:00.750
+Another key area is auditing.
+
+00:04:00.750 --> 00:04:04.740
+Microsoft Purview auditing
+solutions provides an integrated
+
+00:04:04.740 --> 00:04:09.810
+way to capture and review user
+and administrator activity,
+
+00:04:09.810 --> 00:04:13.440
+helping organizations
+respond to security events,
+
+00:04:13.440 --> 00:04:19.530
+support forensic investigations,
+and run internal investigations.
+
+00:04:19.530 --> 00:04:22.140
+We also have
+information protection
+
+00:04:22.140 --> 00:04:25.440
+where data loss prevention, DLP,
+
+00:04:25.440 --> 00:04:28.500
+helps organizations
+prevent users
+
+00:04:28.500 --> 00:04:32.220
+from inappropriately sharing
+sensitive information
+
+00:04:32.220 --> 00:04:36.240
+such as financial data,
+proprietary data,
+
+00:04:36.240 --> 00:04:39.090
+credit card numbers,
+health records,
+
+00:04:39.090 --> 00:04:41.430
+or Social Security numbers.
+
+00:04:41.430 --> 00:04:46.170
+And finally, insider risk
+management correlates a variety
+
+00:04:46.170 --> 00:04:49.770
+of signals to identify
+potential malicious
+
+00:04:49.770 --> 00:04:52.740
+or inadvertent insider risk,
+
+00:04:52.740 --> 00:04:56.640
+like intellectual property
+theft, data leakage,
+
+00:04:56.640 --> 00:05:00.120
+or security violations
+so teams can detect
+
+00:05:00.120 --> 00:05:04.860
+and contain issues
+before they grow.
+
+00:05:04.860 --> 00:05:07.680
+Now we shift into first
+investigation module,
+
+00:05:07.680 --> 00:05:11.700
+using Microsoft Purview
+DLP policies to identify,
+
+00:05:11.700 --> 00:05:15.870
+compromise entities, and then
+remediate the situation.
+
+00:05:15.870 --> 00:05:18.900
+The key theme is
+turning a DLP signal,
+
+00:05:18.900 --> 00:05:23.850
+like sensitive data exposure,
+into a clear investigation path
+
+00:05:23.850 --> 00:05:26.910
+and actionable next steps.
+
+00:05:26.910 --> 00:05:29.550
+After completing this
+module, you should be able
+
+00:05:29.550 --> 00:05:31.590
+to do three things: first,
+
+00:05:31.590 --> 00:05:35.130
+describe the key data
+loss prevention component
+
+00:05:35.130 --> 00:05:40.440
+in Microsoft Purview, second,
+investigate DLP alerts directly
+
+00:05:40.440 --> 00:05:44.400
+in the Microsoft Purview
+compliance center, and finally,
+
+00:05:44.400 --> 00:05:47.670
+investigate DLP alerts
+in Microsoft Defender
+
+00:05:47.670 --> 00:05:50.970
+for Cloud Apps, which
+is especially useful
+
+00:05:50.970 --> 00:05:54.000
+when you're looking at
+cloud app activities
+
+00:05:54.000 --> 00:05:57.480
+and file-related controls.
+
+00:05:57.480 --> 00:06:02.100
+With a DLP policy, you can
+identify sensitive information
+
+00:06:02.100 --> 00:06:06.090
+and prevent the accidental
+sharing of that information.
+
+00:06:06.090 --> 00:06:09.930
+You can also monitor and protect
+sensitive content directly
+
+00:06:09.930 --> 00:06:14.070
+into desktop versions of
+Excel, PowerPoint, and Word,
+
+00:06:14.070 --> 00:06:17.250
+so protection isn't
+limited to the web.
+
+00:06:17.250 --> 00:06:22.350
+Another important benefit is
+agitation without disruption.
+
+00:06:22.350 --> 00:06:25.080
+DLP can help users learn how
+
+00:06:25.080 --> 00:06:29.640
+to stay compliant while
+keeping their workflow moving.
+
+00:06:29.640 --> 00:06:34.050
+And from the investigation
+site, you can view DLP alerts
+
+00:06:34.050 --> 00:06:39.000
+and reports that show content
+matching your organization's DLP
+
+00:06:39.000 --> 00:06:43.530
+policy, giving you
+evidence you can act on.
+
+00:06:43.530 --> 00:06:46.290
+To understand how those
+alerts are generated,
+
+00:06:46.290 --> 00:06:49.830
+it helps to know the core
+components involved:
+
+00:06:49.830 --> 00:06:54.150
+sensitive information
+type, sensitivity labels,
+
+00:06:54.150 --> 00:06:57.960
+and the data loss prevention
+policy itself, and finally,
+
+00:06:57.960 --> 00:06:59.640
+in Cloud Apps scenarios,
+
+00:06:59.640 --> 00:07:03.870
+a Defender for Cloud
+Apps file policy.
+
+00:07:03.870 --> 00:07:08.310
+Here we look at investigating
+DLP alerts directly
+
+00:07:08.310 --> 00:07:10.260
+into Microsoft Purview.
+
+00:07:10.260 --> 00:07:12.300
+When an alert is triggered,
+
+00:07:12.300 --> 00:07:15.630
+you can review what content
+matched the policy,
+
+00:07:15.630 --> 00:07:20.460
+which location it occurred
+in, which user was involved,
+
+00:07:20.460 --> 00:07:22.680
+and what actions were taken,
+
+00:07:22.680 --> 00:07:26.730
+so it can quickly determine
+whether this was an accident,
+
+00:07:26.730 --> 00:07:30.360
+a risky pattern, or a
+potential compromise
+
+00:07:30.360 --> 00:07:33.210
+that needs escalation.
+
+00:07:33.210 --> 00:07:34.650
+Next, let's take a look
+
+00:07:34.650 --> 00:07:39.870
+at investigating DLP alerts
+inside Microsoft Defender XDR.
+
+00:07:39.870 --> 00:07:45.090
+A practical approach is to
+create and apply an alert filter
+
+00:07:45.090 --> 00:07:48.690
+where the category is set
+to "data loss prevention".
+
+00:07:48.690 --> 00:07:53.160
+This helps you quickly pivot
+from the broader incident queue
+
+00:07:53.160 --> 00:07:58.380
+into the subset of alert tied
+to a sensitive data exposure.
+
+00:07:58.380 --> 00:08:01.410
+And it's worth remembering
+that Defender for Cloud Apps
+
+00:08:01.410 --> 00:08:04.680
+and Cloud Apps alerts
+are consolidated
+
+00:08:04.680 --> 00:08:07.230
+into Microsoft Defender XDR.
+
+00:08:07.230 --> 00:08:11.280
+So this becomes a
+central place to triage
+
+00:08:11.280 --> 00:08:16.950
+and correlate Cloud Apps related
+DLP activities alongside other
+
+00:08:16.950 --> 00:08:19.060
+security signals.
+
+00:08:21.360 --> 00:08:24.300
+Now we move from
+accidental data exposure
+
+00:08:24.300 --> 00:08:28.830
+into a different category
+of risk, insider risk.
+
+00:08:28.830 --> 00:08:31.620
+Here the objective
+is to investigate
+
+00:08:31.620 --> 00:08:36.050
+and remediate threats identified
+
+00:08:36.050 --> 00:08:39.800
+by Microsoft Purview
+insider risk policy,
+
+00:08:39.800 --> 00:08:43.790
+whether the behavior is
+malicious, negligent,
+
+00:08:43.790 --> 00:08:46.910
+or simply high risk in context.
+
+00:08:46.910 --> 00:08:49.400
+After completing this
+module, you'll be able
+
+00:08:49.400 --> 00:08:51.950
+to explain how insider
+risk management
+
+00:08:51.950 --> 00:08:55.460
+in Microsoft Purview
+helps prevent, detect,
+
+00:08:55.460 --> 00:08:59.760
+and contain internal
+risks in an organization.
+
+00:08:59.760 --> 00:09:04.170
+You'll also be able to describe
+the built-in predefined policy
+
+00:09:04.170 --> 00:09:06.930
+templates, list the prerequisite
+
+00:09:06.930 --> 00:09:11.370
+that must be met before you can
+create insider risk policies,
+
+00:09:11.370 --> 00:09:14.460
+and explain the kind
+of action you can take
+
+00:09:14.460 --> 00:09:19.380
+when you're working an
+insider risk management case.
+
+00:09:19.380 --> 00:09:21.600
+Insider risk
+management is designed
+
+00:09:21.600 --> 00:09:25.260
+to help you address the
+type of risk and violations
+
+00:09:25.260 --> 00:09:28.770
+that can come from
+within the organization.
+
+00:09:28.770 --> 00:09:33.150
+That can include intentional
+misuse, like data theft,
+
+00:09:33.150 --> 00:09:35.400
+or unintentional actions,
+
+00:09:35.400 --> 00:09:40.080
+like accidental leaks
+or policy violations.
+
+00:09:40.080 --> 00:09:42.180
+The value here is correlation.
+
+00:09:42.180 --> 00:09:46.020
+Instead of looking one
+isolated incident,
+
+00:09:46.020 --> 00:09:49.380
+insider risk management
+brings signals together
+
+00:09:49.380 --> 00:09:54.710
+to highlight patterns that
+deserve investigation.
+
+00:09:54.710 --> 00:09:58.970
+Here we walk through the
+workflow used by Microsoft 365,
+
+00:09:58.970 --> 00:10:02.840
+to identify and resolve
+internal risk activities
+
+00:10:02.840 --> 00:10:06.870
+and compliance issues with
+insider risk management.
+
+00:10:06.870 --> 00:10:11.700
+The workflow focuses on moving
+from signals to indicator
+
+00:10:11.700 --> 00:10:18.150
+into policy detection, then
+into triage and investigation,
+
+00:10:18.150 --> 00:10:21.330
+and finally, into taking
+appropriate action
+
+00:10:21.330 --> 00:10:24.960
+to resolve the risk while
+aligning to privacy
+
+00:10:24.960 --> 00:10:28.830
+and compliance expectations.
+
+00:10:28.830 --> 00:10:31.080
+Managing insider
+risk policies starts
+
+00:10:31.080 --> 00:10:33.900
+with choosing the
+right policy template.
+
+00:10:33.900 --> 00:10:37.710
+Common templates include
+departing employees data theft,
+
+00:10:37.710 --> 00:10:42.270
+data leaks, and currently
+preview security policy
+
+00:10:42.270 --> 00:10:47.760
+violations, health record
+misuse, and risky browser usage.
+
+00:10:47.760 --> 00:10:51.450
+Once you select a template, you
+can configure policy settings
+
+00:10:51.450 --> 00:10:53.850
+such as privacy indicators,
+
+00:10:53.850 --> 00:10:57.330
+the timeframe the
+policy should evaluate,
+
+00:10:57.330 --> 00:11:03.180
+and the intelligent detection
+used to identify risky behavior
+
+00:11:03.180 --> 00:11:08.400
+with the right balance of
+visibility and privacy.
+
+00:11:08.400 --> 00:11:12.780
+Now let's turn to eDiscovery,
+specifically how to search
+
+00:11:12.780 --> 00:11:15.600
+for content using
+Microsoft Purview.
+
+00:11:15.600 --> 00:11:20.460
+This capability is critical when
+an investigation requires you
+
+00:11:20.460 --> 00:11:24.810
+to find, preserve, and
+potentially export content
+
+00:11:24.810 --> 00:11:30.210
+across Microsoft 365 services in
+a way that supports compliant
+
+00:11:30.210 --> 00:11:33.460
+and legal defensibility.
+
+00:11:34.530 --> 00:11:37.860
+In this module, the learning
+objectives are straightforward.
+
+00:11:37.860 --> 00:11:40.980
+You'll learn how to assign the
+role and permission required
+
+00:11:40.980 --> 00:11:45.450
+to access Microsoft Purview
+eDiscovery, how to create
+
+00:11:45.450 --> 00:11:49.830
+and manage keys used to
+run eDiscovery searches,
+
+00:11:49.830 --> 00:11:54.330
+how to define search scope and
+build queries using conditions,
+
+00:11:54.330 --> 00:11:58.890
+keywords, and Copilot-generated
+prompts, and finally,
+
+00:11:58.890 --> 00:12:03.420
+how to run searches and validate
+results using statistics
+
+00:12:03.420 --> 00:12:05.710
+or random samples.
+
+00:12:06.750 --> 00:12:09.060
+Let's define what eDiscovery is
+
+00:12:09.060 --> 00:12:12.660
+and how it compares
+to Content Search.
+
+00:12:12.660 --> 00:12:16.770
+eDiscovery is a tool in the
+Microsoft Purview portal
+
+00:12:16.770 --> 00:12:19.230
+that lets you
+search for content,
+
+00:12:19.230 --> 00:12:22.530
+place hold, and export content.
+
+00:12:22.530 --> 00:12:26.820
+Access is limited to users who
+have assigned the right role,
+
+00:12:26.820 --> 00:12:31.410
+typically eDiscovery managers
+or eDiscovery administrators
+
+00:12:31.410 --> 00:12:35.490
+and licensing impacts
+which feature you can use
+
+00:12:35.490 --> 00:12:41.310
+with Core eDiscovery
+included in E3 and E5.
+
+00:12:41.310 --> 00:12:44.340
+You'll use eDiscovery for
+internal investigation
+
+00:12:44.340 --> 00:12:50.220
+like HR cases, or suspected
+data misuse, as well as legal
+
+00:12:50.220 --> 00:12:54.570
+and regulatory requests, data
+subject rights requests,
+
+00:12:54.570 --> 00:12:58.470
+and incident responses
+or breach reviews.
+
+00:12:58.470 --> 00:13:01.890
+The big idea is that
+eDiscovery helps security
+
+00:13:01.890 --> 00:13:04.950
+and compliance teams
+find, preserve,
+
+00:13:04.950 --> 00:13:10.050
+and export content during
+investigations, legal inquiries,
+
+00:13:10.050 --> 00:13:12.930
+or incident responses.
+
+00:13:12.930 --> 00:13:16.230
+It's also important to
+use eDiscovery as more
+
+00:13:16.230 --> 00:13:18.600
+than a simple search feature.
+
+00:13:18.600 --> 00:13:22.560
+While Content Search can
+retrieve data quickly,
+
+00:13:22.560 --> 00:13:28.020
+it doesn't provide the same
+auditability and access control
+
+00:13:28.020 --> 00:13:30.810
+that eDiscovery provides.
+
+00:13:30.810 --> 00:13:34.950
+eDiscovery, on the other
+hand, is designed for secure,
+
+00:13:34.950 --> 00:13:39.090
+auditable searches
+tied to a formal case
+
+00:13:39.090 --> 00:13:41.670
+with role-based permission.
+
+00:13:41.670 --> 00:13:43.350
+On to licensing side.
+
+00:13:43.350 --> 00:13:48.150
+Core eDiscovery is available in
+E5, and advanced eDiscovery,
+
+00:13:48.150 --> 00:13:51.720
+often referred to as
+"Premium," adds capability
+
+00:13:51.720 --> 00:13:55.800
+like custodian holds,
+legal hold notifications,
+
+00:13:55.800 --> 00:13:57.960
+and built-in review sets.
+
+00:13:57.960 --> 00:14:01.020
+Even if you're not
+using the premium tier,
+
+00:14:01.020 --> 00:14:04.710
+understanding the difference
+helps you assess what your
+
+00:14:04.710 --> 00:14:06.750
+environment can support.
+
+00:14:06.750 --> 00:14:10.650
+A helpful way to internalize
+this is to think
+
+00:14:10.650 --> 00:14:12.990
+through a real-world
+investigation,
+
+00:14:12.990 --> 00:14:17.220
+like a phishing attack
+or an insider leak,
+
+00:14:17.220 --> 00:14:20.250
+where you create a
+case, run a search,
+
+00:14:20.250 --> 00:14:23.370
+and export results for review.
+
+00:14:23.370 --> 00:14:26.340
+Before you can use
+eDiscovery access,
+
+00:14:26.340 --> 00:14:29.280
+you have to explicitly assign
+
+00:14:29.280 --> 00:14:34.350
+to ensure investigation
+remains secure and auditable.
+
+00:14:34.350 --> 00:14:38.160
+The required roles are
+typically eDiscovery managers
+
+00:14:38.160 --> 00:14:42.840
+who can create and manage
+cases, search and export,
+
+00:14:42.840 --> 00:14:44.970
+and eDiscovery administrators
+
+00:14:44.970 --> 00:14:49.410
+who have all the manager
+permissions plus the ability
+
+00:14:49.410 --> 00:14:53.370
+to manage role assignments
+and control settings.
+
+00:14:53.370 --> 00:14:57.240
+To assign these roles, you go to
+the Microsoft Purview portal,
+
+00:14:57.240 --> 00:15:01.800
+then you navigate to
+"Settings," "Roles and Scope,"
+
+00:15:01.800 --> 00:15:06.270
+and "Role Groups," and add users
+to the appropriate role group.
+
+00:15:06.270 --> 00:15:08.460
+To confirm access,
+you can navigate
+
+00:15:08.460 --> 00:15:11.190
+into eDiscovery in the portal.
+
+00:15:11.190 --> 00:15:14.970
+If the user has the
+correct role and license,
+
+00:15:14.970 --> 00:15:17.850
+the "Create Case"
+page should appear.
+
+00:15:17.850 --> 00:15:23.640
+A key operational point is that
+access is scoped intentionally.
+
+00:15:23.640 --> 00:15:26.820
+Even if someone has
+an eDiscovery tool,
+
+00:15:26.820 --> 00:15:30.450
+they may only see their
+case they're a member of,
+
+00:15:30.450 --> 00:15:33.120
+which supports least
+privileged access
+
+00:15:33.120 --> 00:15:37.530
+and keeps unrelated
+investigation separated.
+
+00:15:37.530 --> 00:15:40.980
+This also helps with common
+troubleshooting during
+
+00:15:40.980 --> 00:15:42.450
+hands-on work.
+
+00:15:42.450 --> 00:15:46.050
+If someone can't see
+anything, it's usually
+
+00:15:46.050 --> 00:15:50.010
+because they're missing
+either the role assignment
+
+00:15:50.010 --> 00:15:52.300
+or the case membership.
+
+00:15:54.330 --> 00:15:57.480
+In Microsoft Purview eDiscovery,
+
+00:15:57.480 --> 00:16:01.290
+every search is
+created within a case.
+
+00:16:01.290 --> 00:16:04.620
+The case acts as a secure
+auditable workspace
+
+00:16:04.620 --> 00:16:06.750
+for managing investigation.
+
+00:16:06.750 --> 00:16:12.150
+That requirement matters because
+it enforces access control,
+
+00:16:12.150 --> 00:16:15.840
+keeps a consistent
+investigation structure,
+
+00:16:15.840 --> 00:16:20.760
+and ensures every action,
+searching, accessing, exporting,
+
+00:16:20.760 --> 00:16:23.610
+is logged in the
+context of the case.
+
+00:16:23.610 --> 00:16:27.960
+Only members of a case can
+access it, even if they're
+
+00:16:27.960 --> 00:16:32.460
+on an eDiscovery role, and when
+somebody else creates the case,
+
+00:16:32.460 --> 00:16:35.850
+they're automatically
+added as a member.
+
+00:16:35.850 --> 00:16:41.610
+To create a search, you go to
+the eDiscovery open cases,
+
+00:16:41.610 --> 00:16:44.040
+and then select "Create Search".
+
+00:16:44.040 --> 00:16:47.580
+You provide the case name
+and the search name,
+
+00:16:47.580 --> 00:16:51.360
+and in a single step, Purview
+creates both the case
+
+00:16:51.360 --> 00:16:52.920
+and the search.
+
+00:16:52.920 --> 00:16:57.240
+This case may structure
+is what makes eDiscovery
+
+00:16:57.240 --> 00:16:59.220
+legally defensible.
+
+00:16:59.220 --> 00:17:04.650
+It provides a container where
+you investigate diligence,
+
+00:17:04.650 --> 00:17:08.460
+and data integrity
+can be demonstrated
+
+00:17:08.460 --> 00:17:12.640
+if the result ever needs
+to stand up to scrutiny.
+
+00:17:14.010 --> 00:17:17.580
+Now, let's walk through
+conducting a search.
+
+00:17:17.580 --> 00:17:19.680
+The purpose is to locate content
+
+00:17:19.680 --> 00:17:24.810
+across Microsoft 365
+services that's relevant
+
+00:17:24.810 --> 00:17:28.740
+to a security incident,
+a regulatory request,
+
+00:17:28.740 --> 00:17:31.650
+or an internal investigation.
+
+00:17:31.650 --> 00:17:35.820
+You start by defining the
+criteria in your search,
+
+00:17:35.820 --> 00:17:40.880
+set the filter using keyword or
+conditions such as date, sender,
+
+00:17:40.880 --> 00:17:47.030
+or content type, then you select
+your data source, user, groups,
+
+00:17:47.030 --> 00:17:51.810
+site, or even broader
+tenant-wide sources,
+
+00:17:51.810 --> 00:17:53.640
+depending on whether you want
+
+00:17:53.640 --> 00:17:57.210
+to narrow the scope
+or cast a wider net.
+
+00:17:57.210 --> 00:17:59.280
+Next, you build a query logic.
+
+00:17:59.280 --> 00:18:01.290
+You can use the
+condition builder
+
+00:18:01.290 --> 00:18:03.450
+if you prefer guided experience,
+
+00:18:03.450 --> 00:18:09.060
+write KQL for more advanced
+filtering, or where possible,
+
+00:18:09.060 --> 00:18:13.350
+try Copilot or "Search by
+File" in Purview to generate
+
+00:18:13.350 --> 00:18:16.340
+or accelerate the search logic.
+
+00:18:16.340 --> 00:18:19.820
+After you've run the search,
+you review settings,
+
+00:18:19.820 --> 00:18:23.180
+reusing statistics,
+how many items match,
+
+00:18:23.180 --> 00:18:27.900
+or a sample to validate
+relevance before you explore.
+
+00:18:27.900 --> 00:18:31.650
+From there, you refine
+and rerun as needed.
+
+00:18:31.650 --> 00:18:35.700
+A practical best practice is
+to avoid scoping too broadly
+
+00:18:35.700 --> 00:18:40.050
+at the start, because that
+creates review overload.
+
+00:18:40.050 --> 00:18:45.120
+Instead, start small,
+validate, and then expand only
+
+00:18:45.120 --> 00:18:48.460
+when the evidence tells you to.
+
+00:18:49.710 --> 00:18:51.120
+Once you have the right result,
+
+00:18:51.120 --> 00:18:56.280
+the next step is exporting
+them along with metadata.
+
+00:18:56.280 --> 00:18:59.940
+For investigation
+documentation, legal review,
+
+00:18:59.940 --> 00:19:03.120
+or external handoff,
+you start an export
+
+00:19:03.120 --> 00:19:07.410
+by selecting a completed
+search of the search step
+
+00:19:07.410 --> 00:19:11.870
+and choosing what to explore,
+such as index items,
+
+00:19:11.870 --> 00:19:16.130
+partially indexed items, or
+both, then you configure option
+
+00:19:16.130 --> 00:19:21.390
+for workload like OneDrive,
+SharePoint, Exchange, Teams.
+
+00:19:21.390 --> 00:19:25.230
+For example, whether to
+include version history,
+
+00:19:25.230 --> 00:19:30.030
+include threaded messages,
+or cloud attachments,
+
+00:19:30.030 --> 00:19:35.520
+you can chose the output format,
+you want to use PST or MSG along
+
+00:19:35.520 --> 00:19:39.330
+with a folder structure
+and friendly naming.
+
+00:19:39.330 --> 00:19:42.090
+As the export runs,
+you track status
+
+00:19:42.090 --> 00:19:44.730
+and detail in process manager.
+
+00:19:44.730 --> 00:19:47.580
+When it's ready, you go
+to the "Export" tab,
+
+00:19:47.580 --> 00:19:50.130
+review the export overview,
+
+00:19:50.130 --> 00:19:54.210
+and download the package
+along with reports.
+
+00:19:54.210 --> 00:19:57.120
+This step matters for
+a chain of custody.
+
+00:19:57.120 --> 00:20:03.090
+Export packages can include
+original format and metadata,
+
+00:20:03.090 --> 00:20:06.750
+and they're typically
+delivered as secure packages
+
+00:20:06.750 --> 00:20:09.000
+with manifest and logs.
+
+00:20:09.000 --> 00:20:14.250
+Hashes and export identifiers
+help demonstrate integrity,
+
+00:20:14.250 --> 00:20:19.050
+showing the data hasn't been
+modified, while secure,
+
+00:20:19.050 --> 00:20:22.890
+time-limited download links
+helps protect the export
+
+00:20:22.890 --> 00:20:24.790
+during transfer.
+
+00:20:27.630 --> 00:20:32.250
+Now we move into Microsoft
+Purview Audit, which is all
+
+00:20:32.250 --> 00:20:37.230
+about understanding activities
+across Microsoft 365,
+
+00:20:37.230 --> 00:20:40.110
+who did what, when, and where.
+
+00:20:40.110 --> 00:20:45.710
+Audit data becomes critical
+evidence for incident response,
+
+00:20:45.710 --> 00:20:50.060
+compliance, verification,
+and deeper investigation
+
+00:20:50.060 --> 00:20:54.650
+where you need a
+reliable activity trail.
+
+00:20:54.650 --> 00:20:58.400
+In this module, you'll learn
+how to identify the difference
+
+00:20:58.400 --> 00:21:03.350
+between Microsoft Purview Audit
+Standard and Audit Premium,
+
+00:21:03.350 --> 00:21:05.750
+configure Microsoft
+Purview Audit
+
+00:21:05.750 --> 00:21:09.950
+for optimate log management
+and perform audit
+
+00:21:09.950 --> 00:21:13.560
+to assess compliant
+and security measures.
+
+00:21:13.560 --> 00:21:18.180
+You'll also learn how to analyze
+irregular access patterns using
+
+00:21:18.180 --> 00:21:22.520
+advanced tool available in
+Audit Premium and PowerShell,
+
+00:21:22.520 --> 00:21:25.700
+and how strategic data
+management supports
+
+00:21:25.700 --> 00:21:29.360
+regulatory compliance.
+
+00:21:29.360 --> 00:21:33.380
+Microsoft Purview Audit helps
+organization understand how
+
+00:21:33.380 --> 00:21:36.740
+Microsoft 365 is being used
+
+00:21:36.740 --> 00:21:40.280
+by capturing users
+and admin activity.
+
+00:21:40.280 --> 00:21:44.930
+That visibility supports
+security investigation,
+
+00:21:44.930 --> 00:21:49.920
+compliance requirement, and
+operational transparency.
+
+00:21:49.920 --> 00:21:52.560
+Audit Standard is
+enabled by default,
+
+00:21:52.560 --> 00:21:57.720
+providing 180-day log
+retention that can be accessed
+
+00:21:57.720 --> 00:22:01.380
+through the portal,
+PowerShell, and API,
+
+00:22:01.380 --> 00:22:05.190
+and supports exporting
+results in CSV.
+
+00:22:05.190 --> 00:22:08.340
+Audit Premium extends
+those capabilities
+
+00:22:08.340 --> 00:22:13.740
+with custom retention policies,
+a default one-year retention
+
+00:22:13.740 --> 00:22:19.410
+for core services, intelligence
+insights into activity patterns,
+
+00:22:19.410 --> 00:22:24.150
+and higher API bandwidth
+for advanced integrations.
+
+00:22:24.150 --> 00:22:28.350
+Together, these options give
+organization flexibility
+
+00:22:28.350 --> 00:22:33.000
+for day-to-day needs as well
+as longer-term investigation
+
+00:22:33.000 --> 00:22:34.890
+and regulatory requirements.
+
+00:22:34.890 --> 00:22:39.570
+To put that in context,
+Audit Standard is ideal
+
+00:22:39.570 --> 00:22:44.220
+for general visibility, tracking
+basic activities like sign-in,
+
+00:22:44.220 --> 00:22:47.670
+file modification,
+or sharing events.
+
+00:22:47.670 --> 00:22:49.500
+Audit Premium, on
+the other hand,
+
+00:22:49.500 --> 00:22:53.460
+is where you get forensic
+depth for longer-term
+
+00:22:53.460 --> 00:22:57.690
+or higher-risk investigation,
+including scenarios
+
+00:22:57.690 --> 00:23:00.870
+where you need to know whether
+a sensitive message was
+
+00:23:00.870 --> 00:23:02.700
+actually accessed.
+
+00:23:02.700 --> 00:23:07.050
+It's also important to remember
+that Premium capabilities depend
+
+00:23:07.050 --> 00:23:13.560
+on licensing, such as Microsoft
+365 E5, or E5 Compliance,
+
+00:23:13.560 --> 00:23:15.900
+or an equivalent add-on.
+
+00:23:15.900 --> 00:23:18.990
+So you only see these features
+
+00:23:18.990 --> 00:23:22.690
+if your environment
+is entitled to them.
+
+00:23:23.850 --> 00:23:27.360
+Now let's take a look at
+configuration and management.
+
+00:23:27.360 --> 00:23:31.440
+If auditing isn't already
+enabled, you can turn it
+
+00:23:31.440 --> 00:23:36.120
+on through the Purview
+portal or by running the
+
+00:23:36.120 --> 00:23:39.960
+"Set-AdminAuditLogConfig"
+cmdlet in PowerShell.
+
+00:23:39.960 --> 00:23:42.420
+You also need to
+verify licensing.
+
+00:23:42.420 --> 00:23:48.120
+Audit Standard is included
+in Microsoft 365 E3 and E5,
+
+00:23:48.120 --> 00:23:56.130
+as well as F1 and F3, and in
+Office 365 E1, E3, and E5.
+
+00:23:56.130 --> 00:24:00.060
+Audit Premium requires
+Microsoft 365 E5,
+
+00:24:00.060 --> 00:24:03.990
+E5 Compliance, or
+relevant add-on.
+
+00:24:03.990 --> 00:24:08.970
+Finally, role determines who
+can work with audit logs.
+
+00:24:08.970 --> 00:24:12.420
+An audit reader can
+search and export log,
+
+00:24:12.420 --> 00:24:15.930
+while an audit manager
+can search and explore
+
+00:24:15.930 --> 00:24:19.290
+but also manage audit settings.
+
+00:24:19.290 --> 00:24:22.230
+Even if someone is
+a global admin,
+
+00:24:22.230 --> 00:24:25.290
+they still need the
+right role assignment
+
+00:24:25.290 --> 00:24:28.200
+in Purview to access logs.
+
+00:24:28.200 --> 00:24:34.350
+A good investigation habit is to
+confirm Audit is enabled early,
+
+00:24:34.350 --> 00:24:40.140
+because if logging wasn't
+on, then there may be no way
+
+00:24:40.140 --> 00:24:43.570
+to have an activity
+trail to follow.
+
+00:24:44.670 --> 00:24:48.870
+Audit Standard provides the
+tool needed to search, manage,
+
+00:24:48.870 --> 00:24:53.070
+and analyze activity
+across Microsoft 365,
+
+00:24:53.070 --> 00:24:55.980
+helping organizations
+respond to incidents
+
+00:24:55.980 --> 00:24:58.410
+and meet compliance
+requirements.
+
+00:24:58.410 --> 00:25:02.310
+You can search audit log using
+the Microsoft Purview portal
+
+00:25:02.310 --> 00:25:07.590
+or "Vsurge-unifiedauditlog"
+cmdlet.
+
+00:25:07.590 --> 00:25:11.820
+As you search, you filter
+by activity type, user,
+
+00:25:11.820 --> 00:25:16.140
+file or site, date
+range, workload,
+
+00:25:16.140 --> 00:25:19.740
+and you can export
+results or access logs
+
+00:25:19.740 --> 00:25:23.610
+through an API for automation.
+
+00:25:23.610 --> 00:25:28.200
+As a result comes in, you
+can monitor job progress,
+
+00:25:28.200 --> 00:25:33.150
+drill into detail results,
+and filter by action, user,
+
+00:25:33.150 --> 00:25:38.070
+IP address, record
+type, or item detail.
+
+00:25:38.070 --> 00:25:40.770
+One practical limitation to keep
+
+00:25:40.770 --> 00:25:44.160
+in mind is export
+scale and standard.
+
+00:25:44.160 --> 00:25:47.580
+Exports are limited,
+so this tier is best
+
+00:25:47.580 --> 00:25:52.290
+for focused query rather
+than large-scale analysis.
+
+00:25:52.290 --> 00:25:55.230
+Conceptually, audit logs
+help you tell the story
+
+00:25:55.230 --> 00:26:00.150
+of an incident, and what you
+find depends on what you asked.
+
+00:26:00.150 --> 00:26:02.340
+So it's important to
+choose filters that align
+
+00:26:02.340 --> 00:26:06.160
+to the activity
+you expect to see.
+
+00:26:07.410 --> 00:26:11.580
+Audit Premium, on the other
+hand, provides deeper visibility
+
+00:26:11.580 --> 00:26:16.230
+into user activity, which helps
+you investigate sensitive
+
+00:26:16.230 --> 00:26:19.530
+access, detect
+suspicious behavior,
+
+00:26:19.530 --> 00:26:21.960
+and respond to incident.
+
+00:26:21.960 --> 00:26:28.710
+Classic example is investigating
+email access using the mail send
+
+00:26:28.710 --> 00:26:30.690
+access activity.
+
+00:26:30.690 --> 00:26:35.220
+This can show which messages
+were accessed, by whom,
+
+00:26:35.220 --> 00:26:41.700
+and from where within an
+activity, bind access logs,
+
+00:26:41.700 --> 00:26:47.070
+individual emails used, while
+sync access logs bulk downloads,
+
+00:26:47.070 --> 00:26:51.540
+such as when mailbox is
+synchronized to Outlook.
+
+00:26:51.540 --> 00:26:55.800
+There are also practical
+considerations, like throttling,
+
+00:26:55.800 --> 00:27:00.120
+logging pauses after 1,000
+buying events per day per
+
+00:27:00.120 --> 00:27:05.430
+mailbox, and duplicate entries
+are filtered automatically
+
+00:27:05.430 --> 00:27:07.290
+to reduce noise.
+
+00:27:07.290 --> 00:27:10.620
+You can analyze these events
+in the Purview portal
+
+00:27:10.620 --> 00:27:14.190
+or use PowerShell when you
+need advanced filtering,
+
+00:27:14.190 --> 00:27:18.360
+and exporting to CSV helps
+to review access type
+
+00:27:18.360 --> 00:27:22.320
+and throttling details
+into raw audit log.
+
+00:27:22.320 --> 00:27:24.930
+This is where audit
+becomes truly forensic,
+
+00:27:24.930 --> 00:27:26.700
+helping answer a question,
+
+00:27:26.700 --> 00:27:30.840
+like whether a departing
+employee viewed a sensitive
+
+00:27:30.840 --> 00:27:36.220
+message, not just whether
+something was downloaded.
+
+00:27:38.040 --> 00:27:42.390
+Exporting audit log to CSV
+supports deeper analysis
+
+00:27:42.390 --> 00:27:45.150
+and helps meet
+compliance requirements.
+
+00:27:45.150 --> 00:27:47.490
+The process starts
+by running a search
+
+00:27:47.490 --> 00:27:51.690
+in the Microsoft Purview portal,
+and then selecting Excel
+
+00:27:51.690 --> 00:27:57.540
+to download up to 50,000
+audit records as a CSV file.
+
+00:27:57.540 --> 00:28:02.700
+For analysis, you can open
+the CSV in Excel using Data,
+
+00:28:02.700 --> 00:28:07.950
+then from Text/CSV, and
+use Power Query Editor
+
+00:28:07.950 --> 00:28:11.880
+to transform the audit
+data columns from JSON
+
+00:28:11.880 --> 00:28:14.580
+into readable columns.
+
+00:28:14.580 --> 00:28:17.580
+From there, you expand the
+properties you care about,
+
+00:28:17.580 --> 00:28:22.560
+such as IP address,
+access type, item detail,
+
+00:28:22.560 --> 00:28:25.410
+so you can focus on
+what's relevant.
+
+00:28:25.410 --> 00:28:29.460
+This is especially useful when
+you need to correlate events
+
+00:28:29.460 --> 00:28:33.270
+across services or
+identify anomalies
+
+00:28:33.270 --> 00:28:38.710
+such as unusual access
+during nonbusiness hours.
+
+00:28:39.750 --> 00:28:43.830
+Audit retention is a major
+part of meeting regulatory
+
+00:28:43.830 --> 00:28:47.010
+and investigation requirements.
+
+00:28:47.010 --> 00:28:51.270
+With Audit Premium, you get
+custom retention policies
+
+00:28:51.270 --> 00:28:55.500
+that control how long
+audit data is kept.
+
+00:28:55.500 --> 00:28:59.790
+By default Premium provides a
+one-year retention for Exchange,
+
+00:28:59.790 --> 00:29:04.080
+SharePoint, OneDrive,
+and Microsoft Entra ID.
+
+00:29:04.080 --> 00:29:07.320
+That default policy
+can't be changed,
+
+00:29:07.320 --> 00:29:12.150
+but custom policies get
+overwritten for specific needs.
+
+00:29:12.150 --> 00:29:15.090
+With custom retention
+policies you can create
+
+00:29:15.090 --> 00:29:20.580
+up to 50 policies scoped to
+specific users, record types,
+
+00:29:20.580 --> 00:29:25.560
+or activities, and retain data
+from seven days all the way
+
+00:29:25.560 --> 00:29:29.700
+up to 10 years, although a
+10-year retention requires an
+
+00:29:29.700 --> 00:29:31.680
+add-on license.
+
+00:29:31.680 --> 00:29:36.840
+One important operational detail
+is that retention is determined
+
+00:29:36.840 --> 00:29:39.330
+at the time data is logged.
+
+00:29:39.330 --> 00:29:44.670
+So changes apply only to
+new data going forward.
+
+00:29:44.670 --> 00:29:49.170
+From a risk perspective, longer
+retention increases resilience
+
+00:29:49.170 --> 00:29:52.530
+from slow-developing
+incidents and helps
+
+00:29:52.530 --> 00:29:55.560
+in regulated industries
+where investigations
+
+00:29:55.560 --> 00:30:00.930
+or audits may look back years.
+
+00:30:00.930 --> 00:30:03.960
+Let's recap what we've
+covered in this module.
+
+00:30:03.960 --> 00:30:05.250
+We examined the difference
+
+00:30:05.250 --> 00:30:08.100
+between Microsoft
+Purview Audit Standard
+
+00:30:08.100 --> 00:30:11.730
+and Microsoft Purview Audit
+Premium, how to search
+
+00:30:11.730 --> 00:30:15.780
+for audited activities using
+Microsoft Purview Audit,
+
+00:30:15.780 --> 00:30:20.820
+and how to implement audit
+log searching in practice.
+
+00:30:20.820 --> 00:30:24.360
+We also discussed how audit log
+searches can help investigate
+
+00:30:24.360 --> 00:30:28.590
+common support issues and
+how Audit Premium builds
+
+00:30:28.590 --> 00:30:31.470
+on the capability
+of Audit Standard
+
+00:30:31.470 --> 00:30:34.530
+to enable deeper investigation.
+
+00:30:34.530 --> 00:30:36.270
+Finally, we covered how
+
+00:30:36.270 --> 00:30:39.450
+to create audit log
+prevention policies,
+
+00:30:39.450 --> 00:30:44.010
+and how auditing supports
+forensic investigation
+
+00:30:44.010 --> 00:30:47.550
+of compromised user accounts.
+
+00:30:47.550 --> 00:30:53.740
+Now, let's see Microsoft Purview
+in action in the short demo.
+
+00:30:55.350 --> 00:30:59.550
+Let's learn how to start
+an audit in Purview.
+
+00:30:59.550 --> 00:31:02.340
+We're currently in
+Microsoft Defender,
+
+00:31:02.340 --> 00:31:04.950
+but let's access
+Purview from here.
+
+00:31:04.950 --> 00:31:10.500
+From the Defender bar, let's
+move down to "More Resources".
+
+00:31:10.500 --> 00:31:13.950
+This gives us access to
+link to additional portals,
+
+00:31:13.950 --> 00:31:16.980
+including the Microsoft
+Purview portal.
+
+00:31:16.980 --> 00:31:18.940
+Let's open it.
+
+00:31:19.980 --> 00:31:22.020
+Now, when we open
+it, it will tell us
+
+00:31:22.020 --> 00:31:24.870
+that the old compliance
+portal is retired.
+
+00:31:24.870 --> 00:31:28.150
+Let's manually switch
+to the new portal.
+
+00:31:31.860 --> 00:31:36.480
+And here we are in the
+Microsoft Purview portal.
+
+00:31:36.480 --> 00:31:39.870
+The only thing we're going to
+do over here is explore how
+
+00:31:39.870 --> 00:31:43.020
+to start an audit
+and basic search.
+
+00:31:43.020 --> 00:31:47.410
+Let's go into
+"Solutions," "Audit."
+
+00:31:50.040 --> 00:31:51.450
+There's our button,
+
+00:31:51.450 --> 00:31:56.280
+"Start recording users
+and admit activity."
+
+00:31:56.280 --> 00:31:57.690
+We'll start that.
+
+00:31:57.690 --> 00:32:01.260
+It will take a moment or
+two to start the audit,
+
+00:32:01.260 --> 00:32:03.390
+and from that point forward,
+
+00:32:03.390 --> 00:32:06.150
+after we've captured
+enough information,
+
+00:32:06.150 --> 00:32:12.700
+we can start querying and
+create cases as necessary.
+
+00:32:15.030 --> 00:32:18.720
+Let's wrap up with a quick
+Learning Path recap.
+
+00:32:18.720 --> 00:32:21.810
+We've covered how Microsoft
+Purview provides compliance
+
+00:32:21.810 --> 00:32:24.150
+solutions to mitigate threats.
+
+00:32:24.150 --> 00:32:27.120
+We discussed "Content
+Search" as a key feature
+
+00:32:27.120 --> 00:32:31.350
+within Microsoft Purview
+eDiscovery, and also looked
+
+00:32:31.350 --> 00:32:33.900
+at Microsoft Purview
+Audit Solution,
+
+00:32:33.900 --> 00:32:37.650
+including both Audit
+Standard and Audit Premium.
+
+00:32:37.650 --> 00:32:40.890
+You saw that Audit Standard
+is enabled by default
+
+00:32:40.890 --> 00:32:43.830
+and provides the ability
+to log and search
+
+00:32:43.830 --> 00:32:47.970
+for audited activities, and
+that Audit Premium builds
+
+00:32:47.970 --> 00:32:52.800
+on that foundation by providing
+advanced auditing functionality
+
+00:32:52.800 --> 00:32:58.120
+for deeper investigations and
+longer-term requirements.
+
+00:32:59.460 --> 00:33:01.560
+And this completes our session.
+
+00:33:01.560 --> 00:33:04.920
+There are many ways to continue
+your learning journey.
+
+00:33:04.920 --> 00:33:08.670
+We encourage you to watch other
+videos in Discourse or search
+
+00:33:08.670 --> 00:33:15.880
+out your next favorite topic on
+Microsoft Learn at aka.ms/learn.
+

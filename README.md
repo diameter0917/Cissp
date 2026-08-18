@@ -4,6 +4,9 @@
 
 教材是**預生成的靜態 HTML**（零 pay-per-use API、寄送免費）；每天另由一個輕量 Claude Routine 產生「今日時事延伸」一小段，寄信時合併進同一封信（有就附上、沒有不影響）。
 
+> 📌 本 repo 另含 **[SC-200 八週速成學習專案](#sc-200-八週速成學習專案)**（`sc200/` ＋ `docs/sc200/`）——
+> 電子報＋AI Podcast＋刷題 App，純網頁版、與上述 CISSP 寄信系統完全獨立。
+
 ---
 
 ## 目前進度
@@ -144,3 +147,72 @@ SEND_DATE=2026-06-25 DRY_RUN=1 python scripts/send_daily.py   # 本機乾跑測�
 - **每封固定兩支影片**：① **重點短片**＝該 Domain 中與本單元主題最相符的 mindmap（由 `match_videos.py` 依 `video_index.json` 標題＋字幕配對，是信中主連結與對齊來源）；② **完整課程**＝該 Domain 完整影片，帶 `?t=` 時間碼。後期 P3 另加 ③ 該 Domain 的 practice 考題影片（刷題）。配對結果存 `video_map.json`，可開來核對/手動微調。
 - **影片時間軸（② 完整課程深連結）**：完整課程連結帶 `?t=秒數`「從約 mm:ss 開始」，連到主題**真正開講**處（重點短片本身已聚焦單一主題、不需時間軸）。`apply_video_timestamps.py` 用**密度定位**：跳過開場 120 秒議程 name-drop，找關鍵字最密集的 120 秒視窗（多詞片語權重高於泛詞）。時間碼來源 `transcripts/_timed/<id>.vtt`（8 支 course 影片）。
 - **不要在雲端 session 連 YouTube / 跑 yt-dlp**（IP 會被擋）；影片資料用本機 `prepare_youtube.py` 跑好再 commit。
+
+---
+
+# SC-200 八週速成學習專案
+
+`sc200/`（來源）＋ `docs/sc200/`（發佈站）是一套獨立於 CISSP 系統的 **SC-200: Microsoft Security
+Operations Analyst** 應考專案：**純網頁版、不寄信、不動 `daily.yml`**。以微軟官方 10 支課程影片
+（EP1–EP10）為主軸，8 週走完全考綱並完成刷題。
+
+- 起始 **2026-08-18**、考試目標 **2026-10-17**、僅排平日共 40 天
+- **5 週速成**（25 個學習單元，D1 40–45%／D2 35–40%／D3 20–25%，KQL 前置到第一週）
+- **3 週刷題**（領域題組 → 權重混合 → 三場模擬考 → 錯題殲滅 → 考前速記表）
+
+## 三大交付
+
+| 交付 | 位置 | 說明 |
+|---|---|---|
+| 電子報 | `docs/sc200/newsletter/day-NNN.html` | 每封 3,000–4,000 繁中字：影片伴讀、核心概念表、KQL 實作＋逐行解說、SOC 實戰情境、考點聚焦、考綱補洞、5 題自測、MS Learn 延伸閱讀 |
+| Podcast | `docs/sc200/podcast/ep-NNN.mp3` ＋ `podcast.xml` | 雙主持人對談（曉臻／雲哲），edge-tts 免費合成，每集 7–11 分鐘，附逐字稿；RSS 可用 Podcast App 訂閱 |
+| 刷題 App | `docs/sc200/quiz.html` | 依領域／權重隨機／單元深連結／計時模擬考（55 題 100 分鐘）／錯題本（連對 2 次出榜）／學習統計；vanilla JS ＋ localStorage，零後端 |
+
+另有學習儀表板 `docs/sc200/index.html`（考試倒數、8 週月曆、40 日進度追蹤）。
+
+## 檔案結構
+
+```
+sc200/
+├── SC200_CONTENT_SPEC.md       # 內容規格書：詞彙表、章節契約、Podcast 人設、題庫規則
+├── sc200_curriculum.json       # 單一事實來源（40 單元 / 2 階段 / 3 領域 / EP1-10 對應）
+├── schedule.json               # 日期→單元（build_schedule.py 產生，複製到 docs/sc200/）
+├── site_config.json            # 站台網址、考試日、模考時間、TTS 語音設定
+├── transcripts/                # 影片 metadata 與字幕（fetch_transcripts.py 產生）
+├── content/day-001..025.html   # 電子報本文片段（人工撰寫）
+├── drill/day-026..040.html     # 刷題日頁面片段
+├── bank/{d1,d2,d3}.json        # 練習題庫（＋ mock-01..03.json 模擬考）
+├── podcast/scripts/ep-NNN.json # 雙主持人對談逐字稿；episodes.json 為合成 manifest
+└── templates/                  # newsletter.html / drill.html 頁面殼（{{PLACEHOLDER}}）
+```
+
+## 本機重建指令
+
+```bash
+python3 sc200/scripts/build_schedule.py         # 產生 schedule.json（+ docs 副本）
+python3 sc200/scripts/merge_staging.py          # 把 bank/_staging/ 的單元題目併入正式題庫
+python3 sc200/scripts/validate_questions.py     # 題庫品質門檻（--strict 供收尾全量驗證）
+python3 sc200/scripts/build_site.py --check     # 組站 + 內容驗證（--strict 另檢查自測題齊備）
+python3 -m http.server -d docs 8000             # 本機預覽 → http://localhost:8000/sc200/
+```
+
+## 自動化管線
+
+| Workflow | 觸發 | 作用 |
+|---|---|---|
+| `sc200-transcripts.yml` | 手動／腳本變更 | yt-dlp 抓影片 metadata 與字幕，commit 回分支 |
+| `sc200-podcast.yml` | Podcast 腳本 push／手動 | edge-tts 雙聲道合成 → ffmpeg 串接 48kbps mono → commit 音檔 → 產生 RSS |
+| `sc200-validate.yml` | `sc200/**` push | 題庫與站台組建驗證 |
+
+> 音檔與字幕都在 GitHub Actions runner 上產生——開發環境的 egress proxy 會擋掉
+> YouTube 與微軟語音端點。`gen_podcast.py` 依腳本 sha256 增量合成，只重做有改動的集數。
+
+## 注意事項
+
+- **字幕抓取**：YouTube 對 runner IP 有 bot 偵測，目前只成功取得影片標題（oEmbed 退路）。
+  要完整字幕請在自己電腦跑一次 `python sc200/scripts/fetch_transcripts.py` 後 commit
+  （同 CISSP 的 `prepare_youtube.py` 流程），電子報的「影片伴讀」即可補上時間碼定位。
+- **內容正確性**：教材與題目由 AI 依官方考綱生成；MS Learn 連結在雲端環境無法驗證，
+  閱讀時請順手把關。產品 UI 路徑常改版，內容以「能做什麼」為主而非逐步點擊路徑。
+- **考綱版本**：對齊 2026-07-28 更新版（含 Security Copilot、Sentinel data lake、
+  summary rules、KQL jobs、Sentinel Graph、MCP Server 等新考點）。

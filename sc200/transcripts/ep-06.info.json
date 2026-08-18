@@ -1,0 +1,17 @@
+{
+  "ep": "EP6",
+  "id": "3DHcnk9obfk",
+  "url": "https://youtu.be/3DHcnk9obfk",
+  "title": "Create queries in Microsoft Sentinel using Kusto Query Language (KQL) | SC-200 | Episode 6",
+  "channel": "Microsoft Learn",
+  "duration_sec": 2823,
+  "duration_string": "47:03",
+  "upload_date": "20260504",
+  "language": "en-US",
+  "chapters": [],
+  "manual_sub_langs": [
+    "en"
+  ],
+  "auto_sub_has_zh_hant": false,
+  "description_head": "Episode 6 of 10\nFor the full video series, click here: https://aka.ms/SC-200onYouTube\n\nThis video teaches learners how to write effective Kusto Query Language (KQL) statements to analyze log data in Microsoft Sentinel, building the core analytical skills required for threat detection, investigation, and reporting. It covers the structure of KQL queries, techniques for summarizing and visualizing data, methods for analyzing and correlating results across multiple tables, and approaches for manipulating string data from diverse log sources. Through four focused modules, learners progress from foundational query construction to more advanced multi‑table and data‑shaping techniques, gaining practical experience with the operators and patterns most commonly used in security analytics. This path supports the responsibilities of a Security Operations Analyst and aligns with the analytical competencies measured in the SC‑200 certification.\n\nLearn more about this course and take the certification exam to test your new skills: https://aka.ms/SC-200onLearn"
+}

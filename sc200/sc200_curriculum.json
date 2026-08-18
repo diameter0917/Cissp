@@ -1,0 +1,1070 @@
+{
+  "meta": {
+    "title": "SC-200 速成課程：電子報＋Podcast＋刷題",
+    "exam": "SC-200: Microsoft Security Operations Analyst",
+    "exam_outline_version": "Microsoft SC-200 study guide, 2026-07-28 update",
+    "language_policy": "繁體中文說明＋英文術語並列（沿用 CISSP 專案慣例）",
+    "schedule_model": "僅平日，共 40 天（25 天教材＋15 天刷題），8 週",
+    "start_date_default": "2026-08-18",
+    "exam_target": "2026-10-17",
+    "newsletter_target_chars": "3000-4000 繁中字/封",
+    "podcast_target": "每學習單元 1 集，雙主持人對談 9-11 分鐘（約 2200-2800 字腳本）",
+    "content_axis": "以 EP1-EP10 官方影片字幕為主軸（sc200/transcripts/），影片未涵蓋的考綱項目由電子報「考綱補洞」章節補足",
+    "note_titles": "video_resources 標題已由 oEmbed 回填（2026-08-17）；video_segments 待完整字幕（本機抓取）後填入"
+  },
+  "video_resources": {
+    "study_guide": "https://learn.microsoft.com/zh-tw/credentials/certifications/resources/study-guides/sc-200",
+    "ep_series": {
+      "EP1": {
+        "id": "8gCUtYEpTe8",
+        "url": "https://youtu.be/8gCUtYEpTe8",
+        "title": "Mitigate threats using Microsoft Defender XDR | SC-200 | Episode 1"
+      },
+      "EP2": {
+        "id": "QmvVYOG4uWI",
+        "url": "https://youtu.be/QmvVYOG4uWI",
+        "title": "Mitigate threats using Microsoft Security Copilot | SC-200 | Episode 2"
+      },
+      "EP3": {
+        "id": "5ln3fMECedU",
+        "url": "https://youtu.be/5ln3fMECedU",
+        "title": "Mitigate threats using Microsoft Purview | SC-200 | Episode 3"
+      },
+      "EP4": {
+        "id": "e7UxqMgb1zk",
+        "url": "https://youtu.be/e7UxqMgb1zk",
+        "title": "Mitigate threats using Microsoft Defender for Endpoint | SC-200 | Episode 4"
+      },
+      "EP5": {
+        "id": "Nt7f2Bog89c",
+        "url": "https://youtu.be/Nt7f2Bog89c",
+        "title": "Mitigate threats using Microsoft Defender for Cloud | SC-200 | Episode 5"
+      },
+      "EP6": {
+        "id": "3DHcnk9obfk",
+        "url": "https://youtu.be/3DHcnk9obfk",
+        "title": "Create queries in Microsoft Sentinel using Kusto Query Language (KQL) | SC-200 | Episode 6"
+      },
+      "EP7": {
+        "id": "0ydVILka3eg",
+        "url": "https://youtu.be/0ydVILka3eg",
+        "title": "Configure Microsoft Sentinel environment | SC-200 | Episode 7"
+      },
+      "EP8": {
+        "id": "hOYpji940yw",
+        "url": "https://youtu.be/hOYpji940yw",
+        "title": "Connect logs to Microsoft Sentinel | SC-200 | Episode 8"
+      },
+      "EP9": {
+        "id": "qlyEmMLif_M",
+        "url": "https://youtu.be/qlyEmMLif_M",
+        "title": "Create detections and perform investigations in Microsoft Sentinel | SC-200 | Episode 9"
+      },
+      "EP10": {
+        "id": "z6QbN4rpAvA",
+        "url": "https://youtu.be/z6QbN4rpAvA",
+        "title": "Perform threat hunting in Microsoft Sentinel | SC-200 | Episode 10"
+      }
+    }
+  },
+  "phases": [
+    {
+      "id": "P1",
+      "name_zh": "第一階段：五週速成",
+      "weeks": "W1-W5",
+      "description_zh": "25 個學習單元讀完全考綱；KQL 前置到第一週，因其貫穿三大領域"
+    },
+    {
+      "id": "P2",
+      "name_zh": "第二階段：三週刷題",
+      "weeks": "W6-W8",
+      "description_zh": "領域題組 → 權重混合 → 三場模擬考 → 錯題殲滅 → 考前總複習"
+    }
+  ],
+  "domains": [
+    {
+      "id": "D1",
+      "name_en": "Manage a security operations environment",
+      "name_zh": "管理安全性作業環境",
+      "weight": "40-45%"
+    },
+    {
+      "id": "D2",
+      "name_en": "Respond to security incidents",
+      "name_zh": "回應安全性事件",
+      "weight": "35-40%"
+    },
+    {
+      "id": "D3",
+      "name_en": "Perform threat hunting",
+      "name_zh": "執行威脅搜捕",
+      "weight": "20-25%"
+    },
+    {
+      "id": "MIX",
+      "name_en": "Cross-domain review",
+      "name_zh": "跨領域綜合",
+      "weight": "—"
+    }
+  ],
+  "units": [
+    {
+      "seq": 1,
+      "phase": "P1",
+      "week": 1,
+      "weekday_in_week": 1,
+      "code": "P1-W1-1",
+      "type": "study",
+      "domain": "D1",
+      "title_zh": "SC-200 考試全景與 Microsoft 安全生態系",
+      "title_en": "SC-200 Exam Landscape & the Microsoft Security Ecosystem",
+      "focus_zh": "考綱三大領域與權重、Defender XDR × Sentinel × Security Copilot 的角色分工、SOC 分析師日常工作流",
+      "video_eps": [
+        "EP1"
+      ],
+      "video_segments": [],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 2,
+      "phase": "P1",
+      "week": 1,
+      "weekday_in_week": 2,
+      "code": "P1-W1-2",
+      "type": "study",
+      "domain": "D3",
+      "title_zh": "KQL 基礎 I：查詢結構、where／project／summarize",
+      "title_en": "KQL Fundamentals I: Query Structure, where / project / summarize",
+      "focus_zh": "KQL 管線思維、資料表與結構描述、篩選投影聚合、count/distinct/bin 時間分桶",
+      "video_eps": [
+        "EP6"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP6",
+          "start": 690,
+          "title": "KQL: has vs contains、KQL: project / extend、KQL: summarize",
+          "score": 4.1
+        },
+        {
+          "ep": "EP6",
+          "start": 1170,
+          "title": "KQL: has vs contains、KQL: project / extend、KQL: summarize",
+          "score": 4.7
+        },
+        {
+          "ep": "EP6",
+          "start": 2640,
+          "title": "KQL: has vs contains、KQL: project / extend、KQL: summarize",
+          "score": 5.0
+        }
+      ],
+      "kql_focus": true,
+      "tags": []
+    },
+    {
+      "seq": 3,
+      "phase": "P1",
+      "week": 1,
+      "weekday_in_week": 3,
+      "code": "P1-W1-3",
+      "type": "study",
+      "domain": "D3",
+      "title_zh": "KQL 基礎 II：join／union／parse 與時間序列進階",
+      "title_en": "KQL Fundamentals II: join / union / parse & Time-series",
+      "focus_zh": "join 種類與效能、union 跨表、parse/extract 解析欄位、let 變數與函式、arg_max 去重",
+      "video_eps": [
+        "EP6"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP6",
+          "start": 1020,
+          "title": "KQL: union、KQL: join、KQL: project / extend",
+          "score": 5.9
+        },
+        {
+          "ep": "EP6",
+          "start": 1320,
+          "title": "KQL: parse / extract、KQL: join、KQL: project / extend",
+          "score": 5.9
+        },
+        {
+          "ep": "EP6",
+          "start": 2640,
+          "title": "KQL: parse / extract、KQL: union、KQL: join",
+          "score": 9.9
+        }
+      ],
+      "kql_focus": true,
+      "tags": []
+    },
+    {
+      "seq": 4,
+      "phase": "P1",
+      "week": 1,
+      "weekday_in_week": 4,
+      "code": "P1-W1-4",
+      "type": "study",
+      "domain": "D1",
+      "title_zh": "Defender XDR 統一入口網站：設定、統一 RBAC 與多租用戶",
+      "title_en": "Defender XDR Unified Portal: Settings, Unified RBAC & Multi-tenant",
+      "focus_zh": "defender.microsoft.com 入口整合、統一 RBAC 角色設計、多租用戶管理、通知與功能設定",
+      "video_eps": [
+        "EP1"
+      ],
+      "video_segments": [],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 5,
+      "phase": "P1",
+      "week": 1,
+      "weekday_in_week": 5,
+      "code": "P1-W1-5",
+      "type": "study",
+      "domain": "D1",
+      "title_zh": "Defender for Endpoint 部署：上線、裝置群組與進階功能",
+      "title_en": "Deploying Microsoft Defender for Endpoint",
+      "focus_zh": "MDE 上線方式、裝置群組與自動化層級、ASR 規則、網頁內容篩選、進階功能設定",
+      "video_eps": [
+        "EP4"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP4",
+          "start": 600,
+          "title": "device groups、MDE onboarding、Live Response",
+          "score": 13.4
+        },
+        {
+          "ep": "EP4",
+          "start": 2190,
+          "title": "device groups、device discovery、MDE onboarding",
+          "score": 16.3
+        },
+        {
+          "ep": "EP4",
+          "start": 2670,
+          "title": "device groups、MDE onboarding、ASR rules",
+          "score": 13.4
+        }
+      ],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 6,
+      "phase": "P1",
+      "week": 2,
+      "weekday_in_week": 1,
+      "code": "P1-W2-1",
+      "type": "study",
+      "domain": "D1",
+      "title_zh": "Sentinel 工作區設計：架構、角色與成本管理",
+      "title_en": "Sentinel Workspace Design: Architecture, Roles & Cost",
+      "focus_zh": "工作區單/多區設計、Sentinel RBAC 角色、資料保留與封存、承諾層級與成本最佳化",
+      "video_eps": [
+        "EP7"
+      ],
+      "video_segments": [],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 7,
+      "phase": "P1",
+      "week": 2,
+      "weekday_in_week": 2,
+      "code": "P1-W2-2",
+      "type": "study",
+      "domain": "D1",
+      "title_zh": "資料連接器 I：Content Hub、第一方連接器與 DCR",
+      "title_en": "Data Connectors I: Content Hub, First-party Connectors & DCR",
+      "focus_zh": "Content Hub 解決方案、Defender XDR/Entra/Office 連接器、資料收集規則與擷取時轉換",
+      "video_eps": [
+        "EP8"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP8",
+          "start": 990,
+          "title": "Data Collection Rule (DCR)、CEF、Content Hub",
+          "score": 17.8
+        },
+        {
+          "ep": "EP8",
+          "start": 1140,
+          "title": "Data Collection Rule (DCR)、CEF、Syslog",
+          "score": 16.5
+        },
+        {
+          "ep": "EP8",
+          "start": 2220,
+          "title": "Data Collection Rule (DCR)、Content Hub、workbooks",
+          "score": 16.5
+        }
+      ],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 8,
+      "phase": "P1",
+      "week": 2,
+      "weekday_in_week": 3,
+      "code": "P1-W2-3",
+      "type": "study",
+      "domain": "D1",
+      "title_zh": "資料連接器 II：Syslog／CEF／自訂記錄與 ASIM 正規化",
+      "title_en": "Data Connectors II: Syslog / CEF / Custom Logs & ASIM",
+      "focus_zh": "AMA 代理程式、Syslog 與 CEF 轉送、自訂記錄擷取、ASIM 剖析器與正規化結構描述",
+      "video_eps": [
+        "EP8"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP8",
+          "start": 1080,
+          "title": "Data Collection Rule (DCR)、CEF、Syslog",
+          "score": 20.0
+        },
+        {
+          "ep": "EP8",
+          "start": 1230,
+          "title": "Data Collection Rule (DCR)、Syslog、KQL: parse / extract",
+          "score": 13.0
+        },
+        {
+          "ep": "EP8",
+          "start": 1380,
+          "title": "Data Collection Rule (DCR)、Syslog、KQL: parse / extract",
+          "score": 13.0
+        }
+      ],
+      "kql_focus": true,
+      "tags": []
+    },
+    {
+      "seq": 9,
+      "phase": "P1",
+      "week": 2,
+      "weekday_in_week": 4,
+      "code": "P1-W2-4",
+      "type": "study",
+      "domain": "D1",
+      "title_zh": "威脅情報管理：MDTI、STIX／TAXII 與 Watchlists",
+      "title_en": "Threat Intelligence: MDTI, STIX / TAXII & Watchlists",
+      "focus_zh": "威脅指標管理、MDTI 整合、STIX/TAXII 匯入、watchlist 建立與 KQL 查詢應用",
+      "video_eps": [
+        "EP7"
+      ],
+      "video_segments": [],
+      "kql_focus": true,
+      "tags": []
+    },
+    {
+      "seq": 10,
+      "phase": "P1",
+      "week": 2,
+      "weekday_in_week": 5,
+      "code": "P1-W2-5",
+      "type": "study",
+      "domain": "D1",
+      "title_zh": "Sentinel data lake：資料層、Summary Rules 與 KQL Jobs",
+      "title_en": "Sentinel Data Lake: Tiers, Summary Rules & KQL Jobs",
+      "focus_zh": "分析層 vs 資料湖層、summary rules 聚合、KQL jobs 排程查詢、成本與搜捕場景",
+      "video_eps": [
+        "EP7"
+      ],
+      "video_segments": [],
+      "kql_focus": true,
+      "tags": [
+        "2026"
+      ]
+    },
+    {
+      "seq": 11,
+      "phase": "P1",
+      "week": 3,
+      "weekday_in_week": 1,
+      "code": "P1-W3-1",
+      "type": "study",
+      "domain": "D1",
+      "title_zh": "Security Copilot 設定與管理：SCU、外掛與 Agents",
+      "title_en": "Configuring Microsoft Security Copilot: SCU, Plugins & Agents",
+      "focus_zh": "SCU 容量佈建、獨立與內嵌體驗、外掛與資料來源、promptbooks、agentic AI 概念",
+      "video_eps": [
+        "EP2"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP2",
+          "start": 1140,
+          "title": "SCU capacity、Security Copilot",
+          "score": 21.8
+        },
+        {
+          "ep": "EP2",
+          "start": 1320,
+          "title": "SCU capacity、Security Copilot、Purview Audit",
+          "score": 22.2
+        },
+        {
+          "ep": "EP2",
+          "start": 3150,
+          "title": "promptbook、Security Copilot、incident vs alert",
+          "score": 19.3
+        }
+      ],
+      "kql_focus": false,
+      "tags": [
+        "2026"
+      ]
+    },
+    {
+      "seq": 12,
+      "phase": "P1",
+      "week": 3,
+      "weekday_in_week": 2,
+      "code": "P1-W3-2",
+      "type": "study",
+      "domain": "D2",
+      "title_zh": "Defender XDR 事件分診：Incidents、Alerts 與調查優先排序",
+      "title_en": "Incident Triage in Defender XDR",
+      "focus_zh": "incident vs alert、警示關聯與歸戶、嚴重性判斷、分診工作流、事件指派與標籤",
+      "video_eps": [
+        "EP1"
+      ],
+      "video_segments": [],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 13,
+      "phase": "P1",
+      "week": 3,
+      "weekday_in_week": 3,
+      "code": "P1-W3-3",
+      "type": "study",
+      "domain": "D2",
+      "title_zh": "MDE 裝置回應：Live Response、隔離與自動調查",
+      "title_en": "Device Response with MDE: Live Response, Isolation & AIR",
+      "focus_zh": "裝置隔離與限制應用程式、Live Response 工作階段與命令、調查套件收集、AIR 自動調查修復",
+      "video_eps": [
+        "EP4"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP4",
+          "start": 660,
+          "title": "Live Response、automated investigation (AIR)、device groups",
+          "score": 12.2
+        },
+        {
+          "ep": "EP4",
+          "start": 1140,
+          "title": "investigation package、Live Response、Action center",
+          "score": 24.1
+        },
+        {
+          "ep": "EP4",
+          "start": 1710,
+          "title": "automated investigation (AIR)、device groups、indicators (IoC allow/block)",
+          "score": 7.5
+        }
+      ],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 14,
+      "phase": "P1",
+      "week": 3,
+      "weekday_in_week": 4,
+      "code": "P1-W3-4",
+      "type": "study",
+      "domain": "D2",
+      "title_zh": "電子郵件威脅回應：Defender for Office 365",
+      "title_en": "Responding to Email Threats with Defender for Office 365",
+      "focus_zh": "Threat Explorer 調查、郵件修復動作、自動調查、Safe Links/Attachments、提交與允許封鎖清單",
+      "video_eps": [
+        "EP1"
+      ],
+      "video_segments": [],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 15,
+      "phase": "P1",
+      "week": 3,
+      "weekday_in_week": 5,
+      "code": "P1-W3-5",
+      "type": "study",
+      "domain": "D2",
+      "title_zh": "身分識別威脅：Defender for Identity 與 Entra ID Protection",
+      "title_en": "Identity Threats: MDI & Entra ID Protection",
+      "focus_zh": "MDI 感應器與偵測、橫向移動路徑、Entra ID Protection 風險偵測與風險型條件式存取、ITDR",
+      "video_eps": [
+        "EP1"
+      ],
+      "video_segments": [],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 16,
+      "phase": "P1",
+      "week": 4,
+      "weekday_in_week": 1,
+      "code": "P1-W4-1",
+      "type": "study",
+      "domain": "D2",
+      "title_zh": "Defender for Cloud 警示回應：工作負載保護",
+      "title_en": "Responding to Defender for Cloud Alerts",
+      "focus_zh": "CWP 計畫與警示類型、警示調查與抑制規則、與 Sentinel/XDR 整合、JIT VM 存取",
+      "video_eps": [
+        "EP5"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP5",
+          "start": 990,
+          "title": "Defender for Cloud alerts、incident vs alert、device isolation",
+          "score": 5.4
+        },
+        {
+          "ep": "EP5",
+          "start": 1800,
+          "title": "Defender for Cloud alerts、incident vs alert、KQL: project / extend",
+          "score": 5.3
+        },
+        {
+          "ep": "EP5",
+          "start": 2010,
+          "title": "suppression rules、Defender for Cloud alerts、playbooks (Logic Apps)",
+          "score": 19.5
+        }
+      ],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 17,
+      "phase": "P1",
+      "week": 4,
+      "weekday_in_week": 2,
+      "code": "P1-W4-2",
+      "type": "study",
+      "domain": "D2",
+      "title_zh": "Sentinel 分析規則 I：Scheduled／NRT、實體對應與 MITRE 對照",
+      "title_en": "Analytics Rules I: Scheduled / NRT, Entity Mapping & MITRE",
+      "focus_zh": "排程規則查詢邏輯、NRT 限制、實體對應與自訂詳細資料、事件分組、MITRE 戰術對照",
+      "video_eps": [
+        "EP9"
+      ],
+      "video_segments": [],
+      "kql_focus": true,
+      "tags": []
+    },
+    {
+      "seq": 18,
+      "phase": "P1",
+      "week": 4,
+      "weekday_in_week": 3,
+      "code": "P1-W4-3",
+      "type": "study",
+      "domain": "D2",
+      "title_zh": "Sentinel 分析規則 II：Fusion、UEBA 與異常偵測",
+      "title_en": "Analytics Rules II: Fusion, UEBA & Anomaly Detection",
+      "focus_zh": "Fusion 多階段攻擊偵測、UEBA 實體行為分析、異常規則、Microsoft 安全性規則範本",
+      "video_eps": [
+        "EP9"
+      ],
+      "video_segments": [],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 19,
+      "phase": "P1",
+      "week": 4,
+      "weekday_in_week": 4,
+      "code": "P1-W4-4",
+      "type": "study",
+      "domain": "D2",
+      "title_zh": "Sentinel 自動化：Automation Rules 與 Playbooks",
+      "title_en": "SOAR in Sentinel: Automation Rules & Playbooks (Logic Apps)",
+      "focus_zh": "自動化規則觸發與動作、playbook 設計與權限、Logic Apps 連接器、事件/警示觸發程序",
+      "video_eps": [
+        "EP9"
+      ],
+      "video_segments": [],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 20,
+      "phase": "P1",
+      "week": 4,
+      "weekday_in_week": 5,
+      "code": "P1-W4-5",
+      "type": "study",
+      "domain": "D2",
+      "title_zh": "Microsoft Purview 威脅調查與 Copilot 引導式回應",
+      "title_en": "Investigating Threats with Microsoft Purview & Copilot-guided Response",
+      "focus_zh": "Purview Audit 稽核記錄調查、DLP 警示處理、內部風險管理（insider risk）案件、eDiscovery 基礎、Security Copilot 內嵌調查體驗與引導式回應",
+      "video_eps": [
+        "EP3",
+        "EP2"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP2",
+          "start": 1320,
+          "title": "Purview Audit、Security Copilot、SCU capacity",
+          "score": 6.4
+        },
+        {
+          "ep": "EP2",
+          "start": 1710,
+          "title": "Purview Audit、Security Copilot、incident vs alert",
+          "score": 6.1
+        },
+        {
+          "ep": "EP2",
+          "start": 3750,
+          "title": "Purview Audit、Security Copilot、incident vs alert",
+          "score": 6.0
+        },
+        {
+          "ep": "EP3",
+          "start": 60,
+          "title": "eDiscovery、DLP alerts、insider risk management",
+          "score": 33.0
+        },
+        {
+          "ep": "EP3",
+          "start": 210,
+          "title": "eDiscovery、DLP alerts、insider risk management",
+          "score": 33.4
+        },
+        {
+          "ep": "EP3",
+          "start": 570,
+          "title": "eDiscovery、insider risk management、Purview Audit",
+          "score": 25.0
+        }
+      ],
+      "kql_focus": false,
+      "tags": [
+        "2026"
+      ]
+    },
+    {
+      "seq": 21,
+      "phase": "P1",
+      "week": 5,
+      "weekday_in_week": 1,
+      "code": "P1-W5-1",
+      "type": "study",
+      "domain": "D3",
+      "title_zh": "Advanced Hunting：Defender XDR 結構描述與自訂偵測",
+      "title_en": "Advanced Hunting: XDR Schema & Custom Detections",
+      "focus_zh": "advanced hunting 資料表結構、跨表關聯查詢、自訂偵測規則建立與回應動作、go hunt",
+      "video_eps": [
+        "EP1",
+        "EP10"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP10",
+          "start": 60,
+          "title": "hunts、incident vs alert、livestream",
+          "score": 6.8
+        },
+        {
+          "ep": "EP10",
+          "start": 210,
+          "title": "hunts、incident vs alert、livestream",
+          "score": 5.3
+        },
+        {
+          "ep": "EP10",
+          "start": 360,
+          "title": "hunts、incident vs alert、livestream",
+          "score": 6.0
+        }
+      ],
+      "kql_focus": true,
+      "tags": []
+    },
+    {
+      "seq": 22,
+      "phase": "P1",
+      "week": 5,
+      "weekday_in_week": 2,
+      "code": "P1-W5-2",
+      "type": "study",
+      "domain": "D3",
+      "title_zh": "Sentinel 威脅搜捕：Hunts、Hunting Queries、書籤與 Livestream",
+      "title_en": "Threat Hunting in Sentinel: Hunts, Queries, Bookmarks & Livestream",
+      "focus_zh": "搜捕儀表板與 hunts 功能、書籤保存證據、livestream 即時監控、搜捕轉分析規則",
+      "video_eps": [
+        "EP10"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP10",
+          "start": 60,
+          "title": "livestream、bookmarks、hunts",
+          "score": 25.6
+        },
+        {
+          "ep": "EP10",
+          "start": 360,
+          "title": "livestream、bookmarks、hunts",
+          "score": 24.7
+        },
+        {
+          "ep": "EP10",
+          "start": 1140,
+          "title": "livestream、bookmarks、hunts",
+          "score": 24.5
+        }
+      ],
+      "kql_focus": true,
+      "tags": []
+    },
+    {
+      "seq": 23,
+      "phase": "P1",
+      "week": 5,
+      "weekday_in_week": 3,
+      "code": "P1-W5-3",
+      "type": "study",
+      "domain": "D3",
+      "title_zh": "假說驅動搜捕：MITRE ATT&CK 與 Notebooks",
+      "title_en": "Hypothesis-driven Hunting: MITRE ATT&CK & Notebooks",
+      "focus_zh": "假說形成與驗證流程、ATT&CK 戰術技術對應、Jupyter notebooks 搜捕、MSTICPy 概念",
+      "video_eps": [
+        "EP10"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP10",
+          "start": 60,
+          "title": "notebooks (Jupyter/MSTICPy)、bookmarks、hunts",
+          "score": 10.9
+        },
+        {
+          "ep": "EP10",
+          "start": 1140,
+          "title": "notebooks (Jupyter/MSTICPy)、bookmarks、hunts",
+          "score": 11.6
+        },
+        {
+          "ep": "EP10",
+          "start": 1410,
+          "title": "notebooks (Jupyter/MSTICPy)、bookmarks、MITRE ATT&CK mapping",
+          "score": 9.8
+        }
+      ],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 24,
+      "phase": "P1",
+      "week": 5,
+      "weekday_in_week": 4,
+      "code": "P1-W5-4",
+      "type": "study",
+      "domain": "D3",
+      "title_zh": "Sentinel Graph、MCP Server 與 data lake 進階搜捕",
+      "title_en": "Sentinel Graph, MCP Server & Data Lake Hunting",
+      "focus_zh": "Sentinel Graph 關聯分析、MCP Server 與 AI 代理整合、data lake 上的長期搜捕",
+      "video_eps": [
+        "EP10"
+      ],
+      "video_segments": [
+        {
+          "ep": "EP10",
+          "start": 60,
+          "title": "KQL jobs、Sentinel data lake、search job",
+          "score": 10.3
+        },
+        {
+          "ep": "EP10",
+          "start": 360,
+          "title": "KQL jobs、Sentinel data lake、search job",
+          "score": 9.0
+        },
+        {
+          "ep": "EP10",
+          "start": 540,
+          "title": "KQL jobs、Sentinel data lake、search job",
+          "score": 8.8
+        }
+      ],
+      "kql_focus": false,
+      "tags": [
+        "2026"
+      ]
+    },
+    {
+      "seq": 25,
+      "phase": "P1",
+      "week": 5,
+      "weekday_in_week": 5,
+      "code": "P1-W5-5",
+      "type": "study",
+      "domain": "MIX",
+      "title_zh": "五週總複習：跨領域情境演練與考試策略",
+      "title_en": "Five-week Review: Cross-domain Scenarios & Exam Strategy",
+      "focus_zh": "三大領域知識串接、端到端 SOC 情境（偵測→分診→回應→搜捕）、答題策略與時間管理",
+      "video_eps": [
+        "EP9",
+        "EP10"
+      ],
+      "video_segments": [],
+      "kql_focus": false,
+      "tags": []
+    },
+    {
+      "seq": 26,
+      "phase": "P2",
+      "week": 6,
+      "weekday_in_week": 1,
+      "code": "P2-W6-1",
+      "type": "drill",
+      "domain": "D1",
+      "title_zh": "D1 題組 A（40 題）：作業環境管理",
+      "title_en": "Domain 1 Set A (40 questions)",
+      "quiz_spec": {
+        "mode": "domain",
+        "domain": "D1",
+        "set": "A",
+        "n": 40
+      }
+    },
+    {
+      "seq": 27,
+      "phase": "P2",
+      "week": 6,
+      "weekday_in_week": 2,
+      "code": "P2-W6-2",
+      "type": "drill",
+      "domain": "D1",
+      "title_zh": "D1 題組 B（40 題）：作業環境管理",
+      "title_en": "Domain 1 Set B (40 questions)",
+      "quiz_spec": {
+        "mode": "domain",
+        "domain": "D1",
+        "set": "B",
+        "n": 40
+      }
+    },
+    {
+      "seq": 28,
+      "phase": "P2",
+      "week": 6,
+      "weekday_in_week": 3,
+      "code": "P2-W6-3",
+      "type": "drill",
+      "domain": "D2",
+      "title_zh": "D2 題組 A（40 題）：事件回應",
+      "title_en": "Domain 2 Set A (40 questions)",
+      "quiz_spec": {
+        "mode": "domain",
+        "domain": "D2",
+        "set": "A",
+        "n": 40
+      }
+    },
+    {
+      "seq": 29,
+      "phase": "P2",
+      "week": 6,
+      "weekday_in_week": 4,
+      "code": "P2-W6-4",
+      "type": "drill",
+      "domain": "D2",
+      "title_zh": "D2 題組 B（40 題）：事件回應",
+      "title_en": "Domain 2 Set B (40 questions)",
+      "quiz_spec": {
+        "mode": "domain",
+        "domain": "D2",
+        "set": "B",
+        "n": 40
+      }
+    },
+    {
+      "seq": 30,
+      "phase": "P2",
+      "week": 6,
+      "weekday_in_week": 5,
+      "code": "P2-W6-5",
+      "type": "drill",
+      "domain": "D3",
+      "title_zh": "D3 題組 A（40 題）：威脅搜捕",
+      "title_en": "Domain 3 Set A (40 questions)",
+      "quiz_spec": {
+        "mode": "domain",
+        "domain": "D3",
+        "set": "A",
+        "n": 40
+      }
+    },
+    {
+      "seq": 31,
+      "phase": "P2",
+      "week": 7,
+      "weekday_in_week": 1,
+      "code": "P2-W7-1",
+      "type": "drill",
+      "domain": "D3",
+      "title_zh": "D3 題組 B（30 題）＋錯題本第一輪",
+      "title_en": "Domain 3 Set B (30 questions) + Wrong-answer Round 1",
+      "quiz_spec": {
+        "mode": "domain",
+        "domain": "D3",
+        "set": "B",
+        "n": 30,
+        "then": "wrong"
+      }
+    },
+    {
+      "seq": 32,
+      "phase": "P2",
+      "week": 7,
+      "weekday_in_week": 2,
+      "code": "P2-W7-2",
+      "type": "drill",
+      "domain": "MIX",
+      "title_zh": "全領域隨機混合 50 題（依考試權重抽樣）",
+      "title_en": "Weighted Random Mix (50 questions)",
+      "quiz_spec": {
+        "mode": "random",
+        "n": 50
+      }
+    },
+    {
+      "seq": 33,
+      "phase": "P2",
+      "week": 7,
+      "weekday_in_week": 3,
+      "code": "P2-W7-3",
+      "type": "drill",
+      "domain": "MIX",
+      "title_zh": "模擬考 1（55 題／100 分鐘計時）",
+      "title_en": "Mock Exam 1 (55 questions / 100 minutes)",
+      "quiz_spec": {
+        "mode": "mock",
+        "set": 1
+      }
+    },
+    {
+      "seq": 34,
+      "phase": "P2",
+      "week": 7,
+      "weekday_in_week": 4,
+      "code": "P2-W7-4",
+      "type": "drill",
+      "domain": "MIX",
+      "title_zh": "模擬考 1 檢討＋錯題本更新",
+      "title_en": "Mock 1 Review + Wrong-answer Update",
+      "quiz_spec": {
+        "mode": "wrong"
+      }
+    },
+    {
+      "seq": 35,
+      "phase": "P2",
+      "week": 7,
+      "weekday_in_week": 5,
+      "code": "P2-W7-5",
+      "type": "drill",
+      "domain": "MIX",
+      "title_zh": "弱項領域加強（依統計選最弱領域重練 40 題）",
+      "title_en": "Weak-domain Reinforcement (40 questions)",
+      "quiz_spec": {
+        "mode": "stats"
+      }
+    },
+    {
+      "seq": 36,
+      "phase": "P2",
+      "week": 8,
+      "weekday_in_week": 1,
+      "code": "P2-W8-1",
+      "type": "drill",
+      "domain": "MIX",
+      "title_zh": "全領域隨機混合 50 題",
+      "title_en": "Weighted Random Mix (50 questions)",
+      "quiz_spec": {
+        "mode": "random",
+        "n": 50
+      }
+    },
+    {
+      "seq": 37,
+      "phase": "P2",
+      "week": 8,
+      "weekday_in_week": 2,
+      "code": "P2-W8-2",
+      "type": "drill",
+      "domain": "MIX",
+      "title_zh": "模擬考 2（55 題／100 分鐘計時）",
+      "title_en": "Mock Exam 2 (55 questions / 100 minutes)",
+      "quiz_spec": {
+        "mode": "mock",
+        "set": 2
+      }
+    },
+    {
+      "seq": 38,
+      "phase": "P2",
+      "week": 8,
+      "weekday_in_week": 3,
+      "code": "P2-W8-3",
+      "type": "drill",
+      "domain": "MIX",
+      "title_zh": "模擬考 2 檢討＋錯題殲滅（錯題全部重練到對）",
+      "title_en": "Mock 2 Review + Wrong-answer Elimination",
+      "quiz_spec": {
+        "mode": "wrong"
+      }
+    },
+    {
+      "seq": 39,
+      "phase": "P2",
+      "week": 8,
+      "weekday_in_week": 4,
+      "code": "P2-W8-4",
+      "type": "drill",
+      "domain": "MIX",
+      "title_zh": "模擬考 3（55 題，最終模測）",
+      "title_en": "Mock Exam 3 (55 questions, final)",
+      "quiz_spec": {
+        "mode": "mock",
+        "set": 3
+      }
+    },
+    {
+      "seq": 40,
+      "phase": "P2",
+      "week": 8,
+      "weekday_in_week": 5,
+      "code": "P2-W8-5",
+      "type": "drill",
+      "domain": "MIX",
+      "title_zh": "考前總複習：速記表與考試日攻略",
+      "title_en": "Final Review: Cheat Sheet & Exam-day Strategy",
+      "quiz_spec": null
+    }
+  ]
+}

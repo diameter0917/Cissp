@@ -1,0 +1,223 @@
+{
+  "episode": 20,
+  "unit": "P1-W4-5",
+  "title_zh": "Purview 威脅調查與 Copilot 引導式回應",
+  "dialogue": [
+    {
+      "speaker": "host_f",
+      "text": "哈囉大家好，歡迎回到 SC-200 速成電台，我是曉臻。這週都在 Sentinel 裡設規則、跑自動化，今天要換場地了？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "我是雲哲。換場地，也換一種事件。今天出事的不是端點，是資料本身：機密檔案被帶走、離職員工大量下載、某封信被人偷看。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "這種事 Defender 不是查得到嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "查得到一半。端點告訴你檔案被複製，但誰在什麼時間開過哪一封信、證據能不能交給法務，這要靠 Microsoft Purview。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "好，先給我們今天的三個重點。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "第一，Purview 有四件武器：DLP 警示、內部風險管理、eDiscovery、Audit，考題就是問你該拿哪一件。第二，稽核沒開就什麼都沒有，保留期在記錄產生當下就決定。第三，eDiscovery 的核心不是搜尋，是保全。最後講 Copilot 內嵌調查，2026 新考點。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "從 DLP 開始。警示進來了，我要看什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "問自己四件事：比對到哪條規則跟哪類敏感資訊、發生在哪個位置、是誰、系統採取了什麼動作。動作最透露意圖：封鎖後摸摸鼻子走人多半是意外，填商業理由硬是覆寫就不是了，覆寫是紅旗。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那為什麼還要去 Defender XDR 看同一則警示？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "因為 XDR 會關聯。用警示類別篩 data loss prevention，你會看到 DLP 說他外寄客戶名單、MDE 說他插了 USB、Entra 說他從陌生 IP 登入，三則小警示合起來才是一次外洩。Defender for Cloud Apps 的警示也已經整併進 XDR。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二件武器是稽核，影片這段講得特別細。Standard 跟 Premium 差在哪？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "因為它是所有調查的地基。Purview Audit 是統一稽核記錄，橫跨 Exchange、SharePoint、OneDrive、Teams 跟 Entra ID。Standard 預設就開著，保留 180 天。Premium 多三件事：核心服務預設保留一年、可自訂保留政策最多 50 條、還有更深的洞察。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "自訂保留最長可以拉到幾年？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "7 天到 10 年，10 年要另外的授權。但這裡有個大坑：保留期是在記錄產生的當下決定的，你今天改成三年，只對今天以後的新資料生效。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "所以考題說事件發生在 200 天前，環境只有 Standard？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "答案是取不到了，超過 180 天。選「延長保留期再查一次」的那個選項，就是陷阱。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "Premium 最值得記的能力是哪一個？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "MailItemsAccessed，郵件存取事件。它回答的問題很特別：不是檔案有沒有被下載，而是那封信到底有沒有被讀過。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "怎麼看出被讀過？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "看存取類型。Bind 是個別郵件被開啟，Sync 是整個信箱同步到用戶端，等於整批取走。細節也常考：同一信箱每天超過 1,000 筆會節流暫停記錄。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三件武器，內部風險管理。它跟 DLP 差在哪？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "DLP 看單一動作，內部風險看一個人的模式：他下週離職、下載量是平常十倍、還把檔案改副檔名再上傳個人雲端硬碟，單看都不夠格報警，串起來就是竊取。政策從範本選，像離職員工資料竊取、資料外洩、安全性政策違規、風險瀏覽器使用。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "有人抱怨政策開了卻一則警示都沒有，通常是什麼原因？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "三個前置條件沒到位：稽核沒開，因為指標的資料就來自稽核記錄；指標沒在全域設定裡打開；離職相關的範本，還要靠 HR 連接器匯入離職日這些人資事件。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "隱私呢？分析師直接看得到是誰嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "預設匿名化，避免你還沒確認風險就對人有成見，要看真實身分得有調查者角色。案件查完有三條路：解決案件、送出使用者通知，或者升級以進行調查——這一步會把案子交給 eDiscovery。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "接得剛好。第四件武器 eDiscovery，這是整套課程唯一講清楚的地方。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "對，缺口就在這裡，一定要補。eDiscovery 做三件事：尋找、保全、匯出，重點是保全。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那它跟內容搜尋 Content Search 差在哪？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "內容搜尋快，但沒有稽核軌跡跟存取控制。eDiscovery 的每次搜尋都必須發生在案件裡，全部留紀錄，這就是法律上站得住腳的來源。而且是案件成員制，有角色但沒被加進案件，一樣什麼都看不到。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "Standard 跟 Premium 又差在哪？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Standard 給你案件、搜尋、案件層級的保留跟匯出，E3、E5 都有。Premium 多了以保管人為中心的保留、法務保留通知，還有內建審閱集，要 E5 或合規性附加元件。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "搜尋跟匯出有什麼實務原則？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "先小後大。一開始就開到全租用戶，你會被雜訊淹死；先用統計跟抽樣驗證，確認了再擴大。匯出的封裝含資訊清單、記錄跟雜湊值，加上限時下載連結，這整套就是保管鏈。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "把四件武器串成一條線，如果真有工程師要帶走設計圖？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "第一，DLP 警示說他上傳機密 CAD 檔又覆寫。第二，稽核記錄顯示他上週下載 340 個檔案，還讀過主管那封併購信。第三，內部風險案件把離職加上大量下載串成模式。第四，eDiscovery 套用保留，他刪信也刪不掉證據。順序不能反，保全一定要早。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "這條鏈聽起來很花時間，Copilot 是在這裡上場？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "對，它是加速器。內嵌體驗直接長在 Defender XDR、Purview、Entra 的畫面裡，不用切換工具；要跨產品深挖，再轉去獨立體驗。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "在 XDR 裡它能做什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "打開事件頁自動給你事件摘要，最多能摘要 100 則警示；還有指令碼分析、檔案分析、裝置摘要、自然語言轉 KQL，最後一鍵產出事件報告。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "摘要跟報告不是同一件事嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "考題就愛這樣混。摘要是給你自己快速看懂發生什麼事；報告是留給交班跟稽核的完整紀錄，含時間戳記、參與的分析師、分類結果跟做過的動作。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那引導式回應呢？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "它是建議清單，分四類：分診、控制、調查、修復，每張卡片還會說明為什麼這樣建議。重點是它只建議，動作還是你按下去。要不需人工介入、固定做同一件事，那是自動化規則跟劇本。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "好，考點快問快答三題。第一題：環境只有 Audit Standard，要查 220 天前的下載紀錄，怎麼做？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "做不到。Standard 保留 180 天，記錄已經不在，事後延長保留期也只對新資料生效。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二題：要確認離職員工有沒有真的讀過某封機密郵件，用什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Audit Premium 的 MailItemsAccessed，看存取類型是 Bind 還是 Sync。Standard 查不到這個。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三題：法務要求保全某使用者的信箱與 OneDrive，之後要交出證據，第一步做什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "建立 eDiscovery 案件並套用保留。先保全再搜尋，別先跑內容搜尋，那個沒有案件層級的稽核跟存取控制。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "三題都很實務。明天預告？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "明天進第五週，講 Advanced Hunting：Defender XDR 的資料表結構、跨表關聯，還有把查詢變成自訂偵測。今天 Copilot 幫你生的 KQL，明天要自己看得懂。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "從查證據，變成主動找威脅。我們明天見！"
+    },
+    {
+      "speaker": "host_m",
+      "text": "明天見！"
+    }
+  ]
+}

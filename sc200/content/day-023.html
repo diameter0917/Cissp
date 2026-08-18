@@ -1,0 +1,153 @@
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">從「查得到」升級成「想得到」</h2>
+<p>前兩天你已經會用 Microsoft Sentinel 的搜捕介面跑查詢、存書籤、開 Livestream——那是<strong>手</strong>；今天補上<strong>腦</strong>：這個查詢究竟要回答什麼問題？D3「執行威脅搜捕」占 20–25%，考題不問按鈕在哪，而是丟給你一份威脅情報或一個 ATT&amp;CK 技術，問<strong>下一步該搜捕什麼、範圍怎麼訂、結果記在哪</strong>。三條主線：三種驅動方式各從哪裡起跑、<strong>MITRE ATT&amp;CK</strong> 怎麼當地圖用、<strong>筆記本（Notebook）</strong>何時才划算。</p>
+<div class="point">
+<strong>學習目標（對應官方考綱 D3「執行威脅搜捕」）：</strong>
+<ul>
+  <li>☐ 說明搜捕與事件回應、警示分診的差別，並定義可驗證的假說（對應 <em>hunt for threats by using Microsoft Sentinel</em>）</li>
+  <li>☐ 從威脅情報、ATT&amp;CK 技術、環境弱點與近期事件生出假說，寫成有時間窗、有資料表、有預期特徵的敘述</li>
+  <li>☐ 分辨戰術（tactic）、技術（technique）與子技術，用涵蓋率檢視分析偵測缺口（對應 <em>analyze attack vector coverage by using the MITRE ATT&amp;CK framework</em>）</li>
+  <li>☐ 判斷何時用筆記本而非 KQL 查詢、劇本（Playbook）或活頁簿（Workbook）（對應 <em>perform threat hunting by using notebooks</em>）</li>
+  <li>☐ 把有效的假說排程化，用書籤與紀錄累積團隊知識</li>
+</ul>
+</div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP10 重點（觀念段＋筆記本段）</h2>
+<p>本單元對應官方影片 <strong>EP10「Perform threat hunting in Microsoft Sentinel」</strong>。昨天看操作段，今天重看<strong>開頭觀念</strong>與<strong>後半筆記本</strong>。</p>
+<ul>
+  <li><span class="timestamp">EP10 00:15</span> 開場點出搜捕存在的理由：沒觸發警示的低速潛伏行為、還沒有規則能命中的可疑模式；只等已偵測的東西，往往等到事件擴散。</li>
+  <li><span class="timestamp">EP10 03:22</span> 定義只有一句：主動搜尋<strong>先前未被偵測到</strong>的威脅或活動，這就是與事件回應、警示分診的分界線。<span class="timestamp">EP10 04:01</span> 它是循環：問好問題 → 找證據 → 從結果學習 → 再問下一題。</li>
+  <li><span class="timestamp">EP10 04:17</span> 好假說的五個條件（考點密度最高）：<strong>做得完</strong>、<strong>範圍夠窄</strong>（能用手上資料證實或推翻）、<strong>有時間界線</strong>（近 24 小時、近 7 天）、<strong>有用且有效率</strong>、<strong>對齊你要防的威脅模型</strong>。</li>
+  <li><span class="timestamp">EP10 05:51</span> 查詢節奏是「提問 → 查資料 → 修邏輯 → 依發現轉向」；<span class="timestamp">EP10 06:34</span> 書籤保存查詢本身＋相關結果列；<span class="timestamp">EP10 06:58</span> Livestream 把假說拿去對正在發生的事件驗證。</li>
+  <li><span class="timestamp">EP10 07:31</span> ATT&amp;CK 段：矩陣提供戰術、技術與程序（TTPs）這套共同語言，<span class="timestamp">EP10 07:50</span> 並強調<strong>圖例顏色代表偵測涵蓋</strong>，一眼看出哪裡要補。</li>
+  <li><span class="timestamp">EP10 11:15</span> 筆記本用比較的方式定位：劇本＝自動化與修復、活頁簿＝視覺化儀表板，<strong>筆記本＝深度分析與彈性調查</strong>，使用者是威脅搜捕者與二三線分析師，能做外部資料富化（enrichment）與機器學習。</li>
+  <li><span class="timestamp">EP10 13:28</span> 底層是 Log Analytics 對外開放的標準 API，常用元件為 <strong>KQLMagic</strong> 與 <strong>MSTICPy</strong>；<span class="timestamp">EP10 15:17</span> data lake 筆記本則搭配 VS Code 擴充功能與 MCP 伺服器。</li>
+  <li><span class="timestamp">EP10 21:29</span> 示範很誠實：得先建 Azure Machine Learning 工作區與運算叢集才跑得起範本——這正好是「要不要用筆記本」的判準。</li>
+</ul>
+
+<div class="eyebrow">03 — 🧭 三種驅動方式</div>
+<h2 data-toc="搜捕驅動">搜捕不是只有一種跑法</h2>
+<p>「威脅搜捕」在考題裡有三種面貌，起跑點不同，搞混就選錯工具。</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>驅動方式</th><th>起點</th><th>怎麼跑</th><th>產出</th><th>侷限</th></tr></thead>
+  <tbody>
+    <tr><td><strong>情資驅動</strong><br>（IoC）</td><td>具體指標：雜湊、網域、IP、寄件者</td><td>指標放進監視清單（Watchlist）或威脅情報，跨表比對並回溯歷史</td><td>明確的是／否：出現過沒、在哪台、何時第一次</td><td>只抓得到<strong>已知</strong>；對手換基礎設施就失效</td></tr>
+    <tr><td><strong>假說驅動</strong></td><td>一句可驗證的推測，多半來自 ATT&amp;CK 技術或威脅模型</td><td>拆成可觀察特徵 → 選資料表 → 訂時間窗 → 查詢 → 依結果轉向</td><td>成立／不成立／資料不足，外加新偵測構想與能見度缺口</td><td>吃知識與時間；寫太大跑不完</td></tr>
+    <tr><td><strong>異常驅動</strong></td><td>統計或機器學習指出的離群：UEBA 分數、異常規則</td><td>從離群反推情境：平常長什麼樣、這次哪裡不同、有無旁證</td><td>值得升級的少數異常，與調整基準線的依據</td><td>離群不等於惡意，需環境知識篩</td></tr>
+  </tbody>
+</table>
+</div>
+<p>成熟 SOC 是三者<strong>接力</strong>：情資驅動找到一台中招主機 → 假說驅動問「同一手法還有誰中」→ 異常清單再變成下一輪假說。今天主攻中間這段。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>「這是搜捕嗎」只有一個判準</strong>：起點是不是「先前未被偵測到」的東西。題幹寫「佇列出現高嚴重性事件，請調查」→ 那是分診；寫「懷疑有尚未觸發警示的行為，請主動尋找」→ 才是搜捕。陷阱選項常把「調降規則門檻」或「檢視自動調查結果」當成搜捕，兩者都從既有警示出發。</div>
+
+<div class="eyebrow">04 — 🧪 假說怎麼生出來</div>
+<h2 data-toc="假說形成">四個來源，一個句型，三種結局</h2>
+<p>最卡的一步是「我知道要寫假說，可是要假設什麼？」假說有四個穩定來源：<strong>威脅情報</strong>（某群組用合法遠端管理工具做持續性 → 我這裡有沒有非 IT 主機裝了這類工具）、<strong>ATT&amp;CK 技術</strong>（挑一個沒有規則覆蓋的格子當題目）、<strong>環境弱點</strong>（共用本機管理員密碼、沒 MFA 的服務帳號）、<strong>近期事件</strong>（上次沒查完的線頭）。</p>
+<div class="point"><strong>假說句型</strong>：如果〔對手行為／ATT&amp;CK 技術〕正在我的環境發生，那麼在〔資料表／訊號來源〕應可觀察到〔具體特徵〕，範圍限定〔時間窗〕與〔資產〕。<br>
+<em>例</em>：如果有人用 DCSync（T1003.006）竊取憑證，目錄複寫紀錄應出現「非網域控制站帳號發起複寫請求」，範圍近 30 天、全部網域控制站。</div>
+<p>寫完拿影片那五條檢查，最常被違反的是「範圍夠窄」——「找出所有橫向移動」不是假說，是願望。也要接受<strong>三種結局都算成功</strong>：成立（存書籤、升級成事件）、不成立（存下查詢並記錄「查過、乾淨」）、資料不足（要看的欄位沒收，等於挖出能見度缺口）。沒抓到人不等於白做。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>四個選項都像合理假說時怎麼刷</strong>：依序刪掉——沒有時間窗或範圍的、用現有資料無法證實或推翻的、與威脅模型無關的、大到跑不完的。剩下的通常是「限定時間窗＋限定資產＋指名一個技術」那個。另一轉折題：查完什麼都沒有，下一步？正解多半是<strong>保存查詢並記錄結論</strong>。</div>
+<div class="case-box"><span class="case-label">🛡️ 實戰情境：一次完整的假說驗證（DCSync）</span><br>
+<p><strong>週一 09:40 情資進來</strong>：某鎖定製造業的群組慣用手法是先取得有複寫權限的服務帳號，再用 DCSync 拉出全網域雜湊。你們正是製造業，對得上威脅模型。</p>
+<ol>
+  <li><strong>寫假說（09:50）</strong>：即上面那句 DCSync 假說，五條檢核全過。</li>
+  <li><strong>選資料（09:55）</strong>：首選 Microsoft Defender for Identity（MDI）的身分目錄事件；只有 Windows 安全性事件記錄時就看物件存取事件（4662）與複寫控制存取碼。先確認資料有在收，否則結論只會是「資料不足」。</li>
+  <li><strong>第一次查詢（10:05）</strong>：看有誰做過複寫，排除網域控制站電腦帳號。</li>
+</ol>
+<pre class="kql">IdentityDirectoryEvents
+| where Timestamp &gt; ago(30d)
+| where ActionType == "Directory Services replication"
+| where AccountName !endswith "$"
+| summarize FirstSeen = min(Timestamp), LastSeen = max(Timestamp),
+            Attempts = count(), Sources = make_set(DeviceName, 10)
+        by AccountName, AccountDomain
+| order by Attempts desc</pre>
+<p class="kql-note">30 天時間窗呼應假說；只留「目錄服務複寫」動作；<strong>!endswith "$"</strong> 濾掉電腦帳號，因為網域控制站彼此複寫是正常的；summarize 算出首見／末見與來源主機——<strong>首見時間</strong>最關鍵，它區分「一直都有」與「這週才冒出來」。</p>
+<ol start="4">
+  <li><strong>結果（10:12）</strong>：<em>svc-backup</em> 十四個月來每天出現、來源固定是備份伺服器，屬於基準線；<em>svc-print</em> 只在上週四凌晨 02:11 出現 3 次，來源是財務部工作站——印表服務帳號、半夜、從使用者工作站發起複寫，三個條件同時不合理。</li>
+  <li><strong>轉向（10:20）</strong>：pivot 到那台工作站，看前後發生了什麼。</li>
+</ol>
+<pre class="kql">let SuspectWindow = datetime(2026-08-13 01:30) .. datetime(2026-08-13 03:30);
+DeviceProcessEvents
+| where Timestamp between (SuspectWindow)
+| where DeviceName startswith "FIN-WS"
+| project Timestamp, DeviceName, AccountName, FileName,
+          InitiatingProcessFileName, ProcessCommandLine
+| order by Timestamp asc</pre>
+<p class="kql-note">用 <strong>let</strong> 命名時間區間再以 <strong>between</strong> 套用，是轉向時最省事的寫法；只投影必要欄位讓時間軸讀得順，父程序與命令列往往就是判斷惡意與否的關鍵。</p>
+<ol start="6">
+  <li><strong>結論（10:35）</strong>：複寫前 6 分鐘，有人以遠端管理工具在該機啟動一個從暫存目錄執行的程式，父程序是瀏覽器下載。假說<strong>成立</strong>。</li>
+  <li><strong>收尾（10:40）</strong>：關鍵結果列存成<strong>書籤</strong>，對應實體（svc-print、FIN-WS-042），戰術標<strong>憑證存取</strong>、技術標 T1003.006，升級成事件交二線；第一段查詢存起來排程每日重跑。順帶收穫是建立「哪些帳號可合法複寫」的基準線。</li>
+</ol>
+</div>
+
+<div class="eyebrow">05 — 🗺️ ATT&amp;CK 當地圖</div>
+<h2 data-toc="ATTACK">戰術是目的，技術是手法</h2>
+<p>ATT&amp;CK 是對手行為的公開知識庫，三層結構常拿來出分辨題：<strong>戰術（tactic）＝對手<em>為什麼</em>做</strong>，是階段性目的（初始存取、持續性、憑證存取…），企業矩陣共 14 個，Sentinel 的規則與書籤標的就是這層；<strong>技術（technique）＝<em>怎麼</em>做</strong>，有 T 編號（T1003 OS Credential Dumping）；<strong>子技術</strong>更細（T1003.006 DCSync）；<strong>程序</strong>是某對手的實際實作。</p>
+<p><strong>MITRE ATT&amp;CK 涵蓋率檢視</strong>把矩陣畫在你的環境上：顏色深淺代表<strong>有多少偵測對應到該技術</strong>，並可切換兩種來源——<strong>已啟用的分析規則</strong>與<strong>規則範本及搜捕查詢</strong>，兩者差距就是「馬上補得起來的缺口」。缺口分兩種：<strong>沒資料</strong>（連接器沒接、記錄層級沒開）要補資料源，<strong>有資料沒規則</strong>則啟用範本或自己寫。</p>
+<p>另一個實務重點：<strong>搜捕成果要自己標上去</strong>。影片建書籤與搜捕查詢時都做了對應實體與選戰術；沒標的查詢不會進涵蓋率統計，那張圖也就退化成裝飾品。</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>ATT&amp;CK 戰術</th><th>對手目的</th><th>訊號來源</th><th>典型搜捕假說</th></tr></thead>
+  <tbody>
+    <tr><td>初始存取</td><td>取得第一個立足點</td><td>郵件事件、身分登入、VPN</td><td>近 7 天有無使用者自陌生國家成功登入</td></tr>
+    <tr><td>持續性</td><td>重開機後仍活著</td><td>登錄機碼、排程工作、服務建立</td><td>近 30 天有無非 IT 帳號建立自動啟動項目</td></tr>
+    <tr><td>憑證存取</td><td>拿到帳密或雜湊</td><td>身分目錄事件、LSASS 存取</td><td>近 30 天有無非網域控制站帳號發起目錄複寫（見 §04）</td></tr>
+    <tr><td>橫向移動</td><td>從一台擴散到多台</td><td>登入事件、遠端服務、SMB／WMI</td><td>近 7 天有無帳號 1 小時內登入 5 台沒登過的主機</td></tr>
+    <tr><td>命令與控制</td><td>維持外部通道</td><td>網路連線、DNS、Proxy</td><td>近 14 天有無主機對同一外部位址呈固定間隔的信標連線</td></tr>
+    <tr><td>外洩</td><td>把資料帶走</td><td>雲端應用活動、上傳流量</td><td>近 30 天有無帳號於離峰時段大量下載再上傳個人雲端</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>戰術 vs 技術</strong>：訣竅是問「對手想達成什麼（戰術）」與「用什麼手段（技術）」。「傾印 LSASS 記憶體取得雜湊」→ 戰術是<strong>憑證存取</strong>、技術是 <strong>OS Credential Dumping</strong>、子技術是 <strong>LSASS Memory</strong>。陷阱是把「橫向移動」當技術、「Pass-the-Hash」當戰術。另一組必背：<strong>涵蓋率檢視回答「我對哪些技術有偵測」，不是「我被哪些技術打過」</strong>。</div>
+
+<div class="eyebrow">06 — 📓 筆記本何時划算</div>
+<h2 data-toc="筆記本">Notebook 不是更炫的查詢框</h2>
+<p>筆記本就是 Jupyter：文字與可執行程式碼交錯的文件，在 Sentinel 裡跑 Python，透過 Log Analytics 的 API 讀你的資料。兩個名字要記住：<strong>KQLMagic</strong>（在筆記本裡直接寫 KQL 的包裝）與 <strong>MSTICPy</strong>（微軟的資安調查 Python 工具集，含情報查詢、GeoIP、時間序列分析與視覺化）。</p>
+<p>重點不是「它能做什麼」，而是<strong>何時值得付這個成本</strong>——它要 Azure Machine Learning 工作區與運算資源（計費）、要 Python 能力、還要維護程式碼。判準很簡單：<strong>KQL 查詢框做得到的就別開筆記本</strong>。划算的有四類：<strong>機器學習與統計</strong>（分群、離群與信標偵測）、<strong>外部資料富化</strong>（逐個 IP 查 Whois、GeoIP、多家情報再併回同一張表）、<strong>跨來源合併</strong>（Sentinel 資料＋資產清冊、HR 名單）、<strong>可重複的調查劇本</strong>（換參數重跑整套流程，過程天然就是紀錄）。</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>工具</th><th>核心用途</th><th>主要使用者</th><th>選它的時機</th></tr></thead>
+  <tbody>
+    <tr><td>搜捕查詢（KQL）</td><td>互動式提問與轉向</td><td>全體分析師</td><td>問題能用一段 KQL 表達——多數情況</td></tr>
+    <tr><td>劇本（Playbook）</td><td>自動化與修復動作</td><td>SOC 工程師、分析師</td><td>要「做動作」：通知、開單、封鎖、隔離</td></tr>
+    <tr><td>活頁簿（Workbook）</td><td>視覺化與儀表板</td><td>分析師、SOC 主管</td><td>要給人持續看的圖表與趨勢</td></tr>
+    <tr><td><strong>筆記本（Notebook）</strong></td><td>深度分析與彈性調查</td><td>威脅搜捕者、二三線分析師、資料科學家</td><td>機器學習、外部富化、跨來源合併、可重複的調查流程</td></tr>
+  </tbody>
+</table>
+</div>
+<p>建立方式兩條：從 Sentinel 筆記本頁面挑範本（需連結 Azure ML 工作區與運算叢集），或在 Visual Studio Code 建 Jupyter Notebook 再接回來。<span class="badge-2026">2026 新考點</span> data lake 的筆記本走 VS Code 擴充功能加 <strong>MCP（Model Context Protocol）伺服器</strong>——這條路線與 Sentinel Graph 是明天的主題。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>工具四選一怎麼刷</strong>：題幹出現 <em>apply machine learning</em>、<em>enrich with GeoIP or Whois</em>、<em>combine Sentinel data with external datasets</em> → <strong>筆記本</strong>；<em>automatically notify / block / isolate</em> → 劇本；<em>dashboard for management</em> → 活頁簿；「快速確認這個雜湊有沒有出現過」→ 一段搜捕查詢就好。另一常錯點：使用筆記本的<strong>前置作業是 Azure ML 工作區與運算資源</strong>，不是「啟用 UEBA」或「建立監視清單」。</div>
+
+<div class="eyebrow">07 — 🪜 成熟度與紀錄</div>
+<h2 data-toc="成熟度">讓有效的假說變成資產</h2>
+<p>搜捕做不起來的團隊，多半不是查詢寫不好，而是<strong>每次都從零開始</strong>。成熟度階梯：臨時起意 → 有來源（依情資或 ATT&amp;CK 挑題）→ 可重複（假說與查詢存下來，別人能重跑）→ 排程化 → 自動化（變成規則或維護監視清單）。</p>
+<p><strong>何時把假說變成規則？</strong>三條件同時成立時升級為<strong>排程分析規則</strong>：訊噪比夠好、邏輯能穩定用 KQL 表達、值得 24 小時盯。若只是定期回顧或要跨很長時間，走 data lake 的 KQL 作業或搜尋作業；訊噪比差但有價值的，留在搜捕查詢並排人工複查。</p>
+<p><strong>紀錄要留什麼？</strong>書籤存的是查詢＋結果列＋實體對應＋戰術標記；一次搜捕結束，紀錄至少要有假說原文、資料範圍與時間窗、用過的查詢、結果判定與後續動作。「不成立」的同樣要留——半年後有人問「查過 DCSync 嗎」，你要答得出「查過，範圍 30 天，乾淨」。</p>
+<div class="point">💡 <strong>搜捕的三種產出都要交付</strong>：(1) <strong>發現</strong>——書籤與升級的事件；(2) <strong>新偵測</strong>——排程規則、自訂偵測或搜捕查詢；(3) <strong>缺口</strong>——資料沒收、記錄層級不足、涵蓋率空白格。第三項最常被漏掉，卻是考題問「搜捕價值」的標準答案之一。</div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">EP10 略過、考題卻會碰的</h2>
+<ul>
+  <li><strong>搜捕查詢範本客製</strong>（考綱 <em>customize content gallery hunting queries</em>）：社群查詢的正確用法是<strong>複製後改成自己的資料表與門檻</strong>（如排除已知服務帳號），再存成自己的查詢並標戰術，而不是原封不動跑完嫌誤報高。</li>
+  <li><strong>Hunts 與書籤的關係</strong>：hunt 把假說敘述、狀態（進行中／已驗證／已推翻）、多個查詢、書籤與筆記收在同一容器並指派負責人。問「如何追蹤多人協作的搜捕」→ 建立 hunt。</li>
+  <li><strong>進階搜捕 vs Sentinel 搜捕</strong>：前者查 XDR 自己的表（預設 30 天）、可直接做成自訂偵測並附回應動作；後者查工作區全部資料源、可回溯更久。跨端點＋身分＋郵件的快問快答走進階搜捕，含第三方記錄走 Sentinel。</li>
+  <li><strong>筆記本的權限與成本</strong>：需 Azure ML 工作區與 Sentinel 讀取權限；運算執行個體<strong>不用要停掉</strong>否則持續計費；MSTICPy 的工作區 ID 與 API 金鑰放設定檔，別寫死在程式碼。</li>
+  <li><strong>Security Copilot 協助搜捕</strong> <span class="badge-2026">2026 新考點</span>：可用自然語言生成 KQL 查詢、摘要結果。定位照舊——它加速<strong>把想法變成查詢</strong>，假說品質與是否升級仍由分析師負責。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深讀清單</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/hunting" target="_blank" rel="noopener">使用 Microsoft Sentinel 搜捕威脅</a> — 搜捕流程與假說的官方說法，對照 §03、§04。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/mitre-coverage" target="_blank" rel="noopener">使用 MITRE ATT&amp;CK 分析涵蓋範圍</a> — 涵蓋率檢視怎麼讀、兩種來源怎麼切。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/notebooks" target="_blank" rel="noopener">使用 Jupyter Notebook 搜捕威脅</a> — 筆記本與劇本、活頁簿的定位比較。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/notebook-get-started" target="_blank" rel="noopener">開始使用 Sentinel 筆記本</a> — Azure ML 工作區、運算資源與 MSTICPy 的前置需求。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/bookmarks" target="_blank" rel="noopener">使用搜捕書籤保存資料</a> — 書籤如何保存查詢與結果、對應實體並升級為事件。</li>
+</ul>

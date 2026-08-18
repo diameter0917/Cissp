@@ -1,0 +1,2442 @@
+[
+  {
+    "id": "M2-0001",
+    "domain": "D1",
+    "topic": "workspace-design",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Contoso operates two Microsoft Sentinel workspaces: one in West Europe that must keep EU employee logs inside the EU, and one in East US for the Americas. A single scheduled analytics rule has to correlate failed sign-ins that appear in both workspaces, and the SOC wants one incident queue. Which design meets the requirements?",
+    "stem_zh": "Contoso 有兩個 Microsoft Sentinel 工作區：西歐工作區必須把歐盟員工記錄保留在歐盟境內，美東工作區服務美洲。現在需要用「一條」排程分析規則關聯兩個工作區都出現的登入失敗，而且 SOC 只想要一個事件佇列。哪一種設計符合需求？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Consolidate everything into the East US workspace so that a normal analytics rule can see all rows",
+        "text_zh": "把所有資料合併到美東工作區，這樣一般分析規則就看得到所有資料列"
+      },
+      {
+        "key": "B",
+        "text_en": "Configure a Log Analytics data export rule that copies the West Europe tables into the East US workspace",
+        "text_zh": "設定 Log Analytics 資料匯出規則，把西歐的資料表複製到美東工作區"
+      },
+      {
+        "key": "C",
+        "text_en": "Keep both workspaces and author a cross-workspace scheduled analytics rule whose query uses the workspace() expression, granting the rule read access to both workspaces",
+        "text_zh": "保留兩個工作區，撰寫跨工作區的排程分析規則，查詢中使用 workspace() 運算式，並讓規則對兩個工作區都有讀取權限"
+      },
+      {
+        "key": "D",
+        "text_en": "Delegate the West Europe workspace to the East US tenant by using Azure Lighthouse",
+        "text_zh": "用 Azure Lighthouse 把西歐工作區委派給美東租用戶"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "跨工作區關聯的正解是「保留分區工作區＋跨工作區查詢」。Microsoft Sentinel 的排程分析規則查詢可以用 workspace(\"名稱\").TableName 語法同時讀取最多 20 個工作區（跨訂用帳戶、甚至跨租用戶搭配 Lighthouse），事件仍集中在執行規則的那個工作區。資料落地限制要靠「資料不搬家」來滿足，不是靠合併或複製。",
+    "why_wrong_zh": {
+      "A": "把歐盟記錄搬到美東會直接違反資料落地要求；合併工作區確實讓查詢變簡單，但題目的第一個限制就是資料必須留在歐盟。",
+      "B": "資料匯出會把歐盟原始記錄實際複製到美國區域，同樣違反落地要求，而且雙份擷取成本也會加倍。",
+      "D": "Azure Lighthouse 解決的是「跨租用戶」的管理權限問題，這裡兩個工作區在同一租用戶內；它也不會讓一條分析規則同時查詢兩個工作區。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/extend-sentinel-across-workspaces-tenants",
+    "tags": []
+  },
+  {
+    "id": "M2-0002",
+    "domain": "D2",
+    "topic": "incident-triage",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "A multi-stage incident in the Microsoft Defender portal contains alerts from Microsoft Defender for Office 365, Microsoft Defender for Endpoint and Microsoft Defender for Identity. The incident is still unassigned and its status is Active. Your runbook requires scoping, containment, eradication and documentation. Which action should you perform FIRST?",
+    "stem_zh": "Microsoft Defender 入口網站中有一個多階段事件，內含 Microsoft Defender for Office 365、Microsoft Defender for Endpoint 與 Microsoft Defender for Identity 的警示。該事件仍未指派、狀態為「作用中」。你的作業手冊要求依序完成界定範圍、遏制、根除與記錄。你應該「最先」執行哪一個動作？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Assign the incident to yourself and walk the attack story to enumerate every affected identity, device and mailbox",
+        "text_zh": "把事件指派給自己，並沿著攻擊劇本（attack story）逐一列出所有受影響的身分、裝置與信箱"
+      },
+      {
+        "key": "B",
+        "text_en": "Isolate every device that appears in the incident so that the attack cannot spread while you investigate",
+        "text_zh": "先隔離事件中出現的每一台裝置，讓你調查期間攻擊無法擴散"
+      },
+      {
+        "key": "C",
+        "text_en": "Classify the incident as a true positive so that the correlation engine can learn from the decision",
+        "text_zh": "先把事件分類為真陽性，讓關聯引擎能從這個判定學習"
+      },
+      {
+        "key": "D",
+        "text_en": "Submit the phishing sample to Microsoft for analysis and wait for the verdict before continuing",
+        "text_zh": "先把釣魚樣本提交給 Microsoft 分析，等判定結果再繼續"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "多階段事件的第一步永遠是「取得所有權＋界定範圍」。指派給自己可避免兩個分析師重工，攻擊劇本（attack story／事件圖表）會把跨產品的警示、實體與時間軸串成一條線，讓你知道總共有幾個身分、幾台裝置、哪些信箱被牽連。範圍確定後，遏制動作才有依據，也才知道哪些裝置該隔離、哪些帳戶該撤銷工作階段。",
+    "why_wrong_zh": {
+      "B": "還沒界定範圍就全面隔離，會癱瘓可能根本沒被入侵的生產機器，也可能打草驚蛇；遏制動作應該建立在已知範圍上，而且題目要求的第一步是界定範圍。",
+      "C": "分類屬於收尾階段的動作，在調查完成前就下判定會讓後續證據無法改變結論；分類也不會影響關聯引擎對這個事件的處理。",
+      "D": "提交樣本是改善偵測品質的長期動作，回覆需時；在攻擊者仍可能活躍時停下調查等待外部判定，違反事件回應的時間要求。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/manage-incidents",
+    "tags": []
+  },
+  {
+    "id": "M2-0003",
+    "domain": "D1",
+    "topic": "siem-vs-xdr",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Your organization already uses Microsoft Defender XDR for endpoints, identities, email and cloud apps. Management asks what Microsoft Sentinel would add. Which capability is provided by Microsoft Sentinel but NOT by Microsoft Defender XDR on its own?",
+    "stem_zh": "你的組織已經在端點、身分、電子郵件與雲端應用程式上使用 Microsoft Defender XDR。管理層問你再導入 Microsoft Sentinel 能多得到什麼。下列哪一項能力是 Microsoft Sentinel 才有、單靠 Microsoft Defender XDR 做不到的？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Running automated investigation and remediation on compromised endpoints",
+        "text_zh": "在被入侵的端點上執行自動化調查與修復"
+      },
+      {
+        "key": "B",
+        "text_en": "Quarantining a malicious email message that was already delivered to user mailboxes",
+        "text_zh": "隔離已經送達使用者信箱的惡意郵件"
+      },
+      {
+        "key": "C",
+        "text_en": "Isolating a Windows device from the network while keeping the security agent connected",
+        "text_zh": "把 Windows 裝置從網路隔離，同時保留安全性代理程式的連線"
+      },
+      {
+        "key": "D",
+        "text_en": "Ingesting and correlating logs from non-Microsoft sources such as AWS CloudTrail, Palo Alto firewalls and custom applications",
+        "text_zh": "擷取並關聯非 Microsoft 來源的記錄，例如 AWS CloudTrail、Palo Alto 防火牆與自建應用程式"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Defender XDR 是「Microsoft 自家工作負載」的偵測與回應平台；Microsoft Sentinel 是雲端原生 SIEM／SOAR，最大的增量價值是資料連接器可以把第三方與自建來源（防火牆、雲端平台、SaaS、自訂 JSON 記錄）拉進同一個 Log Analytics 工作區，跟 Defender 訊號一起用 KQL 關聯，並提供長期保留與跨來源的合規查詢。",
+    "why_wrong_zh": {
+      "A": "自動化調查與回應（AIR）是 Defender for Endpoint／Defender XDR 內建的能力，不需要 Sentinel。",
+      "B": "郵件的軟刪除／隔離屬於 Defender for Office 365 的修復動作，在 Defender 入口網站即可完成。",
+      "C": "裝置隔離是 Defender for Endpoint 的回應動作，與是否部署 Sentinel 無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/overview",
+    "tags": []
+  },
+  {
+    "id": "M2-0004",
+    "domain": "D3",
+    "topic": "advanced-hunting",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "In Microsoft Defender XDR advanced hunting you queried DeviceProcessEvents and identified five devices that executed a malicious binary in the last 24 hours. You must now determine which user accounts were signed in on those devices during the same window, so that you can decide whose credentials to reset. Which table should you query NEXT?",
+    "stem_zh": "你在 Microsoft Defender XDR 進階搜捕中查詢 DeviceProcessEvents，找出過去 24 小時內執行過惡意二進位檔的五台裝置。接下來你必須判斷同一時間區間有哪些使用者帳戶登入過這些裝置，才能決定要重設誰的認證。你「下一步」應該查詢哪一個資料表？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "DeviceNetworkEvents",
+        "text_zh": "DeviceNetworkEvents"
+      },
+      {
+        "key": "B",
+        "text_en": "DeviceLogonEvents",
+        "text_zh": "DeviceLogonEvents"
+      },
+      {
+        "key": "C",
+        "text_en": "IdentityInfo",
+        "text_zh": "IdentityInfo"
+      },
+      {
+        "key": "D",
+        "text_en": "EmailEvents",
+        "text_zh": "EmailEvents"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "跨資料表樞紐（pivot）是進階搜捕的核心技巧。裝置 → 使用者的橋樑是 DeviceLogonEvents，它提供 DeviceId、AccountName／AccountDomain、LogonType 與時間戳記，可直接用 DeviceId 與時間視窗和 DeviceProcessEvents 的結果 join。找出帳戶後，再接 IdentityLogonEvents 或 AADSignInEventsBeta 可看這些帳戶在雲端與網域的後續行為。",
+    "why_wrong_zh": {
+      "A": "這個資料表記錄裝置的網路連線與 DNS 查詢，適合追 C2 通訊或外洩目的地，但不會告訴你「誰登入了這台裝置」。",
+      "C": "IdentityInfo 是身分的靜態屬性快照（部門、主管、帳戶類型），沒有登入事件的時間軸，無法回答「當時誰在這台機器上」。",
+      "D": "EmailEvents 記錄郵件的送達與處置，用來回溯初始存取向量；本題要的是端點上的登入活動。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-schema-tables",
+    "tags": []
+  },
+  {
+    "id": "M2-0005",
+    "domain": "D2",
+    "topic": "device-response",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Ransomware is confirmed on a Windows file server, and you have already isolated the device from the Microsoft Defender portal. Legal requires that the original malicious executable be preserved as evidence before any cleanup takes place. What should you do NEXT?",
+    "stem_zh": "某台 Windows 檔案伺服器已確認遭勒索軟體感染，你已經在 Microsoft Defender 入口網站把該裝置隔離。法務要求在任何清理動作之前，必須先保全原始惡意可執行檔作為證據。你「下一步」應該做什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Start a live response session on the isolated device and use getfile (or collect the investigation package) to download the binary before remediating",
+        "text_zh": "在已隔離的裝置上開啟即時回應（Live Response）工作階段，先用 getfile（或收集調查封包）把該二進位檔下載回來，再進行修復"
+      },
+      {
+        "key": "B",
+        "text_en": "Run Stop and quarantine file across the organization first, then request the sample from Microsoft",
+        "text_zh": "先在整個組織執行「停止並隔離檔案」，之後再向 Microsoft 索取樣本"
+      },
+      {
+        "key": "C",
+        "text_en": "Release the device from isolation so that the malware analysis team can copy the file over SMB",
+        "text_zh": "先解除裝置隔離，讓惡意程式分析團隊透過 SMB 複製該檔案"
+      },
+      {
+        "key": "D",
+        "text_en": "Submit the file hash to Microsoft Defender Threat Intelligence and wait for an analyst verdict",
+        "text_zh": "把檔案雜湊提交到 Microsoft Defender 威脅情報，等待分析師判定"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "裝置隔離時 Defender for Endpoint 代理程式與雲端的連線會被刻意保留，因此即時回應（Live Response）仍然可用——這正是先隔離、再蒐證、最後修復的標準順序。getfile 會把檔案上傳到入口網站供下載並保留稽核記錄；若需要更完整的鑑識脈絡，可改用「收集調查封包」取得處理程序、排程工作、自動執行項目等清單。證據落地之後，才執行停止並隔離檔案與封鎖指標。",
+    "why_wrong_zh": {
+      "B": "停止並隔離檔案會直接把檔案移到隔離區並終止相關處理程序，等於在保全證據之前就破壞了原始檔案的位置與狀態；Microsoft 也不會把你環境中的檔案回傳給你。",
+      "C": "解除隔離會讓勒索軟體重新取得網路存取、繼續加密檔案共用，是把遏制成果直接丟掉；隔離狀態下即時回應仍可運作，根本不需要解除。",
+      "D": "雜湊查詢只能得到外部情報，不會產出你手上的檔案本體，也無法滿足法務對「原始檔案」的保全要求。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/live-response",
+    "tags": []
+  },
+  {
+    "id": "M2-0006",
+    "domain": "D1",
+    "topic": "data-connectors",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You connected the Microsoft Defender XDR data connector to Microsoft Sentinel with incident synchronization enabled. A colleague independently enabled the older, standalone Microsoft Defender for Endpoint connector in the same workspace. Analysts now report duplicated device alerts and duplicated incidents. What should you do?",
+    "stem_zh": "你已經在 Microsoft Sentinel 連接 Microsoft Defender XDR 資料連接器並啟用事件同步。另一位同事又在同一個工作區單獨啟用了舊版的 Microsoft Defender for Endpoint 連接器。現在分析師回報裝置警示與事件都重複。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Create an automation rule that automatically closes the duplicated incidents each morning",
+        "text_zh": "建立自動化規則，每天早上自動關閉重複的事件"
+      },
+      {
+        "key": "B",
+        "text_en": "Turn off bi-directional synchronization on the Microsoft Defender XDR connector",
+        "text_zh": "把 Microsoft Defender XDR 連接器的雙向同步關閉"
+      },
+      {
+        "key": "C",
+        "text_en": "Disconnect the standalone Microsoft Defender for Endpoint connector and keep the unified Microsoft Defender XDR connector, which already streams the Device* tables and the alerts",
+        "text_zh": "中斷舊版單獨的 Microsoft Defender for Endpoint 連接器，只保留統一的 Microsoft Defender XDR 連接器，因為它已經同時串流 Device* 資料表與警示"
+      },
+      {
+        "key": "D",
+        "text_en": "Add a data collection rule transformation that drops duplicated rows before ingestion",
+        "text_zh": "新增資料收集規則轉換，在擷取前把重複的資料列丟棄"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "統一的 Microsoft Defender XDR 連接器已經涵蓋 Defender for Endpoint、Office 365、Identity、Cloud Apps 的警示與原始事件資料表（DeviceEvents、DeviceProcessEvents 等），舊版單一產品連接器因此變成重複來源。處理重複的正確層級是「來源端」——停用多餘的連接器；下游的自動化規則或轉換都無法回收已重複計費的擷取量。",
+    "why_wrong_zh": {
+      "A": "自動化規則只是把症狀掃到地毯下：重複資料仍在擷取、仍在計費，而且被自動關閉的事件可能剛好是真正需要處理的那一份。",
+      "B": "關閉雙向同步只會讓 Sentinel 與 Defender 之間的狀態、擁有者、分類不再互相更新，重複來源仍然存在，反而讓分診更混亂。",
+      "D": "DCR 轉換套用在 Azure Monitor 代理程式與 Logs Ingestion API 的資料流上，並不是 Defender 連接器串流警示的路徑；正確做法是從來源移除重複連接器，而不是在下游過濾。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/connect-microsoft-365-defender",
+    "tags": []
+  },
+  {
+    "id": "M2-0007",
+    "domain": "D1",
+    "topic": "dcr",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "multi",
+    "stem_en": "You collect Windows Security events from 900 servers with the Azure Monitor Agent. Two requirements were agreed with Finance: process-creation noise generated by a monitoring agent must never be billed, and the remaining audit-only records must be retained cheaply for 12 months while still being searchable. Which two actions should you perform? (Select all that apply.)",
+    "stem_zh": "你用 Azure Monitor 代理程式從 900 台伺服器收集 Windows 安全性事件。與財務部門談定兩項要求：某監控代理程式產生的處理程序建立雜訊絕對不能被計費；其餘僅供稽核的記錄要以低成本保留 12 個月，同時仍可搜尋。你應該執行哪「兩」個動作？（複選）",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Add a KQL transformation (transformKql) in the data collection rule so that the unwanted rows are filtered out before they are ingested",
+        "text_zh": "在資料收集規則中加入 KQL 轉換（transformKql），讓不需要的資料列在擷取前就被過濾掉"
+      },
+      {
+        "key": "B",
+        "text_en": "Create a summary rule that aggregates the events into hourly counts after they arrive in the workspace",
+        "text_zh": "建立摘要規則，在事件進入工作區之後彙總成每小時計數"
+      },
+      {
+        "key": "C",
+        "text_en": "Set the destination table's plan to a low-cost tier (Basic/Auxiliary logs) so that the retained audit records are billed at the lower ingestion and retention rate",
+        "text_zh": "把目的地資料表的方案設為低成本層級（Basic／Auxiliary 記錄），讓保留下來的稽核記錄以較低的擷取與保留費率計費"
+      },
+      {
+        "key": "D",
+        "text_en": "Configure a daily cap on the Log Analytics workspace so that ingestion stops when the budget is reached",
+        "text_zh": "在 Log Analytics 工作區設定每日上限，達到預算就停止擷取"
+      }
+    ],
+    "answer": [
+      "A",
+      "C"
+    ],
+    "explanation_zh": "降低擷取成本有兩個互補的槓桿。第一個是「擷取前過濾」：DCR 的 transformKql 在資料寫入工作區之前執行，被過濾掉的資料列不計費，適合處理已知的雜訊來源。第二個是「選對資料表方案」：需要留存但很少查詢的稽核資料放進 Basic／Auxiliary 層級，擷取與保留單價都遠低於分析層，仍可用搜尋作業（search job）撈回。兩者一起用，才同時滿足「不計費」與「便宜留 12 個月」。",
+    "why_wrong_zh": {
+      "B": "摘要規則是在資料「已經擷取並計費之後」才執行的彙總，無法達成「絕對不能被計費」這個要求；它解決的是查詢效能與長期趨勢，不是擷取成本。",
+      "D": "每日上限是無差別的斷路器：達標後連真正需要的安全性記錄都會被丟棄，造成偵測盲點，而且它不會針對特定雜訊來源。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/data-transformation",
+    "tags": []
+  },
+  {
+    "id": "M2-0008",
+    "domain": "D2",
+    "topic": "mdo-remediation",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Threat Explorer shows 120 messages from a spoofed external sender that were delivered to user Inboxes. You have already triggered a batch remediation that soft-deletes the messages. Management now requires that any further mail from that sender be rejected for the next 30 days, after which the block should lapse automatically. What should you do?",
+    "stem_zh": "威脅總管顯示有 120 封來自偽冒外部寄件者的郵件已送達使用者的收件匣。你已經觸發批次修復，把郵件軟刪除。管理層現在要求接下來 30 天內拒收該寄件者的任何郵件，30 天後封鎖要自動失效。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Create an Exchange mail flow rule that deletes messages from the sender, and add a calendar reminder to delete the rule in 30 days",
+        "text_zh": "建立 Exchange 郵件流程規則刪除該寄件者的郵件，並在行事曆提醒 30 天後手動刪除規則"
+      },
+      {
+        "key": "B",
+        "text_en": "Add the sender to the Tenant Allow/Block List as a blocked sender and set an expiry date 30 days in the future",
+        "text_zh": "把該寄件者加入租用戶允許／封鎖清單（Tenant Allow/Block List）的封鎖項目，並把到期日設在 30 天後"
+      },
+      {
+        "key": "C",
+        "text_en": "Add the sender's domain to the allowed senders list in the anti-spam policy so that it is tracked explicitly",
+        "text_zh": "把該寄件者的網域加入反垃圾郵件原則的允許寄件者清單，以便明確追蹤"
+      },
+      {
+        "key": "D",
+        "text_en": "Enable zero-hour auto purge (ZAP) for phishing in the anti-spam policy",
+        "text_zh": "在反垃圾郵件原則中為網路釣魚啟用零時差自動清除（ZAP）"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "租用戶允許／封鎖清單是針對特定寄件者、網域、URL、檔案雜湊做「暫時性」覆寫的正確位置，每個項目都可以設定到期日（或永不到期），期滿自動失效，不需要人工維護。標準順序是：先用威脅總管／批次修復把已送達的郵件移除，再用租用戶允許／封鎖清單阻擋後續投遞，最後把樣本提交給 Microsoft 改善判定。",
+    "why_wrong_zh": {
+      "A": "郵件流程規則做得到封鎖，但沒有內建到期機制，必須靠人工記得移除；而且它繞過 Defender for Office 365 的判定與報表，事後在威脅總管中看不到一致的處置紀錄。",
+      "C": "這個動作方向完全相反——允許清單會讓該網域的郵件略過過濾，等於替攻擊者開門。",
+      "D": "ZAP 處理的是「已送達之後判定改變」時的追溯移除，屬於全租用戶的行為設定，無法針對單一寄件者做 30 天的定時封鎖。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/tenant-allow-block-list-about",
+    "tags": []
+  },
+  {
+    "id": "M2-0009",
+    "domain": "D3",
+    "topic": "kql-join",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You wrote the following hunting query to enrich sign-ins with threat intelligence: SigninLogs | where TimeGenerated > ago(1d) | join kind=inner (ThreatIntelligenceIndicator | where Active == true | project NetworkIP) on $left.IPAddress == $right.NetworkIP. The result contains only 12 rows, but your manager asks for the complete list of the day's sign-ins with a column showing whether the IP matched an indicator. Which single change should you make?",
+    "stem_zh": "你撰寫了下列搜捕查詢，想用威脅情報豐富登入記錄：SigninLogs | where TimeGenerated > ago(1d) | join kind=inner (ThreatIntelligenceIndicator | where Active == true | project NetworkIP) on $left.IPAddress == $right.NetworkIP。結果只有 12 列，但主管要的是「當天全部登入」外加一個欄位標示該 IP 是否命中指標。你應該做哪一個變更？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Change kind=inner to kind=rightanti so that non-matching rows are returned",
+        "text_zh": "把 kind=inner 改成 kind=rightanti，讓未命中的資料列被傳回"
+      },
+      {
+        "key": "B",
+        "text_en": "Change kind=inner to kind=innerunique, which keeps all left-hand rows",
+        "text_zh": "把 kind=inner 改成 kind=innerunique，它會保留所有左表資料列"
+      },
+      {
+        "key": "C",
+        "text_en": "Swap the two tables so that ThreatIntelligenceIndicator is on the left and keep kind=inner",
+        "text_zh": "把兩個資料表對調，讓 ThreatIntelligenceIndicator 在左邊，並維持 kind=inner"
+      },
+      {
+        "key": "D",
+        "text_en": "Change kind=inner to kind=leftouter so that every SigninLogs row is kept and unmatched rows get empty indicator columns",
+        "text_zh": "把 kind=inner 改成 kind=leftouter，讓每一列 SigninLogs 都保留，未命中的資料列指標欄位為空"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "join 的 kind 決定保留哪一側的資料列。inner 只留雙方都命中的列，適合「找出命中」；leftouter 保留左表全部資料列，右表沒命中就填空值，正是「全部資料＋標記命中」這種豐富化（enrichment）需求的標準寫法。實務上再接 extend IsTIMatch = isnotempty(NetworkIP) 就能得到一個明確的布林欄位。另外請記得把資料量小的一側放在 join 右邊，效能較佳。",
+    "why_wrong_zh": {
+      "A": "rightanti 只會傳回「右表中沒有對應左表」的資料列，剛好丟掉你要保留的登入資料，而且輸出的是指標欄位而非登入欄位。",
+      "B": "innerunique 只是把左表的重複索引鍵去重後再做內部聯結，仍然只輸出有命中的資料列，不會保留未命中的登入。",
+      "C": "內部聯結不論哪一邊在左，都只會輸出雙方都有的資料列；對調順序只會改變效能與欄位命名，不會保留未命中的登入。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/join-operator",
+    "tags": []
+  },
+  {
+    "id": "M2-0010",
+    "domain": "D1",
+    "topic": "mde-onboarding",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "Your organization runs 60 Ubuntu virtual machines in Azure and 40 Red Hat Enterprise Linux servers in an on-premises datacenter. The Azure VMs are already protected because Microsoft Defender for Servers Plan 2 is enabled on the subscription. The on-premises servers must report into the same Microsoft Defender for Endpoint tenant with the least ongoing administrative effort. What should you do?",
+    "stem_zh": "你的組織在 Azure 上有 60 台 Ubuntu 虛擬機器，在自建資料中心有 40 台 Red Hat Enterprise Linux 伺服器。Azure 虛擬機器因為訂用帳戶已啟用 Microsoft Defender for Servers 方案 2 而受到保護。現在自建的伺服器也必須回報到同一個 Microsoft Defender for Endpoint 租用戶，而且後續管理成本要最低。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Connect the on-premises servers to Azure with Azure Arc and enable Defender for Servers on them, so that the Defender for Endpoint extension is deployed and kept up to date automatically",
+        "text_zh": "用 Azure Arc 把自建伺服器連上 Azure，並對它們啟用 Defender for Servers，讓 Defender for Endpoint 延伸模組自動部署並持續更新"
+      },
+      {
+        "key": "B",
+        "text_en": "Download the Linux onboarding package and run the installation script manually on each of the 40 servers",
+        "text_zh": "下載 Linux 上線封裝，手動在 40 台伺服器上逐台執行安裝指令碼"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a Group Policy Object that runs the onboarding script at computer startup",
+        "text_zh": "建立群組原則物件，在電腦開機時執行上線指令碼"
+      },
+      {
+        "key": "D",
+        "text_en": "Deploy the legacy Log Analytics agent (MMA) to the servers and attach it to the Defender workspace",
+        "text_zh": "在伺服器上部署舊版 Log Analytics 代理程式（MMA），並連到 Defender 工作區"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "混合環境的標準做法是「用 Azure Arc 把非 Azure 機器變成 Azure 資源」，之後 Defender for Cloud 的 Defender for Servers 方案就能像對待原生 VM 一樣，自動佈建並維護 Defender for Endpoint 延伸模組、套用相同的原則與授權，也讓 Azure 與自建伺服器在同一個安全性態勢檢視中。這比逐台指令碼上線在規模與續航性上都更好。",
+    "why_wrong_zh": {
+      "B": "手動指令碼確實能上線，但每次更新、重新上線或新增伺服器都要人工重跑，長期管理成本最高，與題目「後續管理成本最低」的條件不符。",
+      "C": "群組原則是 Windows 網域的機制，不適用於 Linux 伺服器；Defender for Endpoint 的 Linux 上線也不是透過 GPO 發佈。",
+      "D": "以工作區為基礎的 MMA 伺服器上線方式已經淘汰，取而代之的是統一的 Defender for Endpoint 代理程式；MMA 也不會提供完整的端點偵測與回應功能。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/onboard-server",
+    "tags": []
+  },
+  {
+    "id": "M2-0011",
+    "domain": "D2",
+    "topic": "air",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "An automated investigation triggered by a malware alert has finished. The device group that contains the affected device uses the semi-automation level, and the investigation lists a remediation action with the state Pending approval. Which sequence completes the remediation correctly?",
+    "stem_zh": "由惡意程式警示觸發的自動化調查已經結束。受影響裝置所屬的裝置群組使用「半自動」層級，調查中列出一個狀態為「擱置核准」的修復動作。哪一個順序能正確完成修復？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Change the device group automation level to Full automation; pending actions are then executed retroactively",
+        "text_zh": "把裝置群組的自動化層級改成完全自動化，擱置中的動作就會被追溯執行"
+      },
+      {
+        "key": "B",
+        "text_en": "Approve the alert in the incident queue; the Action center only stores a read-only history of completed actions",
+        "text_zh": "在事件佇列中核准該警示；動作中心只是完成動作的唯讀歷史紀錄"
+      },
+      {
+        "key": "C",
+        "text_en": "Open the Action center, review the evidence attached to the pending action, then approve it — the action only runs after approval",
+        "text_zh": "開啟動作中心（Action center），檢視擱置動作所附的證據，然後核准它——動作要核准之後才會執行"
+      },
+      {
+        "key": "D",
+        "text_en": "Re-run the automated investigation from the alert page so that it completes without a pending state",
+        "text_zh": "從警示頁面重新執行自動化調查，讓它不再出現擱置狀態"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "半自動（semi-automation）代表自動化調查會蒐證、判定並「準備好」修復動作，但實際執行需要人工核准。核准介面是 Defender 入口網站的動作中心：擱置分頁列出待核准動作與其證據，分析師核准後動作才執行並移到歷史分頁；也可以在此撤銷（undo）已執行的動作。這個設計讓伺服器等敏感資產能保有人為把關。",
+    "why_wrong_zh": {
+      "A": "調整自動化層級只影響「之後」產生的調查，已經擱置的動作不會因此被追溯執行，仍必須有人在動作中心核准。",
+      "B": "警示本身沒有「核准」這個動作，而動作中心的「擱置」分頁正是核准或拒絕修復動作的地方，不是唯讀歷史。",
+      "D": "重新執行只會再產生一次同樣的擱置動作，因為擱置來自裝置群組的半自動設定，而不是調查失敗。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/m365d-autoir-actions",
+    "tags": []
+  },
+  {
+    "id": "M2-0012",
+    "domain": "D1",
+    "topic": "content-hub",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "You installed the Microsoft Sentinel solution for Azure Activity from the Content hub three months ago. Microsoft has since published a new version of that solution which adds two analytics rule templates. What must you do so that your SOC can create rules from the new templates?",
+    "stem_zh": "你三個月前從內容中樞（Content hub）安裝了 Azure Activity 的 Microsoft Sentinel 解決方案。之後 Microsoft 發佈了新版解決方案，新增兩個分析規則範本。你必須做什麼，SOC 才能用新範本建立規則？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Nothing — analytics rules created from a solution are upgraded and enabled automatically",
+        "text_zh": "不用做任何事——從解決方案建立的分析規則會自動升級並啟用"
+      },
+      {
+        "key": "B",
+        "text_en": "Delete the installed solution first and then install it again from scratch",
+        "text_zh": "先刪除已安裝的解決方案，再重新安裝一次"
+      },
+      {
+        "key": "C",
+        "text_en": "Download the solution's ARM template from GitHub and deploy it manually to the resource group",
+        "text_zh": "從 GitHub 下載解決方案的 ARM 範本，手動部署到資源群組"
+      },
+      {
+        "key": "D",
+        "text_en": "Update the installed solution from the Content hub, then create rules from the newly added templates",
+        "text_zh": "在內容中樞更新已安裝的解決方案，再從新增的範本建立規則"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "內容中樞是 Microsoft Sentinel 的套件管理入口：解決方案打包了資料連接器、分析規則範本、活頁簿、搜捕查詢、劇本與剖析器。當解決方案有新版本時，內容中樞會顯示「更新」動作；更新只會帶入新的範本與內容項目，不會自動改寫你已建立的規則實例，因此更新後仍需自行從新範本建立規則。",
+    "why_wrong_zh": {
+      "A": "已建立的規則實例不會自動變更，新增的範本也不會自動變成啟用中的規則；解決方案更新需要明確執行。",
+      "B": "刪除再安裝會影響既有的規則、活頁簿與監看清單關聯，而內容中樞本來就提供就地更新，不需要走這條破壞性的路徑。",
+      "C": "手動部署 ARM 範本會繞過內容中樞的版本管理，日後無法追蹤更新狀態；只有在需要客製化時才會這樣做。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/sentinel-solutions-deploy",
+    "tags": []
+  },
+  {
+    "id": "M2-0013",
+    "domain": "D2",
+    "topic": "mdi",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Microsoft Defender for Identity raises a Suspected DCSync attack (replication of directory services) alert. The source listed in the alert is a member server, not a domain controller. What should you do FIRST?",
+    "stem_zh": "Microsoft Defender for Identity 發出「可疑的 DCSync 攻擊（目錄服務複寫）」警示。警示中列出的來源是一台成員伺服器，而不是網域控制站。你應該「最先」做什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Immediately disable the source computer account in Active Directory to stop the replication",
+        "text_zh": "立刻在 Active Directory 停用來源電腦帳戶，阻止複寫"
+      },
+      {
+        "key": "B",
+        "text_en": "Determine whether the source account and server are an approved directory-replication component, such as Microsoft Entra Connect or a backup solution, before treating the alert as malicious",
+        "text_zh": "先確認來源帳戶與伺服器是不是經核准的目錄複寫元件（例如 Microsoft Entra Connect 或備份方案），再決定是否當成惡意行為處理"
+      },
+      {
+        "key": "C",
+        "text_en": "Isolate the domain controller that reported the alert so that no further replication can occur",
+        "text_zh": "隔離發出警示的網域控制站，讓複寫無法繼續"
+      },
+      {
+        "key": "D",
+        "text_en": "Reset the krbtgt account password twice to invalidate any tickets the attacker may have created",
+        "text_zh": "把 krbtgt 帳戶密碼重設兩次，讓攻擊者可能建立的票證失效"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "DCSync 警示的第一步永遠是「驗證來源合法性」。Entra Connect、部分備份與身分治理產品會合法呼叫目錄複寫 API，因此 Defender for Identity 允許把這些帳戶／裝置設定為排除項目。確認為非授權來源後，才依序執行：隔離來源、重設被濫用帳戶的密碼、評估是否需要 krbtgt 雙重重設，並檢查目錄中新增的權限與後門。",
+    "why_wrong_zh": {
+      "A": "在確認來源身分之前就停用電腦帳戶，很可能中斷 Entra Connect 同步或備份作業，造成大範圍服務中斷——DCSync 警示的誤判來源正是這些合法元件。",
+      "C": "隔離網域控制站會癱瘓整個網域的驗證，是遠超過必要程度的處置，而且 DCSync 是由來源端發起，隔離 DC 也不是正確的遏制點。",
+      "D": "krbtgt 雙重重設是「已確認黃金票證」之後的根除步驟，代價高且需規劃；在還沒確認警示真偽時執行，等於用最貴的動作處理一個可能的誤判。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-for-identity/credential-access-alerts",
+    "tags": []
+  },
+  {
+    "id": "M2-0014",
+    "domain": "D1",
+    "topic": "analytics-rules",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A scheduled analytics rule runs every 5 minutes over a 5-minute lookback and is configured to create one incident per query result row. During a password spray campaign it produced 900 incidents in one hour, one per failed sign-in row. Detection latency must stay low, but all rows that target the same account within an hour must produce a single incident. What should you configure?",
+    "stem_zh": "某條排程分析規則每 5 分鐘執行一次、回溯 5 分鐘，並設定為「每個查詢結果資料列建立一個事件」。在一次密碼噴灑攻擊中，它一小時內產生了 900 個事件，每一列登入失敗一個。偵測延遲必須維持在低水準，但一小時內針對同一帳戶的所有資料列必須只產生一個事件。你應該設定什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Convert the rule to a near-real-time (NRT) rule so that Microsoft Sentinel handles deduplication automatically",
+        "text_zh": "把規則改成近乎即時（NRT）規則，讓 Microsoft Sentinel 自動去除重複"
+      },
+      {
+        "key": "B",
+        "text_en": "Increase the rule's query frequency and lookback period to 1 hour so that fewer runs occur",
+        "text_zh": "把規則的查詢頻率與回溯期間都拉長到 1 小時，減少執行次數"
+      },
+      {
+        "key": "C",
+        "text_en": "Enable alert grouping in the rule's incident settings so that alerts are grouped into a single incident by the Account entity within a 1-hour lookback",
+        "text_zh": "在規則的事件設定中啟用警示群組（alert grouping），以 Account 實體為依據、在 1 小時回溯視窗內把警示歸入單一事件"
+      },
+      {
+        "key": "D",
+        "text_en": "Create an automation rule that closes incidents whose title matches an already-open incident for the same account",
+        "text_zh": "建立自動化規則，把標題與同一帳戶既有事件相同的新事件自動關閉"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "分析規則的「事件設定」裡有兩個關鍵開關：一是要不要把警示歸入事件，二是警示群組。啟用警示群組後，可選擇在指定的回溯期間（最長 7 天）內，把「所有警示」或「所選實體／詳細資料／自訂細節相同的警示」歸入同一個事件。以 Account 為分組依據，就能在維持 5 分鐘偵測頻率的前提下，讓同一個受攻擊帳戶只產生一個事件，並把後續警示持續併入。",
+    "why_wrong_zh": {
+      "A": "NRT 規則的重點是把延遲降到約一分鐘，它並不提供依實體歸併事件的能力，仍然會依事件設定產生大量事件。",
+      "B": "拉長頻率確實會減少事件數，但同時把偵測延遲從 5 分鐘變成最多 1 小時，違反題目「延遲必須維持低水準」的限制。",
+      "D": "事件仍然會被建立、仍然佔用佇列與稽核紀錄，只是被自動關閉；而且關閉之後新的證據不會併入原事件，調查時反而少了關聯。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/detect-threats-custom",
+    "tags": []
+  },
+  {
+    "id": "M2-0015",
+    "domain": "D3",
+    "topic": "custom-detections",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You validated a hunting query in Microsoft Defender XDR advanced hunting and now want it to run on a schedule and isolate the affected device automatically. Which sequence of steps produces a working custom detection rule?",
+    "stem_zh": "你已經在 Microsoft Defender XDR 進階搜捕中驗證了一個搜捕查詢，現在想讓它依排程執行，並自動隔離受影響的裝置。哪一個步驟順序能產生可運作的自訂偵測規則？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Add Timestamp, ReportId and a device entity column such as DeviceId to the query output, then select Create detection rule and configure the impacted entities and the isolate action",
+        "text_zh": "在查詢輸出中加入 Timestamp、ReportId 以及裝置實體欄位（例如 DeviceId），接著選擇「建立偵測規則」，再設定受影響的實體與隔離動作"
+      },
+      {
+        "key": "B",
+        "text_en": "Select Create detection rule first, and then edit the query inside the rule wizard to add the required columns",
+        "text_zh": "先選擇「建立偵測規則」，再到規則精靈裡編輯查詢加入必要欄位"
+      },
+      {
+        "key": "C",
+        "text_en": "Export the query to Microsoft Sentinel and create a scheduled analytics rule there, because device isolation cannot be automated from Defender XDR",
+        "text_zh": "把查詢匯出到 Microsoft Sentinel 建立排程分析規則，因為 Defender XDR 無法自動化裝置隔離"
+      },
+      {
+        "key": "D",
+        "text_en": "Set the rule frequency to Continuous (NRT) and omit ReportId, because near-real-time rules do not require a unique event identifier",
+        "text_zh": "把規則頻率設為連續（NRT）並省略 ReportId，因為近乎即時規則不需要唯一事件識別碼"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "自訂偵測規則有硬性的結構要求：查詢結果必須包含 Timestamp（決定警示時間）與 ReportId（事件唯一識別），並且至少包含一個可對應的實體欄位（DeviceId／DeviceName、AccountObjectId／AccountUpn、或檔案的 SHA1 等），規則才知道要對誰採取動作。正確流程是先在進階搜捕把查詢調到符合這些條件並驗證回傳列數合理，再從查詢編輯器建立偵測規則，最後設定頻率、實體對應與回應動作。",
+    "why_wrong_zh": {
+      "B": "沒有必要欄位時精靈會直接擋下建立動作，無法進入後續設定；必要欄位必須在查詢驗證通過時就存在。",
+      "C": "Defender XDR 自訂偵測規則本身就支援對裝置、檔案、使用者採取動作（隔離裝置、收集調查封包、停用使用者等），不需要繞道 Sentinel。",
+      "D": "不論頻率為何，自訂偵測規則都必須輸出 Timestamp 與 ReportId 才能對事件去重與定位；省略會導致規則無法建立。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/custom-detection-rules",
+    "tags": []
+  },
+  {
+    "id": "M2-0016",
+    "domain": "D2",
+    "topic": "entra-id-protection",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Microsoft Entra ID Protection marks a user as High user risk after an atypical travel detection. Your policy states that a risky user must be able to clear their own risk state without contacting the service desk, and the remediation must also invalidate the attacker's access. Which configuration meets the requirement?",
+    "stem_zh": "Microsoft Entra ID Protection 因為「非典型移動」偵測，把某使用者標記為高使用者風險。你的原則規定：有風險的使用者必須能自行清除風險狀態，不必聯絡服務台，而且該補救動作也要讓攻擊者的存取失效。哪一種設定符合需求？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A sign-in risk Conditional Access policy that requires multifactor authentication for high sign-in risk",
+        "text_zh": "一條登入風險的條件式存取原則，對高登入風險要求多重要素驗證"
+      },
+      {
+        "key": "B",
+        "text_en": "A user-risk Conditional Access policy that requires a secure password change for users with high user risk",
+        "text_zh": "一條使用者風險的條件式存取原則，對高使用者風險的使用者要求「安全的密碼變更」"
+      },
+      {
+        "key": "C",
+        "text_en": "Have the service desk dismiss the user risk each time the detection appears",
+        "text_zh": "每次出現偵測時，由服務台手動關閉（Dismiss）使用者風險"
+      },
+      {
+        "key": "D",
+        "text_en": "Select Confirm user compromised on the user so that Microsoft Entra ID Protection raises the risk to high and blocks sign-in",
+        "text_zh": "對該使用者選擇「確認已遭入侵」，讓 Microsoft Entra ID Protection 把風險提高到高並封鎖登入"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "使用者風險原則的「安全密碼變更」是唯一能同時達成兩件事的設定：使用者以 MFA 驗證後自助變更密碼，Microsoft Entra ID Protection 會自動把使用者風險狀態標記為「已修復」，而密碼變更同時讓攻擊者手上的舊認證與更新權杖失效。登入風險原則要求 MFA 只處理單次登入，兩者通常搭配使用但用途不同。",
+    "why_wrong_zh": {
+      "A": "登入風險原則針對的是「單次登入」的風險，通過 MFA 只會清除該次登入的風險，使用者層級的風險狀態仍然是高，也不會使攻擊者已取得的認證失效。",
+      "C": "手動關閉風險就是題目要避免的服務台流程，而且關閉只是把風險狀態歸零，並沒有讓被竊的密碼失效。",
+      "D": "確認已遭入侵是把資料回饋給風險模型的標示動作，它會把風險提高而不是補救；後續仍需要密碼重設或管理員介入才能恢復。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/entra/id-protection/howto-identity-protection-configure-risk-policies",
+    "tags": []
+  },
+  {
+    "id": "M2-0017",
+    "domain": "D1",
+    "topic": "threat-intel",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A commercial feed delivers about 40,000 indicators per day. The vendor's platform can only push STIX 2.1 objects as JSON over HTTPS to an endpoint you provide; it cannot host a TAXII collection. The indicators must appear in the Microsoft Sentinel threat intelligence blade, must expire automatically, and must be usable by TI-matching analytics rules. Which ingestion path should you choose?",
+    "stem_zh": "某商業情報來源每天提供約 40,000 個指標。供應商平台只能把 STIX 2.1 物件以 JSON 透過 HTTPS 推送到你提供的端點，無法架設 TAXII 集合。這些指標必須出現在 Microsoft Sentinel 的威脅情報頁面、要能自動過期，而且要能被 TI 比對分析規則使用。你應該選擇哪一條擷取路徑？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Import the indicators as a CSV or JSON file from the Threat intelligence page in the portal each day",
+        "text_zh": "每天在入口網站的威脅情報頁面以 CSV 或 JSON 檔案匯入指標"
+      },
+      {
+        "key": "B",
+        "text_en": "Configure the Threat intelligence – TAXII data connector and point it at the vendor's API root",
+        "text_zh": "設定「威脅情報 – TAXII」資料連接器，指向供應商的 API 根目錄"
+      },
+      {
+        "key": "C",
+        "text_en": "Write the indicators into a Microsoft Sentinel watchlist and reference it from analytics rules",
+        "text_zh": "把指標寫進 Microsoft Sentinel 監視清單（Watchlist），再由分析規則引用"
+      },
+      {
+        "key": "D",
+        "text_en": "The threat intelligence upload API, which accepts STIX 2.1 objects and honours the valid_from and valid_until properties on each object",
+        "text_zh": "威脅情報上傳 API（upload API），它接受 STIX 2.1 物件，並會依照每個物件的 valid_from 與 valid_until 屬性處理有效期"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "當來源只能「推送」而不是「被拉取」時，正確路徑是威脅情報上傳 API：以應用程式註冊取得權杖後，把 STIX 2.1 物件（indicator、identity、relationship 等）POST 到 Sentinel 的上傳端點，指標會寫入 ThreatIntelligenceIndicator／新版 TI 資料表，出現在威脅情報頁面，並可被「TI map …」系列分析規則比對。有效期由物件的 valid_until 決定，過期指標會自動停用，不需要人工清理。",
+    "why_wrong_zh": {
+      "A": "檔案匯入是人工的一次性動作且有筆數限制，無法承擔每天四萬筆的自動化需求。",
+      "B": "TAXII 連接器需要供應商提供符合規範的 TAXII 2.x 伺服器與集合識別碼，但題目已明確說明對方無法提供 TAXII 服務。",
+      "C": "監視清單適合小型、變動少的參考資料（VIP 清單、資產清單），沒有指標的信心分數、來源、自動過期等威脅情報語意，也不會出現在威脅情報頁面或被 TI 比對規則使用。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/connect-threat-intelligence-upload-api",
+    "tags": []
+  },
+  {
+    "id": "M2-0018",
+    "domain": "D1",
+    "topic": "data-lake",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Your workspace is onboarded to the Microsoft Sentinel data lake. Network flow logs are kept only in the data lake tier for 12 months to save cost. For one investigation an analyst must query 12 months of that data, and the resulting shortlist of suspicious source addresses must then be available to a scheduled analytics rule that runs tomorrow. Which approach meets both needs?",
+    "stem_zh": "你的工作區已上線 Microsoft Sentinel 資料湖。為了節省成本，網路流量記錄只保留在資料湖層 12 個月。某次調查中，分析師必須查詢這 12 個月的資料，而查出來的可疑來源位址清單，明天還必須能被一條排程分析規則使用。哪一種做法同時滿足兩項需求？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Run a KQL job against the data lake tier and write its output to a table in the analytics tier, where the scheduled rule can query it",
+        "text_zh": "對資料湖層執行 KQL 作業（KQL job），把輸出寫入分析層的資料表，排程規則就能查詢它"
+      },
+      {
+        "key": "B",
+        "text_en": "Change the table's tier from data lake to analytics so that the full 12 months becomes queryable by analytics rules",
+        "text_zh": "把該資料表的層級從資料湖改成分析層，讓完整 12 個月都能被分析規則查詢"
+      },
+      {
+        "key": "C",
+        "text_en": "Run a Log Analytics search job over the 12 months, because search jobs read directly from the data lake tier",
+        "text_zh": "對這 12 個月執行 Log Analytics 搜尋作業，因為搜尋作業會直接讀取資料湖層"
+      },
+      {
+        "key": "D",
+        "text_en": "Export the data lake content to a storage account and re-ingest the relevant rows with a Logic App",
+        "text_zh": "把資料湖內容匯出到儲存體帳戶，再用邏輯應用程式把相關資料列重新擷取回來"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "資料湖層的定位是「便宜、長期、可查詢，但不供偵測直接使用」。要把資料湖裡的分析結果送回偵測流程，官方路徑是 KQL 作業：它以 KQL 對資料湖層執行一次性或排程查詢，並把結果寫入分析層的自訂資料表，之後排程分析規則、活頁簿、搜捕查詢都能像一般資料表一樣使用。這樣既保住低成本保留，也讓昂貴的分析層只存放真正需要偵測的少量結果。",
+    "why_wrong_zh": {
+      "B": "層級變更只影響之後擷取的資料，不會把已存在的 12 個月歷史資料搬進分析層；即使可行，成本也遠高於只保留必要的結果集。",
+      "C": "搜尋作業處理的是分析層與基本／輔助記錄層的長期保留資料，而不是資料湖層；資料湖層的互動式與排程查詢是透過資料湖探索與 KQL 作業。",
+      "D": "這條路徑要自行處理匯出、剖析、重新擷取與去重，成本與維運負擔都高，而 KQL 作業本來就是為了同一件事而設計的原生功能。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-lake-overview",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "M2-0019",
+    "domain": "D2",
+    "topic": "device-response",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "multi",
+    "stem_en": "During an active intrusion you must (1) find out which processes are running right now on one compromised device and (2) make sure the malicious binary can never execute on any other managed device in the organization. Which two actions together achieve both goals? (Select all that apply.)",
+    "stem_zh": "在一起進行中的入侵事件裡，你必須同時做到：(1) 查出某台被入侵裝置「此刻」正在執行哪些處理程序；(2) 確保該惡意二進位檔在組織中任何其他受管裝置上都無法執行。哪「兩」個動作合起來達成這兩個目標？（複選）",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Run Stop and quarantine file from the file page, which permanently blocks the hash on every device from that moment on",
+        "text_zh": "從檔案頁面執行「停止並隔離檔案」，它會從此刻起在每台裝置上永久封鎖該雜湊"
+      },
+      {
+        "key": "B",
+        "text_en": "Open a live response session on the device and run the processes command",
+        "text_zh": "在該裝置上開啟即時回應工作階段，執行 processes 命令"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a device group that excludes the affected devices so that the binary has nowhere to spread",
+        "text_zh": "建立一個排除受影響裝置的裝置群組，讓該二進位檔無處擴散"
+      },
+      {
+        "key": "D",
+        "text_en": "Create a file indicator for the binary's SHA-256 hash with the Block and remediate action, scoped to all device groups",
+        "text_zh": "為該二進位檔的 SHA-256 雜湊建立檔案指標，動作設為「封鎖並修復」，範圍涵蓋所有裝置群組"
+      }
+    ],
+    "answer": [
+      "B",
+      "D"
+    ],
+    "explanation_zh": "兩個目標各對應一個工具。即時狀態要用即時回應：連線後 processes 列出當下執行中的處理程序，另有 connections、scheduledtasks、getfile 等命令做深入蒐證。組織範圍的預防要用自訂指標：以 SHA-256 建立檔案指標並選擇「封鎖並修復」，Defender for Endpoint 會在所有指定裝置群組上阻止該檔案執行並自動清除，屬於持續生效的控制。停止並隔離檔案只是一次性清除，兩者常搭配使用但不可互相取代。",
+    "why_wrong_zh": {
+      "A": "停止並隔離檔案會終止處理程序並把「目前存在」的檔案移到隔離區，但它是一次性的清除動作，不會建立持續生效的封鎖規則；日後再次落地的同一個檔案不會被自動阻擋。",
+      "C": "裝置群組是用來套用原則、自動化層級與 RBAC 範圍的分類機制，本身沒有任何封鎖或隔離網路的效果。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/indicator-file",
+    "tags": []
+  },
+  {
+    "id": "M2-0020",
+    "domain": "D3",
+    "topic": "mitre-attack",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "An adversary who already controls a stolen but valid domain account uses SMB to connect to three additional file servers and executes a remote command on each. Which MITRE ATT&CK tactic best describes this activity?",
+    "stem_zh": "攻擊者已經掌握一個被竊但有效的網域帳戶，接著用 SMB 連線到另外三台檔案伺服器，並在每一台上執行遠端命令。這個行為最適合對應到哪一個 MITRE ATT&CK 戰術？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Persistence",
+        "text_zh": "持續性（Persistence）"
+      },
+      {
+        "key": "B",
+        "text_en": "Defense Evasion",
+        "text_zh": "防禦規避（Defense Evasion）"
+      },
+      {
+        "key": "C",
+        "text_en": "Lateral Movement",
+        "text_zh": "橫向移動（Lateral Movement）"
+      },
+      {
+        "key": "D",
+        "text_en": "Collection",
+        "text_zh": "蒐集（Collection）"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "橫向移動是指攻擊者從已控制的據點移動到環境中其他系統，典型技術包含遠端服務（T1021，含 SMB/Windows 管理員共用、RDP、WinRM）與傳遞雜湊／票證。判斷戰術時要看「行為的目的」：目的是擴散到更多主機就是橫向移動；若目的是取得更多憑證則是憑證存取，若是把資料集中則是蒐集。",
+    "why_wrong_zh": {
+      "A": "持續性指的是讓攻擊者在重新開機、認證變更後仍能保有存取，例如新增排程工作、服務或後門帳戶；用既有帳戶連到別台機器並不屬於此類。",
+      "B": "防禦規避是為了躲避偵測與防護，例如停用防毒、清除記錄、混淆指令碼；本題沒有描述任何隱藏行為。",
+      "D": "蒐集是把目標資料集中起來以備外洩，例如打包文件、擷取剪貼簿或螢幕；在其他主機上執行命令本身還不是蒐集。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/mitre-coverage",
+    "tags": []
+  },
+  {
+    "id": "M2-0021",
+    "domain": "D1",
+    "topic": "automation-rules",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Your workspace has three automation rules that all match the same incoming incidents: one tags the incident, one assigns an owner, and one runs a playbook that posts to Microsoft Teams. The playbook must always run last, after the owner has been assigned, because its message includes the owner's name. How do you guarantee that execution order?",
+    "stem_zh": "你的工作區有三條自動化規則，都會比對到同一批進來的事件：一條加標籤、一條指派擁有者、一條執行把訊息貼到 Microsoft Teams 的劇本。因為劇本訊息內含擁有者名稱，它必須永遠最後執行、在指派擁有者之後。你要怎麼確保這個執行順序？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Rename the rules so that they sort alphabetically in the required sequence",
+        "text_zh": "重新命名規則，讓它們依字母順序排成需要的順序"
+      },
+      {
+        "key": "B",
+        "text_en": "Set the Order value on each automation rule; rules that match the same incident run in ascending order, so give the playbook rule the highest number",
+        "text_zh": "設定每條自動化規則的「順序（Order）」值；比對到同一事件的規則會依序號由小到大執行，因此把劇本規則設成最大的數字"
+      },
+      {
+        "key": "C",
+        "text_en": "Configure a trigger priority inside the Logic Apps playbook so that it waits for the other rules",
+        "text_zh": "在邏輯應用程式劇本內設定觸發程序優先權，讓它等待其他規則完成"
+      },
+      {
+        "key": "D",
+        "text_en": "Configure the analytics rule to call the three automation rules in the required sequence",
+        "text_zh": "在分析規則中設定依需要的順序呼叫這三條自動化規則"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "自動化規則的每一條都有「順序」數值，數值小的先執行；同一個事件觸發多條規則時，Sentinel 會依此序號逐條套用，而且前一條規則造成的變更（例如指派擁有者、修改標籤）對後面的規則是可見的。因此要「先指派擁有者、後跑劇本」，只要把劇本規則的順序值設得比指派規則大即可，不需要在劇本或分析規則裡做任何事。",
+    "why_wrong_zh": {
+      "A": "自動化規則的執行順序完全由順序欄位決定，與名稱無關；改名不會影響執行時機。",
+      "C": "劇本被觸發後就開始執行，Logic Apps 沒有「等待同一事件的其他自動化規則」的觸發優先權設定。",
+      "D": "分析規則不會呼叫自動化規則；自動化規則是由事件建立或更新的觸發程序驅動，並依自身的順序值排程。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/automate-incident-handling-with-automation-rules",
+    "tags": []
+  },
+  {
+    "id": "M2-0022",
+    "domain": "D2",
+    "topic": "alert-correlation",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Two separate incidents in Microsoft Defender XDR describe the same attack: incident 4711 holds the phishing email alerts and incident 4718 holds the endpoint alerts for the recipient's laptop. You must investigate them as one attack story while keeping every alert and every piece of evidence available. What should you do?",
+    "stem_zh": "Microsoft Defender XDR 中有兩個各自獨立的事件描述同一起攻擊：事件 4711 包含釣魚郵件的警示，事件 4718 包含收件者筆電的端點警示。你必須把它們當成同一條攻擊劇本來調查，同時保留所有警示與證據。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Close incident 4718 as a duplicate and continue the investigation in incident 4711",
+        "text_zh": "把事件 4718 以重複為由關閉，只在事件 4711 繼續調查"
+      },
+      {
+        "key": "B",
+        "text_en": "Add a comment and a shared tag to both incidents so that analysts know they are related",
+        "text_zh": "在兩個事件加上註解與共同標籤，讓分析師知道兩者相關"
+      },
+      {
+        "key": "C",
+        "text_en": "Export both incidents to Microsoft Sentinel and group them there with an automation rule",
+        "text_zh": "把兩個事件匯出到 Microsoft Sentinel，再用自動化規則在那裡歸併"
+      },
+      {
+        "key": "D",
+        "text_en": "Merge the two incidents in the Microsoft Defender portal, which moves all alerts into the surviving incident and redirects the other one",
+        "text_zh": "在 Microsoft Defender 入口網站合併這兩個事件，所有警示會併入保留下來的事件，另一個事件則被重新導向"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "當關聯引擎沒有自動把兩組警示歸到同一事件時（常見於初始存取與後續端點活動之間缺少共同實體），分析師可以手動合併事件。合併後所有警示、實體與證據都集中到一個事件，另一個事件會被標記為已合併並導向新事件，調查歷程完整保留。之後若確認合併有誤，也可以在事件中把警示拆出。",
+    "why_wrong_zh": {
+      "A": "關閉會讓那一側的警示與證據停止出現在作用中的調查脈絡裡，事後也容易被誤讀成「已處理」，而不是被併入另一個事件。",
+      "B": "註解與標籤只是文字提示，事件圖表、實體清單與自動化仍然分屬兩個事件，無法形成單一攻擊劇本。",
+      "C": "Sentinel 的自動化規則可以修改事件屬性、執行劇本，但不會把兩個 Defender XDR 事件合併成一個攻擊劇本；合併是 Defender 入口網站的功能。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/manage-incidents",
+    "tags": []
+  },
+  {
+    "id": "M2-0023",
+    "domain": "D1",
+    "topic": "security-copilot",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Your SOC uses the embedded Microsoft Security Copilot experience inside the Microsoft Defender portal. Analysts can summarize incidents, but they also need Copilot to answer questions about Microsoft Sentinel analytics rules and about the ServiceNow ticket that is linked to each incident. What should you do?",
+    "stem_zh": "你的 SOC 在 Microsoft Defender 入口網站使用內嵌的 Microsoft Security Copilot 體驗。分析師可以做事件摘要，但他們還需要 Copilot 回答關於 Microsoft Sentinel 分析規則的問題，以及每個事件所連結的 ServiceNow 工單內容。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Nothing can be done: the embedded experience in Defender only supports Defender XDR data, so analysts must switch to the standalone Copilot portal",
+        "text_zh": "沒有辦法：Defender 中的內嵌體驗只支援 Defender XDR 資料，分析師必須改用獨立的 Copilot 入口網站"
+      },
+      {
+        "key": "B",
+        "text_en": "Purchase additional security compute units (SCUs) so that more data sources become available",
+        "text_zh": "購買更多安全性運算單位（SCU），讓更多資料來源變成可用"
+      },
+      {
+        "key": "C",
+        "text_en": "Enable the required plugins in Security Copilot — the Microsoft Sentinel plugin and the ServiceNow plugin — and make sure the analysts are allowed to use them",
+        "text_zh": "在 Security Copilot 啟用需要的外掛程式——Microsoft Sentinel 外掛與 ServiceNow 外掛——並確認分析師被允許使用它們"
+      },
+      {
+        "key": "D",
+        "text_en": "Create a promptbook that contains the Sentinel and ServiceNow questions",
+        "text_zh": "建立一個包含 Sentinel 與 ServiceNow 問題的提示手冊（Promptbook）"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Security Copilot 的資料觸及範圍由外掛程式（plugin）決定：Microsoft 自家外掛（Defender XDR、Sentinel、Intune、Entra、Purview、MDTI）、第三方外掛（如 ServiceNow）、以及自訂外掛與知識庫。無論在 Defender 入口網站的內嵌體驗或獨立入口網站，Copilot 都只能存取「已啟用且使用者有權使用」的外掛，而且仍受使用者本身的 RBAC 權限限制。",
+    "why_wrong_zh": {
+      "A": "內嵌體驗與獨立入口網站共用同一組外掛程式設定；啟用後的 Microsoft 與第三方外掛在內嵌情境中同樣可用。",
+      "B": "SCU 決定的是處理量能與併行度，跟能存取哪些資料來源無關；沒有啟用外掛，再多 SCU 也讀不到 ServiceNow。",
+      "D": "提示手冊只是把一連串提示標準化，它仍然依賴底層外掛程式取得資料；沒有啟用外掛，提示手冊會得不到答案。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/copilot/security/plugin-overview",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "M2-0024",
+    "domain": "D2",
+    "topic": "purview-audit",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Legal asks you to prove whether a compromised account actually read the contents of a specific mailbox during the breach window. Which audit record type must be present in the Microsoft Purview audit log to answer that question?",
+    "stem_zh": "法務要求你證明某個遭入侵的帳戶在入侵期間是否真的「讀取」了特定信箱的內容。要回答這個問題，Microsoft Purview 稽核記錄中必須存在哪一種稽核記錄類型？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "MailItemsAccessed",
+        "text_zh": "MailItemsAccessed"
+      },
+      {
+        "key": "B",
+        "text_en": "MailboxLogin",
+        "text_zh": "MailboxLogin"
+      },
+      {
+        "key": "C",
+        "text_en": "Send",
+        "text_zh": "Send"
+      },
+      {
+        "key": "D",
+        "text_en": "New-InboxRule",
+        "text_zh": "New-InboxRule"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "MailItemsAccessed 是專為「資料是否外洩」設計的信箱稽核動作：只要透過同步或繫結（bind）存取信箱項目就會產生記錄，含存取的資料夾與項目識別碼，讓調查人員能界定攻擊者實際看過哪些郵件。它屬於高價值稽核事件，需要對應的授權層級（Audit（進階）／E5 等）才會記錄，因此事前的授權與稽核設定會直接決定事後能不能回答法務的問題。",
+    "why_wrong_zh": {
+      "B": "MailboxLogin 只記錄有人以該信箱身分登入，並不會告訴你之後讀取了哪些郵件項目。",
+      "C": "Send 記錄的是使用者寄出郵件的動作，與是否閱讀既有郵件無關。",
+      "D": "New-InboxRule 記錄收件匣規則的建立，是 BEC 調查常看的另一項證據，但無法證明郵件內容被讀取。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/purview/audit-log-investigate-accounts",
+    "tags": []
+  },
+  {
+    "id": "M2-0025",
+    "domain": "D1",
+    "topic": "defender-for-cloud",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Security alerts from Microsoft Defender for Cloud across 40 Azure subscriptions must appear as incidents in Microsoft Sentinel so that analysts can correlate them with third-party firewall logs already in the workspace. Which sequence should you follow?",
+    "stem_zh": "40 個 Azure 訂用帳戶的 Microsoft Defender for Cloud 安全性警示必須以事件形式出現在 Microsoft Sentinel，好讓分析師能與工作區中既有的第三方防火牆記錄關聯。你應該依照哪一個順序執行？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Enable the Azure Activity data connector, because Defender for Cloud alerts are written to the AzureActivity table",
+        "text_zh": "啟用 Azure 活動資料連接器，因為 Defender for Cloud 警示會寫進 AzureActivity 資料表"
+      },
+      {
+        "key": "B",
+        "text_en": "Deploy the Azure Monitor Agent to every virtual machine with a data collection rule that collects Defender for Cloud alerts",
+        "text_zh": "在每台虛擬機器部署 Azure 監視器代理程式，並用資料收集規則收集 Defender for Cloud 警示"
+      },
+      {
+        "key": "C",
+        "text_en": "Configure continuous export from Defender for Cloud to an event hub and build a custom connector to read it",
+        "text_zh": "設定 Defender for Cloud 持續匯出到事件中樞，再自建連接器讀取"
+      },
+      {
+        "key": "D",
+        "text_en": "Enable the required Defender for Cloud plans on the subscriptions, connect the Microsoft Defender for Cloud data connector at the required scope, then enable the connector's incident-creation analytics rule",
+        "text_zh": "先在各訂用帳戶啟用需要的 Defender for Cloud 方案，接著在需要的範圍連接 Microsoft Defender for Cloud 資料連接器，最後啟用該連接器的事件建立分析規則"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "順序很重要：沒有啟用 Defender for Cloud 方案就不會產生警示，連接器也就沒有資料可拉。連接器可在訂用帳戶或管理群組範圍設定（大量訂用帳戶時用管理群組較省事），並支援雙向同步——在 Sentinel 關閉事件會反映回 Defender for Cloud 的警示狀態。最後要啟用連接器附帶的「建立事件」分析規則，警示才會變成 Sentinel 事件進入分診佇列。",
+    "why_wrong_zh": {
+      "A": "AzureActivity 記錄的是控制平面的管理作業（誰建立、修改、刪除了資源），不含 Defender for Cloud 的安全性警示。",
+      "B": "警示由 Defender for Cloud 雲端服務產生，不是由 VM 上的代理程式產出；用 AMA 收集是錯誤的架構。",
+      "C": "持續匯出到事件中樞是給第三方 SIEM 或跨租用戶情境用的替代路徑；Sentinel 已有原生連接器，自建會多出維運負擔且沒有事件同步。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/connect-defender-for-cloud",
+    "tags": []
+  },
+  {
+    "id": "M2-0026",
+    "domain": "D3",
+    "topic": "sentinel-graph",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "multi",
+    "stem_en": "A privileged service principal in your tenant is confirmed compromised. Before you decide what to contain first, you open the Microsoft Sentinel graph experience. Which three things does the graph help you determine? (Select all that apply.)",
+    "stem_zh": "你的租用戶中有一個具特殊權限的服務主體確認遭到入侵。在決定先遏制什麼之前，你打開 Microsoft Sentinel 圖形（graph）體驗。這個圖形能幫你判斷下列哪「三」件事？（複選）",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The shortest attack path from the compromised identity to business-critical assets",
+        "text_zh": "從被入侵的身分到關鍵業務資產之間最短的攻擊路徑"
+      },
+      {
+        "key": "B",
+        "text_en": "Which resources the identity can reach today through its role assignments and API permissions",
+        "text_zh": "該身分目前透過角色指派與 API 權限實際能觸及哪些資源"
+      },
+      {
+        "key": "C",
+        "text_en": "It automatically revokes the service principal's credentials once the highest-risk path is calculated",
+        "text_zh": "在算出風險最高的路徑之後，它會自動撤銷該服務主體的認證"
+      },
+      {
+        "key": "D",
+        "text_en": "Which relationships between identities, devices and cloud resources create the largest blast radius",
+        "text_zh": "身分、裝置與雲端資源之間的哪些關聯造成最大的影響範圍（blast radius）"
+      }
+    ],
+    "answer": [
+      "A",
+      "B",
+      "D"
+    ],
+    "explanation_zh": "Microsoft Sentinel 圖形把資產、身分、權限與活動之間的關聯建成圖形資料模型，讓調查從「一列一列的記錄」變成「路徑與範圍」。實務價值有三：算出從入口點到皇冠珠寶的攻擊路徑、把有效權限（含繼承與巢狀）攤開來看該身分實際能做什麼、以及量化影響範圍以排定遏制順序。它本身不執行回應動作——看清楚之後仍要由分析師或自動化去撤銷權限、封鎖認證。",
+    "why_wrong_zh": {
+      "C": "圖形提供的是關聯與路徑的可見度，是分析與決策工具；撤銷認證屬於回應動作，必須在 Microsoft Entra 或透過劇本／自動化執行。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-graph-overview",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "M2-0027",
+    "domain": "D2",
+    "topic": "copilot-investigation",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Your SOC enabled the phishing triage agent in Microsoft Defender. A tier-1 analyst opens a user-submitted message and sees that the agent has already classified it. What is the analyst expected to do next so that the agent keeps improving?",
+    "stem_zh": "你的 SOC 在 Microsoft Defender 啟用了網路釣魚分診代理程式（phishing triage agent）。一位 tier-1 分析師打開一封使用者提交的郵件，看到代理程式已經完成分類。為了讓代理程式持續進步，分析師接下來應該做什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Repeat the same triage manually in Threat Explorer, because agent verdicts are not recorded anywhere",
+        "text_zh": "在威脅總管中手動重做一次同樣的分診，因為代理程式的判定沒有被記錄下來"
+      },
+      {
+        "key": "B",
+        "text_en": "Review the agent's verdict together with the reasoning it shows, and submit feedback when the verdict is wrong so that the agent tunes future classifications",
+        "text_zh": "檢視代理程式的判定與它所呈現的推理過程，若判定有誤就提交回饋，讓代理程式調整日後的分類"
+      },
+      {
+        "key": "C",
+        "text_en": "Approve each agent verdict in the Action center before it takes effect, because agents always run in semi-automatic mode",
+        "text_zh": "在動作中心逐一核准代理程式的每個判定才會生效，因為代理程式一律以半自動模式執行"
+      },
+      {
+        "key": "D",
+        "text_en": "Disable the agent whenever its verdict differs from the analyst's own conclusion",
+        "text_zh": "只要代理程式的判定和分析師自己的結論不同，就停用代理程式"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "分診代理程式的設計是「人在迴圈上（human on the loop）」：它自動處理使用者提交的可疑郵件、給出分類與可解釋的推理，分析師的角色從逐封判讀轉為抽查與回饋。回饋會被用來調整代理程式在你環境中的判斷，因此持續回饋是讓誤判率下降的關鍵。同時所有判定都有稽核軌跡，滿足事後檢視與合規需求。",
+    "why_wrong_zh": {
+      "A": "代理程式的判定、推理與所採取的動作都會留下可稽核的紀錄；把每一件都重做等於放棄自動化帶來的效率。",
+      "C": "分診代理程式的分類本身不是需要核准的修復動作，它的價值就在於自動處理大量提交；需要核准的是修復動作，而非分類結果。",
+      "D": "判定不一致正是提供回饋的時機；直接停用會讓模型失去校正機會，也讓團隊回到人工處理大量提交的狀態。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/submissions-phishing-triage-agent",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "M2-0028",
+    "domain": "D2",
+    "topic": "quarantine-management",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "A user reports that a legitimate invoice from a supplier was quarantined as phishing. You verify that the message is genuine. Which single action both delivers the message to the user and tells Microsoft that the verdict was wrong?",
+    "stem_zh": "某使用者回報供應商寄來的合法發票郵件被當成網路釣魚隔離。你確認該郵件確實是正常郵件。哪一個動作能同時把郵件送達使用者，並告知 Microsoft 這次判定有誤？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Release the message from quarantine and select the option to report it to Microsoft as a false positive",
+        "text_zh": "從隔離區釋放該郵件，並選擇把它以誤判（false positive）回報給 Microsoft"
+      },
+      {
+        "key": "B",
+        "text_en": "Add the sender to the user's Outlook safe senders list",
+        "text_zh": "把寄件者加入該使用者 Outlook 的安全寄件者清單"
+      },
+      {
+        "key": "C",
+        "text_en": "Create an Exchange mail flow rule that bypasses spam filtering for the supplier's domain",
+        "text_zh": "建立 Exchange 郵件流程規則，讓該供應商網域的郵件略過垃圾郵件篩選"
+      },
+      {
+        "key": "D",
+        "text_en": "Turn off the anti-phishing policy for the user's group until Microsoft updates its detection",
+        "text_zh": "在 Microsoft 更新偵測之前，先為該使用者所屬群組關閉反網路釣魚原則"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "隔離區的「釋放並回報」是處理誤判的標準單一動作：郵件送達收件者，同時樣本被提交到 Microsoft 供分析，判定結果會回饋到租用戶與全域的偵測模型。若需要在判定更新前先確保後續郵件不再被擋，正確的搭配是租用戶允許／封鎖清單中的「允許」項目（有到期日），而不是關閉原則或全域略過篩選。",
+    "why_wrong_zh": {
+      "B": "安全寄件者只影響未來郵件在該使用者信箱的處理，不會把已經在隔離區的郵件送出，也不會回饋判定給 Microsoft。",
+      "C": "為整個網域略過篩選會開出一個長期的安全缺口，而且同樣不會處理已隔離的郵件或提交誤判。",
+      "D": "為了一封誤判關閉整組保護，會讓真正的釣魚郵件直接投遞，是嚴重不成比例的處置。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/quarantine-admin-manage-messages-files",
+    "tags": []
+  },
+  {
+    "id": "M2-0029",
+    "domain": "D1",
+    "topic": "summary-rules",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "Firewall logs arrive at about 400 GB per day and are stored in a low-cost tier. Detections and workbooks need hourly counts of denied connections per source IP for the last 90 days, and analysts must still be able to retrieve the raw rows for one specific IP when an investigation requires it. Which design meets all requirements at the lowest cost?",
+    "stem_zh": "防火牆記錄每天約 400 GB，存放在低成本層級。偵測與活頁簿需要過去 90 天「每小時、每來源 IP 的拒絕連線數」，同時分析師在調查需要時仍要能撈出特定單一 IP 的原始資料列。哪一種設計以最低成本滿足全部需求？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Move the whole firewall table into the analytics tier with 90-day retention so that every query is fast",
+        "text_zh": "把整個防火牆資料表搬進分析層並保留 90 天，讓所有查詢都很快"
+      },
+      {
+        "key": "B",
+        "text_en": "Create a scheduled analytics rule that queries the raw table with a 90-day lookback every hour",
+        "text_zh": "建立每小時執行、回溯 90 天的排程分析規則查詢原始資料表"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a summary rule that aggregates the raw table hourly into a summary table in the analytics tier, and keep the raw data in the low-cost tier for search jobs",
+        "text_zh": "建立摘要規則，每小時把原始資料表彙總到分析層的摘要資料表，原始資料仍留在低成本層級供搜尋作業使用"
+      },
+      {
+        "key": "D",
+        "text_en": "Configure a KQL job that copies all raw rows from the low-cost tier into the analytics tier once a day",
+        "text_zh": "設定 KQL 作業，每天把低成本層級的所有原始資料列複製到分析層"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "摘要規則（summary rules）就是為這種「大量原始資料、少量彙總需求」而設計：它以排程對來源資料表執行彙總 KQL，把結果寫入分析層的摘要資料表，體積通常只有原始資料的千分之一，卻能支撐儀表板、趨勢分析與以彙總為基礎的偵測。原始資料維持在便宜層級，需要時再用搜尋作業把特定條件的資料列還原到可查詢狀態，兼顧成本與可調查性。",
+    "why_wrong_zh": {
+      "A": "每天 400 GB 全部放進分析層的擷取與保留成本極高，而且絕大多數資料列永遠不會被查詢，違反「最低成本」的要求。",
+      "B": "每小時掃描 90 天的巨量原始資料會讓查詢逾時或耗盡資源，而且排程分析規則的用途是產生警示，不是產生可重複使用的彙總資料集。",
+      "D": "把原始資料整批複製等於重複付一次分析層的擷取費用，成本比直接放分析層還糟；KQL 作業的價值在於只把「結果集」送回分析層。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/summary-rules",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "M2-0030",
+    "domain": "D2",
+    "topic": "attack-disruption",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "During a confirmed human-operated ransomware attack, Microsoft Defender XDR automatic attack disruption disabled a compromised user account. You have finished the investigation, reset the credentials and removed the attacker's persistence. The user still cannot sign in. What must you do?",
+    "stem_zh": "在一起確認的人為操作勒索軟體攻擊中，Microsoft Defender XDR 自動攻擊中斷（automatic attack disruption）停用了一個遭入侵的使用者帳戶。你已完成調查、重設認證並移除攻擊者的持續性機制。該使用者仍然無法登入。你必須做什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Wait up to 24 hours, because attack disruption actions expire automatically",
+        "text_zh": "等待最多 24 小時，因為攻擊中斷的動作會自動到期"
+      },
+      {
+        "key": "B",
+        "text_en": "Undo the containment action from the Action center (or re-enable the account) after confirming that remediation is complete",
+        "text_zh": "在確認修復完成後，從動作中心撤銷（undo）該遏制動作，或重新啟用該帳戶"
+      },
+      {
+        "key": "C",
+        "text_en": "Delete the user object and create a new account with the same user principal name",
+        "text_zh": "刪除該使用者物件，再用相同的使用者主體名稱建立新帳戶"
+      },
+      {
+        "key": "D",
+        "text_en": "Turn off automatic attack disruption in the Defender XDR settings so that the account is released",
+        "text_zh": "在 Defender XDR 設定中關閉自動攻擊中斷，讓帳戶被釋放"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "自動攻擊中斷會在高信心的攻擊情境下自動執行遏制（停用使用者、包含裝置、停用惡意 OAuth 應用程式），並把動作記錄在動作中心。復原的唯一正確路徑是分析師在動作中心檢視該動作並選擇撤銷；撤銷前應確認認證已重設、持續性已移除，否則帳戶一恢復就可能被重新使用。整個流程有完整稽核軌跡，可作為事後檢討的依據。",
+    "why_wrong_zh": {
+      "A": "遏制動作不會自動解除；它會一直維持到有人明確撤銷為止，這是刻意的設計，避免攻擊者只要等待就能恢復存取。",
+      "C": "刪除並重建會失去信箱、授權、群組成員資格與稽核歷程，是遠比撤銷動作昂貴且破壞性的做法。",
+      "D": "關閉功能不會回溯撤銷已執行的動作，反而讓後續攻擊失去自動遏制的保護。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/automatic-attack-disruption",
+    "tags": []
+  },
+  {
+    "id": "M2-0031",
+    "domain": "D3",
+    "topic": "livestream",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "While hunting in Microsoft Sentinel you find three rows that show a service account requesting Kerberos tickets from an unfamiliar workstation. You cannot yet prove the activity is malicious, so you must preserve the three rows for the investigation record and also be notified within seconds if the same pattern appears again during the next hour. Which combination should you use, and in which order?",
+    "stem_zh": "你在 Microsoft Sentinel 搜捕時，發現三列資料顯示某服務帳戶從一台不熟悉的工作站請求 Kerberos 票證。目前還無法證明這是惡意行為，因此你必須把這三列保存進調查紀錄，同時在接下來一小時內若相同樣態再出現，要能在數秒內知道。你應該用哪一種組合、依什麼順序？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Start a livestream first and then convert it into an analytics rule, because bookmarks cannot be created from hunting results",
+        "text_zh": "先啟動即時串流，再把它轉成分析規則，因為搜捕結果無法建立書籤"
+      },
+      {
+        "key": "B",
+        "text_en": "Create a hunt and add the rows as bookmarks, because livestream only works against Microsoft Defender XDR tables",
+        "text_zh": "建立搜捕（hunt）並把資料列加入書籤，因為即時串流只能用在 Microsoft Defender XDR 的資料表"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a near-real-time analytics rule and a watchlist that contains the workstation name",
+        "text_zh": "建立近乎即時分析規則，並用監視清單存放該工作站名稱"
+      },
+      {
+        "key": "D",
+        "text_en": "Create a bookmark from the three rows first, then start a livestream session on the same query to watch for new occurrences",
+        "text_zh": "先從這三列建立書籤（bookmark），再對同一個查詢啟動即時串流（livestream）工作階段來監看新的出現"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "這題考的是三個搜捕工具的分工與順序。書籤負責「保存證據」：把查詢結果的特定資料列連同查詢、時間與註解保存下來，之後可加入事件或在調查中引用。即時串流負責「即時觀察」：以互動式工作階段持續執行同一個查詢，新資料一到就顯示，適合在數十分鐘內驗證假設而不產生事件。等到證據足夠、誤判率可接受，才把查詢升級成排程或 NRT 分析規則。",
+    "why_wrong_zh": {
+      "A": "搜捕結果正是書籤最主要的來源；「無法建立書籤」的前提就是錯的，而把即時串流直接轉成分析規則也不會保存你已找到的那三列證據。",
+      "B": "把資料列加入搜捕的書籤是正確的一半，但理由錯誤：即時串流是 Microsoft Sentinel 針對工作區資料表的功能，並沒有只限 Defender XDR 資料表的限制。",
+      "C": "在還無法確定是否惡意時就建立 NRT 規則，會直接產生事件與雜訊；監視清單也只是參考資料，兩者都沒有保存證據列的功能。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/livestream",
+    "tags": []
+  },
+  {
+    "id": "M2-0032",
+    "domain": "D1",
+    "topic": "sentinel-rbac",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "An automation engineer must be able to author and edit the Azure Logic Apps playbooks that your SOC attaches to Microsoft Sentinel automation rules. Company policy states that the engineer must not be able to read incident data or query the workspace tables. Which permission assignment follows least privilege?",
+    "stem_zh": "某位自動化工程師必須能撰寫與編輯 SOC 掛在 Microsoft Sentinel 自動化規則上的 Azure Logic Apps 劇本。公司政策規定該工程師不得讀取事件資料，也不得查詢工作區資料表。哪一種權限指派符合最小權限原則？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Assign Logic App Contributor on the resource group that contains the playbooks, and assign no Microsoft Sentinel role on the workspace",
+        "text_zh": "在存放劇本的資源群組上指派 Logic App Contributor，並且不在工作區上指派任何 Microsoft Sentinel 角色"
+      },
+      {
+        "key": "B",
+        "text_en": "Assign Microsoft Sentinel Contributor at the workspace scope so that the engineer can manage everything related to automation",
+        "text_zh": "在工作區範圍指派 Microsoft Sentinel 參與者，讓工程師能管理所有與自動化相關的項目"
+      },
+      {
+        "key": "C",
+        "text_en": "Assign Microsoft Sentinel Responder at the workspace scope",
+        "text_zh": "在工作區範圍指派 Microsoft Sentinel 回應者"
+      },
+      {
+        "key": "D",
+        "text_en": "Assign Owner on the subscription so that the engineer can also grant the playbooks the permissions they need",
+        "text_zh": "在訂用帳戶指派擁有者，讓工程師也能替劇本授與所需權限"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Sentinel 的權限要分兩個平面來想：Azure RBAC 管的是「資源」（Logic Apps 劇本、工作區資源本身），Sentinel 角色管的是「安全性資料與事件」。撰寫劇本只需要在劇本所在資源群組上有 Logic App Contributor；至於讓自動化規則能執行劇本，是把 Microsoft Sentinel Automation Contributor 授與 Sentinel 服務本身，而不是授與工程師。因此工程師完全不需要任何 Sentinel 角色。",
+    "why_wrong_zh": {
+      "B": "Sentinel 參與者可以讀取事件與工作區資料，直接違反「不得讀取事件資料」的政策，權限也遠超過撰寫劇本所需。",
+      "C": "回應者是分診／回應角色，能檢視並管理事件，同樣讓工程師看得到事件內容，而且不包含編輯 Logic Apps 資源的權限。",
+      "D": "訂用帳戶擁有者是整個環境中權限最大的角色，包含讀取所有安全性資料與變更任何資源，與最小權限完全相反。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/roles",
+    "tags": []
+  },
+  {
+    "id": "M2-0033",
+    "domain": "D2",
+    "topic": "dlp-alerts",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Your organization wants tier-1 analysts to triage Microsoft Purview data loss prevention (DLP) alerts in the same queue as endpoint and email incidents. In which portal can analysts see DLP alerts surfaced together with Microsoft Defender XDR incidents?",
+    "stem_zh": "你的組織希望 tier-1 分析師能在同一個佇列中，與端點及郵件事件一起分診 Microsoft Purview 資料外洩防護（DLP）警示。分析師可以在哪一個入口網站看到 DLP 警示與 Microsoft Defender XDR 事件並列？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The Azure portal, under the Microsoft Sentinel incidents blade only",
+        "text_zh": "只有 Azure 入口網站中 Microsoft Sentinel 的事件頁面"
+      },
+      {
+        "key": "B",
+        "text_en": "The Microsoft Entra admin center",
+        "text_zh": "Microsoft Entra 系統管理中心"
+      },
+      {
+        "key": "C",
+        "text_en": "The Microsoft Defender portal, where DLP alerts are surfaced as incidents alongside other Defender XDR incidents",
+        "text_zh": "Microsoft Defender 入口網站，DLP 警示會以事件形式與其他 Defender XDR 事件並列"
+      },
+      {
+        "key": "D",
+        "text_en": "The Exchange admin center",
+        "text_zh": "Exchange 系統管理中心"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Microsoft 已把資料安全訊號整合進統一的 Defender 入口網站：Purview DLP 警示會以事件形式出現在 Defender XDR 的事件佇列中，能與端點、身分、郵件警示關聯，形成完整的「內部風險＋外部攻擊」視角。分析師因此可以在同一個佇列排定優先順序，需要深入設定原則或檢視完整活動總管時，再切換到 Microsoft Purview 入口網站。",
+    "why_wrong_zh": {
+      "A": "Sentinel 可以另外擷取 Purview 訊號，但 DLP 警示與 Defender 事件的原生整合檢視不在 Azure 入口網站。",
+      "B": "Entra 系統管理中心處理身分、存取與條件式存取，不顯示 DLP 警示或 XDR 事件。",
+      "D": "Exchange 系統管理中心管理郵件流程與信箱設定，不是安全性作業的分診介面。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/purview/dlp-alerts-dashboard-learn",
+    "tags": []
+  },
+  {
+    "id": "M2-0034",
+    "domain": "D1",
+    "topic": "asim",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Your workspace ingests firewall logs from three different vendors into three custom tables with different column names. You must write ONE detection that works across all three, and it must keep working when a fourth vendor is added next quarter without editing the detection. What should you do?",
+    "stem_zh": "你的工作區把三家不同廠商的防火牆記錄擷取到三個欄位名稱互異的自訂資料表。你必須撰寫「一條」能同時涵蓋三者的偵測，而且下一季新增第四家廠商時，不必修改這條偵測仍要能運作。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Write three separate detections, one per table, and union their results in a workbook",
+        "text_zh": "為每個資料表各寫一條偵測，再在活頁簿中把結果 union 起來"
+      },
+      {
+        "key": "B",
+        "text_en": "Create a watchlist that maps each vendor's column names to a common set of names and join it in the query",
+        "text_zh": "建立監視清單把各廠商欄位名稱對應到一組共同名稱，並在查詢中 join"
+      },
+      {
+        "key": "C",
+        "text_en": "Use a data collection rule transformation to rename all three vendors' columns into one shared custom table",
+        "text_zh": "用資料收集規則轉換，把三家廠商的欄位改名後寫入同一個共用自訂資料表"
+      },
+      {
+        "key": "D",
+        "text_en": "Deploy the ASIM NetworkSession parsers for each vendor and write the detection against the unifying parser _Im_NetworkSession",
+        "text_zh": "為每家廠商部署 ASIM NetworkSession 剖析器，並針對統一剖析器 _Im_NetworkSession 撰寫偵測"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "ASIM（Advanced Security Information Model）用「查詢時正規化」解決多來源異質欄位的問題。每個來源部署自己的剖析器，把欄位對應到共同結構描述（例如 NetworkSession 的 SrcIpAddr、DstPortNumber、EventResult）；統一剖析器 _Im_NetworkSession 會把所有已部署的來源剖析器合併起來。偵測只針對統一剖析器撰寫，新增第四家廠商時只要部署它的剖析器並加入統一剖析器，偵測完全不必改。",
+    "why_wrong_zh": {
+      "A": "這違反題目「一條偵測」的要求，而且新增廠商時必須再寫一條規則並維護活頁簿，維運成本隨來源數線性成長。",
+      "B": "監視清單只能提供值的對照，無法在查詢時動態改寫資料表結構；欄位對應與型別轉換屬於剖析器的工作。",
+      "C": "轉換確實能改名，但每新增一家廠商就要改一次 DCR，而且原始欄位語意在擷取時就被壓平，之後難以還原；ASIM 保留原始資料表並在查詢時正規化，彈性較佳。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/normalization-about-parsers",
+    "tags": []
+  },
+  {
+    "id": "M2-0035",
+    "domain": "D2",
+    "topic": "mdo-collaboration",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Safe Attachments for SharePoint, OneDrive and Microsoft Teams is enabled. A user shares a file in a Teams channel and detonation determines that the file is malicious. What happens to the file, and what must the SOC still do?",
+    "stem_zh": "SharePoint、OneDrive 與 Microsoft Teams 的安全附件（Safe Attachments）已啟用。某使用者在 Teams 頻道分享一個檔案，引爆分析判定該檔案為惡意。這個檔案會發生什麼事？SOC 還必須做什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The file is deleted from SharePoint automatically and a copy is placed in the Defender quarantine portal",
+        "text_zh": "該檔案會自動從 SharePoint 刪除，並在 Defender 隔離入口網站保留一份複本"
+      },
+      {
+        "key": "B",
+        "text_en": "The file is blocked from being opened, downloaded or shared but stays in the document library, so the SOC must still remove it from the site",
+        "text_zh": "該檔案會被封鎖，無法開啟、下載或分享，但仍留在文件庫中，因此 SOC 仍必須自行把它從網站移除"
+      },
+      {
+        "key": "C",
+        "text_en": "The file remains fully accessible until zero-hour auto purge (ZAP) runs on the document library",
+        "text_zh": "在零時差自動清除（ZAP）對文件庫執行之前，該檔案仍完全可存取"
+      },
+      {
+        "key": "D",
+        "text_en": "Nothing happens because Safe Attachments only scans email attachments, not files stored in SharePoint",
+        "text_zh": "什麼都不會發生，因為安全附件只掃描郵件附件，不掃描存在 SharePoint 的檔案"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SharePoint、OneDrive 與 Teams 的安全附件會把偵測到的惡意檔案標記在文件庫中，阻止使用者開啟、複製、下載、分享或移動，但檔案本體仍在原處，好讓管理員與鑑識人員能取得樣本。因此完整流程是：確認判定 → 取樣保全 → 由 SharePoint 管理員或透過 PowerShell 刪除檔案 → 追查上傳者的帳戶與裝置是否也被入侵。",
+    "why_wrong_zh": {
+      "A": "SharePoint、OneDrive 與 Teams 的安全附件不會刪除檔案；郵件才會進入隔離區，檔案是被標記並封鎖存取。",
+      "C": "ZAP 是針對已投遞郵件的追溯處置，不會作用在 SharePoint 文件庫；被判定為惡意的檔案會立即被封鎖存取。",
+      "D": "SharePoint、OneDrive 與 Teams 的安全附件正是為了雲端儲存與協作內容而設計的獨立功能，與郵件的安全附件原則分開設定。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/safe-attachments-for-spo-odfb-teams-about",
+    "tags": []
+  },
+  {
+    "id": "M2-0036",
+    "domain": "D1",
+    "topic": "unified-rbac",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "multi",
+    "stem_en": "You plan to activate Microsoft Defender XDR Unified role-based access control (RBAC) for the Defender for Endpoint workload only, while Defender for Office 365 keeps its existing permission model for now. Which two statements must you take into account before you activate it? (Select all that apply.)",
+    "stem_zh": "你打算只為 Defender for Endpoint 工作負載啟用 Microsoft Defender XDR 統一角色型存取控制（Unified RBAC），Defender for Office 365 暫時維持既有的權限模型。啟用前你必須考量下列哪「兩」點？（複選）",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Unified RBAC must be activated for every workload at the same time; per-workload activation is not supported",
+        "text_zh": "統一 RBAC 必須所有工作負載同時啟用，不支援逐一工作負載啟用"
+      },
+      {
+        "key": "B",
+        "text_en": "Custom roles in Unified RBAC can only be assigned to groups whose members already hold the Global Administrator role",
+        "text_zh": "統一 RBAC 的自訂角色只能指派給成員已具備全域管理員角色的群組"
+      },
+      {
+        "key": "C",
+        "text_en": "Once Unified RBAC is activated for a workload, the unified permissions become authoritative for that workload and its legacy roles no longer take effect",
+        "text_zh": "一旦某個工作負載啟用統一 RBAC，該工作負載就以統一權限為準，其原有的舊版角色不再生效"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Entra directory roles such as Security Reader and Security Administrator continue to grant access, so you must review who holds them",
+        "text_zh": "Microsoft Entra 目錄角色（例如安全性讀取者、安全性系統管理員）仍會授與存取權，因此必須檢視有誰持有這些角色"
+      }
+    ],
+    "answer": [
+      "C",
+      "D"
+    ],
+    "explanation_zh": "統一 RBAC 的移轉風險主要在「權限來源重疊」。第一，啟用是以工作負載為單位的開關，啟用後該工作負載只看統一 RBAC 的角色與資料來源範圍，舊的 Defender for Endpoint 角色設定就不再作用——因此啟用前必須先建好對等的統一角色，否則分析師會瞬間失去存取。第二，Entra 目錄角色（全域管理員、安全性系統管理員、安全性讀取者）不受統一 RBAC 啟用影響，仍會提供廣泛存取，必須一併盤點才能真正落實最小權限。",
+    "why_wrong_zh": {
+      "A": "逐一工作負載啟用正是官方建議的漸進式移轉方式，可以先在單一工作負載驗證權限模型，再擴大到其他工作負載。",
+      "B": "自訂角色可以指派給任何 Microsoft Entra 使用者或安全性群組，正是為了取代高權限的全域角色；要求成員先是全域管理員會使整個模型失去意義。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/manage-rbac",
+    "tags": []
+  },
+  {
+    "id": "M2-0037",
+    "domain": "D3",
+    "topic": "kql-aggregation",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You must return, for each device in DeviceNetworkEvents over the last 24 hours, only the single most recent row, and the output must still contain every column of that row. Which KQL construct should you use?",
+    "stem_zh": "你必須從過去 24 小時的 DeviceNetworkEvents 中，為「每一台裝置」只傳回最新的那一列，而且輸出仍要包含該列的所有欄位。你應該使用哪一個 KQL 寫法？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "summarize max(Timestamp) by DeviceId",
+        "text_zh": "summarize max(Timestamp) by DeviceId"
+      },
+      {
+        "key": "B",
+        "text_en": "top 1 by Timestamp desc",
+        "text_zh": "top 1 by Timestamp desc"
+      },
+      {
+        "key": "C",
+        "text_en": "summarize arg_max(Timestamp, *) by DeviceId",
+        "text_zh": "summarize arg_max(Timestamp, *) by DeviceId"
+      },
+      {
+        "key": "D",
+        "text_en": "distinct DeviceId, Timestamp",
+        "text_zh": "distinct DeviceId, Timestamp"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "arg_max(ExprToMaximize, *) 是 KQL 中「取每組最新一列並保留整列」的標準寫法：第一個參數決定要取最大值的欄位（這裡是 Timestamp），第二個參數用 * 表示保留該列所有欄位（也可以列出特定欄位）。對應的 arg_min 取最早一列。實務上常用來取每台裝置的最後一次連線、每個帳戶的最後一次登入等「最新狀態」快照。",
+    "why_wrong_zh": {
+      "A": "max() 只會傳回最大的時間戳記值本身，其餘欄位全部被彙總掉，無法滿足「保留該列所有欄位」的要求。",
+      "B": "top 是對整個結果集取前 N 列，只會得到全域最新的一列，而不是每台裝置各一列。",
+      "D": "distinct 只會傳回所列欄位的相異組合，仍然是每台裝置多列，而且其他欄位都不見了。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/arg-max-aggregation-function",
+    "tags": []
+  },
+  {
+    "id": "M2-0038",
+    "domain": "D2",
+    "topic": "device-response",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Microsoft Defender for Endpoint reports a malicious DLL that is present on 40 devices. Management requires that the DLL be prevented from executing anywhere in the organization immediately, and that existing copies then be removed. Which sequence of actions should you perform?",
+    "stem_zh": "Microsoft Defender for Endpoint 回報有一個惡意 DLL 存在於 40 台裝置上。管理層要求「立刻」讓該 DLL 在組織中任何地方都無法執行，接著再移除現有的副本。你應該依照哪個順序執行？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Create a file indicator for the hash with the Block and remediate action, then run Stop and quarantine file from the file page to clean up the existing copies",
+        "text_zh": "先為該雜湊建立「封鎖並修復」的檔案指標，接著從檔案頁面執行「停止並隔離檔案」清除既有副本"
+      },
+      {
+        "key": "B",
+        "text_en": "Isolate all 40 devices, then run a full antivirus scan on each of them",
+        "text_zh": "先隔離全部 40 台裝置，再對每一台執行完整防毒掃描"
+      },
+      {
+        "key": "C",
+        "text_en": "Create an attack surface reduction rule that blocks the DLL by file name",
+        "text_zh": "建立以檔案名稱封鎖該 DLL 的攻擊面縮小規則"
+      },
+      {
+        "key": "D",
+        "text_en": "Submit the sample to Microsoft and wait for a signature update to be distributed",
+        "text_zh": "把樣本提交給 Microsoft，等待特徵碼更新發佈"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "順序的邏輯是「先止血、再清理」。自訂檔案指標（SHA-256）搭配「封鎖並修復」動作會立即在所有指定裝置群組上生效，之後即使檔案被重新下載也無法執行，屬於持續生效的預防控制。指標就位後，再用「停止並隔離檔案」終止相關處理程序並把現存副本移到隔離區，完成清理。若順序相反，清理完成到指標建立之間會留下重新感染的空窗。",
+    "why_wrong_zh": {
+      "B": "隔離 40 台生產裝置的營運衝擊遠大於必要，而且掃描完成後若沒有封鎖指標，同一個檔案仍可能再次被投遞執行。",
+      "C": "ASR 規則封鎖的是行為類別（例如封鎖 Office 建立子處理程序），不是特定檔案名稱；以名稱封鎖也很容易被改名繞過。",
+      "D": "提交樣本能改善全域偵測，但需要時間；在等待期間攻擊者仍可執行該檔案，無法滿足「立刻封鎖」的要求。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/respond-file-alerts",
+    "tags": []
+  },
+  {
+    "id": "M2-0039",
+    "domain": "D1",
+    "topic": "asr-rules",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "After you switched an attack surface reduction (ASR) rule to Block mode, one line-of-business application stops working because its executable is blocked. The rule must stay in Block mode for everything else. What should you configure?",
+    "stem_zh": "你把某條攻擊面縮小（ASR）規則切換成封鎖模式之後，有一個業務用應用程式因為它的可執行檔被封鎖而無法運作。這條規則對其他所有情況必須維持封鎖模式。你應該設定什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Switch the rule back to Audit mode on all devices until the application is updated",
+        "text_zh": "在應用程式更新之前，把該規則在所有裝置改回稽核模式"
+      },
+      {
+        "key": "B",
+        "text_en": "A per-rule ASR exclusion for the application's file or folder path",
+        "text_zh": "為該應用程式的檔案或資料夾路徑設定「個別規則」的 ASR 排除項目"
+      },
+      {
+        "key": "C",
+        "text_en": "Add the application to the Microsoft Defender Antivirus exclusion list",
+        "text_zh": "把該應用程式加入 Microsoft Defender 防毒的排除清單"
+      },
+      {
+        "key": "D",
+        "text_en": "Disable tamper protection so that the application can modify the security settings it needs",
+        "text_zh": "停用篡改防護，讓該應用程式能修改它需要的安全性設定"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "ASR 支援兩層排除：全域排除（適用於所有規則）與個別規則排除（只影響指定的規則）。處理誤擋時應優先使用個別規則排除，把影響面壓到最小，其他規則與其他情境的封鎖能力完全保留。標準部署節奏是先以稽核模式收集影響、用報表找出需要排除的路徑、加入個別規則排除，最後才切換到封鎖模式。",
+    "why_wrong_zh": {
+      "A": "改回稽核模式等於整組保護失效，全體裝置都暴露在該攻擊技術下，違反「其他情況維持封鎖」的要求。",
+      "C": "防毒排除影響的是掃描與即時保護，與 ASR 規則的判定是不同機制；ASR 有自己的排除設定。",
+      "D": "篡改防護是保護安全性設定不被惡意程式改動的關鍵控制，為了一支應用程式關閉它會造成嚴重的整體風險。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/attack-surface-reduction-rules-deployment-implement",
+    "tags": []
+  },
+  {
+    "id": "M2-0040",
+    "domain": "D1",
+    "topic": "kql-jobs",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "Compliance requires a monthly report listing every privileged role assignment change of the previous 12 months. Those audit records live only in the Microsoft Sentinel data lake tier, and the report must end up in a table that workbooks and analytics rules can query. Which approach requires the least ongoing effort?",
+    "stem_zh": "法遵要求每月產出一份報表，列出過去 12 個月內所有特殊權限角色指派的變更。這些稽核記錄只存在 Microsoft Sentinel 資料湖層，而報表結果必須落在活頁簿與分析規則都能查詢的資料表中。哪一種做法後續投入最少？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Create a summary rule so that the role assignment changes are aggregated as they arrive",
+        "text_zh": "建立摘要規則，讓角色指派變更在進來時就被彙總"
+      },
+      {
+        "key": "B",
+        "text_en": "Run a Log Analytics search job each month over the last 12 months",
+        "text_zh": "每月對過去 12 個月執行一次 Log Analytics 搜尋作業"
+      },
+      {
+        "key": "C",
+        "text_en": "Export the data lake content to a storage account each month and analyse it with an external tool",
+        "text_zh": "每月把資料湖內容匯出到儲存體帳戶，再用外部工具分析"
+      },
+      {
+        "key": "D",
+        "text_en": "Create a scheduled KQL job that runs monthly against the data lake tier and writes its output to a custom table in the analytics tier",
+        "text_zh": "建立每月排程的 KQL 作業，對資料湖層執行查詢，並把輸出寫入分析層的自訂資料表"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "KQL 作業是資料湖層的「排程查詢＋結果落地」機制：可以一次性或依排程執行，查詢範圍涵蓋資料湖層的長期資料，結果寫入分析層的自訂資料表後，就跟一般資料表一樣可被活頁簿、搜捕查詢與分析規則使用。這正好對應「資料放便宜的地方、只把需要的結果送回昂貴的地方」這個資料湖時代的設計原則。",
+    "why_wrong_zh": {
+      "A": "摘要規則是向前生效的持續彙總，無法回頭涵蓋過去 12 個月的歷史；而且它產生的是彙總計數，不是逐筆的變更清單。",
+      "B": "搜尋作業針對的是分析層與基本／輔助層的長期保留資料，不是資料湖層，而且每次都要人工發起，不符合「投入最少」。",
+      "C": "外部匯出會讓結果離開 Sentinel，活頁簿與分析規則無法查詢，還要自行維護匯出、剖析與存取控制。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/kql-jobs",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "M2-0041",
+    "domain": "D2",
+    "topic": "identity-response",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "An on-premises Active Directory account is confirmed compromised. The SOC must invalidate the credentials the attacker is using, but the account object must be preserved for forensic review and the user must be able to return to work after the password reset. Which action should you take from the user page in the Microsoft Defender portal?",
+    "stem_zh": "某個內部部署 Active Directory 帳戶確認遭到入侵。SOC 必須讓攻擊者正在使用的認證失效，但帳戶物件必須保留供鑑識檢視，而且使用者在密碼重設後要能回來上班。你應該在 Microsoft Defender 入口網站的使用者頁面採取哪一個動作？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Use the Defender for Identity Force password reset action, which requires the sensor's action account to hold the necessary Active Directory permissions",
+        "text_zh": "使用 Defender for Identity 的「強制重設密碼」動作，該動作需要感測器的動作帳戶具備必要的 Active Directory 權限"
+      },
+      {
+        "key": "B",
+        "text_en": "Delete the Active Directory user object so that every ticket issued to it becomes unusable",
+        "text_zh": "刪除該 Active Directory 使用者物件，讓所有發給它的票證都無法使用"
+      },
+      {
+        "key": "C",
+        "text_en": "Revoke the user's Microsoft Entra ID sessions only",
+        "text_zh": "只撤銷該使用者的 Microsoft Entra ID 工作階段"
+      },
+      {
+        "key": "D",
+        "text_en": "Reset the krbtgt account password twice to invalidate all outstanding tickets",
+        "text_zh": "把 krbtgt 帳戶密碼重設兩次，讓所有既有票證失效"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Defender for Identity 提供三個直接對內部部署 AD 生效的回應動作：停用使用者、暫停使用者（Entra）、以及強制重設密碼。「強制重設密碼」會要求使用者下次登入時變更密碼，讓被竊的密碼與衍生的認證失效，同時保留帳戶物件供調查。要注意先決條件：必須設定具備適當 AD 權限的動作帳戶（受管理服務帳戶或指定的服務帳戶），否則動作會失敗。",
+    "why_wrong_zh": {
+      "B": "刪除帳戶會摧毀鑑識所需的物件屬性與關聯，也讓使用者無法回來上班，屬於不可逆且不成比例的處置。",
+      "C": "撤銷雲端工作階段對內部部署的 Kerberos／NTLM 認證沒有作用，攻擊者仍可繼續在網域內使用竊得的認證。",
+      "D": "krbtgt 雙重重設是針對已確認的黃金票證攻擊，影響整個網域的所有票證與服務，在單一帳戶遭入侵時是過度反應。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-for-identity/remediation-actions",
+    "tags": []
+  },
+  {
+    "id": "M2-0042",
+    "domain": "D3",
+    "topic": "hunts",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "In the Microsoft Sentinel Hunts feature your team has been working a hypothesis for a week. Two bookmarks now contain rows that a tier-3 analyst has confirmed to be malicious. What should you do NEXT so that the SOC can act on the finding and benefit from it in the future?",
+    "stem_zh": "在 Microsoft Sentinel 的「搜捕（Hunts）」功能中，你的團隊已針對某個假設進行了一週的調查。現在有兩個書籤所含的資料列已被 tier-3 分析師確認為惡意。為了讓 SOC 能對這項發現採取行動，並在未來持續受益，你「下一步」應該做什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Close the hunt with the outcome Nothing found and archive the bookmarks",
+        "text_zh": "把搜捕以「沒有發現」結案，並封存書籤"
+      },
+      {
+        "key": "B",
+        "text_en": "Keep the query permanently open in a livestream session so that the SOC is always watching it",
+        "text_zh": "讓查詢永遠停在即時串流工作階段，好讓 SOC 隨時都在監看"
+      },
+      {
+        "key": "C",
+        "text_en": "Promote the bookmarks to an incident so that the response workflow starts, then set the hunt's result to a validated hypothesis and convert the query into a scheduled analytics rule",
+        "text_zh": "把書籤升級為事件以啟動回應流程，接著把搜捕結果標記為「假設成立」，並把查詢轉成排程分析規則"
+      },
+      {
+        "key": "D",
+        "text_en": "Delete the bookmarks after documenting the findings in a workbook, to keep the hunting workspace tidy",
+        "text_zh": "把發現記錄在活頁簿之後刪除書籤，讓搜捕工作區保持整潔"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "搜捕的完整生命週期是：假設 → 查詢與蒐證（書籤）→ 結論 → 行動 → 沉澱成偵測。確認惡意之後，先把書籤升級／加入事件讓回應流程接手（書籤帶著查詢、時間與註解一起進入事件），再把搜捕標記為假設成立並填寫發現，最後把驗證過的查詢轉為排程或 NRT 分析規則，讓同樣的行為下次自動被偵測。這一步就是搜捕投資報酬率的來源。",
+    "why_wrong_zh": {
+      "A": "結果與事實不符：假設已經被證實，把它記成沒有發現會讓後續的偵測工程與知識累積完全落空。",
+      "B": "即時串流是短期的互動式工具（工作階段有存留時間限制），不是常態偵測；長期監看應該用分析規則產生事件。",
+      "D": "書籤是調查證據的一部分，能被加入事件並在事件調查圖表中呈現；刪除等於銷毀證據鏈。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/hunts",
+    "tags": []
+  },
+  {
+    "id": "M2-0043",
+    "domain": "D1",
+    "topic": "syslog-cef",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You deployed the AMA-based Common Event Format (CEF) connector and installed the Azure Monitor Agent on a Linux log forwarder. On the forwarder, rsyslog receives the appliance messages on port 514 and writes them to a local file, but no rows appear in the CommonSecurityLog table. What should you check FIRST?",
+    "stem_zh": "你部署了以 AMA 為基礎的 Common Event Format（CEF）連接器，並在一台 Linux 記錄轉送器上安裝 Azure 監視器代理程式。在轉送器上，rsyslog 已經在 514 埠收到設備訊息並寫入本機檔案，但 CommonSecurityLog 資料表沒有任何資料列。你應該「最先」檢查什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "That the Log Analytics workspace has not reached its daily cap",
+        "text_zh": "確認 Log Analytics 工作區沒有達到每日上限"
+      },
+      {
+        "key": "B",
+        "text_en": "That a data collection rule with the CEF (Syslog) data source and the correct facilities exists, and that the forwarder is actually associated with that DCR",
+        "text_zh": "確認存在一條含 CEF（Syslog）資料來源且設施（facility）設定正確的資料收集規則，而且該轉送器確實被關聯到這條 DCR"
+      },
+      {
+        "key": "C",
+        "text_en": "That the security appliances are sending their logs over TCP port 443 to the forwarder",
+        "text_zh": "確認安全性設備是以 TCP 443 埠把記錄送到轉送器"
+      },
+      {
+        "key": "D",
+        "text_en": "That the legacy OMS/Log Analytics agent is installed alongside the Azure Monitor Agent on the forwarder",
+        "text_zh": "確認轉送器上除了 Azure 監視器代理程式外，也安裝了舊版 OMS／Log Analytics 代理程式"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "AMA 的資料流是「代理程式讀什麼、送到哪」全部由資料收集規則決定。訊息已經到達轉送器代表網路與 rsyslog 正常，那麼斷點幾乎一定在 DCR：可能是沒有建立含 Syslog／CEF 資料來源的 DCR、選錯設施或嚴重性、或是 DCR 沒有關聯到這台機器（資源沒有列在 DCR 的資源清單中）。確認 DCR 與關聯後，再往下檢查 AMA 服務狀態與 CEF 安裝指令碼是否已把 rsyslog 設定為轉送給代理程式。",
+    "why_wrong_zh": {
+      "A": "每日上限會造成「全部資料表都停止擷取」的現象，而不是單一資料表完全沒有資料；而且新部署的連接器最常見的問題是關聯設定，不是配額。",
+      "C": "設備是以 Syslog（通常是 UDP/TCP 514）送到轉送器，443 是代理程式往 Azure 上傳時使用的通道；題目也已說明 514 埠有收到訊息。",
+      "D": "AMA 型 CEF 連接器不需要舊版代理程式，兩者並存反而會造成重複擷取與衝突。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/connect-cef-ama",
+    "tags": []
+  },
+  {
+    "id": "M2-0044",
+    "domain": "D2",
+    "topic": "bec-response",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "multi",
+    "stem_en": "A confirmed business email compromise involves a cloud-only Microsoft Entra ID account, an inbox rule that silently forwards finance mail to an external address, and messages that the attacker already sent from the mailbox. Which two actions belong in your immediate response? (Select all that apply.)",
+    "stem_zh": "一起確認的商業電子郵件詐騙（BEC）涉及一個純雲端的 Microsoft Entra ID 帳戶、一條把財務郵件靜默轉寄到外部位址的收件匣規則，以及攻擊者已經從該信箱寄出的郵件。哪「兩」個動作屬於你的立即回應？（複選）",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Delete the user account so that the attacker immediately loses all access",
+        "text_zh": "直接刪除該使用者帳戶，讓攻擊者立刻失去所有存取權"
+      },
+      {
+        "key": "B",
+        "text_en": "Revoke the account's refresh tokens and require the user to sign in again with multifactor authentication",
+        "text_zh": "撤銷該帳戶的更新權杖，並要求使用者重新以多重要素驗證登入"
+      },
+      {
+        "key": "C",
+        "text_en": "Remove the malicious inbox forwarding rule and use Microsoft Defender for Office 365 remediation to purge the messages the attacker sent",
+        "text_zh": "移除該惡意收件匣轉寄規則，並用 Microsoft Defender for Office 365 的修復功能清除攻擊者寄出的郵件"
+      },
+      {
+        "key": "D",
+        "text_en": "Reset the krbtgt account password twice in Active Directory",
+        "text_zh": "在 Active Directory 把 krbtgt 帳戶密碼重設兩次"
+      }
+    ],
+    "answer": [
+      "B",
+      "C"
+    ],
+    "explanation_zh": "BEC 的立即回應要同時處理「存取」與「持續性／影響」兩條線。存取面：重設密碼還不夠，必須撤銷更新權杖（撤銷工作階段），否則攻擊者手上的權杖在到期前仍然有效；接著強制以 MFA 重新驗證。持續性與影響面：攻擊者最常留下的後門是收件匣轉寄／隱藏規則與委派權限，必須逐一清除，並用威脅總管與批次修復把攻擊者從該信箱寄出的郵件從收件者信箱移除，同時通知受影響的外部往來對象。",
+    "why_wrong_zh": {
+      "A": "刪除帳戶會一併失去信箱內容、稽核關聯與調查所需的物件屬性，而且使用者無法復工；正確做法是重設認證並撤銷工作階段，保留帳戶供調查。",
+      "D": "這是針對內部部署 Kerberos 黃金票證的處置，題目中的帳戶是純雲端身分，與 krbtgt 完全無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/responding-to-a-compromised-email-account",
+    "tags": []
+  },
+  {
+    "id": "M2-0045",
+    "domain": "D1",
+    "topic": "watchlists",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "You must upload a CSV file of 5,000 approved administrative workstation names so that several analytics rules can reference it inside their KQL by calling the _GetWatchlist() function. Which Microsoft Sentinel feature should you use?",
+    "stem_zh": "你必須上傳一個含 5,000 台核准管理工作站名稱的 CSV 檔案，讓數條分析規則能在 KQL 中以 _GetWatchlist() 函式引用它。你應該使用 Microsoft Sentinel 的哪一項功能？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A bookmark",
+        "text_zh": "書籤（Bookmark）"
+      },
+      {
+        "key": "B",
+        "text_en": "A workbook",
+        "text_zh": "活頁簿（Workbook）"
+      },
+      {
+        "key": "C",
+        "text_en": "A playbook",
+        "text_zh": "劇本（Playbook）"
+      },
+      {
+        "key": "D",
+        "text_en": "A watchlist",
+        "text_zh": "監視清單（Watchlist）"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "監視清單把 CSV 形式的參考資料（VIP 帳戶、核准資產、允許的 IP 範圍、終止員工名單）存進工作區，之後在任何 KQL 查詢、分析規則或搜捕查詢中用 _GetWatchlist(\"別名\") 取用。相較於把清單硬寫在查詢裡，監視清單可由分析師自行維護、有版本與到期概念，也能透過大型監視清單支援大量項目。",
+    "why_wrong_zh": {
+      "A": "書籤是把搜捕查詢的特定結果列保存下來供調查引用，不是可供查詢引用的參考資料集。",
+      "B": "活頁簿是視覺化與報表工具，可以顯示查詢結果，但無法作為 KQL 查詢的資料來源。",
+      "C": "劇本是以 Logic Apps 建立的自動化流程，用來執行回應動作，不提供可在 KQL 中引用的清單。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/watchlists",
+    "tags": []
+  },
+  {
+    "id": "M2-0046",
+    "domain": "D2",
+    "topic": "cloud-app-response",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Microsoft Defender for Cloud Apps raises an impossible travel alert for a user who then downloaded 400 files from SharePoint Online. You must stop further downloads from unmanaged devices while the investigation continues, without preventing the user from working on their compliant corporate laptop. What should you do?",
+    "stem_zh": "Microsoft Defender for Cloud Apps 針對某使用者發出「不可能的移動」警示，該使用者接著從 SharePoint Online 下載了 400 個檔案。在調查繼續進行的同時，你必須阻止從非受管理裝置進一步下載，但不能妨礙該使用者用符合規範的公司筆電工作。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Block the user's account in Microsoft Entra ID until the investigation is complete",
+        "text_zh": "在 Microsoft Entra ID 封鎖該使用者帳戶，直到調查完成"
+      },
+      {
+        "key": "B",
+        "text_en": "Apply a Microsoft Purview DLP policy that blocks all external sharing on the SharePoint site",
+        "text_zh": "套用 Microsoft Purview DLP 原則，封鎖該 SharePoint 網站的所有外部共用"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a Conditional Access app control session policy that blocks file downloads when the session comes from an unmanaged device",
+        "text_zh": "建立條件式存取應用程式控制的工作階段原則，當工作階段來自非受管理裝置時封鎖檔案下載"
+      },
+      {
+        "key": "D",
+        "text_en": "Mark the alert as a false positive and monitor the user's activity for another 24 hours",
+        "text_zh": "把警示標記為誤判，再觀察該使用者的活動 24 小時"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "條件式存取應用程式控制（Conditional Access App Control）把工作階段導向 Defender for Cloud Apps 的反向 Proxy，讓你能在「工作階段層級」即時控制動作：封鎖下載、要求保護標籤、封鎖上傳或複製貼上，條件可包含裝置管理狀態、位置、使用者風險。這正好達成「受管理裝置照常工作、非受管理裝置無法下載」的精準控制，比封鎖帳戶或全站 DLP 都更符合最小衝擊原則。",
+    "why_wrong_zh": {
+      "A": "封鎖帳戶會讓使用者在合規裝置上也無法工作，違反題目的限制；在尚未確認是否為誤判時也過度反應。",
+      "B": "DLP 管的是內容的共用與外流規則，無法依「裝置是否受管理」即時攔截下載動作，也會影響到與本案無關的所有使用者。",
+      "D": "在已經出現大量下載的情況下標記誤判並純觀察，等於放任可能的資料外洩持續進行。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-cloud-apps/session-policy-aad",
+    "tags": []
+  },
+  {
+    "id": "M2-0047",
+    "domain": "D1",
+    "topic": "playbooks",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "An automation rule is configured to run a playbook that adds a comment to Microsoft Sentinel incidents. The playbook runs successfully when an analyst triggers it manually from the incident page, but every automation-rule invocation fails with a permissions error. What should you do?",
+    "stem_zh": "有一條自動化規則設定為執行「在 Microsoft Sentinel 事件加上註解」的劇本。分析師從事件頁面手動觸發時劇本執行成功，但每次由自動化規則觸發都因權限錯誤而失敗。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Grant the Microsoft Sentinel Automation Contributor role to the Microsoft Sentinel service on the resource group that contains the playbook",
+        "text_zh": "在存放該劇本的資源群組上，把 Microsoft Sentinel Automation Contributor 角色授與 Microsoft Sentinel 服務"
+      },
+      {
+        "key": "B",
+        "text_en": "Assign the Owner role on the subscription to the playbook's managed identity",
+        "text_zh": "把訂用帳戶的擁有者角色指派給劇本的受管理識別"
+      },
+      {
+        "key": "C",
+        "text_en": "Change the playbook trigger from the incident trigger to the alert trigger",
+        "text_zh": "把劇本的觸發程序從事件觸發改成警示觸發"
+      },
+      {
+        "key": "D",
+        "text_en": "Re-register the Microsoft.Logic resource provider on the subscription",
+        "text_zh": "在訂用帳戶重新註冊 Microsoft.Logic 資源提供者"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "手動可以、自動不行，是權限主體不同造成的典型現象：手動觸發時用的是分析師本身的權限，自動化規則觸發時用的則是 Microsoft Sentinel 服務的身分。要讓 Sentinel 有權執行劇本，必須在劇本所在的資源群組（或訂用帳戶）上，把 Microsoft Sentinel Automation Contributor 角色授與 Sentinel 服務主體——這也是在自動化規則精靈中選擇劇本時，系統會提示「管理劇本權限」的原因。",
+    "why_wrong_zh": {
+      "B": "受管理識別的權限決定劇本「執行時能做什麼」，而不是「誰能觸發它」；授與訂用帳戶擁有者更是嚴重的過度授權。",
+      "C": "自動化規則要附加的是事件觸發的劇本；改成警示觸發只會讓自動化規則找不到可用的劇本，並不解決權限問題。",
+      "D": "資源提供者沒註冊時劇本根本無法建立或手動執行；題目已說明手動執行成功，代表問題不在這裡。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/automate-responses-with-playbooks",
+    "tags": []
+  },
+  {
+    "id": "M2-0048",
+    "domain": "D3",
+    "topic": "mcp-server",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "Your team connects an AI agent to the Microsoft Sentinel MCP server so that the agent can discover tables, generate KQL and run hunting queries. A junior engineer asks what stops the agent from reading data the team is not allowed to see. Which statement is correct?",
+    "stem_zh": "你的團隊把一個 AI 代理程式連到 Microsoft Sentinel MCP 伺服器，讓它能探索資料表、產生 KQL 並執行搜捕查詢。一位資淺工程師問：是什麼機制阻止代理程式讀取團隊無權檢視的資料？下列哪一項敘述正確？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The MCP server connects with a dedicated service principal that has read access to every table by default",
+        "text_zh": "MCP 伺服器以專屬服務主體連線，預設對所有資料表都有讀取權"
+      },
+      {
+        "key": "B",
+        "text_en": "MCP tools bypass RBAC because they read from the data lake tier rather than the analytics tier",
+        "text_zh": "MCP 工具會繞過 RBAC，因為它們讀的是資料湖層而不是分析層"
+      },
+      {
+        "key": "C",
+        "text_en": "Access is limited only by the number of security compute units (SCUs) that are provisioned",
+        "text_zh": "存取範圍只受佈建的安全性運算單位（SCU）數量限制"
+      },
+      {
+        "key": "D",
+        "text_en": "The agent operates with the identity of the signed-in user, so Microsoft Sentinel and workspace RBAC still determine which workspaces and tables it can read",
+        "text_zh": "代理程式是以登入使用者的身分運作，因此 Microsoft Sentinel 與工作區的 RBAC 仍決定它能讀取哪些工作區與資料表"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Model Context Protocol（MCP）伺服器把 Sentinel 的能力（列出資料表、取得結構描述、產生並執行 KQL、查詢資料湖）包裝成標準工具，讓 AI 代理程式或開發環境呼叫。安全模型的核心是「代理程式繼承使用者身分」：連線需要使用者驗證，之後每次工具呼叫都在該使用者的 Sentinel／Azure RBAC 範圍內執行，看不到使用者本來就看不到的工作區或資料表。因此導入 MCP 前的重點仍是把使用者權限收斂到最小。",
+    "why_wrong_zh": {
+      "A": "MCP 伺服器不會自行取得超越使用者的權限；若真的用一個全域可讀的服務主體，等於繞過所有既有的存取控制設計。",
+      "B": "資料湖層一樣受權限控管；儲存層級不同不會使存取控制失效。",
+      "C": "SCU 是 Security Copilot 的處理量能單位，與 MCP 伺服器能讀取哪些資料無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-mcp-server",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "M2-0049",
+    "domain": "D2",
+    "topic": "user-reported-messages",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Your users report suspicious messages with the built-in Report button in Outlook, and your user reported settings send the reports to Microsoft and to a mailbox. Where in the Microsoft Defender portal do analysts triage these submissions?",
+    "stem_zh": "你的使用者使用 Outlook 內建的「回報」按鈕回報可疑郵件，而使用者回報設定會把回報同時送給 Microsoft 與一個信箱。分析師要在 Microsoft Defender 入口網站的哪裡分診這些提交？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "In the quarantine portal, because reported messages are moved to quarantine automatically",
+        "text_zh": "在隔離入口網站，因為被回報的郵件會自動移到隔離區"
+      },
+      {
+        "key": "B",
+        "text_en": "On the Submissions page, under the User reported tab",
+        "text_zh": "在「提交（Submissions）」頁面的「使用者回報」分頁"
+      },
+      {
+        "key": "C",
+        "text_en": "In Threat Explorer, in the Malware view only",
+        "text_zh": "在威脅總管中，且只有「惡意程式」檢視"
+      },
+      {
+        "key": "D",
+        "text_en": "In the Microsoft Purview compliance portal, under Content search",
+        "text_zh": "在 Microsoft Purview 合規入口網站的「內容搜尋」"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "使用者回報是 SOC 最重要的人工訊號來源之一。啟用使用者回報設定後，回報會集中在 Defender 入口網站「提交」頁面的「使用者回報」分頁，分析師可在此檢視原始郵件、判定結果、觸發調查，或把郵件提交給 Microsoft 分析並取得判定。若同時啟用了網路釣魚分診代理程式，代理程式會先在同一個位置給出初步分類與推理，讓分析師只需覆核。",
+    "why_wrong_zh": {
+      "A": "使用者回報不會自動把郵件移到隔離區；隔離區收的是被過濾原則攔下的郵件。",
+      "C": "威脅總管可以協助調查郵件，但使用者回報的集中檢視與判定回饋介面是提交頁面，而且回報內容多半是網路釣魚而非惡意程式。",
+      "D": "內容搜尋是電子文件探索與合規的工具，與使用者回報郵件的分診流程無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/submissions-admin",
+    "tags": []
+  },
+  {
+    "id": "M2-0050",
+    "domain": "D1",
+    "topic": "multi-tenant",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "An MSSP analyst must see incidents from eight customer tenants in a single queue inside the Microsoft Defender portal, and hunt across all of them with one advanced hunting query. Which capability should you use?",
+    "stem_zh": "某 MSSP 分析師必須在 Microsoft Defender 入口網站的「單一佇列」中看到八個客戶租用戶的事件，並用一個進階搜捕查詢跨全部租用戶搜捕。你應該使用哪一項功能？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Microsoft Defender multi-tenant management",
+        "text_zh": "Microsoft Defender 多租用戶管理"
+      },
+      {
+        "key": "B",
+        "text_en": "Azure Lighthouse",
+        "text_zh": "Azure Lighthouse"
+      },
+      {
+        "key": "C",
+        "text_en": "Microsoft Entra B2B guest accounts",
+        "text_zh": "Microsoft Entra B2B 來賓帳戶"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Sentinel workspace manager",
+        "text_zh": "Microsoft Sentinel 工作區管理員"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Microsoft Defender 多租用戶管理讓 MSSP 或多租用戶企業在一個介面中檢視並操作多個租用戶：合併的事件佇列、跨租用戶的進階搜捕、跨租用戶的裝置清單與設定比對。存取權仍由每個租用戶各自的 RBAC 決定，因此分析師只會看到獲授權的租用戶資料。若客戶端使用 Microsoft Sentinel，通常再搭配 Azure Lighthouse 委派工作區權限。",
+    "why_wrong_zh": {
+      "B": "Azure Lighthouse 提供的是跨租用戶的 Azure 資源委派管理（含 Microsoft Sentinel 工作區），不會在 Defender 入口網站提供統一的 XDR 事件佇列與跨租用戶進階搜捕。",
+      "C": "來賓帳戶只是讓分析師能登入各個客戶租用戶，仍必須逐一切換租用戶檢視，沒有合併佇列。",
+      "D": "工作區管理員用來把分析規則、活頁簿等內容從中央工作區大量發佈到成員工作區，是內容散佈工具，不是事件檢視介面。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/mto-overview",
+    "tags": []
+  },
+  {
+    "id": "M2-0051",
+    "domain": "D1",
+    "topic": "sentinel-data-lake",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "multi",
+    "stem_en": "You are reviewing table tiers after onboarding your workspace to the Microsoft Sentinel data lake. You propose moving a high-volume proxy table so that it is stored in the data lake tier only. Which two consequences should you tell the SOC lead about? (Select all that apply.)",
+    "stem_zh": "你的工作區上線 Microsoft Sentinel 資料湖後，你正在檢視資料表層級，並提議把一個高流量的 Proxy 資料表改成「只存放在資料湖層」。你應該向 SOC 主管說明哪「兩」個後果？（複選）",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Scheduled analytics rules can no longer query the table directly, so any detection that depends on it must be rebuilt with a KQL job or a summary rule",
+        "text_zh": "排程分析規則無法再直接查詢該資料表，因此依賴它的偵測必須改用 KQL 作業或摘要規則重建"
+      },
+      {
+        "key": "B",
+        "text_en": "Existing workbooks and Log Analytics queries that reference the table keep working without any change",
+        "text_zh": "既有引用該資料表的活頁簿與 Log Analytics 查詢完全不必修改就能繼續運作"
+      },
+      {
+        "key": "C",
+        "text_en": "The data is deleted after 30 days unless you attach an additional retention policy to the table",
+        "text_zh": "除非替該資料表附加額外的保留原則，否則資料會在 30 天後被刪除"
+      },
+      {
+        "key": "D",
+        "text_en": "The per-GB storage cost drops substantially while the data stays queryable through data lake exploration and KQL jobs",
+        "text_zh": "每 GB 儲存成本大幅下降，資料仍可透過資料湖探索與 KQL 作業查詢"
+      }
+    ],
+    "answer": [
+      "A",
+      "D"
+    ],
+    "explanation_zh": "資料表層級的取捨可以用一句話總結：分析層＝貴但可即時偵測，資料湖層＝便宜但偵測要繞路。把資料表移到資料湖層之後，擷取與保留成本大幅下降、長期歷史查詢變得可行，但排程分析規則、NRT 規則、活頁簿與一般 KQL 查詢都碰不到它。要保住偵測能力，必須用摘要規則把彙總結果、或用 KQL 作業把符合條件的結果集寫回分析層。決策前務必先盤點有哪些規則與報表依賴這張表。",
+    "why_wrong_zh": {
+      "B": "活頁簿與一般 Log Analytics 查詢針對的是分析層；資料移出分析層後這些查詢會查不到資料，必須改為讀取由 KQL 作業或摘要規則產生的分析層資料表。",
+      "C": "資料湖層的定位就是長期、低成本保留（可達數年），不會因為改層級就在 30 天後被刪除。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-lake-overview",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "M2-0052",
+    "domain": "D2",
+    "topic": "identity-hardening",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Microsoft Defender for Identity reports Suspicious additions to sensitive groups: a contractor account was added to Domain Admins. Your runbook requires three outcomes — confirm, contain, and prevent recurrence. You have already confirmed the change was unauthorized and removed the account from the group. Which action addresses PREVENT RECURRENCE?",
+    "stem_zh": "Microsoft Defender for Identity 回報「可疑的敏感群組新增」：一個承包商帳戶被加入 Domain Admins。你的作業手冊要求三個成果——確認、遏制、防止再發生。你已經確認該變更未經授權，並把帳戶移出群組。哪一個動作對應「防止再發生」？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Remove the contractor's account from every other security group as well",
+        "text_zh": "把該承包商帳戶從其他所有安全性群組一併移除"
+      },
+      {
+        "key": "B",
+        "text_en": "Disable the contractor account in Active Directory",
+        "text_zh": "在 Active Directory 停用該承包商帳戶"
+      },
+      {
+        "key": "C",
+        "text_en": "Require membership of the privileged group to be time-bound and approval-based by using Microsoft Entra Privileged Identity Management",
+        "text_zh": "改用 Microsoft Entra Privileged Identity Management（PIM），讓該特殊權限群組的成員資格必須經核准且有時效"
+      },
+      {
+        "key": "D",
+        "text_en": "Create a suppression rule for the Defender for Identity alert so that the SOC is not alerted again",
+        "text_zh": "為這個 Defender for Identity 警示建立隱藏規則，讓 SOC 不會再被通知"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "「防止再發生」屬於根因層級的控制強化，必須改變讓事件得以發生的條件。特殊權限群組長期常駐成員就是這個根因；改用 PIM 之後，成員資格變成需要核准、限時、可強制 MFA 與理由說明，並留下完整稽核記錄，非授權新增在流程上就被擋住。搭配 Defender for Identity 的敏感群組監控與定期權限盤點，就形成偵測加預防的完整迴圈。",
+    "why_wrong_zh": {
+      "A": "這仍屬於遏制與清理，處理的是這一次的事件，不會阻止下一次有人又被加進特殊權限群組。",
+      "B": "停用帳戶是遏制動作，而且真正的問題是「誰有權限做這個新增」；換一個帳戶一樣會再發生。",
+      "D": "抑制警示只是關掉能見度，等於刻意讓下一次同樣的攻擊無聲通過，與防止再發生完全相反。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/entra/id-governance/privileged-identity-management/pim-configure",
+    "tags": []
+  },
+  {
+    "id": "M2-0053",
+    "domain": "D3",
+    "topic": "retro-hunting",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A new intelligence report lists 30 file hashes that a threat actor used about eight months ago. In your environment DeviceFileEvents is kept for 30 days in the analytics tier and for 12 months in the Microsoft Sentinel data lake tier. You must determine whether any of those hashes ever appeared on your devices. What should you do?",
+    "stem_zh": "一份新發布的情報報告列出某威脅組織約八個月前使用的 30 個檔案雜湊。你的環境中 DeviceFileEvents 在分析層保留 30 天，在 Microsoft Sentinel 資料湖層保留 12 個月。你必須判斷這些雜湊是否曾經出現在你的裝置上。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Run an advanced hunting query in the Microsoft Defender portal, which covers the data available there",
+        "text_zh": "在 Microsoft Defender 入口網站執行進階搜捕查詢，涵蓋該處可用的資料"
+      },
+      {
+        "key": "B",
+        "text_en": "Run a KQL query against the DeviceFileEvents data held in the data lake tier so that the full 12 months of history is searched",
+        "text_zh": "對資料湖層保留的 DeviceFileEvents 執行 KQL 查詢，讓完整 12 個月的歷史都被搜尋"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a near-real-time analytics rule that contains the 30 hashes",
+        "text_zh": "建立包含這 30 個雜湊的近乎即時分析規則"
+      },
+      {
+        "key": "D",
+        "text_en": "Add the 30 hashes as file indicators in Microsoft Defender for Endpoint and wait for detections to appear",
+        "text_zh": "把這 30 個雜湊加入 Microsoft Defender for Endpoint 的檔案指標，等待偵測出現"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "回溯搜捕（retro hunting）的關鍵是「資料在哪裡、保留多久」。八個月前的端點檔案事件只存在資料湖層，因此必須在資料湖的查詢介面（互動式探索或 KQL 作業）針對該層執行查詢。完整流程通常是：先在資料湖回溯確認是否曾經出現、把命中結果寫回分析層供調查與關聯、再把這 30 個雜湊建成檔案指標與偵測規則，涵蓋未來的再次出現。",
+    "why_wrong_zh": {
+      "A": "進階搜捕的資料保留期只有 30 天，完全涵蓋不到八個月前的事件，會得到「沒有發現」的錯誤結論。",
+      "C": "NRT 規則只針對「即將發生」的事件，對歷史資料完全沒有作用；它適合在回溯搜尋之後作為前瞻性偵測。",
+      "D": "指標同樣只對未來的執行或落地生效；等待偵測不會回答「八個月前是否曾經出現」這個問題。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/kql-queries",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "M2-0054",
+    "domain": "D1",
+    "topic": "security-copilot-governance",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "Your compliance team must be able to prove, for a quarterly review, which analyst submitted which Microsoft Security Copilot prompt, and which plugins were used to answer it. Where should you obtain that evidence?",
+    "stem_zh": "你的法遵團隊必須在季度審查中證明：哪位分析師提交了哪一則 Microsoft Security Copilot 提示，以及回答時使用了哪些外掛程式。你應該從哪裡取得這項證據？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "From the security compute unit (SCU) usage dashboard in Security Copilot",
+        "text_zh": "從 Security Copilot 的安全性運算單位（SCU）使用量儀表板"
+      },
+      {
+        "key": "B",
+        "text_en": "From the version history of each promptbook",
+        "text_zh": "從每個提示手冊的版本歷程"
+      },
+      {
+        "key": "C",
+        "text_en": "From the Action center in the Microsoft Defender portal",
+        "text_zh": "從 Microsoft Defender 入口網站的動作中心"
+      },
+      {
+        "key": "D",
+        "text_en": "From the Security Copilot audit records in the Microsoft Purview audit log",
+        "text_zh": "從 Microsoft Purview 稽核記錄中的 Security Copilot 稽核記錄"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Security Copilot 的活動會寫入 Microsoft Purview 統一稽核記錄，內容包含使用者、時間、提示提交與工作階段、以及被叫用的外掛程式，可用 Purview 的稽核搜尋依使用者或活動類型查詢並匯出。這是回答「誰問了什麼、資料從哪裡來」這類治理與合規問題的正式來源，也讓組織能在導入 AI 助理時維持可稽核性。",
+    "why_wrong_zh": {
+      "A": "使用量儀表板呈現的是容量消耗趨勢，用來調整佈建與成本，不含提示內容或使用者層級的稽核明細。",
+      "B": "版本歷程記錄的是提示手冊本身被誰修改，不會記錄哪位分析師在什麼時候執行了哪一則提示。",
+      "C": "動作中心記錄的是自動化調查與回應所執行的修復動作，與 Copilot 的提示稽核無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/copilot/security/audit-logging",
+    "tags": [
+      "2026"
+    ]
+  },
+  {
+    "id": "M2-0055",
+    "domain": "D2",
+    "topic": "token-theft-response",
+    "unit": null,
+    "set": "mock",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Telemetry shows that an attacker is replaying a stolen refresh token for one user from an unfamiliar IP address. You must cut off the attacker's access immediately while allowing the user to keep working from their compliant device. Which action should you take?",
+    "stem_zh": "遙測顯示攻擊者正從一個陌生 IP 位址重放某使用者被竊的更新權杖（refresh token）。你必須立刻切斷攻擊者的存取，同時讓該使用者能繼續用符合規範的裝置工作。你應該採取哪一個動作？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Revoke the user's sessions in Microsoft Entra ID so that existing refresh tokens are invalidated and the user must reauthenticate with MFA",
+        "text_zh": "在 Microsoft Entra ID 撤銷該使用者的工作階段，讓既有的更新權杖失效，使用者必須重新以 MFA 驗證"
+      },
+      {
+        "key": "B",
+        "text_en": "Disable the account for 24 hours and re-enable it afterwards",
+        "text_zh": "先停用帳戶 24 小時，之後再重新啟用"
+      },
+      {
+        "key": "C",
+        "text_en": "Block legacy authentication for the entire tenant",
+        "text_zh": "為整個租用戶封鎖舊版驗證"
+      },
+      {
+        "key": "D",
+        "text_en": "Select Confirm user compromised in Microsoft Entra ID Protection, which signs the user out of all sessions",
+        "text_zh": "在 Microsoft Entra ID Protection 選擇「確認已遭入侵」，它會把該使用者從所有工作階段登出"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "被竊的更新權杖在到期前都可以換取新的存取權杖，因此單純改密碼或封鎖 IP 都不夠。撤銷工作階段（revoke sessions）會使該使用者所有既有的更新權杖失效，攻擊者必須重新完整驗證才能取得存取權，而合法使用者只要在自己的合規裝置上通過 MFA 就能立即恢復工作。搭配持續存取評估（CAE），撤銷可以近乎即時地在支援的服務上生效，而不必等待存取權杖自然到期。",
+    "why_wrong_zh": {
+      "B": "停用帳戶會讓使用者在合規裝置上也無法工作，違反題目的限制，而且 24 小時之後若權杖未被撤銷，攻擊者仍可能繼續使用。",
+      "C": "封鎖舊版驗證是重要的長期強化措施，但它不會讓已經發出的現代驗證更新權杖失效，無法處理眼前的重放。",
+      "D": "確認已遭入侵是把使用者風險提高到高並回饋給風險模型的標示動作，本身不會撤銷權杖或登出工作階段；仍需搭配風險原則或人工撤銷。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/entra/identity/authentication/howto-continuous-access-evaluation",
+    "tags": []
+  }
+]

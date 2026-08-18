@@ -1,0 +1,91 @@
+{
+  "episodes": [
+    {
+      "ep": "EP1",
+      "id": "8gCUtYEpTe8",
+      "title": "Mitigate threats using Microsoft Defender XDR | SC-200 | Episode 1",
+      "status": "no_subs",
+      "langs": {}
+    },
+    {
+      "ep": "EP2",
+      "id": "QmvVYOG4uWI",
+      "title": "Mitigate threats using Microsoft Security Copilot | SC-200 | Episode 2",
+      "status": "ok",
+      "langs": {
+        "en": 45910,
+        "zh-Hant": 17089
+      }
+    },
+    {
+      "ep": "EP3",
+      "id": "5ln3fMECedU",
+      "title": "Mitigate threats using Microsoft Purview | SC-200 | Episode 3",
+      "status": "ok",
+      "langs": {
+        "en": 23668,
+        "zh-Hant": 8892
+      }
+    },
+    {
+      "ep": "EP4",
+      "id": "e7UxqMgb1zk",
+      "title": "Mitigate threats using Microsoft Defender for Endpoint | SC-200 | Episode 4",
+      "status": "ok",
+      "langs": {
+        "en": 33345
+      }
+    },
+    {
+      "ep": "EP5",
+      "id": "Nt7f2Bog89c",
+      "title": "Mitigate threats using Microsoft Defender for Cloud | SC-200 | Episode 5",
+      "status": "ok",
+      "langs": {
+        "en": 29196,
+        "zh-Hant": 11510
+      }
+    },
+    {
+      "ep": "EP6",
+      "id": "3DHcnk9obfk",
+      "title": "Create queries in Microsoft Sentinel using Kusto Query Language (KQL) | SC-200 | Episode 6",
+      "status": "ok",
+      "langs": {
+        "en": 33464
+      }
+    },
+    {
+      "ep": "EP7",
+      "id": "0ydVILka3eg",
+      "title": "Configure Microsoft Sentinel environment | SC-200 | Episode 7",
+      "status": "no_subs",
+      "langs": {}
+    },
+    {
+      "ep": "EP8",
+      "id": "hOYpji940yw",
+      "title": "Connect logs to Microsoft Sentinel | SC-200 | Episode 8",
+      "status": "ok",
+      "langs": {
+        "en": 27429
+      }
+    },
+    {
+      "ep": "EP9",
+      "id": "qlyEmMLif_M",
+      "title": "Create detections and perform investigations in Microsoft Sentinel | SC-200 | Episode 9",
+      "status": "no_subs",
+      "langs": {}
+    },
+    {
+      "ep": "EP10",
+      "id": "z6QbN4rpAvA",
+      "title": "Perform threat hunting in Microsoft Sentinel | SC-200 | Episode 10",
+      "status": "ok",
+      "langs": {
+        "en": 18912
+      }
+    }
+  ]
+}

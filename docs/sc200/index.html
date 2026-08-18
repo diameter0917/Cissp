@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SC-200 速成學習儀表板</title>
+<link rel="stylesheet" href="assets/sc200.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead">
+    <div class="kicker">SC-200 · Microsoft Security Operations Analyst</div>
+    <h1>八週速成學習儀表板</h1>
+    <p class="sub">五週讀完全考綱（每天：電子報＋Podcast＋自測）→ 三週刷題（題組、模擬考、錯題殲滅）。平日進行，週末休息。</p>
+    <div class="hero-countdown">
+      <div><span class="num" id="cdDays">–</span> <span class="lbl">天後考試（<span id="examDate"></span>）</span></div>
+      <div><span class="num" id="doneCount">–</span> <span class="lbl">/ 40 天完成</span></div>
+      <div><span class="num" id="quizAcc">–</span> <span class="lbl">刷題正確率</span></div>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="pfill"></div></div>
+    <div class="progress-text" id="ptext">載入中…</div>
+  </header>
+
+  <div class="week-grid" id="weekGrid"></div>
+
+  <div class="controls">
+    <div class="controls" style="margin:0">
+      <span class="chip active" data-phase="all">全部</span>
+      <span class="chip" data-phase="P1">速成 W1–W5</span>
+      <span class="chip" data-phase="P2">刷題 W6–W8</span>
+    </div>
+    <div class="controls" style="margin:0">
+      <span class="chip active" data-domain="all">全領域</span>
+      <span class="chip" data-domain="D1">D1 環境</span>
+      <span class="chip" data-domain="D2">D2 回應</span>
+      <span class="chip" data-domain="D3">D3 搜捕</span>
+      <span class="chip" data-domain="MIX">綜合</span>
+    </div>
+    <input id="search" type="search" placeholder="搜尋標題 / 代碼…" autocomplete="off">
+  </div>
+  <div class="meta" id="countMeta"></div>
+
+  <div class="tbl-scroll">
+  <table class="sched">
+    <thead>
+      <tr>
+        <th>✓</th><th>#</th><th class="col-date">日期</th><th>代碼</th><th>主題</th><th>資源</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+  </div>
+  <div class="empty hide" id="empty">沒有符合條件的單元。</div>
+
+  <footer class="colophon">
+    SC-200 學習專案 · <a href="quiz.html">刷題 App</a> · <a href="podcast/index.html">Podcast</a> · <a href="../index.html">CISSP 電子報索引</a>
+  </footer>
+</div>
+
+<script>
+const WEEK_THEMES = {
+  1:'基礎與 KQL', 2:'Sentinel 作業環境', 3:'環境收尾＋事件回應', 4:'偵測工程與自動化',
+  5:'威脅搜捕', 6:'領域題組', 7:'混合＋模擬考', 8:'衝刺與模測'
+};
+const DOM_CLASS = {D1:'d1', D2:'d2', D3:'d3', MIX:'mix'};
+let ITEMS = [], EXAM = null;
+let fPhase='all', fDomain='all', fQuery='';
+
+function esc(s){ return (s||'').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function getProgress(){ try{ return JSON.parse(localStorage.getItem('sc200.progress'))||{}; }catch(e){ return {}; } }
+function setProgress(p){ localStorage.setItem('sc200.progress', JSON.stringify(p)); }
+function getStats(){ try{ return JSON.parse(localStorage.getItem('sc200.stats'))||{attempts:[]}; }catch(e){ return {attempts:[]}; } }
+function todayISO(){
+  // 以台北時間為準
+  return new Date().toLocaleDateString('sv-SE', {timeZone:'Asia/Taipei'});
+}
+
+async function load(){
+  let sch;
+  try{
+    sch = await fetch('schedule.json').then(r=>r.json());
+  }catch(e){
+    document.getElementById('ptext').textContent = '無法載入 schedule.json';
+    return;
+  }
+  ITEMS = sch.items||[];
+  EXAM = sch.exam_date;
+  document.getElementById('examDate').textContent = EXAM;
+  const days = Math.max(0, Math.round((new Date(EXAM) - new Date(todayISO()))/86400000));
+  document.getElementById('cdDays').textContent = days;
+  renderWeekGrid();
+  render();
+}
+
+function renderWeekGrid(){
+  const p = getProgress(), today = todayISO();
+  const byWeek = {};
+  ITEMS.forEach(it=>{ (byWeek[it.week] = byWeek[it.week]||[]).push(it); });
+  document.getElementById('weekGrid').innerHTML = Object.keys(byWeek).map(w=>{
+    const days = byWeek[w].map(it=>{
+      const cls = DOM_CLASS[it.domain]||'mix';
+      const done = p[it.seq] ? '' : ' dim';
+      const today_ = it.date===today ? ' today' : '';
+      return `<a class="day-dot ${cls}${done}${today_}" style="background:var(--${cls})"
+        href="${esc(it.page_url)}" title="${esc(it.date+' '+it.title_zh)}">${it.seq}</a>`;
+    }).join('');
+    const range = byWeek[w][0].date.slice(5).replace('-','/') + '–' + byWeek[w][byWeek[w].length-1].date.slice(5).replace('-','/');
+    return `<div class="week-card">
+      <div class="w-label">W${w} · ${range}</div>
+      <div class="w-title">${WEEK_THEMES[w]||''}</div>
+      <div class="day-dots">${days}</div>
+    </div>`;
+  }).join('');
+}
+
+function passFilter(it){
+  if(fPhase!=='all' && it.phase!==fPhase) return false;
+  if(fDomain!=='all' && it.domain!==fDomain) return false;
+  if(fQuery){
+    const q=fQuery.toLowerCase();
+    if(!((it.title_zh+' '+(it.title_en||'')+' '+it.code).toLowerCase().includes(q))) return false;
+  }
+  return true;
+}
+
+function render(){
+  const p = getProgress(), today = todayISO();
+  const list = ITEMS.filter(passFilter);
+  document.getElementById('rows').innerHTML = list.map(it=>{
+    const cls = DOM_CLASS[it.domain]||'mix';
+    const acts = [];
+    acts.push(`<a class="act" style="color:var(--accent)" href="${esc(it.page_url)}">${it.type==='study'?'📄 電子報':'📋 攻略'}</a>`);
+    if(it.podcast_url) acts.push(`<a class="act" style="color:var(--accent)" href="podcast/index.html#ep-${String(it.episode).padStart(3,'0')}">🎧 EP${it.episode}</a>`);
+    if(it.quiz_url) acts.push(`<a class="act" style="color:var(--warning)" href="${esc(it.quiz_url)}">✏️ 刷題</a>`);
+    return `<tr class="${it.date===today?'today-row':''}">
+      <td><input type="checkbox" class="donechk" data-seq="${it.seq}" ${p[it.seq]?'checked':''}></td>
+      <td class="seq">${it.seq}</td>
+      <td class="col-date seq">${esc(it.date.slice(5))}</td>
+      <td><span class="pill ${cls}" style="font-size:10.5px">${esc(it.code)}</span></td>
+      <td class="row-title">${esc(it.title_zh)}<small>${esc(it.title_en||'')}</small></td>
+      <td>${acts.join('')}</td>
+    </tr>`;
+  }).join('');
+
+  document.getElementById('empty').classList.toggle('hide', list.length>0);
+  document.getElementById('countMeta').textContent =
+    `顯示 ${list.length} / ${ITEMS.length} 天` + (fPhase!=='all'||fDomain!=='all'||fQuery?'（已篩選）':'');
+
+  const doneN = ITEMS.filter(it=>p[it.seq]).length;
+  const pct = ITEMS.length ? Math.round(doneN/ITEMS.length*100) : 0;
+  document.getElementById('pfill').style.width = pct+'%';
+  document.getElementById('ptext').textContent = `已完成 ${doneN} / ${ITEMS.length} 天（${pct}%）`;
+  document.getElementById('doneCount').textContent = doneN;
+
+  const st = getStats();
+  const total = st.attempts.length;
+  const correct = st.attempts.filter(a=>a.ok).length;
+  document.getElementById('quizAcc').textContent = total ? Math.round(correct/total*100)+'%' : '—';
+
+  document.querySelectorAll('.donechk').forEach(c=>{
+    c.addEventListener('change', ()=>{
+      const cur = getProgress();
+      if(c.checked) cur[c.dataset.seq]=true; else delete cur[c.dataset.seq];
+      setProgress(cur); renderWeekGrid(); render();
+    });
+  });
+}
+
+document.querySelectorAll('.chip[data-phase]').forEach(c=>{
+  c.addEventListener('click', ()=>{
+    document.querySelectorAll('.chip[data-phase]').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active'); fPhase=c.dataset.phase; render();
+  });
+});
+document.querySelectorAll('.chip[data-domain]').forEach(c=>{
+  c.addEventListener('click', ()=>{
+    document.querySelectorAll('.chip[data-domain]').forEach(x=>x.classList.remove('active'));
+    c.classList.add('active'); fDomain=c.dataset.domain; render();
+  });
+});
+document.getElementById('search').addEventListener('input', e=>{ fQuery=e.target.value.trim(); render(); });
+
+load();
+</script>
+</body>
+</html>

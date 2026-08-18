@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 22｜Sentinel 威脅搜捕：Hunts、Hunting Queries、書籤與 Livestream｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 22 / 40 · 2026-09-16</div>
+    <h1>Sentinel 威脅搜捕：Hunts、Hunting Queries、書籤與 Livestream</h1>
+    <p class="sub"><em>Threat Hunting in Sentinel: Hunts, Queries, Bookmarks & Livestream</em></p>
+    <div class="meta-row">
+      <span class="pill d3">D3 執行威脅搜捕</span>
+      <span class="pill ghost">20-25%</span>
+      <span class="pill ghost">P1-W5-2</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:88%"></div></div>
+    <div class="progress-text">五週速成進度 22 / 25 · 距離考試（2026-10-17）還有 31 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP10｜Perform threat hunting in Microsoft Sentinel | SC-200 | Episode 10</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><div class='vm'>本日對應段落：<a href='https://youtu.be/z6QbN4rpAvA?t=60' target='_blank' rel='noopener'><span class='timestamp'>1:00</span></a> livestream、bookmarks、hunts、<a href='https://youtu.be/z6QbN4rpAvA?t=360' target='_blank' rel='noopener'><span class='timestamp'>6:00</span></a> livestream、bookmarks、hunts、<a href='https://youtu.be/z6QbN4rpAvA?t=1140' target='_blank' rel='noopener'><span class='timestamp'>19:00</span></a> livestream、bookmarks、hunts</div><a class='vbtn' href='https://youtu.be/z6QbN4rpAvA' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">沒有警示的那些事：Sentinel 搜捕四件套</h2>
+<p>昨天在 Defender XDR 的 advanced hunting（進階搜捕）練了跨表查詢，今天換到 <strong>Microsoft Sentinel 的搜捕（hunting）頁面</strong>。Sentinel 把搜捕做成一套有紀律的流程：搜捕查詢負責發問、<strong>書籤（bookmark）</strong>負責留證、<strong>Livestream</strong> 負責盯現在、<strong>Hunts</strong> 把整件事包成可結案的專案。本日三重點：搜捕頁面全景與查詢怎麼挑；Hunts 與書籤這條「假說→證據→事件」的證據鏈；以及最容易被跳過的 <strong>Livestream</strong>——它跟排程分析規則差在哪。</p>
+<div class="point">
+<strong>學習目標（對應官方考綱 D3「執行威脅搜捕」）：</strong>
+<ul>
+  <li>☐ 依 MITRE ATT&amp;CK 戰術瀏覽並批次執行內建搜捕查詢（對應考綱 <em>use hunting queries in Microsoft Sentinel</em>）</li>
+  <li>☐ 建立自訂搜捕查詢，含實體對應與戰術／技術標記（對應考綱 <em>create custom hunting queries</em>）</li>
+  <li>☐ 用 Hunts 管理一次獵捕的假說、查詢、書籤與狀態流（對應考綱 <em>monitor hunts</em>）</li>
+  <li>☐ 用書籤保存與註記結果，並在需要時升級成事件（對應考綱 <em>use bookmarks</em>）</li>
+  <li>☐ 用 Livestream 對即時事件測試查詢、取得通知並升級為警示（對應考綱 <em>use livestream</em>）</li>
+</ul>
+</div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP10 重點整理（依影片順序）</h2>
+<p>本單元對應官方影片 <strong>EP10「Perform threat hunting in Microsoft Sentinel」</strong>。開場破題：環境每分鐘吐出登入、端點、雲端訊號，那些<strong>還沒被任何規則標記</strong>的低調行為怎麼辦？只等警示，往往等到擴散才知道。接著預告整條路徑：查詢／書籤／Livestream／MITRE 四件套（<span class="timestamp">EP10 01:26</span>），與 search job、資料還原、data lake KQL jobs、notebooks（<span class="timestamp">EP10 01:43</span>）。</p>
+<ul>
+  <li><strong>搜捕的定義</strong>（<span class="timestamp">EP10 03:22</span>）：主動搜尋「<strong>先前未被偵測到</strong>」的威脅；講者強調 not previously detected 是關鍵字，這正是搜捕與警示分診的分水嶺。搜捕是持續循環：問問題、找證據、學習、再問。</li>
+  <li><strong>假說五原則</strong>（<span class="timestamp">EP10 04:17</span>）：可達成、範圍窄、有時間界線、有用且有效率、貼齊威脅模型。Day 23 展開。</li>
+  <li><strong>搜捕查詢</strong>（<span class="timestamp">EP10 05:51</span>）：找沒有產生警示的訊號；反覆「提問→查資料→調整邏輯→依發現轉向（pivot）」，直到確認可疑或建立「這是良性」的信心。</li>
+  <li><strong>書籤</strong>（<span class="timestamp">EP10 06:34</span>）：把有價值的結果<strong>連同當時那支查詢一起保存</strong>，方便回頭看、與隊友分享，在搜捕與事件調查之間建立連續性。</li>
+  <li><strong>Livestream</strong>（<span class="timestamp">EP10 06:58</span>）：不是往回看，而是對正在發生的活動驗證假說——在互動式工作階段中對持續進來的事件測試查詢，可設通知，命中時近即時提醒（<span class="timestamp">EP10 07:19</span>）。影片只給三十秒，第 06 節補透。</li>
+  <li><strong>MITRE ATT&amp;CK</strong>（<span class="timestamp">EP10 07:38</span>）：用攻擊矩陣分析 TTP，圖例顏色對應偵測涵蓋度，看出哪裡有覆蓋、哪裡要補可視性。</li>
+  <li><strong>規模化與進階</strong>：search job 跨大資料集與長時間軸（<span class="timestamp">EP10 08:17</span>）、資料還原讓舊資料可查（<span class="timestamp">EP10 09:19</span>）、data lake KQL job 讓大型查詢規模化（<span class="timestamp">EP10 09:55</span>）；notebooks 段落分清三者——劇本（Playbook）＝自動化、活頁簿（Workbook）＝視覺化、筆記本（Notebook）＝深度分析（<span class="timestamp">EP10 11:15</span>）。屬 Day 23、24。</li>
+  <li><strong>示範動線</strong>（<span class="timestamp">EP10 17:33</span>）：最值得看兩遍。查 SecurityEvent 找可疑 PowerShell → <strong>Add bookmark</strong>（<span class="timestamp">EP10 18:31</span>）→ 主機<strong>對應成實體</strong>（<span class="timestamp">EP10 18:47</span>）→ 標 command and control → 同一段 KQL <strong>存成自訂搜捕查詢</strong>（<span class="timestamp">EP10 19:24</span>）→ <strong>丟進 Livestream 持續盯</strong>（<span class="timestamp">EP10 20:20</span>）→ 回書籤展開證據，有實體對應就能進<strong>調查圖</strong>比對（<span class="timestamp">EP10 20:55</span>）。</li>
+</ul>
+<div class="info-box">📌 影片沒出現的一塊：<strong>Hunts</strong>（把假說、查詢、書籤打包成專案）與書籤升級成事件的操作。考綱有 <em>monitor hunts</em>，第 04、07 節補齊。</div>
+
+<div class="eyebrow">03 — 🔍 搜捕頁面全景</div>
+<h2 data-toc="搜捕頁面">查詢清單怎麼挑：戰術、結果數與批次跑</h2>
+<p>搜捕頁面分成 <strong>Queries</strong>、<strong>Livestream</strong>、<strong>Bookmarks</strong> 幾個頁籤，新版再加 <strong>Hunts</strong>。查詢有兩種來源：<strong>內建範本</strong>（微軟與社群提供，隨內容中樞 Content Hub 的解決方案安裝）與你的<strong>自訂查詢</strong>。清單標示提供者、資料來源與 <strong>MITRE 戰術／技術</strong>——最實用的瀏覽維度：懷疑有人橫向移動，就篩 Lateral Movement 那一欄。</p>
+<div class="point">💡 三個常被忽略的操作：<strong>①Run all queries 批次執行</strong>——跑完先看「結果數」，有數字的才展開；<strong>②結果差異（Results delta）</strong>——「昨天 0 筆、今天 47 筆」比絕對數字更有訊號；<strong>③我的最愛</strong>——標記後進頁面自動執行，等於個人化儀表板。注意：搜捕查詢<strong>不會自己排程、不會產生警示</strong>。</div>
+<p>自訂查詢有兩條路：複製（Clone）既有範本後改寫，或直接新建。除了 KQL，還要填<strong>實體對應</strong>（把輸出欄位對應成 Account／Host／IP 實體）與<strong>戰術、技術</strong>：有實體對應，書籤才進得了調查圖；標了戰術，查詢才會出現在按戰術瀏覽的清單裡。先看一支典型查詢：</p>
+<pre class="kql">// 假說：帳號遭接管後，攻擊者會在短時間內把 SharePoint／OneDrive 檔案整批帶走
+let lookback = 7d;           // 搜捕視窗：假說必須 time bound
+let baseline_window = 30d;   // 用使用者「自己的過去」當基準線
+let baseline =
+    OfficeActivity
+    | where TimeGenerated between (ago(baseline_window) .. ago(lookback))
+    | where Operation in ("FileDownloaded", "FileSyncDownloadedFull")
+    | summarize DailyCount = count() by UserId, bin(TimeGenerated, 1d)
+    | summarize Normal = percentile(DailyCount, 90) by UserId;
+OfficeActivity
+| where TimeGenerated &gt; ago(lookback)
+| where Operation in ("FileDownloaded", "FileSyncDownloadedFull")
+| summarize Downloads = count(), Files = dcount(OfficeObjectId),
+            SrcIPs = make_set(ClientIP, 5)
+        by UserId, Day = bin(TimeGenerated, 1d)
+| join kind=leftouter baseline on UserId
+| extend Normal = coalesce(Normal, 0.0)
+| where Downloads &gt; 100 and Downloads &gt; Normal * 5
+| project Day, UserId, Downloads, Files, SrcIPs, Normal
+| order by Downloads desc</pre>
+<p class="kql-note">逐段解說：兩個 <code>let</code> 把時間參數提出來，改視窗只要改一行。<code>baseline</code> 算出每位使用者過去三十天的每日下載量，取 <code>percentile(DailyCount, 90)</code> 當「這個人的正常值」——<strong>會計每天下載兩百個檔案是日常，工程師就不是</strong>，個人基準線才抓得到相對異常。主查詢按「使用者×每日」聚合，<code>make_set(ClientIP, 5)</code> 留來源 IP 供 pivot；<code>leftouter</code> 讓沒有歷史的新帳號也留著（爆量更可疑）。最後一行是雙條件：<strong>絕對量夠大</strong>且<strong>比自己平常爆增五倍</strong>。存成自訂查詢時 <code>UserId</code> 對應 Account 實體、戰術標 Exfiltration。</p>
+
+<div class="eyebrow">04 — 📦 Hunts 專案</div>
+<h2 data-toc="Hunts">把一次獵捕包成可交接的專案</h2>
+<p>單支查詢跑完就沒了，但真實獵捕常跑一兩週、動用十幾支查詢，中途還換人接手。<strong>Hunts</strong> 就是為此存在的容器：把<strong>假說、查詢、書籤、備註與發現</strong>綁在同一個工作項目下，讓「這次獵捕」變成可結案的專案。建立時填名稱、<strong>假說</strong>、擁有者、狀態與 MITRE 戰術；之後在 hunt 內執行查詢，把有價值的結果列存成書籤，自動掛在該 hunt 底下。</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>面向</th><th>取值</th><th>營運意義</th></tr></thead>
+  <tbody>
+    <tr><td>Hunt 狀態</td><td><strong>New → Active → Closed</strong></td><td>New＝假說寫好未動手；Active＝正在跑查詢累積書籤；Closed＝結論已下並寫原因</td></tr>
+    <tr><td>假說狀態</td><td><strong>Unknown／Validated／Invalidated</strong></td><td>結案務必更新：<strong>不成立也是成果</strong>，代表這條路徑沒被利用，可停止重複投入</td></tr>
+    <tr><td>內容物</td><td>查詢、書籤、備註、戰術標記</td><td>接手的人打開就知道：問了什麼、找到什麼</td></tr>
+    <tr><td>成果出口</td><td>建立事件、查詢轉分析規則</td><td>價值不在報告，而在「下次它會自己被抓到」</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>「監控 hunts」題怎麼看</strong>：題幹提到「多位分析師協作、要追蹤搜捕進度與發現」→ 指向 <strong>Hunts</strong>，不是書籤或活頁簿：書籤是<strong>單筆證據</strong>、hunt 是<strong>整個專案</strong>，兩者是包含關係。另一陷阱：「假說被推翻要怎麼辦」，正解是<strong>標為 Invalidated 並結案</strong>，不是刪掉 hunt——刪掉等於丟掉「這條路查過了」的記憶。</div>
+
+<div class="eyebrow">05 — 🔖 書籤留證</div>
+<h2 data-toc="書籤">可疑但還不確定？先存起來</h2>
+<p>搜捕最尷尬的狀態是「這列看起來怪，但不敢說是攻擊」。<strong>書籤</strong>就是為這狀態設計的：選取結果的某幾列存成書籤，Sentinel 會把<strong>那幾列資料、當時的 KQL、查詢的時間範圍</strong>一起保存。它是可重現的證據快照——三週後回頭看，還知道當初怎麼問出這結果。建立時能補的三件事，每件都決定它後續能做什麼：</p>
+<ul>
+  <li><strong>備註與標籤</strong>：寫下判斷與待辦；標籤用獵捕代號（如 <code>AiTM-2026-08</code>）串起同一次調查的所有書籤。</li>
+  <li><strong>實體對應</strong>：把欄位對應成帳號、主機、IP。影片示範最關鍵的一步——<strong>有對應才進得了調查圖</strong>。</li>
+  <li><strong>MITRE 戰術／技術</strong>：讓證據帶著攻擊階段語意（影片把可疑 PowerShell 標成 command and control）。</li>
+</ul>
+<p>下游有三條路：<strong>升級成新事件</strong>、<strong>加入既有事件</strong>、<strong>留著繼續觀察</strong>。書籤本身也是工作區的一張表，盤點與交接時直接查就行：</p>
+<pre class="kql">// 盤點本次獵捕留下的書籤：哪些已升級成事件、哪些還躺著沒人處理
+HuntingBookmark
+| where TimeGenerated &gt; ago(30d)
+| where SoftDeleted == false
+| where Tags has "AiTM-2026-08"
+| summarize arg_max(TimeGenerated, *) by BookmarkId
+| extend LinkedIncident = tostring(IncidentInfo.Title)
+| extend Status = iff(isempty(LinkedIncident), "未升級", "已連結事件")
+| project TimeGenerated, BookmarkName, Status, LinkedIncident, Tags, Notes
+| order by TimeGenerated desc</pre>
+<p class="kql-note">逐段解說：<code>HuntingBookmark</code> 存的就是書籤本身，含名稱、原始查詢、被保存的結果列與標籤；第 3 行濾掉已刪除的。第 5 行 <code>arg_max(TimeGenerated, *) by BookmarkId</code> 是重點：<strong>書籤每次被編輯都會新增一列</strong>，取最新一列才是現況。<code>IncidentInfo</code> 是動態欄位，書籤已升級或加入事件時帶有該事件資訊。做成活頁簿磚就是「搜捕待辦清單」。</p>
+
+<div class="eyebrow">06 — 📡 Livestream</div>
+<h2 data-toc="即時串流">盯著現在：即時串流一支查詢</h2>
+<p>前面的工具都在看<strong>過去</strong>。<strong>Livestream（搜捕即時串流）</strong>把鏡頭轉向<strong>現在</strong>：開一個互動式工作階段掛上查詢，資料一進工作區就比對，命中時在入口網站近即時通知你。可以從既有搜捕查詢直接建立，也可以貼一段 KQL 從頭開始。</p>
+<p><strong>四個典型用途</strong>：<strong>①測試新規則邏輯</strong>——與其把沒把握的查詢設成排程規則、隔天收到一百張誤判，不如先串流幾小時看雜訊量，滿意再升級。<strong>②等攻擊者回來</strong>——剛清掉被入侵的主機，對方通常會再試一次，掛一支針對該 IoC 的串流，回來當下就知道。<strong>③事件期間盯梢</strong>——盯住特定帳號或主機，取代手動重新整理。<strong>④驗證圍堵</strong>——封帳號、隔離裝置後持續零命中，就是圍堵生效的即時證據。</p>
+<div class="point">💡 <strong>一鍵轉正式規則</strong>：Livestream 工作階段可<strong>升級成警示（elevate to alert）</strong>，直接用同一段查詢建立排程分析規則，不必重打 KQL。這是搜捕成果轉正的最短路徑：假說 → 搜捕查詢 → Livestream 驗證雜訊 → 排程規則 → 自動化規則／劇本。</div>
+<p>同一段 KQL 在搜捕與在 Livestream 裡該長得不一樣：搜捕常做長視窗聚合，Livestream 每次只面對剛進來的一小批資料，聚合與長視窗篩選會失去意義甚至誤導。把第 03 節那支改寫成串流版：</p>
+<pre class="kql">// Livestream 版：不看歷史、不聚合，只問「現在這個帳號還在下載嗎」
+OfficeActivity
+| where Operation in ("FileDownloaded", "FileSyncDownloadedFull")
+| where UserId =~ "mei.chen@contoso.com"        // 鎖定調查中的帳號
+| project TimeGenerated, UserId, ClientIP, OfficeObjectId, UserAgent
+| order by TimeGenerated desc</pre>
+<p class="kql-note">改寫三原則：<strong>①拿掉時間篩選</strong>——工作階段已界定「從現在起」，不需要 <code>ago(7d)</code>。<strong>②拿掉 summarize 聚合</strong>——串流逐列即時比對，「超過基準線五倍」這種要累積才成立的條件算不出來；改鎖定已知目標或明確的高風險動作。<strong>③輸出逐列可讀</strong>——只留人眼一秒能判斷的欄位。查詢越輕，串流越不拖慢入口網站。</p>
+<p>四件套的定位一次看清楚：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>面向</th><th>搜捕查詢</th><th>書籤</th><th>Livestream</th><th>排程分析規則</th></tr></thead>
+  <tbody>
+    <tr><td>時間軸與觸發</td><td>過去（自訂視窗）；手動或批次跑</td><td>過去的某一刻；手動保存</td><td><strong>現在</strong>（新進資料）；分析師開工作階段</td><td>依排程週期回看；平台自動 24×7</td></tr>
+    <tr><td>何時用</td><td>驗證假說、找沒有警示的行為</td><td>有價值但無法定論，要留證與交接</td><td>測試規則邏輯、等攻擊者回來、事件期間盯梢</td><td>邏輯已驗證、雜訊可接受、要長期自動偵測</td></tr>
+    <tr><td>輸出到哪</td><td>結果表格 → 書籤／Livestream／轉規則</td><td>調查圖、事件、hunt 專案</td><td>入口網站通知 → 可升級成警示／規則</td><td><strong>警示與事件</strong> → 分診佇列、自動化規則、劇本</td></tr>
+    <tr><td>會產生事件嗎</td><td>不會</td><td>不會（要手動升級）</td><td>不會（只通知）</td><td><strong>會</strong>（可設定事件建立與分組）</td></tr>
+    <tr><td>成本考量</td><td>不另計查詢費，成本是<strong>分析師時間</strong></td><td>幾乎零成本，落在工作區表</td><td>要人盯；查詢寫太重會拖慢</td><td>佔<strong>規則配額</strong>；誤判直接變 SOC 工作量</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>Livestream vs 排程規則 vs NRT 規則怎麼選</strong>：題幹出現「<em>test a query／驗證邏輯／不確定會不會誤判</em>」「<em>interactive session</em>」「<em>調查期間要被通知</em>」「<em>不想製造警示</em>」→ <strong>Livestream</strong>；「<em>持續自動偵測</em>」「<em>產生事件並指派</em>」「<em>觸發劇本</em>」→ <strong>排程分析規則</strong>；「<em>近乎即時、每分鐘</em>」且<strong>仍要產生警示</strong>→ <strong>NRT 規則</strong>。NRT 最容易與 Livestream 混淆：兩者都強調快，但 <strong>NRT 會產生警示與事件、有數量上限；Livestream 不產生任何警示</strong>。一句話：<strong>Livestream 是給人看的，分析規則是給流程看的。</strong></div>
+
+<div class="eyebrow">07 — 🛡️ 完整獵捕</div>
+<h2 data-toc="實戰情境">從一句假說到一條偵測規則</h2>
+<div class="case-box"><span class="case-label">🛡️ SOC Walkthrough：AiTM 釣魚後的資料外洩獵捕</span><br>
+<p>威脅情報通報：一波 AiTM（adversary-in-the-middle）釣魚鎖定你的產業，得手後用竊得的工作階段權杖登入並整批下載檔案。環境沒有相關警示——正好是搜捕的主場。</p>
+<ol>
+  <li><strong>寫假說並開 hunt</strong>：假說＝「過去 7 天內有帳號在<strong>非慣用 IP</strong> 上出現<strong>遠高於自身基準</strong>的下載量，且未觸發警示」——範圍窄、有時間界線、現有資料就能驗證。在 Hunts 建專案，狀態 <strong>New</strong>，標 Exfiltration。</li>
+  <li><strong>跑內建查詢暖身</strong>：按戰術篩出 Exfiltration 與 Initial Access 的內建查詢，<strong>Run all queries</strong>，看哪幾支有結果、哪幾支的 <strong>Results delta</strong> 在跳動。狀態改 <strong>Active</strong>。</li>
+  <li><strong>寫自訂查詢</strong>：用第 03 節那支基準線查詢收斂。三個帳號超標，其中一位財務同仁單日下載 1,340 個檔案、平常基準只有 12，來源 IP 在海外。</li>
+  <li><strong>留證：書籤</strong>：把這幾列存成書籤，<code>UserId</code> 對 Account、<code>ClientIP</code> 對 IP 實體，戰術標 Exfiltration，標籤 <code>AiTM-2026-08</code>，自動掛進 hunt。</li>
+  <li><strong>擴大關聯</strong>：從書籤進<strong>調查圖</strong>，圖上帶出同時段登入記錄：一個沒出現過的 IP、一次沒有 MFA 挑戰的權杖重放，假說開始成立。</li>
+  <li><strong>掛 Livestream</strong>：把「這帳號的下載動作」做成串流，一邊處置一邊盯——唯一能回答「他<strong>現在</strong>還在下載嗎」的工具。同時請身分小組撤銷權杖。</li>
+  <li><strong>升級成事件</strong>：把書籤<strong>升級成事件</strong>（若已有相關事件，改<strong>加入既有事件</strong>），嚴重性 High，進正式分診與 SLA；Livestream 續開，驗證撤銷權杖後是否歸零。</li>
+  <li><strong>轉成偵測規則</strong>：收尾不是報告，是<strong>讓它下次自動被抓到</strong>。把驗證過的查詢建成排程分析規則（或從 Livestream 直接 elevate to alert），設好實體對應與自動化規則，命中就自動指派並跑撤銷權杖的劇本。</li>
+  <li><strong>結案</strong>：hunt 改 <strong>Closed</strong>、假說標 <strong>Validated</strong>，備註寫下產出：1 張事件、1 條新規則、3 個書籤，下次有人問「查過 AiTM 外洩嗎」就有答案。</li>
+</ol>
+</div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>書籤何時該升級成事件</strong>：判準只有一個——<strong>需不需要進入正式處理流程</strong>。要指派負責人、要 SLA 與稽核軌跡、要多人協作或自動回應 → <strong>升級成事件</strong>；若同一批活動已有事件在跑，正解通常是<strong>加入既有事件</strong>而非新開一張（重複開會破壞關聯與統計，考題愛在此設陷阱）。只是「以後可能有用」→ 留在書籤加標籤與備註；把所有書籤都升級成事件，等於自製誤判洪水。</div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">EP10 沒講到、考試會考的</h2>
+<p>EP10 聚焦在「查詢→書籤→實體→Livestream→調查圖」這條動線，以下考綱能力影片著墨很少或完全沒提，本文已補講：</p>
+<ul>
+  <li><strong>Hunts 專案與狀態流</strong>：影片完全未提。New／Active／Closed 三態、假說 Unknown／Validated／Invalidated（§04）。</li>
+  <li><strong>Livestream 完整能力</strong>：影片只給三十秒。記住「不產生警示、互動式、可設通知、可 elevate to alert」，以及與排程規則、NRT 規則的分工（§06）。</li>
+  <li><strong>批次執行與必填欄位</strong>：Run all queries 與 Results delta 影片未示範；沒有實體對應就沒有調查圖，沒有戰術就無法按 ATT&amp;CK 瀏覽（§03、§05）。</li>
+  <li><strong>書籤加入既有事件</strong>：影片只示範新增書籤；考題常在「新開事件 vs 加入既有事件」上分勝負（§07）。</li>
+  <li><strong>搜捕成果三去向</strong>：轉分析規則（自動偵測）、接自動化規則與劇本（自動回應）、留書籤存證（知識累積）。</li>
+  <li><strong>規模化工具留待後續</strong>：search job、資料還原、data lake KQL jobs 與 Sentinel MCP Server <span class="badge-2026">2026 新考點</span> 屬 Day 24；notebooks 與 MSTICPy 屬 Day 23。</li>
+  <li><strong>明日預告</strong>：Day 23 回到那五個假說原則，配合 ATT&amp;CK 矩陣覆蓋度圖例，練「怎麼想出值得查的問題」。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深讀清單</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/hunting" target="_blank" rel="noopener">使用 Microsoft Sentinel 搜捕威脅</a> — 總覽：搜捕頁面組成與查詢清單欄位（§03）。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/hunts" target="_blank" rel="noopener">進行端對端主動威脅搜捕（Hunts）</a> — hunt 建立流程、狀態與假說欄位（§04）。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/bookmarks" target="_blank" rel="noopener">使用書籤在搜捕期間追蹤資料</a> — 實體對應與升級成事件的步驟。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/livestream" target="_blank" rel="noopener">使用搜捕即時串流偵測威脅</a> — 本日必讀：工作階段、通知與升級成警示。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/detect-threats-custom" target="_blank" rel="noopener">建立自訂分析規則以偵測威脅</a> — 搜捕查詢轉排程規則怎麼填。</li>
+</ul>
+
+
+  <div class="eyebrow">10 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W5-2">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D3-0016</div><div class='q-stem'>You are a security operations analyst at Contoso. Your SOC manager notices that several built-in hunting queries on the Microsoft Sentinel hunting page return results, but no incidents were created from them this week. Which statement correctly describes how hunting queries behave?</div><div class='q-zh'>（你是 Contoso 的資安維運分析師。SOC 主管發現 Microsoft Sentinel 搜捕頁面上有幾支內建搜捕查詢會傳回結果，但本週沒有因此產生任何事件。下列哪一項正確描述搜捕查詢的行為？）</div><div class='q-opt'><strong>A.</strong> Hunting queries run only when an analyst runs them individually or uses Run all queries; they do not run on a schedule and do not create alerts or incidents.<div style='font-size:12.5px;color:var(--muted)'>搜捕查詢只在分析師單獨執行或使用 Run all queries 批次執行時才會跑；它們不會依排程自動執行，也不會產生警示或事件。</div></div><div class='q-opt'><strong>B.</strong> Hunting queries run on the schedule stored in the query template and create an incident whenever the result count is greater than zero.<div style='font-size:12.5px;color:var(--muted)'>搜捕查詢會依查詢範本中設定的排程執行，只要結果筆數大於零就建立事件。</div></div><div class='q-opt'><strong>C.</strong> Hunting queries evaluate incoming data every minute and raise near-real-time alerts for each match.<div style='font-size:12.5px;color:var(--muted)'>搜捕查詢每分鐘評估新進資料，並為每次命中產生近乎即時的警示。</div></div><div class='q-opt'><strong>D.</strong> Hunting queries are triggered whenever an incident is created and apply tags or assign an owner to that incident.<div style='font-size:12.5px;color:var(--muted)'>搜捕查詢會在事件建立時觸發，並為該事件加標籤或指派擁有者。</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>搜捕查詢是「主動提問」的工具，不是偵測機制。它由分析師手動執行，或在搜捕頁面用 Run all queries／Run selected queries 批次執行（也可把常用查詢加入我的最愛，進頁面時自動執行），執行結果只呈現在頁面上，不會產生警示、也不會開事件。要讓查詢邏輯持續自動偵測並產生事件，必須把它建立成排程分析規則或 NRT 規則；要保存有價值的結果列，則使用書籤。</p><ul><li><strong>B</strong>：依排程執行並在符合門檻時建立事件，是排程分析規則（scheduled analytics rule）的行為；搜捕查詢本身沒有排程與事件建立設定。</li><li><strong>C</strong>：每分鐘評估新資料並產生警示的是 NRT（near-real-time）分析規則；而在搜捕頁面持續對新進資料比對的 livestream 雖然接近即時，也只提供通知、不會產生警示。</li><li><strong>D</strong>：在事件建立時觸發並加標籤、指派擁有者的是自動化規則（automation rule），與搜捕查詢無關。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/hunting' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D3-0017</div><div class='q-stem'>You are a SOC analyst. You wrote a new KQL query that you believe identifies a credential-theft technique, but you are not confident about its false positive rate. You want to observe how the query behaves against events as they arrive over the next few hours and be notified when it matches, without generating alerts or incidents while you evaluate it. What should you do?</div><div class='q-zh'>（你是 SOC 分析師。你寫了一支新的 KQL 查詢，認為可以找出某種竊取認證的手法，但不確定它的誤判率。你想在接下來幾小時觀察這支查詢對「陸續進來的事件」的表現，命中時收到通知，而在評估期間不要產生任何警示或事件。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Create a near-real-time (NRT) analytics rule from the query and review the alerts it produces.<div style='font-size:12.5px;color:var(--muted)'>用這支查詢建立 NRT（near-real-time）分析規則，再檢視它產生的警示。</div></div><div class='q-opt'><strong>B.</strong> Start a hunting livestream session with the query and configure notifications.<div style='font-size:12.5px;color:var(--muted)'>用這支查詢啟動搜捕 livestream（即時串流）工作階段，並設定通知。</div></div><div class='q-opt'><strong>C.</strong> Create a scheduled analytics rule that runs every hour and disable incident creation.<div style='font-size:12.5px;color:var(--muted)'>建立每小時執行一次的排程分析規則，並關閉事件建立。</div></div><div class='q-opt'><strong>D.</strong> Run a search job with the query over the last 24 hours and review the job results.<div style='font-size:12.5px;color:var(--muted)'>用這支查詢對過去 24 小時執行 search job，再檢視工作結果。</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>livestream 就是為「測試還沒把握的查詢邏輯」設計的：它是互動式工作階段，對持續進來的事件比對你的查詢，命中時在入口網站近即時通知你，但不會產生警示、也不會建立事件，因此不會汙染分診佇列，也不佔用分析規則配額。等你確認雜訊可以接受，再從工作階段直接升級成警示（elevate to alert），用同一段查詢生成排程分析規則。</p><ul><li><strong>A</strong>：NRT 規則會實際產生警示與事件，正是題目要避免的；而且每個工作區的 NRT 規則數量有限，拿它來試邏輯並不合適。</li><li><strong>C</strong>：排程分析規則即使關閉事件建立仍會產生警示、佔用規則配額，也不是互動式觀察；用它試邏輯會在正式偵測面留下雜訊。</li><li><strong>D</strong>：search job 是對「過去」的大量資料做長時間軸搜尋，回答不了「接下來幾小時這支查詢會命中什麼」的問題。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/livestream' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D3-0018</div><div class='q-stem'>While hunting in Microsoft Sentinel you find three rows of unusual sign-in activity for one account. You cannot confirm yet that the activity is malicious. You need to preserve the rows together with the query that produced them, let a colleague continue the work tomorrow, and be able to pivot from the finding into the investigation graph for that account. What should you do?</div><div class='q-zh'>（你在 Microsoft Sentinel 搜捕時，發現某個帳號有三列異常的登入活動，但還無法確認是否為惡意。你需要把這幾列資料連同產生它們的查詢一起保存，讓同事明天接手，並且能從這個發現進入該帳號的調查圖。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Export the query results to CSV and attach the file to a ticket for your colleague.<div style='font-size:12.5px;color:var(--muted)'>把查詢結果匯出成 CSV，並把檔案附在工單上交給同事。</div></div><div class='q-opt'><strong>B.</strong> Create an incident from the query results immediately and assign it to your colleague.<div style='font-size:12.5px;color:var(--muted)'>立刻從查詢結果建立事件並指派給同事。</div></div><div class='q-opt'><strong>C.</strong> Save the rows as a bookmark, map the account column to an Account entity, and add tags and notes.<div style='font-size:12.5px;color:var(--muted)'>把這幾列存成書籤，將帳號欄位對應成 Account 實體，並加上標籤與備註。</div></div><div class='q-opt'><strong>D.</strong> Add the account to a watchlist so that it is enriched in future hunting queries.<div style='font-size:12.5px;color:var(--muted)'>把該帳號加入監視清單（Watchlist），讓未來的搜捕查詢能夠富化它。</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>書籤（bookmark）保存的是「那幾列資料＋當時的查詢＋查詢時間範圍」，是可重現的證據快照，天生就是為了交接與延續調查而設計。加上標籤與備註可以讓同事看懂脈絡；而實體對應是能不能進調查圖的關鍵——把帳號欄位對應成 Account 實體後，就能從書籤展開調查圖與其他遙測交叉關聯。日後若確認需要正式處理，再把書籤升級成事件或加入既有事件。</p><ul><li><strong>A</strong>：匯出 CSV 會讓證據離開平台：沒有查詢脈絡、沒有實體對應、進不了調查圖，也無法納入搜捕專案追蹤。</li><li><strong>B</strong>：活動尚未確認為惡意就開事件，會製造誤判與噪音；正確順序是先留書籤，確認需要進正式流程（指派、SLA、自動化回應）時再升級。</li><li><strong>D</strong>：監視清單用來提供業務脈絡（VIP、離職員工、允許的 IP）供查詢 join 使用，它不保存查詢結果，也不會保留這次發現的證據。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/bookmarks' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D3-0019</div><div class='q-stem'>Your team ran a two-week hunt in Microsoft Sentinel based on the hypothesis that an insider was staging data before exfiltration. After 12 queries and 5 bookmarks, the evidence shows the activity was a sanctioned backup job. Your manager wants the outcome recorded so that another analyst does not repeat the same investigation next quarter. What should you do?</div><div class='q-zh'>（你的團隊在 Microsoft Sentinel 進行了一個為期兩週的 hunt，假說是「有內部人員在外洩前先集結資料」。跑了 12 支查詢、留下 5 個書籤後，證據顯示那是經核准的備份作業。主管希望把結論記錄下來，避免下一季有人重做同一件事。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Delete the hunt and its bookmarks so that the hunting queue only shows active work.<div style='font-size:12.5px;color:var(--muted)'>刪除這個 hunt 與其書籤，讓搜捕佇列只留下進行中的工作。</div></div><div class='q-opt'><strong>B.</strong> Create an incident from each bookmark and close the incidents as benign positive.<div style='font-size:12.5px;color:var(--muted)'>為每個書籤各建立一張事件，再把事件以良性正判（benign positive）結案。</div></div><div class='q-opt'><strong>C.</strong> Convert each hunting query into a scheduled analytics rule so the activity keeps being monitored.<div style='font-size:12.5px;color:var(--muted)'>把每支搜捕查詢都轉成排程分析規則，讓這個活動持續受到監控。</div></div><div class='q-opt'><strong>D.</strong> Set the hunt's hypothesis status to Invalidated, close the hunt, and record the conclusion in its notes.<div style='font-size:12.5px;color:var(--muted)'>把該 hunt 的假說狀態設為 Invalidated（不成立），將 hunt 結案，並在備註中記錄結論。</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>Hunts 的價值就在於把假說、查詢、書籤與結論留成機構記憶。假說被推翻同樣是成果：把假說狀態標成 Invalidated、hunt 狀態改為 Closed，並在備註寫下「這是經核准的備份作業」，下一季有人問「這條路查過了嗎」時，打開 hunt 就有答案，不必重跑 12 支查詢。hunt 的狀態流是 New → Active → Closed，假說狀態則是 Unknown／Validated／Invalidated。</p><ul><li><strong>A</strong>：刪除 hunt 等於丟掉「這條路已經查過」的紀錄，正好造成主管想避免的重複調查，也失去查詢與書籤的稽核軌跡。</li><li><strong>B</strong>：活動已確認為合法作業，替每個書籤開事件只會製造無意義的事件量，扭曲 SOC 的統計與 SLA 數據。</li><li><strong>C</strong>：把已知合法的行為轉成分析規則，會持續產生誤判警示；只有經驗證、確實代表威脅的查詢才值得轉成偵測規則。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/hunts' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D3-0020</div><div class='q-stem'>During an active incident you must know whether a compromised account is still downloading files right now. Your existing hunting query aggregates downloads per user per day over the last 7 days and compares the count with a 30-day baseline. How should you adapt the query before adding it to a livestream session?</div><div class='q-zh'>（在處理一起進行中的事件時，你必須知道某個被入侵的帳號「現在」是否還在下載檔案。你手上的搜捕查詢是以「使用者×每日」聚合過去 7 天的下載量，並與 30 天基準線比較。把它加入 livestream 工作階段前，應該如何調整這支查詢？）</div><div class='q-opt'><strong>A.</strong> Keep the aggregation but shorten the time window to the last hour so that results refresh faster.<div style='font-size:12.5px;color:var(--muted)'>保留聚合邏輯，但把時間視窗縮短到最近一小時，讓結果刷新得更快。</div></div><div class='q-opt'><strong>B.</strong> Remove the time filter and the summarize aggregation, and filter on the specific account so that each matching event is returned as its own row.<div style='font-size:12.5px;color:var(--muted)'>拿掉時間篩選與 summarize 聚合，改成針對該特定帳號篩選，讓每一筆符合的事件各自成為一列輸出。</div></div><div class='q-opt'><strong>C.</strong> Keep the query unchanged and configure the livestream session to elevate to alert so that matches create incidents.<div style='font-size:12.5px;color:var(--muted)'>查詢維持原樣，並將 livestream 工作階段設定為 elevate to alert，讓命中時建立事件。</div></div><div class='q-opt'><strong>D.</strong> Replace the source table with a search job over restored data so that historical rows are included in the session.<div style='font-size:12.5px;color:var(--muted)'>把來源資料表換成對還原資料執行的 search job，讓工作階段也涵蓋歷史資料列。</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>livestream 每次只面對「剛進來的一小批資料」，不是對歷史資料重跑。因此需要累積才成立的條件（每日總量、與 30 天基準線比較）在串流裡算不出來，時間篩選也沒有意義——工作階段本身就界定了「從現在起」。正確做法是把查詢改輕：拿掉 ago() 時間篩選與 summarize 聚合，鎖定調查中的帳號（或主機、IP），輸出逐列、只留人眼一秒能判斷的欄位，這樣既能立刻看出「他還在不在動」，也不會拖慢入口網站。</p><ul><li><strong>A</strong>：保留聚合仍需要累積資料才會產出結果，串流每次比對的新資料量往往達不到門檻，會出現「明明還在下載卻什麼都沒有」的假安心；時間視窗在串流工作階段中也是多餘的。</li><li><strong>C</strong>：elevate to alert 是把工作階段的查詢轉成排程分析規則來長期偵測，不是讓串流本身建立事件；而且原查詢的聚合邏輯在串流中根本算不出結果，先轉規則也解決不了「現在還在不在下載」的即時問題。</li><li><strong>D</strong>：search job 與資料還原用於長時間軸的歷史搜尋，與 livestream 針對新進資料的即時比對是相反方向，也無法作為串流的資料來源。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/livestream' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP22</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><audio controls preload='none' src='../podcast/ep-022.mp3'></audio><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-022'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="22">
+    <label for="doneChk">我讀完 Day 22 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-021.html'>← Day 21</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-023.html'>Day 23 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 22 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 17｜Sentinel 分析規則 I：Scheduled／NRT、實體對應與 MITRE 對照｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 17 / 40 · 2026-09-09</div>
+    <h1>Sentinel 分析規則 I：Scheduled／NRT、實體對應與 MITRE 對照</h1>
+    <p class="sub"><em>Analytics Rules I: Scheduled / NRT, Entity Mapping & MITRE</em></p>
+    <div class="meta-row">
+      <span class="pill d2">D2 回應安全性事件</span>
+      <span class="pill ghost">35-40%</span>
+      <span class="pill ghost">P1-W4-2</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:68%"></div></div>
+    <div class="progress-text">五週速成進度 17 / 25 · 距離考試（2026-10-17）還有 38 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP9｜Create detections and perform investigations in Microsoft Sentinel | SC-200 | Episode 9</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/qlyEmMLif_M' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">讓查詢變成偵測：分析規則的骨架</h2>
+<p>前面十六天你學會了查（KQL）也學會了接資料，但那些查詢都得靠你按下執行。今天只做一件事：<strong>把一支查詢變成一條會自己上工的分析規則（analytics rule）</strong>。Microsoft Sentinel 的偵測面全靠它——規則定時跑查詢，結果過門檻就產生警示（alert），警示再依設定變成事件（incident）進佇列。這條生產線有四個常被寫壞的環節：排程沒對齊擷取延遲（會漏事件）、實體對應（entity mapping）沒做（調查圖空白、劇本抓不到對象）、事件分組沒設（一波攻擊炸出兩百件事件）、MITRE 沒標（看不到覆蓋率）。今天拆完 Scheduled 與 NRT 這兩種「你自己寫查詢」的規則；Fusion、UEBA、異常偵測那些「微軟幫你算」的，明天再談。</p>
+<div class="info-box">學習目標（對應官方考綱 D2「回應安全性事件」條目）：
+<ul>
+<li>☐ 依情境選出正確的<strong>分析規則類型</strong>（create and configure analytics rules）</li>
+<li>☐ 設定<strong>排程查詢規則</strong>的查詢排程、回看期間、警示門檻與事件建立，並處理擷取延遲</li>
+<li>☐ 設定<strong>實體對應、自訂詳細資料（custom details）與警示詳細資料（alert details）</strong></li>
+<li>☐ 用<strong>事件分組與警示分組</strong>控制警示與事件的產出數量</li>
+<li>☐ 建立 <strong>NRT（近即時）規則</strong>並說明其單表等限制</li>
+<li>☐ 以 <strong>MITRE ATT&amp;CK</strong> 標記規則、用覆蓋率檢視找缺口；從內容中樞（Content Hub）管理規則範本更新</li>
+</ul></div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP9 觀看重點指引（上半場：建立偵測）</h2>
+<p>本單元對應官方影片 <strong>EP9「Create detections and perform investigations in Microsoft Sentinel」</strong>，今天只看<strong>前半段：分析規則精靈</strong>（後半的事件調查與自動化留給後面幾天）。字幕尚未到位，先用下面五個問題定位段落，字幕匯入後本節會回補時間碼（格式如 <span class="timestamp">EP9 12:35</span>）。</p>
+<ul>
+<li><strong>規則類型清單</strong>：講者按下 Create 時下拉選單有哪幾種？記住「要自己寫 KQL」的只有 Scheduled 與 NRT。</li>
+<li><strong>精靈的五個索引標籤</strong>：General → Set rule logic → Incident settings → Automated response → Review。這也是今天的章節順序與考題的敘述順序。</li>
+<li><strong>Set rule logic 這一頁</strong>：最密的一頁，查詢框下方依序是實體對應、自訂詳細資料、警示詳細資料、查詢排程與門檻。留意講者<strong>從結果的哪一欄拉出實體</strong>。</li>
+<li><strong>結果模擬圖</strong>：設定排程時右側會畫出「依目前資料，過去 50 次執行會產生幾個警示」，這是上線前唯一的降噪工具。</li>
+<li><strong>範本與 Content Hub</strong>：注意範本清單來自哪裡、建立後的規則與範本是什麼關係（範本更新後規則不會自己變）。</li>
+</ul>
+
+<div class="eyebrow">03 — 🧭 規則類型全景</div>
+<h2 data-toc="規則類型">六種分析規則，先分清楚誰負責寫邏輯</h2>
+<p>選型的第一個切點很簡單：<strong>邏輯是你寫的，還是微軟寫的？</strong>你寫的只有 Scheduled 與 NRT；其餘四種是微軟把偵測邏輯封裝好，你只能開關與微調。第二個切點是<strong>產出什麼</strong>：多數規則產生警示、再決定要不要建立事件；Microsoft security 規則很特別，它不做偵測，只把來源產品既有的警示「直升」成 Sentinel 事件。</p>
+<div class="tbl-scroll">
+<table class="data">
+<thead><tr><th>規則類型</th><th>觸發方式</th><th>關鍵限制</th><th>典型用途</th></tr></thead>
+<tbody>
+<tr><td><strong>Scheduled（排程查詢）</strong></td><td>依你設定的頻率（最短 5 分鐘）執行 KQL 查詢並比對門檻</td><td>回看最長 14 天；單次執行最多 150 個警示</td><td>絕大多數自訂偵測：跨表關聯、聚合統計、比對監視清單</td></tr>
+<tr><td><strong>NRT（近即時）</strong></td><td>系統固定<strong>每分鐘</strong>執行，回看最近約 13 分鐘</td><td>只能參照<strong>單一資料表</strong>；不支援 join／union／跨工作區；排程不可自訂</td><td>要求最短延遲的單事件偵測（勒索前置命令、關鍵帳號變更）</td></tr>
+<tr><td><strong>Microsoft security</strong></td><td>來源產品（MDE／MDO／MDI／MDA／Entra ID Protection／Defender for Cloud）產生警示時觸發</td><td>不做偵測、不能改邏輯；只能依<strong>嚴重性與警示名稱包含／排除</strong>過濾</td><td>把既有產品警示自動升級為 Sentinel 事件</td></tr>
+<tr><td><strong>Fusion</strong></td><td>微軟關聯引擎跨產品、跨時間找多階段攻擊</td><td>邏輯不可見、不可編輯；需要多來源資料</td><td>低量高保真的多階段攻擊（明天詳談）</td></tr>
+<tr><td><strong>ML behavior analytics／Anomaly</strong></td><td>微軟訓練的行為模型與異常偵測</td><td>需要基線期；異常規則預設多為觀察模式</td><td>寫不出死規則的行為偏移（明天詳談）</td></tr>
+<tr><td><strong>Threat intelligence（TI map）</strong></td><td>拿威脅指標對指定資料表比對</td><td>兩邊都要有資料：指標＋對應記錄表</td><td>IoC 比對偵測（Day 9 已談）</td></tr>
+</tbody>
+</table>
+</div>
+<div class="point">💡 <strong>選型口訣</strong>：要跨表關聯或做統計 → Scheduled；要「秒級」反應且只碰一張表 → NRT；只想把 Defender 警示變成 Sentinel 事件 → Microsoft security 規則。最後這條有個陷阱：若已啟用 <strong>Defender XDR 連接器</strong>做事件雙向同步，XDR 早就把警示關聯成事件同步過來，再開同來源的 Microsoft security 規則會產生<strong>重複事件</strong>——考題常拿「事件數量突然翻倍」當題幹。</div>
+
+<div class="eyebrow">04 — ⏱️ 排程與延遲</div>
+<h2 data-toc="排程設定">排程規則四件事：頻率、回看、門檻、事件</h2>
+<p>Set rule logic 頁面下半部只有四個旋鈕，但它們決定規則會不會漏事件、會不會洗版：</p>
+<ul>
+<li><strong>查詢排程頻率（run query every）</strong>：多久跑一次，5 分鐘到 14 天。</li>
+<li><strong>回看期間（lookup data from the last）</strong>：每次往回撈多久的資料，上限 14 天。<strong>回看期間必須 ≥ 頻率</strong>；小於頻率就會出現時間縫隙，落在縫隙裡的事件永遠不會被檢查到。</li>
+<li><strong>警示門檻（alert threshold）</strong>：結果列數大於／小於／等於 N 才產生警示，預設「大於 0」。最粗糙但最有效的降噪旋鈕。</li>
+<li><strong>事件建立（create incidents from alerts）</strong>：預設開啟。關掉後規則照樣產生警示（寫進 <code>SecurityAlert</code> 表），但佇列裡不會有事件。</li>
+</ul>
+<p>先看一支完整的排程規則查詢。情境是密碼噴灑（password spray）：同一個來源 IP 對很多帳號各試少量密碼，盯單一帳號永遠看不出來。</p>
+<pre class="kql">// 排程規則：單一來源 IP 對多帳號的密碼噴灑
+SigninLogs
+| where TimeGenerated &gt; ago(1h)
+| where ResultType in ("50126", "50053")           // 密碼錯誤、帳號遭鎖定
+| summarize StartTimeUtc = min(TimeGenerated), EndTimeUtc = max(TimeGenerated),
+            Attempts = count(),
+            TargetedUsers = make_set(UserPrincipalName, 50),
+            FailedAccounts = dcount(UserPrincipalName)
+        by IPAddress, Country = tostring(LocationDetails.countryOrRegion)
+| where FailedAccounts &gt;= 5 and Attempts &gt;= 10
+| mv-expand TargetedUser = TargetedUsers to typeof(string)
+| extend AccountName = tostring(split(TargetedUser, "@")[0]),
+         UPNSuffix   = tostring(split(TargetedUser, "@")[1])
+| project StartTimeUtc, EndTimeUtc, IPAddress, Country, AccountName, UPNSuffix, Attempts, FailedAccounts</pre>
+<p class="kql-note">逐行解說：第 2 行的時間窗要跟規則的回看期間一致，寫規則查詢時<strong>自己也要寫時間篩選</strong>；第 3 行只取「密碼試錯」類失敗碼；第 4–9 行按來源 IP 聚合，算出嘗試次數與<strong>被打到的相異帳號數</strong>——噴灑的特徵是帳號數多、每帳號次數少；第 10 行把門檻寫在查詢裡，比只靠規則的列數門檻精準；第 11 行是關鍵：<code>make_set()</code> 產生的是陣列，<strong>陣列欄位不能對應成實體</strong>，用 <code>mv-expand</code> 展開成「一列一個帳號」才對應得了；第 12–13 行把 UPN 切成帳號名與網域字尾，因為 Account 實體要的是 <code>Name</code>＋<code>UPNSuffix</code>；最後 <code>project</code> 保留的每一欄都會用在實體對應、自訂詳細資料或警示名稱——<strong>沒 project 出來的欄位，後面就選不到</strong>。</p>
+<p>接著是最容易被忽略的<strong>擷取延遲（ingestion delay）</strong>。記錄從發生到寫進工作區有時間差，Syslog／CEF 或 API 拉取的來源可能慢上數十分鐘。規則按 <code>TimeGenerated</code>（事件發生時間）撈資料，資料卻還沒到——查詢跑了個空，事件就這樣漏掉。標準解法是<strong>把回看期間拉長吸收延遲，再用 <code>ingestion_time()</code> 只取這一輪新進來的資料</strong>：</p>
+<pre class="kql">// 同一支規則的抗延遲版本：每 1 小時執行、回看 3 小時
+let RuleFrequency = 1h;
+let IngestionBuffer = 2h;
+SigninLogs
+| where TimeGenerated &gt; ago(RuleFrequency + IngestionBuffer)   // 撈得比排程寬
+| where ingestion_time() &gt; ago(RuleFrequency)                  // 只評估這一輪剛到的資料
+| where ResultType in ("50126", "50053")
+| summarize Attempts = count(), FailedAccounts = dcount(UserPrincipalName)
+        by IPAddress, bin(TimeGenerated, 1h)
+| where FailedAccounts &gt;= 5 and Attempts &gt;= 10</pre>
+<p class="kql-note">逐行解說：第 4 行把資料窗口拉成「頻率＋緩衝」共 3 小時，讓遲到的記錄還有機會被撈進來；第 5 行是重點——<code>ingestion_time()</code> 回傳的是<strong>資料實際寫入工作區的時間</strong>（等同 <code>_TimeReceived</code>），用它限定「上一輪之後才進來的列」：遲到的資料在抵達那一輪被評估到，已評估過的舊資料不會重算，避免同一件事連發三個警示。要量延遲有多久也用同一組欄位：<code>| extend Delay = ingestion_time() - TimeGenerated | summarize percentile(Delay, 95)</code>，先算 95 百分位再決定緩衝多大。第 8 行的 <code>bin()</code> 把聚合切成固定小時桶，回看窗變寬時統計不會互相污染。</p>
+
+<div class="eyebrow">05 — 🧬 實體與詳細資料</div>
+<h2 data-toc="實體對應">實體對應：警示能不能被調查的分水嶺</h2>
+<p>查詢跑出一堆列，對 Sentinel 來說那只是文字。<strong>實體對應（entity mapping）就是告訴平台：這一欄是帳號、那一欄是 IP、這一欄是主機。</strong>做了對應，警示才會長出這些能力：</p>
+<ul>
+<li><strong>調查圖（investigation graph）</strong>：圖上的節點就是實體；沒對應，點開事件只有一張空圖。</li>
+<li><strong>實體頁面（entity pages）</strong>：點使用者或主機看得到時間軸、相關警示與 UEBA 洞察。</li>
+<li><strong>警示分組</strong>：「同一個 IP 的警示併成一件」這種條件，靠的就是實體。</li>
+<li><strong>自動化</strong>：劇本（Playbook）要封鎖 IP、停用帳號，得先從事件拿到實體物件；沒對應，劇本收到空清單。</li>
+</ul>
+<p>設定方式是「<strong>實體類型 → 識別碼（identifier）→ 查詢欄位</strong>」三段式：每條規則最多對應 <strong>10 個實體</strong>，每個實體最多 <strong>3 個識別碼</strong>。識別碼分強弱：Account 的 <code>AadUserId</code>、<code>Sid</code> 是強識別碼，單獨就能唯一指認；<code>Name</code> 是弱識別碼，要配 <code>UPNSuffix</code> 或 <code>NTDomain</code> 才夠力（這就是上一節把 UPN 切兩半的理由）。Host 同理：<code>HostName</code>＋<code>DnsDomain</code>，或直接用 <code>AzureID</code>；IP 最單純，只有 <code>Address</code>。</p>
+<p>另外兩個常跟實體對應一起考的設定：</p>
+<ul>
+<li><strong>自訂詳細資料（custom details）</strong>：把查詢的其他欄位（如 <code>Attempts</code>、<code>Country</code>）以鍵值對浮上警示與事件畫面，<strong>分診時不必回頭跑查詢就看得到關鍵數字</strong>；這些欄位還能當警示分組依據、被自動化規則的條件引用。</li>
+<li><strong>警示詳細資料（alert details）</strong>：用查詢欄位<strong>動態命名警示</strong>，例如 <code>Password spray from {{IPAddress}} ({{Country}})</code>，佇列裡一眼看出差別；描述、嚴重性與戰術同樣能綁欄位動態決定，讓同一條規則對高風險條件自動吐出高嚴重性警示。</li>
+</ul>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>「實體對應漏了會怎樣」</strong>是必考的因果題。關鍵前提：漏了對應，<strong>規則照樣存得起來、照樣產生警示、照樣建立事件</strong>——所以題幹不會說「規則失敗」，只會說「調查圖是空的」「劇本沒封鎖到 IP」「事件沒依帳號分組」「使用者實體頁面查不到這則警示」。看到這些症狀，答案就往實體對應走。第二層陷阱是<strong>欄位為什麼選不到</strong>：<code>summarize</code> 之後只剩聚合欄位，或該欄位是 <code>make_set()</code> 產生的陣列——修法是 <code>mv-expand</code> 展開或 <code>arg_max(TimeGenerated, *)</code> 把原始欄位帶回結果，而不是去改對應設定。Defender XDR 自訂偵測有同款要求（結果必須含 <code>Timestamp</code>、<code>ReportId</code> 與實體欄位），兩邊一起記。</div>
+
+<div class="eyebrow">06 — 🧵 分組與 MITRE</div>
+<h2 data-toc="事件分組">一個事件還是兩百個事件，由你決定</h2>
+<p>降噪有兩道閘門，位置不同、常被混為一談。第一道在 <strong>Set rule logic</strong> 頁，叫<strong>事件分組（event grouping）</strong>，管的是「查詢結果 → 警示」：</p>
+<div class="tbl-scroll">
+<table class="data">
+<thead><tr><th>事件分組選項</th><th>行為</th><th>什麼時候用</th></tr></thead>
+<tbody>
+<tr><td><strong>Group all events into a single alert</strong>（預設）</td><td>整輪結果不論幾列，只產生<strong>一個</strong>警示</td><td>結果本來就是「一組」的偵測，例如一個 IP 噴灑多個帳號</td></tr>
+<tr><td><strong>Trigger an alert for each event</strong></td><td>每列各產生一個警示；單次執行上限 150 個，超過時最後一個警示會摘要其餘結果</td><td>每列各自要獨立分診，例如每台受影響裝置一件</td></tr>
+</tbody>
+</table>
+</div>
+<p>第二道閘門在 <strong>Incident settings</strong> 頁，叫<strong>警示分組（alert grouping）</strong>，管的是「警示 → 事件」：開啟後，同一條規則在指定時間窗內產生的警示會併進同一個事件，<strong>預設時間窗 5 小時</strong>。依據有三種：全部併成一件、選定的<strong>實體</strong>相同才併（最常用，例如同一個 IP 才算同一波）、選定的<strong>自訂詳細資料</strong>相同才併。還有 <strong>re-open closed matching incidents</strong> 開關：新警示對應到已關閉的事件時要不要重開——攻擊者回鍋時很有用，但也可能讓已結案的噪音一直復活。</p>
+<p>最後一格是 <strong>MITRE ATT&amp;CK 對照</strong>：在 General 頁替規則勾選戰術（tactic）與技術（technique，含子技術）。它不影響偵測邏輯，卻有三個實質作用——事件畫面直接顯示這是攻擊鏈的哪一段、分診時可依戰術篩選、以及 Sentinel 的 <strong>MITRE ATT&amp;CK 覆蓋率檢視</strong>：矩陣每格顯示「有幾條啟用中的規則覆蓋」與「Content Hub 還有幾個範本可用」，缺口一目了然。考題問「如何呈現偵測覆蓋範圍與缺口」，這就是標準答案。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>「規則有跑，佇列裡卻沒有事件」——照這個順序查</strong>：①同樣的時間窗在 Logs 裡跑有沒有結果（沒有就是邏輯或資料問題）；②<strong>警示門檻</strong>設得比實際列數高；③<strong>事件建立開關</strong>被關掉（這時 <code>SecurityAlert</code> 有資料、事件佇列沒有，最經典的題幹描述）；④<strong>警示分組</strong>把新警示併進既有事件（事件數沒增加，但事件裡的警示變多）；⑤<strong>自動化規則</strong>自動把它關閉或標成誤判；⑥擷取延遲讓資料還沒到（§04）。反過來，若題幹是「事件太多、每則警示都自成一件」，先看事件分組是不是設成 trigger an alert for each event，再開啟依實體的警示分組。</div>
+
+<div class="eyebrow">07 — ⚡ NRT 與升級實戰</div>
+<h2 data-toc="NRT規則">NRT：拿排程自由換偵測速度</h2>
+<p>排程規則最快 5 分鐘跑一次，對勒索軟體刪除陰影複製這種「三十秒內就結束」的動作還是太慢。<strong>NRT（near-real-time）規則</strong>的交易條件很直白：<strong>放棄自訂排程與跨表查詢，換到每分鐘執行的速度。</strong></p>
+<div class="tbl-scroll">
+<table class="data">
+<thead><tr><th>面向</th><th>Scheduled 排程規則</th><th>NRT 近即時規則</th></tr></thead>
+<tbody>
+<tr><td>執行頻率</td><td>自訂，5 分鐘 ～ 14 天</td><td><strong>固定每分鐘</strong>，不可調整</td></tr>
+<tr><td>回看期間</td><td>自訂，上限 14 天</td><td>固定約 <strong>13 分鐘</strong>（內含吸收擷取延遲的緩衝）</td></tr>
+<tr><td>查詢限制</td><td>完整 KQL：join、union、跨工作區皆可</td><td><strong>只能參照單一資料表</strong>；不支援 join／union／跨工作區</td></tr>
+<tr><td>時間篩選</td><td>要自己寫 <code>ago()</code>，並考慮擷取延遲</td><td>不需要（也不該）自己寫時間窗，平台代管</td></tr>
+<tr><td>警示門檻</td><td>可設大於／小於／等於 N</td><td>不可設定，命中即產生警示</td></tr>
+<tr><td>實體對應／custom details／MITRE／自動化</td><td>支援</td><td><strong>同樣支援</strong>——差別只在排程與查詢範圍</td></tr>
+<tr><td>典型用途</td><td>統計型、關聯型偵測（噴灑、外傳、比對監視清單）</td><td>單一事件即可定罪的高保真偵測</td></tr>
+</tbody>
+</table>
+</div>
+<pre class="kql">// NRT 規則：勒索軟體前置動作——刪除磁碟區陰影複製
+DeviceProcessEvents
+| where FileName in~ ("vssadmin.exe", "wmic.exe")
+| where ProcessCommandLine has_any ("delete shadows", "shadowcopy delete", "resize shadowstorage")
+| extend HostName = tostring(split(DeviceName, ".")[0]),
+         DnsDomain = tostring(strcat_array(array_slice(split(DeviceName, "."), 1, -1), "."))
+| project Timestamp, DeviceId, DeviceName, HostName, DnsDomain,
+          AccountName, AccountDomain, InitiatingProcessFileName, ProcessCommandLine, FileName</pre>
+<p class="kql-note">逐行解說：這支查詢<strong>從頭到尾只碰 <code>DeviceProcessEvents</code> 一張表</strong>，這是 NRT 的硬門檻——只要出現第二張記錄表的 join 或 union，規則存檔就會被擋（監視清單與威脅情報的參照是官方列出的例外，但兩張記錄表關聯一律出局）。第 2–3 行用 <code>in~</code>（不分大小寫）與 <code>has_any</code> 抓命令列特徵，比對整串字串更耐得住參數順序變化。第 4–5 行為實體對應鋪路：把 FQDN 切成 <code>HostName</code> 與 <code>DnsDomain</code>，湊成 Host 實體的強識別組合；<code>AccountName</code>／<code>AccountDomain</code> 對應 Account 實體。<strong>整支查詢沒有任何 <code>ago()</code></strong>——平台固定看最近約 13 分鐘，自己再加時間窗只會打架。NRT 的取材判準只有一句：這件事發生時，你會希望一分鐘內被叫醒嗎？</p>
+<div class="case-box"><span class="case-label">🛡️ SOC Walkthrough：把一支搜捕查詢升級成正式偵測規則</span><br>
+<p>你在搜捕階段寫了 §04 那支密碼噴灑查詢，手動跑了兩週、命中三次真陽性。現在把它變成常設偵測：</p>
+<ol>
+<li><strong>選類型</strong>：查詢有 <code>summarize</code> 聚合、要看一小時窗的統計 → 只能是 <strong>Scheduled</strong>。（單事件型的查詢可從搜捕頁直接建立規則，查詢會自動帶入精靈。）</li>
+<li><strong>量延遲、定排程</strong>：用 <code>ingestion_time() - TimeGenerated</code> 量出 SigninLogs 的 95 百分位延遲約 20 分鐘 → 頻率 1 小時、回看 3 小時，查詢加上 <code>ingestion_time()</code> 篩選。</li>
+<li><strong>調門檻</strong>：貼進精靈後看右側結果模擬圖——過去 50 次執行會產生 40 個警示，太吵；把相異帳號門檻從 5 提到 8，模擬圖降到 3 個。</li>
+<li><strong>對應實體</strong>：IP → <code>Address = IPAddress</code>；Account → <code>Name = AccountName</code>＋<code>UPNSuffix = UPNSuffix</code>。自訂詳細資料放 <code>Attempts</code>、<code>FailedAccounts</code>、<code>Country</code>。</li>
+<li><strong>命名與標記</strong>：警示名稱設成 <code>Password spray from {{IPAddress}} ({{Country}})</code>；MITRE 勾 <strong>Credential Access → T1110.003</strong>，覆蓋率矩陣那一格就亮了。</li>
+<li><strong>事件設定</strong>：事件建立開啟；事件分組維持「整輪一個警示」；警示分組開啟、依 <strong>IP 實體</strong>、時間窗 5 小時——同一個攻擊者噴一整個下午只會有一件事件。</li>
+<li><strong>上線後調校</strong>：兩週後某合作夥伴的 VPN 出口 IP 一直誤判。正解是<strong>在查詢中排除監視清單裡的已知來源</strong>（或用自動化規則自動關閉），不是關規則或無限調高門檻——降噪要精準，別把偵測面一起關掉。</li>
+</ol>
+</div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">EP9 沒講透、考試會考的</h2>
+<ul>
+<li><strong>規則範本與更新</strong>：規則範本來自<strong>內容中樞（Content Hub）</strong>的解決方案，安裝解決方案才會出現對應範本。從範本建立的規則<strong>不會隨範本自動更新</strong>；微軟改版後，規則清單會顯示可用更新，要你手動檢視差異再套用。考題問「範本改良了偵測邏輯，既有規則怎麼跟上」→ 答案是手動套用更新，不是重建規則。</li>
+<li><strong>規則的兩種來源</strong>：除了精靈，分析規則也能以 <strong>ARM 範本／Bicep 或 API</strong> 部署，這是 SOC 走 CI/CD（detection-as-code）的做法，多工作區環境常考。</li>
+<li><strong>權限</strong>：建立與編輯分析規則需要工作區的 <strong>Microsoft Sentinel Contributor</strong>（含以上）角色；Reader 只能看，Responder 能操作事件但不能改規則。</li>
+<li><strong>規則狀態與健康</strong>：規則可停用而不刪除；<code>SentinelHealth</code> 表記錄規則執行成功／失敗（查詢逾時、資料表不存在都會讓規則靜默失效），生產環境應該對它建監控。</li>
+<li><strong>統一入口體驗</strong> <span class="badge-2026">2026 新考點</span>：Sentinel 已整併進 Defender 入口網站，分析規則的建立與管理可在統一體驗中完成；Security Copilot 也能協助把自然語言需求轉成規則查詢草稿——但產出的邏輯仍需你驗證與調門檻，「AI 產草稿、人做決定」是新考綱一貫的立場。</li>
+<li><strong>明日預告</strong>：今天講的是「你寫邏輯」的規則；明天換微軟寫邏輯——Fusion 多階段攻擊偵測、UEBA 實體行為分析與異常規則，正好補上排程規則寫不出來的那一塊。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深讀清單</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/detect-threats-built-in" target="_blank" rel="noopener">使用內建分析偵測威脅</a> — 各規則類型的官方定義與範本來源，對照 §03 的大表讀一遍。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/detect-threats-custom" target="_blank" rel="noopener">建立自訂分析規則以偵測威脅</a> — 精靈五步的逐欄說明，含事件分組與警示分組的完整選項。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/map-data-fields-to-entities" target="_blank" rel="noopener">將資料欄位對應至實體</a> — 各實體類型的識別碼清單與強弱識別碼規則，§05 的權威出處。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/near-real-time-rules" target="_blank" rel="noopener">近即時（NRT）分析規則</a> — 官方限制清單，考前務必掃過一次。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/mitre-coverage" target="_blank" rel="noopener">以 MITRE ATT&amp;CK 檢視 SOC 涵蓋範圍</a> — 覆蓋率矩陣怎麼讀、缺口怎麼補。</li>
+</ul>
+
+
+  <div class="eyebrow">10 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W4-2">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D2-0026</div><div class='q-stem'>Your organization wants Microsoft Sentinel to raise an alert within roughly one minute whenever vssadmin.exe is used to delete volume shadow copies, because that command is a ransomware precursor. The detection reads a single device process table and needs no joins or aggregation. Which analytics rule type should you create?</div><div class='q-zh'>（你的組織希望只要有人使用 vssadmin.exe 刪除磁碟區陰影複製，Microsoft Sentinel 就能在大約一分鐘內產生警示，因為這個命令是勒索軟體的前置動作。這項偵測只讀取單一裝置處理程序資料表，不需要 join，也不需要聚合。你應該建立哪一種分析規則？）</div><div class='q-opt'><strong>A.</strong> A near-real-time (NRT) rule<div style='font-size:12.5px;color:var(--muted)'>近即時（NRT）規則</div></div><div class='q-opt'><strong>B.</strong> A scheduled query rule that runs every five minutes<div style='font-size:12.5px;color:var(--muted)'>每五分鐘執行一次的排程查詢規則</div></div><div class='q-opt'><strong>C.</strong> A Microsoft security rule<div style='font-size:12.5px;color:var(--muted)'>Microsoft security 規則</div></div><div class='q-opt'><strong>D.</strong> A Fusion rule<div style='font-size:12.5px;color:var(--muted)'>Fusion 規則</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>NRT（近即時）規則由平台固定每分鐘執行、自動回看最近約 13 分鐘，是延遲最低的自訂偵測；代價是只能參照單一資料表、不支援 join／union／跨工作區，也不能自訂排程與警示門檻。本題的偵測條件剛好只碰一張處理程序資料表、單一事件即可定罪，完全落在 NRT 的適用範圍。判準記一句：這件事發生時你會希望一分鐘內被叫醒嗎？會，就用 NRT。</p><ul><li><strong>B</strong>：排程查詢規則最短只能每 5 分鐘跑一次，滿足不了「約一分鐘內」的要求。它的強項是跨表關聯與聚合統計，本題兩者都用不到，反而白白多付出延遲。</li><li><strong>C</strong>：Microsoft security 規則不做任何偵測，只把來源產品（MDE、MDO、MDI、Entra ID Protection、Defender for Cloud 等）既有的警示直升為 Sentinel 事件，只能依嚴重性或警示名稱篩選。你無法用它自訂命令列比對邏輯。</li><li><strong>D</strong>：Fusion 是微軟的關聯引擎，吃的是其他偵測產生的警示與異常，用來把跨產品、跨時間的低訊號串成多階段攻擊；它每個工作區只有一條、邏輯不可見也不可編輯，無法用來寫單一命令列的偵測。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/create-nrt-rules' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D2-0027</div><div class='q-stem'>A colleague built a scheduled analytics rule in Microsoft Sentinel that reliably produces alerts and incidents. However, the investigation graph of every resulting incident is empty, the user entity page shows none of these alerts, and a playbook that is supposed to block the attacking address receives an empty list of IP addresses. The rule query itself returns the expected rows in Logs. What should you configure on the rule?</div><div class='q-zh'>（同事在 Microsoft Sentinel 建立了一條排程分析規則，警示與事件都穩定產生。但每一個由它產生的事件，調查圖表都是空的、使用者實體頁面完全看不到這些警示，而應該封鎖攻擊來源位址的劇本收到的是一份空的 IP 清單；規則查詢本身在 Logs 裡跑得出預期的結果列。你應該在這條規則上設定什麼？）</div><div class='q-opt'><strong>A.</strong> Turn on Create incidents from alerts in the incident settings<div style='font-size:12.5px;color:var(--muted)'>在事件設定中開啟「從警示建立事件」</div></div><div class='q-opt'><strong>B.</strong> Entity mapping, so that query columns are mapped to entity identifiers<div style='font-size:12.5px;color:var(--muted)'>實體對應，把查詢欄位對應到實體識別碼</div></div><div class='q-opt'><strong>C.</strong> Custom details, so that extra query columns are surfaced on the alert<div style='font-size:12.5px;color:var(--muted)'>自訂詳細資料，把其他查詢欄位浮上警示畫面</div></div><div class='q-opt'><strong>D.</strong> Alert grouping, so that alerts are grouped into one incident by entity<div style='font-size:12.5px;color:var(--muted)'>警示分組，讓警示依實體併成同一個事件</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>實體對應（entity mapping）是把查詢欄位告訴平台「這一欄是帳號、那一欄是 IP、這一欄是主機」。少了它，規則照樣存得起來、照樣產生警示與事件——所以題幹不會說規則失敗，只會出現三個典型症狀：調查圖表空白、實體頁面查不到這則警示、劇本拿不到實體物件因此封鎖不到任何東西。看到這組症狀，答案一律往實體對應走。</p><ul><li><strong>A</strong>：「從警示建立事件」控制的是警示要不要變成事件。題幹說事件已經正常產生，代表這個開關本來就是開的；把它再開一次也不會讓調查圖表長出節點。</li><li><strong>C</strong>：自訂詳細資料是把查詢的其他欄位（例如嘗試次數、來源國家）以鍵值對浮上警示與事件畫面，方便分診時直接讀到關鍵數字。它們不是實體，無法畫進調查圖表，劇本也不能拿它當帳號或 IP 物件來處置。</li><li><strong>D</strong>：警示分組管的是「警示如何併成事件」，而且依實體分組本身就必須先有實體對應才選得到依據。事件數量多寡不是本題症狀，調查圖表空白才是。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/map-data-fields-to-entities' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D2-0028</div><div class='q-stem'>A scheduled analytics rule runs every hour and looks back one hour over a Syslog-based table. Analysts notice that confirmed malicious activity is sometimes never alerted on. You measure the difference between ingestion time and event time for that table and find a 95th-percentile delay of about 20 minutes. What should you change so that late-arriving records are still evaluated exactly once?</div><div class='q-zh'>（有一條排程分析規則每小時執行一次、回看期間也是一小時，查詢的是以 Syslog 為來源的資料表。分析師發現，已確認為惡意的活動有時候完全沒有產生警示。你量測該資料表的擷取時間與事件時間差，得到 95 百分位延遲約 20 分鐘。你應該如何修改，才能讓遲到的記錄仍被評估到、而且只被評估一次？）</div><div class='q-opt'><strong>A.</strong> Reduce the query frequency to every five minutes and keep the one-hour lookback<div style='font-size:12.5px;color:var(--muted)'>把查詢頻率改成每五分鐘執行一次，回看期間維持一小時</div></div><div class='q-opt'><strong>B.</strong> Convert the rule to a near-real-time (NRT) rule<div style='font-size:12.5px;color:var(--muted)'>把這條規則改成近即時（NRT）規則</div></div><div class='q-opt'><strong>C.</strong> Extend the lookback period beyond the frequency to absorb the delay, and add an ingestion_time() filter that keeps only records that arrived since the previous run<div style='font-size:12.5px;color:var(--muted)'>把回看期間拉長到超過執行頻率以吸收延遲，並加上 ingestion_time() 篩選，只保留上一輪之後才進來的記錄</div></div><div class='q-opt'><strong>D.</strong> Increase the retention period of the workspace table<div style='font-size:12.5px;color:var(--muted)'>延長該工作區資料表的保留期</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>規則是按 TimeGenerated（事件發生時間）撈資料，但記錄要等擷取完成才寫得進工作區；延遲 20 分鐘的資料在該輪執行時根本還沒到，查詢跑了個空，事件就這樣漏掉。標準解法是兩段式：把回看期間拉成「頻率＋緩衝」（例如頻率 1 小時、回看 3 小時）讓遲到的記錄還有機會被撈進來，再用 ingestion_time() 只評估上一輪之後才寫入的列——遲到資料在抵達那一輪被抓到，已評估過的舊資料不會重算，因此不會對同一件事連發多個警示。</p><ul><li><strong>A</strong>：把頻率縮到 5 分鐘只是讓同一支查詢跑得更頻繁，資料該遲到還是遲到；更糟的是回看一小時、每五分鐘跑一次會讓大量資料被重複評估，同一件事重複產生警示。</li><li><strong>B</strong>：NRT 規則固定每分鐘執行、回看約 13 分鐘，緩衝反而比現況更小，20 分鐘的延遲照樣漏；而且 NRT 只能參照單一資料表、不能自訂排程，是為低延遲而不是為抗延遲設計的。</li><li><strong>D</strong>：保留期決定資料在工作區留多久、能被搜捕或搜尋工作回溯多遠，跟規則每一輪撈不撈得到剛進來的資料無關；延長保留只會增加成本，漏事件的問題原封不動。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/detect-threats-custom' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D2-0029</div><div class='q-stem'>Your password-spray detection ends with a summarize statement that builds the targeted accounts with make_set(UserPrincipalName, 50) grouped by source address. In the rule wizard you can select the address column for the IP entity, but the account column cannot be used as the Name identifier of an Account entity. You must keep the per-source aggregation. What should you change?</div><div class='q-zh'>（你的密碼噴灑偵測最後以 summarize 依來源位址聚合，並用 make_set(UserPrincipalName, 50) 產生被鎖定的帳號清單。在規則精靈中，你可以把位址欄位選給 IP 實體，但那個帳號欄位無法用來當 Account 實體的 Name 識別碼。依來源聚合的邏輯必須保留。你應該做什麼修改？）</div><div class='q-opt'><strong>A.</strong> Change the Account identifier from Name to AadUserId so that a strong identifier is used<div style='font-size:12.5px;color:var(--muted)'>把 Account 的識別碼從 Name 改成 AadUserId，改用強識別碼</div></div><div class='q-opt'><strong>B.</strong> Raise the limit of ten mapped entities per analytics rule<div style='font-size:12.5px;color:var(--muted)'>提高每條分析規則最多對應十個實體的上限</div></div><div class='q-opt'><strong>C.</strong> Surface the account list as a custom detail instead of mapping it as an entity<div style='font-size:12.5px;color:var(--muted)'>改把帳號清單放進自訂詳細資料，不要對應成實體</div></div><div class='q-opt'><strong>D.</strong> Add mv-expand after the summarize to flatten the array into one row per account, then split the UPN into a name and a suffix column for mapping<div style='font-size:12.5px;color:var(--muted)'>在 summarize 之後加上 mv-expand 把陣列展開成「一列一個帳號」，再把 UPN 切成帳號名與網域字尾兩欄供對應使用</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>make_set() 產生的是陣列欄位，而實體對應只吃純量欄位，所以精靈裡選不到它。修法在查詢端不在設定端：用 mv-expand 把陣列展開成一列一個帳號（聚合統計欄位會被複製到每一列，依來源聚合的語意仍然保留），再把 UPN 用 split() 切成帳號名與網域字尾——因為 Account 的 Name 是弱識別碼，必須搭配 UPNSuffix 或 NTDomain 才夠力。同樣的道理也適用於 summarize 之後原始欄位消失的情況，此時可用 arg_max(TimeGenerated, *) 把欄位帶回結果。</p><ul><li><strong>A</strong>：AadUserId 確實是 Account 的強識別碼，但問題出在欄位型別是陣列、根本選不到，不是識別碼挑錯；何況這支查詢的來源欄位是 UPN，結果集裡並沒有可用的目錄物件識別碼可以對應。</li><li><strong>B</strong>：每條規則最多對應 10 個實體、每個實體最多 3 個識別碼是平台的固定限制，無法調整；本題也只需要 IP 與 Account 兩個實體，遠遠沒碰到上限。</li><li><strong>C</strong>：自訂詳細資料可以把帳號清單顯示在警示畫面上，但它不會成為實體：調查圖表畫不出帳號節點、實體頁面關聯不到、劇本也拿不到帳號物件去停用。這是繞過問題而不是解決問題。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/map-data-fields-to-entities' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D2-0030</div><div class='q-stem'>One brute-force campaign from a single source address against many accounts produced more than 200 separate Microsoft Sentinel incidents in an afternoon, because the rule is configured to trigger an alert for each result row. The SOC lead wants the campaign to appear as one incident that still contains every alert, with the least administrative effort and without weakening the detection. What should you configure?</div><div class='q-zh'>（某個下午，來自單一來源位址、針對大量帳號的暴力破解行動，在 Microsoft Sentinel 產生了超過 200 個各自獨立的事件，因為該規則被設定成「每一列結果各產生一個警示」。SOC 主管希望這波行動呈現為一個事件、但仍包含所有警示，而且要管理負擔最低、不能削弱偵測能力。你應該設定什麼？）</div><div class='q-opt'><strong>A.</strong> Keep event grouping set to trigger an alert for each event<div style='font-size:12.5px;color:var(--muted)'>維持事件分組設定為「每一列各觸發一個警示」</div></div><div class='q-opt'><strong>B.</strong> Turn off Create incidents from alerts on the rule<div style='font-size:12.5px;color:var(--muted)'>關閉這條規則的「從警示建立事件」</div></div><div class='q-opt'><strong>C.</strong> Raise the alert threshold so that the rule fires only when more than 200 rows are returned<div style='font-size:12.5px;color:var(--muted)'>調高警示門檻，讓規則只在傳回超過 200 列時才觸發</div></div><div class='q-opt'><strong>D.</strong> Enable alert grouping in the incident settings and group alerts into a single incident by the IP entity within the selected time window<div style='font-size:12.5px;color:var(--muted)'>在事件設定中啟用警示分組，於選定時間窗內依 IP 實體把警示併入同一個事件</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>降噪有兩道閘門：事件分組（Set rule logic 頁）管「查詢結果如何變成警示」，警示分組（Incident settings 頁）管「警示如何變成事件」。本題要保留每一列各自的警示（偵測不能削弱），只是希望它們歸到同一個事件，因此正解是開啟警示分組並選「選定實體相同才併」，依 IP 實體分組，預設時間窗 5 小時。設定只在同一張表單上勾兩個選項，是管理負擔最低的做法。</p><ul><li><strong>A</strong>：維持現狀就是問題本身：事件分組設成每一列各產生一個警示，加上未開啟警示分組，才會出現 200 個獨立事件。若改成「整輪只產生一個警示」雖然事件會變成一個，卻也失去每個受害帳號各一則警示的細節。</li><li><strong>B</strong>：關閉「從警示建立事件」後，規則照樣寫警示進 SecurityAlert 資料表，但佇列裡一個事件都不會有，等於讓這波攻擊在分診流程中消失，屬於把偵測面一起關掉的錯誤降噪。</li><li><strong>C</strong>：把警示門檻調到 200 列以上只會讓規模較小的攻擊完全不告警，是明顯削弱偵測；而且門檻控制的是「要不要產生警示」，就算命中也還是會依事件分組炸出一堆事件。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/detect-threats-custom' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP17</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><audio controls preload='none' src='../podcast/ep-017.mp3'></audio><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-017'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="17">
+    <label for="doneChk">我讀完 Day 17 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-016.html'>← Day 16</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-018.html'>Day 18 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 17 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 19｜Sentinel 自動化：Automation Rules 與 Playbooks｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 19 / 40 · 2026-09-11</div>
+    <h1>Sentinel 自動化：Automation Rules 與 Playbooks</h1>
+    <p class="sub"><em>SOAR in Sentinel: Automation Rules & Playbooks (Logic Apps)</em></p>
+    <div class="meta-row">
+      <span class="pill d2">D2 回應安全性事件</span>
+      <span class="pill ghost">35-40%</span>
+      <span class="pill ghost">P1-W4-4</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:76%"></div></div>
+    <div class="progress-text">五週速成進度 19 / 25 · 距離考試（2026-10-17）還有 36 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP9｜Create detections and perform investigations in Microsoft Sentinel | SC-200 | Episode 9</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/qlyEmMLif_M' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">本日導讀：讓 Sentinel 自己動手</h2>
+<p>前兩天把分析規則寫完了——偵測有了，事件也產得出來。但真實 SOC 的痛點從來不是「偵測不到」，而是「人來不及處理」：一天三百張事件，每張都要指派、標記、通知、開工單。今天學的 SOAR（安全性協調、自動化與回應）就是解法，在 Microsoft Sentinel 裡分成兩層：<strong>自動化規則（automation rule）</strong>負責事件層的分流與治理，<strong>劇本（Playbook）</strong>負責跑出去跟外部系統打交道。D2「回應安全性事件」占 35–40%，這個主題的考題幾乎都長同一個樣子：<strong>四個選項都做得到，要你選「管理負擔最低」或「成本最低」的那一個</strong>。所以重點不只是兩者能做什麼，更是邊界在哪。</p>
+<div class="info-box">學習目標（對應官方考綱 D2「回應安全性事件」條目）：
+<ul>
+<li>☐ <strong>設定與管理自動化規則</strong>：觸發時機、條件、動作與執行順序</li>
+<li>☐ 以 Azure Logic Apps <strong>建立與設定 Sentinel 劇本</strong>（create and configure playbooks）</li>
+<li>☐ 選擇正確的 <strong>playbook 觸發程序</strong>（incident／alert／entity trigger）並理解各自可取得的資料</li>
+<li>☐ 設定自動化所需<strong>權限</strong>：Microsoft Sentinel Automation Contributor、受控識別與連線授權</li>
+<li>☐ 判斷何時用自動化規則、何時用劇本，並與 Defender XDR 的自動調查與修復（AIR）分工</li>
+</ul></div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP9 觀看重點指引</h2>
+<p>本單元對應官方影片 <strong>EP9「Create detections and perform investigations in Microsoft Sentinel」</strong>（字幕尚未到位，先提供觀看重點指引；字幕匯入後回補含時間碼的整理）。今天請把眼睛放在「規則建立完之後」——分析規則精靈的<strong>自動回應（Automated response）</strong>頁籤，以及事件佇列上方的 Automation 入口。帶著四個問題看：</p>
+<ul>
+<li><strong>自動化規則表單</strong>：觸發時機（trigger）下拉選單有幾個選項？條件那一列是「屬性—運算子—值」的組合，可選屬性有哪些？</li>
+<li><strong>動作清單</strong>：變更狀態、變更嚴重性、指派擁有者、加標籤、執行劇本——哪些是 Sentinel 自己就做得完、不需要外部系統的？</li>
+<li><strong>Order 欄位</strong>：規則清單有一欄順序號碼。三條規則同時命中一張事件，誰先跑會影響結果嗎？</li>
+<li><strong>劇本畫面</strong>：切到 Logic Apps 設計工具時，注意最上面的觸發程序方塊寫什麼、動作來自哪個連接器、執行歷史（run history）長什麼樣。</li>
+</ul>
+
+<div class="eyebrow">03 — ⚙️ 自動化規則拆解</div>
+<h2 data-toc="自動化規則">自動化規則：事件佇列的家規</h2>
+<p>自動化規則是<strong>事件層的 if-then</strong>：符合條件就對事件做幾件標準動作。它跑在 Sentinel 內部，不必另建資源、不額外計費，是自動化的第一選擇。一條規則由四部分組成：<strong>觸發時機 → 條件 → 動作 → 順序與到期日</strong>。</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>觸發時機（trigger）</th><th>何時開跑</th><th>條件重點</th><th>可用動作</th></tr></thead>
+<tbody>
+<tr><td><strong>事件建立時</strong><br>When incident is created</td><td>新事件產生當下，含 Defender XDR 送進來的事件</td><td>標題、嚴重性、狀態、戰術、擁有者、產品名稱、分析規則名稱、標籤、實體屬性、自訂詳細資料</td><td>變更狀態／嚴重性、指派擁有者、加標籤、新增事件工作、執行劇本</td></tr>
+<tr><td><strong>事件更新時</strong><br>When incident is updated</td><td>事件被修改後（狀態或擁有者變更、加入新警示或註解）</td><td>上述全部，<strong>再加上「變更了什麼」與「由誰更新」</strong></td><td>同上</td></tr>
+<tr><td><strong>警示建立時</strong><br>When alert is created</td><td>排程分析規則產生警示時，不等事件成形</td><td>以警示屬性為主，通常限定特定分析規則</td><td><strong>只有「執行劇本」一種</strong>——警示沒有狀態、擁有者可改</td></tr>
+</tbody></table></div>
+<p><strong>條件</strong>用「屬性－運算子－值」堆疊，運算子有等於／不等於、包含／不包含、開頭為／結尾為；條件之間是 AND，同一條件的多值之間是 OR。最常用兩種寫法：<strong>用分析規則名稱鎖定來源</strong>，以及<strong>用實體屬性鎖定資產</strong>（例如帳戶名稱包含 svc- 的服務帳戶）。</p>
+<div class="point">💡 最被低估的用途是<strong>雜訊抑制</strong>：把已知誤判自動關閉，狀態設 Closed 並填上分類（Benign positive／False positive）與理由。考題關鍵字 suppress、reduce noise、automatically close 全部指向自動化規則，不是劇本、更不是刪掉分析規則。</div>
+<p><strong>執行順序（order）</strong>最容易失分。同一觸發時機下，多條規則<strong>依 order 由小到大依序執行</strong>，且<strong>前一條造成的變更會被後一條看見</strong>。典型災難：第 1 條把低嚴重性事件關閉，第 2 條想把同批事件指派給分析師——結果指派到一堆已關閉的事件。正確設計是<strong>先抑制（關閉／降級），再指派與加標籤，最後才跑耗時的劇本</strong>。另外「事件更新時」的條件寫太寬，可能被規則自己造成的更新再度命中，要用條件把自己排除。</p>
+<p><strong>到期日（expiration date）</strong>：建立時可指定未來時間，時間一到規則自動失效，專為暫時性需求設計——滲透測試期間抑制特定告警、維護時段自動關閉預期中的警示。考題問「如何避免忘記關掉臨時規則」，答案是到期日。</p>
+
+<div class="eyebrow">04 — 🎭 劇本與 Logic Apps</div>
+<h2 data-toc="劇本">Playbook：需要請外援的時候</h2>
+<p><strong>劇本就是一個 Azure Logic Apps 工作流程</strong>，開頭是 Sentinel 觸發程序，後面接一連串連接器動作。自動化規則只能改事件欄位，劇本才能<strong>走出 Sentinel</strong>：發 Teams 訊息、寄核准信、開 ServiceNow 工單、叫防火牆封鎖 IP、叫 Defender for Endpoint 隔離裝置、停用 Microsoft Entra ID 帳戶、查威脅情報再寫回註解。方案有兩種：<strong>Consumption（多租用戶）</strong>按動作執行次數計費，適合量少；<strong>Standard（單一租用戶）</strong>按主控方案資源計費，可放多個工作流程並支援虛擬網路整合，量大時較划算。</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>觸發程序（trigger）</th><th>拿得到的資料</th><th>怎麼啟動</th><th>典型場景</th></tr></thead>
+<tbody>
+<tr><td><strong>事件觸發程序</strong><br>incident trigger</td><td><strong>整張事件物件</strong>：事件屬性、所有相關警示、所有實體、註解與標籤</td><td>由<strong>自動化規則</strong>呼叫（事件建立／更新時），或在事件頁手動執行</td><td>主力用法：通知、開工單、逐一擴充實體、依嚴重性決定是否升級</td></tr>
+<tr><td><strong>警示觸發程序</strong><br>alert trigger</td><td><strong>單一警示</strong>與其實體；<strong>沒有事件層欄位</strong>（無擁有者、無事件註解）</td><td>由「警示建立時」的規則呼叫，或從分析規則的舊版警示自動化掛載</td><td>不等事件成形就要動作；或合併成一張事件的多筆警示要各處理一次</td></tr>
+<tr><td><strong>實體觸發程序</strong><br>entity trigger</td><td><strong>單一實體</strong>（帳戶、主機、IP、URL、檔案雜湊）的屬性</td><td><strong>只能手動執行</strong>：從實體清單、調查圖表或搜捕結果執行，不能掛自動化規則</td><td>隨選擴充與處置：查這個 IP 的信譽、隔離主機、撤銷帳戶權杖</td></tr>
+</tbody></table></div>
+<div class="point">💡 口訣：<strong>incident＝自動跑、資料最全；alert＝自動跑、只看得到一張警示；entity＝資料最少、但只能人工按下去</strong>。題幹出現「在調查圖表上針對某個 IP 隨選執行」＝實體觸發程序；「事件一建立就自動通知」＝事件觸發程序＋自動化規則。</div>
+<p><strong>可靠性與成本</strong>：每次執行都留在 <strong>執行歷史</strong>，可展開每個動作的輸入輸出看是哪一步失敗，修好後能<strong>重新提交（resubmit）</strong>；個別動作可設<strong>重試原則</strong>與逾時。成本上記住：<strong>自動化規則不計費，劇本才產生 Logic Apps 費用</strong>，Consumption 又是<strong>按動作數</strong>算的——包二十個動作又被每張事件觸發的劇本帳單很有感。</p>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>「最低管理負擔／最少工作量」題型的判斷梯子。</strong>看到 least administrative effort、minimal effort、least cost，照這個順序往下走：<br>(1) <strong>需求只是改事件欄位嗎？</strong>（關閉、改嚴重性、指派、加標籤、加工作）→ <strong>自動化規則</strong>，不要建劇本。<br>(2) <strong>需要跟 Sentinel 以外的系統互動嗎？</strong>（寄信、Teams、工單、封鎖、隔離、查外部情報）→ <strong>劇本</strong>，而且用<strong>自動化規則掛載</strong>，不用分析規則裡的舊版警示自動化，因為前者能集中管理條件與順序。<br>(3) <strong>要現成的嗎？</strong>→ 從 Content hub 匯入劇本範本再改，而不是從空白工作流程自己刻。<br>陷阱選項常是「寫一支 Azure Function」「用 Automation 帳戶跑 PowerShell Runbook」——技術可行但管理負擔明顯更高，best answer 題型一律出局。</p></div>
+
+<div class="eyebrow">05 — 🔑 自動化的權限模型</div>
+<h2 data-toc="權限">三層權限：誰授權、誰執行、對誰動手</h2>
+<p>「劇本手動跑得動、掛到自動化規則就不動」是最經典的實務與考試場景，原因幾乎都在權限。拆成三層背：</p>
+<ul>
+<li><strong>第一層：Sentinel 有沒有權限執行這本劇本。</strong>自動化規則是由 Microsoft Sentinel 服務主體代跑劇本，必須把 <strong>Microsoft Sentinel Automation Contributor</strong> 角色授與該服務主體，範圍是<strong>存放劇本的資源群組</strong>；入口網站上就是 Automation 頁面的「管理劇本權限（Manage playbook permissions）」。<strong>沒做這一步，劇本會在下拉選單裡呈灰色或執行失敗。</strong></li>
+<li><strong>第二層：劇本有沒有權限動目標系統。</strong>劇本裡每個連接器都有自己的連線授權，主流做法是<strong>受控識別（managed identity）</strong>：為邏輯應用程式開啟系統指派的受控識別，再把它加上目標資源的角色，例如要更新事件、加註解就需要工作區上的 <strong>Microsoft Sentinel Responder</strong>。傳統的使用者帳戶連線會過期、會綁在離職員工身上，考題偏好受控識別的理由就是「不必管理認證」。</li>
+<li><strong>第三層：操作的人有沒有權限。</strong>要把劇本掛上規則、或在事件頁手動執行，操作者需對劇本所在資源群組具備 <strong>Logic App Contributor</strong> 之類權限，並在 Sentinel 端至少是 Responder。「看得到事件卻執行不了劇本」通常在這層。</li>
+</ul>
+<p><strong>跨訂用帳戶與跨租用戶</strong>：劇本與工作區可不在同一訂用帳戶，只要在劇本所在資源群組完成第一層授權即可；<strong>跨租用戶</strong>（MSSP 幫客戶管理）要靠 <strong>Azure Lighthouse</strong> 委派管理權限並在委派範圍指派相同角色。題幹出現 MSSP、多租用戶、delegated，Lighthouse 就是答案的一部分。</p>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>「劇本跑不動」的排查順序（照著背，題目換皮也不怕）：</strong><br>① <strong>劇本在自動化規則的下拉選單看不到／灰色</strong> → Sentinel 服務主體缺 <strong>Automation Contributor</strong>（管理劇本權限沒做），或觸發程序不對——<strong>只有事件觸發程序的劇本能掛在「事件建立／更新時」規則上</strong>，實體觸發程序的劇本永遠不會出現。<br>② <strong>規則有跑、劇本執行失敗</strong> → 進<strong>執行歷史</strong>看紅色那一步：多半是連線認證過期，或受控識別缺目標資源角色（要更新事件卻沒有工作區的 Microsoft Sentinel Responder）。<br>③ <strong>劇本成功、事件卻沒變</strong> → 動作參數綁錯欄位或條件分支沒進去，用執行歷史比對輸入輸出。<br>④ <strong>規則完全沒被觸發</strong> → 條件寫太嚴、來源產品不符、規則已過期或停用，或 order 前面有規則先把事件關掉了。</p></div>
+
+<div class="eyebrow">06 — ⚖️ 該用哪一個</div>
+<h2 data-toc="決策表">自動化規則 vs 劇本：決策表</h2>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>比較面向</th><th>自動化規則（automation rule）</th><th>劇本 Playbook（Logic Apps）</th></tr></thead>
+<tbody>
+<tr><td><strong>能做什麼</strong></td><td>只動事件本身：變更狀態（含分類與理由）、變更嚴重性、指派擁有者、加標籤、新增事件工作、執行劇本</td><td>幾乎什麼都行：通知、核准流程、工單、封鎖 IP、隔離裝置、停用帳戶、查外部情報、寫回註解</td></tr>
+<tr><td><strong>條件與分支</strong></td><td>單層 AND 條件，沒有 if／else、沒有迴圈</td><td>完整流程控制：條件、迴圈（逐一處理實體）、平行分支、等待人工核准</td></tr>
+<tr><td><strong>成本</strong></td><td><strong>不額外計費</strong></td><td>依 Logic Apps 計費：Consumption <strong>按動作執行次數</strong>、Standard 按主控方案資源</td></tr>
+<tr><td><strong>管理負擔</strong></td><td>低：表單幾分鐘完成，集中在 Automation 頁面管理與排序</td><td>高：要設計流程、管理連線與受控識別、監看執行歷史與失敗重試</td></tr>
+<tr><td><strong>失敗與除錯</strong></td><td>幾乎不會失敗，頂多條件沒命中</td><td>會失敗：認證過期、API 逾時、參數錯誤；靠執行歷史與重新提交處理</td></tr>
+<tr><td><strong>典型場景</strong></td><td>雜訊抑制、自動分派、依戰術加標籤、當自動化的統一入口</td><td>釣魚通報處理、封鎖與隔離、值班通知、工單同步、實體擴充</td></tr>
+</tbody></table></div>
+<p>一句話：<strong>自動化規則像家規，劇本像請外援</strong>。家規免費、立刻生效，但只管得到自己家裡的事；外援什麼都辦得到，可是要付錢、要授權、還可能請不動。實務上兩者搭配而非二選一——<strong>用自動化規則當唯一入口</strong>，由它決定哪些事件跑哪本劇本、以什麼順序跑。</p>
+<p><strong>與 Defender XDR 端自動化（AIR）的分工</strong>也常入題：AIR 在 Defender 內部自動調查警示，對<strong>端點、信箱、身分</strong>執行清理型修復（隔離檔案、移除郵件、停止處理程序），動作留在 Action center 可核准與復原；Sentinel 自動化則站在<strong>事件層與跨系統層</strong>，處理通報、工單、非微軟設備的封鎖與流程治理。健康的設計是<strong>讓 AIR 做微軟生態內的即時清理、Sentinel 做跨系統協調</strong>，重複動作只留一邊。</p>
+
+<div class="eyebrow">07 — 🧪 端到端演練</div>
+<h2 data-toc="實戰演練">釣魚事件的全自動處理鏈</h2>
+<div class="case-box"><div class="case-label">🧪 實戰情境：釣魚事件從觸發到封鎖</div>
+<p>分析規則「Suspicious inbox forwarding + credential phishing」在凌晨產生高嚴重性事件，實體含使用者 <code>anna@contoso.com</code>、一個外部 IP 與一條 URL。夜班只有兩人——整條鏈這樣設計：</p>
+<ol>
+<li><strong>自動化規則（order 10）「已知誤判抑制」</strong>：條件為分析規則名稱等於此規則、且標籤包含 <code>known-simulation</code>（釣魚演練）。命中就關閉為 Benign positive。本次未命中，往下走。</li>
+<li><strong>自動化規則（order 20）「釣魚事件分派」</strong>：條件為戰術包含 <strong>Initial Access</strong> 且嚴重性 High。動作依序：<strong>指派擁有者</strong>給夜班群組、<strong>加標籤</strong> <code>phishing</code>、<strong>新增事件工作</strong>「確認使用者是否輸入認證」，最後<strong>執行劇本</strong>。</li>
+<li><strong>劇本第一段：擴充。</strong>事件觸發程序取得完整事件物件 → 迴圈逐一取出實體 → 查 IP 與 URL 信譽、取得使用者部門與主管 → 結果<strong>寫回事件註解</strong>（需受控識別具備工作區的 Microsoft Sentinel Responder）。</li>
+<li><strong>劇本第二段：通知與核准。</strong>發 Teams 自適應卡片到 SOC 頻道，附摘要與兩個按鈕，流程停在<strong>等待核准</strong>。分析師看完按下「封鎖」。</li>
+<li><strong>劇本第三段：處置。</strong>核准分支往下：呼叫 Defender for Endpoint <strong>把 IP 與 URL 加入封鎖指標</strong>、呼叫 Microsoft Entra ID <strong>撤銷重新整理權杖並要求重設密碼</strong>、開 ServiceNow <strong>工單</strong>並把編號寫回註解。若按「誤判」則走另一分支，關閉事件並加上 <code>known-simulation</code> 標籤——下次同類事件在第 1 步就被抑制。</li>
+<li><strong>隔天檢視。</strong>事件活動記錄看得到「由自動化規則執行」的每一步；劇本那側到執行歷史核對，發現 ServiceNow 動作曾逾時一次、由重試原則自動成功。夜班人工作業從 20 分鐘壓到一次點擊。</li>
+</ol></div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>三個常考切點。</strong>(1) <strong>「封鎖前要人確認」</strong> → 人工核准分支是劇本的能力，自動化規則做不到。(2) <strong>「同一張事件跑多條規則」</strong> → 抑制型規則要排最前面（order 小），否則後面的指派與劇本白跑，甚至對已關閉的事件寄通知。(3) <strong>「要對每個實體各做一次」</strong> → 事件觸發程序拿得到實體清單，用迴圈處理；「不等事件建立、只處理單一警示中的實體」才是警示觸發程序；「在調查圖表上針對這個帳戶隨選撤銷權杖」則是實體觸發程序，只能手動執行。</p></div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">影片之外，考綱還要你會這些</h2>
+<ul>
+<li><strong>舊版警示自動化 vs 自動化規則</strong>：分析規則精靈仍保留 alert automation（classic）可直接掛劇本，但官方建議<strong>全部改用自動化規則統一管理</strong>。考題問「如何集中管理散落在各分析規則的劇本」，答案就是改掛自動化規則。</li>
+<li><strong>事件工作（incident tasks）</strong>：自動化規則可自動為事件加上待辦清單（通知資料擁有者、確認 MFA 狀態），讓分析師照同一份 SOP 走，是「標準化回應流程」題型的答案之一。</li>
+<li><strong>手動執行劇本</strong>：事件頁與警示頁都能隨選執行劇本，這也是驗證權限與參數的最快方式——<strong>手動跑得動、自動跑不動＝Sentinel 服務主體的權限問題</strong>。</li>
+<li><strong>Defender 入口網站整合</strong>：Sentinel 併入 Defender 入口網站後，自動化規則同樣作用在統一事件佇列（含 XDR 來源事件），要留意「XDR 已自動處理過的事不要再做一次」。</li>
+<li><strong>連接器生態</strong>：劇本能用的就是 Logic Apps 全部連接器——ServiceNow、Jira、Slack、第三方防火牆、自訂 HTTP 呼叫都在內。「能不能跟我們的工單系統整合」答案永遠是「用劇本」。</li>
+<li><strong>Security Copilot 與自動化</strong> <span class="badge-2026">2026 新考點</span>：Logic Apps 已有 Security Copilot 連接器，可在劇本中執行提示或提示手冊，把事件摘要與建議動作寫回註解；Defender 端則有代理程式（例如釣魚分類代理程式）自動分類使用者回報的釣魚信。考題方向是「不增加人力下提升分診品質」。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 延伸閱讀</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/automation" target="_blank" rel="noopener">Microsoft Sentinel 中的自動化（SOAR 概觀）</a>——自動化規則與劇本的分工全景，第 06 節決策表的原文版。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/automate-incident-handling-with-automation-rules" target="_blank" rel="noopener">使用自動化規則自動處理事件</a>——觸發時機、條件運算子、動作清單、執行順序與到期日。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/automate-responses-with-playbooks" target="_blank" rel="noopener">以劇本自動回應威脅</a>——三種觸發程序的差異、Consumption 與 Standard 方案、可用連接器。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/authenticate-playbooks-to-sentinel" target="_blank" rel="noopener">驗證劇本對 Microsoft Sentinel 的存取</a>——受控識別與 API 連線的差異，權限排查第二層必讀。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/tutorial-respond-threats-playbook" target="_blank" rel="noopener">教學課程：使用劇本回應威脅</a>——從建立劇本到掛上自動化規則的完整流程，含管理劇本權限操作。</li>
+</ul>
+
+
+  <div class="eyebrow">10 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W4-4">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D2-0036</div><div class='q-stem'>One Microsoft Sentinel analytics rule fires on a nightly maintenance job and creates about 40 incidents that your team has already confirmed to be expected activity. The incidents must still be recorded and auditable with a proper classification, the detection must stay enabled for every other source, and you want the least administrative effort. What should you implement?</div><div class='q-zh'>（有一條 Microsoft Sentinel 分析規則會被夜間維護作業觸發，每晚產生約 40 個事件，而團隊已經確認它們全屬預期中的活動。這些事件仍必須留下紀錄、可稽核並附上正確的分類，該偵測對其他來源也必須維持啟用，而你希望管理負擔最低。你應該實作什麼？）</div><div class='q-opt'><strong>A.</strong> An automation rule triggered when an incident is created, with a condition on the analytics rule name, that changes the status to Closed with a Benign positive classification and a reason<div style='font-size:12.5px;color:var(--muted)'>一條「事件建立時」觸發的自動化規則，條件比對該分析規則名稱，動作是把狀態變更為「已關閉」並填上 Benign positive 分類與理由</div></div><div class='q-opt'><strong>B.</strong> A playbook with an incident trigger that closes each matching incident<div style='font-size:12.5px;color:var(--muted)'>一本使用事件觸發程序的劇本，逐一關閉每個符合條件的事件</div></div><div class='q-opt'><strong>C.</strong> Disable the analytics rule during the maintenance window each night<div style='font-size:12.5px;color:var(--muted)'>每晚在維護時段停用該分析規則</div></div><div class='q-opt'><strong>D.</strong> Configure the suppression setting of the analytics rule to stop the query for 24 hours after an alert is generated<div style='font-size:12.5px;color:var(--muted)'>設定該分析規則的抑制選項，讓它在產生警示後暫停查詢 24 小時</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>自動化規則是事件層的 if-then，跑在 Sentinel 內部、不必另建資源、也不額外計費，因此是自動化的第一選擇。把觸發時機設為「事件建立時」、條件鎖定該分析規則名稱，動作選變更狀態為已關閉並填上 Benign positive 分類與理由，就能讓事件仍然留在佇列裡可稽核、卻不占用分診時間。考題關鍵字 suppress、reduce noise、automatically close 全部指向自動化規則。</p><ul><li><strong>B</strong>：劇本做得到，但殺雞用牛刀：它是 Azure Logic Apps 工作流程，要設計流程、管理連線與受控識別、監看執行歷史與失敗重試，而且會產生 Logic Apps 費用。需求只是變更事件欄位時，best answer 一律是自動化規則。</li><li><strong>C</strong>：停用規則會讓該偵測在維護時段對所有來源完全失效，真實攻擊若挑在這段時間發生就完全看不到；而且每晚手動停用再啟用，管理負擔反而最高。</li><li><strong>D</strong>：分析規則的抑制設定是在產生警示後暫停查詢一段時間，壓的是數量而不是對錯，期間內其他來源觸發的同類事件也會一起被吃掉，而且被壓下去的活動不會留下事件紀錄，達不到「可稽核且有分類」的要求。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/automate-incident-handling-with-automation-rules' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D2-0037</div><div class='q-stem'>When a high-severity phishing incident is created in Microsoft Sentinel, your response process must post an adaptive card to the SOC channel, wait for an analyst to approve the action, then block the address on a third-party firewall and open a ServiceNow ticket whose number is written back as an incident comment. Which solution meets all of these requirements?</div><div class='q-zh'>（當 Microsoft Sentinel 產生高嚴重性的釣魚事件時，你們的回應流程必須：在 SOC 頻道張貼自適應卡片、等待分析師核准、接著在第三方防火牆封鎖該位址，並開立 ServiceNow 工單且把工單編號寫回事件註解。哪一個方案能滿足以上所有需求？）</div><div class='q-opt'><strong>A.</strong> An automation rule with several actions configured in sequence<div style='font-size:12.5px;color:var(--muted)'>一條依序設定多個動作的自動化規則</div></div><div class='q-opt'><strong>B.</strong> A playbook built on Azure Logic Apps with an incident trigger, invoked by an automation rule<div style='font-size:12.5px;color:var(--muted)'>一本以 Azure Logic Apps 建立、使用事件觸發程序的劇本，由自動化規則呼叫執行</div></div><div class='q-opt'><strong>C.</strong> An Azure Function called directly from the analytics rule<div style='font-size:12.5px;color:var(--muted)'>由分析規則直接呼叫的 Azure Function</div></div><div class='q-opt'><strong>D.</strong> Automated investigation and response (AIR) in Microsoft Defender XDR<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender XDR 的自動調查與修復（AIR）</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>只要需求走出 Sentinel 之外——通知、等待人工核准、呼叫第三方防火牆、開工單、把結果寫回註解——就是劇本（Playbook）的守備範圍：它是 Azure Logic Apps 工作流程，具備完整流程控制（條件、迴圈、平行分支、等待核准）與整個 Logic Apps 連接器生態。掛載方式則用自動化規則，而不是分析規則裡的舊版警示自動化，因為前者能集中管理條件與執行順序。事件觸發程序拿得到整張事件物件（屬性、所有警示、所有實體、註解與標籤），才有辦法把工單編號寫回註解。</p><ul><li><strong>A</strong>：自動化規則只動事件本身：變更狀態、變更嚴重性、指派擁有者、加標籤、新增事件工作、執行劇本。它沒有 if／else、沒有迴圈、不能等待人工核准，也無法呼叫 Teams、防火牆或 ServiceNow。</li><li><strong>C</strong>：Azure Function 技術上寫得出來，但分析規則不能直接呼叫它，而且要自行處理驗證、錯誤重試與部署，管理負擔明顯高於現成的劇本與連接器；這是 best answer 題型的典型陷阱選項。</li><li><strong>D</strong>：AIR 在 Defender 生態內部自動調查警示並對端點、信箱、身分執行清理型修復（隔離檔案、移除郵件、停止處理程序），動作留在 Action center 可核准與復原。它管不到第三方防火牆與 ServiceNow，也不會寫 Sentinel 事件註解。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/automate-responses-with-playbooks' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D2-0038</div><div class='q-stem'>A colleague can run a playbook successfully by selecting it manually from the incident page in Microsoft Sentinel. When you try to attach the same playbook to an automation rule, it appears greyed out in the playbook list and cannot be selected. The playbook uses an incident trigger and lives in a separate resource group. What should you do?</div><div class='q-zh'>（同事可以在 Microsoft Sentinel 的事件頁面手動選取並成功執行某本劇本。但當你想把同一本劇本掛到自動化規則上時，它在劇本清單中呈現灰色、無法選取。該劇本使用事件觸發程序，且放在另一個資源群組。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Assign the Microsoft Sentinel Responder role on the workspace to the analyst who runs the rule<div style='font-size:12.5px;color:var(--muted)'>把工作區的 Microsoft Sentinel Responder 角色指派給執行規則的分析師</div></div><div class='q-opt'><strong>B.</strong> Enable a system-assigned managed identity on the logic app<div style='font-size:12.5px;color:var(--muted)'>為該邏輯應用程式啟用系統指派的受控識別</div></div><div class='q-opt'><strong>C.</strong> Grant the Microsoft Sentinel Automation Contributor role to the Microsoft Sentinel service principal on the resource group that holds the playbook<div style='font-size:12.5px;color:var(--muted)'>在存放劇本的資源群組上，把 Microsoft Sentinel Automation Contributor 角色授與 Microsoft Sentinel 服務主體</div></div><div class='q-opt'><strong>D.</strong> Change the playbook to use an entity trigger<div style='font-size:12.5px;color:var(--muted)'>把該劇本改為使用實體觸發程序</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>自動化規則是由 Microsoft Sentinel 服務主體代跑劇本，因此必須在存放劇本的資源群組上把 Microsoft Sentinel Automation Contributor 角色授與該服務主體（入口網站上就是 Automation 頁面的「管理劇本權限」）。沒做這一步，劇本在自動化規則的下拉選單裡會呈灰色或執行失敗。題幹「手動跑得動、掛到自動化規則就不行」正是這一層權限缺失的招牌症狀——手動執行用的是操作者自己的權限，自動執行用的是服務主體的權限。</p><ul><li><strong>A</strong>：Microsoft Sentinel Responder 讓人可以操作事件（變更狀態、指派、執行劇本），屬於第三層「操作的人有沒有權限」。題幹說同事已經能手動執行劇本，代表這一層沒問題，缺的是服務主體那一層。</li><li><strong>B</strong>：受控識別解決的是第二層「劇本有沒有權限動目標系統」，例如要寫回事件註解就得讓受控識別在工作區具備 Microsoft Sentinel Responder。它影響的是劇本執行後會不會失敗，而不是劇本能不能被選進自動化規則。</li><li><strong>D</strong>：實體觸發程序的劇本只能手動執行，從實體清單、調查圖表或搜捕結果啟動，永遠不會出現在自動化規則的清單裡。改成實體觸發程序等於讓情況更糟；只有事件觸發程序的劇本才掛得上「事件建立／更新時」的規則。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/automate-responses-with-playbooks' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D2-0039</div><div class='q-stem'>While working through the investigation graph of an incident, an analyst wants to select one suspicious address on demand and run a workflow that looks up its reputation and adds the result as a comment. The workflow must never run by itself. Which playbook trigger should the workflow use?</div><div class='q-zh'>（分析師在檢視某個事件的調查圖表時，想要隨選點選其中一個可疑位址，執行一個查詢其信譽並把結果加為註解的工作流程。這個工作流程絕不能自行執行。該工作流程應該使用哪一種劇本觸發程序？）</div><div class='q-opt'><strong>A.</strong> The incident trigger<div style='font-size:12.5px;color:var(--muted)'>事件觸發程序</div></div><div class='q-opt'><strong>B.</strong> The alert trigger<div style='font-size:12.5px;color:var(--muted)'>警示觸發程序</div></div><div class='q-opt'><strong>C.</strong> An automation rule that runs when an incident is updated<div style='font-size:12.5px;color:var(--muted)'>以「事件更新時」執行的自動化規則</div></div><div class='q-opt'><strong>D.</strong> The entity trigger<div style='font-size:12.5px;color:var(--muted)'>實體觸發程序</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>實體觸發程序（entity trigger）的劇本只拿得到單一實體（帳戶、主機、IP、URL、檔案雜湊）的屬性，而且只能手動執行——從實體清單、調查圖表或搜捕結果按下去，不能掛在自動化規則上。題幹同時出現「在調查圖表上針對某個位址隨選執行」與「絕不能自行執行」，兩個條件都指向實體觸發程序。口訣：incident 資料最全、自動跑；alert 只看一則警示、自動跑；entity 資料最少、只能人工按下去。</p><ul><li><strong>A</strong>：事件觸發程序拿得到整張事件物件（事件屬性、所有相關警示、所有實體、註解與標籤），設計目的是由自動化規則在事件建立或更新時自動呼叫。雖然也能從事件頁手動執行，但它的處理對象是整個事件而不是分析師挑中的單一位址。</li><li><strong>B</strong>：警示觸發程序只拿得到單一警示與其實體，沒有事件層欄位（無擁有者、無事件註解），由「警示建立時」的規則自動呼叫。它無法針對調查圖表上挑選的某一個實體隨選執行。</li><li><strong>C</strong>：自動化規則本身不是劇本觸發程序，而且「事件更新時」正是自動觸發機制，違反題幹「絕不能自行執行」的要求。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/automate-responses-with-playbooks' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D2-0040</div><div class='q-stem'>Three automation rules act on the same incidents in your workspace: one assigns an owner and adds a tag, one runs a notification playbook, and one closes simulation incidents as benign positives. Analysts report that the on-call channel is being paged about incidents that are already closed, and that closed incidents keep being assigned to people. All three rules use the same trigger. What should you change?</div><div class='q-zh'>（你的工作區有三條自動化規則作用在同一批事件上：一條指派擁有者並加標籤、一條執行通知劇本、一條把演練事件關閉並分類為良性誤報。分析師回報，值班頻道一直收到「已關閉事件」的通知，而且已關閉的事件還會被指派給人。這三條規則使用相同的觸發時機。你應該修改什麼？）</div><div class='q-opt'><strong>A.</strong> Set an expiration date on the assignment rule so that it stops running<div style='font-size:12.5px;color:var(--muted)'>為指派規則設定到期日，讓它停止執行</div></div><div class='q-opt'><strong>B.</strong> Renumber the rules so that the rule closing simulation incidents has the lowest order value and therefore runs before the assignment and playbook rules<div style='font-size:12.5px;color:var(--muted)'>重新編排順序號碼，讓關閉演練事件的規則擁有最小的 order 值，因此先於指派與劇本規則執行</div></div><div class='q-opt'><strong>C.</strong> Change the trigger of the assignment rule to when an incident is updated<div style='font-size:12.5px;color:var(--muted)'>把指派規則的觸發時機改成「事件更新時」</div></div><div class='q-opt'><strong>D.</strong> Move the notification playbook to the legacy alert automation section of the analytics rule<div style='font-size:12.5px;color:var(--muted)'>把通知劇本改掛到分析規則的舊版警示自動化區塊</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>同一觸發時機下，多條自動化規則依 order 由小到大依序執行，而且前一條造成的變更會被後一條看見。正確設計是先抑制（關閉／降級），再指派與加標籤，最後才跑耗時的劇本——把關閉演練事件的規則排到最前面，後面兩條就不會再對已關閉的事件動作，通知與指派自然停止。題幹描述的正是順序寫反的典型災難。</p><ul><li><strong>A</strong>：到期日是給暫時性需求用的：滲透測試期間或維護時段建立的規則，時間一到自動失效，避免忘記關掉。指派規則本身是常設需求，讓它整條停掉會讓所有真實事件都沒有擁有者。</li><li><strong>C</strong>：改成「事件更新時」不但解決不了順序問題，還會讓規則被自己或其他規則造成的更新反覆命中；官方建議反而是用條件把這類自我觸發排除掉。</li><li><strong>D</strong>：舊版警示自動化（classic）是分析規則精靈裡直接掛劇本的舊路徑，官方建議全部改用自動化規則統一管理。把劇本搬回去只會讓執行條件與順序散落各處、更難治理，而且它掛在警示層，連事件是否已關閉都判斷不到。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/automate-incident-handling-with-automation-rules' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP19</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><audio controls preload='none' src='../podcast/ep-019.mp3'></audio><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-019'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="19">
+    <label for="doneChk">我讀完 Day 19 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-018.html'>← Day 18</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-020.html'>Day 20 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 19 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

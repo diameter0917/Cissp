@@ -1,0 +1,129 @@
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">資料連接器 I：先把水管接好，順便裝上濾水器</h2>
+<p>昨天把工作區（workspace）這個「蓄水池」設計好了，今天開始接水管：<strong>資料連接器（data connector）</strong>是 Microsoft Sentinel 一切偵測的前提——沒有資料，再漂亮的分析規則也是空轉。連接器內容很多，我們拆成兩天：今天講「微軟自家」的部分——<strong>Content Hub 解決方案</strong>怎麼一鍵打包安裝、<strong>第一方連接器</strong>（Defender XDR、Entra ID、Office 365、Azure Activity）各自帶進哪些資料表與授權前提；再深入<strong>資料收集規則（Data Collection Rule，DCR）</strong>的三段式架構，以及考試新寵<strong>擷取時轉換（ingestion-time transformation）</strong>——在資料入庫前過濾雜訊、遮罩敏感欄位、瘦身省成本。明天才輪到 Syslog／CEF／自訂記錄與 ASIM。</p>
+<div class="point">
+<strong>學習目標（對應官方考綱 D1「管理安全性作業環境」）：</strong>
+<ul>
+  <li>☐ 能用 Content Hub 找到並安裝解決方案，說出一個解決方案打包了哪幾類內容（對應考綱 <em>identify data sources to be ingested for Microsoft Sentinel</em> 與內容中樞相關條目）</li>
+  <li>☐ 背出四大第一方連接器各自帶進的資料表與授權需求，並判斷哪些資料類型免擷取費（對應考綱 <em>configure and use Microsoft connectors for Azure resources, including Azure Policy and diagnostic settings</em>）</li>
+  <li>☐ 畫出 DCR「資料來源 → 轉換 → 目的地」結構，說明 DCR 與 AMA 代理程式的關聯方式（對應考綱 <em>plan and configure collection of Windows Security events by using data collection rules</em>）</li>
+  <li>☐ 分辨標準 DCR 與工作區轉換 DCR（workspace transformation DCR）各管哪條資料路徑</li>
+  <li>☐ 會寫一段 transformKql：過濾、遮罩、砍欄位，並說出成本上的效果與 50% 過濾費用細則</li>
+  <li>☐ 知道連接器健康狀態去哪裡看、斷線時的排查順序</li>
+</ul>
+</div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP8 觀看重點指引：一支影片、兩天課程</h2>
+<p>本單元影片是 EP8「Connect logs to Microsoft Sentinel」。注意：這支影片把「連接器全家」一次講完——第一方連接器、代理程式收集、Syslog／CEF、自訂記錄都會出現。<strong>今天請聚焦第一方連接器與 DCR 的段落，Syslog／CEF 與自訂記錄的段落明天（Day 8）會配合 ASIM 再看一輪</strong>。帶著四個問題看：</p>
+<ul>
+  <li><strong>Content Hub 段落</strong>：講者安裝解決方案（solution）時，注意安裝清單裡除了連接器還帶了什麼——分析規則、活頁簿（Workbook）、搜捕查詢通常一併進來。也留意「安裝完成」不等於「已連線」：連接器還要再設定一次。</li>
+  <li><strong>第一方連接器段落</strong>：每個連接器頁面上方都有「必要條件（prerequisites）」區塊——需要什麼 Azure 角色、什麼租用戶權限、什麼授權。考題最愛從這裡出，邊看邊對照下面 §04 的表格。</li>
+  <li><strong>DCR 出現的段落</strong>：講者設定 Windows 安全性事件或代理程式收集時，畫面會出現建立 DCR 的流程——對照 §05 的三段式結構：先選資料來源、再（可選）轉換、最後指定工作區。</li>
+  <li><strong>Syslog／CEF 段落</strong>：今天只要建立「非微軟來源要靠代理程式與 CEF」這個印象即可，細節留給明天。</li>
+</ul>
+<div class="info-box">📌 EP8 字幕尚未抓取完成；字幕到位後本節會回補精確時間碼（格式如 <span class="timestamp">EP8 07:42</span>）。目前請以上面四個「帶著問題看」的指引自行定位段落。</div>
+
+<div class="eyebrow">03 — 🛒 Content Hub 與解決方案</div>
+<h2 data-toc="內容中樞">內容中樞：不是逐個接連接器，是逐個裝解決方案</h2>
+<p>舊時代的 Sentinel 是「連接器清單」思維：找到連接器、接上、再自己去找規則跟儀表板。現在的入口是<strong>內容中樞（Content Hub）</strong>：所有現成內容（out-of-the-box content）的單一商店，以<strong>解決方案（solution）</strong>為單位打包。一個解決方案通常包含：</p>
+<ul>
+  <li><strong>資料連接器</strong>——把該產品的記錄接進工作區；</li>
+  <li><strong>分析規則（analytics rule）範本</strong>——針對該資料源的現成偵測；</li>
+  <li><strong>活頁簿（Workbook）</strong>——視覺化儀表板；</li>
+  <li><strong>搜捕查詢、劇本（Playbook）、剖析器（parser）、監視清單（Watchlist）</strong>——視解決方案而定。</li>
+</ul>
+<p>來源分三類：<strong>Microsoft 官方</strong>、<strong>合作夥伴（provider 是廠商，支援也找廠商）</strong>、<strong>社群</strong>。除了成包的解決方案，內容中樞也有「獨立內容（standalone content）」可單獨安裝。安裝後的內容集中在「管理（Manage）」檢視裡做版本更新——解決方案更新時，內容中樞會標示有新版可裝。</p>
+<div class="point"><strong>三個容易混淆的動詞</strong>：「<strong>安裝</strong>」解決方案＝把內容放進工作區；「<strong>設定／連線</strong>」連接器＝真正開始擷取資料；「<strong>啟用</strong>」分析規則範本＝從範本建立作用中的規則。考題若說「已安裝解決方案但沒有資料進來」，答案方向就是：連接器還沒設定連線。</div>
+
+<div class="eyebrow">04 — 🔌 第一方連接器巡禮</div>
+<h2 data-toc="第一方連接器">四大金剛：帶什麼表、要什麼權限、花不花錢</h2>
+<p>第一方（服務對服務，service-to-service）連接器不裝代理程式，雲端對雲端直接串——設定門檻低，但每個都有自己的授權與權限前提。下表是本單元最重要的背誦資產：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>連接器</th><th>帶進哪些資料表</th><th>授權／權限需求與成本重點</th></tr></thead>
+  <tbody>
+    <tr><td><strong>Microsoft Defender XDR</strong></td><td>事件與警示（SecurityIncident、SecurityAlert）；可加選<strong>進階搜捕原始資料表</strong>：DeviceEvents、DeviceProcessEvents、EmailEvents、IdentityLogonEvents、CloudAppEvents⋯⋯</td><td>設定需租用戶層級高權限角色（如 Security Administrator 等級）；<strong>事件與警示免擷取費</strong>，原始事件表<strong>要收費</strong>——量大，接之前先估成本</td></tr>
+    <tr><td><strong>Microsoft Entra ID</strong></td><td>SigninLogs、AuditLogs；可加選非互動式登入、服務主體登入、佈建記錄、RiskyUsers 等</td><td>匯出登入記錄需 <strong>Entra ID P1／P2 授權</strong>；設定走診斷設定，需足夠的租用戶安全性管理角色；<strong>擷取要收費</strong>（登入記錄量可觀）</td></tr>
+    <tr><td><strong>Office 365</strong></td><td>OfficeActivity（Exchange、SharePoint／OneDrive、Teams 的管理活動記錄）</td><td>需租用戶的全域／安全性管理層級權限授權同意；<strong>免擷取費</strong>——CP 值極高，必接</td></tr>
+    <tr><td><strong>Azure Activity</strong></td><td>AzureActivity（訂用帳戶控制平面稽核：誰建了 VM、誰改了 NSG、誰刪了資源）</td><td>新版連接器<strong>透過 Azure Policy 把診斷設定套到各訂用帳戶</strong>——需要在目標範圍指派原則的權限（Owner 等級）；<strong>免擷取費</strong></td></tr>
+    <tr><td><strong>Microsoft Defender for Cloud</strong></td><td>SecurityAlert（雲端工作負載保護警示）</td><td>需訂用帳戶層級權限；<strong>警示免擷取費</strong></td></tr>
+  </tbody>
+</table>
+</div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>Defender XDR 連接器的兩層資料</strong>是高頻陷阱：題目問「把 XDR 事件同步進 Sentinel 做統一分診」→ 接連接器即可（事件／警示，免費、雙向同步狀態）；題目問「要在工作區裡對 DeviceProcessEvents 寫自訂分析規則、或保留超過 30 天做長期搜捕」→ 必須<strong>額外勾選進階搜捕事件收集</strong>，而且這部分要付擷取費。另一個常考組合：「哪些資料免費接」——記口訣「<strong>活動、辦公、警示免費；登入、原始事件收費</strong>」（Azure Activity、Office 365、各 Defender 警示免費；Entra 登入記錄、XDR 原始事件表計費）。題目要你「以最低成本取得基本可見度」時，先把免費三寶全接。</div>
+
+<div class="eyebrow">05 — 🧱 DCR 深入</div>
+<h2 data-toc="DCR深入">資料收集規則：資料來源 → 轉換 → 目的地</h2>
+<p>代理程式類收集（下表中的 Windows 安全性事件、明天的 Syslog／CEF）背後都是同一個機器：<strong>資料收集規則（DCR）</strong>。Azure Monitor Agent（AMA）本身「無腦」——它不帶本機設定檔，收什麼、怎麼處理、送去哪，全部由雲端的 DCR 定義。一條 DCR 是三段式結構：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>區段</th><th>回答的問題</th><th>範例</th></tr></thead>
+  <tbody>
+    <tr><td><strong>① 資料來源（data sources）</strong></td><td>收什麼？</td><td>Windows 事件記錄（事件集：全部／通用／最小／自訂 XPath）、效能計數器、Syslog facility 與層級</td></tr>
+    <tr><td><strong>② 轉換（transformKql，可選）</strong></td><td>入庫前怎麼加工？</td><td>過濾雜訊事件、遮罩敏感欄位、砍掉肥大欄位（§06 詳講）</td></tr>
+    <tr><td><strong>③ 目的地（destinations)</strong></td><td>送去哪？</td><td>一個或多個 Log Analytics 工作區</td></tr>
+  </tbody>
+</table>
+</div>
+<p><strong>DCR 與機器的關係是「關聯（association）」</strong>：一條 DCR 可以關聯到成百上千台機器；一台機器也可以同時關聯多條 DCR（例如一條收安全性事件、一條收效能資料）。大規模環境用 Azure Policy 自動幫新機器裝 AMA 並建立關聯。Sentinel 的「透過 AMA 的 Windows 安全性事件」連接器，本質就是幫你建 DCR：選「通用（Common）」事件集是多數 SOC 的起點——比「全部」省量，又比「最小」保留了足夠的調查脈絡；進階需求用自訂 XPath 精準點名事件。</p>
+<p>還有一種特殊 DCR 要單獨記：<strong>工作區轉換 DCR（workspace transformation DCR）</strong>。它每個工作區<strong>只有一條</strong>，管的是「不走標準 DCR 的資料路徑」——也就是第一方服務對服務連接器送進來的表（SigninLogs、OfficeActivity⋯⋯）。你在裡面按「表」定義轉換，資料入庫前一樣會先過這道關。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>「該用哪種 DCR」二選一公式</strong>：先問一句「這筆資料是<em>代理程式</em>收的，還是<em>服務對服務連接器</em>送的？」——AMA 收的（Windows 事件、Syslog、CEF）→ 轉換寫在該資料流的<strong>標準 DCR</strong> 裡；連接器直送的（SigninLogs、OfficeActivity、AzureActivity 等）→ 只能寫在<strong>工作區轉換 DCR</strong>。陷阱選項常把兩者對調，或塞入「ASIM 剖析器」——記住 ASIM 是<strong>查詢時</strong>正規化，資料原封不動入庫，既不省擷取費也遮罩不了儲存下來的欄位。</div>
+
+<div class="eyebrow">06 — ✂️ 擷取時轉換實戰</div>
+<h2 data-toc="擷取時轉換">transformKql：過濾、遮罩、瘦身一次做完</h2>
+<p>擷取時轉換（ingestion-time transformation）是一段寫在 DCR 裡的 KQL，對即將入庫的資料流逐筆執行。輸入固定叫 <code>source</code>，只能用 KQL 的子集（where、extend、project 系列、parse 等；不能 join 其他資料表）。一段典型的「三合一」轉換長這樣：</p>
+<pre class="kql">source
+| where EventID !in (5156, 5158)
+| extend IpAddress = iif(EventID == 4624,
+    replace_regex(IpAddress, @"\.\d+$", ".***"), IpAddress)
+| project-away EventData</pre>
+<p class="kql-note">第 1 行：<code>source</code> 是固定關鍵字，代表流進來的原始資料流（這裡是 SecurityEvent）。第 2 行「<strong>過濾雜訊</strong>」：5156／5158 是 Windows 篩選平台的連線允許事件，量大而偵測價值低，入庫前直接丟——這行就是省錢的主力。第 3 行「<strong>遮罩敏感欄位</strong>」：對登入成功事件（4624）把來源 IP 最後一段換成 ***，滿足隱私要求，而且遮罩發生在入庫前，工作區裡從頭到尾不存在完整 IP。第 4 行「<strong>瘦身</strong>」：<code>project-away</code> 砍掉肥大的原始 XML 欄位，每筆少存幾 KB，長期就是真金白銀。</p>
+<div class="info-box">💰 <strong>50% 細則</strong>：轉換本身不另外收費，但若你的過濾丟掉了<strong>超過 50%</strong> 的進料量，超過 50% 的那部分會被收取資料處理費。啟示：轉換適合「修剪」，若要丟掉九成的量，正確做法是回到來源端別收（調整 DCR 資料來源、事件集或來源設備的轉送策略）。</div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>省成本題的選項鑑別</strong>。題幹說「某表擷取成本過高，想在<em>資料進工作區之前</em>減量」→ 正解是 DCR 的 <strong>transformKql</strong>（擷取時轉換）。干擾項逐一擊破：<strong>縮短保留期</strong>——只省儲存、不省擷取費，資料照樣全額入庫計費；<strong>summary rules</strong> <span class="badge-2026">2026 新考點</span>——把已入庫（或進 data lake）的資料「事後」彙總成小表，適合長期趨勢與大量 Verbose 記錄的彙整，但不改變原始擷取；<strong>基本記錄（basic logs）／data lake 層</strong> <span class="badge-2026">2026 新考點</span>——是「換便宜方案」（低價擷取、查詢受限），不是「減量」，適合量大低查詢頻率的表；<strong>ASIM</strong>——查詢時正規化，與成本無關。四個都是真功能，考的就是你知不知道它們各自作用在資料生命週期的哪一段。</div>
+
+<div class="eyebrow">07 — 🩺 連接器健康與疑難排解</div>
+<h2 data-toc="連接器健康">水管會漏：健康狀態監控與排查順序</h2>
+<p>連接器接上只是開始——真實 SOC 最怕「資料默默斷了三天沒人發現」，偵測直接開天窗。監控有三層：</p>
+<ul>
+  <li><strong>連接器頁面速查</strong>：資料連接器頁會顯示連線狀態與最近收到記錄的時間，適合手動抽查。</li>
+  <li><strong>健康監控功能</strong>：在 Sentinel 設定中啟用稽核與健康監控後，連接器與其他資源的健康事件會寫進 <strong>SentinelHealth</strong> 資料表——這才是可以自動化的來源：對它寫分析規則，連接器一失敗就開事件通知值班。</li>
+  <li><strong>資料收集健康監控活頁簿</strong>：現成活頁簿呈現各表擷取量趨勢與異常（斷流、暴量），適合每週巡檢。</li>
+</ul>
+<p><strong>「沒資料進來」排查順序</strong>：① 授權——Entra 登入記錄沒 P1／P2 就是不會來；② 權限——設定連接器的人當時角色夠不夠、同意有沒有給；③ 代理程式路徑——AMA 有沒有心跳（Heartbeat 表）、DCR 關聯還在不在；④ 轉換——transformKql 是不是把資料全過濾掉了（寫錯 where 條件是經典事故）；⑤ 擷取延遲——尖峰時段有分鐘級延遲屬正常，先別當故障報修。</p>
+<div class="case-box"><span class="case-label">🛡️ 實戰情境：新 SOC 第一週，五種資料來源的接入優先序</span><br>
+<p>你是新成立 SOC 的 Sentinel 工程師，第一週要讓偵測「從零到能用」，預算有限。接入排序與理由：</p>
+<ol>
+  <li><strong>Day 1：Microsoft Defender XDR 連接器（事件＋警示）</strong>——免費、十分鐘見效，微軟生態的偵測成果直接進佇列；原始事件表先<em>不要</em>勾，等估完量再說。</li>
+  <li><strong>Day 1：Office 365 與 Azure Activity</strong>——兩個免費連接器順手接上：郵件協作稽核與訂用帳戶控制平面稽核，是日後幾乎每場調查都要查的背景資料。Azure Activity 記得用 Azure Policy 把診斷設定套到<em>全部</em>訂用帳戶，漏一個就是盲區。</li>
+  <li><strong>Day 2：Microsoft Entra ID（SigninLogs＋AuditLogs）</strong>——要花錢但不能省：身分識別是現代攻擊的第一入口，沒有登入記錄，帳號入侵偵測全歸零。先確認 P1／P2 授權到位。</li>
+  <li><strong>Day 3：透過 AMA 的 Windows 安全性事件</strong>——對網域控制站與重要伺服器建 DCR，事件集選「通用」，並在 DCR 裡先放好 transformKql 把 5156 這類雜訊擋掉——<strong>成本控制從第一天做，不要等帳單來了才回頭救火</strong>。</li>
+  <li><strong>Day 4–5：防火牆／網路設備（CEF via AMA）</strong>——非微軟來源靠 CEF 轉送（明天主題）。先只接邊界防火牆的 deny／threat 記錄，量最大的 allow 流量記錄用轉換修剪或暫緩。</li>
+</ol>
+<p><strong>決策邏輯</strong>：免費且高價值 → 先接；要錢但關鍵（身分）→ 確認授權後接；量大的 → 帶著 DCR 轉換一起上。每接一個，隔天到健康活頁簿確認量有進來、且在預估範圍內。</p>
+</div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">EP8 沒講透、考試會考的</h2>
+<p>EP8 以示範為主，以下考綱相關細節影片著墨有限，本文已補講、這裡做最後確認：</p>
+<ul>
+  <li><strong>免費資料類型清單</strong>：AzureActivity、OfficeActivity、各 Defender 產品的警示（SecurityAlert）與 XDR 事件免擷取費；Entra 登入記錄與 XDR 原始事件表要收費（§04）。</li>
+  <li><strong>Azure Activity 新版連接器走 Azure Policy</strong>：考綱明列 <em>Azure Policy and diagnostic settings</em>——記住「以原則大規模套用診斷設定」這個機制（§04）。</li>
+  <li><strong>Windows 安全性事件的事件集選項</strong>：全部／通用／最小／自訂 XPath，DCR 裡選（§05）。</li>
+  <li><strong>標準 DCR vs 工作區轉換 DCR</strong>：代理程式路徑 vs 服務對服務路徑；後者每工作區僅一條（§05）。</li>
+  <li><strong>轉換的 50% 過濾費用細則</strong>與 summary rules／基本記錄／data lake 層的成本定位 <span class="badge-2026">2026 新考點</span>（§06）。</li>
+  <li><strong>SentinelHealth 資料表</strong>：健康監控要自動化告警，就對這張表寫分析規則（§07）。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深讀清單</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/sentinel-solutions" target="_blank" rel="noopener">Microsoft Sentinel 內容中樞與解決方案</a> — 讀懂解決方案打包哪些內容類型、安裝與更新的管理方式。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/connect-microsoft-365-defender" target="_blank" rel="noopener">連接 Microsoft Defender XDR 資料</a> — 對照「事件／警示」與「進階搜捕原始事件表」兩層資料的差異與設定。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/azure-monitor/essentials/data-collection-rule-overview" target="_blank" rel="noopener">資料收集規則（DCR）總覽</a> — 把「資料來源 → 轉換 → 目的地」結構與 DCR 關聯機制讀熟。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/data-transformation" target="_blank" rel="noopener">Sentinel 中的擷取時轉換</a> — 工作區轉換 DCR 支援哪些表、transformKql 的限制清單。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/monitor-data-connector-health" target="_blank" rel="noopener">監控資料連接器健康狀態</a> — SentinelHealth 表的事件種類與健康監控活頁簿用法。</li>
+</ul>

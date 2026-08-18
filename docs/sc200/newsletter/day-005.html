@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 5｜Defender for Endpoint 部署：上線、裝置群組與進階功能｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 5 / 40 · 2026-08-24</div>
+    <h1>Defender for Endpoint 部署：上線、裝置群組與進階功能</h1>
+    <p class="sub"><em>Deploying Microsoft Defender for Endpoint</em></p>
+    <div class="meta-row">
+      <span class="pill d1">D1 管理安全性作業環境</span>
+      <span class="pill ghost">40-45%</span>
+      <span class="pill ghost">P1-W1-5</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+    <div class="progress-text">五週速成進度 5 / 25 · 距離考試（2026-10-17）還有 54 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP4｜Mitigate threats using Microsoft Defender for Endpoint | SC-200 | Episode 4</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><div class='vm'>本日對應段落：<a href='https://youtu.be/e7UxqMgb1zk?t=600' target='_blank' rel='noopener'><span class='timestamp'>10:00</span></a> device groups、MDE onboarding、Live Response、<a href='https://youtu.be/e7UxqMgb1zk?t=2190' target='_blank' rel='noopener'><span class='timestamp'>36:30</span></a> device groups、device discovery、MDE onboarding、<a href='https://youtu.be/e7UxqMgb1zk?t=2670' target='_blank' rel='noopener'><span class='timestamp'>44:30</span></a> device groups、MDE onboarding、ASR rules</div><a class='vbtn' href='https://youtu.be/e7UxqMgb1zk' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">本日導讀：把裝置接進來，才有後面的一切</h2>
+<p>第一週最後一天，我們來部署 SOC 最重要的感測器：Microsoft Defender for Endpoint（MDE，微軟端點偵測與回應平台）。沒有上線（onboarding）的裝置就沒有遙測資料——警示不會產生、advanced hunting（進階搜捕）查不到東西、自動調查也無從啟動。所以考綱 D1 花了大量篇幅考「怎麼把裝置接進來、接進來之後怎麼分組治理」。今天從上線方式的決策開始，一路走到裝置群組與自動化層級、ASR 規則的 audit 先行策略、進階功能開關，最後釐清最容易混淆的「排除 vs 指標」。</p>
+<div class="info-box">學習目標（對應官方考綱 D1「管理安全性作業環境」條目）：
+<ul>
+<li>☐ 設定 Microsoft Defender for Endpoint 的<strong>進階功能</strong>（configure advanced features）</li>
+<li>☐ 設定端點規則設定，包含<strong>指標（indicators）與網頁內容篩選（web content filtering）</strong></li>
+<li>☐ 設定與管理<strong>裝置群組、權限與自動化層級</strong>（configure and manage device groups, permissions, and automation levels）</li>
+<li>☐ 識別並修正<strong>未受管理的裝置</strong>（identify and remediate devices that are not managed）</li>
+<li>☐ 為 Windows／macOS／Linux／VDI 等不同環境選出正確的<strong>上線方式</strong>，並以 audit 先行策略部署 <strong>ASR 規則</strong></li>
+</ul></div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP4 觀看重點指引</h2>
+<p>本單元對應官方影片 <strong>EP4「Mitigate threats using Microsoft Defender for Endpoint」</strong>（字幕尚未到位，先提供觀看指引；字幕匯入後會回補含時間碼的伴讀整理）。EP4 是 MDE 專門集，同時涵蓋今天的「部署與設定」以及第三週才會深入的「裝置回應」（隔離、live response）——今天先聚焦部署面。觀看時請帶著下面五個問題：</p>
+<ul>
+<li><strong>方案差異</strong>：講者示範的功能哪些是 P2 限定？聽到 EDR、live response、advanced hunting 這些字時，提醒自己「它們都不在 P1」。</li>
+<li><strong>上線示範</strong>：示範用的是哪一種上線方式？入口網站的上線頁面上還列出哪些部署工具選項？跟本文第 03 節的決策表對照。</li>
+<li><strong>裝置群組</strong>：建立裝置群組時設定了哪些比對條件與自動化層級？群組順位（rank）怎麼影響套用順序？</li>
+<li><strong>ASR 與網頁保護</strong>：規則是用 audit 還是 block 模式示範？網頁內容篩選原則指派到什麼範圍（提示：裝置群組）？</li>
+<li><strong>進階功能頁</strong>：把設定頁上的開關逐一對照本文第 06 節的清單——考試常直接考「要達成某件事，該開哪個開關」。</li>
+</ul>
+
+<div class="eyebrow">03 — 🧭 上線方式決策表</div>
+<h2 data-toc="上線方式">P1／P2 與上線方式：環境決定答案</h2>
+<p>先講方案。MDE 分 <strong>Plan 1（P1）</strong>與 <strong>Plan 2（P2）</strong>：P1 只有「預防端」——次世代防護、ASR、裝置控制、網頁保護與集中管理；<strong>P2 才有 SOC 真正吃飯的工具</strong>——EDR、自動調查與修復（AIR）、advanced hunting、即時回應（Live Response）、裝置探索（device discovery）、威脅分析與 Defender Vulnerability Management 核心功能。SC-200 的情境幾乎都假設 P2；若題目說某功能用不了、而環境只買了 P1，答案往往就是「需要 P2」。</p>
+<p>上線方式的考題模式非常固定：<strong>題幹描述環境，你選管道</strong>。把這張表背熟：</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>環境／情境</th><th>建議上線方式</th><th>考點備註</th></tr></thead>
+<tbody>
+<tr><td>AD 網域裝置＋已有 Configuration Manager</td><td>Microsoft Configuration Manager</td><td>大規模、可追蹤部署狀態，沿用既有管理通道</td></tr>
+<tr><td>AD 網域裝置、無 ConfigMgr</td><td>群組原則（GPO）</td><td>派送上線套件與設定；適合純地端網域</td></tr>
+<tr><td>Entra 加入、Intune 雲端管理</td><td>Intune（MDM）</td><td>以 EDR 原則自動帶入上線設定，雲端優先環境首選</td></tr>
+<tr><td>評估、測試、≤10 台</td><td>本機指令碼（local script）</td><td><strong>官方建議上限 10 台</strong>，正式大規模部署不選它</td></tr>
+<tr><td>非持續性 VDI（每次登入重建）</td><td>VDI 專用上線指令碼</td><td>放進母映像開機執行，避免同一虛擬機產生大量重複裝置記錄</td></tr>
+<tr><td>Windows Server</td><td>與用戶端相同通道，或由 Defender for Cloud 自動佈建</td><td>Server 2012 R2／2016 需先安裝新版統一代理程式</td></tr>
+<tr><td>macOS／行動裝置</td><td>Intune、JAMF Pro 或其他 MDM</td><td>macOS 也支援本機部署；iOS／Android 由 Intune 派送 App</td></tr>
+<tr><td>Linux 伺服器</td><td>安裝指令碼或 Ansible／Puppet／Chef</td><td>量大用組態管理工具，不會逐台手動安裝</td></tr>
+</tbody></table></div>
+<div class="point">💡 判斷口訣：<strong>看「誰在管這台機器」</strong>。ConfigMgr 管的用 ConfigMgr、Intune 管的用 Intune、沒人管的測試機才用本機腳本、每次開機都重生的 VDI 用 VDI 腳本。</div>
+
+<div class="eyebrow">04 — 🗂️ 裝置群組與自動化層級</div>
+<h2 data-toc="裝置群組">裝置群組：自動化與權限的邊界</h2>
+<p>裝置上線後，下一步是用<strong>裝置群組（device groups）</strong>治理。一個裝置群組同時決定三件事：</p>
+<ul>
+<li><strong>成員</strong>：依裝置名稱、網域、標籤（tag）、作業系統等條件自動比對。群組有<strong>順位（rank）</strong>，裝置由上往下比對，<strong>命中第一個就停</strong>；都沒中的落入預設的「未分組裝置」群組。</li>
+<li><strong>自動化層級（automation level）</strong>：這群裝置觸發自動調查（AIR）後，修復動作要不要人工核准。</li>
+<li><strong>RBAC 範圍</strong>：把 Entra ID 使用者群組指派給裝置群組，該團隊就只能看到、操作這一群裝置。</li>
+</ul>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>自動化層級</th><th>行為</th><th>適用</th></tr></thead>
+<tbody>
+<tr><td>Full — 自動修復威脅</td><td>AIR 判定惡意即自動修復，動作事後可復原</td><td><strong>官方建議值</strong>；一般工作站</td></tr>
+<tr><td>Semi — 任何修復都需核准</td><td>所有資料夾的修復動作都等人批准</td><td>網域控制站等高敏感伺服器</td></tr>
+<tr><td>Semi — 核心資料夾需核准</td><td>作業系統目錄要批准，其餘自動修復</td><td>折衷方案</td></tr>
+<tr><td>Semi — 非暫存資料夾需核准</td><td>暫存目錄自動修復，其餘要批准</td><td>折衷方案</td></tr>
+<tr><td>No automated response</td><td>完全不自動調查</td><td>官方明確不建議</td></tr>
+</tbody></table></div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>「何時選 full automation？」</strong>官方立場很清楚：full 是建議預設，因為修復動作可復原（undo）、且統計上誤修率低。題目問「工作站要最快遏制威脅、減少分析師負擔」→ 選 full；問「網域控制站、關鍵業務伺服器的修復要人工把關」→ 為這些伺服器<strong>建立獨立裝置群組</strong>並設 semi。陷阱選項常是「整個租用戶關閉自動化」——這永遠不是最佳解。另一個常見考法：不同群組要不同自動化層級，答案一定是「多個裝置群組＋各自的 automation level」，而不是改任何全域設定。</p></div>
+<div class="case-box"><div class="case-label">🧪 實戰情境：5,000 台混合環境的上線與分組規劃</div>
+<p>你接手一家 5,000 台裝置的公司：3,500 台 AD 網域加入的 Windows 工作站由 Configuration Manager 管理、1,200 台 Entra 加入的筆電由 Intune 管理、300 台 Linux 伺服器由 Ansible 管理，外加一座非持續性 VDI 農場。規劃如下——</p>
+<ol>
+<li><strong>上線分四條通道</strong>：ConfigMgr 工作站用 ConfigMgr 派送；Intune 筆電套 EDR 原則；Linux 用 Ansible 跑安裝指令碼；VDI 把專用腳本放進母映像。不要想用一招打天下。</li>
+<li><strong>先試點再放量</strong>：每條通道先抓一小圈裝置驗證遙測回報正常（本機腳本 ≤10 台正好當試點工具），再全面展開。</li>
+<li><strong>裝置群組</strong>：建「Servers-Linux」（semi：任何修復需核准）、「VDI」、「Workstations-ConfigMgr」與「Workstations-Intune」（full）等群組，用標籤與 OS 條件比對，伺服器群組順位放前面，避免被通用規則先接走。</li>
+<li><strong>RBAC 跟著群組走</strong>：伺服器團隊的 Entra ID 群組只指派到伺服器裝置群組；Tier 1 分析師只指派到工作站群組——誰能看什麼、動什麼，全由裝置群組界定。</li>
+</ol></div>
+
+<div class="eyebrow">05 — 🛡️ ASR 規則實戰</div>
+<h2 data-toc="ASR規則">攻擊面縮小（ASR）：audit 先行，再上 block</h2>
+<p>攻擊面縮小（ASR）規則封鎖「惡意軟體最愛的行為模式」，前提是 <strong>Microsoft Defender 防毒必須是主要防毒（主動模式）</strong>。每條規則可各自設定模式：<strong>Not configured／Audit（稽核：只記錄不阻擋）／Block（封鎖）／Warn（警告：使用者可自行放行，少數規則不支援）</strong>。常考規則先記這幾條：</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>常考 ASR 規則</th><th>防的是什麼</th><th>考點</th></tr></thead>
+<tbody>
+<tr><td>Block credential stealing from LSASS</td><td>從 LSASS 記憶體竊取認證（Mimikatz 類工具）</td><td>題幹出現「認證竊取」關鍵字選它</td></tr>
+<tr><td>Block all Office applications from creating child processes</td><td>Office 巨集啟動子處理程序</td><td>釣魚文件執行 PowerShell 的典型攻擊鏈</td></tr>
+<tr><td>Block executable content from email client and webmail</td><td>郵件與 webmail 夾帶可執行內容</td><td>郵件入侵向量</td></tr>
+<tr><td>Block process creations from PSExec and WMI commands</td><td>橫向移動常用工具</td><td><strong>與 Configuration Manager 用戶端不相容</strong>——經典陷阱</td></tr>
+<tr><td>Block untrusted and unsigned processes that run from USB</td><td>USB 帶進來的未簽章程式</td><td>實體入侵向量</td></tr>
+<tr><td>Use advanced protection against ransomware</td><td>勒索軟體行為特徵</td><td>需搭配雲端保護</td></tr>
+</tbody></table></div>
+<p><strong>部署策略只有一種正確答案：audit 先行</strong>。先讓規則全體以 audit 模式跑 2–4 週，用 ASR 報表與 advanced hunting 檢視「如果當時是 block 會擋掉什麼」，為誤擋的業務程式加上每規則排除，確認乾淨後再分圈切換成 block。一步到位全面 block 會打斷業務流程，是考題最愛放的錯誤選項。</p>
+<pre class="kql">DeviceEvents
+| where Timestamp &gt; ago(14d)
+| where ActionType startswith "Asr"
+| summarize Hits = count() by ActionType, FileName, FolderPath
+| order by Hits desc</pre>
+<div class="kql-note">逐行解說：<strong>DeviceEvents</strong> 是 MDE 的裝置行為事件表；<strong>ActionType startswith "Asr"</strong> 抓出所有 ASR 稽核／封鎖事件（例如 AsrLsassCredentialTheftAudited）；<strong>summarize count()</strong> 依規則、檔名、路徑統計命中次數；<strong>order by desc</strong> 讓「誤擋大戶」浮上來——audit 觀察期就是靠這條查詢決定哪些程式需要排除。</div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p>三個劇本涵蓋九成 ASR 考題：題幹說「導入 ASR 但<strong>不能影響使用者作業</strong>」→ 答案是 <strong>audit mode</strong>，不是 warn、也不是先做排除。題幹說「已在 audit 觀察數週、確認無誤擋，下一步？」→ 切換 <strong>block</strong>。題幹環境用 ConfigMgr 而用戶端突然故障 → 檢查是否把 <strong>PSExec／WMI 那條規則</strong>設成了 block。</p></div>
+
+<div class="eyebrow">06 — ⚙️ 進階功能與裝置探索</div>
+<h2 data-toc="進階功能">進階功能開關：考試最愛的那幾顆</h2>
+<p>「設定 &gt; 端點 &gt; 進階功能（advanced features）」是一整頁租用戶層級的開關，考題常直接考「要達成 X，該開哪個」：</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>開關</th><th>做什麼</th><th>考試劇本</th></tr></thead>
+<tbody>
+<tr><td><strong>Tamper protection（竄改防護）</strong></td><td>防止惡意軟體或本機管理員關閉防毒、即時保護等安全設定</td><td>「攻擊者停用了防毒」→ 開它；可由 Intune 集中管理</td></tr>
+<tr><td><strong>EDR in block mode</strong></td><td>第三方防毒當家（Defender 防毒處於被動模式）時，EDR 仍能攔截偵測到的惡意行為</td><td>「使用非微軟防毒也要有攔截力」→ 開它</td></tr>
+<tr><td><strong>Live Response</strong></td><td>允許分析師對裝置開啟即時回應工作階段；另有伺服器版與未簽章指令碼兩個相關開關</td><td>「無法對裝置啟動 live response」→ 先檢查這裡</td></tr>
+<tr><td><strong>Custom network indicators</strong></td><td>讓自訂 IP／URL／網域指標生效</td><td>「建了 URL 封鎖指標卻沒作用」→ 就是沒開這個</td></tr>
+<tr><td>Allow or block file</td><td>啟用檔案雜湊的封鎖指標（需 Defender 防毒主動模式＋雲端保護）</td><td>檔案指標的前提開關</td></tr>
+<tr><td>Automatically resolve alerts</td><td>AIR 判定「無威脅」時自動解決警示</td><td>減輕分診負擔</td></tr>
+</tbody></table></div>
+<p><strong>裝置探索（device discovery）</strong>負責找出網路裡還沒上線的裝置：<strong>Basic（基本）</strong>是被動模式，只分析已上線裝置收到的網路流量；<strong>Standard（標準，預設）</strong>會由上線裝置主動探測，找得更完整，是官方建議值。探索到的未受管理裝置，就是你的上線待辦清單：</p>
+<pre class="kql">DeviceInfo
+| summarize arg_max(Timestamp, *) by DeviceId
+| where OnboardingStatus == "Can be onboarded"
+| project DeviceName, OSPlatform, OnboardingStatus</pre>
+<div class="kql-note">用 <strong>arg_max</strong> 取每台裝置最新一筆回報（昨天學過的去重技巧），再篩出 <strong>OnboardingStatus == "Can be onboarded"</strong>——這些是被探索到、可上線但還沒上線的裝置。考綱「識別並修正未受管理的裝置」的實作就是這條查詢。</div>
+<p>最後是<strong>網頁保護</strong>：web threat protection 負責擋釣魚與惡意網站；<strong>web content filtering（網頁內容篩選）</strong>則是「依類別」封鎖（賭博、成人內容等），原則<strong>指派到裝置群組</strong>，且要在第三方瀏覽器生效必須開啟網路保護（network protection）。</p>
+
+<div class="eyebrow">07 — ⚖️ 排除 vs 指標</div>
+<h2 data-toc="排除與指標">排除 vs 指標：一個減負，一個控行為</h2>
+<div class="point">💡 <strong>一句話區分</strong>：<strong>排除（exclusions）</strong>是叫防毒「這個路徑／處理程序／副檔名不要掃」，目的是效能與相容性，屬於防毒掃描層；<strong>指標（indicators）</strong>是告訴整個 MDE「這個檔案雜湊／IP／URL／憑證要 Allow、Block（封鎖並修復）、Warn 或 Audit」，目的是精準控制偵測與回應行為。</div>
+<ul>
+<li><strong>誤判（false positive）處理</strong>：對已確認安全的內部工具建 <strong>Allow 檔案指標</strong>——它會抑制相關警示並放行執行。用排除只是「不掃描」，警示與封鎖未必消失，而且過寬的排除本身就是安全破口。</li>
+<li><strong>封鎖已知惡意網域</strong>：建 <strong>URL／網域的 Block 指標</strong>；前提是進階功能開了 custom network indicators、裝置啟用了網路保護。</li>
+<li><strong>效能場景才用排除</strong>：題目給「某資料庫軟體因即時掃描 I/O 效能變差」→ 這才是排除的正當場景，且應由 Intune 或 GPO 集中派送管理。</li>
+</ul>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">影片之外，考綱還要你會這些</h2>
+<ul>
+<li><strong>安全性設定管理（security settings management）</strong>：沒有註冊 Intune 的裝置（含 Windows Server、Linux），只要上線 MDE 就能接收 Intune 派送的防毒、防火牆、EDR 原則。考題關鍵字「未加入 Intune 的伺服器要套安全性原則」→ 選它，不必把伺服器真的註冊進 MDM。</li>
+<li><strong>裝置標籤（device tags）</strong>：可在入口網站手動加、也可用登錄機碼或組態設定檔大量貼標，是裝置群組比對條件之一——大規模分組前先設計標籤策略。</li>
+<li><strong>資料存放位置與保留</strong>：MDE 在租用戶初始化時就選定資料中心地理位置，<strong>事後無法變更</strong>；資料保留預設 180 天（advanced hunting 只能查最近 30 天的原始資料）。</li>
+<li><strong>排除的集中治理</strong>：防毒排除應由 Intune／GPO 集中派送，並可停用本機管理員自行合併排除（local admin merge），避免端點各自為政。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 延伸閱讀</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-endpoint/onboarding" target="_blank" rel="noopener">將裝置上線至 Microsoft Defender for Endpoint</a>——各作業系統×部署工具的完整對照，把今天的決策表讀成官方版。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-endpoint/machine-groups" target="_blank" rel="noopener">建立與管理裝置群組</a>——比對條件、順位與 RBAC 指派的操作細節。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-endpoint/automation-levels" target="_blank" rel="noopener">自動調查的自動化層級</a>——full 與三種 semi 的官方定義，以及為何建議 full。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-endpoint/attack-surface-reduction-rules-deployment" target="_blank" rel="noopener">ASR 規則部署指南</a>——計畫→測試（audit）→啟用（block）→維運的官方方法論。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-endpoint/advanced-features" target="_blank" rel="noopener">設定進階功能</a>——整頁開關的官方說明，考前把每個開關的用途唸一遍。</li>
+</ul>
+
+
+  <div class="eyebrow">10 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W1-5">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D1-0011</div><div class='q-stem'>You are a security operations analyst running a proof-of-concept evaluation of Microsoft Defender for Endpoint. You need to onboard eight Windows 11 devices. The pilot environment has no Microsoft Intune or Microsoft Configuration Manager infrastructure available. Which onboarding method should you use?</div><div class='q-zh'>（你是安全性作業分析師，正在為 Microsoft Defender for Endpoint 進行概念驗證評估，需要將 8 台 Windows 11 裝置上線。試點環境沒有 Microsoft Intune 或 Microsoft Configuration Manager 可用。你應該使用哪一種上線方式？）</div><div class='q-opt'><strong>A.</strong> Group Policy (GPO)<div style='font-size:12.5px;color:var(--muted)'>群組原則（GPO）</div></div><div class='q-opt'><strong>B.</strong> VDI onboarding script<div style='font-size:12.5px;color:var(--muted)'>VDI 專用上線指令碼</div></div><div class='q-opt'><strong>C.</strong> Local onboarding script<div style='font-size:12.5px;color:var(--muted)'>本機上線指令碼（local script）</div></div><div class='q-opt'><strong>D.</strong> Microsoft Configuration Manager<div style='font-size:12.5px;color:var(--muted)'>Microsoft Configuration Manager</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>本機上線指令碼是官方建議的評估與測試方式，適用上限約 10 台裝置——正好符合 8 台的概念驗證情境，且不需要任何管理基礎結構，登入裝置執行指令碼即可完成上線。</p><ul><li><strong>A</strong>：GPO 是網域環境的大規模派送通道，需要設定並連結原則物件；對只有 8 台的評估情境是多餘的工程，且本機指令碼才是官方對評估情境的建議做法。</li><li><strong>B</strong>：VDI 上線指令碼是給非持續性虛擬桌面（每次登入重建）用的，目的是避免重複裝置記錄；本題是一般實體裝置的評估，不適用。</li><li><strong>D</strong>：題幹明說環境沒有 Configuration Manager 可用；它適合已有此管理通道的大規模部署，不是評估情境的答案。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-endpoint/configure-endpoints-script' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D1-0012</div><div class='q-stem'>Your company hosts a non-persistent virtual desktop infrastructure (VDI) farm. Each virtual desktop is recreated from a master image at every user sign-in. After onboarding the desktops to Microsoft Defender for Endpoint with the standard local script, the device inventory fills up with duplicate device entries. What should you do?</div><div class='q-zh'>（公司使用非持續性 VDI（虛擬桌面基礎結構）農場，每台虛擬桌面在使用者每次登入時都會從母映像重建。用一般本機指令碼上線後，裝置清查出現大量重複的裝置記錄。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Onboard each session host manually with the local script after every rebuild<div style='font-size:12.5px;color:var(--muted)'>每次重建後，用本機指令碼手動重新上線每台工作階段主機</div></div><div class='q-opt'><strong>B.</strong> Use the dedicated VDI onboarding script in the master image so it runs at startup<div style='font-size:12.5px;color:var(--muted)'>在母映像中改用 VDI 專用上線指令碼，於開機時執行</div></div><div class='q-opt'><strong>C.</strong> Onboard the virtual desktops by using a Group Policy Object instead<div style='font-size:12.5px;color:var(--muted)'>改用群組原則物件（GPO）上線虛擬桌面</div></div><div class='q-opt'><strong>D.</strong> Enable device discovery in standard mode to deduplicate the entries<div style='font-size:12.5px;color:var(--muted)'>啟用標準模式的裝置探索（device discovery）來去除重複記錄</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>非持續性 VDI 必須使用 VDI 專用上線指令碼並放入母映像於開機時執行，讓每個重建的執行個體以單一裝置記錄回報，避免同一台虛擬機不斷產生新的裝置項目。</p><ul><li><strong>A</strong>：手動逐台重跑本機指令碼無法解決重複記錄的根因（每次重建都是「新裝置」），而且在每次登入都重建的環境中根本不可維運。</li><li><strong>C</strong>：GPO 只是換一種派送一般上線套件的通道，沒有處理非持續性 VDI 的重複記錄問題；問題出在上線套件類型，不是派送方式。</li><li><strong>D</strong>：裝置探索是用來找出網路上尚未上線的未受管理裝置，它不會合併或去除已上線裝置的重複記錄。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-endpoint/configure-endpoints-vdi' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D1-0013</div><div class='q-stem'>All devices in your Microsoft Defender for Endpoint tenant currently use the Full automation level. The server team requires that any automated remediation action on the domain controllers must be manually approved, while workstations must keep fully automated remediation. What should you do?</div><div class='q-zh'>（你的 Microsoft Defender for Endpoint 租用戶目前所有裝置都使用 Full 自動化層級。伺服器團隊要求：網域控制站上的任何自動修復動作都必須人工核准，而工作站要維持全自動修復。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Set the automation level to 'No automated response' for the tenant<div style='font-size:12.5px;color:var(--muted)'>將整個租用戶的自動化層級改為「No automated response」</div></div><div class='q-opt'><strong>B.</strong> Create an alert suppression rule for alerts generated on the domain controllers<div style='font-size:12.5px;color:var(--muted)'>為網域控制站產生的警示建立警示抑制規則</div></div><div class='q-opt'><strong>C.</strong> Turn off the 'Automatically resolve alerts' advanced feature<div style='font-size:12.5px;color:var(--muted)'>關閉進階功能中的「Automatically resolve alerts」</div></div><div class='q-opt'><strong>D.</strong> Create a device group for the domain controllers and set its automation level to 'Semi - require approval for any remediation'<div style='font-size:12.5px;color:var(--muted)'>為網域控制站建立裝置群組，並將其自動化層級設為「Semi - 任何修復都需核准」</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>自動化層級是跟著裝置群組走的設定。為網域控制站建立獨立裝置群組並設為 Semi（任何修復需核准），其餘工作站群組維持 Full，即可同時滿足兩種要求——這是「不同裝置要不同自動化行為」題型的標準答案。</p><ul><li><strong>A</strong>：整個租用戶關閉自動回應會讓工作站也失去全自動修復，違反題目要求，而且官方明確不建議 No automated response。</li><li><strong>B</strong>：警示抑制規則是隱藏已知無害的警示，不會改變自動調查與修復的核准行為，也會讓網域控制站的真實警示被埋掉。</li><li><strong>C</strong>：Automatically resolve alerts 只決定 AIR 判定「無威脅」時是否自動解決警示，與修復動作是否需要人工核准無關。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-endpoint/machine-groups' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D1-0014</div><div class='q-stem'>You plan to deploy attack surface reduction (ASR) rules to 4,000 devices. Management requires that line-of-business applications must not be disrupted while you evaluate the impact of the rules. What should you do first?</div><div class='q-zh'>（你計畫將攻擊面縮小（ASR）規則部署到 4,000 台裝置。管理層要求：在你評估規則影響期間，不得干擾業務應用程式的運作。你應該先做什麼？）</div><div class='q-opt'><strong>A.</strong> Enable the ASR rules in audit mode<div style='font-size:12.5px;color:var(--muted)'>以 audit（稽核）模式啟用 ASR 規則</div></div><div class='q-opt'><strong>B.</strong> Enable the ASR rules in block mode with folder exclusions for the applications<div style='font-size:12.5px;color:var(--muted)'>以 block（封鎖）模式啟用 ASR 規則，並為應用程式加上資料夾排除</div></div><div class='q-opt'><strong>C.</strong> Enable the ASR rules in warn mode<div style='font-size:12.5px;color:var(--muted)'>以 warn（警告）模式啟用 ASR 規則</div></div><div class='q-opt'><strong>D.</strong> Enable EDR in block mode from advanced features<div style='font-size:12.5px;color:var(--muted)'>在進階功能中啟用 EDR in block mode</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>audit 模式只記錄「如果啟用封鎖會擋到什麼」而不實際阻擋，是官方部署方法論的第一步：先稽核觀察、用報表與 advanced hunting 找出誤擋，加上必要排除後再切換到 block。題幹出現「不能影響業務」就是 audit 的訊號。</p><ul><li><strong>B</strong>：還沒評估就直接 block，等於在盲測中賭排除清單是否完整，任何遺漏都會立刻打斷業務流程，與題目要求相反。</li><li><strong>C</strong>：warn 仍會對使用者彈出封鎖提示（僅允許自行放行），已經干擾使用者作業，且部分 ASR 規則不支援 warn 模式；純評估影響要用 audit。</li><li><strong>D</strong>：EDR in block mode 是在第三方防毒為主、Defender 防毒處於被動模式時讓 EDR 攔截惡意行為的功能，與 ASR 規則的部署評估無關。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-endpoint/attack-surface-reduction-rules-deployment' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D1-0015</div><div class='q-stem'>You manage Microsoft Defender for Endpoint for an organization with 5,000 devices. Requirements: Tier 1 analysts must be able to view and manage alerts only for workstations; only the infrastructure team may take response actions on servers; server remediation must require manual approval while workstations remain fully automated. What should you configure to meet all requirements with the least administrative effort?</div><div class='q-zh'>（你管理一個 5,000 台裝置組織的 Microsoft Defender for Endpoint。需求：Tier 1 分析師只能檢視與管理工作站的警示；只有基礎架構團隊可以對伺服器執行回應動作；伺服器的修復需人工核准，工作站維持全自動。要以最少管理負擔滿足所有需求，你應該設定什麼？）</div><div class='q-opt'><strong>A.</strong> Assign both teams a directory-level security role and add device tags to the servers<div style='font-size:12.5px;color:var(--muted)'>為兩個團隊指派目錄層級的安全性角色，並為伺服器加上裝置標籤</div></div><div class='q-opt'><strong>B.</strong> Create separate device groups for workstations and servers with different automation levels, and assign each team's Entra ID user group to the corresponding device group<div style='font-size:12.5px;color:var(--muted)'>為工作站與伺服器建立不同自動化層級的獨立裝置群組，並將各團隊的 Entra ID 使用者群組指派到對應的裝置群組</div></div><div class='q-opt'><strong>C.</strong> Create two Microsoft Sentinel workspaces and route each team's device telemetry separately<div style='font-size:12.5px;color:var(--muted)'>建立兩個 Microsoft Sentinel 工作區，把兩個團隊的裝置遙測分開路由</div></div><div class='q-opt'><strong>D.</strong> Configure custom network indicators scoped to the server IP ranges<div style='font-size:12.5px;color:var(--muted)'>設定範圍限定在伺服器 IP 範圍的自訂網路指標</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>裝置群組同時解決三個需求：成員比對條件把工作站與伺服器分開、每個群組各自設定自動化層級（伺服器 Semi 需核准、工作站 Full）、再把各團隊的 Entra ID 使用者群組指派到對應裝置群組完成 RBAC 範圍界定——一項設定滿足權限與自動化的全部要求。</p><ul><li><strong>A</strong>：目錄層級角色無法把可見範圍限縮到特定裝置集合；裝置標籤只是群組比對條件的素材，單獨貼標不會產生權限邊界，也不能設定自動化層級。</li><li><strong>C</strong>：Sentinel 工作區是 SIEM 的資料界限，無法控制 Defender 入口網站中誰能對哪些裝置執行回應動作，也與 MDE 的自動化層級無關，且管理負擔遠大於裝置群組。</li><li><strong>D</strong>：自訂網路指標是用來允許或封鎖 IP／URL／網域的威脅指標功能，與權限範圍界定和自動化層級完全無關。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-endpoint/machine-groups' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP5</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><audio controls preload='none' src='../podcast/ep-005.mp3'></audio><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-005'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="5">
+    <label for="doneChk">我讀完 Day 5 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-004.html'>← Day 4</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-006.html'>Day 6 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 5 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

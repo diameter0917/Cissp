@@ -1,0 +1,17 @@
+{
+  "ep": "EP3",
+  "id": "5ln3fMECedU",
+  "url": "https://youtu.be/5ln3fMECedU",
+  "title": "Mitigate threats using Microsoft Purview | SC-200 | Episode 3",
+  "channel": "Microsoft Learn",
+  "duration_sec": 1999,
+  "duration_string": "33:19",
+  "upload_date": "20260504",
+  "language": "en-US",
+  "chapters": [],
+  "manual_sub_langs": [
+    "en"
+  ],
+  "auto_sub_has_zh_hant": true,
+  "description_head": "Episode 3 of 10\nFor the full video series, click here: https://aka.ms/SC-200onYouTube\n\nThis video introduces how Microsoft Purview supports security operations analysts in detecting, investigating, and mitigating organizational risks by unifying data protection, insider risk management, auditing, and eDiscovery capabilities. Learners explore how Purview’s Data Loss Prevention, Insider Risk Management, Audit, and eDiscovery solutions help identify sensitive information, monitor risky behavior, investigate alerts, and respond to potential data loss or misuse, all while maintaining compliance and governance standards. The path emphasizes practical investigation workflows—reviewing DLP alerts, managing insider risk cases, analyzing audit logs, and searching organizational content—while aligning these skills with the responsibilities measured in the SC‑200: Microsoft Security Operations Analyst certification.\n\nLearn more about this course and take the certification exam to test your new skills: https://aka.ms/SC-200onLearn"
+}

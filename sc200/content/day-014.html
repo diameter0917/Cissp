@@ -1,0 +1,113 @@
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">九成的入侵，從一封信開始</h2>
+<p>昨天我們守住了裝置，今天把戰場搬到信箱。統計上壓倒性多數的入侵是從一封釣魚郵件起頭的，所以考綱 D2「回應安全性事件（Respond to security incidents）」35–40% 裡，Microsoft Defender for Office 365（MDO）擁有一塊獨立戰區。今天做四件事：先看懂<strong>保護層架構</strong>（EOP 內建過濾 → Plan 1 預防 → Plan 2 調查回應）；再學會用 <strong>Threat Explorer（威脅總管）</strong>追出一波攻擊活動（campaign）的完整範圍；然後把<strong>修復動作</strong>（soft delete vs hard delete）與所需權限（Search and Purge）背到反射等級；最後認識兩個自動化幫手——ZAP 事後清除與 AIR 自動調查——加上使用者提交與租用戶允許/封鎖清單的管理。昨天 MDE 是裝置的急診室，今天 MDO 就是信箱的急診室。</p>
+<p><strong>學習目標</strong>（對應官方 study guide D2「調查並修復由 Microsoft Defender for Office 365 識別的威脅」）：</p>
+<ul>
+  <li>☐ 分辨 EOP、MDO Plan 1、MDO Plan 2 三層保護的能力邊界，說明 Safe Attachments 與 Safe Links 的運作原理</li>
+  <li>☐ 使用 Threat Explorer 與即時偵測（Real-time detections）篩選郵件、判讀郵件流向與 campaign views</li>
+  <li>☐ 依情境選擇正確修復動作（移至垃圾郵件／soft delete／hard delete），並說出執行所需的 Search and Purge 角色</li>
+  <li>☐ 說明 ZAP（zero-hour auto purge）與 email AIR 各自的觸發時機、行為與差異</li>
+  <li>☐ 管理使用者提交（user submissions）與租用戶允許/封鎖清單（Tenant Allow/Block List），說出 override 優先序</li>
+</ul>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP1 的 MDO 段落觀看重點</h2>
+<div class="info-box">📌 EP1 字幕尚未到位，本節先寫成「觀看重點指引」；字幕抓取完成後會回補逐段時間碼（格式如 <span class="timestamp">EP1 18:20</span>）。MDO 在官方學習路徑上屬於「Mitigate threats using Microsoft Defender XDR」的一部分，所以它的影片段落就在 EP1 裡。</div>
+<p>EP1 是 Defender XDR 的總覽，MDO 只是其中一段，不會深入操作細節——細節由本文補齊，影片負責幫你建立「郵件訊號在 XDR 大局裡的位置」。帶著三個任務去看：</p>
+<ul>
+  <li><strong>任務一：認入口。</strong>留意 Defender 入口網站的 Email &amp; collaboration 區塊——Explorer、Submissions（提交）、Campaigns、Attack simulation training、Policies &amp; rules 都住在這一區。不用背點擊路徑，但要建立「郵件的事都來這裡辦」的空間感。</li>
+  <li><strong>任務二：看事件如何長出「郵件維度」。</strong>注意講者展示的事件（incident）裡，MDO 警示（例如「已於傳遞後移除含惡意 URL 的郵件」）如何與 MDE、MDI 的警示自動關聯成同一起事件——釣魚信往往就是整條攻擊鏈的第一格。順便看一眼 email entity page（電子郵件實體頁面），今天調查章節會重用它。</li>
+  <li><strong>任務三：帶著詞彙表去聽。</strong>聽到 Safe Links、detonation（引爆）、ZAP、remediation（修復）這些詞就在心裡打勾，看完後對照本文檢查自己是否能各用一句話解釋。</li>
+</ul>
+<div class="point">EP1 一部影片被本週多個單元共用（XDR 總覽、MDO、MDI），每次只取用它的一段。今天只需要重看與郵件、協作威脅相關的段落即可。</div>
+
+<div class="eyebrow">03 — 🛡️ MDO 保護層架構</div>
+<h2 data-toc="保護層">EOP、Plan 1、Plan 2：三層疊加的防線</h2>
+<p>郵件防護是「層層疊加」的架構：只要信箱在 Exchange Online，就內建 <strong>EOP（Exchange Online Protection）</strong>這層基礎過濾；<strong>MDO Plan 1</strong> 在其上疊加預防性的進階防護；<strong>Plan 2</strong> 再疊上調查、回應與模擬訓練的完整工具箱。考試最愛考「這個功能是哪一層的」，先把這張表刻進腦裡：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>層級</th><th>取得方式</th><th>核心能力</th><th>代表功能</th></tr></thead>
+  <tbody>
+    <tr><td><strong>EOP</strong></td><td>所有含 Exchange Online 信箱的訂閱內建</td><td>郵件流過濾：連線過濾、反垃圾郵件、反惡意程式碼、基本反釣魚</td><td>隔離區（quarantine）、<strong>ZAP</strong>、允許/封鎖清單、輸出垃圾郵件防護</td></tr>
+    <tr><td><strong>MDO Plan 1</strong></td><td>Microsoft 365 Business Premium、E5 Security 或加購</td><td>預防：附件沙箱引爆、點擊時連結檢查、進階反釣魚（偽冒防護、信箱智慧）</td><td><strong>Safe Attachments、Safe Links</strong>、SharePoint/OneDrive/Teams 檔案防護、即時偵測（Real-time detections）</td></tr>
+    <tr><td><strong>MDO Plan 2</strong></td><td>Microsoft 365 E5／A5 或加購（含 Plan 1 全部功能）</td><td>調查與回應：搜捕、攻擊活動聚合、自動調查、韌性訓練</td><td><strong>Threat Explorer、Campaign Views、AIR</strong>、Attack simulation training、進階搜捕的郵件資料表</td></tr>
+  </tbody>
+</table>
+</div>
+<p>Plan 1 的兩個招牌要能講出原理。<strong>Safe Attachments（安全附件）</strong>：附件在送達前先丟進虛擬沙箱環境「引爆（detonation）」，觀察實際行為而不是只比對特徵碼，專抓零時差惡意附件；政策動作有 Monitor、Block，以及 Dynamic Delivery——先把信件本文送給收件者，附件掃完再補上，兼顧安全與收信速度。<strong>Safe Links（安全連結）</strong>：把郵件中的 URL 改寫，在<strong>點擊當下</strong>再驗證一次。為什麼寄達時掃過還不夠？因為攻擊者會玩「延遲武裝（delayed weaponization）」——寄信時 URL 指向乾淨頁面，通過過濾後幾小時才換成釣魚頁。time-of-click 檢查就是為這招而生，且防護延伸到 Teams 與 Office 應用程式內的連結；可疑 URL 也會被送去引爆分析。</p>
+<div class="point"><strong>一句話記憶：</strong>EOP 擋「已知的壞」（特徵與信譽過濾），Plan 1 擋「未知的壞」（引爆與點擊時檢查），Plan 2 給你「事後調查與回應的手術台」。</div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>功能歸屬判斷題</strong>是 MDO 的送分題兼陷阱題：Real-time detections 是 <strong>Plan 1</strong> 的縮水版查詢工具，Threat Explorer 是 <strong>Plan 2</strong> 專屬；題幹出現 campaign views、AIR、attack simulation training、進階搜捕的 EmailEvents 資料表——一律 Plan 2。經典陷阱：「不加購 MDO，能不能自動移除已送達後才被判定為垃圾郵件的信？」——<strong>可以</strong>，ZAP 是 EOP 內建功能，人人都有。</p></div>
+
+<div class="eyebrow">04 — 🔬 Threat Explorer 調查實戰</div>
+<h2 data-toc="調查實戰">郵件的 X 光機：篩選、判讀、追 campaign</h2>
+<p>Threat Explorer 讓你看見全組織的郵件流向，是 D2 郵件調查的主力工具。它提供多種檢視：所有電子郵件、惡意程式碼、網路釣魚、<strong>Campaigns</strong>、內容惡意程式碼（SharePoint/OneDrive/Teams 檔案）、URL 點擊，資料回溯最長 30 天。實戰的篩選思路是一條固定的漏斗：</p>
+<ul>
+  <li><strong>第一步：從已知線索撈同類。</strong>拿到一封回報的釣魚信，用寄件者位址、寄件者網域、主旨關鍵字、URL 網域或附件 SHA256 當篩選條件，把同一波的所有郵件撈出來。</li>
+  <li><strong>第二步：判讀流向。</strong>看兩個關鍵欄位——<strong>傳遞動作（delivery action）</strong>：Delivered（已傳遞）、Junked（進垃圾郵件）、Blocked（已封鎖）、Replaced（附件被取代）；與<strong>最新傳遞位置（latest delivery location）</strong>：收件匣、垃圾郵件、隔離區、已刪除郵件。之所以叫「最新」，是因為 ZAP 或管理員動作可能已經事後搬移過。</li>
+  <li><strong>第三步：鎖定高風險集合。</strong>「Delivered＋還在收件匣」的郵件就是待修復對象；再交叉 URL 點擊檢視，找出「不只收到、還點了」的使用者，優先處置。</li>
+  <li><strong>第四步：直接行動。</strong>在 Explorer 勾選郵件→「採取動作（Take action）」，進入下一節的修復流程。</li>
+</ul>
+<p>單封郵件的深入判讀交給 <strong>email entity page</strong>：它彙整訊息追蹤（message trace）的傳遞路徑、完整標頭與 URL 引爆結果。標頭分析抓三個重點：<code>X-Forefront-Antispam-Report</code> 裡的 <strong>SCL</strong>（垃圾郵件信賴等級）與 <strong>CAT</strong>（判定類別：PHSH 釣魚、HPHSH 高信賴度釣魚、MALW 惡意程式碼、SPOOF 詐騙、BULK 大量郵件）；<code>Authentication-Results</code> 裡的 SPF／DKIM／DMARC 與複合驗證（compauth）結果——驗證全掛的「合作夥伴來信」多半是偽冒。URL detonation 結果則會呈現引爆鏈、沙箱截圖與觀察到的行為，幫你把「這網址很可疑」升級成「這網址確認惡意」。</p>
+<p><strong>Campaign Views（Plan 2）</strong>把上述苦工自動化：MDO 用機器學習把同一攻擊行動的郵件聚合成一個 campaign，一頁呈現時間線、寄件 IP 與網域、使用的 URL、多少人收到、多少人點擊。以前要自己用篩選器拼的圖，現在打開就是全貌——判斷「這波打得多廣」的最快路徑。</p>
+<p>有 Plan 2 就同時解鎖進階搜捕的郵件資料表，同一件事也能用 KQL 做，而且能跨表關聯：</p>
+<pre class="kql">EmailEvents
+| <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(<span class="n">48h</span>)
+| <span class="k">where</span> SenderFromDomain == <span class="s">"payr0ll-contoso.com"</span>
+| <span class="k">project</span> Timestamp, NetworkMessageId, RecipientEmailAddress,
+          Subject, DeliveryAction, DeliveryLocation, ThreatTypes
+| <span class="k">join kind</span>=leftouter (EmailPostDeliveryEvents
+    | <span class="k">project</span> NetworkMessageId, ActionType, ActionResult)
+    <span class="k">on</span> NetworkMessageId</pre>
+<p class="kql-note">第 1–2 行：從 EmailEvents（每封郵件一筆）撈過去 48 小時、寄件網域是偽冒薪資網域的信。第 3 行：留下調查要用的欄位——NetworkMessageId 是跨郵件資料表關聯的鑰匙。第 4 行起：left join 到 EmailPostDeliveryEvents（<strong>傳遞後</strong>發生的事件表），若某封信事後被 ZAP 或管理員修復搬走，ActionType 會告訴你——沒有比對到的信就是「還躺在信箱裡」的修復對象。這些郵件資料表都是 MDO Plan 2 才有。</p>
+
+<div class="eyebrow">05 — 🧹 修復動作矩陣</div>
+<h2 data-toc="修復動作">選對動作：soft delete、hard delete 與權限</h2>
+<p>從 Explorer 勾選郵件按下「採取動作」（或核准 AIR 的建議）後，你要在幾種修復動作中做選擇。批次修復支援一次對整波 campaign 的大量郵件執行，進度與結果在動作中心（Action Center）追蹤。每個動作的差異就是考點本身：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>動作</th><th>郵件去向</th><th>使用者可否復原</th><th>典型情境</th></tr></thead>
+  <tbody>
+    <tr><td>移至垃圾郵件資料夾（move to junk）</td><td>使用者的垃圾郵件資料夾</td><td>可（自行移回）</td><td>低風險垃圾郵件、灰色郵件</td></tr>
+    <tr><td>移至刪除的郵件（move to deleted items）</td><td>使用者的刪除的郵件資料夾</td><td>可（自行移回）</td><td>使用者仍需自行檢視的可疑信</td></tr>
+    <tr><td><strong>虛刪除（soft delete）</strong></td><td>可復原刪除項目（Recoverable Items）</td><td><strong>可</strong>（使用者或管理員救回）</td><td>釣魚修復的預設選擇——清出信箱又保留還原與存證餘地</td></tr>
+    <tr><td><strong>實刪除（hard delete）</strong></td><td>永久清除</td><td><strong>不可</strong></td><td>惡意程式碼、法遵要求徹底移除的內容</td></tr>
+    <tr><td>移回收件匣（move to inbox）</td><td>收件匣</td><td>—</td><td>誤判修復後的還原動作</td></tr>
+  </tbody>
+</table>
+</div>
+<p>權限是另一半考點：從 Explorer 或動作中心對郵件執行（或核准）上述修復，需要 <strong>Search and Purge</strong> 角色——它屬於 Defender 入口網站的 Email &amp; collaboration 權限體系，預設包含在 <strong>Data Investigator</strong> 與 <strong>Organization Management</strong> 角色群組中。</p>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>soft vs hard delete 的判斷句型</strong>：題幹說「若屬誤判，使用者必須能夠復原郵件」→ <strong>soft delete</strong>（進可復原刪除項目）；說「必須確保使用者無法復原」→ <strong>hard delete</strong>。<strong>權限陷阱</strong>：分析師擁有 Security Administrator（或 Security Operator）角色卻按不動刪除——因為這些 Entra ID 角色<strong>不會自動附帶</strong> Search and Purge；Security Reader 更是只能看不能動。看到「需要什麼<strong>額外</strong>權限才能清除郵件」，答案幾乎都是 Search and Purge。</p></div>
+
+<div class="eyebrow">06 — ⚡ ZAP 與 AIR</div>
+<h2 data-toc="ZAP 與 AIR">事後追殺與自動調查</h2>
+<p>過濾再強也有漏網之魚——判定是用「當下」的情報做的，而情報會更新。MDO 用兩個機制處理「信已經進了信箱」的殘局：</p>
+<div class="point"><strong>ZAP（zero-hour auto purge，零時差自動清除）</strong>：EOP 內建的「自動反悔」機制。郵件<strong>送達之後</strong>，微軟的威脅情報更新、發現它其實是垃圾郵件／釣魚／惡意程式碼時，ZAP 會回頭把已在信箱裡的信依政策搬走——垃圾郵件移到垃圾郵件資料夾，釣魚與惡意程式碼移入隔離區。全程無人參與、只對 Exchange Online 雲端信箱有效；Teams 訊息的 ZAP 防護則屬於 MDO Plan 2。調查時的足跡：進階搜捕的 EmailPostDeliveryEvents 會記到 ActionType 為 ZAP 的事件，「已於傳遞後移除郵件」類警示也由此而來。</div>
+<div class="point"><strong>email AIR（automated investigation and response，自動調查與回應）</strong>（Plan 2）：由警示觸發（例如「使用者回報網路釣魚」「使用者點擊惡意 URL」），或由分析師從 Explorer 手動對郵件發動調查。AIR 以該封信為根，自動找出<strong>相似郵件（email cluster）</strong>、圈出<strong>受影響使用者</strong>、檢查誰點了連結誰轉寄了信，最後產出建議動作。關鍵：email AIR 的修復建議<strong>不會自動執行</strong>，全部送進動作中心等待有 Search and Purge 權限的人核准——「自動調查、人工核准」。</div>
+<p>兩者的分工一句話收束：<strong>ZAP 是單封信層級的自動反悔，秒級、無人參與；AIR 是事件層級的調查助理，把「找相似、圈影響」的苦工做完，把「按下刪除」的決定權留給人。</strong>考題若描述「郵件自動消失、無任何人核准」→ ZAP；描述「系統列出相似郵件與受影響使用者、等待核准」→ AIR。</p>
+
+<div class="eyebrow">07 — 🚦 允許與封鎖清單</div>
+<h2 data-toc="允許封鎖">Tenant Allow/Block List：組織級的門禁</h2>
+<p>確認威脅之後要「以後都別再進來」，用的是<strong>租用戶允許/封鎖清單（Tenant Allow/Block List，TABL）</strong>——在威脅原則（Threat policies）的規則區管理。可封鎖的實體：<strong>網域與電子郵件地址、偽冒寄件者（spoofed senders）、URL、檔案（SHA256 雜湊）、IP</strong>。封鎖項目在郵件流當下即生效——被封鎖寄件者的來信直接判死，不必等它進信箱再清。</p>
+<p>允許方向則刻意設計得「不順手」：多數類型的允許項目<strong>不能直接手動建立</strong>，必須透過提交（Submissions）流程回報誤判——你把被誤殺的信、URL 或附件提交給 Microsoft 並勾選「允許」，系統確認後才建立<strong>暫時性</strong>允許項目（預設 30 天，可設定為最後一次使用後 45 天移除）。理由很務實：允許是高風險操作，過濾器一旦放行就全放行；讓允許自動過期，才不會累積成永久後門。</p>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>override 優先序</strong>三條鐵律：（1）<strong>封鎖永遠贏過允許</strong>——TABL 封鎖壓過使用者的安全寄件者清單與任何其他允許設定；（2）<strong>惡意程式碼與高信賴度釣魚（high confidence phishing）的判定不能被一般允許蓋過</strong>——安全寄件者清單、郵件流程規則（設 SCL−1）都救不出來；（3）要放行被誤判的信，正規解是<strong>經由 Submissions 建立 TABL 允許</strong>。考題句型：「使用者已把寄件者加入安全寄件者清單，郵件仍進隔離區，為什麼？」→ 高信賴度釣魚判定壓過使用者層級允許；「應該怎麼做？」→ 管理員提交誤判、建立允許項目。</p></div>
+<div class="case-box"><div class="case-label">💼 實戰情境</div><p>週二 08:47，CEO 透過 Outlook 的回報按鈕回報一封「董事會急件」——附了要求輸入認證的連結，警示「Email reported by user as malware or phish」跳出，AIR 隨之自動起跑。你是值班分析師：<strong>①</strong> 打開 Threat Explorer，用寄件網域 <code>b0ard-secure.com</code> 與主旨關鍵字篩選，撈出同一波共 63 封信；切到 campaign view 確認就是同一個 campaign，其中 58 封 Delivered、還在收件匣。<strong>②</strong> URL 點擊檢視顯示 4 位使用者點了連結——優先名單成形。<strong>③</strong> 全選 58 封→採取動作→<strong>批次 soft delete</strong>（法務可能要調查原信，保留復原能力；你有 Search and Purge，動作進動作中心執行）。<strong>④</strong> 到 Submissions 把樣本提交給 Microsoft，並在 TABL <strong>封鎖寄件網域與釣魚 URL</strong>，斷掉後續來信。<strong>⑤</strong> 對 4 位點擊者：強制重設密碼與撤銷工作階段、檢查 MDE 上有無後續警示，並比對 AIR 圈出的受影響使用者清單，核准其餘建議動作。<strong>⑥</strong> 事後在 EmailPostDeliveryEvents 驗證清理足跡，並把這個網域樣式加入自訂偵測。從回報到封鎖，20 分鐘內收工——這條流程就是考題最愛的敘事骨架。</p></div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">影片沒講到的考綱角落</h2>
+<p>EP1 以 XDR 總覽為主，下列考綱項目影片著墨不多，但都在 D2 的射程內：</p>
+<ul>
+  <li><strong>使用者提交的管理面：</strong>使用者回報靠 Outlook 內建的回報按鈕（回報網路釣魚／垃圾郵件），管理員可在「使用者回報設定」決定回報送往 Microsoft、自訂信箱或兩者。Submissions 頁面是管理員的審核台：檢視使用者回報、把郵件／URL／附件轉交 Microsoft 重新分析、直接從回報建立 TABL 封鎖或允許項目，並回覆結果通知使用者。使用者回報也是 AIR 的重要觸發源——別把它當客服工單，它是偵測訊號。</li>
+  <li><span class="badge-2026">2026 新考點</span> <strong>Security Copilot 的釣魚分診代理（Phishing Triage Agent）：</strong>agentic AI 的落地場景之一——自動分診使用者回報的可疑郵件，判定誤報並附上推理說明，讓分析師只看真正可疑的那一小撮。考試層級只需知道它「解決使用者回報量大、誤報多」的痛點。</li>
+  <li><strong>Attack simulation training（Plan 2）：</strong>用無害的模擬 payload 對自家使用者發動假釣魚——技術涵蓋認證收集、惡意附件、連結到惡意檔案、偽裝 URL（drive-by）、OAuth 同意授權等；中招者自動被指派訓練課程，報表呈現組織的易受騙率與訓練完成度。考點定位：它是<strong>事前的韌性訓練工具</strong>，不是偵測或修復工具——題目要「降低使用者點擊釣魚連結的機率」選它，要「移除已送達的釣魚信」不選它。</li>
+  <li><strong>預設安全性原則：</strong>MDO 提供 Standard 與 Strict 兩組微軟代管的預設原則，以及涵蓋所有人的內建保護（built-in protection）。實務與考試的共同建議：先用預設原則打底，客製原則只留給真正的例外。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深入連結</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-office-365/mdo-about" target="_blank" rel="noopener">Microsoft Defender for Office 365 概觀</a>——讀 EOP／Plan 1／Plan 2 的功能分層表，對照本文的保護層矩陣。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-office-365/threat-explorer-real-time-detections-about" target="_blank" rel="noopener">Threat Explorer 與即時偵測</a>——讀兩者的能力差異與各檢視的用途，考「P1 還是 P2」就靠它。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-office-365/remediate-malicious-email-delivered-office-365" target="_blank" rel="noopener">修復已傳遞的惡意電子郵件</a>——讀 soft delete 與 hard delete 的正式定義、批次修復流程與 Search and Purge 權限要求。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-office-365/zero-hour-auto-purge" target="_blank" rel="noopener">零時差自動清除（ZAP）</a>——讀垃圾郵件／釣魚／惡意程式碼三種情境下 ZAP 各把郵件搬去哪裡。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-office-365/tenant-allow-block-list-about" target="_blank" rel="noopener">租用戶允許/封鎖清單</a>——讀可管理的實體類型、允許項目為何要經由提交建立與到期機制。</li>
+</ul>

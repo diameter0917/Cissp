@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SC-200 刷題</title>
+<link rel="stylesheet" href="assets/sc200.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead" id="qHeader">
+    <div class="kicker">SC-200 · 刷題 APP</div>
+    <h1 id="qTitle">選擇練習模式</h1>
+    <p class="sub" id="qSub">題庫載入中…</p>
+  </header>
+
+  <!-- 模式選單 -->
+  <div id="viewHome">
+    <div class="quiz-modes" id="modeCards"></div>
+    <div class="info-box">
+      💡 <strong>建議節奏</strong>：速成期（W1–W5）每天做完當日單元自測後，用「依單元」補刷；
+      刷題期（W6–W8）按儀表板排程走——領域題組 → 混合 → 模擬考 → 錯題殲滅。
+      答錯的題目會自動進「錯題本」，連續答對 2 次才會移出。
+    </div>
+    <div class="controls">
+      <span class="chip" id="langToggle">題幹語言：中英對照</span>
+      <a class="chip" href="index.html" style="text-decoration:none">← 回儀表板</a>
+    </div>
+  </div>
+
+  <!-- 作答視圖 -->
+  <div id="viewQuiz" class="hide">
+    <div class="quiz-topbar">
+      <span class="qt-pos" id="qPos"></span>
+      <span class="qt-timer hide" id="qTimer"></span>
+      <span>
+        <button class="qbtn" id="btnPrev">← 上一題</button>
+        <button class="qbtn" id="btnNext">下一題 →</button>
+        <button class="qbtn warn hide" id="btnSubmitMock">交卷</button>
+        <button class="qbtn" id="btnQuit">結束</button>
+      </span>
+    </div>
+    <div class="q-card" id="qBody"></div>
+  </div>
+
+  <!-- 結果視圖 -->
+  <div id="viewResult" class="hide"></div>
+
+  <footer class="colophon">
+    SC-200 刷題 App · <a href="index.html">儀表板</a> · 資料存於此裝置瀏覽器（localStorage）
+  </footer>
+</div>
+<script src="assets/quiz.js"></script>
+</body>
+</html>

@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 15｜身分識別威脅：Defender for Identity 與 Entra ID Protection｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 15 / 40 · 2026-09-07</div>
+    <h1>身分識別威脅：Defender for Identity 與 Entra ID Protection</h1>
+    <p class="sub"><em>Identity Threats: MDI & Entra ID Protection</em></p>
+    <div class="meta-row">
+      <span class="pill d2">D2 回應安全性事件</span>
+      <span class="pill ghost">35-40%</span>
+      <span class="pill ghost">P1-W3-5</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+    <div class="progress-text">五週速成進度 15 / 25 · 距離考試（2026-10-17）還有 40 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP1｜Mitigate threats using Microsoft Defender XDR | SC-200 | Episode 1</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/8gCUtYEpTe8' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">攻擊者不是駭進來的，是登入進來的</h2>
+<p>這一週守了裝置、守了信箱，今天守的是把所有資源串起來的那條線——身分。現代入侵幾乎都長同一個樣子：先釣到一組帳密，再在網域裡東翻西找、偷票證、跳機器，最後拿下網域管理員；整條路上多半沒有惡意程式，只有「看似完全合法的驗證行為」。防毒攔不住合法登入，所以考綱 D2「回應安全性事件」給了身分兩個專屬武器：地端 Active Directory 交給 <strong>Microsoft Defender for Identity（MDI）</strong>，雲端交給 <strong>Microsoft Entra ID Protection</strong>。今天釘死四件事：感應器裝哪、攻擊鏈每階段亮什麼燈、兩邊能按哪些回應按鈕，以及最常被混淆的「使用者風險 vs 登入風險」。</p>
+<p><strong>學習目標</strong>（對應官方 study guide D2「調查並修復由 Microsoft Defender for Identity 識別的威脅」與「調查並修復 Microsoft Entra ID Protection 中的身分風險」）：</p>
+<ul>
+  <li>☐ 說明 MDI 感應器的部署位置（網域控制站、AD FS、AD CS）、目錄服務帳戶用途與 XDR 整合</li>
+  <li>☐ 依攻擊鏈階段（偵察 → 認證竊取 → 橫向移動 → 網域支配）判讀 MDI 警示代表的攻擊技術</li>
+  <li>☐ 用橫向移動路徑（lateral movement paths）評估帳戶曝險，依身分安全態勢（ISPM）建議修補</li>
+  <li>☐ 對遭盜用身分執行正確回應：停用使用者、密碼重設、暫停帳戶、確認遭入侵</li>
+  <li>☐ 分辨使用者風險與登入風險，設定風險型條件式存取政策並調查、關閉風險</li>
+</ul>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP1 的身分段落觀看重點</h2>
+<div class="info-box">📌 EP1 字幕尚未到位，本節先寫成「觀看重點指引」，字幕抓取完成後回補時間碼（格式如 <span class="timestamp">EP1 24:05</span>）。MDI 屬於學習路徑「Mitigate threats using Microsoft Defender XDR」的一環，段落與 MDE、MDO 同在 EP1；Entra ID Protection 影片幾乎不談，由核心章節補齊。</div>
+<p>EP1 是 XDR 總覽，重點不在操作而在「訊號如何匯流」。帶三個任務去看：</p>
+<ul>
+  <li><strong>任務一：看身分警示如何併進事件。</strong>一條完整攻擊故事通常是 MDO 的釣魚信、MDE 的可疑處理程序、MDI 的「可疑身分竊取」被關聯成同一起事件。身分警示很少單獨成案，它是攻擊鏈的中段。</li>
+  <li><strong>任務二：認使用者實體頁面。</strong>影片點開的 user entity page 同時有 MDI 的地端活動、Entra 的風險等級與回應動作，第 05 節會重用這一頁。</li>
+  <li><strong>任務三：帶詞彙表去聽。</strong>聽到 sensor、lateral movement path、pass-the-ticket、golden ticket、risky user 就打勾，看完檢查能否各用一句話解釋。</li>
+</ul>
+<div class="point">EP1 被本週三個單元共用，今天只重看身分相關段落。影片沒示範 Entra ID Protection 的風險報表，但它在考題的出現頻率比 MDI 還高。</div>
+
+<div class="eyebrow">03 — 🛰️ MDI 架構與部署</div>
+<h2 data-toc="MDI 架構">感應器裝在哪、靠什麼看見攻擊</h2>
+<p>MDI 沒有雲端 API 可以直接讀你的網域，必須<strong>把感應器（sensor）裝進伺服器</strong>——架構題的第一個考點：感應器直接安裝在<strong>網域控制站</strong>上，另外支援 <strong>AD FS（同盟服務）</strong>、<strong>AD CS（憑證服務）</strong>與 Entra Connect 伺服器。裝在 DC 是因為所有 Kerberos／NTLM 驗證、LDAP 查詢與目錄複寫都要經過它；裝在 AD FS 是為了看見同盟登入的暴力破解；AD CS 則盯憑證範本濫用。感應器輕量、自我更新，不必另備伺服器或做網路埠鏡像（早期的 standalone sensor 與 port mirroring 已淘汰）。</p>
+<p>感應器吃<strong>三種訊號</strong>：本機<strong>網路流量</strong>（解析 Kerberos、NTLM、DNS、LDAP）、<strong>Windows 安全性事件</strong>（需開進階稽核，例如物件存取稽核產生的 4662 是 DCSync 偵測關鍵）、以及對目錄的 <strong>LDAP 查詢</strong>（把帳戶群組解析成實體、判斷誰是敏感帳戶）。第三種需要能唯讀查詢網域的<strong>目錄服務帳戶（DSA）</strong>，官方建議用 <strong>gMSA</strong>，密碼由 AD 自動輪替。資料上傳雲端後，警示落進 Defender 入口網站並關聯成 XDR 事件；原始活動進入進階搜捕的 <strong>IdentityLogonEvents、IdentityQueryEvents、IdentityDirectoryEvents</strong> 三張表。</p>
+<div class="point"><strong>一句話架構圖：</strong>感應器（DC／AD FS／AD CS）解析驗證流量與事件 → 用 DSA 補查目錄 → 上傳雲端 → 警示進 XDR 事件、活動進 Identity* 搜捕表 → 分析師在使用者實體頁面調查與回應。</div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>部署題三陷阱：</strong>（1）「要偵測橫向移動與票證攻擊，感應器裝哪？」→ <strong>網域控制站</strong>，不是防火牆或用戶端；裝在端點的是 MDE。（2）「已全面部署 MDE，還需要 MDI 嗎？」→ 需要，MDE 看不見 DC 上的票證異常與目錄複寫請求。（3）「MDI 需要什麼帳戶？」→ <strong>DSA（建議 gMSA）</strong>做目錄查詢；它與下一節的「動作帳戶」是兩件事——DSA 只要讀取權限，停用與重設密碼需委派寫入權限。</p></div>
+
+<div class="eyebrow">04 — ⛓️ 身分攻擊鏈</div>
+<h2 data-toc="攻擊鏈">從偵察到網域支配的四級台階</h2>
+<p>MDI 的警示按<strong>攻擊階段</strong>編排。背下這張表，看到警示名稱就能回答「攻擊者走到哪一步、下一步要做什麼」——這正是情境題要測的能力。</p>
+
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>階段</th><th>攻擊者目的</th><th>代表技術</th><th>典型偵測訊號</th></tr></thead>
+  <tbody>
+    <tr><td><strong>① 偵察</strong><br>Reconnaissance</td><td>畫網域地圖：有哪些帳戶群組、誰有特權</td><td>SMB／Kerberos 帳戶列舉、SAMR 群組查詢、LDAP 主體偵察（BloodHound）、DNS 區域傳輸</td><td>MDI：帳戶列舉偵察、使用者與群組成員資格偵察、安全性主體偵察、網路對應偵察</td></tr>
+    <tr><td><strong>② 認證竊取</strong><br>Credential Access</td><td>把密碼變成可重用的憑證</td><td>密碼噴灑、AS-REP Roasting、Kerberoasting、<strong>pass-the-hash／ticket</strong>、<strong>overpass-the-hash</strong></td><td>MDI：可疑暴力破解、可疑 AS-REP Roasting、Kerberos SPN 曝光、可疑身分竊取、加密降級</td></tr>
+    <tr><td><strong>③ 橫向移動</strong><br>Lateral Movement</td><td>拿憑證跳到更有價值的主機</td><td>PsExec／WMI 遠端執行、以竊得票證存取伺服器</td><td>MDI：可疑遠端程式碼執行、資源存取異常、<strong>橫向移動路徑（LMP）</strong>；MDE：可疑處理程序建立</td></tr>
+    <tr><td><strong>④ 網域支配</strong><br>Domain Dominance</td><td>取得長期偽造身分的能力</td><td><strong>DCSync</strong>、<strong>黃金票證 golden ticket</strong>、<strong>skeleton key</strong>、DCShadow</td><td>MDI：可疑 DCSync（目錄服務複寫）、可疑黃金票證使用、可疑 skeleton key、可疑 DCShadow</td></tr>
+    <tr><td><strong>⑤ 雲端延伸</strong><br>Cloud Expansion</td><td>用同一個身分登入雲端與 SaaS</td><td>權杖竊取、AiTM 中間人釣魚、惡意 OAuth 同意</td><td>Entra ID Protection：異常權杖、AiTM、不可能的移動、匿名 IP</td></tr>
+  </tbody>
+</table>
+</div>
+<p>四個最易混淆的技術用「偷到什麼」來記：<strong>pass-the-hash</strong> 偷 NTLM 雜湊，直接拿雜湊做驗證；<strong>pass-the-ticket</strong> 偷已簽發的 Kerberos 票證搬到別台機器用，MDI 抓的就是「同一張票證出現在兩台機器」；<strong>overpass-the-hash</strong> 拿 NTLM 雜湊換合法的 Kerberos TGT，常伴隨加密降級（硬要用 RC4）；<strong>黃金票證</strong>是偷到 krbtgt 雜湊後自己簽票，票裡的授權資料與存留時間不合常理。</p>
+<p>MDI 的活動資料也能自己搜捕，下面找 pass-the-hash 的足跡：</p>
+<pre class="kql">// 一組認證同時在多台機器上活動＝憑證被複製使用的訊號
+IdentityLogonEvents
+| <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(<span class="n">7d</span>)
+| <span class="k">where</span> Protocol == <span class="s">"Ntlm"</span> <span class="k">and</span> ActionType == <span class="s">"LogonSuccess"</span>
+| <span class="k">summarize</span> Sources = <span class="f">dcount</span>(DeviceName), SourceList = <span class="f">make_set</span>(DeviceName, <span class="n">10</span>),
+            Targets = <span class="f">dcount</span>(TargetDeviceName), Logons = <span class="f">count</span>()
+        <span class="k">by</span> AccountUpn, <span class="f">bin</span>(Timestamp, <span class="n">1h</span>)
+| <span class="k">where</span> Sources &gt;= <span class="n">3</span> <span class="k">and</span> Targets &gt;= <span class="n">5</span>
+| <span class="k">sort by</span> Targets <span class="k">desc</span></pre>
+<p class="kql-note">第 2–3 行：IdentityLogonEvents 是 MDI 送進進階搜捕的驗證事件表，只留過去 7 天成功的 NTLM 驗證（NTLM 才是雜湊重放的主場）。第 4–6 行：以「帳戶＋每小時」為單位，統計它從幾台<strong>來源</strong>裝置發起、打到幾台<strong>目標</strong>裝置。第 7 行：真人帳戶通常只從一兩台機器登入，同一小時橫跨 3 台來源、5 台目標就是憑證被搬走的形狀（服務帳戶請先建白名單）。</p>
+
+<div class="eyebrow">05 — 🚑 MDI 回應與態勢</div>
+<h2 data-toc="MDI 回應">按哪個按鈕，與 ISPM 的預防面</h2>
+<p>MDI 的回應動作掛在<strong>使用者實體頁面</strong>上，三類都針對身分本身：<strong>停用 Active Directory 中的使用者</strong>是最快的止血，帳戶當場無法驗證；<strong>要求使用者重設密碼</strong>強制下次登入變更密碼、讓被偷走的雜湊失效，適合要讓人盡快回到工作又得斷掉攻擊者；<strong>暫停 Entra ID 中的使用者</strong>則在混合情境把雲端那一半一起關掉。</p>
+<p>高頻考點藏在後面：<strong>這些動作不會自己生效</strong>。MDI 是雲端服務，要回頭改地端 AD 物件，必須配置具權限的<strong>動作帳戶（action account）</strong>——可沿用 gMSA，但要另外委派重設密碼與停用帳戶的寫入權限。把使用者<strong>標記為遭入侵（confirm compromised）</strong>則會把訊號送進 Entra ID Protection，使該帳戶的使用者風險直接升為高。</p>
+<div class="point"><strong>別記錯歸屬：</strong>MDI 能停用帳戶、重設密碼，但<strong>不能隔離裝置</strong>——裝置隔離是 MDE 的動作；「包含使用者（contain user）」屬於 XDR 的<strong>自動攻擊中斷</strong>。考題描述「無人核准就自動停用了受害帳戶」→ 自動攻擊中斷，不是 MDI 的手動回應。</div>
+<p>回應是止血，<strong>身分安全態勢管理（ISPM）</strong>才是止痛。MDI 持續評估 AD 組態並把問題寫成建議，呈現在安全分數與曝險管理清單裡：明文傳輸認證的舊協定、不安全的 Kerberos 委派、敏感群組中的閒置帳戶、AD CS 憑證範本弱點、風險最高的橫向移動路徑。考題問「如何主動降低身分攻擊面」，答案在 ISPM。</p>
+<div class="case-box"><div class="case-label">💼 實戰情境</div><p>週四 15:20，XDR 跳出中度事件：MDI 警示「Suspected identity theft (pass-the-ticket)」，主體是財務部 <code>k.wang</code>，來源 <code>FIN-WS041</code>、目標 <code>SRV-FILE02</code>。<strong>①</strong> 先看事件全貌——同時關聯了兩小時前 MDE 的「LSASS 記憶體讀取」，故事成形：先在工作站偷票證，再拿票證打檔案伺服器。<strong>②</strong> 打開使用者實體頁面，同一張票證在兩台工作站出現過，排除誤判。<strong>③</strong> 查<strong>橫向移動路徑</strong>：k.wang 非特權帳戶，卻在三台工作站是本機管理員，其中一台曾有網域管理員登入——離網域支配只剩兩步，嚴重性當場調高。<strong>④</strong> 止血：<strong>要求密碼重設</strong>並撤銷工作階段、由 MDE <strong>隔離 FIN-WS041</strong>、把帳戶<strong>標記為遭入侵</strong>讓 Entra 側升為高風險。<strong>⑤</strong> 用上一節的查詢確認沒有第三台機器牽涉其中。<strong>⑥</strong> 把「本機管理員權限過度發放」開成 ISPM 待辦——這條 LMP 不砍掉，下次還是同一齣戲。</p></div>
+
+<div class="eyebrow">06 — ☁️ Entra ID Protection</div>
+<h2 data-toc="風險偵測">使用者風險與登入風險的分野</h2>
+<p>雲端這側邏輯完全不同。Entra ID Protection 不需部署元件，直接坐在驗證流程上，用威脅情報與機器學習替每次登入、每個帳戶評分。它產出的不是攻擊技術，而是<strong>風險偵測（risk detection）</strong>，再匯總成兩種風險——這是全考科最常見的觀念題：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>比較面向</th><th>登入風險（sign-in risk）</th><th>使用者風險（user risk）</th></tr></thead>
+  <tbody>
+    <tr><td>它在問什麼</td><td>「<strong>這一次登入</strong>是本人嗎？」</td><td>「<strong>這個帳號</strong>是不是已經被盜了？」</td></tr>
+    <tr><td>評估對象</td><td>單一次驗證要求</td><td>帳戶的長期狀態，會持續累積</td></tr>
+    <tr><td>代表偵測</td><td>匿名 IP、不可能的移動、不熟悉的登入屬性、AiTM</td><td>外洩認證、Entra 威脅情報、可疑的更新權杖存取、管理員確認遭入侵</td></tr>
+    <tr><td>評估時機</td><td>即時與離線兩種，即時的才擋得下當次</td><td>離線匯總，升高後維持到被修復</td></tr>
+    <tr><td>對應政策</td><td>登入風險政策 → <strong>要求 MFA</strong>（多為中以上）</td><td>使用者風險政策 → <strong>要求安全密碼變更</strong>（多為高）</td></tr>
+    <tr><td>修復後果</td><td>通過 MFA → 該次登入風險關閉</td><td>安全密碼變更 → 風險歸零、更新權杖失效</td></tr>
+    <tr><td>記錄欄位</td><td>SigninLogs 的 RiskLevelDuringSignIn</td><td>RiskLevelAggregated、AADRiskyUsers</td></tr>
+  </tbody>
+</table>
+</div>
+<p>風險等級只有<strong>低、中、高</strong>三級，代表模型信賴度而非損失大小；調查靠三份報表：<strong>有風險的使用者</strong>、<strong>有風險的登入</strong>、<strong>風險偵測</strong>。手動處置的副作用要記牢：<strong>確認遭入侵</strong>把使用者風險拉到高並回饋模型；<strong>關閉使用者風險（dismiss）</strong>把風險清為零卻<strong>不做任何修復</strong>，密碼沒換、權杖沒撤，只適合已確認的誤判——真要救回帳戶得重設密碼並撤銷工作階段。</p>
+<p>把風險變成防線靠<strong>風險型條件式存取</strong>：以使用者風險或登入風險當條件套用授與控制，這也是自動修復（self-remediation）的關鍵。兩個常考前置條件：要求安全密碼變更的前提是使用者<strong>已完成 MFA 註冊</strong>；完整風險明細與風險型政策需要 <strong>Microsoft Entra ID P2</strong>。</p>
+<pre class="kql">// 風險登入成功了，而且沒有任何條件式存取政策套用到它
+SigninLogs
+| <span class="k">where</span> TimeGenerated &gt; <span class="f">ago</span>(<span class="n">24h</span>)
+| <span class="k">where</span> ResultType == <span class="n">0</span>
+| <span class="k">where</span> RiskLevelDuringSignIn <span class="k">in</span> (<span class="s">"high"</span>, <span class="s">"medium"</span>)
+| <span class="k">where</span> ConditionalAccessStatus == <span class="s">"notApplied"</span>
+| <span class="k">project</span> TimeGenerated, UserPrincipalName, IPAddress, Location, AppDisplayName,
+          RiskLevelDuringSignIn, RiskLevelAggregated, RiskEventTypes_V2
+| <span class="k">sort by</span> TimeGenerated <span class="k">desc</span></pre>
+<p class="kql-note">第 3 行：ResultType 為 0 代表登入<strong>成功</strong>。第 4 行：RiskLevelDuringSignIn 是<strong>當次</strong>登入風險，帳戶層級的長期風險看 RiskLevelAggregated。第 5 行：<code>notApplied</code>＝沒命中任何條件式存取政策，就是政策範圍的破口。注意 SigninLogs 屬 <strong>Sentinel</strong>（Entra ID 連接器）那側，XDR 進階搜捕對應的是 AADSignInEventsBeta。</p>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div><p><strong>「該用哪個風險政策」是必考題型</strong>，關鍵在題幹描述的是「一次事件」還是「一個帳戶的狀態」。看到<strong>不可能的移動、匿名 IP、不熟悉的登入屬性</strong>→ <strong>登入風險政策，要求 MFA</strong>。看到<strong>認證外洩、管理員已確認遭入侵</strong>→ <strong>使用者風險政策，要求安全密碼變更</strong>。想清楚為什麼：密碼都外洩了，只要求 MFA 不能讓那組密碼作廢；而正常使用者出差登入，強迫改密碼是過度反應。<strong>次考點：</strong>緊急存取帳戶必須排除在所有風險政策之外。</p></div>
+
+<div class="eyebrow">07 — 🧭 ITDR 分工對照</div>
+<h2 data-toc="分工對照">地端與雲端，兩張網一個事件</h2>
+<p><strong>ITDR（identity threat detection and response）</strong>是這兩個產品共同撐起的能力：把身分當成獨立的偵測面，而不只是存取控制的設定項。分工很單純——<strong>地端 AD 歸 MDI，雲端 Entra 歸 ID Protection</strong>，訊號在 XDR 匯合成同一起事件。混合身分環境兩邊都要。</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>面向</th><th>Defender for Identity（MDI）</th><th>Entra ID Protection</th></tr></thead>
+  <tbody>
+    <tr><td><strong>守護對象</strong></td><td>地端 Active Directory、AD FS、AD CS</td><td>雲端 Entra ID 的帳戶與每一次登入</td></tr>
+    <tr><td><strong>訊號來源</strong></td><td>伺服器上的感應器：驗證流量、Windows 事件、LDAP</td><td>Entra 驗證流程＋威脅情報與 ML（免部署）</td></tr>
+    <tr><td><strong>偵測方式</strong></td><td>攻擊技術特徵＋行為基準，認得出 AD 專屬手法</td><td>機率式風險評分，輸出低／中／高等級</td></tr>
+    <tr><td><strong>輸出單位</strong></td><td>依攻擊階段分類的<strong>警示</strong>，關聯進 XDR 事件</td><td><strong>風險偵測</strong>，匯總為登入風險與使用者風險</td></tr>
+    <tr><td><strong>代表偵測</strong></td><td>黃金票證、pass-the-hash／ticket、DCSync、LDAP 偵察</td><td>外洩認證、不可能的移動、匿名 IP、AiTM、異常權杖</td></tr>
+    <tr><td><strong>回應動作</strong></td><td>停用使用者、要求密碼重設、暫停 Entra 帳戶（需動作帳戶）</td><td>風險型條件式存取：MFA、安全密碼變更、封鎖</td></tr>
+    <tr><td><strong>自助修復</strong></td><td>無，由分析師或自動攻擊中斷執行</td><td>有，過 MFA 或改密碼即可關閉風險</td></tr>
+    <tr><td><strong>搜捕資料</strong></td><td>IdentityLogonEvents／QueryEvents／DirectoryEvents</td><td>SigninLogs、AADUserRiskEvents、AADSignInEventsBeta</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="point"><strong>一句話收束：</strong>MDI 回答「攻擊者在網域裡用了什麼手法」，Entra ID Protection 回答「這個帳號還能不能相信」。前者是技術特徵、靠分析師按鈕；後者是機率信賴度、靠政策自動擋。</div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">影片沒講到的考綱角落</h2>
+<ul>
+  <li><strong>誘餌帳戶（honeytoken）：</strong>可把閒置帳戶或群組標記為 honeytoken 實體，正常情況絕不會有人碰，一旦出現驗證或查詢就產生警示——零誤報的偵察偵測器。相關的還有實體標籤（敏感、VIP），標為敏感會提高警示嚴重性並納入 LMP 分析。</li>
+  <li><strong>LMP 需要權限才算得出來：</strong>MDI 必須能查詢各機器的本機系統管理員群組成員；若環境限制了遠端 SAM-R 呼叫又沒把 MDI 的帳戶加進允許清單，LMP 會是空的。考題說「LMP 頁面沒資料」，方向是權限與組態。</li>
+  <li><strong>持續存取評估（CAE）：</strong>條件式存取原本只在發權杖時判定一次，權杖有效期內即使帳戶被停用也可能仍可存取。CAE 讓支援的服務近乎即時重新評估，帳戶停用、密碼重設、風險升高時就地終止工作階段——這是「已經停用帳戶了，他為什麼還在讀信」的答案。</li>
+  <li><strong>MDI 與 Sentinel 的關係：</strong>MDI 警示透過 Defender XDR 連接器一併流進 Sentinel，不需要單獨的 MDI 連接器。</li>
+  <li><span class="badge-2026">2026 新考點</span> <strong>Security Copilot 的身分調查輔助：</strong>內嵌在 Defender 入口網站的體驗可對身分事件產生自然語言摘要——攻擊鏈走到哪、涉及哪些帳戶與裝置、建議下一步，也能把自然語言問句轉成搜捕查詢。考試層級只需知道定位：加速分診，不取代你的判斷。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深入連結</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-for-identity/what-is" target="_blank" rel="noopener">Microsoft Defender for Identity 是什麼</a>——讀架構總覽與感應器可部署的伺服器類型。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-for-identity/alerts-overview" target="_blank" rel="noopener">Defender for Identity 安全性警示總覽</a>——依攻擊階段瀏覽警示清單，把警示名稱與攻擊技術配對。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-for-identity/understand-lateral-movement-paths" target="_blank" rel="noopener">了解橫向移動路徑</a>——讀 LMP 資料來源與必要權限。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/entra/id-protection/concept-identity-protection-risks" target="_blank" rel="noopener">Entra ID Protection 風險偵測類型</a>——逐條讀哪些算登入風險、哪些算使用者風險。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/entra/id-protection/howto-identity-protection-configure-risk-policies" target="_blank" rel="noopener">設定風險型條件式存取政策</a>——讀兩種政策的建議門檻與 MFA 註冊前置條件。</li>
+</ul>
+
+
+  <div class="eyebrow">10 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W3-5">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D2-0016</div><div class='q-stem'>Your organization must detect pass-the-ticket, DCSync and LDAP reconnaissance activity inside an on-premises Active Directory forest. Defender for Endpoint is already deployed on every workstation. Where must the Microsoft Defender for Identity sensors be installed?</div><div class='q-zh'>（你的組織必須偵測地端 Active Directory 樹系內的 pass-the-ticket、DCSync 與 LDAP 偵察活動。所有工作站上都已部署 Defender for Endpoint。Microsoft Defender for Identity 的感應器（sensor）必須安裝在哪裡？）</div><div class='q-opt'><strong>A.</strong> On the domain controllers, and optionally on the AD FS and AD CS servers<div style='font-size:12.5px;color:var(--muted)'>安裝在網域控制站上，並可視需要一併安裝在 AD FS 與 AD CS 伺服器上</div></div><div class='q-opt'><strong>B.</strong> On every managed workstation, next to the Defender for Endpoint agent<div style='font-size:12.5px;color:var(--muted)'>安裝在每一台受管工作站上，與 Defender for Endpoint 代理程式並存</div></div><div class='q-opt'><strong>C.</strong> On a dedicated standalone server that receives port-mirrored traffic from the core switch<div style='font-size:12.5px;color:var(--muted)'>安裝在一台專用的獨立伺服器上，由核心交換器做網路埠鏡像把流量送過來</div></div><div class='q-opt'><strong>D.</strong> On the member file servers that host the most sensitive shares<div style='font-size:12.5px;color:var(--muted)'>安裝在存放最敏感共用資料夾的成員檔案伺服器上</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>MDI 沒有雲端 API 可以直接讀你的網域，必須把感應器裝進伺服器。所有 Kerberos／NTLM 驗證、LDAP 查詢與目錄複寫都要經過網域控制站，所以 DC 是必裝位置；AD FS 是為了看見同盟登入的暴力破解，AD CS 則是盯憑證範本濫用。感應器輕量、自我更新並會自我限制資源用量。另外要記得感應器需要目錄服務帳戶（DSA，建議 gMSA）才能唯讀查詢目錄。</p><ul><li><strong>B</strong>：裝在端點上的是 MDE：它看端點的處理程序與檔案行為，看不見 DC 上的票證異常與目錄複寫請求；MDI 感應器也不是給用戶端作業系統安裝的。</li><li><strong>C</strong>：獨立感應器（standalone sensor）搭配網路埠鏡像是早期架構，已經淘汰；現行 MDI 直接把感應器裝在網域控制站上解析本機流量，不必額外準備伺服器或設定鏡像。</li><li><strong>D</strong>：檔案伺服器只看得到自己被存取的紀錄，看不到驗證與目錄複寫流量，無法偵測票證偽造與 DCSync 這類針對 AD 本體的攻擊。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-for-identity/what-is' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D2-0017</div><div class='q-stem'>Microsoft Entra ID Protection reports a Leaked credentials detection for a marketing employee: the password of the account was found in a public credential dump. You must make sure that the leaked password can no longer be used, and the employee should be able to restore access without calling the help desk. Which policy should you configure?</div><div class='q-zh'>（Microsoft Entra ID Protection 針對一名行銷部員工回報「外洩認證（leaked credentials）」偵測：該帳戶的密碼出現在公開的認證外洩資料中。你必須確保這組外洩的密碼再也無法被使用，同時讓該員工不必打電話給服務台就能恢復存取。你應該設定哪一種政策？）</div><div class='q-opt'><strong>A.</strong> A sign-in risk policy that requires multifactor authentication at medium risk and above<div style='font-size:12.5px;color:var(--muted)'>登入風險政策：風險達中以上時要求多重要素驗證（MFA）</div></div><div class='q-opt'><strong>B.</strong> A Conditional Access policy that blocks legacy authentication protocols<div style='font-size:12.5px;color:var(--muted)'>封鎖舊版驗證通訊協定的條件式存取政策</div></div><div class='q-opt'><strong>C.</strong> An Entra ID Protection MFA registration policy<div style='font-size:12.5px;color:var(--muted)'>Entra ID Protection 的 MFA 註冊政策</div></div><div class='q-opt'><strong>D.</strong> A user risk policy that requires a secure password change at high user risk<div style='font-size:12.5px;color:var(--muted)'>使用者風險政策：使用者風險為高時要求安全密碼變更</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>「外洩認證」是使用者風險（user risk）偵測，描述的是「這個帳號是不是已經被盜了」的帳戶狀態，而不是某一次登入。對應的處置是使用者風險政策要求安全密碼變更：使用者自行完成變更後風險歸零，既有的更新權杖也會失效，屬於自動修復（self-remediation），不必人工介入。前提是使用者已完成 MFA 註冊，且完整風險明細與風險型政策需要 Microsoft Entra ID P2。</p><ul><li><strong>A</strong>：登入風險政策評估的是「這一次登入是不是本人」，只要求 MFA 並不會讓已經外洩的那組密碼失效——攻擊者仍握有可用的密碼，只是暫時被 MFA 擋住。</li><li><strong>B</strong>：封鎖舊版驗證是很好的基本強化措施，可防止繞過 MFA，但它不針對風險訊號，也不會強制這個帳戶更換已外洩的密碼。</li><li><strong>C</strong>：MFA 註冊政策只是要求使用者完成 MFA 註冊，屬於前置準備（也是安全密碼變更能自助完成的前提），本身不會處置已外洩的認證。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/entra/id-protection/howto-identity-protection-configure-risk-policies' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D2-0018</div><div class='q-stem'>A junior analyst reviewed a risky user in Microsoft Entra ID Protection, judged the detections to be noise, and selected Dismiss user risk. Your later investigation proves that the account really was taken over and that the attacker still holds a valid refresh token. Which action should you take to remediate the account?</div><div class='q-zh'>（一名資淺分析師檢視 Microsoft Entra ID Protection 中的一個有風險使用者，判斷那些偵測只是雜訊，於是選了「關閉使用者風險（dismiss user risk）」。你後續的調查證明該帳戶確實已遭接管，而且攻擊者手上仍握有有效的更新權杖（refresh token）。你應該採取哪一個動作來修復這個帳戶？）</div><div class='q-opt'><strong>A.</strong> Dismiss the user risk again so that the risk state stays clean, and keep monitoring the account<div style='font-size:12.5px;color:var(--muted)'>再次關閉使用者風險，讓風險狀態保持乾淨，並持續監控該帳戶</div></div><div class='q-opt'><strong>B.</strong> Reset the password of the user and revoke the sessions and refresh tokens of the user, then confirm the user as compromised<div style='font-size:12.5px;color:var(--muted)'>重設該使用者的密碼並撤銷其工作階段與更新權杖，然後將該使用者標記為遭入侵（confirm compromised）</div></div><div class='q-opt'><strong>C.</strong> Mark the related risky sign-ins as safe so that the model learns from the correction<div style='font-size:12.5px;color:var(--muted)'>把相關的有風險登入標記為安全，讓模型從這次更正中學習</div></div><div class='q-opt'><strong>D.</strong> Exclude the user from the user risk policy so that repeated prompts do not block their work<div style='font-size:12.5px;color:var(--muted)'>把該使用者從使用者風險政策中排除，避免反覆提示影響他工作</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>關閉風險（dismiss）只是把風險狀態清為零，**不做任何修復**：密碼沒換、工作階段與更新權杖也沒撤銷，因此攻擊者手上的權杖依然有效。真正的修復是重設密碼並撤銷工作階段／更新權杖，讓既有權杖立刻失效；再把使用者標記為遭入侵（confirm compromised），使用者風險會被拉到高並回饋給風險模型，同時觸發風險型條件式存取。（相對地，若帳戶已被停用卻仍能讀信，答案通常是持續存取評估 CAE 尚未生效。）</p><ul><li><strong>A</strong>：再關閉一次只是重複同一個沒有修復效果的動作；dismiss 只適用於「已確認的誤判」，本題已證實帳戶真的被接管，這樣做等於放任攻擊者繼續使用權杖。</li><li><strong>C</strong>：把有風險登入標記為安全，是在告訴模型那些訊號判斷錯誤，會污染後續的風險評分，而且同樣不會撤銷任何權杖或變更密碼。</li><li><strong>D</strong>：把使用者排除在風險政策之外，等於拿掉這個帳戶最後一道自動防線；只有緊急存取（break-glass）帳戶才應該被排除在風險政策外。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/entra/id-protection/howto-identity-protection-remediate-unblock' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D2-0019</div><div class='q-stem'>From the user entity page in the Microsoft Defender portal, you attempt to run the Defender for Identity action that disables a user in Active Directory, and the action fails. The group managed service account that the sensors use for directory queries has read-only rights on the directory. What should you configure?</div><div class='q-zh'>（你在 Microsoft Defender 入口網站的使用者實體頁面上，嘗試執行 Defender for Identity 的「停用 Active Directory 中的使用者」動作，結果動作失敗。感應器用來查詢目錄的群組受管理服務帳戶（gMSA）對目錄只有唯讀權限。你應該設定什麼？）</div><div class='q-opt'><strong>A.</strong> Install an additional Defender for Identity sensor on a second domain controller<div style='font-size:12.5px;color:var(--muted)'>在第二台網域控制站上再安裝一個 Defender for Identity 感應器</div></div><div class='q-opt'><strong>B.</strong> Assign the Security Operator role in Microsoft Entra ID to the analyst<div style='font-size:12.5px;color:var(--muted)'>在 Microsoft Entra ID 中把 Security Operator 角色指派給該分析師</div></div><div class='q-opt'><strong>C.</strong> An action account with delegated permissions to disable accounts and reset passwords in Active Directory<div style='font-size:12.5px;color:var(--muted)'>設定具備委派權限、能在 Active Directory 中停用帳戶並重設密碼的動作帳戶（action account）</div></div><div class='q-opt'><strong>D.</strong> Use Defender for Endpoint to isolate the device of the user instead<div style='font-size:12.5px;color:var(--muted)'>改用 Defender for Endpoint 隔離該使用者的裝置</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>MDI 是雲端服務，要回頭修改地端 AD 物件（停用帳戶、要求密碼重設）必須透過具備寫入權限的動作帳戶（action account）。它可以沿用感應器的 gMSA，但必須另外委派「停用帳戶」與「重設密碼」的權限——目錄服務帳戶（DSA）只需要唯讀權限，兩者是不同用途，只有唯讀權限時回應按鈕就會按不動。</p><ul><li><strong>A</strong>：再加一台感應器只會擴大偵測涵蓋範圍，動作失敗的原因是缺少對 AD 物件的寫入權限，多裝感應器完全沒有幫助。</li><li><strong>B</strong>：Entra ID 的 Security Operator 角色決定的是分析師在入口網站裡能不能看到與觸發回應動作，與 MDI 服務回頭修改地端 AD 物件所需的目錄權限是兩回事。</li><li><strong>D</strong>：裝置隔離是 MDE 的動作，處理的是端點而非身分；本題要求的是停用帳戶，隔離裝置無法阻止攻擊者從別台機器使用這組認證。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-for-identity/remediation-actions' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D2-0020</div><div class='q-stem'>Defender for Identity raises a Suspected identity theft (pass-the-ticket) alert for a finance user, and the same Kerberos ticket was observed on two workstations. Management requires that the stolen ticket and any issued tokens stop working, but the employee must be able to return to work as quickly as possible. Which response action best meets both requirements?</div><div class='q-zh'>（Defender for Identity 針對一名財務部使用者發出「可疑身分竊取（pass-the-ticket）」警示，同一張 Kerberos 票證在兩台工作站上被觀察到。管理層要求被竊的票證與已簽發的權杖都必須失效，但該員工必須能盡快回到工作崗位。哪一個回應動作最能同時滿足這兩項要求？）</div><div class='q-opt'><strong>A.</strong> Require the user to reset their password and revoke the sessions of the user<div style='font-size:12.5px;color:var(--muted)'>要求該使用者重設密碼，並撤銷其工作階段</div></div><div class='q-opt'><strong>B.</strong> Disable the user in Active Directory<div style='font-size:12.5px;color:var(--muted)'>停用 Active Directory 中的該使用者</div></div><div class='q-opt'><strong>C.</strong> Suspend the user in Microsoft Entra ID<div style='font-size:12.5px;color:var(--muted)'>暫停 Microsoft Entra ID 中的該使用者</div></div><div class='q-opt'><strong>D.</strong> Mark the user as compromised in Microsoft Defender for Identity<div style='font-size:12.5px;color:var(--muted)'>在 Microsoft Defender for Identity 中把該使用者標記為遭入侵</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>要求密碼重設會強制使用者在下次登入時變更密碼，被偷走的雜湊與已簽發的票證因此失效，搭配撤銷工作階段可讓雲端權杖一併作廢；使用者換完密碼馬上就能繼續工作，是「既止血又不癱瘓業務」的最佳解。停用帳戶則屬於更激烈的止血手段，留給無法立即聯絡使用者或攻擊仍在擴散的情況。</p><ul><li><strong>B</strong>：停用 AD 帳戶確實能當場阻斷驗證，但該員工完全無法工作，超出「盡快回到工作崗位」的要求；而且若未搭配持續存取評估（CAE），既有權杖在有效期內仍可能被使用。</li><li><strong>C</strong>：暫停 Entra ID 帳戶只關掉混合身分的雲端那一半，地端 Kerberos 票證照樣能用來存取檔案伺服器，本題的攻擊路徑正是地端票證重放。</li><li><strong>D</strong>：標記為遭入侵是把訊號送進 Entra ID Protection、讓使用者風險升為高並觸發風險型政策，是很好的補強動作，但它本身不會讓被竊的票證或現有權杖失效。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-for-identity/remediation-actions' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP15</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><audio controls preload='none' src='../podcast/ep-015.mp3'></audio><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-015'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="15">
+    <label for="doneChk">我讀完 Day 15 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-014.html'>← Day 14</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-016.html'>Day 16 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 15 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

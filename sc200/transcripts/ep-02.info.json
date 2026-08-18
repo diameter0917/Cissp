@@ -1,0 +1,17 @@
+{
+  "ep": "EP2",
+  "id": "QmvVYOG4uWI",
+  "url": "https://youtu.be/QmvVYOG4uWI",
+  "title": "Mitigate threats using Microsoft Security Copilot | SC-200 | Episode 2",
+  "channel": "Microsoft Learn",
+  "duration_sec": 3924,
+  "duration_string": "1:05:24",
+  "upload_date": "20260504",
+  "language": "en-US",
+  "chapters": [],
+  "manual_sub_langs": [
+    "en"
+  ],
+  "auto_sub_has_zh_hant": true,
+  "description_head": "Episode 2 of 10\nFor the full video series, click here: https://aka.ms/SC-200onYouTube\n\nThis video provides a comprehensive, hands‑on introduction to Microsoft Security Copilot and its role in helping Security Operations Analysts investigate and mitigate threats across Microsoft’s security ecosystem. Learners explore the foundations of generative AI and large language models, understand how Security Copilot interprets and processes prompts, and gain practical experience with its core features—including plugins, promptbooks, workspaces, and knowledge base connections. The path also covers Copilot’s embedded capabilities within products such as Microsoft Defender XDR, Microsoft Purview, Microsoft Entra, Intune, and Defender for Cloud, showing how AI‑assisted analysis accelerates incident response and strengthens organizational security posture. Through guided exercises and real‑world use cases, learners build the skills needed to operationalize AI‑driven security workflows, aligning directly with the SC‑200: Microsoft Security Operations Analyst certification.\n\nLearn more about this course and take the certification exam to test your new skills: https://aka.ms/SC-200onLearn"
+}

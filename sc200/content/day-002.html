@@ -1,0 +1,140 @@
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">今天開始打地基：KQL 是整張考卷的共同語言</h2>
+<p>今天正式進入 <strong>KQL（Kusto Query Language）</strong>。別被「查詢語言」四個字嚇到——它不是程式設計，而是一種「描述你想看什麼資料」的管線式語法。SC-200 把 KQL 前置到第一週不是沒有原因：D3 威脅搜捕（20–25%）直接考它，D2 的分析規則（analytics rule）本體就是一段 KQL，D1 的 summary rules、KQL jobs、資料收集規則（DCR）轉換也都用它。可以說，<strong>KQL 不熟，三大領域都會失分</strong>。今天先掌握查詢結構與三大核心運算子，明天再進階到 join／union。</p>
+<div class="point">
+  <strong>學習目標（對應官方考綱）</strong>
+  <ul>
+    <li>☐ 理解 KQL 管線結構，能讀懂 <code>table | operator | operator</code> 的資料流向（考綱：hunt for threats by using KQL）</li>
+    <li>☐ 記住常用資料表與其所屬產品（SigninLogs、SecurityEvent、DeviceEvents 家族、EmailEvents），為 advanced hunting（進階搜捕）鋪路（考綱：hunt for threats by using Microsoft Defender XDR）</li>
+    <li>☐ 精準使用 <code>where</code> 的字串與時間運算子，分得清 <code>==</code>／<code>=~</code>／<code>has</code>／<code>contains</code>（考綱：customize and run queries）</li>
+    <li>☐ 會用 <code>project</code>／<code>extend</code> 整理欄位、<code>summarize</code>＋<code>bin()</code> 做時間分桶統計（考綱：analyze and interpret query results）</li>
+  </ul>
+</div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP6 觀看重點指引</h2>
+<p>本單元對應官方影片 <strong>EP6</strong>（字幕尚未到位，以下為觀看指引；字幕抓取完成後會回補時間碼整理）。看片時建議帶著四個問題：</p>
+<ul>
+  <li><strong>查詢在哪裡執行？</strong>注意講師示範的是 Defender 入口網站的進階搜捕（advanced hunting）頁面，還是 Microsoft Sentinel 的 Logs 頁面——兩邊語言相同，但資料表與時間欄位名稱不同（詳見下一節）。</li>
+  <li><strong>管線怎麼一步步長出來？</strong>講師通常會先丟資料表名稱看原始資料，再逐行加上 <code>where</code>、<code>project</code>、<code>summarize</code>。學這個「疊加式」的寫法，而不是背整段查詢。</li>
+  <li><strong>每加一行，結果差在哪？</strong>對照執行結果的筆數與欄位變化，體會每個運算子對資料做了什麼。</li>
+  <li><strong>示範用了哪些資料表？</strong>把出現過的資料表記下來，跟本文的資料表對照表互相印證。</li>
+</ul>
+<div class="info-box">💡 建議先看一遍影片抓整體感，讀完本文後再回去重看示範段落——第二次看時你會發現自己已經能「預測」講師下一行要打什麼。</div>
+
+<div class="eyebrow">03 — 🧱 核心概念</div>
+<h2 data-toc="管線思維">KQL 管線思維：資料像水一樣由上往下流</h2>
+<p>一段 KQL 查詢的骨架永遠是：<strong>資料表開頭，管線符號 <code>|</code> 串接運算子</strong>。把它想成自助餐動線：資料表是整排菜檯（原始資料全在這），<code>where</code> 是你只走向想吃的那幾道菜（篩選列），<code>project</code> 是每道菜只夾要吃的部分（挑欄位），<code>summarize</code> 是結帳時幫你統計總共幾樣（聚合）。<strong>上一步的輸出就是下一步的輸入</strong>，順序不同，結果與效能都不同。</p>
+<div class="kql-block"><pre class="kql"><span class="c">// 最小可用查詢：過去 1 小時的登入紀錄，抓 10 筆看看長相</span>
+SigninLogs
+| <span class="k">where</span> TimeGenerated &gt; <span class="f">ago</span>(<span class="n">1h</span>)
+| <span class="k">take</span> <span class="n">10</span></pre></div>
+<div class="kql-note">逐行解說：第 1 行指定資料來源是 <code>SigninLogs</code>（Entra ID 登入記錄）；第 2 行 <code>where</code> 用 <code>ago(1h)</code> 把時間縮到過去 1 小時——<strong>每支查詢的第一件事都應該是縮時間範圍</strong>；第 3 行 <code>take 10</code> 隨機取 10 筆回來看欄位長相（注意：<code>take</code> 不保證順序，只適合探索用）。</div>
+<p>SC-200 的查詢會出現在兩個環境，語言完全相同，但資料表家族不同，這是考試的高頻辨識點：</p>
+<div class="tbl-scroll"><table class="data">
+  <thead><tr><th>資料表</th><th>所屬產品／來源</th><th>裝什麼</th><th>時間欄位</th></tr></thead>
+  <tbody>
+    <tr><td><code>SigninLogs</code>／<code>AuditLogs</code></td><td>Microsoft Entra ID（經 Sentinel 資料連接器）</td><td>登入記錄／目錄變更稽核</td><td><code>TimeGenerated</code></td></tr>
+    <tr><td><code>SecurityEvent</code></td><td>Windows 安全性事件（經 AMA 代理程式進 Sentinel）</td><td>4624 登入、4688 程序建立等事件</td><td><code>TimeGenerated</code></td></tr>
+    <tr><td><code>DeviceProcessEvents</code>／<code>DeviceNetworkEvents</code>／<code>DeviceEvents</code></td><td>Microsoft Defender for Endpoint（MDE）</td><td>端點程序、網路連線、裝置遙測</td><td><code>Timestamp</code></td></tr>
+    <tr><td><code>EmailEvents</code>／<code>EmailAttachmentInfo</code></td><td>Microsoft Defender for Office 365（MDO）</td><td>郵件流、附件與威脅判定</td><td><code>Timestamp</code></td></tr>
+    <tr><td><code>IdentityLogonEvents</code></td><td>Microsoft Defender for Identity（MDI）</td><td>內部部署 AD 驗證活動</td><td><code>Timestamp</code></td></tr>
+    <tr><td><code>CloudAppEvents</code></td><td>Microsoft Defender for Cloud Apps（MDA）</td><td>雲端應用程式活動</td><td><code>Timestamp</code></td></tr>
+  </tbody>
+</table></div>
+<div class="info-box">🧭 <strong>快速判斷法</strong>：在 Defender 入口網站做進階搜捕，資料表多是 <code>Device*</code>／<code>Email*</code>／<code>Identity*</code> 家族、時間欄位叫 <code>Timestamp</code>；在 Sentinel（Log Analytics 工作區）查詢，表名如 <code>SigninLogs</code>、<code>SecurityEvent</code>、時間欄位叫 <code>TimeGenerated</code>。題目給的欄位名稱本身就是提示你「人在哪個入口」。</div>
+<div class="point"><strong>為什麼 KQL 是 SC-200 的地基？</strong>因為它同時是四種考點的載體：D3 的進階搜捕與 hunting queries 直接寫 KQL；D2 的排程分析規則，偵測邏輯就是一段 KQL；D1 的 summary rules 與 KQL jobs 用 KQL 定義聚合；自訂偵測（custom detection）則是把搜捕查詢升級成自動偵測。同一套語法，貫穿整張考卷。</div>
+
+<div class="eyebrow">04 — 🔍 核心概念</div>
+<h2 data-toc="篩選">where 篩選：運算子選錯，結果與效能都出事</h2>
+<p><code>where</code> 是用得最多、也最容易被考倒的運算子。關鍵在字串比對運算子的三個維度：<strong>大小寫敏不敏感、以什麼單位比對、吃不吃索引（效能）</strong>。先看比較表：</p>
+<div class="tbl-scroll"><table class="data">
+  <thead><tr><th>運算子</th><th>大小寫</th><th>比對方式</th><th>效能</th><th>範例（何時為真）</th></tr></thead>
+  <tbody>
+    <tr><td><code>==</code></td><td>敏感</td><td>整個字串精確相等</td><td>快</td><td><code>FileName == "powershell.exe"</code>（大寫 POWERSHELL.EXE 不會命中）</td></tr>
+    <tr><td><code>=~</code></td><td>不敏感</td><td>整個字串相等</td><td>快</td><td><code>FileName =~ "powershell.exe"</code>（任何大小寫都命中）</td></tr>
+    <tr><td><code>has</code></td><td>不敏感</td><td>以「完整詞（term）」為單位</td><td><strong>快（有索引）</strong></td><td><code>CommandLine has "mimikatz"</code>（mimikatz 為獨立詞時命中）</td></tr>
+    <tr><td><code>contains</code></td><td>不敏感</td><td>任意子字串</td><td>慢（逐字掃描）</td><td><code>CommandLine contains "kata"</code>（詞中間的片段也命中）</td></tr>
+    <tr><td><code>has_any</code></td><td>不敏感</td><td>多個詞任一命中</td><td>快</td><td><code>CommandLine has_any ("-enc", "bypass")</code></td></tr>
+    <tr><td><code>startswith</code></td><td>不敏感</td><td>開頭符合</td><td>中</td><td><code>AccountName startswith "adm"</code></td></tr>
+    <tr><td><code>in</code>／<code>in~</code></td><td>敏感／不敏感</td><td>值在清單內精確相等</td><td>快</td><td><code>ResultType in ("50126", "50053")</code></td></tr>
+  </tbody>
+</table></div>
+<p>時間篩選兩招：<code>ago(7d)</code> 表「現在往回推 7 天」（<code>1h</code>、<code>30m</code>、<code>7d</code> 同理）；<code>between (datetime(2026-08-01) .. datetime(2026-08-15))</code> 表固定區間。實務與考試都遵守同一條鐵律：<strong>時間過濾放管線最前面</strong>，先把資料量砍下來，後面的每一步才快。</p>
+<div class="kql-block"><pre class="kql"><span class="c">// 搜捕可疑 PowerShell：編碼命令、遠端下載字串</span>
+DeviceProcessEvents
+| <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(<span class="n">7d</span>)
+| <span class="k">where</span> FileName =~ <span class="s">"powershell.exe"</span>
+| <span class="k">where</span> ProcessCommandLine <span class="k">has_any</span> (<span class="s">"-enc"</span>, <span class="s">"-encodedcommand"</span>, <span class="s">"downloadstring"</span>)
+| <span class="k">project</span> Timestamp, DeviceName, AccountName, ProcessCommandLine, InitiatingProcessFileName
+| <span class="k">order by</span> Timestamp <span class="k">desc</span>
+| <span class="k">take</span> <span class="n">100</span></pre></div>
+<div class="kql-note">逐行解說：第 2 行先縮時間到 7 天（注意 MDE 資料表時間欄位是 <code>Timestamp</code>）；第 3 行 <code>=~</code> 不分大小寫比對檔名，避免 <code>PowerShell.EXE</code> 這種寫法漏網；第 4 行 <code>has_any</code> 一次比對多個可疑關鍵詞——編碼參數與下載字串是攻擊者最常用的手法；第 5 行 <code>project</code> 只留調查需要的五個欄位（含母程序 <code>InitiatingProcessFileName</code>，用來判斷「誰啟動了 PowerShell」）；第 6–7 行照時間新到舊排序、最多取 100 筆。</div>
+<div class="point"><strong>效能基本功（考試會用「most efficient」包裝來考）</strong>
+<ul>
+  <li><strong>時間過濾永遠放第一行</strong>：<code>where Timestamp &gt; ago(...)</code> 先砍資料量，是最便宜也最有效的優化。</li>
+  <li><strong><code>has</code> 優於 <code>contains</code></strong>：完整詞比對吃得到索引；<code>contains</code> 逐字元掃子字串，大表上慢一個量級。</li>
+  <li><strong>先 <code>where</code> 縮小、再 <code>join</code></strong>：跨表關聯前先把兩邊各自過濾到最小集合（<code>join</code> 明天教，原則今天先記）。</li>
+  <li><strong>早點 <code>project</code></strong>：不需要的欄位早點丟，往下游流動的資料越瘦、查詢越快。</li>
+</ul></div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>字串運算子是 SC-200 的送分題兼陷阱題。</strong>題目常給一段查不到資料的查詢要你除錯：若條件值大小寫與資料不符、又用了 <code>==</code>，正解通常是換成 <code>=~</code>。另一型考效能：「要在大量資料中比對完整字詞、查詢要最快」，正解是 <code>has</code>——<code>contains</code> 雖然也能命中，但逐字掃描不吃索引，官方最佳做法明講「能用 has 就別用 contains」。看到「fastest／most efficient」字眼，先想 <code>has</code> 與前置時間過濾。</div>
+
+<div class="eyebrow">05 — 🧮 核心概念</div>
+<h2 data-toc="挑欄位">project 與 extend：一個挑欄位、一個加欄位</h2>
+<p>篩完列之後，下一步是整理「欄」。調查時資料表動輒幾十個欄位，全部顯示只會淹沒重點；寫報告或建自訂偵測時，也只需要少數關鍵欄位。三個欄位整形工具的分工如下：</p>
+<ul>
+  <li><strong><code>project</code>（挑欄位）</strong>：只保留你點名的欄位，順序照你寫的排，可順便改名：<code>project 登入時間 = TimeGenerated, UserPrincipalName</code>。沒點到的欄位從此消失——<strong>後面的管線再也用不到它們</strong>，這是新手最常踩的錯：先 <code>project</code> 掉了某欄位，下一行 <code>summarize</code> 又想 <code>by</code> 它，查詢直接報錯。</li>
+  <li><strong><code>project-away</code>（丟欄位）</strong>：反向操作，點名要丟的欄位，其餘全留。欄位太多、只想去掉幾個雜訊欄時用它。</li>
+  <li><strong><code>extend</code>（加欄位）</strong>：保留所有現有欄位，<strong>再多算一個新欄位</strong>，例如 <code>extend Duration = EndTime - StartTime</code>。要新增計算欄位又不想動到原欄位，用它就對了。</li>
+</ul>
+<div class="point"><strong>口訣：extend 加欄位、project 挑欄位。</strong>考題問「新增一個計算欄位且保留原欄位」選 <code>extend</code>；問「只顯示指定欄位、減少輸出」選 <code>project</code>。回頭看上一段 PowerShell 查詢的第 5 行，就是 <code>project</code> 的標準用法。</div>
+
+<div class="eyebrow">06 — 📊 核心概念</div>
+<h2 data-toc="聚合統計">summarize 與 bin()：從一堆事件變成一眼看懂的統計</h2>
+<p><code>summarize</code> 是 KQL 的樞紐分析表，語法骨架：<code>summarize 聚合函式 by 分組欄位</code>。常用聚合函式：<code>count()</code> 算筆數、<code>dcount(欄位)</code> 算不重複值個數、<code>countif(條件)</code> 符合條件才計數、<code>avg()／min()／max()</code> 做數值統計。<code>by</code> 後面接誰，就照誰分組——而把 <code>bin(時間欄位, 1h)</code> 放進 <code>by</code>，就是把連續時間切成一小時一格的「時間分桶」，趨勢與尖峰立刻現形。要注意 <code>summarize</code> 跟 <code>project</code> 一樣會「換血」：執行之後，結果只剩下聚合欄位與 <code>by</code> 的分組欄位，原始明細欄位全部消失——想在統計後回頭看明細，就得另起查詢。</p>
+<div class="case-box"><span class="case-label">🧪 SOC 實戰：疑似 password spray 的搜捕流程</span><br>
+<strong>情境</strong>：SOC 早班收到 Entra ID 大量登入失敗的警示。分診時你懷疑是 password spray——攻擊者用一組常見密碼，對「很多個不同帳號」各試一次，避開單帳號鎖定。<strong>調查</strong>思路：找出「單一 IP、短時間內、對大量不重複帳號」的失敗登入，這正是 <code>dcount()</code> 的主場：</div>
+<div class="kql-block"><pre class="kql"><span class="c">// 過去 24 小時：哪些 IP 對大量不同帳號嘗試密碼？（50126 = 帳密錯誤）</span>
+SigninLogs
+| <span class="k">where</span> TimeGenerated <span class="k">between</span> (<span class="f">ago</span>(<span class="n">24h</span>) .. <span class="f">now</span>())
+| <span class="k">where</span> ResultType == <span class="s">"50126"</span>
+| <span class="k">summarize</span> FailedCount = <span class="f">count</span>(), TargetUsers = <span class="f">dcount</span>(UserPrincipalName)
+    <span class="k">by</span> IPAddress, <span class="f">bin</span>(TimeGenerated, <span class="n">1h</span>)
+| <span class="k">where</span> TargetUsers &gt;= <span class="n">10</span>
+| <span class="k">order by</span> FailedCount <span class="k">desc</span></pre></div>
+<div class="kql-note">逐行解說：第 2 行用 <code>between (ago(24h) .. now())</code> 框出 24 小時區間；第 3 行 <code>ResultType == "50126"</code> 只留「帳號或密碼錯誤」的失敗（注意 SigninLogs 的 ResultType 是字串，要加引號）；第 4–5 行是本課精華——同一個 <code>summarize</code> 同時算兩個數：總失敗筆數與<strong>不重複目標帳號數</strong>，並照「來源 IP × 每小時分桶」分組；第 6 行只留一小時內打了 10 個以上不同帳號的 IP（spray 特徵）；第 7 行照失敗筆數排序。<strong>回應</strong>：命中的 IP 交給封鎖／條件式存取處置，並回頭清查這些帳號有無成功登入。</div>
+<p>再看一個 MDO 的例子，練 <code>countif</code> 與每日分桶：</p>
+<div class="kql-block"><pre class="kql"><span class="c">// 過去 30 天：哪些寄件網域的釣魚郵件最多？實際送達幾封？</span>
+EmailEvents
+| <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(<span class="n">30d</span>)
+| <span class="k">where</span> ThreatTypes <span class="k">has</span> <span class="s">"Phish"</span>
+| <span class="k">summarize</span> Delivered = <span class="f">countif</span>(DeliveryAction == <span class="s">"Delivered"</span>), Total = <span class="f">count</span>()
+    <span class="k">by</span> SenderFromDomain, <span class="f">bin</span>(Timestamp, <span class="n">1d</span>)
+| <span class="k">top</span> <span class="n">10</span> <span class="k">by</span> Delivered</pre></div>
+<div class="kql-note">逐行解說：第 2–3 行縮時間並用 <code>has</code> 比對威脅類型含 Phish（完整詞比對，快）；第 4 行 <code>countif</code> 只計「實際送達收件匣」的封數，<code>count()</code> 算總封數——兩數相除就是防護攔截率；第 5 行照「寄件網域 × 天」分組；第 6 行 <code>top 10 by Delivered</code> 等於「先照 Delivered 由大到小排序、再取前 10」。<code>top</code>＝<code>order by ... desc</code>＋<code>take</code> 的合體，而單獨的 <code>take</code> 不保證任何順序。</div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>summarize 考兩個層次。</strong>第一層考讀題：給你 <code>summarize count() by bin(TimeGenerated, 1d)</code> 問輸出是什麼——正解是「每天一列的事件筆數統計」，干擾項會是「總筆數一個數字」（少了 by bin）或「每筆事件明細」（沒 summarize）。第二層考選函式：「不重複使用者數」選 <code>dcount()</code>、「符合條件的筆數」選 <code>countif()</code>；password spray 情境幾乎必配 <code>dcount()</code>。另外記住 <code>take</code>／<code>top</code>／<code>order by</code> 三兄弟的分工：探索用 take、排名用 top、只排序不截斷用 order by。</div>
+
+<div class="eyebrow">07 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">KQL 在三大領域各怎麼考</h2>
+<p>影片以語法示範為主，但考試不會單獨考「語法填空」，而是把 KQL 包進三大領域的情境裡：同一句 <code>summarize</code>，在 D1 是省成本的工具、在 D2 是偵測邏輯的心臟、在 D3 是搜捕的放大鏡。對照考綱補齊視角：</p>
+<div class="tbl-scroll"><table class="data">
+  <thead><tr><th>領域</th><th>KQL 出現的位置</th><th>典型考法</th></tr></thead>
+  <tbody>
+    <tr><td><strong>D1</strong> 管理安全性作業環境</td><td>summary rules 聚合高量記錄、KQL jobs 排程查詢 data lake <span class="badge-2026">2026 新考點</span>、DCR 的擷取時轉換（transformKql）</td><td>給你成本／保留需求，問「該用哪種 KQL 機制」——例如把高量防火牆記錄先聚合再入分析層，選 summary rules</td></tr>
+    <tr><td><strong>D2</strong> 回應安全性事件</td><td>排程分析規則與 NRT 規則的偵測查詢、自訂詳細資料與實體對應取的欄位</td><td>給一段規則查詢，問「多久跑一次會漏事件」「該對應哪個欄位當實體」；查詢邏輯讀不懂就無從作答</td></tr>
+    <tr><td><strong>D3</strong> 執行威脅搜捕</td><td>advanced hunting 跨表查詢、Sentinel hunting queries、自訂偵測規則的查詢本體</td><td>最直接：給查詢問輸出、給情境問寫法、給錯誤查詢問怎麼修——今天的內容就是本領域的入場券</td></tr>
+  </tbody>
+</table></div>
+<div class="info-box">📌 <strong>今天沒講到、但屬於本考綱範圍的：</strong><code>join</code>／<code>union</code> 跨表關聯、<code>parse</code> 解析欄位、<code>let</code> 變數、<code>arg_max()</code> 去重——全部排在明天 Day 3。Sentinel data lake 上的 KQL 互動查詢與 jobs 細節，則排在 Day 10 專講。進度有安排，不用急。</div>
+
+<div class="eyebrow">08 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深入連結</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/kusto-overview" target="_blank" rel="noopener">Microsoft Sentinel 中的 KQL 概觀</a>——從 SOC 視角認識 KQL 在 Sentinel 裡的角色，讀「為什麼分析師要會 KQL」那段。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/kusto/query/kql-quick-reference" target="_blank" rel="noopener">KQL 快速參考</a>——一頁式運算子速查表，把今天的 where／project／summarize 家族收藏起來隨時查。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/kusto/query/best-practices" target="_blank" rel="noopener">KQL 查詢最佳做法</a>——官方效能守則，重點讀「先過濾時間」與「has 優於 contains」兩條，考試直接考。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-overview" target="_blank" rel="noopener">Defender XDR 進階搜捕概觀</a>——認識 Device*／Email*／Identity* 資料表家族與 30 天搜捕範圍。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/training/paths/sc-200-utilize-kql-for-azure-sentinel/" target="_blank" rel="noopener">SC-200 官方學習路徑：以 KQL 建構查詢</a>——含免費互動實驗環境，動手把今天四段查詢打一遍。</li>
+</ul>

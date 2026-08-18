@@ -1,0 +1,162 @@
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">本日導讀：讓查詢跨出「一張表」</h2>
+<p>昨天你學會了 KQL（Kusto Query Language）的管線思維：<code>where</code> 篩選、<code>project</code> 投影、<code>summarize</code> 聚合，都是在<strong>同一張資料表</strong>裡打轉。但真實的攻擊從來不會只留在一張表：釣魚郵件落在 <code>EmailEvents</code>、帳號登入在 <code>IdentityLogonEvents</code>、端點行為在 <code>DeviceLogonEvents</code>。要把一條攻擊鏈串起來，你需要今天的主角——<code>join</code>、<code>union</code>、<code>parse</code> 家族與時間序列函式。這一課是 D3「執行威脅搜捕」的核心武器庫，也是後面 Advanced Hunting（進階搜捕）與分析規則單元的地基，請務必動手跑過每一段查詢。</p>
+<p>對應官方考綱（study guide 2026-07-28 版）「Perform threat hunting／使用 KQL 搜捕威脅」，今天結束你應該能：</p>
+<ul>
+  <li>☑ 分辨六種 join kind（<code>innerunique</code>／<code>inner</code>／<code>leftouter</code>／<code>leftsemi</code>／<code>leftanti</code>／<code>fullouter</code>）的輸出行為，並依情境選對（考綱：identify threats by using KQL）</li>
+  <li>☑ 用 <code>union</code> 與 <code>withsource</code> 一次掃過多張表找 IoC（考綱：hunt for threats across data sources）</li>
+  <li>☑ 用 <code>parse</code>／<code>extract</code>／<code>parse_json</code>＋<code>todynamic</code> 從非結構化欄位煉出可查詢的欄位（考綱：analyze and interpret data by using KQL）</li>
+  <li>☑ 用 <code>let</code> 寫可重用查詢、用 <code>arg_max()</code> 取每個實體的最新紀錄</li>
+  <li>☑ 用 <code>make-series</code>＋<code>series_decompose_anomalies()</code> 做時間序列異常偵測（考綱：detect anomalies by using KQL）</li>
+</ul>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">影片伴讀：EP6 後半觀看重點指引</h2>
+<p>EP6 一支影片涵蓋兩個 KQL 單元：昨天（Day 2）看前半的查詢結構與篩選聚合，<strong>今天請接著看後半</strong>，主題從單表操作進入多表關聯。目前字幕尚未到位，先用下面的「觀看檢核點」帶著問題看片，字幕抓取完成後本節會回補時間碼整理。</p>
+<ul>
+  <li><span class="timestamp">EP6 後半</span> <strong>join 示範</strong>：注意講者示範兩張表怎麼「橫向拼起來」——對照本文第 03 節的 kind 比較表，邊看邊確認影片用的是哪一種 kind、為什麼。</li>
+  <li><span class="timestamp">EP6 後半</span> <strong>union 跨表</strong>：留意 union 跟 join 輸出形狀的差別（列變多 vs 欄變多），以及萬用字元寫法（如 <code>Device*</code>）。</li>
+  <li><span class="timestamp">EP6 後半</span> <strong>let 與函式</strong>：看講者怎麼用 <code>let</code> 把常數、清單、子查詢取名字，讓長查詢變得可讀、可重用。</li>
+  <li><span class="timestamp">EP6 後半</span> <strong>解析欄位與時間序列</strong>：若影片示範了 <code>parse</code> 或 <code>render timechart</code>，對照本文第 05、07 節的語法逐行核對。</li>
+</ul>
+<div class="info-box">💡 建議做法：影片開 1.25 倍速看一遍抓感覺，然後打開 Defender 入口網站的進階搜捕（advanced hunting）或 Log Analytics 示範環境，把本文四段查詢親手貼上執行一次。KQL 是「手感科目」，看十遍不如跑一遍。</div>
+
+<div class="eyebrow">03 — 🔗 join 全家桶</div>
+<h2 data-toc="join">join 全家桶：六種 kind 一次分清楚</h2>
+<p><code>join</code> 的語法骨架是：<code>左表 | join kind=種類 (右表) on 鍵</code>——把左右兩張表依鍵值<strong>橫向拼接</strong>，輸出「欄位變多」的結果。考試最愛考的就是 kind 的選擇，先把這張表刻進腦裡：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>kind</th><th>輸出行為</th><th>什麼時候用</th><th>搜捕情境例</th></tr></thead>
+  <tbody>
+    <tr><td><strong>innerunique</strong>（預設）</td><td>左表鍵值<strong>先去重</strong>，每個鍵只留一列去配右表；配得到才輸出</td><td>只想知道「有哪些鍵有配對」、不在乎左表重複列</td><td>快速確認哪些帳號同時出現在兩張表</td></tr>
+    <tr><td><strong>inner</strong></td><td>左右<strong>所有</strong>配對組合都輸出（笛卡兒式配對）</td><td>每一筆配對都要保留、要做逐筆關聯分析</td><td>高風險登入 × 稽核操作逐筆對齊（見下方查詢）</td></tr>
+    <tr><td><strong>leftouter</strong></td><td>左表<strong>全留</strong>；配不到的右表欄位補空值</td><td>以左表為主，順便帶出右表資訊（有就填、沒有留白）</td><td>裝置清單左表＋警示數右表，沒警示的裝置也要列</td></tr>
+    <tr><td><strong>leftsemi</strong></td><td>只留「配得到」的左表列，<strong>右表欄位不輸出</strong></td><td>右表只當「過濾清單」用</td><td>只看命中 IoC 清單的連線紀錄本身</td></tr>
+    <tr><td><strong>leftanti</strong></td><td>只留「<strong>配不到</strong>」的左表列</td><td>找「存在於左、不存在於右」的落差</td><td>有登入紀錄但不在 MFA 已註冊清單的帳號</td></tr>
+    <tr><td><strong>fullouter</strong></td><td>左右全留，配不到的互補空值</td><td>兩邊都不能漏的完整對帳</td><td>兩個資料來源的資產盤點差異比對</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="point">⚠️ <strong>頭號陷阱：不寫 kind 時預設是 <code>innerunique</code>，不是 <code>inner</code>！</strong>左表同一鍵值的重複列會先被去重（隨機留一列）再配對，所以筆數可能比你預期少。搜捕查詢要逐筆關聯時，請<strong>明確寫出</strong> <code>kind=inner</code>，不要靠預設。</div>
+<p><strong>join 效能三原則</strong>（官方 best practices，考試與實務都會用到）：① <strong>小表放左邊</strong>——左表是驅動表，越小越快；② <strong>先過濾再 join</strong>——<code>where</code>、<code>project</code> 盡量寫在 join 之前，兩邊都先瘦身；③ 鍵名不同時用 <code>$left.欄位 == $right.欄位</code> 明確對應。實戰看這段：</p>
+<pre class="kql"><span class="c">// 情境：高風險登入後 1 小時內，同帳號是否做了敏感的目錄變更？</span>
+<span class="k">let</span> lookback = <span class="n">1d</span>;
+<span class="k">let</span> RiskySignins = SigninLogs
+    | <span class="k">where</span> TimeGenerated &gt; <span class="f">ago</span>(lookback)
+    | <span class="k">where</span> RiskLevelDuringSignIn == <span class="s">"high"</span>
+    | <span class="k">project</span> SigninTime = TimeGenerated, UserPrincipalName, IPAddress;
+RiskySignins
+| <span class="k">join</span> <span class="k">kind</span>=inner (
+    AuditLogs
+    | <span class="k">where</span> TimeGenerated &gt; <span class="f">ago</span>(lookback)
+    | <span class="k">where</span> Category == <span class="s">"UserManagement"</span>
+    | <span class="k">extend</span> Actor = <span class="f">tostring</span>(InitiatedBy.user.userPrincipalName)
+    | <span class="k">project</span> AuditTime = TimeGenerated, Actor, OperationName
+) <span class="k">on</span> $left.UserPrincipalName == $right.Actor
+| <span class="k">where</span> AuditTime <span class="k">between</span> (SigninTime .. (SigninTime + <span class="n">1h</span>))
+| <span class="k">project</span> UserPrincipalName, IPAddress, SigninTime, OperationName, AuditTime</pre>
+<p class="kql-note">逐行解說：<code>let lookback = 1d</code> 把回看窗取名成變數，之後改一處全查詢生效；<code>RiskySignins</code> 用 let 存成「已過濾、已投影」的小左表（原則①②）；<code>join kind=inner</code> 明確要求逐筆配對；右表 <code>AuditLogs</code> 同樣先 where＋project 瘦身，並用 <code>tostring(InitiatedBy.user.userPrincipalName)</code> 從 dynamic 欄位取出操作者（下文 05 節會講）；<code>on $left... == $right...</code> 處理兩表鍵名不同；最後 <code>between</code> 限制稽核操作發生在登入後 1 小時內——時間窗條件是登入關聯查詢的靈魂，沒有它會撈到大量不相關配對。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>join kind 選擇題的<strong>關鍵字解題法</strong>：題幹說「找出<strong>沒有</strong>出現在另一張表的紀錄」「識別<strong>未</strong>註冊／<strong>未</strong>回報的對象」→ <code>leftanti</code>；「只要左表原始列、右表僅當過濾條件」→ <code>leftsemi</code>；「左表全部保留、沒配到的補空白」→ <code>leftouter</code>；「每筆配對都要」→ <code>inner</code>。若選項同時出現 inner 與 innerunique，回頭看題幹是否強調「重複紀錄也要各自配對」——要就選 <code>inner</code>。</div>
+
+<div class="eyebrow">04 — 🧺 union 與跨表狩獵</div>
+<h2 data-toc="union">union 與跨表狩獵：縱向疊表找 IoC</h2>
+<p>join 是「橫向拼欄位」，<code>union</code> 則是「<strong>縱向疊資料列</strong>」：把多張結構相近（或不相近也行）的表上下疊成一張，欄位取聯集。拿到一個檔案雜湊、一個 IP 這類 IoC（入侵指標）時，你不會知道它藏在哪張表，union 就是跨表撒網的標準起手式：<code>union withsource=SrcTable DeviceProcessEvents, DeviceNetworkEvents, DeviceFileEvents | where SHA256 == "..." or InitiatingProcessSHA256 == "..."</code>。兩個必記參數：<code>withsource=欄名</code> 會多出一欄標記「這列來自哪張表」，命中時一眼定位資料來源；表名支援萬用字元，<code>union Device*</code> 一口氣涵蓋所有 Device 開頭的表；另外 <code>isfuzzy=true</code> 允許清單中某張表不存在時查詢照樣執行（跨環境共用查詢時很實用）。</p>
+<div class="case-box"><span class="case-label">🔍 SOC 實戰：identity＋device＋email 的橫向移動調查</span>
+<p>情境：MDO（Microsoft Defender for Office 365）回報一波網釣郵件已送達多名使用者。你懷疑有帳號中招後被拿去橫向移動（lateral movement）。調查思路：<strong>郵件表找出受害名單 → 身分登入表看這些帳號登了哪些裝置 → 端點登入表關聯遠端登入行為 → 聚合出「短期內碰過多台裝置」的帳號</strong>：</p>
+<pre class="kql"><span class="c">// Step 1：收過網釣郵件且已送達的收件者名單</span>
+<span class="k">let</span> lookback = <span class="n">3d</span>;
+<span class="k">let</span> PhishedUsers = EmailEvents
+    | <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(lookback)
+    | <span class="k">where</span> ThreatTypes <span class="k">has</span> <span class="s">"Phish"</span> <span class="k">and</span> DeliveryAction == <span class="s">"Delivered"</span>
+    | <span class="k">distinct</span> RecipientEmailAddress;
+<span class="c">// Step 2：這些帳號的網域登入（identity 訊號）</span>
+IdentityLogonEvents
+| <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(lookback)
+| <span class="k">where</span> AccountUpn <span class="k">in~</span> (PhishedUsers)
+<span class="c">// Step 3：關聯端點遠端登入（device 訊號）</span>
+| <span class="k">join</span> <span class="k">kind</span>=inner (
+    DeviceLogonEvents
+    | <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(lookback)
+    | <span class="k">where</span> LogonType == <span class="s">"RemoteInteractive"</span>
+    | <span class="k">project</span> DeviceName, AccountName
+) <span class="k">on</span> DeviceName
+<span class="c">// Step 4：聚合——短期內碰過 3 台以上裝置的帳號優先調查</span>
+| <span class="k">summarize</span> TouchedDevices = <span class="f">make_set</span>(DeviceName), Logons = <span class="f">count</span>() <span class="k">by</span> AccountUpn
+| <span class="k">where</span> <span class="f">array_length</span>(TouchedDevices) &gt;= <span class="n">3</span>
+| <span class="k">order by</span> Logons <span class="k">desc</span></pre>
+<p class="kql-note">逐行解說：<code>let PhishedUsers = ... | distinct ...</code> 把受害者名單存成可重用清單（let 也能存表格結果）；<code>in~</code> 是不分大小寫的清單比對，跨資料來源比對 UPN 時務必用它；join 端點登入表把身分訊號與裝置訊號接起來；<code>make_set()</code> 把每個帳號碰過的裝置收成「去重陣列」（若要保留出現順序與重複用 <code>make_list()</code>）；<code>array_length() &gt;= 3</code> 是搜捕假說的門檻——一個帳號三天內遠端登入三台以上裝置，值得開單調查。這就是考綱說的「跨資料來源搜捕威脅」的典型長相。</p>
+</div>
+
+<div class="eyebrow">05 — ⚗️ parse 家族</div>
+<h2 data-toc="parse">parse 家族：欄位煉金術</h2>
+<p>很多高價值資訊藏在「一整串字串」或 JSON 欄位裡——syslog 原文、命令列參數、<code>AdditionalFields</code>。parse 家族就是把它們煉成可 <code>where</code>、可 <code>summarize</code> 的欄位：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>工具</th><th>做什麼</th><th>典型寫法</th></tr></thead>
+  <tbody>
+    <tr><td><strong>parse</strong></td><td>依「文字樣板」切割字串，一次抽多個欄位</td><td><code>| parse SyslogMessage with * "user " User " from " SrcIp " port" *</code></td></tr>
+    <tr><td><strong>extract()</strong></td><td>用正規表示式抽<strong>第一個</strong>符合的片段</td><td><code>| extend Ip = extract(@"(\d+\.\d+\.\d+\.\d+)", 1, RawLog)</code></td></tr>
+    <tr><td><strong>extract_all()</strong></td><td>抽出<strong>所有</strong>符合片段成陣列</td><td><code>| extend AllIps = extract_all(@"(\d+\.\d+\.\d+\.\d+)", RawLog)</code></td></tr>
+    <tr><td><strong>parse_json()／todynamic()</strong></td><td>把 JSON 字串轉成 dynamic 物件，才能用 <code>.屬性</code> 取值（兩者同義）</td><td><code>| extend AF = todynamic(AdditionalFields) | extend Status = tostring(AF.SigningStatus)</code></td></tr>
+    <tr><td><strong>split()</strong></td><td>依分隔符切成陣列，用索引取段</td><td><code>| extend Domain = tostring(split(AccountUpn, "@")[1])</code></td></tr>
+  </tbody>
+</table>
+</div>
+<div class="point">⚠️ <strong>最常踩的坑：欄位「長得像 JSON」不代表「是 dynamic」。</strong>schema 裡型別是 string 的欄位（如部分表的 <code>AdditionalFields</code>），直接寫 <code>AdditionalFields.SigningStatus</code> 只會拿到空值——必須先 <code>todynamic()</code> 轉型再取屬性；取完屬性通常再用 <code>tostring()</code>／<code>tobool()</code>／<code>toint()</code> 轉回純量型別，才能拿去比對與聚合。反之像 <code>SigninLogs</code> 的 <code>InitiatedBy</code>、<code>DeviceDetail</code> 本身就是 dynamic，可直接點下去。判斷方法：查詢編輯器左側 schema 樹會標欄位型別。</div>
+<p>選擇心法：格式固定、肉眼可見樣板 → 用 <code>parse</code> 最快；格式多變、需要模糊比對 → 用 <code>extract()</code> 正規表示式；JSON → 一律 <code>todynamic()</code>。正規表示式效能成本最高，能用 parse 或 <code>has</code>／<code>contains</code> 先縮小範圍就別讓 regex 掃全表。</p>
+
+<div class="eyebrow">06 — 🧲 let、arg_max 與去重</div>
+<h2 data-toc="去重">let、arg_max 與去重：每個實體只看最新一筆</h2>
+<p><code>let</code> 除了存常數與清單，還能定義<strong>可重用函式</strong>：<code>let toUpn = (name:string) { strcat(name, "@contoso.com") };</code>——團隊共用的搜捕查詢庫幾乎都靠 let 組裝。而搜捕裡最常見的需求之一是「<strong>每台裝置／每個帳號只要最新一筆</strong>」：裝置目前登入者是誰？帳號最後一次成功登入在哪？這時用 <code>arg_max()</code>：</p>
+<pre class="kql"><span class="c">// 每台裝置「最新一筆」互動式登入＋解析 AdditionalFields</span>
+DeviceLogonEvents
+| <span class="k">where</span> Timestamp &gt; <span class="f">ago</span>(<span class="n">7d</span>)
+| <span class="k">where</span> LogonType == <span class="s">"Interactive"</span> <span class="k">and</span> ActionType == <span class="s">"LogonSuccess"</span>
+| <span class="k">extend</span> IsLocal = <span class="f">tobool</span>(<span class="f">todynamic</span>(AdditionalFields).IsLocalLogon)
+| <span class="k">summarize</span> <span class="f">arg_max</span>(Timestamp, *) <span class="k">by</span> DeviceId
+| <span class="k">project</span> Timestamp, DeviceName, AccountName, IsLocal</pre>
+<p class="kql-note">逐行解說：先把範圍縮到 7 天內的成功互動式登入；<code>todynamic(AdditionalFields).IsLocalLogon</code> 示範上一節的欄位煉金——字串轉 dynamic 再取屬性、<code>tobool()</code> 收尾；重點是 <code>summarize arg_max(Timestamp, *) by DeviceId</code>：每個 <code>DeviceId</code> 分一組，在組內找 <code>Timestamp</code> 最大（最新）的那一列，星號 <code>*</code> 表示「把那一列的<strong>所有欄位</strong>整列帶出來」。反向需求（最早一筆、首次出現）用 <code>arg_min()</code>——找「這個帳號第一次登入這台裝置是什麼時候」就是它。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br><strong><code>arg_max(Timestamp, *)</code> vs <code>max(Timestamp)</code></strong>：前者回傳「時間最新的<strong>那一整列</strong>」（含所有欄位），後者只回傳「最大的時間<strong>值</strong>」本身、其他欄位全丟失。題目若要「最新紀錄的完整內容／該次登入的帳號與 IP」，答案一定是 arg_max；選項出現 <code>top 1 by Timestamp</code> 也能達成單一實體的需求，但「<strong>每個</strong>裝置各取最新一筆」只有 <code>summarize arg_max(...) by 實體</code> 做得到。</div>
+
+<div class="eyebrow">07 — 📈 時間序列異常</div>
+<h2 data-toc="時間序列">時間序列異常：讓統計幫你盯基線</h2>
+<p>人工盯儀表板找異常不可靠，KQL 內建時間序列分析讓統計代勞。兩步驟：<code>make-series</code> 把事件變成「等間隔的數列」，<code>series_decompose_anomalies()</code> 把數列拆解成基線＋季節性＋殘差，並標出異常點：</p>
+<pre class="kql"><span class="c">// 找出「登入失敗次數」出現異常尖峰的帳號</span>
+<span class="k">let</span> lookback = <span class="n">14d</span>;
+SigninLogs
+| <span class="k">where</span> TimeGenerated &gt; <span class="f">ago</span>(lookback)
+| <span class="k">where</span> ResultType != <span class="n">0</span>          <span class="c">// 只看失敗登入</span>
+| <span class="k">make-series</span> FailedCount = <span class="f">count</span>() <span class="k">default</span> = <span class="n">0</span>
+    <span class="k">on</span> TimeGenerated <span class="k">from</span> <span class="f">ago</span>(lookback) <span class="k">to</span> <span class="f">now</span>() <span class="k">step</span> <span class="n">1h</span>
+    <span class="k">by</span> UserPrincipalName
+| <span class="k">extend</span> (Anomalies, Score, Baseline) =
+    <span class="f">series_decompose_anomalies</span>(FailedCount, <span class="n">2.5</span>, -<span class="n">1</span>, <span class="s">'linefit'</span>)
+| <span class="k">mv-expand</span> TimeGenerated <span class="k">to</span> typeof(datetime),
+    FailedCount <span class="k">to</span> typeof(long), Anomalies <span class="k">to</span> typeof(int)
+| <span class="k">where</span> Anomalies == <span class="n">1</span>
+| <span class="k">project</span> TimeGenerated, UserPrincipalName, FailedCount</pre>
+<p class="kql-note">逐行解說：<code>make-series</code> 以每小時（<code>step 1h</code>）為一格、對每個帳號（<code>by</code>）產生 14 天的失敗次數數列，<code>default = 0</code> 讓沒事件的時段補 0——這步不可省，缺格的數列會讓分解失真；<code>series_decompose_anomalies()</code> 三個關鍵參數：門檻 2.5（分數超過即標異常，預設 1.5，調高＝更嚴格更少誤報）、季節性 -1（自動偵測週期，例如上班日的日週期）、<code>'linefit'</code>（趨勢用線性擬合）；輸出三個「與時間格對齊的陣列」——<code>Anomalies</code> 每格是 1（正向異常）／0（正常）／-1（負向異常）；因為 make-series 的輸出是「一列一帳號、欄位裝陣列」，要用 <code>mv-expand</code> 展回一列一時段，才能 <code>where Anomalies == 1</code> 篩出異常時點。想先目視再篩選，把最後三行換成 <code>| render timechart</code>。</p>
+<div class="point">💡 <code>summarize count() by bin(TimeGenerated, 1h)</code> 與 <code>make-series</code> 都是時間分桶，差別在：summarize 輸出「一列一桶、缺桶就沒列」，make-series 輸出「等間隔完整數列（缺桶補 default）」——所有 <code>series_*</code> 函式都<strong>只吃後者</strong>。題目看到 series_decompose、序列預測，前面必配 make-series。</div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">考綱補洞：影片沒講、考試會考的 KQL 進階點</h2>
+<p>EP6 聚焦查詢語法本身，但考綱把 KQL 埋進 Sentinel 與 Defender XDR 的各個角落，這些「語法之外的規則」影片不會講：</p>
+<ul>
+  <li><strong>NRT（近即時）分析規則的 KQL 限制</strong>：NRT 規則走簡化執行路徑，官方文件明列查詢<strong>只能參照單一資料表</strong>，不支援 <code>union</code>／<code>join</code> 跨表、也不支援跨工作區查詢——「需要跨表關聯的偵測」就得用排程（scheduled）規則。這是規則類型選擇題的高頻陷阱。</li>
+  <li><strong>排程分析規則</strong>：查詢回看範圍上限 <strong>14 天</strong>；單次執行最多產生 150 個警示，超過會截斷——寫 join 產出大量配對列時要先聚合再輸出。</li>
+  <li><strong>Defender XDR 自訂偵測（custom detection）</strong>：進階搜捕查詢要轉成自訂偵測規則，結果必須包含 <code>Timestamp</code>、<code>ReportId</code> 與至少一個可對應實體的識別欄位（如 <code>DeviceId</code>、<code>AccountObjectId</code>）——用了 <code>summarize</code> 之後這些欄位常常被聚合掉，記得用 <code>arg_max(Timestamp, *)</code> 這類寫法把它們帶回結果。</li>
+  <li><strong>externaldata()</strong>：直接從外部儲存體（如 Azure Blob 的 CSV/JSON）把資料讀進查詢當表用——<code>externaldata(Ip:string) [@"https://.../ioc.csv"]</code>，適合臨時比對外部 IoC 清單；若清單需要長期維護、給分析規則引用，考試的正解通常是<strong>監視清單（Watchlist）</strong>（查詢時用 <code>_GetWatchlist('別名')</code>），兩者的取捨要分清楚。</li>
+  <li><strong>效能工具</strong>：<code>materialize()</code> 把 let 子查詢結果快取，避免同一段子查詢被多次執行；維度小表關聯可用 <code>lookup</code> 運算子取代 leftouter join，效能更好。</li>
+  <li><span class="badge-2026">2026 新考點</span> 今天這套 KQL 會在新考點裡反覆出現：Sentinel data lake 的 <strong>KQL jobs</strong>（對資料湖層排程跑 KQL）、<strong>summary rules</strong>（用 KQL 聚合高量資料）都是同一套語法，Day 10 詳談——語法基本功就是今天練的這些。</li>
+</ul>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>題幹給你一段含 <code>join</code> 的偵測查詢，問「哪種規則類型可以直接使用」——<strong>NRT 立刻淘汰</strong>（單表限制），答案往排程規則走；反過來問「為什麼 NRT 規則儲存失敗」，先檢查查詢裡有沒有 join／union／跨工作區。另一個變形：問自訂偵測規則存不了，八成是 summarize 後遺失 <code>Timestamp</code>／<code>ReportId</code>／實體欄位。把「語法正確 ≠ 平台接受」這件事記牢。</div>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">延伸閱讀（MS Learn）</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/kusto/query/join-operator" target="_blank" rel="noopener">join 運算子</a>——六種 kind 的官方圖解與輸出範例，把第 03 節的表格對照著讀一遍。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/kusto/query/union-operator" target="_blank" rel="noopener">union 運算子</a>——withsource、isfuzzy 與萬用字元表名的完整語法。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/kusto/query/parse-operator" target="_blank" rel="noopener">parse 運算子</a>——樣板比對的三種模式（simple／regex／relaxed）與範例。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/kusto/query/series-decompose-anomalies-function" target="_blank" rel="noopener">series_decompose_anomalies()</a>——異常偵測的參數細節與回傳值定義。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/kusto/query/best-practices" target="_blank" rel="noopener">KQL 查詢最佳做法</a>——「小表放左、先過濾再 join、慎用 regex」的官方出處，效能題的答案庫。</li>
+</ul>

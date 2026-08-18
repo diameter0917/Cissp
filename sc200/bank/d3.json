@@ -1,0 +1,1438 @@
+[
+  {
+    "id": "D3-0001",
+    "domain": "D3",
+    "topic": "kql-basics",
+    "unit": "P1-W1-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Review the following KQL query:\n\nSigninLogs\n| where TimeGenerated > ago(1h)\n| project UserPrincipalName, IPAddress\n\nWhat is the function of the pipe character (|) in this query?",
+    "stem_zh": "檢視以下 KQL 查詢：SigninLogs | where TimeGenerated > ago(1h) | project UserPrincipalName, IPAddress。管線符號（|）在這段查詢中的作用是什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It combines rows from two different tables into a single result set.",
+        "text_zh": "把兩張不同資料表的資料列合併成單一結果集。"
+      },
+      {
+        "key": "B",
+        "text_en": "It passes the output of the previous step as the input to the next operator, processed from top to bottom.",
+        "text_zh": "把上一步的輸出當成下一個運算子的輸入，由上而下依序處理。"
+      },
+      {
+        "key": "C",
+        "text_en": "It marks the start of a comment that the query engine ignores.",
+        "text_zh": "標記註解的開始，查詢引擎會忽略後面的內容。"
+      },
+      {
+        "key": "D",
+        "text_en": "It evaluates both sides as an OR condition and returns rows that match either one.",
+        "text_zh": "把兩側當成 OR 條件評估，回傳符合任一側的資料列。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "KQL 是管線式（pipeline）語言：查詢以資料表開頭，每個 | 把上一步的輸出資料流交給下一個運算子繼續加工，由上而下循序處理。本例中 SigninLogs 的原始資料先經 where 篩出過去 1 小時的列，再由 project 只保留兩個欄位。理解「上一步輸出＝下一步輸入」是讀懂所有 KQL 題目的前提。",
+    "why_wrong_zh": {
+      "A": "合併兩張表是 join／union 運算子的工作（Day 3 主題），管線符號本身不做跨表合併，它只負責把資料流往下傳。",
+      "C": "KQL 的註解符號是 //（雙斜線），不是管線符號；| 是有實際語意的資料流串接符。",
+      "D": "OR 邏輯條件寫在 where 子句內（例如 where A or B）；| 是串接運算子的結構符號，不是邏輯運算子。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/tutorials/learn-common-operators",
+    "tags": [
+      "kql",
+      "hunting"
+    ]
+  },
+  {
+    "id": "D3-0002",
+    "domain": "D3",
+    "topic": "kql-where",
+    "unit": "P1-W1-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are a security operations analyst hunting in the DeviceProcessEvents table over 30 days of data. You need to find rows where ProcessCommandLine includes the whole term \"mimikatz\", the match must be case-insensitive, and the query should run as efficiently as possible. Which where clause should you use?",
+    "stem_zh": "你是安全性作業分析師，要在 DeviceProcessEvents 資料表中搜捕 30 天的資料。你需要找出 ProcessCommandLine 包含完整字詞「mimikatz」的資料列，比對須不分大小寫，且查詢要盡可能有效率。應使用哪個 where 子句？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "| where ProcessCommandLine contains \"mimikatz\"",
+        "text_zh": "| where ProcessCommandLine contains \"mimikatz\""
+      },
+      {
+        "key": "B",
+        "text_en": "| where ProcessCommandLine == \"mimikatz\"",
+        "text_zh": "| where ProcessCommandLine == \"mimikatz\""
+      },
+      {
+        "key": "C",
+        "text_en": "| where ProcessCommandLine has \"mimikatz\"",
+        "text_zh": "| where ProcessCommandLine has \"mimikatz\""
+      },
+      {
+        "key": "D",
+        "text_en": "| where ProcessCommandLine matches regex \"mimikatz\"",
+        "text_zh": "| where ProcessCommandLine matches regex \"mimikatz\""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "has 以「完整詞（term）」為單位比對、不分大小寫，且能利用字詞索引，是大量資料上最有效率的選擇。官方 KQL 最佳做法明確建議：能用 has 就不要用 contains。題幹同時給了「完整字詞」與「最有效率」兩個訊號，都指向 has。",
+    "why_wrong_zh": {
+      "A": "contains 比對任意子字串、不吃字詞索引，需要逐字元掃描，在 30 天的大量資料上效能明顯較差；題目要求「盡可能有效率」，它不是最佳解。",
+      "B": "== 是整個字串的精確比對且區分大小寫；命令列通常包含許多其他內容，整串等於「mimikatz」的機率極低，會漏掉幾乎所有目標資料列。",
+      "D": "matches regex 是正規表達式比對，成本最高；本題只是找固定的完整字詞，用正規表達式殺雞用牛刀，效能最差。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/best-practices",
+    "tags": [
+      "kql",
+      "advanced-hunting",
+      "performance"
+    ]
+  },
+  {
+    "id": "D3-0003",
+    "domain": "D3",
+    "topic": "kql-summarize",
+    "unit": "P1-W1-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "What does the following KQL query return?\n\nSigninLogs\n| where TimeGenerated > ago(7d)\n| where ResultType != \"0\"\n| summarize FailedCount = count() by bin(TimeGenerated, 1h)",
+    "stem_zh": "以下 KQL 查詢會回傳什麼？SigninLogs | where TimeGenerated > ago(7d) | where ResultType != \"0\" | summarize FailedCount = count() by bin(TimeGenerated, 1h)",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The number of failed sign-ins in each one-hour interval over the past 7 days.",
+        "text_zh": "過去 7 天內，每個一小時區間各有多少次失敗登入。"
+      },
+      {
+        "key": "B",
+        "text_en": "A single row with the total number of failed sign-ins over the past 7 days.",
+        "text_zh": "單一資料列，顯示過去 7 天失敗登入的總次數。"
+      },
+      {
+        "key": "C",
+        "text_en": "The full details of every failed sign-in event, one row per event.",
+        "text_zh": "每筆失敗登入事件的完整明細，一筆事件一列。"
+      },
+      {
+        "key": "D",
+        "text_en": "The number of distinct users who failed to sign in, grouped by hour.",
+        "text_zh": "每小時分組的「不重複」失敗登入使用者數。"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "查詢先篩出過去 7 天、ResultType 不是 \"0\"（登入失敗）的紀錄，再用 summarize count() 計數，並以 bin(TimeGenerated, 1h) 把時間切成一小時一桶分組。結果是每個一小時區間一列、附上該小時的失敗筆數——標準的時間分桶趨勢統計，可直接拿來畫每小時失敗登入趨勢圖。",
+    "why_wrong_zh": {
+      "B": "若沒有 by bin(...) 分組子句，summarize count() 才會輸出單一總數；本題有 by bin(TimeGenerated, 1h)，所以會依小時展開成多列。",
+      "C": "summarize 是聚合運算子，執行後只剩聚合欄位與分組欄位，原始事件明細不會保留；要看逐筆明細就不能用 summarize。",
+      "D": "算「不重複使用者數」要用 dcount(UserPrincipalName)；本題用的是 count()，算的是事件筆數，不是不重複人數。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/summarize-operator",
+    "tags": [
+      "kql",
+      "hunting"
+    ]
+  },
+  {
+    "id": "D3-0004",
+    "domain": "D3",
+    "topic": "kql-project",
+    "unit": "P1-W1-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are investigating suspicious sign-ins in SigninLogs. You want to add a new calculated column named Location_IP that combines the Location and IPAddress columns, while keeping all existing columns available for later steps in the pipeline. Which operator should you use?",
+    "stem_zh": "你正在調查 SigninLogs 中的可疑登入，想新增一個名為 Location_IP 的計算欄位（合併 Location 與 IPAddress），同時保留所有現有欄位供管線後續步驟使用。應使用哪個運算子？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "project",
+        "text_zh": "project"
+      },
+      {
+        "key": "B",
+        "text_en": "summarize",
+        "text_zh": "summarize"
+      },
+      {
+        "key": "C",
+        "text_en": "project-away",
+        "text_zh": "project-away"
+      },
+      {
+        "key": "D",
+        "text_en": "extend",
+        "text_zh": "extend"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "extend 會在保留所有現有欄位的前提下新增計算欄位（例如 extend Location_IP = strcat(Location, \"-\", IPAddress)），正符合「加欄位且不動原欄位」的需求。口訣：extend 加欄位、project 挑欄位——題幹出現「保留所有現有欄位」就是 extend 的訊號。",
+    "why_wrong_zh": {
+      "A": "project 雖然也能定義計算欄位，但它只保留你點名的欄位，其餘全部丟棄，違反題目「保留所有現有欄位」的要求。",
+      "B": "summarize 是聚合運算子，執行後只剩聚合結果與分組欄位，原始欄位與明細都會消失，不是用來加欄位的工具。",
+      "C": "project-away 是「點名移除」欄位、其餘保留，它只會減少欄位，無法新增計算欄位。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/extend-operator",
+    "tags": [
+      "kql",
+      "hunting"
+    ]
+  },
+  {
+    "id": "D3-0005",
+    "domain": "D3",
+    "topic": "kql-summarize",
+    "unit": "P1-W1-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A colleague shares the following hunting query:\n\nSigninLogs\n| where TimeGenerated > ago(24h)\n| where ResultType == \"50126\"\n| summarize Attempts = count(), Targets = dcount(UserPrincipalName) by IPAddress\n| where Targets > 20\n| order by Attempts desc\n\nWhich attack technique is this query designed to surface?",
+    "stem_zh": "同事分享了一段搜捕查詢：SigninLogs | where TimeGenerated > ago(24h) | where ResultType == \"50126\" | summarize Attempts = count(), Targets = dcount(UserPrincipalName) by IPAddress | where Targets > 20 | order by Attempts desc。這段查詢是設計來找出哪種攻擊手法？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A password spray attack, where one source IP attempts sign-ins against many distinct accounts.",
+        "text_zh": "Password spray 攻擊：單一來源 IP 對大量不同帳號嘗試登入。"
+      },
+      {
+        "key": "B",
+        "text_en": "A brute-force attack against a single privileged account from many different IP addresses.",
+        "text_zh": "多個不同 IP 位址對單一特權帳號進行的暴力破解攻擊。"
+      },
+      {
+        "key": "C",
+        "text_en": "A phishing campaign delivering credential-harvesting email to multiple recipients.",
+        "text_zh": "向多名收件者投遞竊取認證郵件的釣魚活動。"
+      },
+      {
+        "key": "D",
+        "text_en": "Lateral movement between devices by using stolen credential hashes.",
+        "text_zh": "利用竊得的認證雜湊在裝置之間橫向移動。"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "拆解查詢：ResultType \"50126\" 是「帳號或密碼錯誤」的失敗登入；summarize ... by IPAddress 以「來源 IP」分組；dcount(UserPrincipalName) 計算每個 IP 打過的「不重複帳號數」；Targets > 20 篩出 24 小時內對超過 20 個不同帳號嘗試的 IP。「一個來源、大量不同帳號、各少量嘗試」正是 password spray 的特徵——攻擊者用常見密碼廣撒帳號，以避開單一帳號的鎖定門檻。",
+    "why_wrong_zh": {
+      "C": "釣魚郵件活動要查 EmailEvents 等 Defender for Office 365 的郵件資料表；SigninLogs 只有登入行為，看不到郵件投遞。",
+      "D": "橫向移動的證據在裝置與身分識別遙測（如 DeviceLogonEvents、IdentityLogonEvents），且特徵是裝置對裝置的驗證行為，不是雲端登入的密碼錯誤統計。",
+      "B": "暴力破解單一帳號的偵測方向相反：應以帳號分組、計算不重複來源 IP 或失敗次數（例如 dcount(IPAddress) by UserPrincipalName）；本查詢是以 IP 分組數帳號。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/dcount-aggregation-function",
+    "tags": [
+      "kql",
+      "hunting",
+      "identity"
+    ]
+  },
+  {
+    "id": "D3-0006",
+    "domain": "D3",
+    "unit": "P1-W1-3",
+    "set": "A",
+    "topic": "kql-join",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [],
+    "stem_en": "A security operations analyst runs the following query in advanced hunting: IdentityLogonEvents | join (DeviceLogonEvents) on AccountName. No kind parameter is specified. Which join flavor does KQL apply by default?",
+    "stem_zh": "安全性作業分析師在進階搜捕執行查詢：IdentityLogonEvents | join (DeviceLogonEvents) on AccountName，未指定 kind 參數。KQL 預設會套用哪一種 join？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "inner — every matching pair of rows from both tables is returned",
+        "text_zh": "inner——左右兩表每一組配對的資料列都會輸出"
+      },
+      {
+        "key": "B",
+        "text_en": "innerunique — duplicate keys on the left table are deduplicated before matching",
+        "text_zh": "innerunique——左表鍵值先去除重複，再與右表配對"
+      },
+      {
+        "key": "C",
+        "text_en": "leftouter — all left-table rows are kept, unmatched right columns are null",
+        "text_zh": "leftouter——左表資料列全部保留，配不到的右表欄位補空值"
+      },
+      {
+        "key": "D",
+        "text_en": "fullouter — all rows from both tables are kept",
+        "text_zh": "fullouter——左右兩表的資料列全部保留"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "KQL 的 join 未指定 kind 時，預設是 innerunique：左表相同鍵值的重複列會先被去重（每個鍵值僅隨機保留一列），再與右表做 inner 式配對。因此輸出筆數常比預期少，這是搜捕查詢與考試的高頻陷阱——需要逐筆配對時必須明確寫 kind=inner。",
+    "why_wrong_zh": {
+      "A": "inner 會保留左表所有重複鍵值並逐筆配對，但它不是預設值——必須明確指定 kind=inner 才會使用。",
+      "C": "leftouter 保留左表全部資料列並為未配對列補空值，屬於必須明確指定的 kind，不是預設行為。",
+      "D": "fullouter 保留兩表所有資料列，是最寬鬆的 kind，同樣必須明確指定，並非預設。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/join-operator"
+  },
+  {
+    "id": "D3-0007",
+    "domain": "D3",
+    "unit": "P1-W1-3",
+    "set": "A",
+    "topic": "kql-join",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You are hunting for accounts that signed in successfully but have never registered for MFA. You build: SigninLogs | where ResultType == 0 | join kind=??? (MfaRegisteredUsers) on UserPrincipalName. You need to return only the sign-in rows for users that have NO matching row in MfaRegisteredUsers. Which join kind should replace ????",
+    "stem_zh": "你要搜捕「成功登入但從未註冊 MFA」的帳號，查詢為：SigninLogs | where ResultType == 0 | join kind=??? (MfaRegisteredUsers) on UserPrincipalName。你需要只回傳「在 MfaRegisteredUsers 中沒有配對列」的登入紀錄。??? 應填入哪一種 join kind？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "leftouter",
+        "text_zh": "leftouter"
+      },
+      {
+        "key": "B",
+        "text_en": "inner",
+        "text_zh": "inner"
+      },
+      {
+        "key": "C",
+        "text_en": "leftsemi",
+        "text_zh": "leftsemi"
+      },
+      {
+        "key": "D",
+        "text_en": "leftanti",
+        "text_zh": "leftanti"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "題幹關鍵字是「沒有配對列（NO matching row）」：leftanti 只保留左表中配不到右表的資料列，正好回傳「有登入、但不在 MFA 已註冊清單」的帳號。解題口訣：找『缺席／不存在於另一表』→ leftanti。",
+    "why_wrong_zh": {
+      "A": "leftouter 會保留左表全部資料列（配到與配不到都輸出），還需要再加一段 where isempty(...) 過濾才能達成目的，不是最直接的答案。",
+      "B": "inner 只保留「兩表都有」的配對列，回傳的是已註冊 MFA 的使用者登入，與需求正好相反。",
+      "C": "leftsemi 保留的是「配得到」右表的左表列（右表當過濾清單），同樣與『沒有配對』的需求相反；它的反義才是 leftanti。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/join-operator"
+  },
+  {
+    "id": "D3-0008",
+    "domain": "D3",
+    "unit": "P1-W1-3",
+    "set": "A",
+    "topic": "kql-parse",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "An analyst runs: DeviceEvents | extend Status = AdditionalFields.SigningStatus | where isnotempty(Status). The query returns zero rows even though AdditionalFields visibly contains JSON with a SigningStatus property. The AdditionalFields column is typed as string. How should the analyst fix the query?",
+    "stem_zh": "分析師執行：DeviceEvents | extend Status = AdditionalFields.SigningStatus | where isnotempty(Status)。雖然 AdditionalFields 內容明顯是含 SigningStatus 屬性的 JSON，查詢卻回傳零筆。該欄位的型別是 string。分析師應如何修正查詢？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Use extend Status = tostring(todynamic(AdditionalFields).SigningStatus) to convert the string to dynamic before accessing the property",
+        "text_zh": "改為 extend Status = tostring(todynamic(AdditionalFields).SigningStatus)，先把字串轉成 dynamic 再取屬性"
+      },
+      {
+        "key": "B",
+        "text_en": "Use extend Status = tostring(AdditionalFields).SigningStatus to cast the column first",
+        "text_zh": "改為 extend Status = tostring(AdditionalFields).SigningStatus，先轉型再取屬性"
+      },
+      {
+        "key": "C",
+        "text_en": "Use extend Status = split(AdditionalFields, \",\") to break the JSON into fields",
+        "text_zh": "改為 extend Status = split(AdditionalFields, \",\")，把 JSON 切成多個欄位"
+      },
+      {
+        "key": "D",
+        "text_en": "Use summarize make_set(AdditionalFields) to expand the JSON properties",
+        "text_zh": "改為 summarize make_set(AdditionalFields) 展開 JSON 屬性"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "型別為 string 的欄位即使內容是 JSON，也不能直接用點語法取屬性——會靜默回傳空值而非報錯。正確做法是先用 todynamic()（同 parse_json()）把字串轉成 dynamic 物件，再以 .SigningStatus 取屬性，最後用 tostring() 轉回純量型別以便比對與聚合。口訣：先轉 dynamic、再取屬性、再轉回純量。",
+    "why_wrong_zh": {
+      "B": "tostring() 的輸出仍是 string，對字串做 .SigningStatus 屬性存取一樣拿到空值，問題完全沒有解決。",
+      "C": "split() 只依分隔符把字串切成陣列，不會解析 JSON 結構，無法以屬性名稱取值；逗號也可能出現在 JSON 值內造成錯切。",
+      "D": "make_set() 是聚合函式，把多列值收成去重陣列，與解析單一欄位內的 JSON 屬性無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/parse-json-function"
+  },
+  {
+    "id": "D3-0009",
+    "domain": "D3",
+    "unit": "P1-W1-3",
+    "set": "A",
+    "topic": "kql-timeseries",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "An analyst builds a time-series hunt: SigninLogs | make-series FailedCount = count() default = 0 on TimeGenerated from ago(14d) to now() step 1h by UserPrincipalName | extend (Anomalies, Score, Baseline) = series_decompose_anomalies(FailedCount, 2.5). What does the Anomalies output contain for each user?",
+    "stem_zh": "分析師建立時間序列搜捕查詢：SigninLogs | make-series FailedCount = count() default = 0 on TimeGenerated from ago(14d) to now() step 1h by UserPrincipalName | extend (Anomalies, Score, Baseline) = series_decompose_anomalies(FailedCount, 2.5)。每個使用者的 Anomalies 輸出內容是什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A list of datetime values containing only the anomalous time bins",
+        "text_zh": "只包含異常時段之 datetime 值的清單"
+      },
+      {
+        "key": "B",
+        "text_en": "The expected baseline value calculated for the whole series",
+        "text_zh": "整條數列計算出的預期基線值"
+      },
+      {
+        "key": "C",
+        "text_en": "A dynamic array aligned to every time bin, with 1, 0, or -1 marking a positive anomaly, no anomaly, or a negative anomaly",
+        "text_zh": "與每個時間格對齊的 dynamic 陣列，值為 1、0 或 -1，分別代表正向異常、無異常、負向異常"
+      },
+      {
+        "key": "D",
+        "text_en": "A single number representing the total count of anomalies detected",
+        "text_zh": "代表偵測到的異常總數的單一數值"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "series_decompose_anomalies() 回傳三個與輸入數列「逐格對齊」的陣列：Anomalies 每格標 1（高於基線的正向異常）、0（正常）或 -1（低於基線的負向異常）；Score 是異常分數；Baseline 是預期基線值。因為輸出是陣列，後續通常要用 mv-expand 展開成一列一時段，再以 where Anomalies == 1 篩出異常時點。",
+    "why_wrong_zh": {
+      "A": "Anomalies 陣列涵蓋『所有』時間格（正常時段為 0），不是只列出異常時段的時間清單；要取得異常時點需 mv-expand 後再過濾。",
+      "B": "預期基線值是第三個輸出 Baseline 的內容，不是 Anomalies。",
+      "D": "函式不會輸出異常總數的單一數值；若要總數，需自行對展開後的結果做 summarize count()。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/series-decompose-anomalies-function"
+  },
+  {
+    "id": "D3-0010",
+    "domain": "D3",
+    "unit": "P1-W1-3",
+    "set": "A",
+    "topic": "kql-join",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You are investigating suspected lateral movement after a phishing campaign. You run: let Phished = EmailEvents | where ThreatTypes has \"Phish\" and DeliveryAction == \"Delivered\" | distinct RecipientEmailAddress; IdentityLogonEvents | where Timestamp > ago(3d) | where AccountUpn in~ (Phished) | summarize arg_max(Timestamp, *) by AccountUpn. What does this query return?",
+    "stem_zh": "你在網釣行動後調查疑似橫向移動，執行：let Phished = EmailEvents | where ThreatTypes has \"Phish\" and DeliveryAction == \"Delivered\" | distinct RecipientEmailAddress; IdentityLogonEvents | where Timestamp > ago(3d) | where AccountUpn in~ (Phished) | summarize arg_max(Timestamp, *) by AccountUpn。此查詢會回傳什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Every logon event in the last 3 days for each account that received a delivered phishing email",
+        "text_zh": "每個收到已送達網釣郵件之帳號，最近 3 天內的全部登入事件"
+      },
+      {
+        "key": "B",
+        "text_en": "For each phished account that logged on in the last 3 days, the single most recent logon row including all its columns",
+        "text_zh": "每個最近 3 天內有登入的受網釣帳號，各回傳時間最新的那一列登入紀錄（含該列所有欄位）"
+      },
+      {
+        "key": "C",
+        "text_en": "For each phished account, the earliest logon row in the period, which reveals the start of the lateral movement",
+        "text_zh": "每個受網釣帳號在期間內最早的一列登入紀錄，可看出橫向移動的起點"
+      },
+      {
+        "key": "D",
+        "text_en": "The total number of logons per phished account in the last 3 days",
+        "text_zh": "每個受網釣帳號最近 3 天內的登入總次數"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "let 先以 distinct 建立「已送達網釣郵件」的收件者清單；in~ 做不分大小寫的清單比對，篩出這些帳號的登入事件；關鍵在 summarize arg_max(Timestamp, *) by AccountUpn——每個帳號分一組，取組內 Timestamp 最大（最新）的那一列，星號代表把該列所有欄位完整輸出。因此結果是「每個受害帳號各一列：其最近一次登入的完整紀錄」，適合快速確認每個帳號最後出現的位置與方式。",
+    "why_wrong_zh": {
+      "A": "summarize arg_max(...) by AccountUpn 會把每個帳號聚合成單一列（最新那筆），不會保留全部登入事件；要全部事件就不該加這段 summarize。",
+      "C": "取「最早一筆」是 arg_min(Timestamp, *) 的行為；本查詢用的是 arg_max，回傳最新一筆。",
+      "D": "計算登入總次數是 summarize count() by AccountUpn 的行為；arg_max 回傳的是整列紀錄，不是次數。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/kusto/query/arg-max-aggregation-function"
+  },
+  {
+    "id": "D3-0011",
+    "domain": "D3",
+    "topic": "xdr-schema",
+    "unit": "P1-W5-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "You are a security operations analyst investigating a phishing campaign in Microsoft Defender XDR advanced hunting. Several malicious messages were delivered before the policy was tightened. You need the SHA256 hash of the files that were attached to those messages so you can check whether the files later ran on any endpoint. Which advanced hunting table contains the attachment file hashes?",
+    "stem_zh": "你是資安維運分析師，正在 Microsoft Defender XDR 的進階搜捕中調查一波釣魚郵件，其中數封在原則調整前已送達。你需要這些郵件夾帶檔案的 SHA256 雜湊，才能回頭確認檔案有沒有在端點上被執行。哪一張進階搜捕資料表存有夾檔的檔案雜湊？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "EmailEvents",
+        "text_zh": "EmailEvents"
+      },
+      {
+        "key": "B",
+        "text_en": "EmailAttachmentInfo",
+        "text_zh": "EmailAttachmentInfo"
+      },
+      {
+        "key": "C",
+        "text_en": "EmailUrlInfo",
+        "text_zh": "EmailUrlInfo"
+      },
+      {
+        "key": "D",
+        "text_en": "EmailPostDeliveryEvents",
+        "text_zh": "EmailPostDeliveryEvents"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Email* 家族依「郵件的哪一面」拆表：EmailAttachmentInfo 專門記錄每封郵件夾帶的檔案，包含 FileName、FileType 與 SHA256／SHA1，因此是取得夾檔雜湊的正確來源。實務標準流程是先用 EmailEvents 篩出已送達的惡意郵件，再以共用鍵 NetworkMessageId 關聯 EmailAttachmentInfo 取得雜湊，最後用 SHA256 接到 DeviceFileEvents 或 DeviceProcessEvents，確認檔案是否落地並執行——這就是跨產品攻擊鏈查詢的骨架。",
+    "why_wrong_zh": {
+      "A": "EmailEvents 記錄郵件本身的收送與判定（寄件者、收件者、主旨、DeliveryAction、ThreatTypes），是攻擊鏈的起點，但不含夾檔的檔案雜湊欄位。",
+      "C": "EmailUrlInfo 記錄郵件內含的網址，用來追「信裡放了什麼連結」；要看誰真的點了連結是 UrlClickEvents，兩者都與夾檔雜湊無關。",
+      "D": "EmailPostDeliveryEvents 記錄郵件送達之後系統採取的動作（例如自動清除 ZAP 是否成功），用於驗證處置結果，不提供夾檔雜湊。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-emailattachmentinfo-table",
+    "tags": [
+      "hunting",
+      "xdr"
+    ]
+  },
+  {
+    "id": "D3-0012",
+    "domain": "D3",
+    "topic": "advanced-hunting",
+    "unit": "P1-W5-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are hunting in Microsoft Defender XDR and have written the following query:\n\nEmailEvents\n| where Timestamp > ago(7d)\n| where DeliveryAction == \"Delivered\" and ThreatTypes has \"Malware\"\n| join kind=inner (EmailAttachmentInfo | where Timestamp > ago(7d)) on NetworkMessageId\n\nYou must now extend the query to determine whether the attached files were actually executed on managed devices. Which column should you use to join DeviceProcessEvents?",
+    "stem_zh": "你在 Microsoft Defender XDR 進階搜捕中寫了一段查詢：EmailEvents 篩出過去 7 天已送達且判定為惡意程式的郵件，再以 NetworkMessageId 關聯 EmailAttachmentInfo。現在你要延伸查詢，判斷這些夾檔是否真的在受管裝置上被執行。關聯 DeviceProcessEvents 時應該用哪個欄位？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "NetworkMessageId",
+        "text_zh": "NetworkMessageId"
+      },
+      {
+        "key": "B",
+        "text_en": "ReportId",
+        "text_zh": "ReportId"
+      },
+      {
+        "key": "C",
+        "text_en": "AccountObjectId",
+        "text_zh": "AccountObjectId"
+      },
+      {
+        "key": "D",
+        "text_en": "SHA256",
+        "text_zh": "SHA256"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "檔案雜湊是唯一同時存在於郵件世界與端點世界的識別碼：EmailAttachmentInfo 的 SHA256 對上 DeviceProcessEvents 的 SHA256，就能確認「郵件夾帶的那個檔案」是否被建立成行程執行。實務上還要加時間窗（例如 where ExecTime between (MailTime .. MailTime + 24h)），限制執行發生在郵件送達之後，否則會撈到大量與本案無關的同名或同雜湊舊檔案，產生假關聯。",
+    "why_wrong_zh": {
+      "A": "NetworkMessageId 只在 Email* 家族內共用（EmailEvents、EmailAttachmentInfo、EmailUrlInfo、EmailPostDeliveryEvents），Device* 資料表沒有這個欄位，join 不起來。",
+      "B": "ReportId 是單一事件在其所屬資料表中的識別碼，用於定位與去重（也是自訂偵測的必要輸出欄位），並非跨資料表關聯用的共用鍵。",
+      "C": "AccountObjectId 串的是身分與雲端應用活動（Identity*、CloudAppEvents），可以回答「這個帳號還做了什麼」，但無法證明某個夾檔在端點上被執行。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-schema-tables",
+    "tags": [
+      "hunting",
+      "kql"
+    ]
+  },
+  {
+    "id": "D3-0013",
+    "domain": "D3",
+    "topic": "custom-detections",
+    "unit": "P1-W5-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You want to turn a proven hunting query into a custom detection rule in Microsoft Defender XDR. The query currently ends with:\n\nDeviceProcessEvents\n| where Timestamp > ago(2h)\n| where InitiatingProcessFileName in~ (\"winword.exe\", \"excel.exe\")\n| where ProcessCommandLine has_any (\"-enc\", \"FromBase64String\")\n| summarize Hits = count() by DeviceName\n\nThe portal will not let you create the rule from this query. What should you change first?",
+    "stem_zh": "你想把一段已驗證的搜捕查詢在 Microsoft Defender XDR 中轉成自訂偵測規則。查詢最後是 summarize Hits = count() by DeviceName，但入口網站不讓你用這段查詢建立規則。你應該先修改什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Make the query return Timestamp and ReportId together with a device identifier, for example by using summarize arg_max(Timestamp, *) by DeviceId.",
+        "text_zh": "讓查詢輸出 Timestamp 與 ReportId 以及裝置識別欄位，例如改用 summarize arg_max(Timestamp, *) by DeviceId。"
+      },
+      {
+        "key": "B",
+        "text_en": "Change the rule frequency to Continuous (NRT) so that aggregation is evaluated in near real time.",
+        "text_zh": "把規則執行頻率改成連續（NRT），讓聚合結果以近即時方式評估。"
+      },
+      {
+        "key": "C",
+        "text_en": "Save the query as a shared hunting query first, then create the detection rule from the saved query.",
+        "text_zh": "先把查詢存成共用搜捕查詢，再從已儲存的查詢建立偵測規則。"
+      },
+      {
+        "key": "D",
+        "text_en": "Extend the time filter to ago(30d) so the rule has enough data to evaluate.",
+        "text_zh": "把時間篩選放寬到 ago(30d)，讓規則有足夠資料可以評估。"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "自訂偵測規則的查詢結果必須包含 Timestamp（事件時間）與 ReportId（事件唯一識別），平台才能定位事件並避免重複告警；同時至少要有一個可對應的實體欄位（DeviceId／DeviceName／AccountObjectId／AccountSid／AccountUpn／收件者信箱或檔案雜湊），自動回應動作才有作用對象。summarize count() by DeviceName 會把 Timestamp 與 ReportId 一併聚合掉，因此規則無法建立。標準補救寫法是 summarize arg_max(Timestamp, *) by DeviceId，取每台裝置最新的一整列，所有必要欄位都會被帶回結果。",
+    "why_wrong_zh": {
+      "B": "頻率不是問題所在，缺欄位在任何頻率下都存不了規則；而且連續（NRT）模式限制更嚴，只支援單一資料表且不支援 join／union，改成 NRT 不會讓缺欄位的查詢變得合法。",
+      "C": "把查詢存成共用搜捕查詢只是方便團隊重複使用，並不會改變結果集的欄位；規則建立時檢查的仍是查詢輸出是否含 Timestamp、ReportId 與實體欄位。",
+      "D": "放寬時間篩選反而會出問題：查詢的時間窗應該對齊所選頻率的回看期（例如每小時對應過去 2 小時），把窗拉到 30 天既無法解決缺欄位，也會造成重複評估與效能負擔。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/custom-detection-rules",
+    "tags": [
+      "custom-detection",
+      "hunting"
+    ]
+  },
+  {
+    "id": "D3-0014",
+    "domain": "D3",
+    "topic": "custom-detections",
+    "unit": "P1-W5-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "A custom detection rule you are creating in Microsoft Defender XDR returns Timestamp, ReportId, AccountUpn and AccountObjectId. Your SOC lead requires the rule to automatically isolate the affected endpoint when it triggers, but the device actions are unavailable in the response actions step. What should you do?",
+    "stem_zh": "你在 Microsoft Defender XDR 建立的自訂偵測規則目前輸出 Timestamp、ReportId、AccountUpn 與 AccountObjectId。SOC 主管要求規則觸發時自動隔離受影響的端點，但在回應動作步驟中裝置類動作無法選取。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Change the rule frequency to Continuous (NRT), because device response actions are only offered for near real-time rules.",
+        "text_zh": "把規則頻率改成連續（NRT），因為裝置回應動作只提供給近即時規則。"
+      },
+      {
+        "key": "B",
+        "text_en": "Create an automation rule in Microsoft Sentinel that runs an isolation playbook when the alert arrives.",
+        "text_zh": "在 Microsoft Sentinel 建立自動化規則，當警示進來時執行隔離劇本（Playbook）。"
+      },
+      {
+        "key": "C",
+        "text_en": "Modify the query to also return a device identifier such as DeviceId, then map it as the impacted device entity in the rule.",
+        "text_zh": "修改查詢讓結果也輸出 DeviceId 之類的裝置識別欄位，並在規則中把它對應成受影響的裝置實體。"
+      },
+      {
+        "key": "D",
+        "text_en": "Set the rule scope to all device groups so that every managed device is in scope for the action.",
+        "text_zh": "把規則範圍設為所有裝置群組，讓所有受管裝置都納入動作範圍。"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "自訂偵測的自動回應動作是依「受影響的實體」對應到哪一類欄位而解鎖：對應到裝置欄位（DeviceId／DeviceName）才會出現隔離裝置、收集調查封包、執行防毒掃描、限制應用程式執行等裝置動作；對應到使用者欄位才有停用帳號、強制重設密碼；對應到郵件欄位才能刪信。目前查詢只輸出帳號欄位，平台不知道要對哪台裝置動手，因此裝置動作反灰。正解是讓查詢帶出裝置識別欄位並完成實體對應。",
+    "why_wrong_zh": {
+      "A": "頻率與可用動作無關；連續（NRT）只是評估時機更即時，而且限制更多（單一資料表、不支援 join／union），改頻率不會讓裝置動作出現。",
+      "B": "這是可行的替代路徑，但屬於 Sentinel 端的自動化，不是本題要解的問題；題目要的是讓這條自訂偵測規則自己執行隔離，最短且正確的做法是補上裝置實體欄位。",
+      "D": "規則範圍（裝置群組）決定規則對哪些裝置生效，不會讓裝置類回應動作變成可選；沒有對應的裝置實體欄位，範圍設多大都沒有作用對象。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/custom-detection-rules",
+    "tags": [
+      "custom-detection",
+      "response"
+    ]
+  },
+  {
+    "id": "D3-0015",
+    "domain": "D3",
+    "topic": "advanced-hunting",
+    "unit": "P1-W5-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "During an investigation, threat intelligence indicates that an adversary may have first accessed your environment about five months ago. You run an advanced hunting query in the Microsoft Defender portal with a filter of ago(150d), but no events are returned even though the workspace retains the relevant logs for one year. You must confirm the earliest sign of the activity. What should you do?",
+    "stem_zh": "調查期間，威脅情報顯示攻擊者可能在約五個月前就首次進入你的環境。你在 Microsoft Defender 入口網站的進階搜捕中以 ago(150d) 執行查詢，卻查不到任何事件，儘管工作區對相關日誌保留了一年。你必須確認該活動最早的跡象。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Increase the query timeout and rerun the advanced hunting query with a larger result limit.",
+        "text_zh": "提高查詢逾時上限並加大結果筆數限制後，重新執行同一段進階搜捕查詢。"
+      },
+      {
+        "key": "B",
+        "text_en": "Create a custom detection rule that runs every 24 hours, because that frequency uses a 30-day lookup period.",
+        "text_zh": "建立每 24 小時執行的自訂偵測規則，因為該頻率使用過去 30 天的回看期。"
+      },
+      {
+        "key": "C",
+        "text_en": "Run a search job in Microsoft Sentinel against the long-term retained logs, restoring the historical data if deeper interactive analysis is needed.",
+        "text_zh": "在 Microsoft Sentinel 對長期保留的日誌執行搜尋作業（search job），若需要更深入的互動分析再還原歷史資料。"
+      },
+      {
+        "key": "D",
+        "text_en": "Rebuild the query in guided hunting mode so the query builder can address the older data domains.",
+        "text_zh": "改用引導模式（guided hunting mode）的查詢建立器重寫查詢，以便涵蓋較舊的資料網域。"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Defender XDR 進階搜捕的原生資料表只保留過去 30 天，因此 ago(150d) 不會有結果，這是資料範圍的必然結果，與權限、逾時或查詢寫法無關。要查更久以前的資料，正解是走 Microsoft Sentinel 這一側：對長期／輔助保留的日誌執行搜尋作業（search job），它專為大範圍、長時間跨度的搜尋設計，作業完成後再檢視結果；若需要對那段歷史資料做反覆互動查詢，則進一步使用資料還原（data restore）把它帶回可查詢狀態。",
+    "why_wrong_zh": {
+      "A": "逾時（10 分鐘）與結果筆數（30,000 筆）是租用戶固定配額，不能自行調高；就算調得動也無濟於事，因為 30 天以外的資料根本不在進階搜捕的查詢範圍內。",
+      "D": "引導模式只是讓不熟 KQL 的分析師用查詢建立器組條件，資料來源與 30 天保留範圍完全相同，換模式不會讓更舊的資料變得可查。",
+      "B": "每 24 小時的自訂偵測確實使用 30 天回看期，但那是「持續偵測未來事件」的機制，且同樣受 30 天限制，無法回答「五個月前發生了什麼」這個歷史調查問題。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-limits",
+    "tags": [
+      "hunting",
+      "sentinel"
+    ]
+  },
+  {
+    "id": "D3-0016",
+    "domain": "D3",
+    "unit": "P1-W5-2",
+    "set": "A",
+    "topic": "hunting-queries",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You are a security operations analyst at Contoso. Your SOC manager notices that several built-in hunting queries on the Microsoft Sentinel hunting page return results, but no incidents were created from them this week. Which statement correctly describes how hunting queries behave?",
+    "stem_zh": "你是 Contoso 的資安維運分析師。SOC 主管發現 Microsoft Sentinel 搜捕頁面上有幾支內建搜捕查詢會傳回結果，但本週沒有因此產生任何事件。下列哪一項正確描述搜捕查詢的行為？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Hunting queries run only when an analyst runs them individually or uses Run all queries; they do not run on a schedule and do not create alerts or incidents.",
+        "text_zh": "搜捕查詢只在分析師單獨執行或使用 Run all queries 批次執行時才會跑；它們不會依排程自動執行，也不會產生警示或事件。"
+      },
+      {
+        "key": "B",
+        "text_en": "Hunting queries run on the schedule stored in the query template and create an incident whenever the result count is greater than zero.",
+        "text_zh": "搜捕查詢會依查詢範本中設定的排程執行，只要結果筆數大於零就建立事件。"
+      },
+      {
+        "key": "C",
+        "text_en": "Hunting queries evaluate incoming data every minute and raise near-real-time alerts for each match.",
+        "text_zh": "搜捕查詢每分鐘評估新進資料，並為每次命中產生近乎即時的警示。"
+      },
+      {
+        "key": "D",
+        "text_en": "Hunting queries are triggered whenever an incident is created and apply tags or assign an owner to that incident.",
+        "text_zh": "搜捕查詢會在事件建立時觸發，並為該事件加標籤或指派擁有者。"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "搜捕查詢是「主動提問」的工具，不是偵測機制。它由分析師手動執行，或在搜捕頁面用 Run all queries／Run selected queries 批次執行（也可把常用查詢加入我的最愛，進頁面時自動執行），執行結果只呈現在頁面上，不會產生警示、也不會開事件。要讓查詢邏輯持續自動偵測並產生事件，必須把它建立成排程分析規則或 NRT 規則；要保存有價值的結果列，則使用書籤。",
+    "why_wrong_zh": {
+      "B": "依排程執行並在符合門檻時建立事件，是排程分析規則（scheduled analytics rule）的行為；搜捕查詢本身沒有排程與事件建立設定。",
+      "C": "每分鐘評估新資料並產生警示的是 NRT（near-real-time）分析規則；而在搜捕頁面持續對新進資料比對的 livestream 雖然接近即時，也只提供通知、不會產生警示。",
+      "D": "在事件建立時觸發並加標籤、指派擁有者的是自動化規則（automation rule），與搜捕查詢無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/hunting"
+  },
+  {
+    "id": "D3-0017",
+    "domain": "D3",
+    "unit": "P1-W5-2",
+    "set": "A",
+    "topic": "livestream",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "You are a SOC analyst. You wrote a new KQL query that you believe identifies a credential-theft technique, but you are not confident about its false positive rate. You want to observe how the query behaves against events as they arrive over the next few hours and be notified when it matches, without generating alerts or incidents while you evaluate it. What should you do?",
+    "stem_zh": "你是 SOC 分析師。你寫了一支新的 KQL 查詢，認為可以找出某種竊取認證的手法，但不確定它的誤判率。你想在接下來幾小時觀察這支查詢對「陸續進來的事件」的表現，命中時收到通知，而在評估期間不要產生任何警示或事件。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Create a near-real-time (NRT) analytics rule from the query and review the alerts it produces.",
+        "text_zh": "用這支查詢建立 NRT（near-real-time）分析規則，再檢視它產生的警示。"
+      },
+      {
+        "key": "B",
+        "text_en": "Start a hunting livestream session with the query and configure notifications.",
+        "text_zh": "用這支查詢啟動搜捕 livestream（即時串流）工作階段，並設定通知。"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a scheduled analytics rule that runs every hour and disable incident creation.",
+        "text_zh": "建立每小時執行一次的排程分析規則，並關閉事件建立。"
+      },
+      {
+        "key": "D",
+        "text_en": "Run a search job with the query over the last 24 hours and review the job results.",
+        "text_zh": "用這支查詢對過去 24 小時執行 search job，再檢視工作結果。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "livestream 就是為「測試還沒把握的查詢邏輯」設計的：它是互動式工作階段，對持續進來的事件比對你的查詢，命中時在入口網站近即時通知你，但不會產生警示、也不會建立事件，因此不會汙染分診佇列，也不佔用分析規則配額。等你確認雜訊可以接受，再從工作階段直接升級成警示（elevate to alert），用同一段查詢生成排程分析規則。",
+    "why_wrong_zh": {
+      "A": "NRT 規則會實際產生警示與事件，正是題目要避免的；而且每個工作區的 NRT 規則數量有限，拿它來試邏輯並不合適。",
+      "C": "排程分析規則即使關閉事件建立仍會產生警示、佔用規則配額，也不是互動式觀察；用它試邏輯會在正式偵測面留下雜訊。",
+      "D": "search job 是對「過去」的大量資料做長時間軸搜尋，回答不了「接下來幾小時這支查詢會命中什麼」的問題。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/livestream"
+  },
+  {
+    "id": "D3-0018",
+    "domain": "D3",
+    "unit": "P1-W5-2",
+    "set": "A",
+    "topic": "bookmarks",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "While hunting in Microsoft Sentinel you find three rows of unusual sign-in activity for one account. You cannot confirm yet that the activity is malicious. You need to preserve the rows together with the query that produced them, let a colleague continue the work tomorrow, and be able to pivot from the finding into the investigation graph for that account. What should you do?",
+    "stem_zh": "你在 Microsoft Sentinel 搜捕時，發現某個帳號有三列異常的登入活動，但還無法確認是否為惡意。你需要把這幾列資料連同產生它們的查詢一起保存，讓同事明天接手，並且能從這個發現進入該帳號的調查圖。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Export the query results to CSV and attach the file to a ticket for your colleague.",
+        "text_zh": "把查詢結果匯出成 CSV，並把檔案附在工單上交給同事。"
+      },
+      {
+        "key": "B",
+        "text_en": "Create an incident from the query results immediately and assign it to your colleague.",
+        "text_zh": "立刻從查詢結果建立事件並指派給同事。"
+      },
+      {
+        "key": "C",
+        "text_en": "Save the rows as a bookmark, map the account column to an Account entity, and add tags and notes.",
+        "text_zh": "把這幾列存成書籤，將帳號欄位對應成 Account 實體，並加上標籤與備註。"
+      },
+      {
+        "key": "D",
+        "text_en": "Add the account to a watchlist so that it is enriched in future hunting queries.",
+        "text_zh": "把該帳號加入監視清單（Watchlist），讓未來的搜捕查詢能夠富化它。"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "書籤（bookmark）保存的是「那幾列資料＋當時的查詢＋查詢時間範圍」，是可重現的證據快照，天生就是為了交接與延續調查而設計。加上標籤與備註可以讓同事看懂脈絡；而實體對應是能不能進調查圖的關鍵——把帳號欄位對應成 Account 實體後，就能從書籤展開調查圖與其他遙測交叉關聯。日後若確認需要正式處理，再把書籤升級成事件或加入既有事件。",
+    "why_wrong_zh": {
+      "A": "匯出 CSV 會讓證據離開平台：沒有查詢脈絡、沒有實體對應、進不了調查圖，也無法納入搜捕專案追蹤。",
+      "B": "活動尚未確認為惡意就開事件，會製造誤判與噪音；正確順序是先留書籤，確認需要進正式流程（指派、SLA、自動化回應）時再升級。",
+      "D": "監視清單用來提供業務脈絡（VIP、離職員工、允許的 IP）供查詢 join 使用，它不保存查詢結果，也不會保留這次發現的證據。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/bookmarks"
+  },
+  {
+    "id": "D3-0019",
+    "domain": "D3",
+    "unit": "P1-W5-2",
+    "set": "A",
+    "topic": "hunts",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [],
+    "stem_en": "Your team ran a two-week hunt in Microsoft Sentinel based on the hypothesis that an insider was staging data before exfiltration. After 12 queries and 5 bookmarks, the evidence shows the activity was a sanctioned backup job. Your manager wants the outcome recorded so that another analyst does not repeat the same investigation next quarter. What should you do?",
+    "stem_zh": "你的團隊在 Microsoft Sentinel 進行了一個為期兩週的 hunt，假說是「有內部人員在外洩前先集結資料」。跑了 12 支查詢、留下 5 個書籤後，證據顯示那是經核准的備份作業。主管希望把結論記錄下來，避免下一季有人重做同一件事。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Delete the hunt and its bookmarks so that the hunting queue only shows active work.",
+        "text_zh": "刪除這個 hunt 與其書籤，讓搜捕佇列只留下進行中的工作。"
+      },
+      {
+        "key": "B",
+        "text_en": "Create an incident from each bookmark and close the incidents as benign positive.",
+        "text_zh": "為每個書籤各建立一張事件，再把事件以良性正判（benign positive）結案。"
+      },
+      {
+        "key": "C",
+        "text_en": "Convert each hunting query into a scheduled analytics rule so the activity keeps being monitored.",
+        "text_zh": "把每支搜捕查詢都轉成排程分析規則，讓這個活動持續受到監控。"
+      },
+      {
+        "key": "D",
+        "text_en": "Set the hunt's hypothesis status to Invalidated, close the hunt, and record the conclusion in its notes.",
+        "text_zh": "把該 hunt 的假說狀態設為 Invalidated（不成立），將 hunt 結案，並在備註中記錄結論。"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Hunts 的價值就在於把假說、查詢、書籤與結論留成機構記憶。假說被推翻同樣是成果：把假說狀態標成 Invalidated、hunt 狀態改為 Closed，並在備註寫下「這是經核准的備份作業」，下一季有人問「這條路查過了嗎」時，打開 hunt 就有答案，不必重跑 12 支查詢。hunt 的狀態流是 New → Active → Closed，假說狀態則是 Unknown／Validated／Invalidated。",
+    "why_wrong_zh": {
+      "A": "刪除 hunt 等於丟掉「這條路已經查過」的紀錄，正好造成主管想避免的重複調查，也失去查詢與書籤的稽核軌跡。",
+      "B": "活動已確認為合法作業，替每個書籤開事件只會製造無意義的事件量，扭曲 SOC 的統計與 SLA 數據。",
+      "C": "把已知合法的行為轉成分析規則，會持續產生誤判警示；只有經驗證、確實代表威脅的查詢才值得轉成偵測規則。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/hunts"
+  },
+  {
+    "id": "D3-0020",
+    "domain": "D3",
+    "unit": "P1-W5-2",
+    "set": "A",
+    "topic": "livestream",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [],
+    "stem_en": "During an active incident you must know whether a compromised account is still downloading files right now. Your existing hunting query aggregates downloads per user per day over the last 7 days and compares the count with a 30-day baseline. How should you adapt the query before adding it to a livestream session?",
+    "stem_zh": "在處理一起進行中的事件時，你必須知道某個被入侵的帳號「現在」是否還在下載檔案。你手上的搜捕查詢是以「使用者×每日」聚合過去 7 天的下載量，並與 30 天基準線比較。把它加入 livestream 工作階段前，應該如何調整這支查詢？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Keep the aggregation but shorten the time window to the last hour so that results refresh faster.",
+        "text_zh": "保留聚合邏輯，但把時間視窗縮短到最近一小時，讓結果刷新得更快。"
+      },
+      {
+        "key": "B",
+        "text_en": "Remove the time filter and the summarize aggregation, and filter on the specific account so that each matching event is returned as its own row.",
+        "text_zh": "拿掉時間篩選與 summarize 聚合，改成針對該特定帳號篩選，讓每一筆符合的事件各自成為一列輸出。"
+      },
+      {
+        "key": "C",
+        "text_en": "Keep the query unchanged and configure the livestream session to elevate to alert so that matches create incidents.",
+        "text_zh": "查詢維持原樣，並將 livestream 工作階段設定為 elevate to alert，讓命中時建立事件。"
+      },
+      {
+        "key": "D",
+        "text_en": "Replace the source table with a search job over restored data so that historical rows are included in the session.",
+        "text_zh": "把來源資料表換成對還原資料執行的 search job，讓工作階段也涵蓋歷史資料列。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "livestream 每次只面對「剛進來的一小批資料」，不是對歷史資料重跑。因此需要累積才成立的條件（每日總量、與 30 天基準線比較）在串流裡算不出來，時間篩選也沒有意義——工作階段本身就界定了「從現在起」。正確做法是把查詢改輕：拿掉 ago() 時間篩選與 summarize 聚合，鎖定調查中的帳號（或主機、IP），輸出逐列、只留人眼一秒能判斷的欄位，這樣既能立刻看出「他還在不在動」，也不會拖慢入口網站。",
+    "why_wrong_zh": {
+      "A": "保留聚合仍需要累積資料才會產出結果，串流每次比對的新資料量往往達不到門檻，會出現「明明還在下載卻什麼都沒有」的假安心；時間視窗在串流工作階段中也是多餘的。",
+      "C": "elevate to alert 是把工作階段的查詢轉成排程分析規則來長期偵測，不是讓串流本身建立事件；而且原查詢的聚合邏輯在串流中根本算不出結果，先轉規則也解決不了「現在還在不在下載」的即時問題。",
+      "D": "search job 與資料還原用於長時間軸的歷史搜尋，與 livestream 針對新進資料的即時比對是相反方向，也無法作為串流的資料來源。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/livestream"
+  },
+  {
+    "id": "D3-0021",
+    "domain": "D3",
+    "unit": "P1-W5-3",
+    "set": "A",
+    "topic": "hypothesis-hunting",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "hunting",
+      "sentinel"
+    ],
+    "stem_en": "You are a security operations analyst at Contoso. During a SOC review, your manager asks you to explain how threat hunting in Microsoft Sentinel differs from the team's daily incident response work. Which statement best describes threat hunting?",
+    "stem_zh": "你是 Contoso 的資安維運分析師。在 SOC 檢討會上，主管要你說明 Microsoft Sentinel 的威脅搜捕與團隊每天做的事件回應有何不同。下列哪一項最能描述威脅搜捕？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It is the process of triaging incidents in the unified queue and assigning each one to the correct analyst tier.",
+        "text_zh": "它是在統一佇列中分診事件，並把每一件指派給正確層級分析師的流程。"
+      },
+      {
+        "key": "B",
+        "text_en": "It is the tuning of analytics rules and alert suppression so that benign alerts stop reaching the incident queue.",
+        "text_zh": "它是調整分析規則與抑制警示，讓良性警示不再進入事件佇列的工作。"
+      },
+      {
+        "key": "C",
+        "text_en": "It is the proactive search of the environment for threats and activity that have not previously been detected.",
+        "text_zh": "它是主動在環境中搜尋先前未被偵測到的威脅或活動。"
+      },
+      {
+        "key": "D",
+        "text_en": "It is the automated containment of confirmed threats by running playbooks against the affected entities.",
+        "text_zh": "它是對已確認的威脅執行劇本（Playbook），自動遏制受影響實體的動作。"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "官方定義的關鍵字是「先前未被偵測到（not previously detected）」與「主動（proactively）」。搜捕從分析師的問題或假說出發，去找還沒有任何警示的行為；事件回應與分診則從「已經被標記出來」的警示或事件開始。兩者互補：搜捕的成果（書籤、確認的可疑活動）可以升級成事件進入回應流程，有效的搜捕邏輯也可以轉成排程分析規則，變成日後的自動偵測。",
+    "why_wrong_zh": {
+      "A": "分診（triage）是處理佇列中已存在的事件並排定優先順序、指派擁有者，起點是既有警示，屬於事件回應的一環，不是搜捕。",
+      "B": "調整分析規則與抑制良性警示屬於偵測調校（alert tuning），目的在降低雜訊，同樣以既有偵測為起點，不會找出未被偵測到的行為。",
+      "D": "以劇本自動遏制威脅是 SOAR 的自動化回應，發生在威脅已被確認之後，屬於回應階段而非搜捕。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/hunting"
+  },
+  {
+    "id": "D3-0022",
+    "domain": "D3",
+    "unit": "P1-W5-3",
+    "set": "A",
+    "topic": "hypothesis-hunting",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "hunting",
+      "sentinel"
+    ],
+    "stem_en": "A threat intelligence report states that an adversary group targeting your industry obtains a service account with replication rights and then uses DCSync to extract domain credentials. You have Microsoft Defender for Identity data in your workspace and one afternoon to hunt. Which hunting hypothesis should you use?",
+    "stem_zh": "一份威脅情報報告指出，鎖定你所屬產業的對手群組會先取得具備複寫權限的服務帳號，再以 DCSync 竊取網域憑證。你的工作區已有 Microsoft Defender for Identity（MDI）資料，而你只有一個下午的時間可以搜捕。你應該採用哪一個搜捕假說？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Determine whether any malicious activity is currently taking place anywhere in the environment.",
+        "text_zh": "判斷環境中目前是否有任何地方正在發生惡意活動。"
+      },
+      {
+        "key": "B",
+        "text_en": "In the last 30 days, did any account other than a domain controller computer account request directory replication from a domain controller?",
+        "text_zh": "在過去 30 天內，是否有網域控制站電腦帳號以外的帳號，向網域控制站發起目錄複寫請求？"
+      },
+      {
+        "key": "C",
+        "text_en": "Determine whether the adversary group described in the report has also attacked other companies in the same industry.",
+        "text_zh": "判斷報告中描述的對手群組是否也攻擊過同業的其他公司。"
+      },
+      {
+        "key": "D",
+        "text_en": "Determine whether every privileged account in the forest has been compromised at some point since the domain was created.",
+        "text_zh": "判斷樹系中每一個特權帳號自網域建立以來是否曾在某個時間點遭到入侵。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "好的搜捕假說要同時滿足五個條件：做得完、範圍夠窄（能用手上的資料證實或推翻）、有明確時間界線、產出可行動的洞察、並且對齊你要防禦的威脅模型。選項 B 指名一個技術（DCSync／目錄複寫）、指定資料來源（MDI 的身分目錄事件）、限定 30 天時間窗與網域控制站範圍，一個下午就能跑完並得到「成立／不成立／資料不足」其中一種明確結論。",
+    "why_wrong_zh": {
+      "A": "沒有時間窗、沒有範圍、沒有指名技術，無法用一次查詢證實或推翻，屬於願望而非假說。",
+      "C": "問題的答案不在你的環境資料裡，用工作區的記錄無法驗證；那是威脅情報研究，不是對自家環境的搜捕。",
+      "D": "範圍涵蓋整個樹系與全部歷史，既做不完，資料保留期通常也不足以回答，違反「做得完」與「有時間界線」。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/hunting"
+  },
+  {
+    "id": "D3-0023",
+    "domain": "D3",
+    "unit": "P1-W5-3",
+    "set": "A",
+    "topic": "mitre-attack",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "hunting",
+      "mitre"
+    ],
+    "stem_en": "While hunting in Microsoft Sentinel you find a row showing a process that opened LSASS memory on a domain-joined server and wrote the contents to a file in a temporary folder. You create a bookmark for the row and must select the MITRE ATT&CK tactic for it. Which tactic should you select?",
+    "stem_zh": "你在 Microsoft Sentinel 搜捕時，發現一列紀錄顯示某程序在已加入網域的伺服器上開啟 LSASS 記憶體，並把內容寫入暫存資料夾的檔案。你要為這一列建立書籤，並選擇對應的 MITRE ATT&CK 戰術。你應該選哪一個戰術？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Credential Access",
+        "text_zh": "憑證存取（Credential Access）"
+      },
+      {
+        "key": "B",
+        "text_en": "Lateral Movement",
+        "text_zh": "橫向移動（Lateral Movement）"
+      },
+      {
+        "key": "C",
+        "text_en": "Persistence",
+        "text_zh": "持續性（Persistence）"
+      },
+      {
+        "key": "D",
+        "text_en": "Command and Control",
+        "text_zh": "命令與控制（Command and Control）"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "分辨戰術與技術的訣竅是分別問「對手想達成什麼」與「他用什麼手段」。傾印 LSASS 記憶體的目的是取得帳號密碼或雜湊，因此戰術是憑證存取；手段（技術）是 OS Credential Dumping，子技術是 LSASS Memory。書籤與搜捕查詢上標好戰術與技術有兩個好處：實體與戰術會被帶進事件與 MITRE 涵蓋率統計，團隊也才看得出這格其實有人在人工搜捕。",
+    "why_wrong_zh": {
+      "B": "橫向移動描述的是拿到憑證之後往其他主機擴散的階段（例如遠端服務建立、Pass-the-Hash 登入），本題的行為仍停留在取得憑證。",
+      "C": "持續性指的是讓存取在重開機或憑證變更後仍然有效，例如建立排程工作、服務或自動啟動項目，與讀取 LSASS 記憶體無關。",
+      "D": "命令與控制是維持與外部控制端的通道（例如信標式連線、DNS 通道），本題沒有任何對外通訊的跡象。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/mitre-coverage"
+  },
+  {
+    "id": "D3-0024",
+    "domain": "D3",
+    "unit": "P1-W5-3",
+    "set": "A",
+    "topic": "mitre-attack",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "hunting",
+      "mitre"
+    ],
+    "stem_en": "Your SOC must plan next quarter's detection engineering work. The team needs to see which MITRE ATT&CK techniques are already covered by enabled analytics rules, which are only covered by rule templates or hunting queries, and which have no coverage at all. What should you use?",
+    "stem_zh": "你的 SOC 要規劃下一季的偵測工程工作。團隊需要看出哪些 MITRE ATT&CK 技術已經有「已啟用的分析規則」覆蓋、哪些只有規則範本或搜捕查詢覆蓋、哪些完全沒有覆蓋。你應該使用什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A workbook that charts incident counts by severity and product over the last quarter.",
+        "text_zh": "一份活頁簿（Workbook），依嚴重性與產品繪出上一季的事件數量圖表。"
+      },
+      {
+        "key": "B",
+        "text_en": "The Anomalies table produced by UEBA and the anomaly analytics rules.",
+        "text_zh": "由 UEBA 與異常分析規則產生的 Anomalies 資料表。"
+      },
+      {
+        "key": "C",
+        "text_en": "Livestream sessions for the hunting queries that the team runs most often.",
+        "text_zh": "為團隊最常執行的搜捕查詢建立 Livestream 工作階段。"
+      },
+      {
+        "key": "D",
+        "text_en": "The MITRE ATT&CK coverage view in Microsoft Sentinel, switching the legend between active analytics rules and rule templates or hunting queries.",
+        "text_zh": "Microsoft Sentinel 的 MITRE ATT&CK 涵蓋率檢視，並切換圖例在「已啟用的分析規則」與「規則範本或搜捕查詢」之間比較。"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "MITRE ATT&CK 涵蓋率檢視把 ATT&CK 矩陣畫在你自己的環境上，格子顏色深淺代表對應到該技術的偵測數量，並可切換來源：已啟用的分析規則代表現在真的在保護你，規則範本與搜捕查詢代表隨手就能補上的部分，兩者的差距就是可以最快補齊的缺口。要特別記住它回答的是「我對哪些技術有偵測」，而不是「我被哪些技術攻擊過」。",
+    "why_wrong_zh": {
+      "A": "活頁簿呈現的是已產生事件的統計，只看得到「有偵測到什麼」，看不出哪些技術根本沒有任何規則覆蓋。",
+      "B": "Anomalies 資料表存放 UEBA 與異常規則的離群結果，屬於異常驅動搜捕的輸入，與偵測涵蓋率盤點無關。",
+      "C": "Livestream 是把查詢對正在發生的事件做近乎即時的比對與通知，用於驗證單一假說，不會產生技術涵蓋率的全景。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/mitre-coverage"
+  },
+  {
+    "id": "D3-0025",
+    "domain": "D3",
+    "unit": "P1-W5-3",
+    "set": "A",
+    "topic": "notebooks",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "hunting",
+      "notebooks"
+    ],
+    "stem_en": "A hunt produced roughly 800 external IP addresses. A tier-3 hunter must enrich every address with GeoIP and Whois data plus three external threat intelligence providers, then apply clustering to identify beacon-like groups, and keep the whole workflow repeatable and shareable for future hunts. Which approach meets the requirement, and what must be provisioned first?",
+    "stem_zh": "一次搜捕產出約 800 個外部 IP 位址。三線搜捕人員必須為每個位址加上 GeoIP 與 Whois 資料，再比對三家外部威脅情報，接著用分群找出疑似信標的群組，而且整套流程要能重複執行並分享給日後的搜捕使用。哪一種做法符合需求，且必須先佈建什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Build a workbook with parameterized queries and custom visualizations; provision a dedicated Log Analytics workspace for the workbook first.",
+        "text_zh": "建立一份含參數化查詢與自訂視覺化的活頁簿（Workbook）；先為該活頁簿佈建專屬的 Log Analytics 工作區。"
+      },
+      {
+        "key": "B",
+        "text_en": "Create a Microsoft Sentinel notebook that uses MSTICPy for enrichment and machine learning; provision an Azure Machine Learning workspace with compute first.",
+        "text_zh": "建立 Microsoft Sentinel 筆記本（Notebook），以 MSTICPy 進行富化與機器學習；先佈建含運算資源的 Azure Machine Learning 工作區。"
+      },
+      {
+        "key": "C",
+        "text_en": "Create an Azure Logic Apps playbook with an entity trigger that loops over the addresses; provision a Standard hosting plan for the playbook first.",
+        "text_zh": "建立以實體觸發程序逐一處理這些位址的 Azure Logic Apps 劇本（Playbook）；先為劇本佈建 Standard 主控方案。"
+      },
+      {
+        "key": "D",
+        "text_en": "Save the hunting query as a scheduled analytics rule and store the addresses in a watchlist; provision an additional commitment tier for the workspace first.",
+        "text_zh": "把搜捕查詢存成排程分析規則，並將這些位址放入監視清單（Watchlist）；先為工作區佈建額外的承諾層級。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "同時要求外部資料富化、跨多個外部來源合併、機器學習分群，以及一套可重複、可分享的調查流程，這正是筆記本的定位：以 Python 透過 API 讀取 Sentinel 資料，用 MSTICPy 做威脅情報、GeoIP、Whois 查詢與異常分析，把程式碼、說明與圖表留在同一份文件裡。從 Sentinel 的筆記本頁面建立時，必須先有 Azure Machine Learning 工作區並配置運算資源（運算執行個體或叢集），不用時要停掉以免持續計費。",
+    "why_wrong_zh": {
+      "A": "活頁簿是視覺化與儀表板工具，無法呼叫外部 API 做逐筆富化，也不能執行機器學習；而且它直接使用既有工作區，不需要另建工作區。",
+      "C": "劇本擅長的是自動化與回應動作（通知、開單、封鎖、隔離），可做簡單富化，但不適合大量統計與分群分析；Standard 方案只是 Logic Apps 的計費與託管選項，不是本情境的關鍵。",
+      "D": "排程分析規則與監視清單解決的是「持續偵測」與「清單比對」，無法做多來源富化與分群；承諾層級是資料擷取的計價方式，與分析能力無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/notebooks"
+  },
+  {
+    "id": "D3-0026",
+    "domain": "D3",
+    "topic": "sentinel-graph",
+    "unit": "P1-W5-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You are a security operations analyst. Threat intelligence confirms that a privileged user account in your tenant has been compromised. Before deciding how aggressively to contain, you must determine which devices, resources, and other accounts that identity could reach through its existing relationships and permissions. Which Microsoft Sentinel capability is designed for this assessment?",
+    "stem_zh": "你是資安維運分析師。情報確認租用戶中一個具權限的使用者帳號已遭入侵。在決定要隔離到什麼程度之前，你必須先評估這個身分透過既有關聯與權限「往外能觸及」哪些裝置、資源與其他帳號。哪一項 Microsoft Sentinel 能力是為這種評估而設計的？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Sentinel Graph, which models entities and their relationships to support attack path and blast radius analysis.",
+        "text_zh": "Sentinel Graph：把實體與彼此的關係建成圖，支援攻擊路徑（attack path）與爆炸半徑（blast radius）分析。"
+      },
+      {
+        "key": "B",
+        "text_en": "A summary rule that aggregates the account's sign-in records into a custom table every hour.",
+        "text_zh": "建立 summary rule，每小時把該帳號的登入記錄彙總寫入自訂資料表。"
+      },
+      {
+        "key": "C",
+        "text_en": "A hunting livestream session that watches for new events generated by the account.",
+        "text_zh": "開啟搜捕 Livestream 工作階段，監看該帳號產生的新事件。"
+      },
+      {
+        "key": "D",
+        "text_en": "A search job that retrieves every historical record containing the account name.",
+        "text_zh": "執行 search job，撈出所有含該帳號名稱的歷史記錄。"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "「這個已被入侵的實體往外能碰到什麼」就是爆炸半徑（blast radius）問題，屬於典型的關係型提問。Sentinel Graph 把使用者、裝置、檔案、IP、權限指派等實體建成節點，把登入、執行、可存取等行為與關係建成邊，因此能一次展開多跳的可達範圍，直接支撐「要隔離到什麼程度、要重設哪些密碼」的回應決策。表格型查詢要回答同樣的問題必須逐層 join，且得事先知道跳幾次。",
+    "why_wrong_zh": {
+      "B": "summary rule 是把持續流入的高量資料彙總成摘要表供偵測與儀表板使用，解決的是成本與統計面的問題，不會告訴你實體之間的可達路徑。",
+      "C": "Livestream 是對「即將發生」的事件即時驗證假說，方向是向前看的監看，無法評估既有關聯所形成的觸及範圍。",
+      "D": "search job 適合在巨量或長期資料中一次性撈出符合條件的記錄，產出的是事件清單而非關係圖；它回答「出現過幾次」，不回答「還會波及誰」。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-graph-overview",
+    "tags": [
+      "2026",
+      "hunting",
+      "graph"
+    ]
+  },
+  {
+    "id": "D3-0027",
+    "domain": "D3",
+    "topic": "sentinel-graph",
+    "unit": "P1-W5-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "During a purple team exercise you must determine whether an attacker who lands on an internet-facing virtual machine could eventually reach a domain administrator account. The number of intermediate hops is unknown, the answer must cover any chain of identities, devices, and permissions, and the SOC does not want to maintain a query that has to be rewritten each time a hop is added. What is the best approach?",
+    "stem_zh": "在一次紫隊演練中，你必須判斷「攻擊者若拿下一台對外的虛擬機，是否最終能走到網域管理員帳號」。中間會經過幾跳並不確定，答案必須涵蓋任何由身分、裝置與權限組成的關係鏈，而且 SOC 不想維護一條每多一跳就要改寫的查詢。最佳做法是什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Write an advanced hunting query that chains several join operators, one per expected hop.",
+        "text_zh": "在進階搜捕中寫一條查詢，用多個 join 運算子串接，每一跳寫一個 join。"
+      },
+      {
+        "key": "B",
+        "text_en": "Enable UEBA and review the anomaly score of the exposed virtual machine.",
+        "text_zh": "啟用 UEBA，檢視這台對外虛擬機的異常分數。"
+      },
+      {
+        "key": "C",
+        "text_en": "Build a workbook that visualizes sign-in volume per device and per privileged account.",
+        "text_zh": "建立活頁簿（Workbook），將每台裝置與每個特權帳號的登入量視覺化。"
+      },
+      {
+        "key": "D",
+        "text_en": "Use Sentinel Graph and express the question as a variable-length path pattern over entities and relationships.",
+        "text_zh": "使用 Sentinel Graph，把問題寫成跨實體與關係的可變長度路徑樣式。"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "題幹的三個條件——跳數未知、要涵蓋任意關係鏈、不想每次改查詢——正好是圖查詢存在的理由。Sentinel Graph 以節點（實體）與邊（關係與行為）表達環境，路徑樣式比對可描述「任意幾跳之內」的可達性，一次問完整條攻擊路徑（attack path），不必為每一跳維護一個 join。這也是「往前看」的推演，與爆炸半徑的「往外看」互為一組。",
+    "why_wrong_zh": {
+      "A": "多重 join 正是題幹要避免的做法：查詢會隨跳數線性增長且難以維護，更關鍵的是你必須事先知道要跳幾次，無法回答跳數未知的問題。",
+      "C": "活頁簿負責視覺化既有統計，呈現的是量與趨勢，不會推演實體之間是否存在可行的橫向移動路徑。",
+      "B": "UEBA 針對單一實體給出行為異常評分，回答「這個實體是否可疑」，不回答「從這裡能不能走到網域管理員」。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-graph-overview",
+    "tags": [
+      "2026",
+      "hunting",
+      "graph"
+    ]
+  },
+  {
+    "id": "D3-0028",
+    "domain": "D3",
+    "topic": "mcp-server",
+    "unit": "P1-W5-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Your SOC wants an AI agent to discover available tables, generate KQL, and query Microsoft Sentinel data through a standard protocol, without writing a custom integration for every agent. Which component provides this?",
+    "stem_zh": "你的 SOC 希望讓 AI 代理透過標準協定探索可用的資料表、產生 KQL 並查詢 Microsoft Sentinel 資料，而不必為每一個代理各寫一套自訂整合。應該使用哪一個元件？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A data connector for the agent platform.",
+        "text_zh": "為代理平台建立一個資料連接器。"
+      },
+      {
+        "key": "B",
+        "text_en": "A Logic Apps playbook triggered by an automation rule.",
+        "text_zh": "由自動化規則觸發的 Logic Apps 劇本（Playbook）。"
+      },
+      {
+        "key": "C",
+        "text_en": "The Microsoft Sentinel MCP (Model Context Protocol) server.",
+        "text_zh": "Microsoft Sentinel MCP（Model Context Protocol）伺服器。"
+      },
+      {
+        "key": "D",
+        "text_en": "A workbook published to the Defender portal.",
+        "text_zh": "發布到 Defender 入口網站的活頁簿（Workbook）。"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Model Context Protocol（MCP）是讓 AI 代理以統一方式連接外部資料與工具的開放標準。Sentinel MCP server 是 Sentinel 這一側的標準門面，把結構描述探索、KQL 產生與執行、data lake 資料查詢等能力包成代理可呼叫的工具，任何支援 MCP 的用戶端（Security Copilot、VS Code 中的 Copilot、自訂代理）都能直接使用，免除逐一自寫整合。",
+    "why_wrong_zh": {
+      "A": "資料連接器負責把外部資料「收進」Sentinel，方向與本題相反；本題要的是讓外部代理讀取 Sentinel 的資料。",
+      "B": "劇本（Playbook）是以 Logic Apps 執行的自動化回應流程，用來做通知、封鎖、擴充等動作，不是供代理查詢資料的協定介面。",
+      "D": "活頁簿是給人看的視覺化儀表板，無法作為 AI 代理程式化存取資料與工具的標準介面。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-mcp-server",
+    "tags": [
+      "2026",
+      "ai",
+      "mcp"
+    ]
+  },
+  {
+    "id": "D3-0029",
+    "domain": "D3",
+    "topic": "mcp-server",
+    "unit": "P1-W5-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Your organization is piloting agentic hunting: analysts ask questions in natural language and an AI agent connects to Microsoft Sentinel to run the resulting queries. Management asks how you will guarantee that the agent cannot read data the requesting analyst is not allowed to see. What should you rely on?",
+    "stem_zh": "你的組織正在試行代理式搜捕（agentic hunting）：分析師用自然語言提問，AI 代理連到 Microsoft Sentinel 執行產生的查詢。管理層詢問你要如何確保代理無法讀取提問分析師本來就無權查看的資料。你應該依靠什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Create a dedicated service account with tenant-wide read permissions for the agent to use.",
+        "text_zh": "為代理另建一個具租用戶全域讀取權限的專用服務帳號。"
+      },
+      {
+        "key": "B",
+        "text_en": "Add instructions to the agent's prompt telling it not to query sensitive tables.",
+        "text_zh": "在代理的提示詞中加入指示，要求它不要查詢敏感資料表。"
+      },
+      {
+        "key": "C",
+        "text_en": "Move all sensitive tables to the data lake tier, since agents only query the analytics tier.",
+        "text_zh": "把所有敏感資料表移到 data lake 層，因為代理只會查詢分析層。"
+      },
+      {
+        "key": "D",
+        "text_en": "The agent authenticating with the caller's Microsoft Entra ID identity, so existing RBAC and least privilege apply, combined with audit review of the queries it runs.",
+        "text_zh": "代理以呼叫者的 Microsoft Entra ID 身分驗證，因此既有的 RBAC 與最小權限仍然生效，再搭配對其查詢的稽核檢視。"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "透過 MCP 存取 Sentinel 時，代理是以呼叫者的 Entra ID 身分進行驗證與授權，因此它能看到的資料上限就是該身分本身的 RBAC 範圍——存取控制依然由角色指派與最小權限決定，代理的查詢也會留下稽核軌跡供事後檢視。實務上真正的風險是「給代理使用的身分權限開得過大」，所以治理重點在身分權限本身，而不是額外發明一層限制。",
+    "why_wrong_zh": {
+      "A": "另建高權限服務帳號會讓代理的可視範圍遠超提問者，正好放大爆炸半徑，與題目要求相反，也違反最小權限原則。",
+      "B": "提示詞是行為引導而非存取控制，無法在技術上阻擋資料讀取；一旦身分本身有權限，任何提示層的約束都可能被繞過。",
+      "C": "資料層的選擇是為了成本、保留與偵測需求，不是權限邊界；湖層資料同樣可被有權限的身分查詢，把敏感資料搬層並不會形成隔離。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/sentinel-mcp-server",
+    "tags": [
+      "2026",
+      "ai",
+      "mcp",
+      "rbac"
+    ]
+  },
+  {
+    "id": "D3-0030",
+    "domain": "D3",
+    "topic": "retro-hunting",
+    "unit": "P1-W5-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "An intelligence feed publishes a list of newly attributed command-and-control domains. Your workspace is onboarded to Microsoft Sentinel data lake, where nine months of network telemetry is retained. You must check the historical data every day against the evolving list, correlate hits with logon records, and make sure any hit can raise an incident through an analytics rule. What should you implement?",
+    "stem_zh": "情資來源發布了一批新歸因的命令與控制（C2）網域。你的工作區已接入 Microsoft Sentinel data lake，其中保留了九個月的網路遙測資料。你必須每天以持續更新的清單比對歷史資料、將命中結果與登入記錄關聯，並確保任何命中都能透過分析規則產生事件。你應該實作什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A one-time search job over the historical data, reviewing the resulting _SRCH table manually.",
+        "text_zh": "對歷史資料執行一次性的 search job，再人工檢視產生的 _SRCH 資料表。"
+      },
+      {
+        "key": "B",
+        "text_en": "A scheduled KQL job on the data lake that joins the hits with logon records and promotes the results to a custom table in the analytics tier.",
+        "text_zh": "在 data lake 上建立排程 KQL job，將命中結果與登入記錄 join，並把結果升階（promote）到分析層的自訂資料表。"
+      },
+      {
+        "key": "C",
+        "text_en": "A summary rule that aggregates network telemetry hourly into a custom table.",
+        "text_zh": "建立 summary rule，每小時把網路遙測彙總寫入自訂資料表。"
+      },
+      {
+        "key": "D",
+        "text_en": "Restore the historical data into the analytics tier and run a hunting query against it whenever the feed is updated.",
+        "text_zh": "把歷史資料還原（restore）到分析層，每次情資更新時對它執行搜捕查詢。"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "題幹同時出現三個訊號：資料在 data lake、需要每天定期執行、命中結果必須能被分析規則使用。三者同時成立時答案就是排程 KQL job 加升階（promote）。KQL job 支援完整 KQL，因此可以在湖上直接 join 登入記錄；而分析規則只讀分析層，所以結果必須升階寫入分析層自訂資料表，之後才能建立規則、產生事件並進入正常分診流程。",
+    "why_wrong_zh": {
+      "A": "search job 是一次性的大範圍搜尋，KQL 能力受限（以篩選為主，不利於 join），且結果落在 _SRCH 資料表供人工檢視，無法滿足「每天執行並自動觸發偵測」的需求。",
+      "C": "summary rule 只會從啟用之後向前持續彙總，回不了頭去掃已經存在的九個月歷史資料，也不是為比對 IoC 清單而設計的。",
+      "D": "還原是舊架構下處理封存資料的做法，成本與作業負擔都高；工作區已接入 data lake 時可直接查詢湖中資料，不需先還原，而且每次手動重跑也達不到排程與自動升階的效果。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/kql-jobs",
+    "tags": [
+      "2026",
+      "hunting",
+      "data-lake",
+      "retro-hunting"
+    ]
+  },
+  {
+    "id": "D3-0031",
+    "domain": "D3",
+    "topic": "cross-domain",
+    "unit": "P1-W5-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "After closing a phishing incident you write a hunting query that correlates EmailEvents, UrlClickEvents and IdentityLogonEvents to list recipients who clicked the malicious link and then signed in successfully within four hours. The query finds two additional victims that never generated an alert. Going forward the same pattern must raise an alert automatically, with the least administrative effort. What should you create?",
+    "stem_zh": "結案一起釣魚事件後，你寫了一支搜捕查詢，關聯 EmailEvents、UrlClickEvents 與 IdentityLogonEvents，找出點了惡意連結、且在四小時內成功登入的收件者，結果多找到兩位從未產生警示的受害者。從現在起，同樣的樣式必須自動產生警示，而且要用最少的管理工作量。你應該建立什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A Microsoft Sentinel watchlist that stores the affected recipients so that later queries can reference them.",
+        "text_zh": "建立 Microsoft Sentinel 監視清單（Watchlist）保存受影響的收件者，供後續查詢引用。"
+      },
+      {
+        "key": "B",
+        "text_en": "A near-real-time (NRT) analytics rule in Microsoft Sentinel that runs the same three-table query every minute.",
+        "text_zh": "在 Microsoft Sentinel 建立近即時（NRT）分析規則，每分鐘執行同一支三張表的查詢。"
+      },
+      {
+        "key": "C",
+        "text_en": "A custom detection rule in Microsoft Defender XDR that is based on the hunting query and returns Timestamp, ReportId and the entity columns.",
+        "text_zh": "在 Microsoft Defender XDR 依這支搜捕查詢建立自訂偵測規則，並讓查詢輸出 Timestamp、ReportId 與實體欄位。"
+      },
+      {
+        "key": "D",
+        "text_en": "A search job that replays the query over the retained data once a week.",
+        "text_zh": "建立搜尋作業（search job），每週對保留的資料重跑一次這支查詢。"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "判準是「查詢用到哪些資料」：EmailEvents、UrlClickEvents、IdentityLogonEvents 全部都是 Defender XDR 進階搜捕的資料表，所以把已驗證的搜捕查詢直接升級成 XDR 自訂偵測規則最省事——查詢只要輸出 Timestamp、ReportId 與可對應的實體欄位，就能定期執行、產生警示，甚至自動採取回應動作。這正是 D3 搜捕回饋 D2 偵測的閉環：搜捕補到的盲區，要變成長期偵測。",
+    "why_wrong_zh": {
+      "A": "監視清單是你自備的參考資料表，用來在查詢中比對名單，本身不會執行、也不會產生警示。它可以輔助查詢，但無法滿足「自動產生警示」的需求。",
+      "B": "NRT 規則的查詢有明顯限制，並不適合這種需要關聯多張表的邏輯；而且這些是 XDR 資料表，要在 Sentinel 用還得先確保已串流進工作區，管理工作量反而更大。",
+      "D": "搜尋作業是一次性、針對大範圍或長時間資料的檢索工具，結果寫成資料表供人檢視，不會持續執行也不會產生警示，無法滿足「從現在起自動偵測」。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/custom-detection-rules",
+    "tags": [
+      "cross-domain",
+      "attack-chain"
+    ]
+  }
+]

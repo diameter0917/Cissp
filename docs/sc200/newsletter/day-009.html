@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 9｜威脅情報管理：MDTI、STIX／TAXII 與 Watchlists｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 9 / 40 · 2026-08-28</div>
+    <h1>威脅情報管理：MDTI、STIX／TAXII 與 Watchlists</h1>
+    <p class="sub"><em>Threat Intelligence: MDTI, STIX / TAXII & Watchlists</em></p>
+    <div class="meta-row">
+      <span class="pill d1">D1 管理安全性作業環境</span>
+      <span class="pill ghost">40-45%</span>
+      <span class="pill ghost">P1-W2-4</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:36%"></div></div>
+    <div class="progress-text">五週速成進度 9 / 25 · 距離考試（2026-10-17）還有 50 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP7｜Configure Microsoft Sentinel environment | SC-200 | Episode 7</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><a class='vbtn' href='https://youtu.be/0ydVILka3eg' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">讓記錄長出判斷力：威脅情報、MDTI 與監視清單</h2>
+<p>昨天把 Syslog／CEF 這些第三方記錄接進了 Sentinel，今天要讓這些記錄「長出判斷力」。SOC 每天面對上百萬筆連線記錄，單看一條對外連線你分不出好壞；但若目的地 IP 出現在威脅情報（threat intelligence，TI）的指標清單上，同一條記錄立刻變成待辦事件。本日三重點：第一，威脅情報生命週期與指標（IoC，indicator of compromise）類型，這是後面一切的語彙基礎；第二，把情資弄進 Sentinel 的三條路——STIX／TAXII 連接器、上傳 API、Microsoft Defender Threat Intelligence（MDTI，微軟威脅情報服務）連接器——以及 MDTI 本身的定位；第三，讓情資真正產生警示的 TI map 系列分析規則，加上 SOC 的萬用小抄：監視清單（Watchlist）與 <code>_GetWatchlist()</code> 查詢。</p>
+<div class="point">
+<strong>學習目標（對應官方考綱 D1「管理安全性作業環境」）：</strong>
+<ul>
+  <li>☐ 說出威脅情報生命週期五階段與四大 IoC 類型（IP／網域／URL／檔案雜湊）的壽命差異（對應考綱 <em>integrate threat intelligence in Microsoft Sentinel</em>）</li>
+  <li>☐ 依來源型態選出正確匯入方式：TAXII 連接器、上傳 API、MDTI 資料連接器（對應考綱 <em>configure threat intelligence connectors, including TAXII and the upload API</em>）</li>
+  <li>☐ 描述 MDTI 的情資文章、intel profiles 與標準版／進階版差異，以及它與 Sentinel 威脅情報管理的分工（對應考綱 <em>use Microsoft Defender Threat Intelligence</em>）</li>
+  <li>☐ 在威脅情報頁面建立、標籤、失效指標，並用 KQL 查詢 ThreatIntelIndicators 表、啟用 TI map 分析規則（對應考綱 <em>create and manage threat indicators</em>）</li>
+  <li>☐ 建立監視清單（匯入 CSV、指定 SearchKey），並在分析規則中以 <code>_GetWatchlist()</code> 引用（對應考綱 <em>create and manage watchlists</em>）</li>
+</ul>
+</div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP7 觀看重點指引（第二輪：這次看 watchlist 與 TI 模組）</h2>
+<p>本單元對應官方影片 <strong>EP7「Configure Microsoft Sentinel environment」</strong>。EP7 涵蓋整條「設定 Microsoft Sentinel 環境」學習路徑——前半（工作區建立與管理）你在 Day 6 已經看過，這一輪請鎖定後半兩個模組：<strong>Use watchlists in Microsoft Sentinel</strong> 與 <strong>Utilize threat intelligence in Microsoft Sentinel</strong>。帶著四個問題看：</p>
+<ul>
+  <li><strong>建立監視清單的示範</strong>：留意精靈裡的三個關鍵欄位——名稱、<strong>別名（alias）</strong>、<strong>SearchKey</strong>。別名是之後 <code>_GetWatchlist('別名')</code> 括號裡的字串，SearchKey 是 join 最佳化欄位，兩者常被考題混在一起。</li>
+  <li><strong>watchlist 用在哪裡</strong>：講者示範查詢或規則引用 watchlist 時，注意它出現在<strong>分析規則的 KQL 查詢裡</strong>，而不是某個獨立的「watchlist 規則類型」——這是常見誤解。</li>
+  <li><strong>威脅情報頁面</strong>：觀察指標清單的欄位（類型、值、來源、信賴度、有效期），以及手動新增指標時能設定什麼——標籤（tags）與有效期限是營運重點。</li>
+  <li><strong>連接器示範</strong>：講者若示範 TAXII 或 MDTI 連接器，記下各自要填的東西：TAXII 要 API 根 URL＋集合 ID＋帳密；MDTI 連接器基本上是「打開就好」。</li>
+</ul>
+<div class="info-box">📌 EP7 目前僅有官方標題、尚無字幕；字幕到位後本節會回補精確時間碼（格式如 <span class="timestamp">EP7 12:35</span>）。先用上面四個「帶著問題看」的指引自行定位段落。</div>
+
+<div class="eyebrow">03 — 🌦️ 威脅情報基礎</div>
+<h2 data-toc="情報基礎">情資是 SOC 的氣象預報：生命週期與 IoC 類型</h2>
+<p>把威脅情報想成<strong>氣象預報</strong>：它不能阻止暴風雨（攻擊者），但能告訴你哪裡正在下雨、暴風往哪走，讓你決定要不要收衣服、封港口。CTI（cyber threat intelligence）依受眾分三層：<strong>戰略情報</strong>給管理層看趨勢與風險、<strong>作戰情報</strong>描述攻擊者的活動與 TTP（戰術、技術與程序）、<strong>戰術情報</strong>就是機器可比對的 IoC——SC-200 的主場在戰術層。情報不是一張靜態清單，而是一個循環的<strong>生命週期</strong>：<strong>規劃與方向</strong>（要保護什麼、回答什麼問題）→ <strong>收集</strong>（訂閱來源、感測器）→ <strong>處理</strong>（正規化成 STIX 等標準格式）→ <strong>分析</strong>（從資料變成可行動的判斷）→ <strong>散播與回饋</strong>（送到 SIEM 比對、誤判回饋修正）。今天學的匯入、比對、失效管理，正好對應收集、散播與回饋三段。</p>
+<p>戰術情報的主角是四大 IoC 類型，各自的「壽命」與精準度差很多：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>IoC 類型</th><th>範例</th><th>特性與壽命</th></tr></thead>
+  <tbody>
+    <tr><td>檔案雜湊（file hash）</td><td>SHA256／SHA1／MD5</td><td>最精準、零誤判空間；但攻擊者改一個位元組雜湊就全變，壽命最短</td></tr>
+    <tr><td>IP 位址</td><td>C2 伺服器、掃描來源 IP</td><td>易比對；雲端 IP 快速輪替、也可能是共用主機，誤判風險與時效問題最大</td></tr>
+    <tr><td>網域名稱（domain）</td><td>釣魚網域、C2 網域</td><td>攻擊者換網域比換 IP 貴一點，壽命中等；DNS 記錄是主要比對面</td></tr>
+    <tr><td>URL</td><td>完整釣魚頁面連結</td><td>最具體、指向單一攻擊資源；變形容易，常大量出現又快速失效</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="point">💡 記法（痛苦金字塔的精簡版）：<strong>越容易比對的指標，攻擊者也越容易換掉</strong>。雜湊與 IP 在金字塔底層、說換就換；TTP 在塔頂、攻擊者最難改——所以 IoC 比對要靠「持續更新的餵送」而不是一張永久清單，這正是連接器存在的理由。也因此每個指標都帶<strong>有效期（valid until）</strong>與<strong>信賴度（confidence）</strong>，過期指標要能自動退場。</div>
+
+<div class="eyebrow">04 — 🚚 匯入三路徑</div>
+<h2 data-toc="匯入路徑">把情資弄進 Sentinel：三條路怎麼選</h2>
+<p>Sentinel 的威脅情報管理（intel management）頁面可以手動建立、編輯、標籤、失效個別指標——但手動只適合零星補刀。規模化匯入靠三條路，考題幾乎都是「給你來源型態、選匯入方式」：</p>
+<div class="tbl-scroll">
+<table class="data">
+  <thead><tr><th>面向</th><th>STIX／TAXII 連接器</th><th>上傳 API（upload API）</th><th>MDTI 資料連接器</th></tr></thead>
+  <tbody>
+    <tr><td>運作方向</td><td><strong>拉（pull）</strong>：Sentinel 依輪詢頻率定期向 TAXII 伺服器取指標</td><td><strong>推（push）</strong>：你的 TIP（威脅情報平台）或指令碼主動呼叫 API 送進來</td><td>微軟自家情資自動流入，啟用即用</td></tr>
+    <tr><td>典型來源</td><td>產業 ISAC、商業情資供應商、開放來源（提供 TAXII 2.0／2.1 服務者）</td><td>MISP、Anomali、ThreatConnect 等 TIP 產品，或自寫整合</td><td>Microsoft 研究團隊策展的高信賴 IoC</td></tr>
+    <tr><td>你要準備什麼</td><td>API 根 URL＋集合（collection）ID＋帳密、輪詢頻率</td><td>Microsoft Entra 應用程式註冊，並授與工作區 Microsoft Sentinel Contributor 角色</td><td>幾乎不用——安裝解決方案、啟用連接器</td></tr>
+    <tr><td>支援內容</td><td>STIX 格式指標</td><td>STIX 2.1 物件：除了指標，還能送威脅執行者、攻擊模式、關係（relationship）等物件</td><td>微軟管理的指標餵送（免額外擷取費用）</td></tr>
+    <tr><td>一句話記憶</td><td>「訂報紙」：對方出版、你定時去拿</td><td>「投稿」：你這邊主動推送</td><td>「微軟直送」：開箱即用的基本盤</td></tr>
+  </tbody>
+</table>
+</div>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>匯入方式題的關鍵詞對照</strong>：題幹出現「<em>API root URL</em>＋<em>collection ID</em>」→ 答案是 <strong>TAXII 連接器</strong>，這兩個名詞幾乎只在 TAXII 情境出現。題幹說組織用 <strong>MISP／自家 TIP</strong>、要「推送」指標、或提到「應用程式註冊（app registration）」→ <strong>上傳 API</strong>（舊的 Threat Intelligence Platforms 連接器走 Graph tiIndicators API，已淘汰，出現時視為干擾項）。題幹要「不額外採購、快速取得微軟高信賴指標」→ <strong>MDTI 連接器</strong>。陷阱：題目給的是<strong>內部業務清單</strong>（VIP、離職員工、允許的 IP）——那不是威脅情報，正解是監視清單（Watchlist），別被「清單」兩個字騙去選 TI 匯入。</div>
+
+<div class="eyebrow">05 — 🔭 MDTI 是什麼</div>
+<h2 data-toc="MDTI">微軟自家的情資工廠：文章、intel profiles 與網際網路地圖</h2>
+<p><strong>Microsoft Defender Threat Intelligence（MDTI）</strong>是微軟的威脅情報產品，把微軟每天處理的數十兆安全訊號、收購 RiskIQ 得到的網際網路測繪資料，加上研究團隊的分析，做成「<strong>成品情資（finished intelligence）</strong>」。在 Defender portal 的威脅情報區你會用到四樣東西：</p>
+<ul>
+  <li><strong>情資文章（articles）</strong>：研究團隊對新活動、新弱點的分析文章，文末附可直接取用的 IoC 清單。</li>
+  <li><strong>Intel profiles</strong>：威脅執行者、工具與弱點的「檔案卡」——這個攻擊者是誰、打哪些產業、用什麼 TTP、關聯哪些指標。</li>
+  <li><strong>Intel explorer</strong>：網際網路地圖查詢——輸入網域或 IP，看歷史 DNS 解析（passive DNS）、WHOIS、憑證、關聯基礎設施，把攻擊者「換皮不換骨」的基礎設施挖出來。</li>
+  <li><strong>Intel projects</strong>：把調查中蒐集的指標收進專案，團隊共用。</li>
+</ul>
+<p><strong>標準版 vs 進階版</strong>：標準版免費隨 Defender portal 提供，包含開放來源情資、有限的文章與 intel profiles 存取；<strong>進階版（premium）</strong>需授權，解鎖完整文章庫、全量 IoC、以及最有價值的網際網路資料集（passive DNS、憑證、WHOIS 歷史）。近年微軟持續把 MDTI 能力併入 Defender XDR 與 Security Copilot 的體驗中，考題重點放在「MDTI 能回答什麼問題」而不是購買細節。與 Sentinel 的整合就是上一節的 <strong>MDTI 資料連接器</strong>：把微軟指標餵進你的工作區參與比對。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>MDTI vs Sentinel 威脅情報管理的分工</strong>——一句話：<strong>MDTI 是「情資的生產者與百科」，Sentinel intel management 是「你家情資的營運中心」</strong>。題幹問「調查某網域的歷史解析、WHOIS、關聯基礎設施」「想看某威脅執行者的檔案與 TTP」→ 選 <strong>MDTI</strong>（Intel explorer／intel profiles）。題幹問「把 ISAC 給的指標拿來對自家記錄比對、產生事件」「幫指標加標籤、設定失效」→ 選 <strong>Sentinel 威脅情報管理＋TI map 規則</strong>。干擾項常放 Defender XDR 的 threat analytics（威脅分析）——它講的是「微軟追蹤的活動對<em>你的組織</em>的曝險與影響」，不是可查詢的網際網路資料集，方向不同。</div>
+
+<div class="eyebrow">06 — 🎯 TI 驅動偵測</div>
+<h2 data-toc="TI偵測">指標進了表，還要規則來比對</h2>
+<p>匯入的指標落在工作區的 <strong><code>ThreatIntelIndicators</code></strong> 表（每列一個指標，觀測值放在 <code>ObservableKey</code>／<code>ObservableValue</code>），非指標的 STIX 物件（威脅執行者、關係等）放在 <code>ThreatIntelObjects</code> 表。舊表 <code>ThreatIntelligenceIndicator</code>（欄位長相是 NetworkIP、DomainName 那一代）已走入退場時程——考題兩個名字都可能出現，認得出「新舊」即可。先學會盤點自家指標：</p>
+<pre class="kql">// 盤點目前有效的 IP 指標：每個指標只留最新版本
+ThreatIntelIndicators
+| where TimeGenerated &gt; ago(30d)
+| where ObservableKey == "ipv4-addr:value"
+| summarize arg_max(TimeGenerated, *) by Id
+| where IsActive == true and ValidUntil &gt; now()
+| project ObservableValue, Confidence, Tags, ValidUntil, SourceSystem
+| take 20</pre>
+<p class="kql-note">逐行解說：第 3 行用 <code>ObservableKey == "ipv4-addr:value"</code> 篩出 IP 型指標（網域是 <code>domain-name:value</code>、檔案雜湊是 <code>file:hashes.'SHA-256'</code> 這類 STIX 寫法）；第 4 行是關鍵——同一指標更新或重新發佈時會多一列，<code>summarize arg_max(TimeGenerated, *) by Id</code> 依指標 Id 只留最新版本，這是查新表的標準起手式；第 5 行再過濾「仍然有效」：<code>IsActive</code> 為真且 <code>ValidUntil</code> 還沒過期——別拿過期指標去比對，那是誤判製造機。</p>
+<p>盤點完就能比對。TI 偵測的主力是內容中樞（Content Hub）Threat Intelligence 解決方案附的 <strong>TI map 系列規則範本</strong>：「TI map IP entity to CommonSecurityLog」「TI map Domain entity to DnsEvents」⋯⋯命名規律是「拿哪種指標、對哪張表」。它們是排程分析規則，背後的查詢邏輯就像這樣：</p>
+<pre class="kql">// TI map 的核心邏輯：拿有效 IP 指標對防火牆記錄
+let bad_ips = ThreatIntelIndicators
+    | where TimeGenerated &gt; ago(30d)
+    | where ObservableKey == "ipv4-addr:value"
+    | summarize arg_max(TimeGenerated, *) by Id
+    | where IsActive == true and ValidUntil &gt; now()
+    | project BadIp = ObservableValue, Confidence;
+CommonSecurityLog
+| where TimeGenerated &gt; ago(1d)
+| where isnotempty(DestinationIP)
+| join kind=inner bad_ips on $left.DestinationIP == $right.BadIp
+| project TimeGenerated, DeviceVendor, SourceIP, DestinationIP, DestinationPort, Confidence
+| order by TimeGenerated desc</pre>
+<p class="kql-note">逐行解說：前段用 <code>let</code> 把「目前有效的壞 IP」存成 <code>bad_ips</code>，並 <code>project</code> 改名成 <code>BadIp</code>；後段從 CEF 防火牆記錄（CommonSecurityLog，昨天接的）出發，<code>join kind=inner ... on $left.DestinationIP == $right.BadIp</code> 做欄位名不同時的等值 join——命中就代表<strong>內網有裝置連向情資標記的位址</strong>。TI map 規則要能運作，<strong>兩邊都要有資料</strong>：指標來源（任一匯入路徑）＋對應的記錄表，缺一邊規則就是空轉，這是考題最愛的陷阱。另外微軟還有一條內建的 <strong>Microsoft Threat Intelligence Matching Analytics</strong> 規則，自動拿微軟指標對 CEF、DNS、Syslog 比對，不用自己寫。</p>
+
+<div class="eyebrow">07 — 📋 Watchlists 實戰</div>
+<h2 data-toc="監視清單">SOC 的合法小抄：建立、查詢、進規則</h2>
+<p>威脅情報處理「外面的壞東西」，<strong>監視清單（Watchlist）</strong>處理「你自己知道的事」：VIP 名單、離職員工、允許的掃描器 IP——這些業務脈絡不會出現在任何情資餵送裡，但偵測邏輯少了它們就會又聾又瞎。把 watchlist 想成 SOC 的<strong>合法小抄</strong>：把小抄夾進查詢，規則就懂得「這個帳號惹不起、那個 IP 不用理」。</p>
+<p><strong>建立</strong>：在 Sentinel 的 Watchlist 頁面用精靈上傳 CSV，設定三件事——名稱、<strong>別名（alias，之後查詢用它）</strong>、<strong>SearchKey（指定最常拿來 join 的欄位，引擎會最佳化它的查詢效能）</strong>。建立後可在 UI 直接增刪改單筆項目，<strong>不必改任何規則</strong>——清單內容與偵測邏輯解耦，這就是 watchlist 相對於把名單寫死在 KQL 裡的最大優勢。</p>
+<div class="info-box">📌 上限備忘：精靈直接上傳的 CSV 上限約 3.8 MB；更大的檔案（至 500 MB）走 Azure 儲存體＋SAS URL 的大檔路徑。清單要頻繁自動更新時，可用 Logic Apps 或指令碼呼叫 watchlist API 維護。</div>
+<p><strong>查詢</strong>：用 <code>_GetWatchlist('別名')</code> 把清單當成表來用。經典場景——VIP 帳號的登入失敗監控：</p>
+<pre class="kql">// VIP 使用者短時間多次登入失敗（可能是針對性密碼攻擊）
+let vips = _GetWatchlist('VIPUsers')
+    | project VipUpn = tostring(SearchKey);
+SigninLogs
+| where TimeGenerated &gt; ago(1d)
+| where ResultType != "0"
+| join kind=inner vips on $left.UserPrincipalName == $right.VipUpn
+| summarize FailedCount = count(), SourceIPs = make_set(IPAddress, 10) by UserPrincipalName
+| where FailedCount &gt;= 5</pre>
+<p class="kql-note">逐行解說：第 2–3 行取出 watchlist，<code>SearchKey</code> 是建立時指定的搜尋鍵欄位（這裡放 UPN），用它 join 效能最好；第 5–6 行只看過去一天的失敗登入（SigninLogs 的 <code>ResultType == "0"</code> 是成功，其餘是各種失敗碼）；第 7 行把登入記錄與 VIP 名單 inner join——非 VIP 的失敗全被濾掉；第 8–9 行統計每個 VIP 的失敗次數與來源 IP 集合，超過 5 次才浮出。把這段查詢貼進<strong>排程分析規則</strong>，就是「watchlist 在分析規則中的應用」：規則邏輯不動，名單在 UI 隨時維護。</p>
+<p>常見場景速覽：<strong>VIP 使用者</strong>（高價值帳號給更低的告警門檻）、<strong>已知壞 IP／允許 IP</strong>（小規模自管黑白名單與降噪）、<strong>新進與離職員工</strong>（新人是釣魚高風險群、離職者不該再有登入）、<strong>資產富化</strong>（把主機對應的負責人、重要性等業務欄位 join 進告警）。</p>
+<div class="exam-box"><span class="exam-label">🎯 考點聚焦</span><br>
+<strong>watchlist vs 威脅指標怎麼分</strong>：資料是<strong>外部威脅觀測值</strong>（惡意 IP／網域／雜湊，帶信賴度與有效期、要參與 TI map 比對）→ 匯入為<strong>威脅指標</strong>；資料是<strong>內部業務清單</strong>（人、資產、白名單，要在查詢裡 join、要隨時手動維護）→ <strong>watchlist</strong>。第二個分辨點：題幹強調「分析師要能自行更新清單、不改規則」→ watchlist；強調「自動失效、來源信賴度」→ 威脅指標。兩者都不是「自訂表」——干擾項給你 DCR 自訂記錄表時，記住 watchlist 免擷取管線、UI 可編輯，內部小清單它永遠是最省事的正解。</div>
+
+<div class="eyebrow">08 — 🛡️ 實戰情境</div>
+<h2 data-toc="實戰情境">ISAC 寄來一包 IoC，完整處理流</h2>
+<div class="case-box"><span class="case-label">🛡️ SOC Walkthrough：從收件到回饋</span><br>
+<p>你是金融業 SOC 的分析師。產業 ISAC 發佈緊急通告：一波針對金融業的活動，附上 IoC 清單（180 個 IP、40 個網域、25 個 SHA256），並提供其 TAXII 2.1 服務的 API 根 URL 與集合 ID。你的環境：Sentinel 已接 CEF 防火牆（CommonSecurityLog）與 DNS 記錄。走一遍完整處理流：</p>
+<ol>
+  <li><strong>選匯入路徑</strong>：ISAC 有 TAXII 服務 → 設定 <strong>TAXII 連接器</strong>建立長期訂閱（填 API 根 URL、集合 ID、帳密、輪詢頻率），之後的更新自動進來；這次通告附的 CSV 若要立刻生效，少量可在威脅情報頁面手動建立、量大用上傳 API 推入。</li>
+  <li><strong>加標籤與有效期</strong>：為這批指標加 tags（如 <code>ISAC-2026-08</code>、活動代號），沿用來源給的有效期——之後追蹤「這波活動命中幾次」全靠標籤。</li>
+  <li><strong>驗證入庫</strong>：用第 06 節的盤點查詢確認 <code>ThreatIntelIndicators</code> 出現新指標、<code>SourceSystem</code> 正確。</li>
+  <li><strong>啟用比對規則</strong>：環境有 CommonSecurityLog 與 DNS → 從範本啟用「TI map IP entity to CommonSecurityLog」與 domain 對 DNS 的規則；沒有對應資料表的規則不用開（開了也是空轉）。</li>
+  <li><strong>回溯搜捕</strong>：規則只看未來，過去呢？拿同一段 join 查詢把時間拉長回查 30 天——確認這波活動是否早已進門。命中的話開事件、進分診流程。</li>
+  <li><strong>回饋修正</strong>：三天後某個 IP 頻繁誤判（其實是合作夥伴的共用出口 IP）——回到威脅情報管理頁把<strong>該指標設為失效</strong>，規則與其餘指標不動。這一步就是生命週期的「回饋」：情資是活的，要營運。</li>
+</ol>
+</div>
+
+<div class="eyebrow">09 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">EP7 沒講透、考試會考的</h2>
+<p>EP7 以工作區與功能導覽為主，以下考綱相關細節影片著墨有限，本文已補講、這裡收攏確認：</p>
+<ul>
+  <li><strong>新舊 TI 表</strong>：新表 <code>ThreatIntelIndicators</code>＋<code>ThreatIntelObjects</code>（完整 STIX 2.1 物件、查詢記得 <code>arg_max ... by Id</code> 去重）；舊表 <code>ThreatIntelligenceIndicator</code> 已進退場時程（§06）。</li>
+  <li><strong>上傳 API 取代舊 TIP 連接器</strong>：走 Entra 應用程式註冊＋工作區 Microsoft Sentinel Contributor；舊的 Graph tiIndicators 路徑已淘汰（§04）。</li>
+  <li><strong>Matching Analytics</strong>：Microsoft Threat Intelligence Matching Analytics 內建規則自動拿微軟指標對 CEF／DNS／Syslog，與 TI map 範本並存（§06）。</li>
+  <li><strong>MDTI 標準版 vs 進階版</strong>：進階版解鎖完整文章、全量 IoC 與網際網路資料集；能力持續併入 Defender XDR 與 Security Copilot（§05）。</li>
+  <li><strong>指標營運</strong>：建立時的標籤與有效期、誤判時「失效單一指標」而非關整條規則（§08）。</li>
+  <li><strong>明日預告</strong>：TI 與 watchlist 都吃資料層設計——明天進入 Sentinel data lake 與 summary rules <span class="badge-2026">2026 新考點</span>，長期保留與低成本比對的解法在那裡。</li>
+</ul>
+
+<div class="eyebrow">10 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 深讀清單</h2>
+<ul>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/understand-threat-intelligence" target="_blank" rel="noopener">Microsoft Sentinel 中的威脅情報</a> — 總覽主文：讀「指標的生命週期與檢視方式」，把 §03／§06 串起來。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/connect-threat-intelligence-taxii" target="_blank" rel="noopener">以 TAXII 連接器新增威脅情報</a> — 對照 API 根 URL／集合 ID／輪詢頻率三個必填項。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/connect-threat-intelligence-upload-api" target="_blank" rel="noopener">以上傳 API 連接威脅情報平台</a> — 看應用程式註冊與權限授與的完整流程。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/defender/threat-intelligence/what-is-microsoft-defender-threat-intelligence-defender-ti" target="_blank" rel="noopener">什麼是 Microsoft Defender Threat Intelligence</a> — 釐清文章、intel profiles、Intel explorer 與標準版／進階版差異。</li>
+  <li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/watchlists" target="_blank" rel="noopener">Microsoft Sentinel 中的監視清單</a> — 讀建立方式、SearchKey 與大檔上傳路徑，並延伸到 watchlist 範本。</li>
+</ul>
+
+
+  <div class="eyebrow">11 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W2-4">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D1-0051</div><div class='q-stem'>An industry ISAC gives your SOC an API root URL and a collection ID for its STIX/TAXII 2.1 service, together with a set of credentials. Microsoft Sentinel must keep receiving updated indicators from that service on an ongoing basis. What should you configure?</div><div class='q-zh'>（產業 ISAC 提供貴 SOC 一組 STIX／TAXII 2.1 服務的 API 根 URL 與集合（collection）ID，並附上一組帳密。Microsoft Sentinel 必須持續自動接收該服務的最新指標。你應該設定什麼？）</div><div class='q-opt'><strong>A.</strong> The Threat Intelligence - TAXII data connector, with a polling frequency<div style='font-size:12.5px;color:var(--muted)'>Threat Intelligence - TAXII 資料連接器，並設定輪詢頻率</div></div><div class='q-opt'><strong>B.</strong> The threat intelligence upload API, with a Microsoft Entra app registration<div style='font-size:12.5px;color:var(--muted)'>威脅情報上傳 API（upload API），搭配 Microsoft Entra 應用程式註冊</div></div><div class='q-opt'><strong>C.</strong> The Microsoft Defender Threat Intelligence (MDTI) data connector<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender Threat Intelligence（MDTI）資料連接器</div></div><div class='q-opt'><strong>D.</strong> A watchlist that is imported from a CSV file of the indicators<div style='font-size:12.5px;color:var(--muted)'>以指標的 CSV 檔匯入建立的監視清單（Watchlist）</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>「API 根 URL＋集合 ID」這兩個名詞幾乎只出現在 TAXII 情境，是匯入方式題最明確的關鍵字。TAXII 連接器的運作方向是「拉（pull）」：Sentinel 依你設定的輪詢頻率定期向 TAXII 伺服器取回 STIX 指標，像訂報紙一樣持續更新，正好對應題幹的「持續自動接收」。</p><ul><li><strong>B</strong>：上傳 API 是「推（push）」的方向，由你的威脅情報平台（TIP）或指令碼主動呼叫送進來，需要 Microsoft Entra 應用程式註冊；題幹給的是對方的 TAXII 服務端點，不是你要推送。</li><li><strong>C</strong>：MDTI 連接器帶進來的是微軟研究團隊策展的自家指標，啟用即用，但無法用來訂閱 ISAC 的 TAXII 服務。</li><li><strong>D</strong>：監視清單用於內部業務清單（VIP、資產、允許名單），沒有信賴度與有效期概念，也不會參與 TI map 規則比對；外部威脅觀測值應匯入為威脅指標。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/connect-threat-intelligence-taxii' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D1-0052</div><div class='q-stem'>Your organization runs a MISP threat intelligence platform. A scheduled script must push STIX 2.1 objects into Microsoft Sentinel, including indicators, threat actors, and the relationships between them. Which method should you use, and what does the identity used by the script require?</div><div class='q-zh'>（貴組織自建 MISP 威脅情報平台。一支排程指令碼必須把 STIX 2.1 物件推送進 Microsoft Sentinel，內容包含指標、威脅執行者，以及彼此之間的關係（relationship）。你應該使用哪一種方式？指令碼所用的身分需要什麼？）</div><div class='q-opt'><strong>A.</strong> The TAXII data connector; an API root URL and a collection ID<div style='font-size:12.5px;color:var(--muted)'>TAXII 資料連接器；需要 API 根 URL 與集合 ID</div></div><div class='q-opt'><strong>B.</strong> The threat intelligence upload API; a Microsoft Entra app registration that is granted the Microsoft Sentinel Contributor role on the workspace<div style='font-size:12.5px;color:var(--muted)'>威脅情報上傳 API；需要一個 Microsoft Entra 應用程式註冊，並在工作區上被授與 Microsoft Sentinel Contributor 角色</div></div><div class='q-opt'><strong>C.</strong> The MDTI data connector; no additional permission is required<div style='font-size:12.5px;color:var(--muted)'>MDTI 資料連接器；不需要額外權限</div></div><div class='q-opt'><strong>D.</strong> The Logs Ingestion API; a DCR that writes the objects into a custom _CL table<div style='font-size:12.5px;color:var(--muted)'>Logs Ingestion API；需要一條把物件寫入自訂 _CL 資料表的 DCR</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>題幹三個訊號都指向上傳 API：來源是自家 TIP（MISP）、動作是「推送」、內容是完整的 STIX 2.1 物件（除了指標，還能送威脅執行者與關係物件——這是上傳 API 相對於其他路徑的獨有能力）。它的驗證方式是 Microsoft Entra 應用程式註冊，並在目標工作區授與 Microsoft Sentinel Contributor 角色。舊的 Threat Intelligence Platforms 連接器走 Graph tiIndicators API，已淘汰。</p><ul><li><strong>A</strong>：TAXII 連接器是 Sentinel 定期去對方伺服器「拉」資料，需要對方提供 API 根 URL 與集合 ID；本題是你這端主動推送，方向相反。</li><li><strong>C</strong>：MDTI 連接器只負責把微軟自家策展的指標餵進工作區，無法接收你 MISP 推來的物件。</li><li><strong>D</strong>：Logs Ingestion API 是把一般記錄送進自訂 _CL 資料表的管線，資料不會進入 ThreatIntelIndicators／ThreatIntelObjects，也不會被威脅情報管理頁面與 TI map 規則使用。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/connect-threat-intelligence-upload-api' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D1-0053</div><div class='q-stem'>During an investigation you must review the passive DNS history, the WHOIS records, and the related internet infrastructure of a suspicious domain, so that you can find other hosts that the same adversary owns. Which capability should you use?</div><div class='q-zh'>（調查過程中，你必須檢視某個可疑網域的歷史 DNS 解析（passive DNS）、WHOIS 記錄與關聯的網際網路基礎設施，藉此找出同一攻擊者擁有的其他主機。你應該使用哪一項功能？）</div><div class='q-opt'><strong>A.</strong> The threat intelligence management page in Microsoft Sentinel<div style='font-size:12.5px;color:var(--muted)'>Microsoft Sentinel 的威脅情報管理（intel management）頁面</div></div><div class='q-opt'><strong>B.</strong> The threat analytics reports in Microsoft Defender XDR<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender XDR 的威脅分析（threat analytics）報告</div></div><div class='q-opt'><strong>C.</strong> Intel explorer in Microsoft Defender Threat Intelligence (MDTI)<div style='font-size:12.5px;color:var(--muted)'>Microsoft Defender Threat Intelligence（MDTI）的 Intel explorer</div></div><div class='q-opt'><strong>D.</strong> A TI map Domain entity to DnsEvents analytics rule<div style='font-size:12.5px;color:var(--muted)'>「TI map Domain entity to DnsEvents」分析規則</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>分工要記牢：MDTI 是「情資的生產者與百科」，Sentinel 威脅情報管理是「你家情資的營運中心」。題幹問的是網際網路測繪資料集——passive DNS、WHOIS、憑證與關聯基礎設施——這是 MDTI Intel explorer 的守備範圍（資料來自微軟收購 RiskIQ 的網際網路測繪），用來把攻擊者「換皮不換骨」的基礎設施挖出來。完整的網際網路資料集屬於 MDTI 進階版（premium）解鎖的內容。</p><ul><li><strong>A</strong>：Sentinel 威脅情報管理頁面管的是你工作區裡的指標：建立、標籤、設定有效期與失效，並不提供外部網際網路的歷史解析與 WHOIS 資料集。</li><li><strong>B</strong>：Defender XDR 的威脅分析報告講的是「微軟追蹤的攻擊活動對你的組織有多少曝險與影響」，是內部曝險視角，不是可查詢的網際網路基礎設施資料集。</li><li><strong>D</strong>：TI map 規則的作用是拿既有指標去比對你自己的記錄表並產生事件，屬於偵測面；它不會回答某網域的歷史解析與關聯基礎設施。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender/threat-intelligence/what-is-microsoft-defender-threat-intelligence-defender-ti' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D1-0054</div><div class='q-stem'>Your SOC must apply a lower alert threshold to 200 VIP accounts. Tier-2 analysts must be able to add and remove names from that list themselves, without editing or redeploying the scheduled analytics rule that consumes it. What should you implement?</div><div class='q-zh'>（貴 SOC 必須對 200 個 VIP 帳號套用較低的告警門檻。第二線分析師必須能自行增刪名單成員，且不需要修改或重新部署使用該名單的排程分析規則。你應該實作什麼？）</div><div class='q-opt'><strong>A.</strong> Import the accounts as threat intelligence indicators and enable a TI map analytics rule.<div style='font-size:12.5px;color:var(--muted)'>把這些帳號匯入為威脅指標，並啟用 TI map 分析規則。</div></div><div class='q-opt'><strong>B.</strong> Create a custom log table for the accounts and keep it updated through a data collection rule.<div style='font-size:12.5px;color:var(--muted)'>為這些帳號建立自訂記錄資料表，並透過資料收集規則（DCR）持續更新。</div></div><div class='q-opt'><strong>C.</strong> Hard-code the accounts in a let statement inside the scheduled analytics rule query.<div style='font-size:12.5px;color:var(--muted)'>把帳號直接寫死在排程分析規則查詢的 let 陳述式中。</div></div><div class='q-opt'><strong>D.</strong> Create a watchlist whose SearchKey is the UPN column, and reference it in the rule query with _GetWatchlist().<div style='font-size:12.5px;color:var(--muted)'>建立監視清單（Watchlist），將 SearchKey 指定為 UPN 欄位，並在規則查詢中以 _GetWatchlist() 引用。</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>監視清單（Watchlist）處理的正是「你自己知道的事」——VIP 名單、離職員工、允許的掃描器 IP 這類內部業務脈絡。建立時要設定名稱、別名（alias，之後 _GetWatchlist('別名') 括號裡的字串）與 SearchKey（最常用來 join 的欄位，引擎會針對它最佳化）。最大優勢就是題幹要的那件事：清單內容與偵測邏輯解耦，分析師在 UI 增刪單筆項目即可，規則一行都不用改。</p><ul><li><strong>A</strong>：威脅指標是外部威脅觀測值（惡意 IP／網域／雜湊），帶信賴度與有效期並參與 TI map 比對；把自家 VIP 帳號當成威脅指標在語意與運作上都不成立。</li><li><strong>B</strong>：自訂記錄資料表需要完整的擷取管線（DCE／DCR 或 API），分析師無法在 UI 直接增刪一筆資料，維護成本遠高於監視清單。</li><li><strong>C</strong>：把名單寫死在 KQL 裡，代表每次人事異動都要編輯並重新儲存分析規則，正是監視清單要消除的問題，也不符合「不修改規則」的條件。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/watchlists' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D1-0055</div><div class='q-stem'>Two weeks ago you enabled the "TI map Domain entity to DnsEvents" analytics rule from a template. Indicators from your ISAC feed are visible in the ThreatIntelIndicators table, they are active, and their expiration dates are still in the future. However, the rule has never created an incident and running its query manually returns no results. What is the most likely cause?</div><div class='q-zh'>（兩週前你從範本啟用了「TI map Domain entity to DnsEvents」分析規則。ISAC 餵送的指標在 ThreatIntelIndicators 資料表中看得到、狀態為有效，有效期也還沒到期。但這條規則從未產生任何事件，手動執行它的查詢也沒有任何結果。最可能的原因是什麼？）</div><div class='q-opt'><strong>A.</strong> The workspace does not ingest DNS logs, so the DnsEvents table contains no records for the rule to match against.<div style='font-size:12.5px;color:var(--muted)'>工作區沒有擷取 DNS 記錄，DnsEvents 資料表裡沒有任何資料可供規則比對。</div></div><div class='q-opt'><strong>B.</strong> The indicators were imported with the upload API instead of a TAXII data connector.<div style='font-size:12.5px;color:var(--muted)'>指標是用上傳 API 匯入的，而不是透過 TAXII 資料連接器。</div></div><div class='q-opt'><strong>C.</strong> The rule reads the ThreatIntelObjects table, which stores only threat actors and relationships.<div style='font-size:12.5px;color:var(--muted)'>這條規則讀取的是 ThreatIntelObjects 資料表，而該表只存放威脅執行者與關係物件。</div></div><div class='q-opt'><strong>D.</strong> Indicators must be copied into a watchlist before an analytics rule is able to match them.<div style='font-size:12.5px;color:var(--muted)'>指標必須先複製到監視清單，分析規則才能拿來比對。</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>TI map 規則的命名規律是「拿哪種指標、對哪張表」，因此它要能運作，兩邊都必須有資料：指標來源（任一匯入路徑）＋對應的記錄資料表。題幹已經確認指標端正常（表裡看得到、有效、未過期），那空轉的原因就落在另一邊——工作區根本沒有擷取 DNS 記錄，DnsEvents 是空的。啟用 TI map 範本前應先確認環境有對應的資料表，沒有對應資料的規則開了也是空轉。</p><ul><li><strong>B</strong>：匯入路徑只影響指標怎麼進來，不影響比對；不論走 TAXII、上傳 API 或 MDTI 連接器，指標最終都落在 ThreatIntelIndicators 表供規則使用。</li><li><strong>C</strong>：TI map 規則比對的是指標，來源是 ThreatIntelIndicators 表；ThreatIntelObjects 存放的是威脅執行者、攻擊模式與關係等非指標的 STIX 物件，不是這條規則的資料來源。</li><li><strong>D</strong>：監視清單與威脅指標是兩套獨立機制，指標不需要、也不應該複製進監視清單；分析規則可以直接查詢 ThreatIntelIndicators 表。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/azure/sentinel/understand-threat-intelligence' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP9</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><audio controls preload='none' src='../podcast/ep-009.mp3'></audio><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-009'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="9">
+    <label for="doneChk">我讀完 Day 9 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-008.html'>← Day 8</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-010.html'>Day 10 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 9 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>

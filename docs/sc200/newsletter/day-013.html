@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Day 13｜MDE 裝置回應：Live Response、隔離與自動調查｜SC-200 速成</title>
+<link rel="stylesheet" href="../assets/sc200.css">
+<script src="../assets/sc200.js" defer></script>
+</head>
+<body>
+<div class="wrap">
+<main>
+  <header class="masthead">
+    <div class="kicker">SC-200 速成電子報 · Day 13 / 40 · 2026-09-03</div>
+    <h1>MDE 裝置回應：Live Response、隔離與自動調查</h1>
+    <p class="sub"><em>Device Response with MDE: Live Response, Isolation & AIR</em></p>
+    <div class="meta-row">
+      <span class="pill d2">D2 回應安全性事件</span>
+      <span class="pill ghost">35-40%</span>
+      <span class="pill ghost">P1-W3-3</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" style="width:52%"></div></div>
+    <div class="progress-text">五週速成進度 13 / 25 · 距離考試（2026-10-17）還有 44 天</div>
+  </header>
+
+  <div class='video-box'><div class='vicon'>📺</div><div><div class='vt'>EP4｜Mitigate threats using Microsoft Defender for Endpoint | SC-200 | Episode 4</div><div class='vm'>本單元以這支官方影片為主軸，建議先看影片再讀伴讀整理。</div><div class='vm'>本日對應段落：<a href='https://youtu.be/e7UxqMgb1zk?t=660' target='_blank' rel='noopener'><span class='timestamp'>11:00</span></a> Live Response、automated investigation (AIR)、device groups、<a href='https://youtu.be/e7UxqMgb1zk?t=1140' target='_blank' rel='noopener'><span class='timestamp'>19:00</span></a> investigation package、Live Response、Action center、<a href='https://youtu.be/e7UxqMgb1zk?t=1710' target='_blank' rel='noopener'><span class='timestamp'>28:30</span></a> automated investigation (AIR)、device groups、indicators (IoC allow/block)</div><a class='vbtn' href='https://youtu.be/e7UxqMgb1zk' target='_blank' rel='noopener'>觀看影片 ↗</a></div></div>
+
+  <article>
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">本日導讀：從「看懂事件」到「按下按鈕」</h2>
+<p>昨天我們把事件分診（triage）做完，判斷出「這台裝置真的中了」。今天就要動手：在 Microsoft Defender for Endpoint（MDE，微軟端點偵測與回應平台）上對裝置執行回應動作。D2「回應安全性事件」占考試 35–40%，裝置回應最會出情境題——題幹給你一個正在延燒的攻擊，四個選項全是真實存在的動作，要你選「這一步該做哪一個」。光背功能名稱沒用，你得同時掌握三件事：<strong>這個動作改變了裝置的什麼、可不可逆、該放在回應流程的哪一格</strong>。今天沿著這三個軸線把工具箱拆完，最後用勒索軟體的完整 walkthrough 把順序串起來。</p>
+<div class="info-box">學習目標（對應官方考綱 D2「回應安全性事件」條目）：
+<ul>
+<li>☐ 在裝置上<strong>執行回應動作</strong>（perform actions on a device），包含隔離、限制應用程式執行、防毒掃描與收集調查套件</li>
+<li>☐ 使用<strong>即時回應（Live Response）</strong>對裝置進行深入取證與修復</li>
+<li>☐ 執行<strong>證據與實體調查</strong>（perform evidence and entity investigation），包含檔案的 stop and quarantine</li>
+<li>☐ 以<strong>自動調查與修復（AIR）</strong>調查並修復威脅，管理 Action center 的待核准動作與復原（undo）</li>
+<li>☐ 以<strong>指標（indicators）</strong>封鎖檔案雜湊、IP 與 URL，並確保回應動作留下稽核軌跡</li>
+</ul></div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP4 觀看重點指引</h2>
+<p>本單元對應官方影片 <strong>EP4「Mitigate threats using Microsoft Defender for Endpoint」</strong>（字幕尚未到位，先提供觀看指引；字幕匯入後會回補含時間碼的伴讀整理）。第一週看 EP4 聚焦部署與設定，今天請把注意力放在「裝置頁上那一排動作」與即時回應主控台。帶著這五個問題看：</p>
+<ul>
+<li><strong>動作清單</strong>：裝置頁的動作列有哪些選項？跟第 03 節的大表對上，注意哪些是一次性動作、哪些會讓裝置進入「狀態」（例如隔離中）。</li>
+<li><strong>隔離對話框</strong>：按下 isolate 時要求填什麼？有沒有讓 Outlook／Teams 例外通行的選項？隔離後要怎麼解除？</li>
+<li><strong>Live Response 開場</strong>：工作階段建立時畫面在等什麼？第一個命令通常是 <code>dir</code> 或 <code>processes</code>，觀察輸出如何導向下一個命令。</li>
+<li><strong>自動調查畫面</strong>：影片若展示 AIR 調查圖，注意「調查了哪些實體」「產生哪些修復動作」「自動執行還是等核准」。</li>
+<li><strong>Action center</strong>：找出動作紀錄出現的位置——這就是考題「去哪裡核准／復原動作」的答案。</li>
+</ul>
+
+<div class="eyebrow">03 — 🧰 裝置回應動作全集</div>
+<h2 data-toc="回應動作">回應動作 × 效果 × 可逆性 × 適用時機</h2>
+<p>裝置回應動作分三類：<strong>遏制型</strong>（隔離、限制應用程式執行）、<strong>調查型</strong>（收集調查套件、Live Response）、<strong>清除型</strong>（防毒掃描、stop and quarantine、AIR 修復）。下表是本日最該背的東西：</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>回應動作</th><th>實際效果</th><th>可逆性</th><th>適用時機</th></tr></thead>
+<tbody>
+<tr><td><strong>Isolate device（完全隔離）</strong></td><td>切斷所有網路連線，<strong>只保留與 Defender 雲端服務的通道</strong>，因此仍能繼續調查</td><td>可逆：Release from isolation</td><td>已確認遭入侵，要立刻阻斷橫向移動與外傳</td></tr>
+<tr><td><strong>Isolate device（選擇性隔離）</strong></td><td>只封鎖有限的一組應用程式對外連線，Outlook、Teams、Skype for Business 仍可運作</td><td>可逆</td><td>要遏制、又不能讓使用者完全失聯（較新版 Windows 用戶端限定）</td></tr>
+<tr><td><strong>Restrict app execution</strong></td><td>套用程式碼完整性原則，<strong>只允許 Microsoft 簽發憑證簽章的檔案執行</strong>；網路照通</td><td>可逆：Remove app restriction</td><td>疑有不明二進位檔在跑，但業務不能斷網（Windows 限定）</td></tr>
+<tr><td><strong>Run antivirus scan</strong></td><td>觸發 Defender 防毒快速或完整掃描並清除偵測到的項目</td><td>無「取消」，但隔離區檔案可還原</td><td>遏制後的清理階段、確認殘留</td></tr>
+<tr><td><strong>Collect investigation package</strong></td><td>打包鑑識產物成 ZIP：autoruns、處理程序、網路連線與 DNS／ARP 快取、排程工作、服務、prefetch、安全性事件記錄檔等</td><td>唯讀，不改變裝置狀態</td><td>取證、事後報告、交付第三方 IR 團隊</td></tr>
+<tr><td><strong>Stop and quarantine file</strong></td><td>依檔案雜湊<strong>停止執行中的處理程序並在租用戶範圍內隔離該檔</strong>（限可執行檔類型）</td><td>可逆：Action center 還原檔案</td><td>已確認惡意的檔案散布在多台裝置</td></tr>
+<tr><td><strong>Initiate automated investigation</strong></td><td>手動啟動 AIR 自動蒐證、判定並提出修復動作</td><td>修復動作可在 Action center undo</td><td>讓自動化先把影響範圍跑一輪</td></tr>
+<tr><td><strong>Initiate Live Response session</strong></td><td>開遠端命令列工作階段，做標準動作辦不到的手術式取證與修復</td><td>視命令而定（<code>remediate</code> 可 <code>undo</code>）</td><td>抓特定檔案、看登錄、跑自訂指令碼</td></tr>
+<tr><td><strong>Add indicator（block）</strong></td><td>建立持續性封鎖規則：檔案雜湊、IP、URL／網域、憑證，可限定裝置群組</td><td>可逆：刪除或改為 Allow／Audit</td><td>防止同一個 IoC 再次進入環境</td></tr>
+<tr><td><strong>Contain device</strong></td><td>針對<strong>未上線的探索到裝置</strong>：命令已上線裝置拒絕與它通訊</td><td>可逆</td><td>沒有代理程式、下不了隔離的裝置遭入侵</td></tr>
+</tbody></table></div>
+<div class="point">💡 最容易混淆的三者：<strong>隔離</strong>切「網路」、<strong>限制應用程式執行</strong>切「執行權」、<strong>指標封鎖</strong>切「未來再出現的機會」。題目出現「使用者必須繼續工作、不能斷網」，隔離出局；出現「阻止它再度進來」，答案往指標走。</div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>完全隔離 vs 選擇性隔離。</strong>兩者都保留裝置與 Defender 服務的連線，差別在使用者還剩下什麼：<strong>完全隔離＝除了 Defender 通道什麼都不通</strong>；<strong>選擇性隔離＝只擋一組應用程式的網路存取，刻意留下 Outlook／Teams／Skype for Business</strong>，僅較新版 Windows 用戶端支援，macOS 與 Linux 只有完全隔離。題幹寫「必須能繼續透過 Teams 聯絡該員工」→ 選擇性隔離；寫「阻止所有對外通訊、防止資料外流」→ 完全隔離。陷阱選項是「請使用者拔網路線／關機」——會切斷 Defender 通道、毀掉揮發性證據，永遠不是最佳答案。</p></div>
+
+<div class="eyebrow">04 — 🩺 Live Response 實戰</div>
+<h2 data-toc="即時回應">即時回應：把命令列開到那台機器上</h2>
+<p>標準動作不夠用時——要看登錄機碼、抓一份可疑 DLL 回來分析、跑自訂蒐證腳本——就輪到<strong>即時回應（Live Response）</strong>。它等於在瀏覽器裡開遠端 shell，而且<strong>裝置在隔離狀態下依然可用</strong>。</p>
+<p><strong>啟用前置條件</strong>（考題最愛考「為什麼按鈕是灰的」）：進階功能頁必須開啟 <strong>Live Response</strong>；要對伺服器操作得另外開 <strong>Live Response for servers</strong>；要跑未簽章的自訂指令碼還要開 <strong>Live response unsigned script execution</strong>。裝置需為受支援的作業系統版本且已上線，使用者需具備對應 RBAC 權限。</p>
+<p><strong>工作階段限制</strong>：<strong>一台裝置同時只能有一個工作階段</strong>；每位使用者可同時開啟的數量與租用戶總量都有上限；閒置會自動逾時中斷。「兩位分析師同時對同一台機器下命令」的答案是不行，得等前一個結束。</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>命令</th><th>做什麼</th><th>權限層級</th></tr></thead>
+<tbody>
+<tr><td><code>cd</code> / <code>dir</code></td><td>切換與列出目錄內容，探索檔案系統</td><td>基本（basic）</td></tr>
+<tr><td><code>fileinfo</code></td><td>顯示檔案中繼資料：雜湊、大小、簽章者、建立時間</td><td>基本</td></tr>
+<tr><td><code>findfile</code></td><td>依檔名在裝置上搜尋檔案位置</td><td>基本</td></tr>
+<tr><td><code>processes</code></td><td>列出執行中的處理程序（含 PID、命令列）</td><td>基本</td></tr>
+<tr><td><code>connections</code></td><td>列出作用中的網路連線，找 C2 通訊</td><td>基本</td></tr>
+<tr><td><code>services</code> / <code>drivers</code></td><td>列出服務與已載入的驅動程式</td><td>基本</td></tr>
+<tr><td><code>registry</code></td><td>讀取登錄機碼與值</td><td>基本</td></tr>
+<tr><td><code>scheduledtasks</code> / <code>startupfolders</code> / <code>persistence</code></td><td>檢視常見持續性（persistence）機制</td><td>基本</td></tr>
+<tr><td><code>getfile</code></td><td><strong>把裝置上的檔案取回</strong>供離線分析——取證主力命令</td><td>基本</td></tr>
+<tr><td><code>analyze</code></td><td>對檔案或處理程序做深入分析並取得判定</td><td><strong>進階（unrestricted）</strong></td></tr>
+<tr><td><code>library</code></td><td>管理 live response library：上傳／列出／刪除腳本與工具</td><td>進階</td></tr>
+<tr><td><code>putfile</code></td><td>把 library 中的檔案放到裝置上</td><td>進階</td></tr>
+<tr><td><code>run</code></td><td><strong>執行 library 中的指令碼</strong>（自訂蒐證／修復腳本）</td><td>進階</td></tr>
+<tr><td><code>remediate</code></td><td>移除或隔離惡意檔案、處理程序、排程工作等</td><td>進階</td></tr>
+<tr><td><code>undo</code></td><td>復原本工作階段中做過的 remediate</td><td>進階</td></tr>
+<tr><td><code>&amp;</code> / <code>fg</code> / <code>jobs</code> / <code>status</code></td><td>把長時間命令丟到背景、切回前景、查看工作狀態</td><td>基本</td></tr>
+</tbody></table></div>
+<div class="point">💡 記憶法：<strong>「唯讀的是 basic，會改變裝置或放東西進去的是 unrestricted」</strong>——特別記住 <code>getfile</code> 是把檔案「拿出來」，屬於基本命令；<code>putfile</code>、<code>run</code>、<code>remediate</code>、<code>undo</code>、<code>library</code>、<code>analyze</code> 才需要進階權限。</div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>「分析師連得上、也能列出處理程序，卻無法執行自訂指令碼」——為什麼？</strong>三層檢查：(1) 使用者只有<strong>基本命令</strong>權限，缺 <strong>unrestricted（進階命令）</strong>權限；(2) 進階功能的 <strong>Live response unsigned script execution</strong> 沒開，而腳本未簽章；(3) 腳本沒上傳到 <strong>library</strong>——<code>run</code> 只能執行 library 裡的檔案。若題目說「完全開不了工作階段」，那是 Live Response 主開關或伺服器開關沒開。<br><strong>高頻對比：<code>getfile</code> vs collect investigation package。</strong>題幹說「把可疑執行檔送沙箱分析」→ <code>getfile</code>；說「保存整台機器的完整鑑識資料」→ 調查套件。</p></div>
+
+<div class="eyebrow">05 — 🤖 自動調查與修復（AIR）</div>
+<h2 data-toc="AIR">AIR：讓機器先跑完第一輪</h2>
+<p><strong>自動調查與修復（AIR）</strong>是 MDE 幫你配的「Tier 1 分析師」：警示觸發後自動檢查相關檔案、處理程序、服務、驅動程式、排程工作與網路連線，對每個實體給出「惡意／可疑／乾淨」判定，並產生對應的修復動作。</p>
+<ul>
+<li><strong>觸發方式</strong>：多數由警示自動觸發；分析師也可在裝置頁手動按 <strong>Initiate automated investigation</strong>；在 Defender XDR 事件層級，調查可跨裝置擴展。</li>
+<li><strong>調查狀態</strong>：Queued、Running、<strong>Pending approval</strong>、No threats found、Partially remediated、Remediated、Terminated、Failed——看到 Pending approval 就是有動作卡著等人核准。</li>
+<li><strong>自動化層級綁在裝置群組上</strong>：full（自動修復，官方建議值）、三種 semi（不同範圍需核准）、no automated response（完全不跑，官方不建議）。要讓伺服器人工把關、工作站全自動，作法永遠是<strong>建立不同裝置群組各自設層級</strong>。</li>
+<li><strong>Action center</strong>：<strong>Pending（待核准）</strong>是你批准或駁回自動修復的地方；<strong>History（歷史紀錄）</strong>記錄所有已完成動作（自動與手動都算），並提供 <strong>undo</strong>——解除隔離、移除應用程式執行限制、從隔離區還原檔案、移除封鎖指標。</li>
+</ul>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>「AIR 沒有修復任何東西」的四種標準原因</strong>：(1) 裝置所屬群組的自動化層級是 <strong>semi</strong>，動作停在 Action center 等核准 → 去核准或調成 full；(2) 層級是 <strong>no automated response</strong>，調查根本沒啟動；(3) 裝置沒落在你以為的群組（群組有<strong>順位</strong>，由上往下命中第一個就停）；(4) Defender 防毒未啟用，部分修復動作無法執行。<br>必考觀念：<strong>full 自動化不等於不可挽回</strong>——官方建議 full 正是因為所有動作都留在 Action center 且<strong>可以 undo</strong>。選項寫「為了安全起見關閉整個租用戶的自動化」，直接刪掉。</p></div>
+
+<div class="eyebrow">06 — 🚧 指標封鎖與擴散控制</div>
+<h2 data-toc="指標封鎖">封鎖 IoC：一次性清除 vs 持續性封鎖</h2>
+<p>回應的最後一哩是「別讓它再進來」。<strong>stop and quarantine file 是一次性清除</strong>（殺掉目前環境中的那個檔案），<strong>indicator 是持續性封鎖規則</strong>（未來這個雜湊／IP／URL 再出現就擋）。完整的回應兩個都做。</p>
+<ul>
+<li><strong>檔案雜湊指標</strong>：動作可設 Allow／Audit／Warn／Block and remediate；前提是 Defender 防毒處於主動模式且開啟雲端保護。</li>
+<li><strong>IP／URL／網域指標</strong>：前提是裝置啟用<strong>網路保護（network protection）</strong>，且進階功能開啟 <strong>custom network indicators</strong>——「建了封鎖指標卻沒生效」的標準答案。</li>
+<li><strong>憑證指標</strong>：封鎖以某張簽章憑證簽署的所有檔案，對付整批同源工具。</li>
+<li><strong>範圍與治理</strong>：指標可限定套用到特定<strong>裝置群組</strong>；租用戶有數量配額，過期 IoC 要定期清理。</li>
+</ul>
+<p>按下 stop and quarantine 之前，先用一段進階搜捕（advanced hunting）確認擴散範圍：</p>
+<pre class="kql">let badHash = "3a1f…（換成事件中的 SHA256）";
+DeviceFileEvents
+| where Timestamp &gt; ago(30d)
+| where SHA256 == badHash
+| summarize FirstSeen = min(Timestamp), LastSeen = max(Timestamp),
+            Paths = make_set(FolderPath, 5) by DeviceName, FileName
+| order by FirstSeen asc</pre>
+<div class="kql-note">逐行解說：<strong>let</strong> 把惡意檔案的 SHA256 存成變數，換 IoC 只改一行；<strong>DeviceFileEvents</strong> 記錄檔案建立、修改、複製等事件，是追檔案足跡的主表；<strong>where SHA256 ==</strong> 比對雜湊（雜湊比檔名可靠，檔名可以隨便改）；<strong>summarize … by DeviceName</strong> 得出「哪幾台裝置出現過、各自最早何時出現」，<strong>order by FirstSeen asc</strong> 排最前面的那台很可能就是<strong>零號病人（patient zero）</strong>。有這份清單，你才知道要隔離幾台、指標要不要放到全租用戶範圍。</div>
+
+<div class="eyebrow">07 — 🧪 完整回應演練</div>
+<h2 data-toc="實戰演練">勒索軟體疑似感染：從警示到收尾</h2>
+<div class="case-box"><div class="case-label">🧪 實戰情境：財務部筆電出現勒索軟體行為警示</div>
+<p>財務部筆電 FIN-LAP-014 出現「疑似勒索軟體行為」高嚴重性警示，處理程序 <code>invoice_2026.exe</code> 正在大量重新命名檔案並與未知外部 IP 通訊。你是值班分析師——</p>
+<ol>
+<li><strong>先遏制（14:22）</strong>：執行<strong>完全隔離</strong>並填寫理由，切斷加密擴散與對外的 C2／外傳通道，<strong>但不影響後續調查</strong>，因為 Defender 通道仍在。若必須保持與使用者聯絡，才改用選擇性隔離。</li>
+<li><strong>收集鑑識快照（14:25）</strong>：執行 <strong>collect investigation package</strong>，把處理程序、網路連線、排程工作、autoruns、事件記錄檔一次打包，之後從 Action center 下載存證。</li>
+<li><strong>手術式取證（14:30）</strong>：開 <strong>Live Response</strong>：<code>processes</code> 確認可疑處理程序仍在、<code>connections</code> 記下 C2 的 IP 與埠、<code>fileinfo</code> 取得檔案 SHA256、<code>scheduledtasks</code> 與 <code>persistence</code> 檢查後門，最後 <code>getfile</code> 把執行檔取回送沙箱。</li>
+<li><strong>評估擴散（14:40）</strong>：拿 SHA256 跑第 06 節那段 advanced hunting，發現另外兩台裝置前一天也出現同一檔案——納入事件、視情況隔離。</li>
+<li><strong>清除（14:50）</strong>：對該檔案執行 <strong>stop and quarantine file</strong>（涵蓋三台裝置），必要時用 <code>remediate</code> 清掉持續性項目，再跑<strong>完整防毒掃描</strong>確認乾淨。</li>
+<li><strong>封鎖未來（15:00）</strong>：為 SHA256 建立 <strong>Block and remediate 檔案指標</strong>、為 C2 的 IP 與 URL 建立<strong>網路指標</strong>（確認網路保護與 custom network indicators 已開）。</li>
+<li><strong>復原收尾（15:30 起）</strong>：確認乾淨後<strong>解除隔離</strong>，用 Action center 歷史紀錄當事件報告附件，把分類（classification）標為 True positive／Ransomware 結案。若某個被隔離的檔案其實是誤判，從 Action center <strong>undo</strong> 還原。</li>
+</ol></div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦</div>
+<p><strong>「先隔離還是先取證？」是本單元最常見的排序題。</strong>正確答案幾乎永遠是<strong>先隔離</strong>，理由要背起來：<strong>MDE 的隔離保留裝置與 Defender 服務的連線</strong>，隔離後照樣能收集調查套件、開 Live Response、跑掃描，取證能力不受影響；晚一步遏制，攻擊者可能已橫向移動或把資料外傳完畢。所以「隔離→取證→清除→封鎖→解除」這個順序是安全的。<br>唯一反過來的情境，是題幹明說<strong>「不能中斷這台機器的網路服務」</strong>（生產線控制器、關鍵伺服器）——最佳解通常是 <strong>restrict app execution</strong>（擋執行不擋網路）搭配立即取證，或改用選擇性隔離。至於「請使用者關機」「拔網路線」，會失去揮發性證據又切斷管理通道，永遠是錯的。</p></div>
+
+<div class="eyebrow">08 — 🧩 考綱補洞</div>
+<h2 data-toc="考綱補洞">影片之外，考綱還要你會這些</h2>
+<ul>
+<li><strong>Contain device 與 contain user</strong>：對<strong>探索到但未上線</strong>的裝置下不了隔離，改用 <strong>contain device</strong>——已上線裝置會拒絕與它通訊，等於用周邊裝置圍一道牆。身分側對應的是 <strong>contain user</strong>。</li>
+<li><strong>自動攻擊中斷（automatic attack disruption）</strong>：Defender XDR 在高信心判定下會<strong>自動</strong>遏制進行中的攻擊（勒索軟體、AiTM 釣魚、資料外洩）——自動隔離裝置或停用帳戶，動作同樣列在 Action center 且可復原。考題關鍵字：「分析師介入前系統就已遏制」。</li>
+<li><strong>回應動作的稽核</strong>：Action center 歷史紀錄是第一手稽核來源（誰、何時、對哪台、結果）；Live Response 每個工作階段都有完整命令記錄可匯出。考題問「如何證明某分析師何時隔離了裝置」→ Action center／稽核記錄，不是裝置時間軸。</li>
+<li><strong>權限模型</strong>：隔離、限制執行、掃描需要「主動修復動作」類權限；Live Response 另分基本與進階兩級；核准 AIR 動作又是另一項權限，且可依裝置群組範圍指派——<strong>能看到裝置 ≠ 能對它動手</strong>。</li>
+<li><strong>Security Copilot 引導式回應</strong> <span class="badge-2026">2026 新考點</span>：事件頁的 guided response 直接建議下一步（隔離裝置、封鎖寄件者、停用帳戶）並可一鍵執行，也能把 AIR 調查結果摘要成人話。考題問「如何加速 Tier 1 的回應決策」。</li>
+</ul>
+
+<div class="eyebrow">09 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 延伸閱讀</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-endpoint/respond-machine-alerts" target="_blank" rel="noopener">對裝置採取回應動作</a>——隔離、限制執行、防毒掃描、調查套件的官方說明，第 03 節大表的原文版。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-endpoint/live-response" target="_blank" rel="noopener">使用即時回應調查裝置</a>——前置條件、工作階段限制與命令清單，考前看一次基本／進階命令的分界。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-endpoint/respond-file-alerts" target="_blank" rel="noopener">對檔案採取回應動作</a>——stop and quarantine file、深入分析與檔案指標的差異與限制。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-endpoint/automated-investigations" target="_blank" rel="noopener">自動調查與修復概觀</a>——AIR 的觸發、調查狀態與判定邏輯。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/m365d-action-center" target="_blank" rel="noopener">Action center 待核准與歷史動作</a>——核准、駁回與 undo 的操作與所需權限，回應動作稽核的第一站。</li>
+</ul>
+
+
+  <div class="eyebrow">10 — 🎯 自我檢測</div>
+  <h2 data-toc="自我檢測">自我檢測 5 題</h2>
+  <p>先自己作答，再展開解析。想連續刷本單元題目：<a href="../quiz.html?unit=P1-W3-3">到刷題頁練習 →</a></p>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 1 · D2-0006</div><div class='q-stem'>You are a security operations analyst. Malware is confirmed on the Windows 11 laptop of a remote employee. You must stop the laptop from reaching other network resources, but the service desk must still be able to contact the employee through Microsoft Teams and Outlook while you investigate. Which response action in Microsoft Defender for Endpoint should you use?</div><div class='q-zh'>（你是安全性作業分析師。一名遠端員工的 Windows 11 筆電已確認感染惡意程式。你必須阻止這台筆電存取其他網路資源，但在調查期間服務台仍必須能透過 Microsoft Teams 與 Outlook 聯絡到該員工。你應該使用 Microsoft Defender for Endpoint 的哪一個回應動作？）</div><div class='q-opt'><strong>A.</strong> Isolate the device by using full isolation<div style='font-size:12.5px;color:var(--muted)'>以完全隔離（full isolation）隔離裝置</div></div><div class='q-opt'><strong>B.</strong> Isolate the device by using selective isolation<div style='font-size:12.5px;color:var(--muted)'>以選擇性隔離（selective isolation）隔離裝置</div></div><div class='q-opt'><strong>C.</strong> Restrict app execution on the device<div style='font-size:12.5px;color:var(--muted)'>對裝置套用限制應用程式執行（restrict app execution）</div></div><div class='q-opt'><strong>D.</strong> Contain the device from the neighbouring onboarded devices<div style='font-size:12.5px;color:var(--muted)'>由周邊已上線的裝置對它執行 contain device（圍堵裝置）</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：B</span><p>選擇性隔離只封鎖一組應用程式的對外網路存取，刻意保留 Outlook、Teams 與 Skype for Business，正好符合「要遏制、又不能讓使用者完全失聯」的需求（僅較新版 Windows 用戶端支援）。無論完全或選擇性隔離，裝置與 Defender 雲端服務的通道都會保留，所以隔離後仍可繼續調查、收集調查套件或開啟即時回應（Live Response）。</p><ul><li><strong>A</strong>：完全隔離會切斷除了 Defender 通道以外的所有網路連線，Teams 與 Outlook 都不通，服務台無法聯絡使用者，不符合題目要求。</li><li><strong>C</strong>：限制應用程式執行套用的是程式碼完整性原則，只允許 Microsoft 簽章的檔案執行，網路照樣暢通——它擋的是「執行權」而不是「連線」，達不到阻止裝置存取其他資源的目的。</li><li><strong>D</strong>：contain device 是給「探索到但未上線、裝不了代理程式」的裝置用的：命令已上線裝置拒絕與它通訊。本題筆電已上線，可以直接下隔離動作。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-endpoint/respond-machine-alerts' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 2 · D2-0007</div><div class='q-stem'>During an investigation you open a live response session on a compromised device. The session connects and the processes and getfile commands work, but you cannot execute your own unsigned PowerShell collection script. You must be able to run that script on the device during this investigation. What should you request?</div><div class='q-zh'>（調查期間你在受害裝置上開啟即時回應（Live Response）工作階段。工作階段順利連上，processes 與 getfile 命令也能用，但你無法執行自己撰寫、未簽章的 PowerShell 蒐證指令碼。你必須能在這次調查中於該裝置上執行這支指令碼。你應該要求什麼？）</div><div class='q-opt'><strong>A.</strong> Unrestricted (advanced) live response permissions for your role, the Live response unsigned script execution advanced feature turned on, and the script uploaded to the live response library<div style='font-size:12.5px;color:var(--muted)'>為你的角色授予進階（unrestricted）即時回應權限、開啟「Live response unsigned script execution」進階功能，並把指令碼上傳到 live response library</div></div><div class='q-opt'><strong>B.</strong> The Live response for servers advanced feature turned on for the tenant<div style='font-size:12.5px;color:var(--muted)'>為租用戶開啟「Live response for servers」進階功能</div></div><div class='q-opt'><strong>C.</strong> A collect investigation package action on the device so that you can analyse the output offline<div style='font-size:12.5px;color:var(--muted)'>改對裝置執行收集調查套件（collect investigation package），把輸出帶回離線分析</div></div><div class='q-opt'><strong>D.</strong> The active remediation actions permission that is required to isolate devices<div style='font-size:12.5px;color:var(--muted)'>取得執行裝置隔離所需的「主動修復動作」權限</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>即時回應命令分兩級：唯讀類（cd、dir、fileinfo、processes、connections、registry、getfile 等）屬基本（basic），會改變裝置或把東西放進裝置的（putfile、run、remediate、undo、library、analyze）屬進階（unrestricted）。指令碼跑不動的三層檢查正好對應本題：缺進階權限、未簽章指令碼需要開啟 Live response unsigned script execution、以及 run 只能執行 library 內的檔案，所以指令碼必須先上傳。</p><ul><li><strong>B</strong>：Live response for servers 決定的是「能不能對伺服器開工作階段」。本題工作階段已經成功建立，問題出在命令層級的權限與指令碼來源，不是伺服器開關。</li><li><strong>C</strong>：調查套件是一次性打包 autoruns、處理程序、網路連線、排程工作與事件記錄檔的唯讀鑑識快照，無法執行你的自訂邏輯，也不能在裝置上互動蒐證。</li><li><strong>D</strong>：主動修復動作權限管的是隔離、限制執行、防毒掃描這類裝置動作，與即時回應的基本／進階命令權限是不同的權限項目，給了也不會讓 run 可用。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-endpoint/live-response' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 3 · D2-0008</div><div class='q-stem'>An automated investigation that was triggered by a malware alert has been in the Pending approval state for two hours, and the malicious file is still present on the device. You must complete the remediation with the least delay and keep an audit trail of who authorized it. What should you do FIRST?</div><div class='q-zh'>（由惡意程式碼警示觸發的自動調查已經停在「Pending approval（待核准）」狀態兩小時，惡意檔案仍留在裝置上。你必須以最短的延遲完成修復，並保留是誰核准的稽核軌跡。你應該「最先」做什麼？）</div><div class='q-opt'><strong>A.</strong> Set the automation level of the device group to No automated response and remediate the file manually<div style='font-size:12.5px;color:var(--muted)'>把該裝置群組的自動化層級改為 No automated response，改以人工修復該檔案</div></div><div class='q-opt'><strong>B.</strong> Start another automated investigation from the device page<div style='font-size:12.5px;color:var(--muted)'>從裝置頁再啟動一次自動調查</div></div><div class='q-opt'><strong>C.</strong> Open the Action center, review the pending remediation actions, and approve them<div style='font-size:12.5px;color:var(--muted)'>開啟 Action center，檢視待核准的修復動作並核准它們</div></div><div class='q-opt'><strong>D.</strong> Use the History tab of the Action center to undo the actions of the investigation<div style='font-size:12.5px;color:var(--muted)'>使用 Action center 的歷史紀錄（History）索引標籤復原（undo）該調查的動作</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：C</span><p>「Pending approval」代表裝置群組的自動化層級是 semi，自動調查已經完成判定、也備好修復動作，只是卡在等人核准。最快的路徑是到 Action center 的待核准清單檢視並核准；Action center 會記錄誰在何時核准了哪個動作，同時滿足稽核需求，而且事後若判定有誤還能從歷史紀錄 undo。若這類延遲常態化，再考慮把該群組調成 full。</p><ul><li><strong>A</strong>：No automated response 會讓自動調查完全不啟動，等於連現成的判定與修復建議都放棄，只會讓後續每一次事件都更慢，不是「最短延遲」的作法。</li><li><strong>B</strong>：再跑一次調查同樣會停在待核准，因為卡住的原因是自動化層級需要核准，不是調查失敗；重跑只是浪費時間。</li><li><strong>D</strong>：undo 用於復原「已經執行完」的動作（例如解除隔離、從隔離區還原檔案）。這裡動作根本還沒執行，沒有東西可以復原。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-xdr/m365d-action-center' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 4 · D2-0009</div><div class='q-stem'>A production line controller that runs Windows Server generates alerts for an unknown binary. The operations team states that the server must keep its network connections to the line equipment, because losing them halts manufacturing. You must stop the unknown binary from running while you preserve volatile evidence. What should you do?</div><div class='q-zh'>（一台執行 Windows Server 的產線控制器針對一個不明二進位檔產生警示。維運團隊表示這台伺服器必須保持與產線設備的網路連線，一旦中斷就會停產。你必須在保留揮發性證據的前提下，阻止這個不明二進位檔繼續執行。你應該怎麼做？）</div><div class='q-opt'><strong>A.</strong> Isolate the server by using full isolation, then collect an investigation package<div style='font-size:12.5px;color:var(--muted)'>先以完全隔離隔離該伺服器，再收集調查套件</div></div><div class='q-opt'><strong>B.</strong> Isolate the server by using selective isolation so that Outlook and Teams keep working<div style='font-size:12.5px;color:var(--muted)'>以選擇性隔離隔離該伺服器，讓 Outlook 與 Teams 仍可運作</div></div><div class='q-opt'><strong>C.</strong> Run a full antivirus scan and wait for the result before taking any other action<div style='font-size:12.5px;color:var(--muted)'>先執行完整防毒掃描，等結果出來再決定其他動作</div></div><div class='q-opt'><strong>D.</strong> Restrict app execution on the server, then collect an investigation package<div style='font-size:12.5px;color:var(--muted)'>對該伺服器套用限制應用程式執行，再收集調查套件</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：D</span><p>一般情況下順序是「先隔離再取證」，因為 MDE 的隔離保留了與 Defender 服務的通道，取證能力不受影響。但題幹明說「網路服務不能中斷」，此時最佳解是限制應用程式執行：它套用程式碼完整性原則，只允許 Microsoft 簽發憑證簽章的檔案執行，擋掉不明二進位檔卻不動網路，再立刻收集調查套件保存 autoruns、處理程序、網路連線與事件記錄檔等揮發性證據。事後要解除也有對應的 Remove app restriction。</p><ul><li><strong>A</strong>：完全隔離會切斷除 Defender 通道外的所有連線，等於讓產線停擺，直接違反題目給的營運限制。</li><li><strong>B</strong>：選擇性隔離只是保留 Outlook／Teams／Skype for Business，與產線設備的通訊照樣被切斷；而且它僅限較新版 Windows 用戶端，伺服器不支援。</li><li><strong>C</strong>：只跑防毒掃描既不保證能立刻攔下未知的二進位檔（可能沒有對應偵測），等待期間程式仍在執行，遏制被延後，也沒有先保存揮發性證據。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-endpoint/respond-machine-alerts' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+<div class='q-card'><div class='q-eyebrow'>QUESTION 5 · D2-0010</div><div class='q-stem'>Your malware analysis team asks you to hand over the actual suspicious executable from an infected device so that they can detonate it in their own sandbox. The device is currently isolated, and the file must remain unchanged on the device for now. Which action retrieves the file for offline analysis?</div><div class='q-zh'>（惡意程式分析小組要求你把受害裝置上那個可疑執行檔本體交給他們，讓他們在自家沙箱中引爆分析。該裝置目前處於隔離狀態，而且該檔案暫時必須原封不動留在裝置上。哪一個動作可以取回檔案供離線分析？）</div><div class='q-opt'><strong>A.</strong> Start a live response session and use the getfile command<div style='font-size:12.5px;color:var(--muted)'>開啟即時回應工作階段，使用 getfile 命令</div></div><div class='q-opt'><strong>B.</strong> Run Collect investigation package on the device and download the ZIP package<div style='font-size:12.5px;color:var(--muted)'>對裝置執行收集調查套件，再下載該 ZIP 封裝</div></div><div class='q-opt'><strong>C.</strong> Run Stop and quarantine file on the file hash<div style='font-size:12.5px;color:var(--muted)'>針對該檔案雜湊執行 stop and quarantine file</div></div><div class='q-opt'><strong>D.</strong> Create a Block and remediate file indicator for the SHA256 of the file<div style='font-size:12.5px;color:var(--muted)'>為該檔案的 SHA256 建立 Block and remediate 檔案指標</div></div><details><summary>看正解與解析</summary><div class='q-ans'><span class='correct'>正解：A</span><p>getfile 是把裝置上的單一檔案取回供離線分析的取證主力命令，屬基本（basic）權限層級；而且裝置在隔離狀態下仍保有與 Defender 服務的通道，即時回應照常可用。高頻對比句型：「把可疑執行檔送沙箱分析」→ getfile；「保存整台機器的完整鑑識資料」→ collect investigation package。</p><ul><li><strong>B</strong>：調查套件打包的是 autoruns、處理程序、網路連線與 DNS／ARP 快取、排程工作、服務、prefetch、安全性事件記錄檔等鑑識產物，不含你指定的那個惡意執行檔本體。</li><li><strong>C</strong>：stop and quarantine file 會停止處理程序並在租用戶範圍內把檔案移入隔離區，等於改變了裝置上的檔案狀態，違反「暫時原封不動」的要求，也不會把檔案交到分析小組手上。</li><li><strong>D</strong>：檔案指標是持續性的封鎖規則，讓同一個雜湊未來再出現就被擋下（Block and remediate 還會一併清除），屬於預防擴散的手段，不是取檔手段。</li></ul><p style='font-size:12.5px'><a href='https://learn.microsoft.com/zh-tw/defender-endpoint/live-response' target='_blank' rel='noopener'>📚 MS Learn 參考 ↗</a></p></div></details></div>
+  </article>
+
+  <div class='podcast-box'><div class='p-label'>SC-200 速成電台 · EP13</div><div class='p-title'>用聽的複習今天的內容（雙主持人對談）</div><audio controls preload='none' src='../podcast/ep-013.mp3'></audio><div class='p-hint'>逐字稿與全部集數：<a href='../podcast/index.html#ep-013'>Podcast 節目頁 ↗</a>｜可用 Podcast App 訂閱 <a href='../podcast.xml'>RSS</a></div></div>
+
+  <div class="done-row">
+    <input type="checkbox" id="doneChk" data-seq="13">
+    <label for="doneChk">我讀完 Day 13 了（進度會記在這台裝置的瀏覽器）</label>
+  </div>
+
+  <nav class="pager">
+    <a href='../newsletter/day-012.html'>← Day 12</a>
+    <a href="../index.html">回儀表板</a>
+    <a href='../newsletter/day-014.html'>Day 14 →</a>
+  </nav>
+
+  <footer class="colophon">
+    SC-200 速成電子報 · Day 13 / 40 · <a href="../index.html">學習儀表板</a> · <a href="../quiz.html">刷題</a> · <a href="../podcast/index.html">Podcast</a>
+  </footer>
+</main>
+</div>
+</body>
+</html>
