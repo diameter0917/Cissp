@@ -14,7 +14,7 @@
     {"speaker": "host_f", "text": "那警示是誰產生的？"},
     {"speaker": "host_m", "text": "各個付費的 Defender 方案。方案題的解法很機械：先認出題幹裡的資源類型，再對應方案。"},
     {"speaker": "host_f", "text": "幫我們掃一次方案地圖。"},
-    {"speaker": "host_m", "text": "伺服器看 Defender for Servers，核心是整合 MDE；儲存體帳戶看 Storage，上傳時掃惡意軟體；SQL 抓資料隱碼跟暴力破解；Containers 看 Kubernetes 控制平面跟節點；App Service、Key Vault、APIs 各顧一類資源。"},
+    {"speaker": "host_m", "text": "伺服器看 Defender for Servers，核心是整合 MDE；儲存體帳戶看 Storage，上傳時掃惡意軟體；SQL 抓資料隱碼跟暴力破解；Containers 看 Kubernetes 控制平面跟節點。App Service、Key Vault 跟 APIs 也各有一套。"},
     {"speaker": "host_f", "text": "最容易混的是哪一組？"},
     {"speaker": "host_m", "text": "Resource Manager 跟 Servers。Resource Manager 管「誰對 Azure 下了什麼管理命令」，是控制平面；Servers 管「VM 裡面發生什麼事」。有人用可疑工具列舉整個訂用帳戶，選 Resource Manager；VM 上跑起挖礦程序，選 Servers。"},
     {"speaker": "host_f", "text": "Servers 還分 Plan 1 跟 Plan 2，差在哪？"},

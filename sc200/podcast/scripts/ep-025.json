@@ -1,0 +1,311 @@
+{
+  "episode": 25,
+  "unit": "P1-W5-5",
+  "title_zh": "五週總複習與考試策略",
+  "dialogue": [
+    {
+      "speaker": "host_f",
+      "text": "雲哲，今天這集有點特別，是速成階段的最後一集了。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "是啊，五週二十五集。從今天以後，你的每一天就不是聽課，是坐下來刷題了。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那我們今天不講新東西，就做一件事：把前面二十四集接成一條線。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "對，因為考試不會一課一課問你，它會丟一段情境，裡面什麼都有。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "先講今天的三個重點。第一，三大領域其實是一條有方向的生產線。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "第二，我們會用一條完整的攻擊鏈，從釣魚信一路走到資料外洩，把知識串起來。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三，把最容易混淆的概念一次分乾淨，再加上答題思路。準備好了嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "走吧。先從那條生產線講起。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "為什麼說是生產線，不是三個並排的主題？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "因為它們有前後關係。D1 決定你看得到什麼，D2 決定看到之後怎麼處理，D3 負責回頭撿沒看到的。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "所以資料沒接進來，後面全都是空的。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "完全正確。這也是考題最愛藏的陷阱：問你為什麼分析規則沒觸發，很多人在規則裡繞，答案其實在資料根本沒進來。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那 D3 呢？為什麼一定要有搜捕？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "因為偵測永遠有盲區。EP10 開場那句話講得很好：如果你只依賴已經被偵測到的東西，等你發現的時候通常已經擴散了。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "所以搜捕是補洞的，補完的洞還要變成新的偵測。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "對，這條線是雙向的。搜捕的發現要變成自訂偵測或分析規則，回頭餵養 D2，這樣才是一個閉環。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那我們來走那條攻擊鏈吧。第一步，一封釣魚信進來了。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "行銷部十二個人收到假發票通知。連結在送達當下是乾淨的，兩小時後才換成假登入頁。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "這種延遲武裝，誰擋得住？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "MDO 的 Safe Links，因為它是在你點擊的當下才重新驗證目的地。你在 EmailEvents 跟 UrlClickEvents 這兩張表看得到。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "下一步呢？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "撈出同一批郵件。沒讀的做 soft delete，確定惡意的 hard delete，再確認 ZAP 有沒有動作。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "結果有兩個人真的輸入帳密了。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "四十分鐘後攻擊者從境外匿名 IP 登入成功。這時候是 Entra ID Protection 的登入風險偵測在叫。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "處理方式是？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "撤銷工作階段跟權杖，強制安全密碼變更。更重要的是用風險型條件式存取，讓後續高風險登入自動被擋，而不是等人工。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "再來攻擊者做了什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "他在信箱建了一條轉寄規則，把含 invoice 的信偷偷寄到外面。這是 Defender for Cloud Apps 的可疑收件匣操作在管。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "這一步很容易被忘掉耶。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "對，而且要順手盤點這個帳號同意過的 OAuth 應用程式。被遺留的同意權限是最常漏掉的後門。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "然後就進到地端了？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "因為密碼跟地端 AD 一樣，他用 VPN 進內網做帳號列舉，再用竊得的票證存取檔案伺服器。這一段是 MDI 的主場。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "這時候先隔離還是先取證？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "先止血。隔離裝置之後，Live Response 的通道還在，取證不受影響，這是很多人會猶豫的點。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "最後就是外洩了。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "四十 GB 的壓縮檔分批上傳到個人雲端儲存，MDE 的檔案跟網路事件會看到，然後用指標把外傳網域跟雜湊封鎖掉。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "等一下，這些警示分散在四個產品，我要一個一個看嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "不要。在 XDR 佇列裡它應該是一個事件，你從事件層看時間軸就好。改事件屬性用自動化規則，發通知開工單用劇本。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那還有十個收到信的人怎麼辦？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "問得好，這就是最像 D3 考題的一步。沒觸發警示不代表沒點，你要離開事件、進搜捕。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "假說怎麼寫？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "收到這批信、點了連結、四小時內出現成功登入。三張表 join 起來，時間窗綁住因果，命中的存書籤，值得長期看的就轉成自訂偵測。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "聽起來這條鏈把三個領域都走過一遍了。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "還沒完。覆盤的時候發現 VPN 記錄根本沒接進工作區，所以橫向移動那段晚了六小時才被看見。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "所以最後又回到 D1。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "對，補連接器、用 DCR 控成本。這才是完整的閉環。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "接下來我們快速釐清幾組最容易混淆的。第一組，自動化規則跟劇本。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "事情做在 Sentinel 裡面，像指派、標記、關閉，用自動化規則。要跟外面互動，發通知、開工單、打 API，才是劇本。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二組，Scheduled、NRT、Fusion。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "要自訂邏輯跟時間窗就 Scheduled；要延遲最小就 NRT，但查詢有限制；要把分散的低嚴重警示串成多階段攻擊，那是 Fusion，而且不能改查詢。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三組，DCR、ASIM、監視清單。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "記時機就好。DCR 在寫入前，能省錢；ASIM 在查詢時做正規化，不省錢；監視清單是你自己帶的參考資料表。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那使用者風險跟登入風險呢？我每次都要想一下。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "使用者風險是這個身分可能已經被盜，修復是強制密碼變更；登入風險是這一次登入不像本人，修復是要求 MFA 或封鎖。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "最後是自訂偵測跟分析規則。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "查詢只用到 XDR 那幾張表，就自訂偵測；要關聯防火牆或自訂記錄，那只能是 Sentinel 的分析規則。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那答題策略呢？我常常看到兩個選項都對。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "那就依序問三題。範圍對不對、時機對不對、成本跟人力對不對。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "可以舉個例子嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "題目只提 Microsoft 365 跟端點，XDR 就夠了；一出現防火牆或第三方記錄，答案就只能是 Sentinel，這就是範圍。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那限定詞要怎麼看？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "看到 first，選最能止血又最不破壞證據的；看到 minimize，選內建的、不用自己造的；看到 least privilege，選剛好夠用的角色。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "如果四個選項看起來都是真的功能呢？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "那就認干擾項的長相。對的產品錯的功能、對的功能錯的時機、做過頭、做不夠，四種。都過不了就回去讀題幹最後一句。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "好，考點快問快答三題。第一題，我要把湖裡撈到的東西變成偵測，該做什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "升階回分析層。分析規則只讀分析層，留在湖裡永遠不會觸發。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二題，一支需要 join 的複雜關聯查詢，可以做成 NRT 規則嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "不行。NRT 查詢有限制，這種要用 Scheduled 規則。想快不能不看限制。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三題，郵件已經確認是惡意的，但法務說要保留取證，該用 soft 還是 hard delete？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "先 soft。hard 是標記永久清除，一般復原流程救不回，要取證就別急著按下去。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "五週就到這裡了。雲哲，給要進刷題期的人一句話吧。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "明天開始你會覺得自己好像什麼都不會，那是正常的。錯題越早浮出來越好，現在錯，總比考場上錯好。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "明天是 D1 題組 A，四十題。記得平均一題一百秒，練配速。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "錯的題目會進錯題本，要連對兩次才移出。所以放心去錯。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那我們刷題期見。這五週你每天都出現，這件事本身就很厲害了。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "下週見。保持好奇，我們考場上見。"
+    }
+  ]
+}
