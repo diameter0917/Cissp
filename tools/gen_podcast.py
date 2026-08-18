@@ -44,6 +44,19 @@ VOICES = {"host_f": CONFIG["voice_host_f"], "host_m": CONFIG["voice_host_m"]}
 SPEECH_SUBS = [
     # 注意：這是依序套用的字串取代，長的要排在短的前面
     # （例如 DDoS 必須在 DoS 之前，否則會被切成 "D DoS"）。
+    # 只有「以非英數字相接」的複合詞需要這樣手動排序——夾在英數字中間的
+    # 不會被咬到（IPv6 裡的 IP、CISSP 裡的 CIS 都靠邊界判斷自動免疫）。
+    ("ISO 27001", "I S O 二七零零一"), ("ISO 27034", "I S O 二七零三四"),
+    ("ISO 27037", "I S O 二七零三七"), ("SW-CMM", "S W C M M"),
+    ("SC-200", "S C 二零零"), ("ISO 27002", "I S O 二七零零二"),
+    # NIST SP 800 系列：連字號通則會把它變成「八百 八十八」，
+    # 明列成「八零零之八八」才是這份標準平常被唸出來的樣子。
+    ("800-18", "八零零之一八"), ("800-53", "八零零之五三"),
+    ("800-60", "八零零之六零"), ("800-86", "八零零之八六"),
+    ("800-88", "八零零之八八"),
+    # 第二次提到時常省略 ISO 前綴，光一串數字會被唸成「兩萬七千零二」
+    ("27001", "二七零零一"), ("27002", "二七零零二"),
+    ("27034", "二七零三四"), ("27037", "二七零三七"),
     ("DDoS", "D DOS"), ("(ISC)²", "I S C squared"), ("ISC2", "I S C squared"),
     ("DAD", "D A D"), ("AAA", "triple A"), ("NDA", "N D A"), ("AUP", "A U P"),
     ("DBA", "D B A"), ("CEO", "C E O"), ("CIO", "C I O"), ("CSO", "C S O"),
@@ -112,7 +125,51 @@ SPEECH_SUBS = [
     # Common Criteria 三件套。兩個字母的 PP／ST 靠邊界判斷才敢收：
     # 只有前後都不是英數字才換，夾在英文字中間的不會被動到。
     ("TOE", "T O E"), ("PP", "P P"), ("ST", "S T"),
+    # 網路（EP12）。IPv4／IPv6 不必排在 IP 之前——IP 後面接的 v 是英數字，
+    # 邊界判斷本來就不會讓 IP 規則咬進去；VoIP、IPsec、IPS 同理。
+    ("IPv4", "I P v four"), ("IPv6", "I P v six"), ("IP", "I P"),
+    ("HTTPS", "H T T P S"), ("HTTP", "H T T P"), ("VoIP", "V O I P"),
+    ("SSID", "S S I D"), ("PSK", "P S K"), ("EAP", "E A P"),
+    ("BEC", "B E C"), ("SQLi", "S Q L i"),
+    # 這兩個業界本來就當單字唸，維持原樣（與 SAST／DAST／NIST 同慣例）
+    ("WAF", "WAF"), ("RADIUS", "RADIUS"),
+    # 身分與存取（EP13）
+    ("IAL", "I A L"), ("AAL", "A A L"), ("FAL", "F A L"), ("JWT", "J W T"),
+    ("PKCE", "P K C E"), ("KDC", "K D C"), ("TGT", "T G T"), ("TGS", "T G S"),
+    ("LSASS", "L SASS"), ("TOTP", "T O T P"), ("XML", "X M L"), ("ACL", "A C L"),
+    ("PDP", "P D P"), ("PEP", "P E P"), ("AiTM", "A I T M"), ("OAuth", "O Auth"),
+    # 評估、維運與開發（EP14–16）
+    ("IAST", "I A S T"), ("BAS", "B A S"), ("RUM", "R U M"), ("KCI", "K C I"),
+    ("CUEC", "C U E C"), ("MTTR", "M T T R"), ("MTTD", "M T T D"),
+    ("TTP", "T T P"), ("CMDB", "C M D B"), ("CISA", "C I S A"), ("CIS", "C I S"),
+    ("KEV", "K E V"), ("IaC", "I A C"), ("EDR", "E D R"), ("SCM", "S C M"),
+    ("CMM", "C M M"), ("BSIMM", "B SIM"), ("CSF", "C S F"), ("RMF", "R M F"),
+    ("ROSI", "R O S I"), ("ERP", "E R P"), ("SOP", "S O P"), ("POS", "P O S"),
+    # 資產與治理（EP18）
+    ("SCC", "S C C"), ("BCR", "B C R"),
+    # 大小寫變體：腳本裡兩種寫法都有，兩種都要收
+    ("SoD", "S O D"), ("IOC", "I O C"),
+    # 其他掃描到的常見縮寫
+    ("CCTV", "C C T V"), ("CDN", "C D N"), ("NAT", "N A T"), ("URL", "U R L"),
+    ("HTML", "H T M L"), ("DOM", "D O M"), ("WEP", "W E P"), ("WPA", "W P A"),
+    ("ACK", "A C K"), ("AV", "A V"), ("EF", "E F"), ("WRT", "W R T"),
+    ("UI", "U I"), ("PC", "P C"), ("DR", "D R"), ("ID", "I D"),
+    # 業界當單字唸的，明列成不變動，免得日後有人以為漏收了
+    ("BOLA", "BOLA"), ("STIG", "STIG"), ("RASP", "RASP"), ("SLSA", "SLSA"),
+    ("SAMM", "SAMM"), ("COTS", "COTS"), ("SCADA", "SCADA"), ("FedRAMP", "FedRAMP"),
 ]
+
+# 集數、Domain 代號與 OSI 層數：直接唸 "EP12" 會變成「E P 一二」，
+# 唸成「第十二集」才聽得懂。EP1 不會咬進 EP10——後面的 0 是英數字，
+# 邊界判斷會擋下來。
+_CN_NUM = ("", "一", "二", "三", "四", "五", "六", "七", "八", "九", "十",
+           "十一", "十二", "十三", "十四", "十五", "十六", "十七", "十八",
+           "十九", "二十", "二十一", "二十二", "二十三", "二十四",
+           "二十五", "二十六")
+SPEECH_SUBS += [(f"EP{i:02d}", f"第{_CN_NUM[i]}集") for i in range(1, 27)]
+SPEECH_SUBS += [(f"EP{i}", f"第{_CN_NUM[i]}集") for i in range(1, 10)]  # EP10 上一行已收
+SPEECH_SUBS += [(f"D{i}", f"Domain {_CN_NUM[i]}") for i in range(1, 9)]
+SPEECH_SUBS += [(f"L{i}", f"第{_CN_NUM[i]}層") for i in range(1, 8)]
 
 
 # 邊界感知的替換樣式快取：只有前後不是英數字時才換，
@@ -124,10 +181,16 @@ _SUB_PATTERNS = [
 ]
 
 
+# 夾在英數字之間的連字號，中文語音會唸成「減」——AES-256 變「A E S 減 256」、
+# SYN-ACK 變「SIN 減 A C K」、Wi-Fi 變「Wi 減 Fi」。替換完之後一律換成空白，
+# 這樣 Bell-LaPadula、Pass-the-Hash、anti-CSRF 這些都不必逐一列進替換表。
+_HYPHEN = re.compile(r"(?<=[A-Za-z0-9])-(?=[A-Za-z0-9])")
+
+
 def speech_text(text):
     for pattern, dst in _SUB_PATTERNS:
         text = pattern.sub(dst, text)
-    return text
+    return _HYPHEN.sub(" ", text)
 
 
 def sha256_file(p: Path) -> str:

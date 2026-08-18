@@ -1,0 +1,267 @@
+{
+  "episode": 18,
+  "unit": "W18",
+  "title_zh": "Domain 2 考點：近義詞怎麼刪",
+  "dialogue": [
+    {
+      "speaker": "host_f",
+      "text": "哈囉大家好，歡迎回到 CISSP 螺旋電台，我是曉臻。考點階段第二站，這週輪到 Domain 2 資產安全。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "我是雲哲。上一集我們練的是 Domain 1 的價值觀排序，這一集要換另一種功夫：把長得很像的名詞一個一個分開。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "這兩種功夫差在哪？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Domain 1 的干擾項是「對的事實、錯的答案」；Domain 2 的干擾項是「很像的名詞、錯的那一個」。Owner 跟 custodian、residency 跟 sovereignty、匿名跟假名，陷阱都設在近義詞上。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "EP02 畫過輪廓、EP10 挖過細節，所以今天不重教一次生命週期。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "對，今天只練一件事：四個選項擺在你面前，你怎麼把另外三個刪掉。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "老規矩，先把本週五封信攤開。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Day 86 是分類分級跟角色判斷，信裡直接標它是 Domain 2 最高頻的考點。Day 87 是資料殘留跟銷毀方法，SSD 跟消磁是最大的坑。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "後面三封呢？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Day 88 是三個資料狀態加上 DLP 部署點，典型的配對題；Day 89 是資料主權跟保存期限，難在兩條法規會互相打架；Day 90 收尾，scoping、tailoring、Privacy by Design、匿名跟假名，然後綜合刷題。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "五封信有共同的主線嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "有，一句話：先分類，再依分類決定保護強度。所以 Domain 2 看到 FIRST 的題目，答案幾乎都往「先識別、先分類」靠——你不知道資料多敏感，就無從決定加密等級、DLP 規則或基準怎麼挑。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第一組，角色題。這組我最常錯，因為選項一次丟四個角色給我。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "先記口訣：決定跟核准的是 Owner 跟 Controller，執行跟照做的是 Custodian 跟 Processor。題幹的動詞就是答案。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那為什麼決定分類的不能是資安長？他不是最懂安全嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "因為分類看的是資料值多少、拿來做什麼，最懂的是業務主管。而且這是當責，不能下授，資安長替他決定，責任也不會跟著搬過去；IT 那邊「依政策執行每日備份、設定加密」的人，才是 custodian。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那 Owner 跟 Controller 呢？兩個聽起來都是作主的人。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "看題目在哪個世界。Owner 是組織內部的職責分工，Controller 是隱私法下的法律主體；題幹一出現隱私法或個資，就切到 controller 跟 processor 這一組。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "醫院委外給帳務公司那題就是這樣。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "帳務公司嚴格照醫院指示處理病患資料，它是 processor。有人會選共同控管者，但共同控管的前提是「共同決定目的」，照指示做不算。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "這一輪還多冒出 System Owner 跟 Data Steward 兩個角色。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "這兩個是升級版誘答。NIST SP 800-18 講得很明白，制定系統安全計畫、確保使用者跟支援人員受訓的是 System Owner——Data Owner 管資料的分類，System Owner 管系統的安全計畫。至於負責資料品質、metadata 定義、治理合規卻完全不碰技術的業務主管，那是 Data Steward。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二組，銷毀題。選項全是專有名詞，每一個看起來都很專業。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "但這組其實最好拆，因為題幹一定會給你三個變數：介質是什麼、還要不要再用、資料多敏感。三個都讀到，答案就自己掉出來了。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "先講介質。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "SSD 是最大的坑。消磁對它無效，它根本不是磁性介質；覆寫也不可靠，wear-leveling 會讓你蓋不滿每個區塊。SSD 只有 crypto-erase、Secure Erase 或實體銷毀這三條路。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "磁帶跟硬碟就可以消磁了吧。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "可以，但這裡藏了第二層。一批存 Top Secret 的磁帶到期報廢，選項寫「用核可的消磁機消磁」，敘述完全正確，可是 Top Secret 不接受只做到 purge 這一級，答案是實體銷毀。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "所以三個等級到底怎麼分？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Clear 擋得住一般復原工具；Purge 擋得住實驗室級，而且介質還能再用；Destroy 是介質報廢、保證最高。題目說「想在內部重複使用硬碟，又要防實驗室技術」，那就是 Purge。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "雲端呢？我又沒辦法跑去人家機房拆硬碟。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "所以答案是 crypto-shredding，銷毀金鑰讓密文永遠解不開。看到「客戶無法實體接觸儲存媒體」這句，粉碎跟消磁自動出局；至於 delete 跟 format，只要題目要的是不可復原，它們永遠不會是答案，資料還在，鑑識上用 file carving 就照檔案結構挖回來了。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "最後一種是把銷毀外包出去。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "那題四個選項都是好事：找信譽好的廠商、合約加保密條款、要求廠商有認證，但只有一個在法庭上算數——見證銷毀過程，並取得銷毀證明。Defensible destruction 的重點不是做得多乾淨，是你證不證明得出來。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三組，資料狀態跟 DLP。這組我以為最簡單，結果照樣錯。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "因為它是配對題，一題要同時答對兩件事：部署在哪、保護哪個狀態。靜止用儲存加密，傳輸中用 TLS、IPsec、VPN，使用中靠存取控制跟機密運算——使用中最難，因為資料得先解密才能運算。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "DLP 那三個部署點怎麼對？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "在筆電上擋上傳、USB、列印，那是 Endpoint DLP，對應使用中；掃外寄郵件裡的社會安全號碼樣式，那是 Network DLP，對應傳輸中；掃檔案庫裡躺著的舊檔，是 Storage 或 Discovery DLP，對應靜止。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "DLP 跟 DRM 我很容易搞混。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "分水嶺是「檔案離開你的網路以後」。題目要的是收件者拿到檔案之後還不能列印、複製、轉寄，DLP 做不到，答案是 DRM——它的保護是跟著資料走的。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那 CASB 什麼時候出場？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "題幹出現影子 IT、員工自己用了幾十個沒核准的 SaaS、需要一個單一政策執行點，那就是 CASB，它站在使用者跟所有雲端服務中間。看到「跨雲端服務的整體可視性」，就別再選端點 DLP 了。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第四組，主權跟保存。residency 跟 sovereignty 我到現在還會反射錯。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "一句話切開：residency 是「存在哪」，sovereignty 是「歸誰管」，localization 是「法律逼你留在境內」。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "美商雲的歐洲資料中心那題就是考這個。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "資料明明存在歐盟，卻還是可能被美國依 CLOUD Act 要求調取，這是管轄權問題，所以選 sovereignty。選 residency 的人，就是把「存在哪」誤當成「歸誰管」。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "保存那組呢？財務紀錄要留七年，隱私法又說目的達成就得刪。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "這題答案幾乎是固定的：依資料類別分別訂定保存政策。全刪跟全留七年這兩個一刀切的選項，各自會踩到另一條法規；順便記個判斷式，集團內部例行跨境傳輸選 BCR，跟外部第三方選 SCC。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "還有一題我很喜歡，磁帶留滿九年，結果沒人會讀。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "保存不是「留著」就好，硬體跟人員要一起保存。留了資料卻沒有磁帶機、沒人會還原程序，法定年限等於白留。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "Day 89 最後那題是 EOS，關鍵系統半年後停止支援，第一步做什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "選項有立刻退役、直接買延伸支援、馬上斷網，全都很積極，但 FIRST 永遠是先評估風險，再據以訂遷移或緩解計畫。這題是 Domain 1 的味道回來了：先評估，後行動。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那 Day 90 的去識別化呢？匿名跟假名。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "只有匿名是不可逆的，資料因此脫離個資範疇；假名、代碼化、加密全都可逆，仍然是個資。再補一個順序題：先 scoping 從基準選用或排除控制，再 tailoring 依風險調整補強。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "好，快問快答三題，重點一樣放在另外三個為什麼不對。第一題：一台檔案伺服器主要放 Public 行銷素材，但也存了少量 Confidential 文件，把這台伺服器當資產分類時，最適當的做法是？第一個說法是依它處理過的最高等級分為 Confidential、第二個是依多數資料分為 Public、第三個是取兩級的平均、第四個是混合資料所以不分類。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "選第一個。資產分級必須對齊資料分級，處理過機密資料的機器本身就是機密資產。第二個多數決是最高誘答，可是那幾份 Confidential 只會拿到 Public 等級的保護，直接開一個缺口；第三個，分類沒有「平均」這種東西；第四個最糟，不分類等於沒定義處理要求。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二題：某零售商想讓多數系統脫離持卡人資料的合規範圍，做法是把每個卡號換成一個隨機值，真實卡號只留在安全保險庫裡。這是什麼技術？第一個說法是欄位層級加密、第二個是資料遮罩、第三個是代碼化、第四個是雜湊。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "選第三個，tokenization 代碼化。關鍵字是「隨機值」加「保險庫」——token 跟原值沒有數學關聯，只能靠查表對應，被偷走也沒有價值。第一個加密不行，密文跟原值有數學關係、金鑰一漏就還原得回來，系統還是在合規範圍內；第二個遮罩只顯示末四碼，是給人看的展示層，不能拿去授權交易；第四個雜湊不可逆，交易時還原不出卡號。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三題：開發團隊把新的客戶入口網站做完了，才回頭找隱私團隊說「上線前幫我們加上隱私控制」。這最直接違反 Privacy by Design 的哪一項原則？第一個說法是資料最小化、第二個是透明與告知、第三個是資料可攜、第四個是隱私內建於設計、主動而非事後補救。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "選第四個。Privacy by Design 的核心就是設計階段內建、主動預防，做完才外掛補上，成本高又蓋不全，這題違反的是「時機」。第一個最小化講的是蒐集數量，題目沒說蒐集過量；第二個透明是對當事人的告知義務，跟開發流程的時機無關；第三個可攜是當事人的權利，跟這個情境沒關係。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "三題的共同點是，正解都不難，難的是那三個聽起來很專業的錯項。練法還是老規矩：對完答案不要走，把三個錯項一個一個講出理由。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "收三句話。動詞決定角色，決定核准是 Owner 跟 Controller、執行照做是 Custodian 跟 Processor；銷毀先看介質、再看要不要再用、最後看機密等級；遇到 FIRST，先分類、先評估。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "下一集 EP19 進 Domain 3，安全架構與工程的考點。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "安全模型、加密、系統本身的弱點，那個 Domain 的題目最像純技術題，但選答案的邏輯還是管理面的。先把這週的三態保護複習一遍再過來。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "好，我們下一集見！"
+    }
+  ]
+}
