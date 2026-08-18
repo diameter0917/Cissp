@@ -5,8 +5,8 @@
       "unit": "P1-W1-1",
       "title_zh": "SC-200 考試全景與 Microsoft 安全生態系",
       "file": "ep-001.mp3",
-      "bytes": 2420889,
-      "duration_sec": 403,
+      "bytes": 2424921,
+      "duration_sec": 404,
       "script_sha256": "b9df975a0599dae0957c64080902cfdc720bd8ddf395bc5cbab732a367b40fee"
     },
     "002": {
@@ -14,7 +14,7 @@
       "unit": "P1-W1-2",
       "title_zh": "KQL 基礎 I：查詢結構與三大運算子",
       "file": "ep-002.mp3",
-      "bytes": 2413542,
+      "bytes": 2412102,
       "duration_sec": 402,
       "script_sha256": "87f601ae693ab00dbd127e86d6076398d658d2a07ffe1d46ed9fd9ae761e09f4"
     },
@@ -23,8 +23,8 @@
       "unit": "P1-W1-3",
       "title_zh": "KQL 基礎 II：join、union 與時間序列",
       "file": "ep-003.mp3",
-      "bytes": 2663093,
-      "duration_sec": 444,
+      "bytes": 2660645,
+      "duration_sec": 443,
       "script_sha256": "a308bbda58ab2626eec76f6789c8bb43149c45aa7e9ea63e34d6ac46dfe2b8f6"
     },
     "004": {
@@ -32,8 +32,8 @@
       "unit": "P1-W1-4",
       "title_zh": "Defender XDR 統一入口與 RBAC",
       "file": "ep-004.mp3",
-      "bytes": 2705994,
-      "duration_sec": 451,
+      "bytes": 2701962,
+      "duration_sec": 450,
       "script_sha256": "7c10b48f46cdd680151bce49d4f0b7049805a7f62d66d417eb2c0b39ace151d2"
     },
     "005": {
@@ -41,7 +41,7 @@
       "unit": "P1-W1-5",
       "title_zh": "Defender for Endpoint 部署實戰",
       "file": "ep-005.mp3",
-      "bytes": 2575531,
+      "bytes": 2573515,
       "duration_sec": 429,
       "script_sha256": "726caa608e93fa8bd6ec42a97a4a7e6a9de5f318147598de2b5667fd0faeeb46"
     },
@@ -50,7 +50,7 @@
       "unit": "P1-W2-1",
       "title_zh": "Sentinel 工作區設計與成本管理",
       "file": "ep-006.mp3",
-      "bytes": 2949216,
+      "bytes": 2948640,
       "duration_sec": 491,
       "script_sha256": "cc2015aa829c89f5005e7d29be1e91564a6a42302d72de7a2c2c0f1911c12e89"
     },
@@ -59,7 +59,7 @@
       "unit": "P1-W2-2",
       "title_zh": "資料連接器與 DCR",
       "file": "ep-007.mp3",
-      "bytes": 2991103,
+      "bytes": 2987935,
       "duration_sec": 498,
       "script_sha256": "ec2903279a90e82f37c84e0c1714cad9e62291713dc20884ef892fa58e3d0fcb"
     },
@@ -68,8 +68,8 @@
       "unit": "P1-W2-3",
       "title_zh": "Syslog、CEF 與 ASIM 正規化",
       "file": "ep-008.mp3",
-      "bytes": 2600872,
-      "duration_sec": 433,
+      "bytes": 2604904,
+      "duration_sec": 434,
       "script_sha256": "3f839e383640e60add27c0cacca37e2bb8d5a3e3fc808643cdf31c05493b3b83"
     },
     "009": {
@@ -77,8 +77,8 @@
       "unit": "P1-W2-4",
       "title_zh": "威脅情報與 Watchlists",
       "file": "ep-009.mp3",
-      "bytes": 2679491,
-      "duration_sec": 447,
+      "bytes": 2678915,
+      "duration_sec": 446,
       "script_sha256": "0bc2bd638c6d9a66a98d33ec15a4aa89b6a6eacff1f0ec11386daa2eb94ec6bc"
     },
     "010": {
@@ -86,8 +86,8 @@
       "unit": "P1-W2-5",
       "title_zh": "Sentinel data lake 與 Summary Rules",
       "file": "ep-010.mp3",
-      "bytes": 2736239,
-      "duration_sec": 456,
+      "bytes": 2732351,
+      "duration_sec": 455,
       "script_sha256": "47d6340bfcc0ffd5c59cf0f8d93b0fc488b88c5feaac4f8e82ff503154abdd66"
     },
     "011": {
@@ -95,8 +95,8 @@
       "unit": "P1-W3-1",
       "title_zh": "Security Copilot 設定與管理",
       "file": "ep-011.mp3",
-      "bytes": 2703547,
-      "duration_sec": 451,
+      "bytes": 2702683,
+      "duration_sec": 450,
       "script_sha256": "72f69294f8a840fdb66968780f0b6fca4c53af33a206e3dabad13905aa1a97e2"
     },
     "014": {
@@ -104,7 +104,7 @@
       "unit": "P1-W3-4",
       "title_zh": "電子郵件威脅回應（MDO）",
       "file": "ep-014.mp3",
-      "bytes": 2703980,
+      "bytes": 2704124,
       "duration_sec": 451,
       "script_sha256": "ed0c1c5497c176f2cb1db7d85150eb7b0c1062d4e65937c9d7de897e421e34bb"
     },
@@ -113,7 +113,7 @@
       "unit": "P1-W3-2",
       "title_zh": "Defender XDR 事件分診",
       "file": "ep-012.mp3",
-      "bytes": 3198180,
+      "bytes": 3196596,
       "duration_sec": 533,
       "script_sha256": "5ee53a0ab2a4063d54c36bc173eab0662bbc5c6b6a19fc61180969cb6c62bb2f"
     },
@@ -122,7 +122,7 @@
       "unit": "P1-W3-3",
       "title_zh": "MDE 裝置回應與 Live Response",
       "file": "ep-013.mp3",
-      "bytes": 2599580,
+      "bytes": 2598428,
       "duration_sec": 433,
       "script_sha256": "fcf82aa42d2b96e28aa9a94d282aad75d49ab3188f2c4528f5deb5d7c9f85c95"
     },
@@ -131,8 +131,8 @@
       "unit": "P1-W3-5",
       "title_zh": "身分威脅：MDI 與 Entra ID Protection",
       "file": "ep-015.mp3",
-      "bytes": 2848997,
-      "duration_sec": 475,
+      "bytes": 2845829,
+      "duration_sec": 474,
       "script_sha256": "c4ae58b72085e291823f6b7904b565de9f7143ca470528c9730b67ff141f2ee0"
     },
     "018": {
@@ -140,7 +140,7 @@
       "unit": "P1-W4-3",
       "title_zh": "Fusion、UEBA 與異常偵測",
       "file": "ep-018.mp3",
-      "bytes": 2913208,
+      "bytes": 2912632,
       "duration_sec": 485,
       "script_sha256": "3e23ed3e8a3b9809cbc4d76589d636be3cac7687b9ee208bbab13b0eedde19aa"
     },
@@ -149,7 +149,7 @@
       "unit": "P1-W4-5",
       "title_zh": "Purview 威脅調查與 Copilot 引導式回應",
       "file": "ep-020.mp3",
-      "bytes": 2975146,
+      "bytes": 2975290,
       "duration_sec": 496,
       "script_sha256": "f6254d4f0dc19db7173fb7675f5027cfec786c3b416a870b6d80c8586486a1dc"
     },
@@ -158,7 +158,7 @@
       "unit": "P1-W5-1",
       "title_zh": "Advanced Hunting 與自訂偵測",
       "file": "ep-021.mp3",
-      "bytes": 2840491,
+      "bytes": 2840059,
       "duration_sec": 473,
       "script_sha256": "1ac1d1ea665eb4560e7d089eb8cac0e8cb54e8ad8b359e6cdaad8132aa89f741"
     },
@@ -167,7 +167,7 @@
       "unit": "P1-W5-4",
       "title_zh": "Sentinel Graph、MCP Server 與 data lake 搜捕（2026 新考點）",
       "file": "ep-024.mp3",
-      "bytes": 2694079,
+      "bytes": 2691631,
       "duration_sec": 449,
       "script_sha256": "dcb5a134f7fbd593839c3c5af0d0a81cf081ec944fa7eaec3d513f3a1b07ec23"
     },
@@ -176,7 +176,7 @@
       "unit": "P1-W5-2",
       "title_zh": "Sentinel 威脅搜捕：Hunts 與 Livestream",
       "file": "ep-022.mp3",
-      "bytes": 2755255,
+      "bytes": 2755399,
       "duration_sec": 459,
       "script_sha256": "98aba1fe09bec57245ef83e172044bcc3d396c7cfc40c235cd99b50fade57a1f"
     },
@@ -185,8 +185,8 @@
       "unit": "P1-W5-3",
       "title_zh": "假說驅動搜捕與 MITRE ATT&CK",
       "file": "ep-023.mp3",
-      "bytes": 3087453,
-      "duration_sec": 515,
+      "bytes": 3086877,
+      "duration_sec": 514,
       "script_sha256": "42da0a7b19e295cb88b29ec376f19c90b32d81b6edc9420d72965527012d9906"
     },
     "016": {
@@ -194,8 +194,8 @@
       "unit": "P1-W4-1",
       "title_zh": "Defender for Cloud 警示回應",
       "file": "ep-016.mp3",
-      "bytes": 2898234,
-      "duration_sec": 483,
+      "bytes": 2905146,
+      "duration_sec": 484,
       "script_sha256": "444895420d595bbffd66462bc3b9fd441f764d5a5fc5b87b4c1da61576368d7a"
     },
     "017": {
@@ -203,7 +203,7 @@
       "unit": "P1-W4-2",
       "title_zh": "Sentinel 分析規則 I：Scheduled 與 NRT",
       "file": "ep-017.mp3",
-      "bytes": 2922582,
+      "bytes": 2921286,
       "duration_sec": 487,
       "script_sha256": "b15f16b8a31ca5363ac2961d18dcc070079a39ad9f18666be3b0a922267f413c"
     },
@@ -212,7 +212,7 @@
       "unit": "P1-W4-4",
       "title_zh": "Sentinel 自動化：規則與 Playbook",
       "file": "ep-019.mp3",
-      "bytes": 2930498,
+      "bytes": 2928338,
       "duration_sec": 488,
       "script_sha256": "0ee6fbaf579a58642f2ce752cb0be719ab961761336e90e0f69b7f002958f89c"
     },
@@ -221,8 +221,8 @@
       "unit": "P1-W5-5",
       "title_zh": "五週總複習與考試策略",
       "file": "ep-025.mp3",
-      "bytes": 2790521,
-      "duration_sec": 465,
+      "bytes": 2798297,
+      "duration_sec": 466,
       "script_sha256": "ffc2ce077301108aea6ec83e1f5e66ec51670c0461ef01bada1f6c626ca9140e"
     }
   }
