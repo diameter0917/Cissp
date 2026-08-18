@@ -4,5 +4,7 @@
     "d2.json",
     "d3.json"
   ],
-  "mock_files": {}
+  "mock_files": {
+    "2": "mock-02.json"
+  }
 }
