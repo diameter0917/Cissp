@@ -1,0 +1,151 @@
+<div class="eyebrow">01 — 📌 本日導讀</div>
+<h2 data-toc="導讀">五週的最後一哩：把 24 課接成一條線</h2>
+<p>五週速成的最後一天。前 24 課你是<strong>一課一個主題</strong>地讀，但考試不會這樣問——它給你一段 SOC 情境，同時牽涉資料怎麼進來、警示怎麼產生、事件怎麼處理、盲區怎麼補，然後只問一句「<strong>下一步該做什麼</strong>」。今天要把 24 塊拼圖接成一條因果鏈，練一次<strong>端到端攻擊鏈演練</strong>，把最容易在考場上打架的概念分乾淨，最後談答題思路。</p>
+<div class="info-box">今日目標（跨三大領域，不對應單一考綱條目）：
+<ul>
+<li>☐ 說出 <strong>D1 環境 → D2 回應 → D3 搜捕</strong> 的因果關係，以及任一層失效時的後果</li>
+<li>☐ 對一條完整攻擊鏈的每一步，答出「<strong>哪個產品偵測、在哪張表看到、下一步做什麼</strong>」</li>
+<li>☐ 分辨七組最易混淆的概念，並說出各自的<strong>判準問句</strong></li>
+<li>☐ 建立 best-answer 的解題流程：先抓限定詞、再比範圍、最後刪選項</li>
+<li>☐ 完成五週回顧檢查表，標出還要回頭補的課次</li>
+</ul></div>
+<div class="point">💡 這封信談的是<strong>思路串接</strong>；三大領域速記表與考試當天的行政攻略排在考前最後一天（Day 40），事實性記憶留到那時再壓縮，今天先把因果關係想通。</div>
+
+<div class="eyebrow">02 — 📺 影片伴讀</div>
+<h2 data-toc="影片伴讀">EP9 沒有字幕，EP10 的收尾正好是總複習</h2>
+<p>本單元掛的是 <strong>EP9「Create detections and perform investigations in Microsoft Sentinel」</strong>與 <strong>EP10「Perform threat hunting in Microsoft Sentinel」</strong>兩支影片。先誠實說明：<strong>本專案抓不到 EP9 的字幕檔</strong>（其他集有 <code>.en.txt</code>，EP9 只有影片資訊），所以下面<strong>不會出現任何 EP9 的時間碼</strong>——沒有字幕就不編時間碼，這是本專案的底線。EP9 請自行複習分析規則、自動化與調查三段，重點已整理在 Day 17–19。</p>
+<p>EP10 有完整字幕，而它的<strong>開場與收尾</strong>恰好是最好的總複習素材——那兩段講的不是功能，是整個 SOC 的世界觀：</p>
+<ul>
+<li><span class="timestamp">EP10 00:33</span>「<strong>如果你只依賴已經被偵測到的東西，等你發現時往往已經擴散</strong>」——這句話就是三大領域因果鏈的起點：偵測永遠有盲區，所以才需要搜捕。</li>
+<li><span class="timestamp">EP10 03:27</span> 起講搜捕的定義：不同團隊講法不一，但共通點是<span class="timestamp">03:34</span>「<strong>主動搜尋環境中尚未被偵測到的威脅</strong>」；<span class="timestamp">03:51</span> 明講這正是<strong>搜捕與事件回應的分界</strong>——回應從「已經被標記的東西」開始，搜捕從「還沒被標記」開始。這條界線是 D2 與 D3 的分水嶺，考題很愛在這裡設陷阱。</li>
+<li><span class="timestamp">EP10 04:01</span>「搜捕是<strong>持續性</strong>的」；<span class="timestamp">04:25</span> 起列出好假說的五個條件：可完成、<span class="timestamp">04:30</span> 範圍夠窄能被證實或推翻、<span class="timestamp">04:38</span> 有時間邊界、<span class="timestamp">04:50</span> 有用且有效率、<span class="timestamp">04:59</span> 貼合你要防的威脅模型。這五條是 D3 的送分題。</li>
+<li><span class="timestamp">EP10 05:53</span>–<span class="timestamp">07:50</span> 是搜捕工作流濃縮版：查詢 →<span class="timestamp">06:08</span> 迭代提問 →<span class="timestamp">06:34</span> 書籤保存證據 →<span class="timestamp">07:10</span> Livestream 對照即時活動 →<span class="timestamp">07:38</span> MITRE ATT&amp;CK 矩陣，<span class="timestamp">07:50</span> 點出<strong>矩陣顏色圖例對應你的偵測涵蓋度</strong>——哪裡沒顏色，哪裡就是要補的能見度。</li>
+<li><span class="timestamp">EP10 25:12</span> 起是整個系列的總回顧，<span class="timestamp">26:14</span> 勉勵「保持好奇、持續探索」，<span class="timestamp">26:25</span> 直接建議你<strong>去考 SC-200</strong>——你今天剛好走到他說的那一步。</li>
+</ul>
+
+<div class="eyebrow">03 — 🗺️ 三大領域知識地圖</div>
+<h2 data-toc="知識地圖">三層因果：沒有資料就沒有偵測</h2>
+<p>三大領域不是三個並列主題，而是<strong>一條有方向的生產線</strong>：D1 決定「你看得到什麼」，D2 決定「看到之後怎麼處理」，D3 負責「回頭撿沒看到的」。這個方向感是很多情境題的隱藏判準——題目問「為什麼分析規則沒觸發」，答案常常不在 D2，而在 D1 的資料根本沒進來。</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>領域（權重）</th><th>回答的問題</th><th>主要產品／能力</th><th>這一層失效的後果</th><th>對應課次</th></tr></thead>
+<tbody>
+<tr><td><strong>D1 管理安全性作業環境<br>（40–45%）</strong></td><td>資料從哪來、收多少、存多久、誰能看？環境怎麼設定才防得住？</td><td>資料連接器、DCR、ASIM、data lake、MDE 上線與裝置群組、ASR、威脅情報、統一 RBAC、Security Copilot</td><td><strong>看不見</strong>：表沒資料，規則寫得再好也不觸發；成本失控被迫砍記錄，砍掉的正好是關鍵證據</td><td>Day 1、4–11</td></tr>
+<tr><td><strong>D2 回應安全性事件<br>（35–40%）</strong></td><td>訊號怎麼變成警示與事件？誰先處理？怎麼止血、怎麼自動化？</td><td>XDR 事件分診、MDE 隔離／Live Response、MDO 郵件補救、MDI／Entra ID Protection、分析規則四型、自動化規則與劇本</td><td><strong>看得見但動不了</strong>：警示淹沒佇列、誤報吃光人力，真事件淹在雜訊裡</td><td>Day 12–20</td></tr>
+<tr><td><strong>D3 執行威脅搜捕<br>（20–25%）</strong></td><td>還有什麼是沒被偵測到的？怎麼把發現變成長期偵測？</td><td>KQL、進階搜捕、Hunts／書籤／Livestream、MITRE 對應、自訂偵測、Graph／MCP／湖上回溯 <span class="badge-2026">2026</span></td><td><strong>盲區留著</strong>：低調緩慢的攻擊長期潛伏，等觸發規則時已到最後一步</td><td>Day 2–3、21–24</td></tr>
+</tbody></table></div>
+<div class="point">💡 這條線是<strong>雙向</strong>的：搜捕的產出要變成自訂偵測或分析規則回頭餵養 D2；搜捕發現「這張表根本沒資料」時，則要回頭改 D1 的連接器與 DCR。<strong>三個領域是一個閉環，不是三個抽屜。</strong></div>
+
+<div class="eyebrow">04 — 🧪 端到端攻擊鏈演練</div>
+<h2 data-toc="攻擊鏈">一封釣魚信走完四個階段</h2>
+<p>今天的主菜。每一步都問同樣三個問題：<strong>誰偵測到、在哪裡看到、下一步做什麼</strong>。讀之前先蓋住答案自己講一次，講不出來的那一步就是你的弱項。</p>
+<div class="case-box"><div class="case-label">🧪 情境：從一封發票釣魚信到 40 GB 資料外洩</div>
+<p><strong>T0｜投遞</strong>　行銷部 12 人收到偽裝成供應商的發票信，連結投遞當下乾淨，兩小時後才換成假登入頁。<br>
+<strong>誰偵測</strong>：Defender for Office 365（MDO）的 Safe Links 在<strong>點擊當下</strong>重新驗證目的地。<strong>在哪看</strong>：Threat Explorer、進階搜捕的 <code>EmailEvents</code> 與 <code>UrlClickEvents</code>。<strong>下一步</strong>：以寄件網域與主旨撈出<strong>同批郵件</strong>，未讀的 soft delete、確認惡意的 hard delete，並確認 ZAP 是否已動作。</p>
+<p><strong>T1｜認證竊取</strong>　兩位使用者輸入了帳密，攻擊者 40 分鐘後從境外匿名 IP 成功登入。<br>
+<strong>誰偵測</strong>：Entra ID Protection 的<strong>登入風險</strong>偵測（匿名 IP、不可能的旅行）；接了 Sentinel 也會被 Fusion 關聯成多階段事件。<strong>在哪看</strong>：XDR 的身分警示、<code>SigninLogs</code>／<code>IdentityLogonEvents</code>。<strong>下一步</strong>：撤銷工作階段與權杖、強制安全密碼變更；用風險型條件式存取讓後續高風險登入<strong>自動</strong>被擋，而不是等人工。</p>
+<p><strong>T2｜雲端立足</strong>　攻擊者建立收件匣規則，把含「invoice」的信自動轉寄外部並封存。<br>
+<strong>誰偵測</strong>：Defender for Cloud Apps 的可疑收件匣操作原則。<strong>在哪看</strong>：<code>CloudAppEvents</code>。<strong>下一步</strong>：移除轉寄規則、盤點該帳號近期同意的 OAuth 應用程式——<strong>被遺留的同意權限是最常漏掉的後門</strong>。</p>
+<p><strong>T3｜橫向移動</strong>　該帳號密碼與地端 AD 相同，攻擊者以 VPN 進內網做帳號列舉，再用竊得的票證存取檔案伺服器。<br>
+<strong>誰偵測</strong>：Defender for Identity（MDI）——偵察、pass-the-ticket、異常資源存取；端點側由 MDE 補上。<strong>在哪看</strong>：<code>IdentityDirectoryEvents</code>／<code>IdentityLogonEvents</code>、MDI 實體頁時間軸。<strong>下一步</strong>：停用或強制重設帳號（需先設好 MDI 動作帳戶）、隔離跳板裝置；<strong>先止血再取證</strong>——隔離後 Live Response 通道仍在，取證不受影響。</p>
+<p><strong>T4｜外洩</strong>　攻擊者在檔案伺服器壓出 40 GB 壓縮檔，分批上傳個人雲端儲存。<br>
+<strong>誰偵測</strong>：MDE 的檔案與網路事件、Purview 的資料外流訊號。<strong>在哪看</strong>：<code>DeviceFileEvents</code>／<code>DeviceNetworkEvents</code>、Action center。<strong>下一步</strong>：以指標（indicator）封鎖外傳網域與檔案雜湊，確認範圍後啟動通報流程。</p>
+<p><strong>T5｜收攏成一件事</strong>　上述警示分散在四個產品，但在 XDR 佇列裡應該是<strong>一個事件</strong>。分診從事件層看時間軸，不逐條追警示；用<strong>自動化規則</strong>指派給身分小組並拉高嚴重性，用<strong>劇本</strong>發 Teams 通知與開工單——改屬性用前者、跟外部互動用後者。</p>
+<p><strong>T6｜補盲區（最像 D3 考題的一步）</strong>　真正的問題是：<strong>另外 10 個收信的人呢？</strong>沒觸發警示不代表沒點。這時要離開事件、進搜捕：以「收到這批信 → 點了連結 → 4 小時內成功登入」為假說寫跨表查詢，命中存成<strong>書籤</strong>，值得長期監控的轉<strong>自訂偵測</strong>，要往前追一年的用 data lake 回溯。</p>
+<p><strong>T7｜回頭修 D1</strong>　覆盤發現 VPN 記錄沒接進工作區，所以 T3 晚了六小時才看見——這不是規則的錯，是<strong>資料接入的洞</strong>。補連接器、用 DCR 過濾雜訊控成本，閉環回到 D1。</p></div>
+<pre class="kql">// T6 的跨領域搜捕：收到釣魚信 → 點了連結 → 4 小時內出現成功登入
+let Window = 7d;
+let Phish = EmailEvents
+    | where Timestamp &gt; ago(Window)
+    | where SenderMailFromDomain has "invoice-portal-secure"
+    | project NetworkMessageId, RecipientEmailAddress;
+let Clicks = UrlClickEvents
+    | where Timestamp &gt; ago(Window)
+    | where ActionType == "ClickAllowed"
+    | project NetworkMessageId, AccountUpn, Url, ClickTime = Timestamp;
+Phish
+| join kind=inner Clicks on NetworkMessageId
+| join kind=inner (
+    IdentityLogonEvents
+    | where Timestamp &gt; ago(Window)
+    | where ActionType == "LogonSuccess"
+    | project AccountUpn, LogonTime = Timestamp, DeviceName, IPAddress
+  ) on AccountUpn
+| where LogonTime between (ClickTime .. ClickTime + 4h)
+| project RecipientEmailAddress, Url, ClickTime, LogonTime, DeviceName, IPAddress
+| order by ClickTime asc</pre>
+<div class="kql-note">逐行解說：一支查詢跨了<strong>兩個產品、三張表</strong>——郵件與點擊來自 MDO、登入來自身分側，這正是進階搜捕的價值。兩個 <strong>join kind=inner</strong> 分別用 <code>NetworkMessageId</code>（同一封信）與 <code>AccountUpn</code>（同一個人）當接點，<strong>選對接點欄位是跨表題的關鍵</strong>。最後 <strong>between (ClickTime .. ClickTime + 4h)</strong> 是靈魂：把點擊與登入綁進一個因果時間窗，避免把日常登入誤判成入侵。命中的列要<strong>對應實體</strong>再存書籤，之後才能接進事件調查。</div>
+
+<div class="eyebrow">05 — 🔀 最容易混淆的概念</div>
+<h2 data-toc="混淆總表">七組雙胞胎與它們的判準問句</h2>
+<p>下面七組是最常被選錯的配對。不要只記定義，要記<strong>判準問句</strong>——考場上沒時間回憶整章，只能靠一個問題把兩個選項分開。</p>
+<div class="tbl-scroll"><table class="data">
+<thead><tr><th>易混配對</th><th>一句話差別</th><th>判準問句（題幹出現什麼就選它）</th><th>常見陷阱</th></tr></thead>
+<tbody>
+<tr><td>自動化規則 vs 劇本（Playbook）</td><td>前者改<strong>事件本身</strong>的屬性與流程；後者是 Logic Apps 流程，去<strong>跟外部互動</strong></td><td>事情做在 Sentinel 內（指派、標記、關閉）→ 自動化規則；要發通知、開工單、打 API → 劇本</td><td>忘了劇本要靠自動化規則觸發，且需先授予 Sentinel 執行劇本的權限</td></tr>
+<tr><td>Scheduled vs NRT vs Fusion</td><td>排程＝自寫 KQL＋自訂間隔與回顧期；NRT＝約每分鐘、查詢受限（單表為主）；Fusion＝內建 ML 跨階段關聯</td><td>「自訂邏輯與時間窗」→ Scheduled；「延遲最小、幾乎即時」→ NRT；「把分散的低嚴重警示串成多階段攻擊」→ Fusion</td><td>拿 NRT 寫需要 join 的複雜關聯；或以為 Fusion 能改查詢（只能啟用／停用與排除）</td></tr>
+<tr><td>DCR vs ASIM vs 監視清單</td><td>DCR＝<strong>寫入前</strong>決定收什麼與轉換；ASIM＝<strong>查詢時</strong>把不同來源正規化；監視清單＝你自備的參考資料表</td><td>「降成本／遮罩敏感欄位」→ DCR；「一支查詢跨多廠牌來源」→ ASIM；「比對 VIP 或已知 IP 清單」→ 監視清單</td><td>把 ASIM 當省錢手段——它不減少擷取量，省錢的是 DCR</td></tr>
+<tr><td>分析層 vs data lake <span class="badge-2026">2026</span></td><td>分析層貴、可即時查、<strong>能被分析規則讀取</strong>；湖層便宜存得久，適合大範圍長時間</td><td>「要觸發偵測／即時調查」→ 分析層；「保存數年、回溯歷史、法遵調閱」→ data lake</td><td>忘記湖裡的發現要<strong>升階回分析層</strong>才能變成偵測</td></tr>
+<tr><td>使用者風險 vs 登入風險</td><td>使用者風險＝這個<strong>身分</strong>已遭入侵的機率；登入風險＝<strong>這一次登入</strong>不是本人的機率</td><td>「憑證可能外洩」→ 使用者風險，修復是強制安全密碼變更；「這次登入來自匿名 IP／不可能的旅行」→ 登入風險，修復是要求 MFA 或封鎖</td><td>兩個都選「封鎖使用者」——考題要的是<strong>對應風險的最小必要修復</strong></td></tr>
+<tr><td>soft delete vs hard delete</td><td>soft＝移到可復原項目，仍救得回；hard＝標記永久清除，一般復原流程救不回</td><td>「先移除但保留可復原性」→ soft；「確定惡意、要徹底清除」→ hard</td><td>沒注意題幹是否要求保留取證能力——要取證就別急著 hard delete</td></tr>
+<tr><td>自訂偵測 vs 分析規則</td><td>自訂偵測建在 XDR 進階搜捕上，只跑 XDR 資料；分析規則建在 Sentinel，跑工作區<strong>所有</strong>來源</td><td>「只用到 Device／Email／Identity 表」→ 自訂偵測；「要關聯防火牆、第三方或自訂記錄」→ 分析規則</td><td>忘了自訂偵測查詢必須輸出 <code>Timestamp</code>、<code>ReportId</code> 等欄位，且要對應實體才能自動採取動作</td></tr>
+</tbody></table></div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦：二選一時的三個判準</div>
+<p>選項刪到剩兩個而兩個都像對的，依序問這三題：<br>
+<strong>① 範圍對不對？</strong>資料來源決定產品：只提 Microsoft 365 與端點 → XDR 就夠；一旦出現防火牆、第三方或自訂記錄 → 必須是 Sentinel。<br>
+<strong>② 時機對不對？</strong>同一個動作在不同階段有不同答案——擷取前是 DCR、查詢時是 ASIM、事件發生後才是自動化。<br>
+<strong>③ 成本／努力對不對？</strong>只要出現 <em>minimize cost</em>、<em>minimize administrative effort</em>，就是在問「有沒有內建、不用自己造的做法」——選內建功能，不選自寫指令碼。</p></div>
+
+<div class="eyebrow">06 — 🎯 答題策略</div>
+<h2 data-toc="答題策略">Best-answer 不是選對的，是選最對的</h2>
+<p>SC-200 幾乎不考「哪個是錯的」，它給你四個<strong>都是真功能</strong>的選項，其中兩三個確實做得到，只有一個最貼題幹。所以做題的動作順序要反過來：<strong>先讀最後那句問句，再回頭找限定詞，最後才看情境細節</strong>。情境是用來提供限定條件的，不是拿來讀爽的。</p>
+<div class="point">💡 <strong>限定詞就是答案的座標</strong>：<em>first</em>（先做什麼）通常選最能止血又最不破壞證據的動作；<em>least privilege</em> 選剛好夠用的角色，不選 Global Administrator；<em>minimize</em> 系列選內建、自動、免額外建置的；<em>continuously／ongoing</em> 指向規則或排程，<em>one-time</em> 指向手動查詢或 search job。</p></div>
+<div class="exam-box"><div class="exam-label">🎯 考點聚焦：微軟題的四種標準干擾項</div>
+<p>認出干擾項的長相，比記住正解更快：<br>
+<strong>① 對的產品、錯的功能</strong>——產品名讓你安心（都是 Defender），但功能解決的是別的問題（例如問偵測卻給你回應動作）。<br>
+<strong>② 對的功能、錯的時機</strong>——動作本身沒錯，但發生在錯的階段（事件都成立了才想用 DCR 過濾）。<br>
+<strong>③ 做過頭</strong>——重建工作區、寫自訂劇本、部署新代理程式；當題幹說「minimize effort」時，做過頭一定不是答案。<br>
+<strong>④ 做不夠</strong>——只做了一半（只停用帳號卻不撤銷權杖、只刪郵件卻不查同批收件者）。<br>
+兩題都通過這四關還是選不出來，就回到題幹<strong>最後一句</strong>再讀一次——那句話的動詞（detect／investigate／respond／prevent／identify）通常直接指定了領域。</p></div>
+<div class="point">💡 <strong>配速練習</strong>：考試約 55–60 題／100 分鐘，平均一題 100 秒。從明天的刷題開始就用這個節奏練，並把每題分成三堆——<strong>秒答</strong>（不到 30 秒）、<strong>猶豫</strong>（想超過 60 秒但選出來了）、<strong>不會</strong>。真正要花時間檢討的是「猶豫」那堆：那是你知識有但界線模糊的地方，也是最容易在考場上被干擾項吃掉的分數。</div>
+
+<div class="eyebrow">07 — 🧩 五週回顧檢查表</div>
+<h2 data-toc="回顧檢查">答不出來就回那一課</h2>
+<p>以下每一條都請<strong>出聲講一遍</strong>。講得結巴或講不完整，就把括號裡的課次記進今天的複習清單——這比重讀全部 24 封信有效得多。</p>
+<ul>
+<li>資料進 Sentinel 要經過哪三個關卡？擷取前怎麼瘦身省錢？（Day 7–8）</li>
+<li>DCR 轉換與 ASIM 剖析器分別發生在什麼時候？誰能省錢？（Day 8）</li>
+<li>承諾層級與保留期，哪個影響單價、哪個影響可查多久？（Day 6）</li>
+<li>分析層與 data lake 各能做什麼？湖裡的發現怎麼變成偵測？（Day 10）</li>
+<li>MDE 上線方式怎麼依環境選？裝置群組決定了哪兩件事？（Day 5）</li>
+<li>統一 RBAC 下，只做分診的人該給哪一類角色？（Day 4）</li>
+<li>SCU 是什麼計費單位？promptbook 解決什麼問題？（Day 11）</li>
+<li>事件與警示的關係為何？分診該從哪一層開始看？（Day 12）</li>
+<li>裝置隔離與 Live Response 各解決什麼？自動化層級設 full 代表什麼？（Day 13）</li>
+<li>郵件的 soft delete、hard delete 與 ZAP 三者差在哪？（Day 14）</li>
+<li>使用者風險與登入風險的修復動作各是什麼？MDI 看得到哪些身分攻擊？（Day 15）</li>
+<li>Defender for Cloud 的警示怎麼進 Sentinel？抑制規則做什麼？（Day 16）</li>
+<li>四種分析規則類型的適用場景？NRT 有什麼限制？（Day 17–18）</li>
+<li>誤報太多時，調規則、自動關閉、抑制的<strong>先後順序</strong>是什麼？（Day 18–19）</li>
+<li>自動化規則與劇本的分界在哪？劇本需要什麼授權？（Day 19）</li>
+<li>進階搜捕與 Sentinel 搜捕的資料範圍差在哪？自訂偵測必備哪些欄位？（Day 21）</li>
+<li>書籤、Livestream、Hunts 各出現在搜捕流程的哪一步？（Day 22）</li>
+<li>好假說的五個條件？MITRE 的戰術與技術差在哪？（Day 23）</li>
+<li>Graph、MCP Server、湖上回溯各補了傳統搜捕的哪個缺口？（Day 24）</li>
+</ul>
+<div class="info-box"><strong>明天起：三週刷題期怎麼走</strong>
+<ul>
+<li><strong>第 6 週｜分領域打底</strong>：D1 兩天 80 題、D2 兩天 80 題、D3 一天 40 題，順序刻意照權重排。做完當天就對照解析，錯題自動進<strong>錯題本</strong>（要連對兩次才會移出，所以現在錯越多越好）。</li>
+<li><strong>第 7–8 週｜混合與模擬</strong>：D3 題組 B＋錯題第一輪 → 依權重抽樣的隨機 50 題 → <strong>三次計時模擬考</strong>（各 55 題／100 分鐘），每次考完隔天一定安排檢討日，並用統計頁挑最弱領域重練。</li>
+<li><strong>怎麼用儀表板</strong>：首頁看進度與各領域正確率，領域頁對照本封信第 03 節的地圖找洞；刷題頁三種模式要分清楚——<em>領域模式</em>練熟、<em>隨機模式</em>練切換、<em>模擬模式</em>練配速與體力。錯題模式留給檢討日。</li>
+<li><strong>唯一的紀律</strong>：正確率低於 60% 的主題當天就回頭讀對應那封信，不要拖到考前一週；那時候只剩速記表的時間了。</li>
+</ul></div>
+
+<div class="eyebrow">08 — 📚 延伸閱讀</div>
+<h2 data-toc="延伸閱讀">MS Learn 延伸閱讀</h2>
+<ul>
+<li><a href="https://learn.microsoft.com/zh-tw/credentials/certifications/resources/study-guides/sc-200" target="_blank" rel="noopener">SC-200 官方考試學習指南</a>——三大領域的完整條目清單。今天請用它逐條打勾，這是最準的自我檢核工具。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/incidents-overview" target="_blank" rel="noopener">Defender XDR 事件概觀</a>——複習跨產品警示如何關聯成單一事件，正是第 04 節 T5 的原理。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/defender-xdr/advanced-hunting-query-language" target="_blank" rel="noopener">進階搜捕查詢語言</a>——跨表結構描述與欄位對照，寫跨領域查詢前先掃一次表名。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/azure/sentinel/detect-threats-built-in" target="_blank" rel="noopener">Sentinel 內建偵測與分析規則類型</a>——四種規則類型的官方定義與限制，第 05 節第二列的原典。</li>
+<li><a href="https://learn.microsoft.com/zh-tw/credentials/certifications/exam-duration-question-types" target="_blank" rel="noopener">考試題型與作答時間說明</a>——認識案例研究、拖放與情境題的作答方式，別在考場上才第一次見到。</li>
+</ul>
