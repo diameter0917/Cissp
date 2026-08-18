@@ -99,7 +99,19 @@ SPEECH_SUBS = [
     ("ATT&CK", "attack"), ("KQL", "K Q L"), ("XDR", "X D R"), ("SIEM", "SIM"),
     ("SOAR", "SORE"), ("MDE", "M D E"), ("MDO", "M D O"), ("MDI", "M D I"),
     ("MDTI", "M D T I"), ("SCU", "S C U"), ("DCR", "D C R"), ("ASIM", "A SIM"),
-    ("UEBA", "U E B A"), ("NRT", "N R T"), ("IoC", "I O C"), ("RBAC", "R BACK"),
+    ("UEBA", "U E B A"), ("NRT", "N R T"), ("IoC", "I O C"),
+    # 週更 Podcast 補收的縮寫（EP07 / EP10 / EP11）
+    # 帶連字號的要排在這裡：連字號不是英數字，邊界判斷放行，
+    # 若讓 TTS 自己唸會唸成減號（「三減二減一」）。
+    ("MS17-010", "M S 十七之零一零"), ("3-2-1", "三 二 一"),
+    ("CVSS", "C V S S"), ("NTP", "N T P"), ("RACI", "R A C I"),
+    ("FIPS", "FIPS"), ("EOS", "E O S"),
+    ("HMAC", "H MACK"), ("KMS", "K M S"), ("EAL", "E A L"),
+    ("ECB", "E C B"), ("GCM", "G C M"), ("ECC", "E C C"),
+    ("PLC", "P L C"), ("USB", "U S B"),
+    # Common Criteria 三件套。兩個字母的 PP／ST 靠邊界判斷才敢收：
+    # 只有前後都不是英數字才換，夾在英文字中間的不會被動到。
+    ("TOE", "T O E"), ("PP", "P P"), ("ST", "S T"),
 ]
 
 
