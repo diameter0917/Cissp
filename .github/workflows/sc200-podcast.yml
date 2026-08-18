@@ -47,20 +47,44 @@ jobs:
       # 音檔、manifest、RSS、節目頁都是「生成物」，不該用 rebase 去合併——
       # 併行的兩次合成會在 episodes.json / index.html 撞出衝突而讓 job 死掉。
       # 因此改成：先同步到遠端最新狀態，再在其上合成（依腳本 sha256 增量、
-      # 只補缺的集數），推送被拒就重跑迴圈——重跑時遠端已含對方的音檔，
-      # 所以第二輪幾乎不需重新合成。
+      # 只補缺的集數），推送被拒就重跑迴圈。
+      #
+      # 重跑前會先把這一輪合成好的音檔與 manifest 收進 RUNNER_TEMP，reset 之後
+      # 再放回去。少了這一步，reset --hard 會把整輪 TTS 成果一起丟掉，於是每次
+      # 被拒都得從頭再跑一小時——只要分支上還有人在推腳本，這場競賽就永遠追不上。
+      # 帶著音檔重跑時 gen_podcast 會整批略過，第二輪只花幾秒就能推上去。
       - name: Render and publish audio
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          for attempt in 1 2 3; do
+          KEEP="${RUNNER_TEMP}/sc200-audio"
+          FORCE_FLAG="${{ inputs.force == true && '--force' || '' }}"
+
+          for attempt in 1 2 3 4 5; do
             echo "── 第 $attempt 次嘗試 ──"
             git fetch origin "${GITHUB_REF_NAME}"
             git reset --hard "origin/${GITHUB_REF_NAME}"
 
-            python tools/gen_podcast.py --project sc200 ${{ inputs.episodes }} ${{ inputs.force == true && '--force' || '' }}
+            # 把前幾輪已經合成好的音檔與 manifest 放回工作區，
+            # gen_podcast 才會認得它們而略過，不必重跑 TTS。
+            if [ -d "$KEEP" ]; then
+              echo "   帶回前一輪的 $(ls "$KEEP/podcast" | grep -c '\.mp3$') 個音檔"
+              cp -a "$KEEP/podcast/." docs/sc200/podcast/
+              cp -a "$KEEP/episodes.json" sc200/podcast/episodes.json
+            fi
+
+            # --force 只在第一輪成立。重跑時工作區已帶著這一輪合成好的音檔，
+            # 再 force 一次等於把剛做完的 TTS 整批重做，競賽照樣輸。
+            if [ "$attempt" -gt 1 ]; then FORCE_FLAG=""; fi
+
+            python tools/gen_podcast.py --project sc200 ${{ inputs.episodes }} $FORCE_FLAG
             python tools/build_rss.py --project sc200
+
+            # 先收好成果再嘗試推送——推送被拒時 reset 會清掉工作區。
+            rm -rf "$KEEP"; mkdir -p "$KEEP/podcast"
+            cp -a docs/sc200/podcast/. "$KEEP/podcast/"
+            cp -a sc200/podcast/episodes.json "$KEEP/episodes.json"
 
             git add docs/sc200/podcast docs/sc200/podcast.xml sc200/podcast/episodes.json
             if git diff --cached --quiet; then
@@ -76,5 +100,5 @@ jobs:
             echo "⚠️ 推送被拒（遠端有新提交），重新同步後再試。"
           done
 
-          echo "✗ 三次嘗試皆被拒，放棄。"
+          echo "✗ 五次嘗試皆被拒，放棄。"
           exit 1
