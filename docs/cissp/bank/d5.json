@@ -1,0 +1,2726 @@
+[
+  {
+    "stem_en": "Within the IAAA framework, which access control service defines the level of access an identified and authenticated subject has to an object?",
+    "stem_zh": "在 IAAA 框架中,哪一項存取控制服務定義了已識別且已鑑別的主體對物件可擁有的存取層級?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Identification",
+        "text_zh": "識別"
+      },
+      {
+        "key": "B",
+        "text_en": "Authentication",
+        "text_zh": "鑑別"
+      },
+      {
+        "key": "C",
+        "text_en": "Accountability",
+        "text_zh": "可歸責"
+      },
+      {
+        "key": "D",
+        "text_en": "Authorization",
+        "text_zh": "授權"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Authorization 授權回答『你可以做什麼』——依已證明的身分,定義主體對資源的存取層級與可執行的操作。通過鑑別只證明『你是誰』,不代表你有任何權限。記憶:AuthN＝who you are,AuthZ＝what you can do。",
+    "why_wrong_zh": {
+      "A": "Identification 只是宣稱身分（提供帳號等 identifier）,不決定存取層級。",
+      "B": "Authentication 驗證身分真偽,但不定義能存取什麼。",
+      "C": "Accountability 是事後透過日誌追溯行為,非事前定義存取。"
+    },
+    "id": "D5-0001",
+    "domain": "D5",
+    "topic": "d5-p1",
+    "unit": "P1-D5-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-021.html",
+    "unit_title_zh": "Domain 5 全景與 AAA"
+  },
+  {
+    "stem_en": "A security manager must ensure that employees who approve high-value wire transfers cannot later deny having performed the approval. Which combination of controls BEST supports this requirement?",
+    "stem_zh": "安全經理必須確保核准高額電匯的員工,事後無法否認其核准行為。哪一組控制最能支持此需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A shared approver account protected by a strong password",
+        "text_zh": "以強密碼保護的共用核准帳號"
+      },
+      {
+        "key": "B",
+        "text_en": "Unique individual identities combined with authentication and protected audit logs",
+        "text_zh": "唯一個人身分,結合鑑別與受保護的稽核日誌"
+      },
+      {
+        "key": "C",
+        "text_en": "Encrypting all transfer records at rest",
+        "text_zh": "對所有電匯紀錄做靜態加密"
+      },
+      {
+        "key": "D",
+        "text_en": "Requiring approvers to change passwords every 30 days",
+        "text_zh": "要求核准者每 30 天更換密碼"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "不可否認性（non-repudiation）＝鑑別＋可歸責:每人有唯一身分、通過鑑別、行為寫入受保護的稽核日誌,行為人才無法否認其作為。這正是 IAAA 中 Accountability 要達成的管理目的。記憶:唯一身分＋完整日誌＝可歸責。",
+    "why_wrong_zh": {
+      "A": "共用帳號正好破壞可歸責——日誌無法對應到個人,是稽核大忌。",
+      "C": "靜態加密保護機密性,無法證明『誰』做了核准。",
+      "D": "密碼輪換屬鑑別衛生,與能否否認行為無關。"
+    },
+    "id": "D5-0002",
+    "domain": "D5",
+    "topic": "d5-p1",
+    "unit": "P1-D5-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-021.html",
+    "unit_title_zh": "Domain 5 全景與 AAA"
+  },
+  {
+    "stem_en": "Which authentication approach dynamically adjusts the required strength of authentication based on contextual signals such as user location, device, and login behavior?",
+    "stem_zh": "哪種鑑別方式會依使用者位置、裝置、登入行為等情境訊號,動態調整所需的鑑別強度?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Single-factor authentication",
+        "text_zh": "單因子鑑別"
+      },
+      {
+        "key": "B",
+        "text_en": "Knowledge-based authentication (KBA)",
+        "text_zh": "知識型鑑別"
+      },
+      {
+        "key": "C",
+        "text_en": "Risk-based (adaptive) authentication",
+        "text_zh": "風險式自適應驗證"
+      },
+      {
+        "key": "D",
+        "text_en": "Synchronous token authentication",
+        "text_zh": "同步式 token 鑑別"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "風險式（自適應）驗證會即時評估情境風險——異地登入、陌生裝置、異常時段——風險低時放行,風險高時才要求額外因子（step-up）,在安全與使用體驗間取得平衡。官方考綱 §5.2 的識別與鑑別策略設計即涵蓋此類情境式決策。",
+    "why_wrong_zh": {
+      "A": "單因子固定只用一種因子,不會依風險調整強度。",
+      "B": "KBA 是以個人歷史問題做身分證明/鑑別的靜態方法。",
+      "D": "同步 token 每 30–60 秒產生 OTP,強度固定,與情境無關。"
+    },
+    "id": "D5-0003",
+    "domain": "D5",
+    "topic": "d5-p1",
+    "unit": "P1-D5-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-022.html",
+    "unit_title_zh": "鑑別因子與 MFA"
+  },
+  {
+    "stem_en": "A security architect is designing an identification and authentication strategy that must cover people, devices, and services. For backend services that call APIs with no human interaction, which approach is MOST appropriate?",
+    "stem_zh": "安全架構師正在設計須涵蓋人員、裝置與服務的識別與鑑別策略。對於無人為介入、自動呼叫 API 的後端服務,哪種做法最適當?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Issue each service its own certificate or API key, stored in a vault and rotated regularly",
+        "text_zh": "為每個服務發放專屬憑證或 API key,存於保管庫並定期輪換"
+      },
+      {
+        "key": "B",
+        "text_en": "Require push-based MFA approval before each service call",
+        "text_zh": "每次服務呼叫前要求推播式 MFA 核准"
+      },
+      {
+        "key": "C",
+        "text_en": "Embed one shared password in the source code of all services",
+        "text_zh": "在所有服務的原始碼中內嵌一組共用密碼"
+      },
+      {
+        "key": "D",
+        "text_en": "Identify services solely by their source IP address",
+        "text_zh": "僅以來源 IP 位址識別服務"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "機器與服務身分（machine/service identity）應比照人員身分管理:每個服務有唯一身分,以憑證（certificate）、API key 或服務帳號鑑別,金鑰集中保管並定期輪換,才能鑑別與歸責。官方考綱 §5.2 明定鑑別策略須涵蓋 people、devices『與 services』,非人類主體不能被忽略。",
+    "why_wrong_zh": {
+      "B": "服務無人操作,推播 MFA 需要人為互動,實務上無法運作。",
+      "C": "共用＋硬編碼密碼無法歸責、難以輪換,是重大弱點。",
+      "D": "IP 屬『somewhere you are』的輔助情境因子,可被偽造,不能單獨作為鑑別。"
+    },
+    "id": "D5-0004",
+    "domain": "D5",
+    "topic": "d5-p1",
+    "unit": "P1-D5-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-022.html",
+    "unit_title_zh": "鑑別因子與 MFA"
+  },
+  {
+    "stem_en": "Which of the following BEST describes Federated Identity Management (FIM)?",
+    "stem_zh": "下列何者最能描述聯合身分管理 FIM?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Linking a user's identity across multiple organizations' identity systems so one login grants access to resources in each participating organization",
+        "text_zh": "將使用者身分連結至多個組織的身分系統,一次登入即可存取各參與組織開放的資源"
+      },
+      {
+        "key": "B",
+        "text_en": "Requiring users to maintain separate credentials for every application",
+        "text_zh": "要求使用者為每個應用維護個別憑證"
+      },
+      {
+        "key": "C",
+        "text_en": "Storing all user passwords in an encrypted vault for automatic sign-in",
+        "text_zh": "將所有密碼存於加密保管庫以自動登入"
+      },
+      {
+        "key": "D",
+        "text_en": "A directory service that authenticates users within a single organization only",
+        "text_zh": "僅在單一組織內鑑別使用者的目錄服務"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "FIM 是 SSO 的延伸:多個組織加入聯合（federation）並同意共享身分資訊;使用者在自己的組織登入一次,即以聯合身分存取其他成員組織決定開放的資源（如用公司帳號登入第三方 SaaS）。記憶:SSO＝組織內一次登入,FIM＝跨組織信任的一次登入。",
+    "why_wrong_zh": {
+      "B": "與聯合身分目的相反,FIM 正是要消除多組憑證。",
+      "C": "這是 password vault（密碼管理器）,不涉及跨組織信任關係。",
+      "D": "單一組織內的目錄服務屬傳統 SSO,FIM 的關鍵是『跨組織』。"
+    },
+    "id": "D5-0005",
+    "domain": "D5",
+    "topic": "d5-p1",
+    "unit": "P1-D5-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-023.html",
+    "unit_title_zh": "身分生命週期與聯合身分"
+  },
+  {
+    "stem_en": "A bank lets new customers open accounts online. Before issuing credentials, it asks applicants about previous home addresses and current loan payment amounts, verified against credit bureau records. This process is BEST described as which of the following?",
+    "stem_zh": "某銀行讓新客戶線上開戶。發放憑證前,先詢問申請者過去居住地址與目前貸款繳款金額,並與信用機構紀錄核對。此流程最適合稱為?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Cognitive passwords",
+        "text_zh": "認知密碼"
+      },
+      {
+        "key": "B",
+        "text_en": "Self-service identity management",
+        "text_zh": "自助式身分管理"
+      },
+      {
+        "key": "C",
+        "text_en": "Just-in-time (JIT) provisioning",
+        "text_zh": "即時供裝"
+      },
+      {
+        "key": "D",
+        "text_en": "Knowledge-based authentication (KBA) for identity proofing",
+        "text_zh": "用於身分證明的知識型鑑別"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "身分證明（identity proofing / registration）是在建立身分關係前,先確認『你真的是你』;線上情境常用 KBA——依 authoritative sources（信用機構、政府資料）出題核對申請者的個人歷史,正是題幹描述的流程（NIST SP 800-63A 的 IAL 範疇）。",
+    "why_wrong_zh": {
+      "A": "認知密碼是使用者註冊時『自行預設』的安全問題（如寵物名）,供日後鑑別;題幹的問題來自權威第三方資料。",
+      "B": "自助式身分管理是使用者自行重設密碼等生命週期操作。",
+      "C": "JIT provisioning 是聯合登入時自動建立帳號,與核實真實身分無關。"
+    },
+    "id": "D5-0006",
+    "domain": "D5",
+    "topic": "d5-p1",
+    "unit": "P1-D5-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-023.html",
+    "unit_title_zh": "身分生命週期與聯合身分"
+  },
+  {
+    "stem_en": "Which of the following statements about Kerberos is TRUE?",
+    "stem_zh": "關於 Kerberos,下列敘述何者正確?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It uses asymmetric (public key) cryptography to issue tickets",
+        "text_zh": "使用非對稱（公鑰）密碼學發放票證"
+      },
+      {
+        "key": "B",
+        "text_en": "It uses symmetric cryptography and time-stamped tickets issued by a Key Distribution Center (KDC)",
+        "text_zh": "使用對稱密碼學,由 KDC 發放含時戳的票證"
+      },
+      {
+        "key": "C",
+        "text_en": "Its primary purpose is authorization rather than authentication",
+        "text_zh": "其主要目的是授權而非鑑別"
+      },
+      {
+        "key": "D",
+        "text_en": "It encrypts only the password exchange, leaving other authentication traffic unprotected",
+        "text_zh": "僅加密密碼交換,其餘鑑別流量未受保護"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Kerberos 以對稱密碼學（AES）與票證（TGT/服務票）證明身分,由 KDC 擔任可信第三方;票證含時戳與有效期,故依賴 NTP 時間同步以防重放攻擊,並使用 port 88。記憶:Kerberos＝對稱＋票證＋KDC＋時間同步。",
+    "why_wrong_zh": {
+      "A": "Kerberos v5 用對稱（secret-key）密碼學;同時支援對稱＋非對稱的是 SESAME。",
+      "C": "Kerberos 的主要目的是『鑑別』,是組織內最常見的 SSO 方法。",
+      "D": "『僅加密密碼』是 RADIUS 的弱點;Kerberos 對鑑別流量提供端對端保護。"
+    },
+    "id": "D5-0007",
+    "domain": "D5",
+    "topic": "d5-p1",
+    "unit": "P1-D5-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-024.html",
+    "unit_title_zh": "聯合協定輪廓"
+  },
+  {
+    "stem_en": "A network security manager must centralize AAA for administrators logging in to routers and switches. Requirements: the entire authentication exchange must be encrypted, and authentication, authorization, and accounting must be handled as separate processes. Which protocol BEST meets these requirements?",
+    "stem_zh": "網路安全經理需為登入路由器與交換器的管理員集中 AAA。需求:整個鑑別交換全程加密,且認證、授權、記帳須可分離處理。哪個協定最符合?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "RADIUS",
+        "text_zh": "遠端撥入使用者驗證服務"
+      },
+      {
+        "key": "B",
+        "text_en": "Kerberos",
+        "text_zh": "票證式鑑別協定"
+      },
+      {
+        "key": "C",
+        "text_en": "TACACS+",
+        "text_zh": "終端存取控制器存取控制系統"
+      },
+      {
+        "key": "D",
+        "text_en": "SAML",
+        "text_zh": "安全斷言標記語言"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "TACACS+ 專為網路設備管理設計:加密『全部』鑑別資訊（非僅密碼）、把 AAA 三程序分離（可部署於不同伺服器）、走 TCP port 49 提供可靠傳輸——兩項需求完全對應。記憶:TACACS+＝全加密＋AAA 分離＋TCP 49。",
+    "why_wrong_zh": {
+      "A": "RADIUS 預設僅加密密碼欄位,且 AAA 綁在一起,不符題幹兩項需求。",
+      "B": "Kerberos 是內網票證式鑑別/SSO,不是網路設備的 AAA 協定。",
+      "D": "SAML 是瀏覽器聯合 SSO 的 XML 斷言標準,與設備管理 AAA 無關。"
+    },
+    "id": "D5-0008",
+    "domain": "D5",
+    "topic": "d5-p1",
+    "unit": "P1-D5-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-024.html",
+    "unit_title_zh": "聯合協定輪廓"
+  },
+  {
+    "stem_en": "In which access control model does the owner of each object decide which subjects may access it?",
+    "stem_zh": "在哪種存取控制模型中,由每個物件的擁有者自行決定哪些主體可以存取?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Mandatory Access Control (MAC)",
+        "text_zh": "強制存取控制"
+      },
+      {
+        "key": "B",
+        "text_en": "Role-Based Access Control (RBAC)",
+        "text_zh": "角色型存取控制"
+      },
+      {
+        "key": "C",
+        "text_en": "Rule-based access control",
+        "text_zh": "規則型存取控制"
+      },
+      {
+        "key": "D",
+        "text_en": "Discretionary Access Control (DAC)",
+        "text_zh": "自主存取控制"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "DAC 的關鍵特徵:每個物件都有擁有者,擁有者可自行授予或拒絕其他主體的存取（如 Windows NTFS 檔案權限）;其餘模型皆屬 non-discretionary,由管理者或系統集中決定。記憶:DAC＝擁有者說了算。",
+    "why_wrong_zh": {
+      "A": "MAC 由系統依安全標籤（label/lattice）強制,擁有者與使用者都不能改。",
+      "B": "RBAC 由管理者把帳號放入角色,權限跟著角色走,非擁有者決定。",
+      "C": "規則型對『所有主體』套用全域規則（如防火牆 ACL）,同樣非擁有者決定。"
+    },
+    "id": "D5-0009",
+    "domain": "D5",
+    "topic": "d5-p1",
+    "unit": "P1-D5-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-025.html",
+    "unit_title_zh": "存取控制模型與 PAM"
+  },
+  {
+    "stem_en": "A security manager discovers that database administrators hold standing domain administrator privileges that they use only a few hours each month. Which control BEST reduces the risk associated with these standing privileges?",
+    "stem_zh": "安全經理發現資料庫管理員長期持有網域管理員特權,但每月僅使用數小時。哪個控制最能降低這種常駐特權的風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Enforce longer passwords on the administrator accounts",
+        "text_zh": "對管理員帳號強制更長的密碼"
+      },
+      {
+        "key": "B",
+        "text_en": "Use a PAM solution to grant just-in-time (JIT) privileged access only when needed",
+        "text_zh": "以 PAM 方案實施 JIT 即時特權,需要時才授予、用完即收"
+      },
+      {
+        "key": "C",
+        "text_en": "Consolidate the administrators into one shared admin account for easier monitoring",
+        "text_zh": "將管理員合併為一組共用帳號以便監控"
+      },
+      {
+        "key": "D",
+        "text_en": "Convert file permissions from DAC to RBAC",
+        "text_zh": "將檔案權限由 DAC 改為 RBAC"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "風險根源是『常駐特權（standing privilege）』的暴露時間過長。PAM＋JIT 讓特權只在需要的時段授予、用完即收,並配合 credential vault 與 session recording 全程留痕,直接消除常駐暴露,符合最小權限原則——風險導向、對症下藥。",
+    "why_wrong_zh": {
+      "A": "更長密碼只強化鑑別,特權仍 24 小時常駐,未處理根因。",
+      "C": "共用帳號破壞可歸責,反而使監控與究責更困難。",
+      "D": "改變檔案權限模型,不影響網域管理員特權的暴露時間。"
+    },
+    "id": "D5-0010",
+    "domain": "D5",
+    "topic": "d5-p1",
+    "unit": "P1-D5-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-025.html",
+    "unit_title_zh": "存取控制模型與 PAM"
+  },
+  {
+    "stem_en": "A financial services company suffers repeated account takeovers: attackers use real-time adversary-in-the-middle (AiTM) phishing proxies to capture one-time passwords and session cookies, and bombard users with MFA push notifications until someone approves. Which authentication approach would BEST mitigate these attacks?",
+    "stem_zh": "一家金融服務公司屢遭帳號接管:攻擊者以即時中間人(AiTM)釣魚代理攔截一次性密碼與會談 cookie,並對使用者發動 MFA 推播轟炸直到有人誤按同意。下列何種鑑別方式最能緩解這些攻擊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Require users to change their passwords every 30 days",
+        "text_zh": "要求使用者每 30 天更換密碼"
+      },
+      {
+        "key": "B",
+        "text_en": "Replace SMS one-time passwords with TOTP authenticator apps",
+        "text_zh": "以 TOTP 驗證器 App 取代簡訊 OTP"
+      },
+      {
+        "key": "C",
+        "text_en": "Enable number matching on all MFA push notifications",
+        "text_zh": "為所有 MFA 推播啟用號碼比對(number matching)"
+      },
+      {
+        "key": "D",
+        "text_en": "Deploy FIDO2/passkey authentication bound to the origin domain",
+        "text_zh": "部署綁定來源網域的 FIDO2/passkey 無密碼鑑別"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "FIDO2/passkey 的私鑰不離裝置,且密碼學簽章綁定來源網域(origin binding)——釣魚代理站的網域不符,認證根本無法完成;同時消滅了 OTP 與推播這兩種「可被騙取/轟炸」的因子,是唯一抗釣魚的選項。記憶法:AiTM 攔得到「你輸入的東西」,攔不到「綁網域的簽章」。",
+    "why_wrong_zh": {
+      "A": "更換頻率無助於「即時轉發」憑證的 AiTM 攻擊;NIST 800-63B 也不建議強制定期改密碼。",
+      "B": "TOTP 仍是使用者手動輸入的 OTP,AiTM 代理可即時轉發使用,不具抗釣魚性。",
+      "C": "號碼比對只緩解推播轟炸,對竊取會談 cookie 的 AiTM 釣魚無效,僅解決一半問題。"
+    },
+    "id": "D5-0011",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-061.html",
+    "unit_title_zh": "AAA 與鑑別因子深入"
+  },
+  {
+    "stem_en": "After an audit flags that impostors were falsely accepted, a data center manager increases the sensitivity threshold of the fingerprint access system. Which outcome is the MOST likely side effect of this change?",
+    "stem_zh": "稽核發現有冒充者被誤放行後,資料中心經理調高了指紋門禁系統的靈敏度門檻。此調整最可能出現的副作用是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The crossover error rate (CER) of the device will automatically decrease",
+        "text_zh": "裝置的交叉錯誤率(CER)會自動下降"
+      },
+      {
+        "key": "B",
+        "text_en": "Both the FAR and the FRR will decrease at the same time",
+        "text_zh": "誤接受率(FAR)與誤拒絕率(FRR)會同時下降"
+      },
+      {
+        "key": "C",
+        "text_en": "All users must re-enroll their fingerprint templates",
+        "text_zh": "所有使用者必須重新註冊指紋樣板"
+      },
+      {
+        "key": "D",
+        "text_en": "The false rejection rate (FRR) will rise, locking out more legitimate staff",
+        "text_zh": "誤拒絕率(FRR)上升,更多合法員工被擋在門外"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "FAR 與 FRR 是蹺蹺板:調高靈敏度壓低 FAR(安全風險)的同時必然推高 FRR(可用性問題)——合法員工被誤拒、支援成本增加。管理者要在安全與可用之間取捨;比較系統好壞則看 CER(越低越準)。",
+    "why_wrong_zh": {
+      "A": "CER 是系統固有的準確度指標(FAR=FRR 之點),不會因調整判定門檻而改變。",
+      "B": "兩者呈反向消長,調整單一門檻不可能讓 FAR 與 FRR 同時下降。",
+      "C": "調整的是比對判定門檻,不需要重新採集註冊樣板。"
+    },
+    "id": "D5-0012",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-061.html",
+    "unit_title_zh": "AAA 與鑑別因子深入"
+  },
+  {
+    "stem_en": "During an audit, a reviewer finds that five database administrators all perform maintenance through a single shared 'dba_admin' account. Management asks why this practice MUST be corrected. What is the PRIMARY security concern?",
+    "stem_zh": "稽核發現五名資料庫管理員全都透過同一個共用的「dba_admin」帳號執行維護。管理層詢問為何必須改正此做法,主要的安全疑慮是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A shared password is more likely to be weak and easily guessed",
+        "text_zh": "共用密碼較可能偏弱且容易被猜中"
+      },
+      {
+        "key": "B",
+        "text_en": "The shared account probably exceeds the least privilege each task requires",
+        "text_zh": "該共用帳號的權限可能超出各項工作所需的最小權限"
+      },
+      {
+        "key": "C",
+        "text_en": "Actions cannot be attributed to an individual, destroying accountability",
+        "text_zh": "行為無法歸責到個人,可歸責性(accountability)蕩然無存"
+      },
+      {
+        "key": "D",
+        "text_en": "Concurrent logins to one account will degrade database performance",
+        "text_zh": "多人同時登入同一帳號會拖累資料庫效能"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "AAA 的可歸責(accountability)靠唯一身分＋完整日誌達成;共用帳號讓日誌只能記到「帳號」、記不到「人」,出事無法追溯與究責,也失去不可否認性——這是禁用共享帳號的根本原因,層級高於密碼強度等技術細節。",
+    "why_wrong_zh": {
+      "A": "密碼管理是衍生問題;即使密碼再強,無法歸責到人的核心缺陷依然存在。",
+      "B": "最小權限是另一軸的疑慮,與「多人共用」本身無直接因果。",
+      "D": "效能屬營運考量而非安全疑慮,亦非共用帳號的核心風險。"
+    },
+    "id": "D5-0013",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-061.html",
+    "unit_title_zh": "AAA 與鑑別因子深入"
+  },
+  {
+    "stem_en": "An online bank lets new customers open accounts remotely. Fraud investigators find that criminals pass the current sign-up flow by answering security questions using details researched from social media. Which improvement would BEST strengthen identity proofing at registration?",
+    "stem_zh": "一家網路銀行允許新客戶遠端開戶。反詐調查發現,犯罪者靠著從社群媒體查到的資料回答安全問題,順利通過現行註冊流程。下列何者最能強化註冊階段的身分證明(identity proofing)?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Require MFA on every subsequent login to the new account",
+        "text_zh": "要求新帳號日後每次登入都使用 MFA"
+      },
+      {
+        "key": "B",
+        "text_en": "Validate a government-issued ID with liveness detection and match it against authoritative records",
+        "text_zh": "驗證政府核發證件並搭配活體偵測,再比對權威資料來源"
+      },
+      {
+        "key": "C",
+        "text_en": "Exchange digitally signed federation assertions with partner banks",
+        "text_zh": "與合作銀行交換數位簽章的聯合斷言"
+      },
+      {
+        "key": "D",
+        "text_en": "Add more knowledge-based questions drawn from credit bureau history",
+        "text_zh": "增加更多取自信用機構紀錄的知識型問題(KBA)"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "失守的是註冊時的身分證明(IAL 軸):認知密碼/KBA 的答案可從社群媒體與公開來源查得。提高 IAL 要靠更強的證據——政府證件驗真＋活體偵測＋權威資料庫比對。判斷邏輯:先分清問題出在「證明(註冊階段)」而非「鑑別(登入階段)」,再選對應軸的控制。",
+    "why_wrong_zh": {
+      "A": "MFA 強化的是 AAL(登入鑑別強度),擋不住一開始就以假身分完成註冊的人。",
+      "C": "聯合斷言屬 FAL 軸,處理跨組織的信任傳遞,與開戶身分證明無關。",
+      "D": "KBA 正是被攻破的機制——答案常可公開查得,加更多同類問題只是加深同一弱點。"
+    },
+    "id": "D5-0014",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-062.html",
+    "unit_title_zh": "身分生命週期與證明深入"
+  },
+  {
+    "stem_en": "A security review at a SaaS company finds a CI/CD pipeline API key that was created three years ago, has never been rotated, carries full administrative privileges, and has no assigned owner. Which response BEST addresses the underlying risk?",
+    "stem_zh": "一家 SaaS 公司的安全審查發現,某 CI/CD 管線使用的 API key 建立於三年前、從未輪換、擁有完整管理權限,且沒有指定擁有者。下列何者最能解決其根本風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Immediately revoke the key and have the pipeline team request a new one",
+        "text_zh": "立即撤銷該 key,請管線團隊重新申請一把新的"
+      },
+      {
+        "key": "B",
+        "text_en": "Move the key out of the code repository into an encrypted configuration file",
+        "text_zh": "將 key 移出程式碼儲存庫,改放加密設定檔"
+      },
+      {
+        "key": "C",
+        "text_en": "Enable alerting on anomalous usage patterns for the key",
+        "text_zh": "針對該 key 的異常使用行為啟用告警"
+      },
+      {
+        "key": "D",
+        "text_en": "Bring machine identities into the identity lifecycle: assign owners, enforce least privilege, and vault-manage keys with scheduled rotation",
+        "text_zh": "將機器身分納入身分生命週期治理:指派擁有者、實施最小權限,並以密碼庫集中保管與定期輪換"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "這是治理缺口而非單一 key 的問題:服務帳號、憑證、API key 等非人類身分長期游離於身分生命週期之外(無擁有者、權限過大、永不輪換)。最佳解是把機器身分納入與人類帳號相同的治理——有擁有者、最小權限、vault 集中保管、定期輪換與審查,一次解決「這把 key」與「所有同類 key」。Think like a manager:流程性根因優先於單點修補。",
+    "why_wrong_zh": {
+      "A": "只處理了這一把 key;沒有擁有者與輪換機制,幾年後同樣的殭屍 key 會再出現。",
+      "B": "改變存放位置未解決權限過大、無人負責與永不輪換等根本問題。",
+      "C": "偵測性控制只能事後發現濫用,並未降低根本暴險,層級不足。"
+    },
+    "id": "D5-0015",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-062.html",
+    "unit_title_zh": "身分生命週期與證明深入"
+  },
+  {
+    "stem_en": "During a quarterly access review, an analyst discovers that a domain administrator account belonging to an engineer who resigned four months ago is still active. What should the analyst do FIRST?",
+    "stem_zh": "季度存取審查中,分析師發現一名四個月前離職工程師的網域管理員帳號至今仍然有效。分析師首先應該做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Investigate the account's logs for signs of misuse since the departure",
+        "text_zh": "調查該帳號自離職以來的日誌是否有濫用跡象"
+      },
+      {
+        "key": "B",
+        "text_en": "Report the control failure and update the de-provisioning procedure",
+        "text_zh": "呈報控制失效並修訂撤銷(de-provisioning)程序"
+      },
+      {
+        "key": "C",
+        "text_en": "Contact the former employee's manager to confirm the account is unused",
+        "text_zh": "聯繫前員工的主管確認該帳號未被使用"
+      },
+      {
+        "key": "D",
+        "text_en": "Disable the account immediately to eliminate the exposure",
+        "text_zh": "立即停用該帳號以消除暴險"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "一個仍然有效的高權限殭屍帳號是正在持續的暴險,FIRST 永遠先止血——立即停用(而非刪除,保留鑑識證據),之後再調查日誌、呈報並修訂流程。判斷邏輯:面對現行風險,遏制(containment)優先於調查與長期矯正。",
+    "why_wrong_zh": {
+      "A": "調查很重要,但在帳號仍可登入的狀態下調查,等於讓風險窗口持續開著——是第二步。",
+      "B": "修訂程序屬長期矯正措施,無法處理眼前的暴險。",
+      "C": "口頭確認不能消除風險,且主管無從得知帳號是否已被攻擊者盜用。"
+    },
+    "id": "D5-0016",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-062.html",
+    "unit_title_zh": "身分生命週期與證明深入"
+  },
+  {
+    "stem_en": "A penetration test against a company's API gateway shows that a JWT access token issued for the HR application is also accepted by the payroll API. Signature and expiration checks both pass. Which token validation step is MOST likely missing?",
+    "stem_zh": "針對公司 API 閘道的滲透測試顯示,核發給人資應用的 JWT access token 竟也被薪資 API 接受;簽章與逾期檢查皆通過。最可能缺少哪個 token 驗證步驟?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Verifying the token signature against the issuer's public key",
+        "text_zh": "以發行者公鑰驗證 token 簽章"
+      },
+      {
+        "key": "B",
+        "text_en": "Checking the token expiration (exp) claim",
+        "text_zh": "檢查 token 的逾期(exp)宣告"
+      },
+      {
+        "key": "C",
+        "text_en": "Validating that the audience (aud) claim matches the receiving API",
+        "text_zh": "驗證受眾(aud)宣告與接收方 API 相符"
+      },
+      {
+        "key": "D",
+        "text_en": "Enforcing PKCE during the authorization code exchange",
+        "text_zh": "在授權碼交換階段強制使用 PKCE"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "JWT 驗證四件事:簽章、發行者(iss)、受眾(aud)、逾期(exp)。token 本身有效卻被「別的服務」接受,代表接收方沒有檢查 aud——任何一張合法 token 都變成跨服務的萬用票。記憶法:aud 回答「這張票是發給誰用的」。",
+    "why_wrong_zh": {
+      "A": "題幹已明示簽章檢查通過,問題不在簽章驗證。",
+      "B": "逾期檢查同樣已通過,且 exp 與「跨服務重用」無關。",
+      "D": "PKCE 防的是授權碼在「取得階段」被攔截,與 API 端的 token 驗證是不同環節。"
+    },
+    "id": "D5-0017",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-063.html",
+    "unit_title_zh": "SAML/OAuth/OIDC 深入"
+  },
+  {
+    "stem_en": "Employees at a firm are tricked into clicking 'Accept' on a malicious third-party application's OAuth consent screen, granting it read access to their mailboxes. No passwords were stolen and MFA was never bypassed. Which control BEST reduces the risk of this consent phishing?",
+    "stem_zh": "某公司員工被誘騙在惡意第三方應用的 OAuth 同意畫面按下「接受」,授予其信箱讀取權限;過程中沒有密碼被竊,也未繞過 MFA。下列何種控制最能降低這種同意釣魚(consent phishing)的風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Enforce a stricter password complexity policy",
+        "text_zh": "實施更嚴格的密碼複雜度政策"
+      },
+      {
+        "key": "B",
+        "text_en": "Require MFA re-authentication at every login",
+        "text_zh": "每次登入都要求重新完成 MFA"
+      },
+      {
+        "key": "C",
+        "text_en": "Restrict user consent to verified publishers, require admin approval for sensitive scopes, and monitor abnormal grants",
+        "text_zh": "限制使用者僅能同意經驗證的發行者,敏感 scope 須管理員核准,並監控異常授權"
+      },
+      {
+        "key": "D",
+        "text_en": "Shorten web session timeouts across all applications",
+        "text_zh": "縮短所有應用的網頁工作階段逾時時間"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "同意釣魚偷的是「授權(delegation)」而不是「憑證」——密碼與 MFA 根本不在攻擊路徑上。有效控制必須作用在 OAuth 同意流程本身:治理誰能被同意(驗證發行者)、哪些 scope 需審核(管理員核准)、並監控異常授權。判斷邏輯:對著攻擊路徑下控制,才是對症下藥。",
+    "why_wrong_zh": {
+      "A": "攻擊全程不經過密碼,密碼政策再嚴也無效。",
+      "B": "使用者是「自願」完成合法授權流程,MFA 照常通過,擋不住同意行為。",
+      "D": "OAuth token 是 API 存取憑證,不受網頁工作階段逾時管控,縮短逾時無濟於事。"
+    },
+    "id": "D5-0018",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-063.html",
+    "unit_title_zh": "SAML/OAuth/OIDC 深入"
+  },
+  {
+    "stem_en": "A company federates 40 SaaS applications through a single cloud identity provider (IdP). The board asks the CISO how to manage the risk concentration this creates. Which response is BEST?",
+    "stem_zh": "某公司透過單一雲端身分提供者(IdP)聯合了 40 個 SaaS 應用。董事會詢問 CISO 該如何管理由此產生的風險集中。下列回應何者最佳?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Treat the IdP as a top-tier asset: phishing-resistant MFA, hardened configuration, high availability, and priority monitoring",
+        "text_zh": "將 IdP 視為最高層級資產:抗釣魚 MFA、強化組態、高可用與優先監控"
+      },
+      {
+        "key": "B",
+        "text_en": "Keep a local password on every SaaS application as an alternate login path",
+        "text_zh": "在每個 SaaS 應用保留本地密碼作為替代登入途徑"
+      },
+      {
+        "key": "C",
+        "text_en": "Split authentication across several IdPs so no single provider handles all logins",
+        "text_zh": "將鑑別分散到多個 IdP,避免單一供應商處理所有登入"
+      },
+      {
+        "key": "D",
+        "text_en": "Reduce the number of federated applications to lower dependence on the IdP",
+        "text_zh": "減少聯合的應用數量以降低對 IdP 的依賴"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "SSO/聯合身分的單點失效是已接受的取捨,正解是把 IdP 當「王冠上的珠寶」保護:最強鑑別(抗釣魚 MFA)、強化組態、高可用與優先監控,同時保留集中管控(一處停用即全斷)的治理效益。判斷邏輯:風險集中→強化該點,而非破壞集中化的價值。",
+    "why_wrong_zh": {
+      "B": "遍地本地密碼重新引入密碼蔓延與撤銷盲點,反而破壞「一處停用即全斷」的核心效益。",
+      "C": "多 IdP 使信任關係與稽核複雜化、攻擊面加倍,通常得不償失。",
+      "D": "因噎廢食;退出聯合的應用回到各自帳號管理,整體風險與管理負擔更高。"
+    },
+    "id": "D5-0019",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-063.html",
+    "unit_title_zh": "SAML/OAuth/OIDC 深入"
+  },
+  {
+    "stem_en": "A threat hunt reveals that an attacker holding a low-privilege domain account has requested Kerberos service tickets for dozens of service accounts and is cracking them offline (Kerberoasting). Which control would MOST reduce the impact of this technique?",
+    "stem_zh": "威脅獵捕發現,攻擊者以一個低權限網域帳號索取了數十個服務帳號的 Kerberos 服務票證,並正在離線破解(Kerberoasting)。下列何種控制最能降低此手法的衝擊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Tighten NTP time synchronization between clients and the KDC",
+        "text_zh": "收緊用戶端與 KDC 之間的 NTP 時間同步"
+      },
+      {
+        "key": "B",
+        "text_en": "Shorten the lifetime of ticket-granting tickets (TGTs)",
+        "text_zh": "縮短票證授予票證(TGT)的有效期限"
+      },
+      {
+        "key": "C",
+        "text_en": "Require MFA for all interactive user logons",
+        "text_zh": "要求所有互動式使用者登入都使用 MFA"
+      },
+      {
+        "key": "D",
+        "text_en": "Use managed service accounts with long, random, automatically rotated passwords",
+        "text_zh": "服務帳號改用具備長且隨機、自動輪換密碼的受管服務帳號(如 gMSA)"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Kerberoasting 的本質是「離線暴力破解服務帳號密碼」——服務票證以服務帳號金鑰加密,密碼弱就破得開。讓服務帳號密碼長、隨機且自動輪換(如 gMSA),使破解在計算上不可行,直接消滅攻擊的成功條件;這也呼應服務帳號(非人類身分)須納管與輪換的原則。",
+    "why_wrong_zh": {
+      "A": "時間同步防的是重放攻擊,與離線破解密碼無關。",
+      "B": "縮短 TGT 壽命不影響「已取得的服務票證」被拿去離線破解。",
+      "C": "索取服務票證是任何已認證帳號的合法操作,MFA 擋不住;且服務帳號本身無法互動式 MFA。"
+    },
+    "id": "D5-0020",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-064.html",
+    "unit_title_zh": "Kerberos 與目錄服務深入"
+  },
+  {
+    "stem_en": "Incident responders confirm that attackers stole the krbtgt account hash from a domain controller and forged Golden Tickets. After evicting the attackers, what MUST the team do to invalidate any remaining forged tickets?",
+    "stem_zh": "事件應變團隊確認攻擊者已從網域控制器竊得 krbtgt 帳號雜湊並偽造了 Golden Ticket。驅離攻擊者後,團隊必須做什麼才能讓殘存的偽造票證失效?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Force a password reset for every user account in the domain",
+        "text_zh": "強制網域內所有使用者帳號重設密碼"
+      },
+      {
+        "key": "B",
+        "text_en": "Re-image every workstation the attackers touched",
+        "text_zh": "重灌攻擊者接觸過的所有工作站"
+      },
+      {
+        "key": "C",
+        "text_en": "Reset the krbtgt account password twice in succession",
+        "text_zh": "連續兩次重設 krbtgt 帳號密碼"
+      },
+      {
+        "key": "D",
+        "text_en": "Block TCP/UDP port 88 at the perimeter firewall",
+        "text_zh": "在邊界防火牆封鎖 TCP/UDP 88 端口"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Golden Ticket 是用 krbtgt 金鑰簽發的偽造 TGT——只要舊金鑰仍被接受,偽票就持續有效。krbtgt 會保留「現任＋前任」兩代金鑰,因此必須連續重設兩次讓兩代全部換新,偽造票證才徹底作廢(兩次之間需留意複寫完成與服務衝擊)。",
+    "why_wrong_zh": {
+      "A": "使用者密碼與 krbtgt 金鑰無關,重設全員密碼無法作廢偽造的 TGT。",
+      "B": "重灌主機清除的是立足點;偽票由 krbtgt 舊金鑰背書,依然有效。",
+      "D": "Kerberos 是內網認證協定,邊界封 88 端口擋不住網域內使用偽票,反而癱瘓正常認證。"
+    },
+    "id": "D5-0021",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-064.html",
+    "unit_title_zh": "Kerberos 與目錄服務深入"
+  },
+  {
+    "stem_en": "A red team demonstrates that domain administrators routinely log on to ordinary user workstations for support tasks, allowing credential hashes to be harvested from workstation memory and replayed (pass-the-hash) to reach the domain controllers. Which control BEST prevents this path to domain compromise?",
+    "stem_zh": "紅隊演練證明:網域管理員經常登入一般使用者工作站處理支援工作,導致其憑證雜湊可被從工作站記憶體擷取並重放(pass-the-hash),進而直達網域控制器。下列何種控制最能阻斷這條網域淪陷路徑?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Enforce a tiered administration model that forbids privileged accounts from logging on to lower-trust hosts",
+        "text_zh": "實施分層管理模型,禁止特權帳號登入較低信任層級的主機"
+      },
+      {
+        "key": "B",
+        "text_en": "Increase the minimum password length for administrator accounts",
+        "text_zh": "提高管理員帳號的最低密碼長度"
+      },
+      {
+        "key": "C",
+        "text_en": "Deploy full-disk encryption on all user workstations",
+        "text_zh": "為所有使用者工作站部署全磁碟加密"
+      },
+      {
+        "key": "D",
+        "text_en": "Require administrators to change passwords after every support session",
+        "text_zh": "要求管理員每次支援作業結束後更換密碼"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Pass-the-Hash 成立的前提是「高權限憑證出現在低信任主機的記憶體」。分層管理(Tier 0/1/2)從架構上禁止 DA 憑證落在工作站,直接消除攻擊素材;再搭配 Credential Guard/LSASS 保護效果更佳。判斷邏輯:讓憑證「不落地」的預防性架構,優於任何事後補救。",
+    "why_wrong_zh": {
+      "B": "PtH 使用的是雜湊本身,不需要破解出明文,密碼再長也無效。",
+      "C": "全磁碟加密防實體/離線竊取,擋不住執行中系統記憶體的憑證擷取。",
+      "D": "雜湊在支援作業當下即可被擷取並立即重放,事後改密碼為時已晚,也不切實際。"
+    },
+    "id": "D5-0022",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-064.html",
+    "unit_title_zh": "Kerberos 與目錄服務深入"
+  },
+  {
+    "stem_en": "After a decade of RBAC growth, a company with 4,000 employees has accumulated 2,600 roles, and access reviews repeatedly fail because reviewers cannot tell what each role actually grants. Which approach would BEST restore manageable authorization?",
+    "stem_zh": "歷經十年 RBAC 擴張,一家 4,000 名員工的公司累積了 2,600 個角色,存取審查屢屢失敗,因為審查者根本看不出每個角色實際授予了什麼。下列何種做法最能恢復可管理的授權?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Perform role mining to consolidate roles into a hierarchy, and handle contextual exceptions with attribute-based rules",
+        "text_zh": "進行角色探勘(role mining)將角色整併為階層,情境化例外改以屬性式(ABAC)規則處理"
+      },
+      {
+        "key": "B",
+        "text_en": "Convert to DAC so each data owner grants access case by case",
+        "text_zh": "改用 DAC,由各資料擁有者逐案自行授權"
+      },
+      {
+        "key": "C",
+        "text_en": "Retire all roles and assign permissions directly to individual users",
+        "text_zh": "廢除所有角色,將權限直接指派給個別使用者"
+      },
+      {
+        "key": "D",
+        "text_en": "Freeze the creation of new roles until the next annual audit",
+        "text_zh": "凍結新角色的建立,直到下一次年度稽核"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "這是典型的角色爆炸(role explosion)。解方是角色工程/探勘:分析實際權限使用、整併重疊角色、建立角色階層,少數情境化需求交給 ABAC 規則,再以定期 recertification 持續清理——授權模型本身也需要治理,而不是放棄模型。",
+    "why_wrong_zh": {
+      "B": "DAC 逐案授權會讓權限更發散、更難一致與審查,是倒退而非解方。",
+      "C": "直接指派權限正是 RBAC 要解決的老問題,4,000 人規模下審查負擔會徹底爆炸。",
+      "D": "凍結只是止痛,既有 2,600 個角色的不可審性一點都沒有改善。"
+    },
+    "id": "D5-0023",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-065.html",
+    "unit_title_zh": "存取控制模型與 PAM 深入"
+  },
+  {
+    "stem_en": "Cloud engineers at a company hold standing global administrator rights around the clock, although each engineer actually needs them for only a few hours per month. Which change would MOST reduce the risk associated with these privileged accounts?",
+    "stem_zh": "某公司的雲端工程師全天候持有常駐的全域管理員權限,但每位工程師實際上每月只需要用到幾小時。下列何種改變最能降低這些特權帳號的風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Rotate the administrators' passwords on a weekly schedule",
+        "text_zh": "將管理員密碼改為每週定期輪換"
+      },
+      {
+        "key": "B",
+        "text_en": "Have each engineer sign a privileged-use agreement annually",
+        "text_zh": "要求每位工程師每年簽署特權使用同意書"
+      },
+      {
+        "key": "C",
+        "text_en": "Record all privileged sessions for later review",
+        "text_zh": "錄製所有特權工作階段供事後審查"
+      },
+      {
+        "key": "D",
+        "text_en": "Replace standing rights with just-in-time elevation that grants time-bound access upon approval",
+        "text_zh": "以 JIT 即時提權取代常駐權限,經核准後才授予有時限的存取"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "特權風險與「特權存在的時間窗口」成正比:常駐特權等於 24×7 都可被竊用。JIT＋零常駐特權(zero standing privilege)把窗口從「永遠」縮到「核准後的幾小時」——帳號在任何時點被盜,手上都沒有現成特權可用。這正是 PAM 的核心原則。",
+    "why_wrong_zh": {
+      "A": "輪換密碼不改變「隨時擁有特權」的事實;帳號被接管當下特權依然在手。",
+      "B": "行政簽署屬威懾性的紙面控制,完全不影響技術暴險。",
+      "C": "工作階段錄製是偵測性控制,能事後追查但不能阻止濫用,層級低於消除常駐特權。"
+    },
+    "id": "D5-0024",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-065.html",
+    "unit_title_zh": "存取控制模型與 PAM 深入"
+  },
+  {
+    "stem_en": "An enterprise is deploying a PAM credential vault that will hold every privileged password and key in the organization. Drawing on the lessons of the LastPass breach, which consideration is MOST important for this deployment?",
+    "stem_zh": "某企業正在部署 PAM 密碼庫(vault),將集中保管組織內所有特權密碼與金鑰。借鏡 LastPass 外洩事件的教訓,此部署最重要的考量是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Selecting the vault product with the widest set of integrations",
+        "text_zh": "選擇整合產品範圍最廣的密碼庫"
+      },
+      {
+        "key": "B",
+        "text_en": "Storing break-glass emergency credentials in the same vault for completeness",
+        "text_zh": "為求完整,把緊急救援(break-glass)憑證也存進同一個密碼庫"
+      },
+      {
+        "key": "C",
+        "text_en": "Protecting the vault itself with the strongest controls: phishing-resistant MFA, key isolation, strict access, and continuous monitoring",
+        "text_zh": "以最高強度控制保護密碼庫本身:抗釣魚 MFA、金鑰隔離、嚴格存取與持續監控"
+      },
+      {
+        "key": "D",
+        "text_en": "Relying on the vault's built-in encryption so no additional controls are needed",
+        "text_zh": "信賴密碼庫內建加密,即不需其他額外控制"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "密碼庫把所有特權集中成單一高價值目標——vault 一旦失守等於特權全失。因此 vault 本身必須獲得全組織最高等級的保護與縱深防禦(抗釣魚 MFA、金鑰隔離、嚴格存取、監控),並以零常駐特權縮小爆炸半徑。LastPass 的教訓:保管一切的東西,正是攻擊者最想要的東西。",
+    "why_wrong_zh": {
+      "A": "整合廣度是功能考量;失守時整合越廣、災情越大,排不上「最重要」。",
+      "B": "break-glass 憑證正是為 vault 失效/失守而準備,存進同一 vault 形成循環依賴。",
+      "D": "加密只是其中一層;LastPass 事件證明加密庫被竊後仍可離線破解弱主密碼,縱深防禦不可省。"
+    },
+    "id": "D5-0025",
+    "domain": "D5",
+    "topic": "d5-p2",
+    "unit": "P2-D5-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-065.html",
+    "unit_title_zh": "存取控制模型與 PAM 深入"
+  },
+  {
+    "stem_en": "A system requires a password and a one-time code from a hardware token. These two factors represent which authentication types?",
+    "stem_zh": "某系統要求密碼加上硬體 Token 的一次性碼。這兩個因子代表哪些鑑別類型?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Type 1 and Type 1",
+        "text_zh": "所知＋所知"
+      },
+      {
+        "key": "B",
+        "text_en": "Type 1 and Type 2",
+        "text_zh": "所知＋所有"
+      },
+      {
+        "key": "C",
+        "text_en": "Type 2 and Type 3",
+        "text_zh": "所有＋所是"
+      },
+      {
+        "key": "D",
+        "text_en": "Type 1 and Type 3",
+        "text_zh": "所知＋所是"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "密碼＝Type 1(所知);硬體 Token 的 OTP＝Type 2(所有)。跨兩類別＝真正的 MFA。",
+    "why_wrong_zh": {
+      "A": "兩個 Type 1 才是同類別(非此情況,且不算 MFA)。",
+      "C": "沒有生物特徵(Type 3)。",
+      "D": "Token 不是生物特徵。"
+    },
+    "id": "D5-0026",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-101.html",
+    "unit_title_zh": "考點：AAA 與因子分類"
+  },
+  {
+    "stem_en": "Which combination does NOT qualify as multi-factor authentication?",
+    "stem_zh": "哪個組合『不』構成多因子鑑別?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Password + fingerprint",
+        "text_zh": "密碼＋指紋"
+      },
+      {
+        "key": "B",
+        "text_en": "Password + security question",
+        "text_zh": "密碼＋安全問題"
+      },
+      {
+        "key": "C",
+        "text_en": "Smart card + PIN",
+        "text_zh": "智慧卡＋PIN"
+      },
+      {
+        "key": "D",
+        "text_en": "Fingerprint + OTP token",
+        "text_zh": "指紋＋OTP Token"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "密碼與安全問題都是 Type 1(所知),屬同一類別→不是 MFA。MFA 須跨不同因子類別。",
+    "why_wrong_zh": {
+      "A": "密碼(1)＋指紋(3),跨類別,是 MFA。",
+      "C": "智慧卡(2)＋PIN(1),跨類別,是 MFA。",
+      "D": "指紋(3)＋OTP(2),跨類別,是 MFA。"
+    },
+    "id": "D5-0027",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-101.html",
+    "unit_title_zh": "考點：AAA 與因子分類"
+  },
+  {
+    "stem_en": "Which AAA component ensures actions can be traced back to a specific individual?",
+    "stem_zh": "AAA 中哪個元件確保行為可追溯到特定個人?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Authentication",
+        "text_zh": "鑑別"
+      },
+      {
+        "key": "B",
+        "text_en": "Authorization",
+        "text_zh": "授權"
+      },
+      {
+        "key": "C",
+        "text_en": "Accountability",
+        "text_zh": "可歸責"
+      },
+      {
+        "key": "D",
+        "text_en": "Identification",
+        "text_zh": "識別"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Accountability(可歸責)透過唯一身分＋日誌,讓行為可追溯到個人;故須禁用共享帳號。",
+    "why_wrong_zh": {
+      "A": "鑑別是證明身分,非事後追溯。",
+      "B": "授權是決定能做什麼。",
+      "D": "識別只是聲稱身分(輸入帳號)。"
+    },
+    "id": "D5-0028",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-101.html",
+    "unit_title_zh": "考點：AAA 與因子分類"
+  },
+  {
+    "stem_en": "A banking application detects a login with the correct password, but from an unrecognized device in a country the user has never logged in from. Which response BEST balances security and user experience?",
+    "stem_zh": "某銀行應用偵測到一次登入:密碼正確,但來自未見過的裝置與該用戶從未登入過的國家。哪個回應「最能」兼顧安全與使用者體驗?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Permanently lock the account until the user visits a branch",
+        "text_zh": "永久鎖定帳戶直到用戶臨櫃處理"
+      },
+      {
+        "key": "B",
+        "text_en": "Allow the login and flag the session for later review",
+        "text_zh": "放行登入並標記供事後審查"
+      },
+      {
+        "key": "C",
+        "text_en": "Force an immediate password reset before allowing access",
+        "text_zh": "先強制重設密碼才放行"
+      },
+      {
+        "key": "D",
+        "text_en": "Require step-up authentication with an additional factor before granting access",
+        "text_zh": "要求以額外因子完成 step-up(升級)驗證後才授權"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "這是 risk-based(風險式)驗證的標準劇本:依環境訊號(裝置、位置、行為)動態調整驗證強度,風險升高就要求 step-up 額外因子——既擋住只偷到密碼的攻擊者,又不懲罰出差中的合法用戶。記憶:訊號異常→先「加驗」,不是「封殺」也不是「放行」。",
+    "why_wrong_zh": {
+      "A": "過度反應;尚未證實是攻擊,永久鎖定重創可用性與用戶體驗。",
+      "B": "風險當下未緩解;若真是攻擊者,事後審查已來不及。",
+      "C": "密碼未證實外洩;且攻擊者若正持有密碼,重設流程擋不住他,額外因子才能。"
+    },
+    "id": "D5-0029",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-101.html",
+    "unit_title_zh": "考點：AAA 與因子分類"
+  },
+  {
+    "stem_en": "An agency policy requires HIGH confidence in remote user authentication: MFA with replay resistance is mandatory, but hardware authenticators are not required. Per NIST SP 800-63B, which Authenticator Assurance Level does this describe?",
+    "stem_zh": "某機關政策要求遠端用戶驗證達「高」信心:強制 MFA 且須抗重放,但不強制硬體驗證器。依 NIST SP 800-63B,這描述哪個驗證器保證等級?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "AAL1",
+        "text_zh": "允許單因子的基本保證"
+      },
+      {
+        "key": "B",
+        "text_en": "AAL2",
+        "text_zh": "要求 MFA 且抗重放"
+      },
+      {
+        "key": "C",
+        "text_en": "AAL3",
+        "text_zh": "要求硬體 MFA 與抗釣魚"
+      },
+      {
+        "key": "D",
+        "text_en": "IAL2",
+        "text_zh": "身分證明(proofing)等級"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "NIST 800-63B 的 AAL 三級:AAL1=些許保證(允許單因子);AAL2=高信心(要求 MFA＋抗重放);AAL3=極高信心(強制硬體 MFA＋verifier impersonation/抗釣魚)。題目「高信心＋MFA＋不強制硬體」正好對到 AAL2。記憶:1 些許/2 高(MFA)/3 極高(硬體)。",
+    "why_wrong_zh": {
+      "A": "AAL1 只提供些許保證,允許單因子,達不到「高信心」。",
+      "C": "AAL3 須「硬體」MFA,題目明說不強制硬體。",
+      "D": "IAL 衡量註冊時的「身分證明」嚴謹度,與驗證器強度(AAL)是不同軸。"
+    },
+    "id": "D5-0030",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-101.html",
+    "unit_title_zh": "考點：AAA 與因子分類"
+  },
+  {
+    "stem_en": "A CISO proposes replacing passwords with FIDO2/WebAuthn password-less authentication. What is the PRIMARY security benefit of this change?",
+    "stem_zh": "CISO 提議以 FIDO2/WebAuthn 無密碼驗證取代密碼。此變更的「主要」安全效益為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It removes the dependency on user devices",
+        "text_zh": "移除對用戶裝置的依賴"
+      },
+      {
+        "key": "B",
+        "text_en": "Phishing resistance, because no shared secret is typed or transmitted for attackers to capture",
+        "text_zh": "抗釣魚,沒有可被騙走或攔截的共享祕密"
+      },
+      {
+        "key": "C",
+        "text_en": "It eliminates the need for identity proofing at registration",
+        "text_zh": "註冊時不再需要身分證明"
+      },
+      {
+        "key": "D",
+        "text_en": "It lowers implementation cost compared with passwords",
+        "text_zh": "導入成本比密碼更低"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "FIDO2/WebAuthn 以非對稱金鑰驗證,私鑰不離開裝置,用戶沒有可輸入到假網站、也沒有可被中途攔截的共享祕密→抗釣魚是無密碼驗證最核心的安全效益(也大幅消除密碼重用/外洩問題)。",
+    "why_wrong_zh": {
+      "A": "相反,無密碼驗證「增加」對裝置的依賴(這是它的缺點之一)。",
+      "C": "身分證明(identity proofing)是註冊階段的查核,任何驗證技術都不能取代。",
+      "D": "需要額外硬體與導入工程,成本通常「更高」(缺點而非效益)。"
+    },
+    "id": "D5-0031",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-101.html",
+    "unit_title_zh": "考點：AAA 與因子分類"
+  },
+  {
+    "stem_en": "In a system where the data owner can grant other users access to files they own at their own discretion, which access control model is in use?",
+    "stem_zh": "在一個『資料擁有者可自行決定授予他人存取自己檔案』的系統中,使用哪種存取控制模型?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "MAC",
+        "text_zh": "強制存取控制"
+      },
+      {
+        "key": "B",
+        "text_en": "DAC",
+        "text_zh": "自主存取控制"
+      },
+      {
+        "key": "C",
+        "text_en": "RBAC",
+        "text_zh": "角色存取控制"
+      },
+      {
+        "key": "D",
+        "text_en": "ABAC",
+        "text_zh": "屬性存取控制"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "擁有者自行裁量授權＝DAC(自主);彈性但易導致權限擴散。",
+    "why_wrong_zh": {
+      "A": "MAC 由系統依標籤強制,擁有者不能自行授權。",
+      "C": "RBAC 依角色,非擁有者裁量。",
+      "D": "ABAC 依屬性/情境策略。"
+    },
+    "id": "D5-0032",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-102.html",
+    "unit_title_zh": "考點：存取控制模型"
+  },
+  {
+    "stem_en": "A military system labels every object and subject with a classification, and the OS strictly enforces access based on these labels regardless of user wishes. This is:",
+    "stem_zh": "某軍事系統為每個物件與主體標上密級,作業系統依標籤嚴格強制存取,不論使用者意願。這是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "DAC",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "MAC",
+        "text_zh": "強制存取控制"
+      },
+      {
+        "key": "C",
+        "text_en": "RBAC",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Rule-based",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "依標籤由系統強制、使用者不可自改＝MAC,典型用於軍事/高機密環境。",
+    "why_wrong_zh": {
+      "A": "DAC 由擁有者裁量,非系統強制。",
+      "C": "RBAC 依角色,非密級標籤。",
+      "D": "規則型依全域規則,非密級標籤強制。"
+    },
+    "id": "D5-0033",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-102.html",
+    "unit_title_zh": "考點：存取控制模型"
+  },
+  {
+    "stem_en": "An organization grants access dynamically based on attributes such as department, time of day, device compliance, and location. Which model is this?",
+    "stem_zh": "某組織依部門、時段、裝置合規、位置等屬性動態授予存取。這是哪種模型?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "DAC",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "MAC",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "RBAC",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "ABAC",
+        "text_zh": "屬性存取控制"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "依多種屬性/情境動態決策＝ABAC,最細緻,常用於零信任。",
+    "why_wrong_zh": {
+      "C": "RBAC 依靜態角色,不涵蓋時段/裝置/位置等情境。"
+    },
+    "id": "D5-0034",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-102.html",
+    "unit_title_zh": "考點：存取控制模型"
+  },
+  {
+    "stem_en": "An access control system applies machine learning to past behavior and evaluates whether the user logged in with MFA, device health, and current threat signals, deciding in real time whether to allow traffic from an IoT device. Which model BEST describes this?",
+    "stem_zh": "某存取控制系統以機器學習分析過往行為,並評估用戶是否以 MFA 登入、裝置健康度與當下威脅訊號,即時決定是否放行 IoT 裝置的流量。哪個模型「最貼切」?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Rule-based access control",
+        "text_zh": "規則式存取控制"
+      },
+      {
+        "key": "B",
+        "text_en": "Risk-based access control",
+        "text_zh": "風險式存取控制"
+      },
+      {
+        "key": "C",
+        "text_en": "Attribute-Based Access Control (ABAC)",
+        "text_zh": "屬性式存取控制"
+      },
+      {
+        "key": "D",
+        "text_en": "Mandatory Access Control (MAC)",
+        "text_zh": "強制式存取控制"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "關鍵訊號:評估「環境與情境」＋以機器學習做「預測性」判斷＋依當下風險高低決定放行——這是 risk-based access control 的定義,典型應用就是即時阻擋受感染 IoT 裝置的異常流量。看到「ML/情境風險評分」就往 risk-based 靠。",
+    "why_wrong_zh": {
+      "A": "規則式對所有主體套用同一組「靜態」規則,沒有情境風險評估。",
+      "C": "ABAC 是最強干擾項——它依屬性套政策,但不含以 ML 對「當下風險」做動態預測評分,本題最強訊號在風險評估。",
+      "D": "MAC 依安全標籤強制執行,與情境、行為無關。"
+    },
+    "id": "D5-0035",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-102.html",
+    "unit_title_zh": "考點：存取控制模型"
+  },
+  {
+    "stem_en": "In a zero trust architecture, a gateway forwards each request's context to a central engine that evaluates it against policy and returns permit or deny; the gateway then allows or blocks the traffic. The central engine is the:",
+    "stem_zh": "零信任架構中,閘道把每個請求的情境送到中央引擎,由它依政策評估後回覆允許或拒絕;閘道再據此放行或阻擋。這個中央引擎是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Policy Decision Point (PDP)",
+        "text_zh": "政策決策點"
+      },
+      {
+        "key": "B",
+        "text_en": "Policy Enforcement Point (PEP)",
+        "text_zh": "政策執行點"
+      },
+      {
+        "key": "C",
+        "text_en": "Identity Provider (IdP)",
+        "text_zh": "身分提供者"
+      },
+      {
+        "key": "D",
+        "text_en": "Ticket Granting Service (TGS)",
+        "text_zh": "票證授予服務"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "PDP(政策決策點)負責「評估存取請求、做出決策」;PEP(政策執行點)是守門員,負責「執行」PDP 的決定——本題的閘道就是 PEP,中央引擎是 PDP。記憶:Decision=決策(大腦),Enforcement=執行(手腳)。",
+    "why_wrong_zh": {
+      "B": "PEP 是閘道扮演的角色,只執行不評估,題目問的是「評估的引擎」。",
+      "C": "IdP 負責驗證身分、簽發斷言,不做每筆存取的授權決策。",
+      "D": "TGS 是 Kerberos 的元件,負責簽發服務票證,不屬於此政策架構。"
+    },
+    "id": "D5-0036",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-102.html",
+    "unit_title_zh": "考點：存取控制模型"
+  },
+  {
+    "stem_en": "An audit finds that employees who transfer between departments keep accumulating old permissions, and per-user cleanup overwhelms administrators. Which approach BEST prevents this problem going forward?",
+    "stem_zh": "稽核發現跨部門調動的員工不斷累積舊權限,逐人清理又讓管理員不堪負荷。哪種作法「最能」從根本預防此問題?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Let each data owner re-grant access at their discretion (DAC)",
+        "text_zh": "由各資料擁有者自行重新授權"
+      },
+      {
+        "key": "B",
+        "text_en": "Apply a global rule set equally to all subjects (rule-based)",
+        "text_zh": "對所有主體套用全域規則集"
+      },
+      {
+        "key": "C",
+        "text_en": "Bind permissions to roles and reassign the user's role upon transfer (RBAC)",
+        "text_zh": "權限綁定角色,調動時改派角色"
+      },
+      {
+        "key": "D",
+        "text_en": "Increase the frequency of manual entitlement reviews",
+        "text_zh": "提高人工權限盤點頻率"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "RBAC 把權限綁在職務角色上:調動=移出舊角色、加入新角色,舊權限「自動」隨角色消失——從結構上杜絕權限蔓延(privilege creep),同時大幅降低管理負擔。題目要「預防」,結構性/流程性方案優先於事後補救。",
+    "why_wrong_zh": {
+      "A": "DAC 授權分散在各擁有者手上,調動時更難統一追蹤與回收。",
+      "B": "規則式控制對所有主體套同一規則,不解決「個人隨職務變動」的權限累積。",
+      "D": "盤點是「偵測性」補救,能發現但不能預防,且加重而非減輕管理負荷。"
+    },
+    "id": "D5-0037",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-102.html",
+    "unit_title_zh": "考點：存取控制模型"
+  },
+  {
+    "stem_en": "A mobile app lets a user grant it permission to access their Google Drive files WITHOUT sharing their Google password. Which protocol provides this delegated authorization?",
+    "stem_zh": "某行動 App 讓使用者授權它存取自己的 Google Drive 檔案,而『不分享 Google 密碼』。哪個協定提供此委派授權?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SAML",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "OAuth 2.0",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "Kerberos",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "RADIUS",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "OAuth 2.0 提供『委派授權』——讓 App 取得有限存取權(access token),而不交出密碼。",
+    "why_wrong_zh": {
+      "A": "SAML 是企業 Web SSO 鑑別,非委派授權。",
+      "C": "Kerberos 是內網票證認證。",
+      "D": "RADIUS 是集中 AAA(撥入認證)。"
+    },
+    "id": "D5-0038",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-103.html",
+    "unit_title_zh": "考點：聯合身分協定"
+  },
+  {
+    "stem_en": "Which protocol is built ON TOP of OAuth 2.0 specifically to provide authentication (verifying who the user is) via an ID token?",
+    "stem_zh": "哪個協定建構於 OAuth 2.0『之上』,專門透過 ID token 提供鑑別(確認使用者是誰)?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SAML",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "OpenID Connect (OIDC)",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "LDAP",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "TACACS+",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "OIDC 在 OAuth 2.0 之上加上鑑別層,發 ID token 證明使用者身分。用 OAuth 當登入是常見錯誤,應用 OIDC。",
+    "why_wrong_zh": {
+      "A": "SAML 也做鑑別,但用 XML、非建於 OAuth 之上。",
+      "C": "LDAP 是目錄查詢協定。",
+      "D": "TACACS+ 是網路設備 AAA。"
+    },
+    "id": "D5-0039",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-103.html",
+    "unit_title_zh": "考點：聯合身分協定"
+  },
+  {
+    "stem_en": "In Kerberos, what does a client first obtain after successfully authenticating, which is then used to request access to specific services?",
+    "stem_zh": "在 Kerberos 中,用戶端成功認證後首先取得什麼,之後用它來請求存取特定服務?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Service Ticket",
+        "text_zh": "服務票證"
+      },
+      {
+        "key": "B",
+        "text_en": "Ticket Granting Ticket (TGT)",
+        "text_zh": "票證授予票證"
+      },
+      {
+        "key": "C",
+        "text_en": "Session cookie",
+        "text_zh": "會談 cookie"
+      },
+      {
+        "key": "D",
+        "text_en": "SAML assertion SAML",
+        "text_zh": "斷言"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Kerberos 流程:認證後先取得 TGT,再持 TGT 向 TGS 換取存取特定服務的 Service Ticket。",
+    "why_wrong_zh": {
+      "A": "服務票證是『之後』用 TGT 換來的。",
+      "C": "Kerberos 用票證非 cookie。",
+      "D": "SAML 斷言屬 SAML 協定,非 Kerberos。"
+    },
+    "id": "D5-0040",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-103.html",
+    "unit_title_zh": "考點：聯合身分協定"
+  },
+  {
+    "stem_en": "During incident response, forensics confirms attackers extracted the krbtgt account hash from a domain controller, enabling them to forge ticket-granting tickets (a Golden Ticket attack). After evicting the attackers, which action is MOST critical to invalidate the forged tickets?",
+    "stem_zh": "事件應變中,鑑識確認攻擊者已從網域控制站取出 krbtgt 帳號雜湊,可偽造 TGT(Golden Ticket 攻擊)。驅逐攻擊者後,哪個動作對「使偽造票證失效」最關鍵?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Force a password reset for all user accounts",
+        "text_zh": "強制全體使用者重設密碼"
+      },
+      {
+        "key": "B",
+        "text_en": "Rebuild every workstation in the domain",
+        "text_zh": "重建網域內所有工作站"
+      },
+      {
+        "key": "C",
+        "text_en": "Shorten the maximum TGT lifetime policy",
+        "text_zh": "縮短 TGT 最長效期政策"
+      },
+      {
+        "key": "D",
+        "text_en": "Reset the krbtgt account password twice in succession",
+        "text_zh": "連續重設 krbtgt 帳號密碼兩次"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Golden Ticket 的「簽章」來源就是 krbtgt 的金鑰——只要該雜湊仍有效,攻擊者可憑偽造 TGT 冒充任何人,連改密碼都擋不住。因 KDC 會接受前一代金鑰,必須連續重設 krbtgt 兩次把新舊金鑰都換掉,偽造票證才真正失效。記憶:Golden Ticket 的根=krbtgt;斷根要「reset ×2」。",
+    "why_wrong_zh": {
+      "A": "偽造 TGT 不依賴任何使用者密碼,全員改密碼不影響 Golden Ticket 的有效性。",
+      "B": "代價極高且沒對到根因——票證偽造能力在 krbtgt 金鑰,不在工作站。",
+      "C": "攻擊者偽造票證時可自行填寫超長效期,不受政策約束;縮短效期是輔助強化,非關鍵。"
+    },
+    "id": "D5-0041",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-103.html",
+    "unit_title_zh": "考點：聯合身分協定"
+  },
+  {
+    "stem_en": "A domain controller restored from an old VM snapshot causes widespread Kerberos authentication failures across the office. Investigators find the server's clock is 20 minutes off. Which Kerberos characteristic BEST explains the failures?",
+    "stem_zh": "某網域控制站從舊 VM 快照還原後,全辦公室大量 Kerberos 驗證失敗。調查發現該伺服器時鐘偏差 20 分鐘。哪個 Kerberos 特性「最能」解釋此故障?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Kerberos tickets are signed with time-limited PKI certificates",
+        "text_zh": "票證以有時效的 PKI 憑證簽署"
+      },
+      {
+        "key": "B",
+        "text_en": "Kerberos uses timestamps to prevent replay and rejects requests beyond the clock-skew tolerance, so it relies on NTP sync",
+        "text_zh": "以時戳防重放,超出容許時差即拒絕,故依賴 NTP 校時"
+      },
+      {
+        "key": "C",
+        "text_en": "A firewall change blocked port 88 between clients and the KDC",
+        "text_zh": "防火牆變更擋住用戶端與 KDC 間的 port 88"
+      },
+      {
+        "key": "D",
+        "text_en": "All previously issued TGTs expired during the restore",
+        "text_zh": "還原期間所有已核發 TGT 都過期了"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Kerberos 用時戳(timestamp)防重放攻擊:請求時間與 KDC 時間差超過容許時差(典型 5 分鐘)即拒絕,因此依賴 NTP 同步各方時鐘。快照還原把時鐘拉偏 20 分鐘→全面驗證失敗,校時即恢復。看到「Kerberos＋時鐘/快照還原」直接連到 NTP/時戳。",
+    "why_wrong_zh": {
+      "A": "Kerberos 用「對稱式」密碼學與票證,不靠 PKI 憑證簽署票證。",
+      "C": "port 88 被擋會連不上 KDC,但事證(快照還原＋時鐘偏 20 分)指向時差,非網路。",
+      "D": "TGT 過期只影響「既有」票證持有者重新換票,無法解釋與時鐘偏差吻合的全面失敗。"
+    },
+    "id": "D5-0042",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-103.html",
+    "unit_title_zh": "考點：聯合身分協定"
+  },
+  {
+    "stem_en": "An enterprise uses SAML federation so employees access dozens of external SaaS applications with corporate credentials. When an employee resigns, which action MOST effectively ensures they immediately lose access to ALL federated SaaS applications?",
+    "stem_zh": "某企業以 SAML 聯合身分讓員工用公司帳號存取數十個外部 SaaS。員工離職時,哪個動作「最有效」確保其立即失去「所有」聯合 SaaS 的存取?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Disable the user's account at the corporate Identity Provider (IdP)",
+        "text_zh": "在公司 IdP 停用該使用者帳號"
+      },
+      {
+        "key": "B",
+        "text_en": "Submit deprovisioning requests to each SaaS provider",
+        "text_zh": "逐一向每個 SaaS 供應商提出刪帳號申請"
+      },
+      {
+        "key": "C",
+        "text_en": "Ask the user to log out of all SaaS sessions",
+        "text_zh": "請該使用者登出所有 SaaS 會談"
+      },
+      {
+        "key": "D",
+        "text_en": "Rotate the SAML signing certificate",
+        "text_zh": "更換 SAML 簽章憑證"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "聯合身分架構中,鑑別集中在 IdP,各 SP(SaaS)只「信任消費」IdP 的斷言——在 IdP 停用帳號=一個動作切斷所有下游 SaaS 的登入,這正是集中身分管理的治理優勢(可再輔以撤銷現存會談)。記憶:聯合身分的「總開關」在 IdP。",
+    "why_wrong_zh": {
+      "B": "方向對但非最有效——逐一申請緩慢且易遺漏,期間該員工仍可經 IdP 登入。",
+      "C": "依賴離職者自律毫無強制力,不是控制。",
+      "D": "換簽章憑證會讓「全公司所有人」的聯合登入中斷,殺傷面過大且非針對該身分。"
+    },
+    "id": "D5-0043",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-103.html",
+    "unit_title_zh": "考點：聯合身分協定"
+  },
+  {
+    "stem_en": "When comparing two biometric systems, which metric BEST indicates overall accuracy, where a LOWER value is better?",
+    "stem_zh": "比較兩套生物辨識系統時,哪個指標最能代表整體準確度,且『數值越低越好』?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "FAR",
+        "text_zh": "誤接受率"
+      },
+      {
+        "key": "B",
+        "text_en": "FRR",
+        "text_zh": "誤拒絕率"
+      },
+      {
+        "key": "C",
+        "text_en": "CER",
+        "text_zh": "交叉錯誤率"
+      },
+      {
+        "key": "D",
+        "text_en": "Throughput",
+        "text_zh": "處理量"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "CER(交叉錯誤率)是 FAR=FRR 的交叉點,代表整體準確度;CER 越低,系統越準。",
+    "why_wrong_zh": {
+      "A": "FAR 只看誤接受一面。",
+      "B": "FRR 只看誤拒絕一面。",
+      "D": "處理量是速度指標,非準確度。"
+    },
+    "id": "D5-0044",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-104.html",
+    "unit_title_zh": "考點：生物特徵與身分生命週期"
+  },
+  {
+    "stem_en": "Which biometric error is the MOST serious from a security standpoint because it admits an impostor?",
+    "stem_zh": "從安全角度看,哪種生物辨識錯誤最嚴重,因為它讓冒充者通過?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "False Rejection Rate (FRR)",
+        "text_zh": "誤拒絕率"
+      },
+      {
+        "key": "B",
+        "text_en": "False Acceptance Rate (FAR)",
+        "text_zh": "誤接受率"
+      },
+      {
+        "key": "C",
+        "text_en": "Crossover Error Rate (CER)",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Enrollment time",
+        "text_zh": "註冊時間"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "FAR(誤接受)讓冒充者被當成本人通過,是最嚴重的安全風險;FRR 只影響合法者的可用性。",
+    "why_wrong_zh": {
+      "A": "FRR 是擋到本人(可用性問題),非安全風險。",
+      "C": "CER 是綜合指標,非單一錯誤。",
+      "D": "與註冊速度無關。"
+    },
+    "id": "D5-0045",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-104.html",
+    "unit_title_zh": "考點：生物特徵與身分生命週期"
+  },
+  {
+    "stem_en": "What is the MOST important access-management action to take immediately when an employee is terminated?",
+    "stem_zh": "員工被資遣時,最重要的存取管理動作是立即:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Rotate their job duties",
+        "text_zh": "輪調其職務"
+      },
+      {
+        "key": "B",
+        "text_en": "Disable/deprovision their accounts",
+        "text_zh": "停用/撤銷其帳號"
+      },
+      {
+        "key": "C",
+        "text_en": "Conduct annual access review",
+        "text_zh": "進行年度存取審查"
+      },
+      {
+        "key": "D",
+        "text_en": "Increase password length",
+        "text_zh": "增加密碼長度"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "離職時應即時停用/撤銷帳號(deprovisioning),防止前員工或攻擊者利用殘留帳號。",
+    "why_wrong_zh": {
+      "A": "輪調是在職控制,與離職無關。",
+      "C": "年度審查太慢,離職須即時處理。",
+      "D": "與離職帳號處理無關。"
+    },
+    "id": "D5-0046",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-104.html",
+    "unit_title_zh": "考點：生物特徵與身分生命週期"
+  },
+  {
+    "stem_en": "A security manager is configuring a fingerprint reader for a restricted server room. Management states that admitting an unauthorized person is unacceptable, even at the cost of employee inconvenience. How should the system sensitivity be tuned?",
+    "stem_zh": "安全經理為管制機房設定指紋辨識。管理層明示:「放進未授權者」絕不可接受,即使犧牲員工便利也在所不惜。系統靈敏度應如何調校?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Operate exactly at the CER for the best balance",
+        "text_zh": "設在 CER 交叉點取得最佳平衡"
+      },
+      {
+        "key": "B",
+        "text_en": "Decrease sensitivity to minimize false rejections",
+        "text_zh": "調低靈敏度,把誤拒降到最低"
+      },
+      {
+        "key": "C",
+        "text_en": "Choose the device with the highest throughput",
+        "text_zh": "選處理量最高的設備"
+      },
+      {
+        "key": "D",
+        "text_en": "Increase sensitivity to minimize FAR, accepting a higher FRR",
+        "text_zh": "調高靈敏度把 FAR 壓到最低,接受較高 FRR"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "FAR 與 FRR 是蹺蹺板:調高靈敏度→FAR 降、FRR 升。管理層已把風險胃納說死——「絕不可誤放冒充者」,所以應犧牲便利(容忍較高 FRR)換取最低 FAR。調校方向永遠由「風險決策」決定:高安全區壓 FAR,一般便利區才考慮平衡。",
+    "why_wrong_zh": {
+      "A": "最強干擾項——CER 是「比較設備準確度」的指標;營運調校點應依風險需求偏移,高安全區不該停在平衡點。",
+      "B": "把便利放在安全之前,與管理層的風險決策相反(FRR 低=FAR 高)。",
+      "C": "處理量是速度/容量指標,與防止誤接受無關。"
+    },
+    "id": "D5-0047",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-104.html",
+    "unit_title_zh": "考點：生物特徵與身分生命週期"
+  },
+  {
+    "stem_en": "An audit at a manufacturing firm finds dozens of service accounts whose passwords have not changed in years, several holding domain administrator privileges, with no record of which application uses which account. What should the security team do FIRST?",
+    "stem_zh": "某製造業稽核發現數十個服務帳號多年未改密碼,其中數個持有網域管理員權限,且無任何紀錄可知哪個應用程式使用哪個帳號。安全團隊「首先」應做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Disable all service accounts until owners come forward",
+        "text_zh": "先停用所有服務帳號,等使用者自行認領"
+      },
+      {
+        "key": "B",
+        "text_en": "Immediately rotate every service account password",
+        "text_zh": "立即輪換所有服務帳號密碼"
+      },
+      {
+        "key": "C",
+        "text_en": "Inventory the accounts, assign owners, and document required privileges",
+        "text_zh": "先盤點帳號、指定負責人並記錄所需權限"
+      },
+      {
+        "key": "D",
+        "text_en": "Purchase a PAM platform to vault the credentials",
+        "text_zh": "採購 PAM 平台把憑證入庫"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "機器/服務身分治理的第一步永遠是盤點與當責:知道有哪些帳號、誰負責、各需要多少權限,之後的降權(最小權限)、輪換、入庫 PAM 才有依據。「不知道就無法管理」——在不明用途前貿然動帳號,會弄壞生產系統。Think like a manager:先建立可視性與當責,再做技術處置。",
+    "why_wrong_zh": {
+      "A": "不知道哪個帳號撐著哪條產線就全面停用,等於自己對工廠發動阻斷攻擊。",
+      "B": "方向對但順序錯——不知道哪個應用綁定哪個帳號就輪換,會造成大規模服務中斷。",
+      "D": "PAM 是好的「後續」解方,但沒有盤點清單,連要把哪些憑證入庫都不知道。"
+    },
+    "id": "D5-0048",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-104.html",
+    "unit_title_zh": "考點：生物特徵與身分生命週期"
+  },
+  {
+    "stem_en": "A hospital plans to authenticate staff with fingerprint templates stored in a central database. From a security standpoint, what is the MOST significant concern about a breach of this database?",
+    "stem_zh": "某醫院計畫以集中資料庫儲存員工指紋樣板做驗證。從安全角度看,該資料庫外洩「最重大」的隱憂是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Biometric characteristics cannot be revoked or reissued like a password",
+        "text_zh": "生物特徵不像密碼,外洩後無法撤銷或換發"
+      },
+      {
+        "key": "B",
+        "text_en": "Templates consume excessive storage space",
+        "text_zh": "樣板占用過多儲存空間"
+      },
+      {
+        "key": "C",
+        "text_en": "Encrypting templates slows down each authentication",
+        "text_zh": "樣板加密會拖慢每次驗證"
+      },
+      {
+        "key": "D",
+        "text_en": "Staff may object to enrollment on privacy grounds",
+        "text_zh": "員工可能以隱私為由抗拒註冊"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "密碼外洩可重設、Token 遺失可換發,但指紋一輩子只有一組——樣板外洩後受害者「永久」失去該因子的可信度,無法撤銷或補發。這是生物特徵(Type 3)獨有的風險,所以樣板庫必須以最高等級保護(加密、存取控制、甚至只存不可逆的特徵值)。",
+    "why_wrong_zh": {
+      "B": "樣板通常很小,儲存成本是營運瑣事,非安全隱憂。",
+      "C": "加密開銷極低,且保護樣板本來就是必要控制,不構成反對理由。",
+      "D": "接受度/隱私顧慮是真實的「導入」議題,但題目問的是「外洩」的最重大後果——不可撤銷性才是安全核心。"
+    },
+    "id": "D5-0049",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-104.html",
+    "unit_title_zh": "考點：生物特徵與身分生命週期"
+  },
+  {
+    "stem_en": "What is the PRIMARY security drawback of Single Sign-On (SSO)?",
+    "stem_zh": "單一登入(SSO)的主要安全缺點是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It requires many passwords",
+        "text_zh": "需要很多密碼"
+      },
+      {
+        "key": "B",
+        "text_en": "It creates a single point of failure",
+        "text_zh": "形成單點失效"
+      },
+      {
+        "key": "C",
+        "text_en": "It cannot be used with MFA",
+        "text_zh": "無法搭配 MFA"
+      },
+      {
+        "key": "D",
+        "text_en": "It slows down login",
+        "text_zh": "拖慢登入"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SSO 集中身分,一旦 IdP 被攻破或當機,所有依賴它的服務都受影響＝單點失效;故 IdP 需最高保護與 MFA。",
+    "why_wrong_zh": {
+      "A": "SSO 正是減少密碼數量。",
+      "C": "SSO 可且應搭配 MFA。",
+      "D": "SSO 通常加快而非拖慢登入。"
+    },
+    "id": "D5-0050",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-105.html",
+    "unit_title_zh": "考點：D5 綜合 + 刷題"
+  },
+  {
+    "stem_en": "Which approach BEST reduces the risk of standing privileged access being abused?",
+    "stem_zh": "哪種做法最能降低『常駐特權存取』被濫用的風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Give all admins permanent root access",
+        "text_zh": "給所有管理員永久 root"
+      },
+      {
+        "key": "B",
+        "text_en": "Just-in-time (JIT) privileged access",
+        "text_zh": "即時(JIT)特權存取"
+      },
+      {
+        "key": "C",
+        "text_en": "Share one admin account",
+        "text_zh": "共用一個管理員帳號"
+      },
+      {
+        "key": "D",
+        "text_en": "Disable logging",
+        "text_zh": "關閉日誌"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "JIT 特權存取:平時零常駐特權,需要時才臨時授予、用完即收,大幅縮小被濫用的窗口(PAM 核心)。",
+    "why_wrong_zh": {
+      "A": "永久 root 擴大風險,與目標相反。",
+      "C": "共用帳號破壞可歸責,更危險。",
+      "D": "關閉日誌會喪失可歸責與偵測。"
+    },
+    "id": "D5-0051",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-105.html",
+    "unit_title_zh": "考點：D5 綜合 + 刷題"
+  },
+  {
+    "stem_en": "Following the principle of least privilege, a new employee should be granted:",
+    "stem_zh": "依最小權限原則,新進員工應被授予:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "All permissions, then remove unused ones",
+        "text_zh": "全部權限再移除不用的"
+      },
+      {
+        "key": "B",
+        "text_en": "Only the permissions needed to perform their job",
+        "text_zh": "僅執行工作所需的權限"
+      },
+      {
+        "key": "C",
+        "text_en": "The same access as their manager",
+        "text_zh": "與主管相同的存取"
+      },
+      {
+        "key": "D",
+        "text_en": "Administrator rights for convenience",
+        "text_zh": "為方便給管理員權限"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "最小權限＝只給完成工作所需的最少權限,之後依需要再增加。",
+    "why_wrong_zh": {
+      "A": "先給全部違反最小權限,且易遺留多餘權限。",
+      "C": "與主管相同通常過大。",
+      "D": "為方便給管理員權限是嚴重違反最小權限。"
+    },
+    "id": "D5-0052",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-105.html",
+    "unit_title_zh": "考點：D5 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A penetration test shows that any domain user can request Kerberos service tickets for accounts running services, then crack them offline to recover weak service account passwords (Kerberoasting). Which control BEST mitigates this attack?",
+    "stem_zh": "滲透測試顯示:任何網域使用者都能為執行服務的帳號請求 Kerberos 服務票證,再離線破解取回「弱」服務帳號密碼(Kerberoasting)。哪個控制「最能」緩解此攻擊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Shorten the service ticket lifetime",
+        "text_zh": "縮短服務票證效期"
+      },
+      {
+        "key": "B",
+        "text_en": "Use long, random service account passwords with automatic rotation (managed service accounts)",
+        "text_zh": "服務帳號改用長且隨機並自動輪換的密碼(受管服務帳號)"
+      },
+      {
+        "key": "C",
+        "text_en": "Block port 88 at the network perimeter",
+        "text_zh": "在網路邊界封鎖 port 88"
+      },
+      {
+        "key": "D",
+        "text_en": "Require MFA for all interactive user logons",
+        "text_zh": "對所有互動式使用者登入強制 MFA"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Kerberoasting 的本質是對服務帳號密碼的離線暴力破解——票證用該帳號金鑰加密,密碼弱才破得開。治本之道是讓密碼「不可破」:長且隨機＋自動輪換(受管服務帳號),並依最小權限降低服務帳號權限。這正是機器身分治理的核心考點:服務帳號不是人,防禦靠密碼強度與治理,不靠使用者端控制。",
+    "why_wrong_zh": {
+      "A": "破解在「離線」進行,拿到票證的當下就足夠,效期長短不影響破解。",
+      "C": "攻擊者是「內部合法網域使用者」,流量都在內網,邊界封 88 擋不到且會弄壞驗證。",
+      "D": "MFA 保護的是「人」的互動登入;服務帳號不做互動登入,MFA 管不到這條攻擊路徑。"
+    },
+    "id": "D5-0053",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-105.html",
+    "unit_title_zh": "考點：D5 綜合 + 刷題"
+  },
+  {
+    "stem_en": "Auditors require the organization to prove EXACTLY what commands an external contractor executed during privileged database maintenance. Which PAM capability BEST satisfies this requirement?",
+    "stem_zh": "稽核要求組織證明外部承包商在特權資料庫維護期間「究竟」執行了哪些指令。哪個 PAM 能力「最能」滿足此要求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Session recording",
+        "text_zh": "特權會談側錄"
+      },
+      {
+        "key": "B",
+        "text_en": "Credential vaulting",
+        "text_zh": "憑證保險庫"
+      },
+      {
+        "key": "C",
+        "text_en": "Just-in-time privilege elevation",
+        "text_zh": "即時(JIT)提權"
+      },
+      {
+        "key": "D",
+        "text_en": "Automatic password rotation",
+        "text_zh": "密碼自動輪換"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "需求關鍵字是「證明做了什麼」=可歸責/稽核證據,對應 PAM 的session recording(會談側錄):逐鍵/逐畫面記錄特權會談,事後可回放舉證。PAM 三大能力對號入座:側錄=證明行為;vault=保管憑證;JIT=縮小提權窗口——考題問哪個,就看題幹要的是「證據」「保管」還是「時窗」。",
+    "why_wrong_zh": {
+      "B": "保險庫管「誰能領用憑證」,領用後做了什麼它不記錄。",
+      "C": "JIT 限縮特權「存在的時間」,是預防控制,無法回答「執行了哪些指令」。",
+      "D": "輪換降低憑證外洩的殘餘價值,與行為舉證無關。"
+    },
+    "id": "D5-0054",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-105.html",
+    "unit_title_zh": "考點：D5 綜合 + 刷題"
+  },
+  {
+    "stem_en": "An attacker compromises a regular user's workstation, escalates to local administrator, then uses harvested credentials to access other computers across the network with similar privileges. This network-wide movement is BEST described as:",
+    "stem_zh": "攻擊者入侵一般使用者的工作站,先提權為本機管理員,再用竊得的憑證以「相近權限」存取網路上其他電腦。這種在網路中的移動「最貼切」的描述是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Vertical privilege escalation",
+        "text_zh": "垂直提權"
+      },
+      {
+        "key": "B",
+        "text_en": "Privilege creep",
+        "text_zh": "權限蔓延"
+      },
+      {
+        "key": "C",
+        "text_en": "Session hijacking",
+        "text_zh": "會談劫持"
+      },
+      {
+        "key": "D",
+        "text_en": "Lateral movement (horizontal privilege escalation)",
+        "text_zh": "橫向移動(水平提權)"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "攻擊分兩段:在單機上從一般使用者→本機管理員是「垂直提權」;之後以相近權限橫跨其他電腦=水平提權,遍及全網就叫lateral movement(橫向移動)——題目問的是「網路中的移動」那一段。防禦要點:限縮本機管理員與服務帳號權限、網段隔離,縮小橫向移動空間。",
+    "why_wrong_zh": {
+      "A": "垂直提權是「權限層級升高」,只描述前段單機提權,不是題目問的網路間移動。",
+      "B": "privilege creep 是員工轉調累積多餘權限的「治理」問題,不是攻擊技術。",
+      "C": "會談劫持是接管既有連線/會談,情境中攻擊者用的是竊得憑證另建存取。"
+    },
+    "id": "D5-0055",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D5-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-105.html",
+    "unit_title_zh": "考點：D5 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A retail company with high staff turnover wants to assign permissions based on job functions so that access changes automatically follow position changes. Which access control model BEST fits?",
+    "stem_zh": "一家人員流動率高的零售公司,希望依職務功能指派權限,讓存取權隨職位異動自動跟著改變。哪種存取控制模型『最』適合?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Discretionary access control (DAC)",
+        "text_zh": "自主式存取控制"
+      },
+      {
+        "key": "B",
+        "text_en": "Mandatory access control (MAC)",
+        "text_zh": "強制式存取控制"
+      },
+      {
+        "key": "C",
+        "text_en": "Role-based access control (RBAC)",
+        "text_zh": "角色基礎存取控制"
+      },
+      {
+        "key": "D",
+        "text_en": "Rule-based access control",
+        "text_zh": "規則基礎存取控制"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "題幹的訊號詞:job functions(職務功能)+高流動率。RBAC 把權限綁在「角色」上,人員到職/異動只要改變角色指派,權限自動跟上——大幅降低管理負擔,也天然抑制權限累積。「依職務給權限」幾乎等於 RBAC 的定義。",
+    "why_wrong_zh": {
+      "A": "DAC 由資源擁有者個別授權,人員異動時要逐一調整,高流動率下是災難。",
+      "B": "MAC 依安全標籤與許可等級,適合軍政高機密環境,對零售業過度且僵硬。",
+      "D": "規則基礎依全域規則(如防火牆 ACL)判斷,與職務功能無對應關係。"
+    },
+    "id": "D5-0056",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "A company wants employees of its business partner to access a shared cloud application using the partner's own corporate credentials, without creating local accounts. Which solution BEST achieves this?",
+    "stem_zh": "公司希望商業夥伴的員工用夥伴自家的企業帳號存取共用雲端應用,而不必另建本地帳號。哪個方案『最能』達成?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Create shared guest accounts for partner staff",
+        "text_zh": "為夥伴員工建立共用訪客帳號"
+      },
+      {
+        "key": "B",
+        "text_en": "Replicate the partner's LDAP directory into the local domain",
+        "text_zh": "把夥伴的 LDAP 目錄複寫到本地網域"
+      },
+      {
+        "key": "C",
+        "text_en": "Store partner passwords in an enterprise password vault",
+        "text_zh": "將夥伴密碼存放於企業密碼保險庫"
+      },
+      {
+        "key": "D",
+        "text_en": "Implement federated identity using SAML",
+        "text_zh": "以 SAML 實作聯邦式身分"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "「用自家帳號存取他方服務、不建本地帳號」就是聯邦式身分(federation)的定義:夥伴的 IdP(身分提供者)驗證使用者後,以 SAML assertion 向服務方(SP)證明身分——信任跨組織傳遞,帳號生命週期留在原組織管理。",
+    "why_wrong_zh": {
+      "A": "共用帳號摧毀可歸責性(accountability),是反模式。",
+      "B": "目錄複寫等於在本地重建帳號,管理負擔與同步風險俱增,正是題目要避免的。",
+      "C": "集中存他組織的密碼既增風險又不消除本地帳號需求,完全不對題。"
+    },
+    "id": "D5-0057",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "An internal audit finds that several employees who transferred between departments still hold permissions from their previous roles. Which control BEST prevents this situation from recurring?",
+    "stem_zh": "內部稽核發現多位跨部門調動的員工仍保有前職務的權限。哪個控制『最能』防止此情況再次發生?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Enforce a stronger password policy",
+        "text_zh": "強化密碼原則"
+      },
+      {
+        "key": "B",
+        "text_en": "Conduct periodic access reviews tied to the transfer process",
+        "text_zh": "實施與調動流程掛鉤的定期存取權審查"
+      },
+      {
+        "key": "C",
+        "text_en": "Require multifactor authentication for all systems",
+        "text_zh": "全系統要求多因子驗證"
+      },
+      {
+        "key": "D",
+        "text_en": "Log all privileged account activity",
+        "text_zh": "記錄所有特權帳號活動"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "題幹描述的是權限蔓延(privilege creep / authorization creep)——身分生命週期管理的失效。對症的控制是定期存取權審查/再認證(access review & recertification),並在調動(transfer)流程觸發權限重新評估,移除不再需要的舊權限。",
+    "why_wrong_zh": {
+      "A": "密碼強度管「驗證」,問題出在「授權」殘留,面向不對。",
+      "C": "MFA 同樣是驗證控制,擋不住合法帳號持有多餘權限。",
+      "D": "記錄是偵測性控制,能發現濫用但不能防止權限殘留本身。"
+    },
+    "id": "D5-0058",
+    "domain": "D5",
+    "topic": "d5-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  }
+]

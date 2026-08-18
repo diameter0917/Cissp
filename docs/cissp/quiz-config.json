@@ -1,0 +1,27 @@
+{
+  "namespace": "cissp",
+  "title": "CISSP 刷題",
+  "domains": {
+    "D1": "安全與風險管理",
+    "D2": "資產安全",
+    "D3": "安全架構與工程",
+    "D4": "通訊與網路安全",
+    "D5": "身分與存取管理",
+    "D6": "安全評估與測試",
+    "D7": "安全維運",
+    "D8": "軟體開發安全"
+  },
+  "weights": {
+    "D1": 0.16, "D2": 0.10, "D3": 0.13, "D4": 0.13,
+    "D5": 0.13, "D6": 0.12, "D7": 0.13, "D8": 0.10
+  },
+  "mock": { "minutes": 180, "questions": 125, "pass_scaled": 700 },
+  "modes": [
+    { "icon": "📚", "title": "依領域練習", "desc": "選 8 大 Domain 之一，即時回饋刷題", "href": "?mode=domain&domain=D1&n=40" },
+    { "icon": "🎲", "title": "權重隨機 50 題", "desc": "依 CISSP 官方權重抽樣", "href": "?mode=random&n=50" },
+    { "icon": "⏱️", "title": "模擬考", "desc": "125 題／180 分鐘，交卷後對答案", "href": "?mode=mock&set=1" },
+    { "icon": "📕", "title": "錯題本", "desc": "重練答錯的題目，連對 2 次移出", "href": "?mode=wrong" },
+    { "icon": "📊", "title": "學習統計", "desc": "各領域正確率與最弱主題", "href": "?mode=stats" },
+    { "icon": "🏠", "title": "回追蹤索引", "desc": "看 126 封電子報進度", "href": "../index.html" }
+  ]
+}

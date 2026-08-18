@@ -1,0 +1,2673 @@
+[
+  {
+    "stem_en": "Which software development model is BEST described as a risk-driven, iterative approach that repeatedly determines objectives, identifies and resolves risks, develops and tests, and then plans the next iteration?",
+    "stem_zh": "哪種軟體開發模型最適合描述為『風險驅動』的迭代方法,反覆進行確立目標、識別並處理風險、開發與測試、規劃下一輪迭代?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Waterfall model",
+        "text_zh": "瀑布模型"
+      },
+      {
+        "key": "B",
+        "text_en": "V-Model V",
+        "text_zh": "模型"
+      },
+      {
+        "key": "C",
+        "text_en": "Spiral model",
+        "text_zh": "螺旋模型"
+      },
+      {
+        "key": "D",
+        "text_en": "Scrum",
+        "text_zh": "敏捷 Scrum 框架"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Spiral（螺旋模型,Barry Boehm 提出）的核心識別字＝risk-driven（風險驅動）＋迭代:每一圈都先識別並處理風險,再開發測試、規劃下一輪,兼具瀑布的階段性與迭代的彈性。記憶法:考題看到 risk-driven 就選 Spiral。",
+    "why_wrong_zh": {
+      "A": "Waterfall 是線性循序、需求先定且難改,沒有迭代與風險驅動特徵。",
+      "B": "V-Model 的特徵是每個開發階段配對一個對應測試階段,重點是驗證與確認,不是風險驅動。",
+      "D": "Scrum 是敏捷框架,以短衝刺 (sprint) 與自組織團隊為特徵,並非以風險分析驅動每輪迭代。"
+    },
+    "id": "D8-0001",
+    "domain": "D8",
+    "topic": "d8-p1",
+    "unit": "P1-D8-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-036.html",
+    "unit_title_zh": "Domain 8 全景與 SDLC"
+  },
+  {
+    "stem_en": "A defense contractor is starting a payroll system project. All requirements are fully defined up front, changes are not expected, and the contract mandates formal documentation and sign-off at the end of each phase. Which development methodology is MOST appropriate?",
+    "stem_zh": "某國防承包商啟動薪資系統專案:所有需求已事先完整定義、預期不會變更,且合約要求每階段結束須有正式文件與簽核。哪種開發方法最適合?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Waterfall",
+        "text_zh": "瀑布模型"
+      },
+      {
+        "key": "B",
+        "text_en": "Scrum",
+        "text_zh": "敏捷 Scrum 框架"
+      },
+      {
+        "key": "C",
+        "text_en": "Rapid Application Development (RAD)",
+        "text_zh": "快速應用開發"
+      },
+      {
+        "key": "D",
+        "text_en": "Kanban",
+        "text_zh": "看板方法"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Waterfall 正適合『需求明確固定、變更少、文件與階段簽核要求重』的情境:線性循序、每階段完成才進下一階段,天然配合正式文件與關卡簽核。判斷邏輯:CISSP 不考『哪個模型最新最潮』,而是依專案特性（需求穩定度、文件/合規要求）選模型——不要反射性選敏捷。",
+    "why_wrong_zh": {
+      "B": "Scrum 為需求頻繁變化的專案設計,且敏捷宣言主張『可運作軟體 > 詳盡文件』,與合約的重文件要求相反。",
+      "C": "RAD 強調快速原型與持續使用者回饋、少依嚴格計畫,不符需求已固定且重簽核的情境。",
+      "D": "Kanban 是持續流動的視覺化工作管理,沒有階段性正式簽核的結構。"
+    },
+    "id": "D8-0002",
+    "domain": "D8",
+    "topic": "d8-p1",
+    "unit": "P1-D8-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-036.html",
+    "unit_title_zh": "Domain 8 全景與 SDLC"
+  },
+  {
+    "stem_en": "Which statement BEST describes the PRIMARY difference between continuous delivery and continuous deployment?",
+    "stem_zh": "下列哪個敘述最能描述 Continuous Delivery（持續交付）與 Continuous Deployment（持續部署）的主要差異?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Continuous delivery keeps code always deployable but requires manual approval before production; continuous deployment releases automatically once tests pass",
+        "text_zh": "持續交付讓程式隨時可部署但上正式環境需人工核可;持續部署過測後即自動上線"
+      },
+      {
+        "key": "B",
+        "text_en": "Continuous delivery applies only to infrastructure, while continuous deployment applies to application code",
+        "text_zh": "持續交付僅適用基礎設施,持續部署僅適用應用程式碼"
+      },
+      {
+        "key": "C",
+        "text_en": "Continuous deployment requires a manual approval step, while continuous delivery is fully automated",
+        "text_zh": "持續部署需人工核可,持續交付則全自動"
+      },
+      {
+        "key": "D",
+        "text_en": "They are identical terms that can be used interchangeably",
+        "text_zh": "兩者是可互換的同義詞"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "兩者都建立在 CI 的自動化之上,官方考綱明示關鍵差異只在最後一步是否需要人工介入:Delivery＝程式隨時處於可部署狀態,但部署到正式環境需人工核可;Deployment＝通過自動化測試即自動上線。記憶法:Deployment 自動『部』上去,Delivery 只『交』到門口等你簽收。",
+    "why_wrong_zh": {
+      "B": "兩者都描述應用程式的交付/部署流程,與基礎設施或應用之分無關。",
+      "C": "恰好講反了——需人工核可的是 Delivery,全自動的是 Deployment。",
+      "D": "兩者並非同義詞,差異就在『人工核可』這一步,是考試常考的鑑別點。"
+    },
+    "id": "D8-0003",
+    "domain": "D8",
+    "topic": "d8-p1",
+    "unit": "P1-D8-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-037.html",
+    "unit_title_zh": "DevSecOps 與 CI/CD 安全"
+  },
+  {
+    "stem_en": "After studying the SolarWinds supply chain compromise, a CISO wants assurance that software artifacts produced by the CI/CD pipeline have not been tampered with before they are deployed to production. Which control BEST provides this assurance?",
+    "stem_zh": "研究 SolarWinds 供應鏈事件後,CISO 希望確保 CI/CD 管線產出的軟體 artifact 在部署到正式環境前未被竄改。哪個控制最能提供此保證?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Running DAST scans against the production environment weekly",
+        "text_zh": "每週對正式環境執行 DAST 掃描"
+      },
+      {
+        "key": "B",
+        "text_en": "Requiring peer code review for every merge request",
+        "text_zh": "每個合併請求都要求同儕程式碼審查"
+      },
+      {
+        "key": "C",
+        "text_en": "Segmenting the production network from the development network",
+        "text_zh": "將正式環境網路與開發環境網路隔離"
+      },
+      {
+        "key": "D",
+        "text_en": "Digitally signing build artifacts and verifying signatures and provenance before deployment",
+        "text_zh": "對建置 artifact 數位簽章,部署前驗證簽章與來源證明"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "題目要的是產物完整性（integrity）與來源可驗:artifact 簽章＋部署前驗證簽章與來源（如 SLSA 來源證明）能直接偵測建置之後的任何竄改,正對管線投毒/供應鏈植入的威脅。判斷邏輯:題幹關鍵字是 tampered——選能直接『驗證完整性』的控制,而非泛用的安全措施。",
+    "why_wrong_zh": {
+      "A": "DAST 找的是執行期漏洞,無法辨識『功能正常但被植入後門』的產物。",
+      "B": "同儕審查看的是原始碼,SolarWinds 型攻擊發生在建置環節,審查程式碼看不到建置後的竄改。",
+      "C": "網路隔離能降低橫向移動風險,但無法驗證 artifact 本身是否完整未被竄改。"
+    },
+    "id": "D8-0004",
+    "domain": "D8",
+    "topic": "d8-p1",
+    "unit": "P1-D8-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-037.html",
+    "unit_title_zh": "DevSecOps 與 CI/CD 安全"
+  },
+  {
+    "stem_en": "A security architect reviews an application and concludes that even if the developers had implemented every part of the specification perfectly, the vulnerability would still exist. Which type of source-code weakness does this BEST describe?",
+    "stem_zh": "安全架構師審查應用程式後判斷:即使開發者完美實作規格的每一部分,該漏洞仍會存在。這最符合哪種原始碼層級弱點?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Implementation flaw",
+        "text_zh": "實作缺陷"
+      },
+      {
+        "key": "B",
+        "text_en": "Security misconfiguration",
+        "text_zh": "安全組態錯誤"
+      },
+      {
+        "key": "C",
+        "text_en": "Design flaw",
+        "text_zh": "設計缺陷"
+      },
+      {
+        "key": "D",
+        "text_en": "Zero-day vulnerability",
+        "text_zh": "零時差漏洞"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "官方考綱對 design flaw 的定義正是『即使開發者一切都做對,漏洞仍會存在』——問題出在設計本身,不是程式寫錯。判斷邏輯:看到『做對也有漏』這句關鍵描述→設計缺陷;這也解釋了為何威脅建模必須在設計期進行,實作後才修設計問題成本極高。",
+    "why_wrong_zh": {
+      "A": "Implementation flaw 是『好設計被寫錯』——與題幹『完美實作仍有漏』正好相反。",
+      "B": "組態錯誤發生在部署/維運層的設定,不是原始碼層級的設計問題。",
+      "D": "Zero-day 描述的是『尚無修補即被利用』的漏洞狀態,不是弱點成因的分類。"
+    },
+    "id": "D8-0005",
+    "domain": "D8",
+    "topic": "d8-p1",
+    "unit": "P1-D8-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-038.html",
+    "unit_title_zh": "OWASP 與常見漏洞"
+  },
+  {
+    "stem_en": "Customers of an online bank report that money transfers they never initiated were executed from their accounts. Investigation shows the forged requests were sent from the victims' own browsers while they were still logged in to the bank, triggered when they visited a malicious website. Which attack does this BEST describe?",
+    "stem_zh": "網路銀行客戶回報帳戶出現非本人發起的轉帳。調查顯示偽造請求是在受害者仍登入銀行期間,於造訪某惡意網站時從受害者自己的瀏覽器送出。這最符合哪種攻擊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SQL injection SQL",
+        "text_zh": "注入"
+      },
+      {
+        "key": "B",
+        "text_en": "Cross-site scripting (XSS)",
+        "text_zh": "跨站腳本"
+      },
+      {
+        "key": "C",
+        "text_en": "Cross-site request forgery (CSRF)",
+        "text_zh": "跨站請求偽造"
+      },
+      {
+        "key": "D",
+        "text_en": "Session hijacking",
+        "text_zh": "工作階段劫持"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "CSRF 三特徵在題幹齊備:受害者已登入＋請求由受害者自己的瀏覽器發出＋由第三方惡意網站觸發——攻擊者利用網站對『已驗證使用者』的信任,冒用其身分送出非本意請求。防禦:anti-CSRF token＋SameSite cookie。",
+    "why_wrong_zh": {
+      "A": "SQLi 是把惡意輸入當 SQL 執行、攻擊資料庫層,與冒用使用者身分送請求無關。",
+      "B": "XSS 是把攻擊者的腳本注入頁面在受害者瀏覽器執行;本題沒有腳本注入銀行網站,而是誘發偽造請求。",
+      "D": "Session hijacking 是竊取 session token 後由『攻擊者的』環境冒用;本題請求來自受害者本人的瀏覽器。"
+    },
+    "id": "D8-0006",
+    "domain": "D8",
+    "topic": "d8-p1",
+    "unit": "P1-D8-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-038.html",
+    "unit_title_zh": "OWASP 與常見漏洞"
+  },
+  {
+    "stem_en": "A development team wants a security testing approach that observes the application while it is running AND has internal visibility through instrumentation of the code, combining the strengths of static and dynamic analysis. Which approach BEST meets this requirement?",
+    "stem_zh": "開發團隊想要一種安全測試方法:在應用程式執行中觀察,同時透過程式碼插樁取得內部視角,結合靜態與動態分析的優點。哪種方法最符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Static application security testing (SAST)",
+        "text_zh": "靜態應用安全測試"
+      },
+      {
+        "key": "B",
+        "text_en": "Interactive application security testing (IAST)",
+        "text_zh": "互動式應用安全測試"
+      },
+      {
+        "key": "C",
+        "text_en": "Dynamic application security testing (DAST)",
+        "text_zh": "動態應用安全測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Software composition analysis (SCA)",
+        "text_zh": "軟體組成分析"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "IAST＝執行中（DAST 特性）＋內部插樁可見原始碼（SAST 特性）,官方定義即『SAST 與 DAST 的結合:在執行中的系統上測試,同時能存取原始碼』。判斷邏輯:題幹同時出現 running＋instrumentation/內部視角兩個條件→IAST。",
+    "why_wrong_zh": {
+      "A": "SAST 只分析原始碼、不執行程式,缺少『執行中觀察』這個條件。",
+      "C": "DAST 只從外部攻擊執行中的應用（黑箱）,沒有內部插樁與原始碼可見性。",
+      "D": "SCA 盤點第三方/開源元件的版本與已知漏洞,不測試自寫程式的執行行為。"
+    },
+    "id": "D8-0007",
+    "domain": "D8",
+    "topic": "d8-p1",
+    "unit": "P1-D8-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-039.html",
+    "unit_title_zh": "安全測試與開源風險"
+  },
+  {
+    "stem_en": "A critical remote code execution vulnerability is announced in a widely used open-source logging library, similar to the Log4Shell event. Management asks the security team to determine, within hours, which of the organization's 200 applications contain the affected component. Which of the following would BEST enable the team to answer quickly?",
+    "stem_zh": "一個被廣泛使用的開源日誌函式庫爆出重大遠端程式碼執行漏洞,情境類似 Log4Shell。管理層要求安全團隊在數小時內確認 200 個應用中哪些含有受影響元件。下列何者最能讓團隊快速回答?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "An up-to-date SBOM maintained for each application",
+        "text_zh": "每個應用都維護最新的 SBOM（軟體物料清單）"
+      },
+      {
+        "key": "B",
+        "text_en": "Launching new DAST scans against all 200 applications",
+        "text_zh": "對 200 個應用全部重新執行 DAST 掃描"
+      },
+      {
+        "key": "C",
+        "text_en": "Reviewing the most recent annual penetration test reports",
+        "text_zh": "審閱最近一次年度滲透測試報告"
+      },
+      {
+        "key": "D",
+        "text_en": "Searching firewall logs for exploitation attempts",
+        "text_zh": "搜尋防火牆日誌中的攻擊嘗試紀錄"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "SBOM 列出每個應用的所有元件與相依（含『相依的相依』）,漏洞爆發時直接查清單即可定位受影響系統——這正是 SBOM 作為軟體供應鏈透明度基礎的核心價值,也是 Log4Shell 後 SBOM 成為標配的原因。判斷邏輯:問題是『哪些系統含有該元件』的盤點問題,答案是事先備妥的元件清單（產出物）;SCA 是產生與分析它的工具,兩者互補。",
+    "why_wrong_zh": {
+      "B": "DAST 從外部黑箱打站,對深埋在相依中的函式庫偵測不可靠,且掃 200 個應用耗時,不符『數小時內』。",
+      "C": "滲透測試是時間點快照,漏洞公布前的報告不會涵蓋新 CVE,也不是元件盤點。",
+      "D": "防火牆日誌只能看『是否已被攻擊』,無法回答『哪些系統含有該元件』。"
+    },
+    "id": "D8-0008",
+    "domain": "D8",
+    "topic": "d8-p1",
+    "unit": "P1-D8-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-039.html",
+    "unit_title_zh": "安全測試與開源風險"
+  },
+  {
+    "stem_en": "A database administrator secretly inserts code into a production system that will erase critical tables if his employee ID ever disappears from the payroll file. Which type of malware does this BEST describe?",
+    "stem_zh": "某資料庫管理員在正式系統中偷偷植入程式碼,一旦他的員工編號從薪資檔中消失,就會刪除關鍵資料表。這最符合哪種惡意程式?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Worm",
+        "text_zh": "蠕蟲"
+      },
+      {
+        "key": "B",
+        "text_en": "Trojan",
+        "text_zh": "木馬"
+      },
+      {
+        "key": "C",
+        "text_en": "Rootkit",
+        "text_zh": "隱匿程式"
+      },
+      {
+        "key": "D",
+        "text_en": "Logic bomb",
+        "text_zh": "邏輯炸彈"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Logic bomb 的識別特徵＝『滿足特定條件才觸發』的惡意碼,典型情境正是內部人員預埋報復程式（被解僱/名字從薪資檔消失時發作）。判斷邏輯:看到 if/當某條件成立才發作→邏輯炸彈;這也是內部威脅（insider threat）常考的組合。",
+    "why_wrong_zh": {
+      "A": "Worm 的特徵是自我複製並透過網路自動傳播;此程式碼不傳播、只等條件觸發。",
+      "B": "Trojan 靠偽裝成正常程式誘騙使用者安裝;此碼由內部人直接植入,沒有偽裝誘騙環節。",
+      "C": "Rootkit 的重點是隱藏自身存在並維持高權限,不是條件觸發的破壞行為。"
+    },
+    "id": "D8-0009",
+    "domain": "D8",
+    "topic": "d8-p1",
+    "unit": "P1-D8-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-040.html",
+    "unit_title_zh": "外購軟體與惡意程式"
+  },
+  {
+    "stem_en": "A security manager must evaluate a niche COTS application before purchase. The product has little public security research, and the vendor will not release source code. Which of the following BEST helps assess the security of this product?",
+    "stem_zh": "安全經理須在採購前評估一套小眾 COTS 應用。該產品的公開安全研究極少,且供應商不提供原始碼。下列何者最有助於評估其安全性?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Research the vendor's security certifications (e.g., ISO/IEC 27034, ISO/IEC 27001) and its vulnerability-handling history",
+        "text_zh": "查證供應商安全認證（如 ISO/IEC 27034、ISO/IEC 27001）與其漏洞處理紀錄"
+      },
+      {
+        "key": "B",
+        "text_en": "Require the vendor to hand over source code for in-house SAST",
+        "text_zh": "要求供應商交出原始碼供內部執行 SAST"
+      },
+      {
+        "key": "C",
+        "text_en": "Assume it is secure because widely used COTS products are tested by many security researchers",
+        "text_zh": "認定其安全,因為廣泛使用的 COTS 已被大量安全研究者測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Add a contract clause requiring external audits of the development process",
+        "text_zh": "在合約中加入開發過程外部稽核條款"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "官方考綱指出:對小眾（niche）COTS 產品,應查證供應商認證（如 ISO/IEC 27034 應用安全、ISO/IEC 27001 ISMS、FedRAMP）並研究其已揭露漏洞與修補紀錄,以判斷供應商對安全的重視程度。判斷邏輯:COTS 是黑箱＋採購前評估→評的是『供應商』的安全成熟度,不是產品內部。",
+    "why_wrong_zh": {
+      "B": "COTS 是不供修改的成品,供應商通常不會提供原始碼,此路不可行。",
+      "C": "『廣泛使用才有大量研究者檢視』的前提在小眾產品不成立,正是題幹刻意排除的情境。",
+      "D": "合約綁外部稽核適用於『第三方客製開發』;現成 COTS 已開發完成,沒有開發過程可供稽核。"
+    },
+    "id": "D8-0010",
+    "domain": "D8",
+    "topic": "d8-p1",
+    "unit": "P1-D8-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-040.html",
+    "unit_title_zh": "外購軟體與惡意程式"
+  },
+  {
+    "stem_en": "A security manager assessing her company's development organization finds that all teams follow formal, documented, organization-wide development processes with peer reviews and training programs, but no quantitative measures of process or product quality are collected. Under the SW-CMM, which maturity level BEST describes this organization?",
+    "stem_zh": "安全經理評估公司的開發組織,發現所有團隊都遵循正式,文件化,全組織一致的開發流程,並有同儕審查與訓練計畫,但尚未蒐集任何流程或產品品質的量化度量。依 SW-CMM,哪個成熟度等級最能描述這個組織?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Level 2: Repeatable",
+        "text_zh": "第二級:可重複"
+      },
+      {
+        "key": "B",
+        "text_en": "Level 3: Defined",
+        "text_zh": "第三級:已定義"
+      },
+      {
+        "key": "C",
+        "text_en": "Level 4: Managed",
+        "text_zh": "第四級:已管理"
+      },
+      {
+        "key": "D",
+        "text_en": "Level 5: Optimizing",
+        "text_zh": "第五級:最佳化"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SW-CMM 第三級 Defined(已定義)的標誌正是:開發者依正式,文件化的標準流程運作(含同儕審查,訓練計畫,組織級流程定義)——但尚未量化度量。判斷邏輯:『有文件化標準流程,沒有度量』＝Defined;一旦加上量化指標才升到 Managed。記憶:1 混亂→2 可重複→3 已定義(文件化)→4 已管理(量化)→5 最佳化(持續改善)。",
+    "why_wrong_zh": {
+      "A": "Repeatable 只有基本專案管理(規劃,組態,需求管理),還沒有『全組織文件化標準流程』。",
+      "C": "Managed 的特徵是量化度量軟體流程與產品,題幹明說尚未蒐集度量,故未達第四級。",
+      "D": "Optimizing 是在量化基礎上做持續改善(缺陷預防,流程/技術變更管理),距離題幹情境還差兩級。"
+    },
+    "id": "D8-0011",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-076.html",
+    "unit_title_zh": "SDLC 模型與成熟度深入"
+  },
+  {
+    "stem_en": "An organization adopting the IDEAL model for software process improvement has just finished analyzing the current state of its development practices and produced general recommendations for change. Which phase should the organization enter NEXT?",
+    "stem_zh": "某組織採用 IDEAL 模型進行軟體流程改善,剛完成對現行開發實務的現況分析並提出概略的變更建議。組織『接下來』應進入哪個階段?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Acting",
+        "text_zh": "行動"
+      },
+      {
+        "key": "B",
+        "text_en": "Establishing",
+        "text_zh": "建立"
+      },
+      {
+        "key": "C",
+        "text_en": "Learning",
+        "text_zh": "學習"
+      },
+      {
+        "key": "D",
+        "text_en": "Initiating",
+        "text_zh": "啟動"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "IDEAL 五階段:Initiating(啟動)→Diagnosing(診斷)→Establishing(建立)→Acting(行動)→Learning(學習)。題幹描述的『分析現況並提出概略建議』正是 Diagnosing(診斷)階段的產出,下一步是 Establishing:依診斷建議發展具體行動計畫。記憶:I-D-E-A-L 首字母順序即階段順序,先診斷,再定計畫,才動手。",
+    "why_wrong_zh": {
+      "A": "Acting 是開發,測試,精煉並實作解決方案的階段,必須先有 Establishing 的具體計畫。",
+      "C": "Learning 是最後階段,持續分析成效並提出新行動,還早。",
+      "D": "Initiating(闡明變更的業務理由,建立支持,配置基礎設施)是第一階段,題幹已越過。"
+    },
+    "id": "D8-0012",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-076.html",
+    "unit_title_zh": "SDLC 模型與成熟度深入"
+  },
+  {
+    "stem_en": "A software vendor proudly advertises its SW-CMM Level 5 (Optimizing) rating, yet its products continue to ship with security vulnerabilities. Which statement BEST explains this situation to executive management?",
+    "stem_zh": "某軟體供應商自豪地宣傳其 SW-CMM 第五級(最佳化)評級,但其產品仍持續出現安全漏洞。哪個說法最能向高階管理層解釋這個情況?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The Level 5 rating must have expired, since ratings require annual reassessment",
+        "text_zh": "第五級評級必定已過期,因為評級須每年重新評估"
+      },
+      {
+        "key": "B",
+        "text_en": "Level 5 only applies to project management processes, not to coding activities",
+        "text_zh": "第五級只適用於專案管理流程,與寫程式活動無關"
+      },
+      {
+        "key": "C",
+        "text_en": "The vendor most likely misrepresented its rating, since Level 5 processes cannot produce defects",
+        "text_zh": "供應商很可能謊報評級,因為第五級流程不會產出缺陷"
+      },
+      {
+        "key": "D",
+        "text_en": "SW-CMM measures software process maturity and does not explicitly address security, so a security-focused model such as SAMM is also needed SW-CMM",
+        "text_zh": "衡量的是軟體流程成熟度,並未明確涵蓋安全,故還需要 SAMM 這類安全導向模型"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "官方考點:CMM 不明確涵蓋安全(doesn't explicitly address security)。SW-CMM 衡量的是流程的成熟與品質(可重複,文件化,量化,持續改善),流程再成熟也不代表已嵌入威脅建模,安全編碼等安全實務——那要靠 SAMM/BSIMM 這類軟體『安全』成熟度模型。判斷邏輯:向管理層解釋要選『模型適用範圍』的正確陳述,而非指控造假。",
+    "why_wrong_zh": {
+      "A": "題幹沒有任何評級過期的證據;這是憑空假設,不是最佳解釋。",
+      "B": "第五級涵蓋整體軟體流程(含缺陷預防,流程改善),不是只管專案管理。",
+      "C": "成熟流程能降低缺陷但不保證零缺陷,更不保證『安全』缺陷為零;指控造假缺乏依據。"
+    },
+    "id": "D8-0013",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-076.html",
+    "unit_title_zh": "SDLC 模型與成熟度深入"
+  },
+  {
+    "stem_en": "A financial services company fully automates its build and test pipeline so every change that passes automated testing is always in a deployable state. However, its change advisory board requires a human to approve each release before it reaches production. Which practice BEST describes this approach?",
+    "stem_zh": "某金融服務公司將建置與測試管線完全自動化,每個通過自動化測試的變更都隨時處於可部署狀態;但其變更諮詢委員會要求每次發布上正式環境前須經人工核准。哪個實務最能描述這個做法?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Continuous delivery",
+        "text_zh": "持續交付"
+      },
+      {
+        "key": "B",
+        "text_en": "Continuous deployment",
+        "text_zh": "持續部署"
+      },
+      {
+        "key": "C",
+        "text_en": "Continuous integration",
+        "text_zh": "持續整合"
+      },
+      {
+        "key": "D",
+        "text_en": "Blue-green deployment",
+        "text_zh": "藍綠部署"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Continuous Delivery 與 Continuous Deployment 的關鍵差異在發布最後一步是否有人工介入:Delivery＝程式碼隨時可部署,但上正式環境需人工核准;Deployment＝通過自動化測試即自動上線,無人工介入。題幹『自動化到可部署＋人工核准』正是持續交付。記憶:delivery 送到門口(等你簽收),deployment 直接進門。",
+    "why_wrong_zh": {
+      "B": "持續部署是通過測試後自動部署到正式環境,無人工核准步驟,與題幹相反。",
+      "C": "持續整合只涵蓋『提交即合併並觸發單元/整合測試』,未涵蓋隨時可發布與核准流程。",
+      "D": "藍綠部署是『如何切換』新舊環境的部署技術,與『是否人工核准』無關。"
+    },
+    "id": "D8-0014",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-077.html",
+    "unit_title_zh": "DevSecOps 與環境控制深入"
+  },
+  {
+    "stem_en": "After a production outage, a senior developer requests permanent, direct deployment access to the production environment so future fixes can be applied faster. What is the security manager's BEST response?",
+    "stem_zh": "一次正式環境故障後,資深開發者要求取得永久,直接的正式環境部署權限,以便未來更快套用修正。安全經理的最佳回應是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deny the request and require all changes to go through the controlled release process, preserving separation of duties between development and production",
+        "text_zh": "拒絕請求,要求所有變更經受控發行流程,維持開發與正式環境的職責分離"
+      },
+      {
+        "key": "B",
+        "text_en": "Grant the access but require the developer to document every change made in production",
+        "text_zh": "授予權限,但要求開發者記錄在正式環境所做的每項變更"
+      },
+      {
+        "key": "C",
+        "text_en": "Grant the access only during business hours when the operations team can observe",
+        "text_zh": "只在維運團隊可觀察的上班時間授予權限"
+      },
+      {
+        "key": "D",
+        "text_en": "Approve the request on condition that the developer uses multifactor authentication",
+        "text_zh": "以開發者使用多因子驗證為條件核准請求"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "環境隔離的鐵則之一:開發者不應有正式環境的不受控部署權(職責分離)。緊急修正應走受控的變更/發行流程(必要時用緊急變更程序),而非開後門。判斷邏輯:Think like a manager——流程優先,單一事件的『快』不能犧牲結構性控制;開發者能直改正式環境會使未授權/未測試變更與舞弊風險大增。",
+    "why_wrong_zh": {
+      "B": "事後記錄是偵測性補償,擋不住未經審查的變更進入正式環境,職責分離已被破壞。",
+      "C": "限制時段沒有改變『開發者可不受控直改正式環境』的本質,只是縮小視窗。",
+      "D": "MFA 強化的是『身分確認』,解決不了『這個身分本來就不該有此權限』的授權問題。"
+    },
+    "id": "D8-0015",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-077.html",
+    "unit_title_zh": "DevSecOps 與環境控制深入"
+  },
+  {
+    "stem_en": "A development team discovers most of its security defects during pre-release penetration testing, when fixes are slow and expensive. Which change would MOST effectively reduce the cost of remediating these defects?",
+    "stem_zh": "某開發團隊的大多數安全缺陷都是在發布前滲透測試才發現,此時修正既慢又貴。哪項改變最能有效降低修復這些缺陷的成本?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Hire additional penetration testers so tests can run more frequently",
+        "text_zh": "增聘滲透測試人員以提高測試頻率"
+      },
+      {
+        "key": "B",
+        "text_en": "Extend the penetration testing window in the release schedule",
+        "text_zh": "在發布時程中拉長滲透測試期間"
+      },
+      {
+        "key": "C",
+        "text_en": "Integrate automated security gates (secret scanning, SAST, SCA) earlier in the CI/CD pipeline so defects are caught at commit and build time",
+        "text_zh": "在 CI/CD 管線更早階段整合自動化安全關卡(祕密掃描,SAST,SCA),在提交與建置時就攔到缺陷"
+      },
+      {
+        "key": "D",
+        "text_en": "Deploy a web application firewall to block exploitation of the defects in production",
+        "text_zh": "部署 WAF 在正式環境阻擋缺陷被利用"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "這是 Shift Left(左移)的經典情境:缺陷越晚發現,修復成本越高。把自動化安全檢查(pre-commit hook,secret scanning,SAST,SCA,未過不建置)織入管線早期,讓開發者在提交/建置當下就得到回饋,從根本降低修復成本。判斷邏輯:問『降低修復成本』→ 改變『發現時點』,而非加強最後一關。",
+    "why_wrong_zh": {
+      "A": "增加人力仍在後期發現問題,發現時點不變,修復成本依然高。",
+      "B": "拉長測試期間同樣不改變發現時點,反而拖慢交付。",
+      "D": "WAF 是執行期緩解(治標),缺陷仍在程式碼裡,也沒有降低修復成本。"
+    },
+    "id": "D8-0016",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-077.html",
+    "unit_title_zh": "DevSecOps 與環境控制深入"
+  },
+  {
+    "stem_en": "During a web application penetration test, the tester enters ' OR '1'='1 into the login form and gains administrative access. Which control would MOST effectively eliminate the root cause of this vulnerability?",
+    "stem_zh": "在網頁應用滲透測試中,測試者在登入表單輸入 ' OR '1'='1 便取得管理員存取權。哪個控制最能有效根除這個漏洞的根因?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deploy a web application firewall in front of the application",
+        "text_zh": "在應用程式前部署 WAF"
+      },
+      {
+        "key": "B",
+        "text_en": "Encrypt all sensitive data stored in the database",
+        "text_zh": "加密資料庫中所有敏感資料"
+      },
+      {
+        "key": "C",
+        "text_en": "Rewrite database access to use parameterized queries (prepared statements)",
+        "text_zh": "改用參數化查詢(預備語句)存取資料庫"
+      },
+      {
+        "key": "D",
+        "text_en": "Filter user input to remove quotation marks and SQL keywords",
+        "text_zh": "過濾使用者輸入移除引號與 SQL 關鍵字"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "這是 SQL Injection:輸入被當成 SQL 執行而繞過登入。注入的共通根因是『資料被當指令』,參數化查詢讓資料與指令分離,資料永遠是資料,從根本消除漏洞——這是防 SQLi 最根本的控制(再配輸入驗證與 DB 最小權限)。判斷邏輯:題目問『根除根因(root cause)』→ 選改變程式碼行為的控制,不是外掛防護。",
+    "why_wrong_zh": {
+      "A": "WAF 是外部緩解層,可被繞過(編碼,變形 payload),漏洞本身仍在,非根因解。",
+      "B": "加密保護的是靜態資料機密性;應用程式帶著合法權限查詢,注入照樣讀得到解密後資料。",
+      "D": "過濾/黑名單特定字元易被編碼繞過,且可能破壞正常輸入(如姓名 O'Brien),不如參數化可靠。"
+    },
+    "id": "D8-0017",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-078.html",
+    "unit_title_zh": "注入/XSS/CSRF 與安全編碼深入"
+  },
+  {
+    "stem_en": "A CISO wants to reduce source-code vulnerabilities across dozens of development teams in a way that is consistent and verifiable. Which approach would be MOST effective?",
+    "stem_zh": "資安長希望以一致且可驗證的方式,降低數十個開發團隊的原始碼漏洞。哪個做法最有效?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Publish secure coding guidelines that recommend best practices for each language",
+        "text_zh": "發布各語言的安全編碼指引,建議最佳實務"
+      },
+      {
+        "key": "B",
+        "text_en": "Provide annual secure coding awareness training for all developers",
+        "text_zh": "為所有開發者提供年度安全編碼認知訓練"
+      },
+      {
+        "key": "C",
+        "text_en": "Increase the frequency of dynamic scans against production applications",
+        "text_zh": "提高對正式環境應用的動態掃描頻率"
+      },
+      {
+        "key": "D",
+        "text_en": "Enforce mandatory secure coding standards that are enforceable across all development efforts and verifiably implemented",
+        "text_zh": "強制推行安全編碼標準,可跨所有開發工作執行且可驗證落實"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "官方考點:嚴格落實的安全編碼『標準(standards)』是降低原始碼漏洞最有效的方法。標準＝強制,可跨全組織執行(enforceable),可驗證(verifiably implemented)——確保開發者『一定以特定方式做某些事,避免另一些事』;題幹的『一致且可驗證』正對應標準的定義。記憶:standards 強制,guidelines 建議保彈性。",
+    "why_wrong_zh": {
+      "A": "指引(guidelines)只是建議,保留彈性,無法保證一致與可驗證,降漏效果不如標準。",
+      "B": "訓練提升意識但不具強制力與驗證機制,無法確保寫碼行為一致。",
+      "C": "動態掃描是事後偵測已存在的漏洞,無法『減少寫出』漏洞,且在正式環境已太晚。"
+    },
+    "id": "D8-0018",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-078.html",
+    "unit_title_zh": "注入/XSS/CSRF 與安全編碼深入"
+  },
+  {
+    "stem_en": "A developer blocks the string \"<script>\" from a comment field, yet attackers still inject executable scripts using encoded payloads and event-handler attributes. Which input validation approach would BEST address this weakness?",
+    "stem_zh": "開發者在留言欄位封鎖了 \"<script>\" 字串,但攻擊者仍能用編碼後的 payload 與事件處理屬性注入可執行腳本。哪種輸入驗證方法最能解決這個弱點?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Expand the blocklist to include more known malicious strings",
+        "text_zh": "擴充黑名單納入更多已知惡意字串"
+      },
+      {
+        "key": "B",
+        "text_en": "Use allowlist (whitelist) validation that accepts only known-good input patterns",
+        "text_zh": "改用白名單驗證,只接受已知合法的輸入格式"
+      },
+      {
+        "key": "C",
+        "text_en": "Move the validation logic into client-side JavaScript for immediate feedback",
+        "text_zh": "把驗證邏輯移到用戶端 JavaScript 以即時回饋"
+      },
+      {
+        "key": "D",
+        "text_en": "Truncate all input fields to a maximum safe length",
+        "text_zh": "將所有輸入欄位截斷至安全長度上限"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "題幹演示了黑名單的結構性缺陷:壞字串的變形(編碼,大小寫,事件屬性如 onerror)列舉不完,永遠追著攻擊者跑。白名單只允許已知合法格式(例如限定字元集與格式),未知的變形一律拒絕,可靠得多;再配輸出編碼作為防 XSS 主力。判斷邏輯:enumerate goodness, not badness(列舉好的,而非壞的)。",
+    "why_wrong_zh": {
+      "A": "擴充黑名單治標不治本,新編碼與新屬性層出不窮,依然可被繞過。",
+      "C": "用戶端驗證可被攻擊者直接繞過(改請求即可),只能當使用者體驗,不能當安全控制。",
+      "D": "截長度擋不住短小的 XSS payload(如 <img src=x onerror=...>),與弱點無關。"
+    },
+    "id": "D8-0019",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-078.html",
+    "unit_title_zh": "注入/XSS/CSRF 與安全編碼深入"
+  },
+  {
+    "stem_en": "A development manager wants to identify security flaws in the team's proprietary source code as early as possible, before the application is compiled or deployed to any test environment. Which testing approach BEST meets this requirement?",
+    "stem_zh": "開發經理希望在應用程式編譯或部署到任何測試環境之前,盡早找出團隊自寫原始碼中的安全缺陷。哪種測試方法最符合這個需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Dynamic application security testing (DAST)",
+        "text_zh": "動態應用安全測試"
+      },
+      {
+        "key": "B",
+        "text_en": "Static application security testing (SAST)",
+        "text_zh": "靜態應用安全測試"
+      },
+      {
+        "key": "C",
+        "text_en": "Interactive application security testing (IAST)",
+        "text_zh": "互動式應用安全測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Software composition analysis (SCA)",
+        "text_zh": "軟體組成分析"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SAST＝不執行程式,直接檢查原始碼(甚至編譯前)找缺陷與違反安全編碼政策之處,是最早期可用的自動化掃描,也是可擴展的程式碼安全審查方法。判斷邏輯:關鍵字『自寫原始碼＋編譯前/部署前＋最早』→ 靜態分析。記憶:S＝Static＝Source code＝早。",
+    "why_wrong_zh": {
+      "A": "DAST 需要執行中的應用程式,通常在 SAST 之後,時點不符『編譯前』。",
+      "C": "IAST 是在執行期插樁(DAST＋原始碼),同樣需要程式跑起來。",
+      "D": "SCA 掃的是引入的開源/第三方元件已知漏洞,不分析你自寫的程式碼。"
+    },
+    "id": "D8-0020",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-079.html",
+    "unit_title_zh": "SAST/DAST/SCA 與 API 深入"
+  },
+  {
+    "stem_en": "A critical vulnerability is disclosed in a widely used open-source library. A customer asks its software vendor for the formal record enumerating every component, library, and dependency in the delivered product, so the customer can quickly determine whether it is affected. What is the customer requesting?",
+    "stem_zh": "某廣泛使用的開源函式庫爆出重大漏洞。客戶要求軟體供應商提供一份正式紀錄,列出交付產品中的每個元件,函式庫與相依,以便快速判斷自己是否受影響。客戶要的是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A software composition analysis (SCA) tool license",
+        "text_zh": "一套軟體組成分析(SCA)工具授權"
+      },
+      {
+        "key": "B",
+        "text_en": "An SLSA provenance attestation SLSA",
+        "text_zh": "來源證明"
+      },
+      {
+        "key": "C",
+        "text_en": "The vendor's most recent vulnerability scan report",
+        "text_zh": "供應商最近一次的弱點掃描報告"
+      },
+      {
+        "key": "D",
+        "text_en": "A software bill of materials (SBOM)",
+        "text_zh": "軟體物料清單(SBOM)"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "SBOM＝列出軟體產品內所有元件,函式庫與相依的正式紀錄(產出物),供應鏈事件(如 Log4Shell)爆發時能快速定位受影響元件。與 SCA 互補:SCA 是『工具』(掃描並識別元件與已知漏洞),SBOM 是『產出物/文件』。判斷邏輯:題幹要的是『一份可交付的清單紀錄』,不是掃描能力。",
+    "why_wrong_zh": {
+      "A": "SCA 是供應商自己用來產生與比對清單的工具;客戶要的是清單本身,不是工具授權。",
+      "B": "SLSA 證明的是建置來源與完整性(誰,怎麼建的),不是完整的元件相依列舉。",
+      "C": "掃描報告只列『當時掃到的已知漏洞』,新漏洞爆發時無法回答『產品裡有沒有這個元件』。"
+    },
+    "id": "D8-0021",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-079.html",
+    "unit_title_zh": "SAST/DAST/SCA 與 API 深入"
+  },
+  {
+    "stem_en": "An organization's public API intermittently crashes and returns internal error details when clients send malformed or out-of-range values. Which control BEST addresses this weakness?",
+    "stem_zh": "某組織的公開 API 在用戶端送出格式錯誤或超出範圍的值時,會不定期當機並回傳內部錯誤細節。哪個控制最能解決這個弱點?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Apply rate limiting to throttle abusive clients",
+        "text_zh": "套用速率限制以節流濫用的用戶端"
+      },
+      {
+        "key": "B",
+        "text_en": "Require TLS for all API connections",
+        "text_zh": "要求所有 API 連線使用 TLS"
+      },
+      {
+        "key": "C",
+        "text_en": "Implement parameter validation to confirm values are within defined limits before they are processed",
+        "text_zh": "實作參數驗證,在系統處理前確認參數值在定義的範圍內"
+      },
+      {
+        "key": "D",
+        "text_en": "Place the API behind a gateway that logs all requests",
+        "text_zh": "將 API 置於記錄所有請求的閘道之後"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "官方考點:Parameter validation(參數驗證)＝確認 API 收到的參數非畸形,非無效,非惡意,且值在定義範圍內才處理——正對症『畸形/超範圍輸入導致當機』。判斷邏輯:對照『弱點是什麼』選控制;問題出在輸入未驗證,不是流量,傳輸或記錄。",
+    "why_wrong_zh": {
+      "A": "速率限制防的是濫用/暴力/DoS 的『量』;單一畸形請求照樣讓它當機。",
+      "B": "TLS 保護傳輸中的機密性與完整性,與輸入內容是否合法無關。",
+      "D": "閘道記錄是偵測/鑑識輔助,請求仍會抵達並打掛後端,未修正根因。"
+    },
+    "id": "D8-0022",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-079.html",
+    "unit_title_zh": "SAST/DAST/SCA 與 API 深入"
+  },
+  {
+    "stem_en": "An organization is commissioning a third party to develop custom software. Which practice would BEST provide assurance of the software's security before the purchase is finalized?",
+    "stem_zh": "某組織委託第三方開發客製化軟體。哪個做法最能在完成採購前對軟體的安全性提供保證?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Build an independent external security audit into the contract, with passing the audit a condition for finalizing the purchase",
+        "text_zh": "在合約中納入獨立外部安全稽核,並以通過稽核作為完成採購的條件"
+      },
+      {
+        "key": "B",
+        "text_en": "Ask the vendor to share the results of its own internal testing",
+        "text_zh": "要求供應商分享其內部測試結果"
+      },
+      {
+        "key": "C",
+        "text_en": "Rely on the vendor's ISO/IEC 27001 certification as sufficient evidence",
+        "text_zh": "以供應商的 ISO/IEC 27001 認證作為充分證據"
+      },
+      {
+        "key": "D",
+        "text_en": "Scan the delivered binaries with antivirus software before installation",
+        "text_zh": "安裝前以防毒軟體掃描交付的二進位檔"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "官方考點:第三方(外包)軟體的最佳實務是由第三方執行外部稽核與安全評估,寫進供應商合約,並以『通過稽核』作為完成採購的條件。判斷邏輯:客製軟體沒有廣大市場替你驗證,獨立稽核＋合約槓桿(不過不付款)才能在錢付出去前取得可信保證——契約先行,信任要驗證。",
+    "why_wrong_zh": {
+      "B": "供應商自行測試缺乏獨立性(自己考自己),證據力不足。",
+      "C": "ISO 27001 證明的是供應商的 ISMS 管理制度,不代表『這套客製軟體』本身安全。",
+      "D": "防毒只能抓已知惡意特徵,查不出後門邏輯與設計/實作漏洞,且時點太晚,證據力最弱。"
+    },
+    "id": "D8-0023",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-080.html",
+    "unit_title_zh": "外購軟體與惡意程式深入"
+  },
+  {
+    "stem_en": "Weeks after a database administrator resigns on bad terms, a script activates and deletes critical tables when the administrator's employee ID no longer appears in the payroll run. Which type of malicious code BEST describes this?",
+    "stem_zh": "一位資料庫管理員不歡而散離職數週後,一支腳本在偵測到該管理員的員工編號不再出現於薪資作業時啟動,刪除了關鍵資料表。哪種惡意程式類型最符合這個描述?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Worm",
+        "text_zh": "蠕蟲"
+      },
+      {
+        "key": "B",
+        "text_en": "Remote access trojan (RAT)",
+        "text_zh": "遠端存取木馬"
+      },
+      {
+        "key": "C",
+        "text_en": "Logic bomb",
+        "text_zh": "邏輯炸彈"
+      },
+      {
+        "key": "D",
+        "text_en": "Rootkit",
+        "text_zh": "隱匿程式"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Logic bomb(邏輯炸彈)＝潛伏的惡意碼,在特定條件成立時觸發破壞——題幹的觸發條件是『員工編號從薪資名單消失』(＝我被開除/離職就引爆),是內部人員植入邏輯炸彈的經典手法。判斷邏輯:抓關鍵特徵『條件觸發(condition-triggered)』;對策含程式碼審查,職責分離,離職權限即刻回收。",
+    "why_wrong_zh": {
+      "A": "蠕蟲的特徵是自我複製與傳播,題幹的腳本潛伏等待條件,並未擴散。",
+      "B": "RAT 提供攻擊者遠端控制;此腳本自動觸發,無遠端操控成分。",
+      "D": "Rootkit 的重點是隱藏自身與取得最高權限以長期潛伏,不是條件式破壞。"
+    },
+    "id": "D8-0024",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-080.html",
+    "unit_title_zh": "外購軟體與惡意程式深入"
+  },
+  {
+    "stem_en": "A hospital operates fixed-function servers that run a small, stable set of clinical applications. Management wants to prevent execution of any unapproved program, including malware that has never been seen before. Which control BEST meets this requirement?",
+    "stem_zh": "某醫院營運固定功能的伺服器,只執行少量穩定的臨床應用程式。管理層希望防止任何未核准程式執行,包括從未見過的惡意程式。哪個控制最符合這個需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Application allowlisting that permits only approved programs to execute",
+        "text_zh": "只允許核准程式執行的應用程式白名單"
+      },
+      {
+        "key": "B",
+        "text_en": "Signature-based antivirus with daily definition updates",
+        "text_zh": "每日更新特徵碼的特徵式防毒"
+      },
+      {
+        "key": "C",
+        "text_en": "A blocklist of known malicious executables maintained by the security team",
+        "text_zh": "由安全團隊維護的已知惡意執行檔黑名單"
+      },
+      {
+        "key": "D",
+        "text_en": "Monthly vulnerability scanning of the servers",
+        "text_zh": "每月對伺服器執行弱點掃描"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Application allowlisting(應用白名單)＝預設拒絕,只有核准清單上的程式能執行——未知/零時差惡意程式因不在清單上,一律跑不起來。固定功能,軟體清單穩定的環境(醫療,SCADA,POS)正是白名單的最佳場景(NIST SP 800-167)。判斷邏輯:『擋沒見過的』→ 特徵式做不到,只有 default-deny 的白名單能。",
+    "why_wrong_zh": {
+      "B": "特徵式防毒只能辨識已知特徵,對『從未見過』的惡意程式無效。",
+      "C": "黑名單同樣只擋『已知壞』,列舉不完,擋不住未知樣本。",
+      "D": "弱點掃描找的是系統缺陷與缺補丁,屬評估活動,無法即時阻止程式執行。"
+    },
+    "id": "D8-0025",
+    "domain": "D8",
+    "topic": "d8-p2",
+    "unit": "P2-D8-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-080.html",
+    "unit_title_zh": "外購軟體與惡意程式深入"
+  },
+  {
+    "stem_en": "At which SDLC phase is threat modeling MOST effectively performed?",
+    "stem_zh": "威脅建模在 SDLC 哪個階段執行最有效?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Requirements",
+        "text_zh": "需求"
+      },
+      {
+        "key": "B",
+        "text_en": "Design",
+        "text_zh": "設計"
+      },
+      {
+        "key": "C",
+        "text_en": "Testing",
+        "text_zh": "測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Deployment",
+        "text_zh": "部署"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "威脅建模在設計階段最有效——此時系統架構成形、變更成本最低,可系統化找出威脅並調整設計。",
+    "why_wrong_zh": {
+      "A": "需求期定安全需求,但威脅建模需有設計可分析。",
+      "C": "測試期才做威脅建模已太晚(設計已定)。",
+      "D": "部署期更晚,修改成本最高。"
+    },
+    "id": "D8-0026",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-116.html",
+    "unit_title_zh": "考點：SDLC 與安全活動對應"
+  },
+  {
+    "stem_en": "When is it MOST cost-effective to address a security flaw in the SDLC?",
+    "stem_zh": "在 SDLC 中,何時處理安全缺陷最具成本效益?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "As early as possible (requirements/design)",
+        "text_zh": "越早越好(需求/設計)"
+      },
+      {
+        "key": "B",
+        "text_en": "During testing",
+        "text_zh": "測試期"
+      },
+      {
+        "key": "C",
+        "text_en": "After deployment",
+        "text_zh": "上線後"
+      },
+      {
+        "key": "D",
+        "text_en": "Only when exploited",
+        "text_zh": "被利用時才處理"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "越早(需求/設計)處理成本越低(shift left);上線後修復成本可能高出數十倍。",
+    "why_wrong_zh": {
+      "B": "測試期已比設計期貴。",
+      "C": "上線後修復最貴(可能召回/重構)。",
+      "D": "被利用才處理已造成損害。"
+    },
+    "id": "D8-0027",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-116.html",
+    "unit_title_zh": "考點：SDLC 與安全活動對應"
+  },
+  {
+    "stem_en": "Static Application Security Testing (SAST) is typically integrated at which phase?",
+    "stem_zh": "靜態應用安全測試(SAST)通常整合在哪個階段?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Requirements",
+        "text_zh": "需求"
+      },
+      {
+        "key": "B",
+        "text_en": "Development (as code is written)",
+        "text_zh": "開發(撰寫程式碼時)"
+      },
+      {
+        "key": "C",
+        "text_en": "Deployment",
+        "text_zh": "部署"
+      },
+      {
+        "key": "D",
+        "text_en": "Decommissioning",
+        "text_zh": "除役"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SAST 分析原始碼,整合在開發階段(撰寫/提交程式碼時),能即早抓到根因(shift left)。",
+    "why_wrong_zh": {
+      "A": "需求期尚無程式碼。",
+      "C": "部署期 SAST 已太晚。",
+      "D": "除役與 SAST 無關。"
+    },
+    "id": "D8-0028",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-116.html",
+    "unit_title_zh": "考點：SDLC 與安全活動對應"
+  },
+  {
+    "stem_en": "An organization adopting DevOps deploys code to production several times a day. The security team's manual review before each release has become a bottleneck. What is the BEST way to maintain security assurance without blocking delivery?",
+    "stem_zh": "某導入 DevOps 的組織每天多次部署上線,資安團隊每次發布前的人工審查已成瓶頸。維持安全保證又不阻斷交付的最佳做法?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Hire more security staff to speed up the manual review gate",
+        "text_zh": "增聘資安人力加速人工審查關卡"
+      },
+      {
+        "key": "B",
+        "text_en": "Reduce the release frequency to once per week so reviews can keep up",
+        "text_zh": "降低發布頻率至每週一次以配合審查"
+      },
+      {
+        "key": "C",
+        "text_en": "Embed automated security testing (SAST/DAST) as gates within the CI/CD pipeline (DevSecOps)",
+        "text_zh": "將自動化安全測試(SAST/DAST)內建為 CI/CD 管線關卡(DevSecOps)"
+      },
+      {
+        "key": "D",
+        "text_en": "Perform a full penetration test after each production deployment",
+        "text_zh": "每次部署上線後執行完整滲透測試"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "DevSecOps 的核心:安全必須與開發同速,把安全控制自動化內建於 CI/CD 管線(software-defined security),每次提交都自動把關——既維持保證又不阻斷交付,呼應『安全內建於 SDLC 各階段』。判斷邏輯:節奏衝突要用流程與自動化解,不是加人或降速。",
+    "why_wrong_zh": {
+      "A": "人工審查天生跟不上每日多次部署,加人只是治標。",
+      "B": "犧牲業務敏捷去遷就審查,方向顛倒。",
+      "D": "上線後才測是『右移』,發現已太晚且頻率跟不上。"
+    },
+    "id": "D8-0029",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-116.html",
+    "unit_title_zh": "考點：SDLC 與安全活動對應"
+  },
+  {
+    "stem_en": "A development project has evolving requirements, and management insists that each iteration begin by explicitly identifying and resolving risks before any building starts. Which development model BEST fits this requirement?",
+    "stem_zh": "某開發專案需求持續演進,管理層堅持每一次迭代都必須先明確識別並解決風險才能開發。哪個開發模型最符合?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Waterfall",
+        "text_zh": "瀑布模型"
+      },
+      {
+        "key": "B",
+        "text_en": "Scrum",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "Spiral model",
+        "text_zh": "螺旋模型"
+      },
+      {
+        "key": "D",
+        "text_en": "V-Model V",
+        "text_zh": "模型"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "螺旋模型(Boehm)是風險驅動(risk-driven):每一圈依序『定目標→識別並解決風險→開發測試→規劃下一圈』,允許需求隨迭代演進又保留瀑布元素。記憶法:『每圈先算風險』＝螺旋。",
+    "why_wrong_zh": {
+      "A": "瀑布線性,需求前置固定,無法回頭迭代。",
+      "B": "Scrum 雖迭代,但衝刺不以『風險識別與解決』為固定起手式。",
+      "D": "V 模型是瀑布延伸,強調開發與測試階段配對驗證,非風險驅動迭代。"
+    },
+    "id": "D8-0030",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-116.html",
+    "unit_title_zh": "考點：SDLC 與安全活動對應"
+  },
+  {
+    "stem_en": "Before design begins, a security manager wants the team to document how an attacker might intentionally misuse a new payment feature, so that countermeasures become formal requirements. Which technique BEST achieves this?",
+    "stem_zh": "設計開始前,資安主管希望團隊記錄攻擊者可能如何蓄意濫用新付款功能,使對策成為正式需求。哪個技術最能達成?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Dynamic application security testing (DAST)",
+        "text_zh": "動態應用安全測試"
+      },
+      {
+        "key": "B",
+        "text_en": "Threat modeling of the system architecture",
+        "text_zh": "對系統架構進行威脅建模"
+      },
+      {
+        "key": "C",
+        "text_en": "Abuse case (misuse case) development",
+        "text_zh": "撰寫濫用案例(誤用案例)"
+      },
+      {
+        "key": "D",
+        "text_en": "Regression testing",
+        "text_zh": "回歸測試"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "濫用/誤用案例(abuse case)在需求階段以攻擊者視角描述『功能如何被惡意使用』,並把對策寫成正式安全需求——比設計更早的左移。判斷邏輯:題幹兩個關鍵『設計開始前』『成為需求』都指向需求階段技術。",
+    "why_wrong_zh": {
+      "A": "DAST 需有可執行的應用,階段太晚。",
+      "B": "威脅建模方向對但階段錯——它分析的是『已成形的設計/架構』,題幹明說設計尚未開始(兩個都對時,比時機)。",
+      "D": "回歸測試驗證變更未破壞既有功能,與攻擊者視角需求無關。"
+    },
+    "id": "D8-0031",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-116.html",
+    "unit_title_zh": "考點：SDLC 與安全活動對應"
+  },
+  {
+    "stem_en": "An attacker enters ' OR '1'='1 into a login field and bypasses authentication. Which vulnerability is this, and what is the BEST fix?",
+    "stem_zh": "攻擊者在登入欄輸入 ' OR '1'='1 而繞過驗證。這是哪種漏洞,最佳修法為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "XSS; output encoding XSS",
+        "text_zh": "輸出編碼"
+      },
+      {
+        "key": "B",
+        "text_en": "SQL injection; parameterized queries SQL",
+        "text_zh": "注入;參數化查詢"
+      },
+      {
+        "key": "C",
+        "text_en": "CSRF; anti-CSRF tokens CSRF;CSRF token",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Buffer overflow; ASLR",
+        "text_zh": "緩衝區溢位;ASLR"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "輸入被當 SQL 執行而繞過登入＝SQL 注入;最佳根本修法是參數化查詢(預備語句)讓資料不被當指令。",
+    "why_wrong_zh": {
+      "A": "XSS 是注入腳本到頁面,非此 SQL 情境。",
+      "C": "CSRF 是冒用請求,非注入。",
+      "D": "緩衝區溢位是記憶體問題,非 SQL 注入。"
+    },
+    "id": "D8-0032",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-117.html",
+    "unit_title_zh": "考點：OWASP 漏洞辨識"
+  },
+  {
+    "stem_en": "A forum stores a malicious script in a comment; when other users view it, the script runs in their browsers and steals session cookies. This is:",
+    "stem_zh": "某論壇將惡意腳本存入留言;其他使用者瀏覽時腳本在其瀏覽器執行並竊取 session cookie。這是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "CSRF",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "Stored XSS",
+        "text_zh": "儲存型跨站腳本"
+      },
+      {
+        "key": "C",
+        "text_en": "SQL injection",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Clickjacking",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "腳本被存入並在他人瀏覽時於其瀏覽器執行＝Stored XSS;防禦:輸出編碼+CSP+HttpOnly cookie。",
+    "why_wrong_zh": {
+      "A": "CSRF 是冒用身分送請求,不執行腳本。",
+      "C": "SQL 注入針對資料庫,非瀏覽器腳本。",
+      "D": "點擊劫持是誘導點擊隱藏元素,非腳本注入。"
+    },
+    "id": "D8-0033",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-117.html",
+    "unit_title_zh": "考點：OWASP 漏洞辨識"
+  },
+  {
+    "stem_en": "Which defense BEST mitigates Cross-Site Request Forgery (CSRF)?",
+    "stem_zh": "哪個防禦最能緩解跨站請求偽造(CSRF)?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Parameterized queries",
+        "text_zh": "參數化查詢"
+      },
+      {
+        "key": "B",
+        "text_en": "Anti-CSRF tokens and SameSite cookies CSRF token",
+        "text_zh": "與 SameSite cookie"
+      },
+      {
+        "key": "C",
+        "text_en": "Disk encryption",
+        "text_zh": "磁碟加密"
+      },
+      {
+        "key": "D",
+        "text_en": "Rate limiting",
+        "text_zh": "速率限制"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "CSRF 緩解靠 CSRF token(請求需帶不可預測的 token)＋SameSite cookie(限制跨站送 cookie)。",
+    "why_wrong_zh": {
+      "A": "參數化查詢防注入,非 CSRF。",
+      "C": "磁碟加密與 CSRF 無關。",
+      "D": "速率限制防濫用/暴力,非 CSRF。"
+    },
+    "id": "D8-0034",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-117.html",
+    "unit_title_zh": "考點：OWASP 漏洞辨識"
+  },
+  {
+    "stem_en": "A tester logged in as a regular customer changes the URL from /orders?id=1001 to /orders?id=1002 and views another customer's order. Which vulnerability is this, and what is the BEST remediation?",
+    "stem_zh": "測試者以一般客戶身分登入,把網址 /orders?id=1001 改成 /orders?id=1002 就看到他人訂單。這是哪種漏洞,最佳修法為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "CSRF; anti-CSRF tokens CSRF;CSRF token",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SQL injection; parameterized queries SQL",
+        "text_zh": "注入;參數化查詢"
+      },
+      {
+        "key": "C",
+        "text_en": "Session hijacking; enforce TLS",
+        "text_zh": "工作階段劫持;強制 TLS"
+      },
+      {
+        "key": "D",
+        "text_en": "Broken access control (IDOR); server-side per-object authorization checks",
+        "text_zh": "存取控制失效(IDOR);伺服器端逐物件授權檢查"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "改個參數就能讀他人資料＝Broken Access Control(IDOR/BOLA):應用只驗證『已登入』卻沒驗證『此使用者有權存取此物件』。修法:每次請求都在伺服器端做逐物件授權檢查——前端隱藏或猜不到的 ID 都不是授權控制。",
+    "why_wrong_zh": {
+      "A": "攻擊者用的是自己的合法 session 直接存取,並非冒用他人身分送請求。",
+      "B": "輸入未被當 SQL 執行,只是改了資源識別碼。",
+      "C": "沒有竊取他人 session;TLS 保護傳輸,無法補授權缺失。"
+    },
+    "id": "D8-0035",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-117.html",
+    "unit_title_zh": "考點：OWASP 漏洞辨識"
+  },
+  {
+    "stem_en": "A newly deployed web server still uses the vendor's default administrator password, has directory listing enabled, and returns detailed stack traces to users. Which OWASP Top 10 category BEST describes this condition?",
+    "stem_zh": "新部署的網頁伺服器仍使用原廠預設管理者密碼,開啟目錄列示,並向使用者回傳詳細堆疊追蹤。哪個 OWASP Top 10 類別最能描述此狀況?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Security misconfiguration",
+        "text_zh": "安全組態錯誤"
+      },
+      {
+        "key": "B",
+        "text_en": "Insecure design",
+        "text_zh": "不安全設計"
+      },
+      {
+        "key": "C",
+        "text_en": "Authentication failures",
+        "text_zh": "鑑別失效"
+      },
+      {
+        "key": "D",
+        "text_en": "Cryptographic failures",
+        "text_zh": "密碼學失效"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "預設帳密,目錄列示,詳細錯誤訊息——共同根因是部署設定未強化＝Security Misconfiguration。修法:強化基準(hardening baseline),變更所有預設值,關閉不必要功能。判斷邏輯:多個症狀指向同一根因時,選涵蓋根因的類別。",
+    "why_wrong_zh": {
+      "B": "設計本身沒有缺陷,是部署組態問題(design flaw＝就算都做對仍有漏洞,此處改設定即可修)。",
+      "C": "預設密碼是誘餌——根因是『沒改預設組態』,非鑑別機制本身失效。",
+      "D": "與加密保護無關。"
+    },
+    "id": "D8-0036",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-117.html",
+    "unit_title_zh": "考點：OWASP 漏洞辨識"
+  },
+  {
+    "stem_en": "A web application was breached three months ago, but the intrusion was only discovered when a customer complained. Investigation shows the application recorded no authentication failures or access anomalies at all. Which OWASP Top 10 category BEST describes the root weakness?",
+    "stem_zh": "某網頁應用三個月前遭入侵,直到客戶投訴才被發現;調查顯示應用完全沒有記錄任何鑑別失敗或存取異常。根本弱點屬於哪個 OWASP 類別?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Insecure design",
+        "text_zh": "不安全設計"
+      },
+      {
+        "key": "B",
+        "text_en": "Security logging and alerting failures",
+        "text_zh": "安全記錄與警示失效"
+      },
+      {
+        "key": "C",
+        "text_en": "Authentication failures",
+        "text_zh": "鑑別失效"
+      },
+      {
+        "key": "D",
+        "text_en": "Security misconfiguration",
+        "text_zh": "安全組態錯誤"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "入侵三個月無人知,因為應用完全沒有記錄與警示＝OWASP Security logging and alerting failures:沒有 log 就沒有偵測,回應與鑑識能力。判斷邏輯:題幹問的不是『怎麼被入侵』,而是『為何這麼久才發現』——弱點在可觀測性。",
+    "why_wrong_zh": {
+      "A": "問題不在功能設計,而在偵測能力缺失。",
+      "C": "攻擊者或許利用了鑑別弱點,但題幹指的根本弱點是『看不見』。",
+      "D": "記錄缺失有專屬類別,比籠統的組態錯誤更精確(選最佳答案)。"
+    },
+    "id": "D8-0037",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-117.html",
+    "unit_title_zh": "考點：OWASP 漏洞辨識"
+  },
+  {
+    "stem_en": "A team wants to detect vulnerabilities by interacting with a running application from the outside, without access to source code. Which method?",
+    "stem_zh": "某團隊想從外部與『執行中』的應用互動來偵測漏洞,且無原始碼存取權。哪種方法?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SAST",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "DAST",
+        "text_zh": "動態應用安全測試"
+      },
+      {
+        "key": "C",
+        "text_en": "SCA",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Code review",
+        "text_zh": "程式碼審查"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "DAST 從外部攻擊執行中的應用(黑箱、不需原始碼),近似真實攻擊。",
+    "why_wrong_zh": {
+      "A": "SAST 需要原始碼且不執行程式。",
+      "C": "SCA 查相依套件清單,非與執行中應用互動。",
+      "D": "程式碼審查需要原始碼。"
+    },
+    "id": "D8-0038",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-118.html",
+    "unit_title_zh": "考點：測試方法選用"
+  },
+  {
+    "stem_en": "After the Log4Shell incident, which tool BEST helps an organization identify whether its applications use a vulnerable version of a third-party library?",
+    "stem_zh": "Log4Shell 事件後,哪個工具最能幫組織辨識其應用是否使用了有漏洞版本的第三方函式庫?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SAST",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "DAST",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "SCA (Software Composition Analysis)",
+        "text_zh": "軟體組成分析"
+      },
+      {
+        "key": "D",
+        "text_en": "Penetration test",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "SCA 掃描並比對第三方/開源相依(含 transitive)的已知漏洞,配合 SBOM 可快速定位是否使用有漏洞版本。",
+    "why_wrong_zh": {
+      "D": "滲透測試難以全面盤點所有相依。"
+    },
+    "id": "D8-0039",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-118.html",
+    "unit_title_zh": "考點：測試方法選用"
+  },
+  {
+    "stem_en": "Which testing approach combines runtime analysis with code instrumentation to get the benefits of both static and dynamic testing?",
+    "stem_zh": "哪種測試方法結合執行期分析與程式碼插樁,兼得靜態與動態測試的優點?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SAST",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "DAST",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "IAST",
+        "text_zh": "互動式應用安全測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Fuzzing",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "IAST 在應用執行時插入探針(instrumentation),結合靜態(看內部)與動態(真實執行)的優點,較準。",
+    "why_wrong_zh": {
+      "A": "SAST 純靜態(不執行)。",
+      "B": "DAST 純動態(不看內部)。",
+      "D": "Fuzzing 是餵異常輸入,非插樁結合。"
+    },
+    "id": "D8-0040",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-118.html",
+    "unit_title_zh": "考點：測試方法選用"
+  },
+  {
+    "stem_en": "A security team wants to uncover input-handling flaws by automatically feeding large volumes of malformed and random data into a running application and watching for crashes. Which technique BEST matches this goal?",
+    "stem_zh": "資安團隊想以自動方式餵入大量畸形與隨機資料給執行中的應用並觀察當機,以找出輸入處理缺陷。哪個技術最符合?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SAST",
+        "text_zh": "靜態應用安全測試"
+      },
+      {
+        "key": "B",
+        "text_en": "IAST",
+        "text_zh": "互動式應用安全測試"
+      },
+      {
+        "key": "C",
+        "text_en": "Regression testing",
+        "text_zh": "回歸測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Fuzzing",
+        "text_zh": "模糊測試"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Fuzzing(模糊測試)＝自動產生大量畸形/隨機/非預期輸入餵給執行中的程式,觀察當機或異常——屬 DAST 範疇的動態技術,擅長挖輸入處理與記憶體類缺陷。判斷邏輯:題幹關鍵『自動產生畸形輸入+觀察當機』是 fuzzing 的定義特徵。",
+    "why_wrong_zh": {
+      "A": "SAST 讀原始碼,不執行程式,無法觀察執行期當機。",
+      "B": "IAST 靠插樁觀察執行期行為,核心不是產生畸形輸入。",
+      "C": "回歸測試驗證變更未破壞既有功能,用的是正常測試案例。"
+    },
+    "id": "D8-0041",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-118.html",
+    "unit_title_zh": "考點：測試方法選用"
+  },
+  {
+    "stem_en": "An organization already runs SAST and DAST in its pipeline, but management worries about business-logic flaws (e.g., abusing a discount workflow) that automated tools routinely miss. Which activity BEST complements the existing tools?",
+    "stem_zh": "某組織管線已有 SAST 與 DAST,但管理層擔心自動化工具經常漏掉的業務邏輯缺陷(如濫用折扣流程)。哪個活動最能補足?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Increase the frequency of DAST scans",
+        "text_zh": "提高 DAST 掃描頻率"
+      },
+      {
+        "key": "B",
+        "text_en": "Manual code review by experienced staff",
+        "text_zh": "由資深人員進行人工程式碼審查"
+      },
+      {
+        "key": "C",
+        "text_en": "Add software composition analysis (SCA)",
+        "text_zh": "加入軟體組成分析(SCA)"
+      },
+      {
+        "key": "D",
+        "text_en": "Re-run SAST with stricter rule sets",
+        "text_zh": "以更嚴格規則集重跑 SAST"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "業務邏輯缺陷(流程被濫用但每一步技術上都『合法』)是自動化工具的天生盲點;人工程式碼審查(code review＝由人執行的靜態分析)能理解商業脈絡與意圖,正是補位角色。記憶法:工具找模式,人找邏輯。",
+    "why_wrong_zh": {
+      "A": "同一工具跑再多次,盲點依舊。",
+      "C": "SCA 查第三方相依的已知漏洞,與自寫業務邏輯無關。",
+      "D": "規則更嚴只會更多誤報,仍不懂商業邏輯。"
+    },
+    "id": "D8-0042",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-118.html",
+    "unit_title_zh": "考點：測試方法選用"
+  },
+  {
+    "stem_en": "A security manager must schedule both SAST and DAST for a new application. Which sequencing is the BEST practice?",
+    "stem_zh": "資安主管要為新應用排程 SAST 與 DAST。哪個先後順序是最佳實務?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Run DAST first to find runtime flaws, then SAST",
+        "text_zh": "先跑 DAST 找執行期缺陷,再跑 SAST"
+      },
+      {
+        "key": "B",
+        "text_en": "Run SAST first during development to fix code-level flaws, then run DAST on the running application",
+        "text_zh": "開發期先跑 SAST 修正碼層缺陷,再對執行中應用跑 DAST"
+      },
+      {
+        "key": "C",
+        "text_en": "Run only DAST because it simulates real attacks",
+        "text_zh": "只跑 DAST,因為最貼近真實攻擊"
+      },
+      {
+        "key": "D",
+        "text_en": "Run both only after production deployment to test the real environment",
+        "text_zh": "兩者都等部署上線後在正式環境執行"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "最佳實務:先 SAST(開發期,早,便宜)清除基本碼層缺陷,通過後再以 DAST 對執行中應用驗證執行期行為——DAST is usually performed once a program has cleared SAST。符合 shift left 與修復成本邏輯。",
+    "why_wrong_zh": {
+      "A": "順序顛倒:碼層基本缺陷未清,DAST 結果會被淹沒且修復更貴。",
+      "C": "兩者互補:只用 DAST 看不到內部,無法定位根因。",
+      "D": "等上線才測,發現成本最高且已暴險。"
+    },
+    "id": "D8-0043",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-118.html",
+    "unit_title_zh": "考點：測試方法選用"
+  },
+  {
+    "stem_en": "An attacker compromises a popular open-source package's maintainer account and pushes a malicious update that is automatically pulled into many builds. This is an example of a:",
+    "stem_zh": "攻擊者入侵熱門開源套件維護者帳號,推送惡意更新並被自動拉進許多建置。這是哪種攻擊的例子?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Phishing attack",
+        "text_zh": "釣魚攻擊"
+      },
+      {
+        "key": "B",
+        "text_en": "Software supply chain attack",
+        "text_zh": "軟體供應鏈攻擊"
+      },
+      {
+        "key": "C",
+        "text_en": "SQL injection",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Brute-force attack",
+        "text_zh": "暴力攻擊"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "透過受信任的相依/更新管道植入惡意碼、波及大量下游＝軟體供應鏈攻擊(如 SolarWinds、惡意 npm)。",
+    "why_wrong_zh": {
+      "A": "釣魚可能是初始手段,但整體攻擊型態是供應鏈。"
+    },
+    "id": "D8-0044",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-119.html",
+    "unit_title_zh": "考點：CI/CD 與開源風險"
+  },
+  {
+    "stem_en": "What is the BEST practice for storing API keys and credentials used by a CI/CD pipeline?",
+    "stem_zh": "CI/CD 管線使用的 API 金鑰與憑證,最佳的儲存做法為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Hard-code them in the source repository",
+        "text_zh": "硬編在原始碼庫"
+      },
+      {
+        "key": "B",
+        "text_en": "Store them in a secrets vault with short-lived, least-privilege access",
+        "text_zh": "存於祕密庫並用短期最小權限存取"
+      },
+      {
+        "key": "C",
+        "text_en": "Email them to developers",
+        "text_zh": "用電子郵件寄給開發者"
+      },
+      {
+        "key": "D",
+        "text_en": "Print them in build logs",
+        "text_zh": "印在建置日誌中"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "祕密應存於祕密庫(vault),並用短期、最小權限(或 OIDC 聯合)憑證,避免長期金鑰外洩。",
+    "why_wrong_zh": {
+      "A": "硬編入 repo 是常見嚴重外洩來源。",
+      "C": "郵件傳輸不安全。",
+      "D": "印在日誌會洩漏祕密。"
+    },
+    "id": "D8-0045",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-119.html",
+    "unit_title_zh": "考點：CI/CD 與開源風險"
+  },
+  {
+    "stem_en": "Which artifact provides a complete inventory of all components and dependencies in a software product, enabling rapid impact analysis when a new vulnerability is disclosed?",
+    "stem_zh": "哪個產物提供軟體產品中所有元件與相依的完整清單,使新漏洞揭露時能快速影響分析?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SLA",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SBOM (Software Bill of Materials)",
+        "text_zh": "軟體物料清單"
+      },
+      {
+        "key": "C",
+        "text_en": "RFC",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "EULA",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SBOM 列出所有元件與相依(含 transitive),漏洞(如 Log4Shell)爆發時可快速判斷是否受影響。",
+    "why_wrong_zh": {
+      "A": "SLA 是服務水準協議。",
+      "C": "RFC 是技術標準文件。",
+      "D": "EULA 是授權合約。"
+    },
+    "id": "D8-0046",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-119.html",
+    "unit_title_zh": "考點：CI/CD 與開源風險"
+  },
+  {
+    "stem_en": "A developer accidentally installs a malicious package named 'reqeusts' (a typosquat of 'requests') from a public registry, compromising the build server. Which control would BEST prevent this type of attack?",
+    "stem_zh": "開發者從公開 registry 誤裝了名為 'reqeusts' 的惡意套件(requests 的拼字搶註),導致建置伺服器遭入侵。哪個控制最能預防這類攻擊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Run DAST against the finished application",
+        "text_zh": "對成品應用執行 DAST"
+      },
+      {
+        "key": "B",
+        "text_en": "Store pipeline credentials in a secrets vault",
+        "text_zh": "將管線憑證存入祕密庫"
+      },
+      {
+        "key": "C",
+        "text_en": "Require all dependencies to come from a curated private registry with pinned, verified versions",
+        "text_zh": "要求所有相依一律來自控管的私有 registry,並鎖定與驗證版本"
+      },
+      {
+        "key": "D",
+        "text_en": "Patch the build server operating system more frequently",
+        "text_zh": "更頻繁修補建置伺服器的作業系統"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Typosquatting 得逞的前提是『可從公開 registry 隨手安裝近似名套件』;控管的私有 registry(僅收錄審核過的套件)＋鎖定版本＋完整性驗證從源頭阻斷惡意套件進入建置——對症下藥的預防控制。",
+    "why_wrong_zh": {
+      "A": "DAST 找應用執行期漏洞,難以察覺建置鏈被植入的惡意碼。",
+      "B": "祕密管理防憑證外洩,擋不住惡意相依被安裝。",
+      "D": "OS 修補與『安裝了錯的套件』無關。"
+    },
+    "id": "D8-0047",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-119.html",
+    "unit_title_zh": "考點：CI/CD 與開源風險"
+  },
+  {
+    "stem_en": "A DevOps team automates build, test, and packaging so every change is always deployable, but company policy requires a human release manager to approve each production deployment. Which practice BEST describes this pipeline?",
+    "stem_zh": "DevOps 團隊將建置,測試與封裝全部自動化,使每個變更隨時可部署,但公司政策要求發布經理人工核准每次正式部署。這條管線最符合哪個實務?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Continuous deployment",
+        "text_zh": "持續部署"
+      },
+      {
+        "key": "B",
+        "text_en": "Continuous integration only",
+        "text_zh": "僅持續整合"
+      },
+      {
+        "key": "C",
+        "text_en": "Continuous delivery",
+        "text_zh": "持續交付"
+      },
+      {
+        "key": "D",
+        "text_en": "Waterfall release management",
+        "text_zh": "瀑布式發布管理"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Continuous Delivery(持續交付)＝程式碼隨時處於可部署狀態,但進正式環境需『人工核准』;Continuous Deployment(持續部署)則通過測試即全自動上線,無人工介入。兩者差別就在最後一步的 human intervention——高鑑別度必考對比。",
+    "why_wrong_zh": {
+      "A": "若是持續部署,通過測試即自動上線,與『需人工核准』的政策矛盾。",
+      "B": "CI 只涵蓋頻繁合併與自動測試,不含隨時可發布的交付能力。",
+      "D": "全流程高度自動化,迭代交付,絕非瀑布。"
+    },
+    "id": "D8-0048",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-119.html",
+    "unit_title_zh": "考點：CI/CD 與開源風險"
+  },
+  {
+    "stem_en": "Before signing a contract, a major customer requires the vendor to provide a formal, machine-readable record of every open-source and third-party component contained in the software product, as proof of supply chain transparency. Which artifact BEST satisfies this requirement?",
+    "stem_zh": "簽約前,大客戶要求供應商提供其軟體產品內所有開源與第三方元件的正式,機器可讀紀錄,作為供應鏈透明度證明。哪個產物最能滿足此要求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A SOC 2 Type II report SOC 2 Type II",
+        "text_zh": "報告"
+      },
+      {
+        "key": "B",
+        "text_en": "A source code escrow agreement",
+        "text_zh": "原始碼託管協議"
+      },
+      {
+        "key": "C",
+        "text_en": "The vendor's SCA scanning tool",
+        "text_zh": "供應商使用的 SCA 掃描工具"
+      },
+      {
+        "key": "D",
+        "text_en": "A software bill of materials (SBOM)",
+        "text_zh": "軟體物料清單(SBOM)"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "客戶要的是元件透明度的正式紀錄(可交付文件)＝SBOM(軟體物料清單):列出產品內所有元件,函式庫與相依,是供應鏈透明度與採購信任的證明,客戶日後也能據以自行做漏洞影響分析。記憶法:SCA 是『工具』,SBOM 是工具產出的『產出物/文件』——能交付給客戶的是產出物。",
+    "why_wrong_zh": {
+      "A": "SOC 2 證明服務控制的設計與營運有效性,不列軟體元件。",
+      "B": "源碼託管保障供應商倒閉時能取得原始碼,與元件透明度無關。",
+      "C": "工具本身不是可交付的紀錄;題幹要的是清單文件,不是掃描能力。"
+    },
+    "id": "D8-0049",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-119.html",
+    "unit_title_zh": "考點：CI/CD 與開源風險"
+  },
+  {
+    "stem_en": "During a fire in a data center, what is the MOST important consideration?",
+    "stem_zh": "資料中心發生火災時,『最重要』的考量是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Saving the servers",
+        "text_zh": "搶救伺服器"
+      },
+      {
+        "key": "B",
+        "text_en": "Protecting human life / personnel safety",
+        "text_zh": "保護人命/人員安全"
+      },
+      {
+        "key": "C",
+        "text_en": "Preserving evidence",
+        "text_zh": "保全證據"
+      },
+      {
+        "key": "D",
+        "text_en": "Maintaining uptime",
+        "text_zh": "維持運轉"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "人命安全永遠是最高優先——所有實體安全/緊急情境題,人員安全凌駕資產與營運。",
+    "why_wrong_zh": {
+      "C": "保全證據在人員安全之後。"
+    },
+    "id": "D8-0050",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-120.html",
+    "unit_title_zh": "考點：D8 綜合 + 全考科收尾 + 刷題"
+  },
+  {
+    "stem_en": "A manager asks a CISSP to implement a control that is technically strong but the manager has NOT formally accepted the residual risk. What should the CISSP do FIRST?",
+    "stem_zh": "主管要求 CISSP 實施一個技術上很強的控制,但主管『尚未正式接受剩餘風險』。CISSP 應『首先』做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Implement it immediately",
+        "text_zh": "立即實施"
+      },
+      {
+        "key": "B",
+        "text_en": "Ensure risk decisions and acceptance are documented and approved by management",
+        "text_zh": "確保風險決策與接受由管理層書面核准"
+      },
+      {
+        "key": "C",
+        "text_en": "Ignore the risk",
+        "text_zh": "忽略風險"
+      },
+      {
+        "key": "D",
+        "text_en": "Quit the project",
+        "text_zh": "退出專案"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "資安決策須以風險為基礎且由管理層當責:剩餘風險的接受必須書面記錄並由管理層核准(治理原則),才據以執行。",
+    "why_wrong_zh": {
+      "A": "未經風險決策程序就實施,違反治理。",
+      "C": "忽略風險不負責任。",
+      "D": "退出非適當的專業回應。"
+    },
+    "id": "D8-0051",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-120.html",
+    "unit_title_zh": "考點：D8 綜合 + 全考科收尾 + 刷題"
+  },
+  {
+    "stem_en": "Which statement BEST reflects the (ISC)² exam mindset for choosing answers?",
+    "stem_zh": "哪個敘述最能反映 (ISC)² 考試選答的心態?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Choose the most advanced technical solution",
+        "text_zh": "選最先進的技術方案"
+      },
+      {
+        "key": "B",
+        "text_en": "Choose the answer a security manager would pick: risk-based, addressing root cause and proper process",
+        "text_zh": "選資安管理者會選的:以風險為基礎、處理根因與正確流程"
+      },
+      {
+        "key": "C",
+        "text_en": "Choose the cheapest option",
+        "text_zh": "選最便宜的"
+      },
+      {
+        "key": "D",
+        "text_en": "Choose the fastest option",
+        "text_zh": "選最快的"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "CISSP 要『像管理者思考』:答案通常是以風險為基礎、處理根因、遵循正確流程與治理,而非最炫技術、最便宜或最快。",
+    "why_wrong_zh": {
+      "A": "最炫技術未必是最佳管理決策。"
+    },
+    "id": "D8-0052",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-120.html",
+    "unit_title_zh": "考點：D8 綜合 + 全考科收尾 + 刷題"
+  },
+  {
+    "stem_en": "A development team asks for a copy of the production customer database to make its testing ‘more realistic.’ As the security manager, what is the BEST response?",
+    "stem_zh": "開發團隊為了讓測試『更擬真』,要求一份正式環境客戶資料庫的副本。身為資安主管,最佳回應為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Provide masked or anonymized test data that preserves the data's format and volume",
+        "text_zh": "提供保留格式與量體的遮罩/去識別化測試資料"
+      },
+      {
+        "key": "B",
+        "text_en": "Grant temporary read access to production data after the developers sign an NDA",
+        "text_zh": "開發者簽署 NDA 後授予正式資料暫時唯讀權限"
+      },
+      {
+        "key": "C",
+        "text_en": "Refuse to provide any test data to the development environment",
+        "text_zh": "拒絕提供任何測試資料給開發環境"
+      },
+      {
+        "key": "D",
+        "text_en": "Copy the production data but encrypt the development database",
+        "text_zh": "複製正式資料但將開發資料庫加密"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "跨域整合題:D8(開發/測試環境)＋D2(資料保護)——開發環境防護較弱,不應存放真實個資;遮罩/去識別化既滿足『擬真格式與量體』的測試需求,又消除外洩與法遵風險。Think like a manager:先問需求的本質(要的是格式擬真,不是真實身分),再用最低風險的方式滿足它。",
+    "why_wrong_zh": {
+      "B": "NDA 是行政控制,擋不住技術性外洩,且違反最小權限與用途限制。",
+      "C": "一刀切拒絕阻礙業務,不是風險管理。",
+      "D": "加密只保護儲存;開發者仍持有真實個資,風險與法遵問題依然存在。"
+    },
+    "id": "D8-0053",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-120.html",
+    "unit_title_zh": "考點：D8 綜合 + 全考科收尾 + 刷題"
+  },
+  {
+    "stem_en": "A business-critical application depends on an unsupported framework with known vulnerabilities, and a full rewrite will take 18 months. What is the BEST course of action in the meantime?",
+    "stem_zh": "某業務關鍵應用依賴已停止支援,存在已知漏洞的框架,完整改寫需要 18 個月。過渡期間的最佳做法為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Formally accept the risk and take no further action",
+        "text_zh": "正式接受風險,不採取進一步行動"
+      },
+      {
+        "key": "B",
+        "text_en": "Shut the application down until the rewrite is complete",
+        "text_zh": "停用該應用直到改寫完成"
+      },
+      {
+        "key": "C",
+        "text_en": "Start the rewrite and address security only when the new version ships",
+        "text_zh": "先啟動改寫,安全等新版上線再處理"
+      },
+      {
+        "key": "D",
+        "text_en": "Apply compensating controls (WAF, network segmentation, enhanced monitoring) while managing the rewrite as a risk-treatment plan",
+        "text_zh": "施加補償性控制(WAF,網段隔離,強化監控),並將改寫納入風險處理計畫管理"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "跨域整合題:D1(風險處理)＋D3(縱深防禦)＋D8(遺留軟體)——無法立即消除弱點時,以補償性控制把暴險降到可接受水準,同時把長期修復納入風險處理計畫由治理追蹤。判斷邏輯:風險是拿來『管理』的,不是在『全停』與『裸奔』之間二選一。",
+    "why_wrong_zh": {
+      "A": "有可行控制卻不作為,不符 due care。",
+      "B": "業務關鍵應用中斷 18 個月,處置與風險不成比例。",
+      "C": "過渡期完全不設防,已知漏洞持續暴險,不可接受。"
+    },
+    "id": "D8-0054",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-120.html",
+    "unit_title_zh": "考點：D8 綜合 + 全考科收尾 + 刷題"
+  },
+  {
+    "stem_en": "A developer privately discovers a serious vulnerability in software her company has already shipped to customers. According to security governance and the (ISC)² Code of Ethics, what should she do FIRST?",
+    "stem_zh": "某開發者私下發現公司已出貨給客戶的軟體存在嚴重漏洞。依安全治理與 (ISC)² 道德準則,她應『首先』做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Disclose it publicly at once so customers can protect themselves",
+        "text_zh": "立即公開揭露讓客戶自保"
+      },
+      {
+        "key": "B",
+        "text_en": "Quietly patch it in the next release without telling management",
+        "text_zh": "默默在下一版修掉,不告知管理層"
+      },
+      {
+        "key": "C",
+        "text_en": "Wait for the next scheduled security audit to raise it",
+        "text_zh": "等下一次排定的安全稽核再提出"
+      },
+      {
+        "key": "D",
+        "text_en": "Report it through the organization's internal vulnerability-handling process so it is risk-assessed, fixed under change management, and disclosed as management decides",
+        "text_zh": "循組織內部弱點處理流程通報,經風險評估,依變更管理修復,並由管理層決定揭露"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "全課程收尾心法題:think like a manager——正確的『流程與治理』優先於個人英雄主義:內部通報→風險評估→變更管理下修復→由當責的管理層決定對客戶的揭露。這同時滿足 (ISC)² 道德準則(保護社會,行事誠實且負責):讓組織能以受控方式降低所有客戶的風險。",
+    "why_wrong_zh": {
+      "A": "修復前公開反而讓攻擊者先行,使客戶更暴險,違背保護社會的本意。",
+      "B": "繞過管理層與變更管理,剝奪了組織(當責方)的風險決策,也可能引入新缺陷。",
+      "C": "重大弱點時效即風險,不能等排程稽核。"
+    },
+    "id": "D8-0055",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-120.html",
+    "unit_title_zh": "考點：D8 綜合 + 全考科收尾 + 刷題"
+  },
+  {
+    "stem_en": "After a critical vulnerability was disclosed in a widely used open-source library, a company spent weeks manually determining which of its applications were affected. Which practice would BEST enable rapid identification in the future?",
+    "stem_zh": "某廣泛使用的開源函式庫爆出重大弱點後,公司花了數週人工清查哪些應用受影響。哪個做法『最能』讓未來得以快速識別?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Schedule annual penetration tests for all applications",
+        "text_zh": "為所有應用安排年度滲透測試"
+      },
+      {
+        "key": "B",
+        "text_en": "Deploy a web application firewall in front of all services",
+        "text_zh": "在所有服務前部署 WAF"
+      },
+      {
+        "key": "C",
+        "text_en": "Maintain a software bill of materials (SBOM) for every application",
+        "text_zh": "為每個應用維護軟體物料清單 SBOM"
+      },
+      {
+        "key": "D",
+        "text_en": "Require manual code review for all new releases",
+        "text_zh": "所有新版本一律人工程式碼審查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "這是 Log4Shell 式情境。SBOM(software bill of materials)逐一記錄每個應用包含的元件與版本——弱點公告一出,查詢 SBOM 就能在數小時內列出所有受影響系統,取代數週的人工盤點。這正是軟體供應鏈安全的核心工件。",
+    "why_wrong_zh": {
+      "A": "年度滲透測試頻率太低,且測的是可利用性,不是元件清查。",
+      "B": "WAF 是緩解層,無法告訴你「哪些應用內含該函式庫」。",
+      "D": "人工審查看自寫程式碼品質,對第三方相依元件的追蹤幫助有限且極慢。"
+    },
+    "id": "D8-0056",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "An audit reveals that developers can push code changes directly into the production environment. Which control BEST addresses the risk created by this practice?",
+    "stem_zh": "稽核發現開發人員可以把程式碼變更直接推進正式環境。哪個控制『最能』處理這種做法造成的風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Provide developers with additional secure coding training",
+        "text_zh": "加強開發人員的安全編碼訓練"
+      },
+      {
+        "key": "B",
+        "text_en": "Enforce change management with separation of duties, requiring independent review and approval before deployment",
+        "text_zh": "落實變更管理與職務分工,部署前須經獨立審查與核准"
+      },
+      {
+        "key": "C",
+        "text_en": "Scan the production environment for vulnerabilities weekly",
+        "text_zh": "每週對正式環境做弱點掃描"
+      },
+      {
+        "key": "D",
+        "text_en": "Encrypt the source code repository",
+        "text_zh": "為程式碼儲存庫加密"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "開發者直推正式環境的根本問題是缺乏職務分工與變更控制——一個人就能引入(惡意或錯誤的)變更且無人把關。對症的是流程控制:變更管理+獨立審查核准+開發/部署權限分離。工具與訓練都好,但「流程 > 工具」,先把控制結構補上。",
+    "why_wrong_zh": {
+      "A": "訓練降低無心之過,對故意繞過或單人全權的結構性風險無效。",
+      "C": "每週掃描是事後偵測,變更當下的風險窗口依然敞開。",
+      "D": "儲存庫加密保護的是原始碼機密性,與「誰能改正式環境」無關。"
+    },
+    "id": "D8-0057",
+    "domain": "D8",
+    "topic": "d8-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  }
+]

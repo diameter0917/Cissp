@@ -1,0 +1,2667 @@
+[
+  {
+    "stem_en": "Which of the following BEST describes the main work product of a security assessment?",
+    "stem_zh": "下列何者最能描述 security assessment(安全評估)的主要工作產出?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A raw list of vulnerability scan results ranked by severity",
+        "text_zh": "依嚴重性排序的原始弱點掃描清單"
+      },
+      {
+        "key": "B",
+        "text_en": "A log of exploited systems produced during penetration testing",
+        "text_zh": "滲透測試期間被成功利用系統的紀錄"
+      },
+      {
+        "key": "C",
+        "text_en": "An assessment report addressed to management, written in nontechnical language with specific recommendations",
+        "text_zh": "給管理層的評估報告,以非技術語言撰寫並附具體改善建議"
+      },
+      {
+        "key": "D",
+        "text_en": "A compliance checklist mapping each control to its regulatory requirement",
+        "text_zh": "將每項控制對應法規要求的合規檢核表"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "安全評估超越單純掃描與滲透測試,其主要產出是給管理層(addressed to management)的評估報告,用非技術語言呈現結果並以具體改善建議作結。記憶:Assessment＝『評估給人看』,對象是管理層,語言要非技術。",
+    "why_wrong_zh": {
+      "A": "掃描結果只是評估過程的輸入之一,原始清單對業務領導者價值有限,不是最終產出。",
+      "B": "滲透測試紀錄屬技術性中間產物,且評估不一定包含實際入侵。",
+      "D": "合規檢核表屬 compliance check(合規查核)的產物,評估範圍比合規對照更廣。"
+    },
+    "id": "D6-0001",
+    "domain": "D6",
+    "topic": "d6-p1",
+    "unit": "P1-D6-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-026.html",
+    "unit_title_zh": "Domain 6 全景與評估策略"
+  },
+  {
+    "stem_en": "A newly hired security manager at a publicly traded company is asked to design the internal audit strategy. Which factor should PRIMARILY drive the design of this strategy?",
+    "stem_zh": "一位新到任的安全經理任職於上市公司,被要求設計內部稽核策略。哪個因素應『最優先』主導這項策略的設計?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The organization's business, day-to-day operations, and applicable regulatory requirements",
+        "text_zh": "組織的業務,日常營運與適用的法規要求"
+      },
+      {
+        "key": "B",
+        "text_en": "The audit tools and scanners already licensed by the IT department IT",
+        "text_zh": "部門已購買授權的稽核工具與掃描器"
+      },
+      {
+        "key": "C",
+        "text_en": "The audit strategies published by peer companies in the same industry",
+        "text_zh": "同業其他公司公開的稽核策略"
+      },
+      {
+        "key": "D",
+        "text_en": "The methodology preferred by the external audit firm",
+        "text_zh": "外部稽核事務所偏好的方法論"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "內部稽核策略應對齊組織的業務與日常營運,並在設計時列出適用的法規要求與合規目標;上市公司因監管更嚴,策略也應更嚴謹。Think like a manager:先看業務與法遵,再談工具與方法。",
+    "why_wrong_zh": {
+      "B": "工具是執行手段,『工具遷就策略』而非策略遷就既有工具。",
+      "C": "同業做法可參考,但每個組織的規模,產業與財務狀況不同,策略必須量身訂做。",
+      "D": "外部稽核是互補的獨立查核,其偏好不應主導『內部』稽核策略的設計。"
+    },
+    "id": "D6-0002",
+    "domain": "D6",
+    "topic": "d6-p1",
+    "unit": "P1-D6-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-026.html",
+    "unit_title_zh": "Domain 6 全景與評估策略"
+  },
+  {
+    "stem_en": "In which type of penetration test does the tester evaluate the software from a user's perspective while also having access to the source code?",
+    "stem_zh": "在哪一種滲透測試中,測試者以使用者觀點評估軟體,但同時可存取原始碼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Black-box (unknown environment) test",
+        "text_zh": "黑箱(未知環境)測試"
+      },
+      {
+        "key": "B",
+        "text_en": "White-box (known environment) test",
+        "text_zh": "白箱(已知環境)測試"
+      },
+      {
+        "key": "C",
+        "text_en": "Red team exercise",
+        "text_zh": "紅隊演練"
+      },
+      {
+        "key": "D",
+        "text_en": "Gray-box (partially known environment) test",
+        "text_zh": "灰箱(部分已知環境)測試"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "灰箱測試＝使用者觀點＋可存取原始碼,在黑箱與白箱的優缺點間取得平衡;常見於想要黑箱效果,但受成本或時間限制而需要部分資訊的情況。記憶:灰＝黑白混合,partial knowledge。",
+    "why_wrong_zh": {
+      "A": "黑箱測試『完全不提供』事前資訊,模擬外部攻擊者,測試者不會有原始碼。",
+      "B": "白箱是開發者觀點取得詳細系統資訊與原始碼,題幹強調『使用者觀點』故非白箱。",
+      "C": "紅隊是組織內的攻擊方角色(offensive security),描述的是團隊分工而非箱型知識程度。"
+    },
+    "id": "D6-0003",
+    "domain": "D6",
+    "topic": "d6-p1",
+    "unit": "P1-D6-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-027.html",
+    "unit_title_zh": "弱點評估與滲透測試"
+  },
+  {
+    "stem_en": "A penetration testing team has finished mapping the target's website, completing network discovery, and probing for weaknesses with vulnerability scans. According to the NIST four-phase penetration testing process, which phase should the team perform NEXT?",
+    "stem_zh": "滲透測試團隊已完成目標網站測繪,網路探索,並以弱點掃描探測弱點。依 NIST 四階段滲透測試流程,團隊『接下來』應執行哪個階段?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Planning",
+        "text_zh": "規劃"
+      },
+      {
+        "key": "B",
+        "text_en": "Reporting",
+        "text_zh": "報告"
+      },
+      {
+        "key": "C",
+        "text_en": "Information gathering and discovery",
+        "text_zh": "資訊蒐集與探索"
+      },
+      {
+        "key": "D",
+        "text_en": "Attack",
+        "text_zh": "攻擊"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "NIST 四階段:planning → information gathering and discovery → attack → reporting。題幹描述的網站測繪,網路探索與弱點掃描都屬第二階段,下一步就是以手動與自動工具嘗試實際利用弱點的攻擊階段——這也是滲透測試超越弱點掃描之處。",
+    "why_wrong_zh": {
+      "A": "規劃(範圍與 RoE 交戰規則,取得明確授權)是第一階段,早已完成。",
+      "B": "報告是最後階段,須等攻擊階段結束後彙整結果與建議。",
+      "C": "題幹列的活動正是資訊蒐集與探索階段的內容,該階段已經完成。"
+    },
+    "id": "D6-0004",
+    "domain": "D6",
+    "topic": "d6-p1",
+    "unit": "P1-D6-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-027.html",
+    "unit_title_zh": "弱點評估與滲透測試"
+  },
+  {
+    "stem_en": "Which software testing technique evaluates an application from a hostile actor's point of view by first enumerating known abuse scenarios and then attempting to exploit them?",
+    "stem_zh": "哪一種軟體測試技術從敵意行為者的觀點評估應用程式,先列舉已知的濫用情境,再嘗試加以利用?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Misuse case testing",
+        "text_zh": "誤用案例測試"
+      },
+      {
+        "key": "B",
+        "text_en": "Use case testing",
+        "text_zh": "使用案例測試"
+      },
+      {
+        "key": "C",
+        "text_en": "Mutation fuzzing",
+        "text_zh": "變異式模糊測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Interface testing",
+        "text_zh": "介面測試"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Misuse case testing(誤用/濫用案例測試)聚焦在組織不希望發生,違反系統正常功能的行為:先列舉已知 misuse cases,再以手動或自動攻擊技術嘗試利用。記憶:use case 問『該做什麼』,misuse case 問『壞人會做什麼』。",
+    "why_wrong_zh": {
+      "B": "使用案例測試驗證軟體『依設計正常運作』,是正向觀點,不是敵意觀點。",
+      "C": "模糊測試靠修改輸入產生非預期資料觸發異常,不是先『列舉濫用情境』再利用。",
+      "D": "介面測試驗證 API/UI/實體介面間的互動符合規格,與攻擊者觀點無關。"
+    },
+    "id": "D6-0005",
+    "domain": "D6",
+    "topic": "d6-p1",
+    "unit": "P1-D6-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-028.html",
+    "unit_title_zh": "測試技術輪廓"
+  },
+  {
+    "stem_en": "A development manager reviewing a test coverage report confirms that every IF statement in the new application was executed under both the IF and ELSE conditions. Which coverage criterion has been satisfied?",
+    "stem_zh": "開發經理審閱測試涵蓋率報告,確認新應用程式中每個 IF 敘述都已在 IF 與 ELSE 兩種條件下執行。這滿足了哪一項涵蓋率準則?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Statement coverage",
+        "text_zh": "敘述涵蓋率"
+      },
+      {
+        "key": "B",
+        "text_en": "Loop coverage",
+        "text_zh": "迴圈涵蓋率"
+      },
+      {
+        "key": "C",
+        "text_en": "Condition coverage",
+        "text_zh": "條件涵蓋率"
+      },
+      {
+        "key": "D",
+        "text_en": "Branch coverage",
+        "text_zh": "分支涵蓋率"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Branch coverage(分支涵蓋率)的定義正是:每個 IF 敘述是否都在 IF 與 ELSE 條件下執行過。記憶:IF/ELSE 是程式的『分岔路』→ branch(分支)。",
+    "why_wrong_zh": {
+      "A": "敘述涵蓋率只問『每一行程式碼是否執行過』,不要求 IF 與 ELSE 兩條路徑都走過。",
+      "B": "迴圈涵蓋率針對迴圈:是否在執行多次,一次與零次的條件下都測過。",
+      "C": "條件涵蓋率問『每個邏輯判斷式是否在所有輸入組合下執行』,考的是邏輯運算式內部組合,不是 IF/ELSE 分支。"
+    },
+    "id": "D6-0006",
+    "domain": "D6",
+    "topic": "d6-p1",
+    "unit": "P1-D6-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-028.html",
+    "unit_title_zh": "測試技術輪廓"
+  },
+  {
+    "stem_en": "Which SOC engagement produces a report that is intended for public disclosure and is regarded primarily as a marketing tool?",
+    "stem_zh": "哪一種 SOC 查核所產出的報告是供公開揭露,且主要被視為行銷工具?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SOC 1 Type I",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SOC 2 Type II",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "SOC 3",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "SOC 1 Type II",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "SOC 3 評估影響安全(機密性,完整性,可用性)與隱私的控制,但其結果供公開揭露(public disclosure),主要作為行銷工具,常放在官網供任何人查看。記憶:數字越大越公開——SOC 2 要簽 NDA,SOC 3 直接公開。",
+    "why_wrong_zh": {
+      "A": "SOC 1 針對『影響財務報導正確性』的控制,供客戶的財務稽核使用,非公開行銷。",
+      "B": "SOC 2 是安全專業人員最想要的深度報告,但結果機密,通常需簽 NDA 才對外提供。",
+      "D": "同 A,SOC 1 焦點在財務報導;Type II 只是加上長期間的有效性驗證,仍非公開文件。"
+    },
+    "id": "D6-0007",
+    "domain": "D6",
+    "topic": "d6-p1",
+    "unit": "P1-D6-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-029.html",
+    "unit_title_zh": "稽核與報告"
+  },
+  {
+    "stem_en": "A cloud service provider is overwhelmed because dozens of customers each demand to perform their own audit of its controls. Which approach would BEST reduce this burden while still providing customers with assurance?",
+    "stem_zh": "某雲端服務供應商不堪負荷,因為數十家客戶都要求各自對其控制進行稽核。哪個做法最能減輕負擔,同時仍給客戶足夠保證?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Undergo an SSAE 18 (SOC) engagement and share the resulting report with current and potential customers",
+        "text_zh": "進行 SSAE 18(SOC)查核,將報告分享給現有與潛在客戶"
+      },
+      {
+        "key": "B",
+        "text_en": "Require every customer to sign an NDA before conducting its own on-site audit",
+        "text_zh": "要求每家客戶簽署 NDA 後各自到場稽核"
+      },
+      {
+        "key": "C",
+        "text_en": "Provide customers the results of audits performed by its internal audit staff",
+        "text_zh": "提供內部稽核人員自行執行的稽核結果"
+      },
+      {
+        "key": "D",
+        "text_en": "Publish its complete security policy set on the company website",
+        "text_zh": "將完整安全政策公布於公司網站"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "SSAE 18(美國以外為 ISAE 3402)的設計目的正是:讓服務組織做一次外部查核,取代多個第三方各自來稽,再把 SOC 報告分享給現有與潛在客戶。一份具公信力的報告滿足所有人,是效率與保證的最佳平衡。",
+    "why_wrong_zh": {
+      "B": "NDA 只解決保密問題,數十家客戶各自到場稽核的負擔絲毫未減。",
+      "C": "內部稽核缺乏獨立性,有利益衝突疑慮,對外部客戶公信力不足。",
+      "D": "公布政策只證明『有寫』,不能證明控制有實施且有效,無法提供保證。"
+    },
+    "id": "D6-0008",
+    "domain": "D6",
+    "topic": "d6-p1",
+    "unit": "P1-D6-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-029.html",
+    "unit_title_zh": "稽核與報告"
+  },
+  {
+    "stem_en": "In the ISO 9000 Plan-Do-Check-Act (PDCA) loop, security assessment and testing activities correspond to which phase?",
+    "stem_zh": "在 ISO 9000 的 Plan-Do-Check-Act(PDCA)循環中,安全評估與測試活動對應哪個階段?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Plan",
+        "text_zh": "規劃"
+      },
+      {
+        "key": "B",
+        "text_en": "Do",
+        "text_zh": "執行"
+      },
+      {
+        "key": "C",
+        "text_en": "Check",
+        "text_zh": "檢核"
+      },
+      {
+        "key": "D",
+        "text_en": "Act",
+        "text_zh": "行動"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "PDCA 對應:Plan＝ISMS 的基礎,訂目標與政策;Do＝安全營運;Check＝安全評估與測試(驗證控制是否如預期運作);Act＝正式進行管理審查。記憶:Check＝檢查成效,正是 Domain 6 的核心。",
+    "why_wrong_zh": {
+      "A": "Plan 是訂定目標,驅動政策的基礎階段,還沒到驗證。",
+      "B": "Do 是日常安全營運(security operations),是被評估的對象,不是評估本身。",
+      "D": "Act 是根據檢核結果正式做管理審查並採取改善,發生在評估與測試之後。"
+    },
+    "id": "D6-0009",
+    "domain": "D6",
+    "topic": "d6-p1",
+    "unit": "P1-D6-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-030.html",
+    "unit_title_zh": "管理審查與度量"
+  },
+  {
+    "stem_en": "A security manager learns that attackers MOST often gain privileged access by compromising an existing privileged account. Which practice would BEST mitigate this specific risk?",
+    "stem_zh": "安全經理得知攻擊者最常透過入侵『既有特權帳號』取得特權存取。哪個做法最能緩解這項特定風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Enforce strong multifactor authentication and require admins to use privileged accounts only for specific tasks",
+        "text_zh": "強制多因子驗證,並要求管理員僅在特定任務時使用特權帳號"
+      },
+      {
+        "key": "B",
+        "text_en": "Conduct a full review of all user accounts once a year",
+        "text_zh": "每年對所有使用者帳號做一次完整審查"
+      },
+      {
+        "key": "C",
+        "text_en": "Suspend accounts that are no longer needed",
+        "text_zh": "停用不再需要的帳號"
+      },
+      {
+        "key": "D",
+        "text_en": "Require all users to sign an acceptable use policy (AUP) at account creation",
+        "text_zh": "要求所有使用者在開帳號時簽署可接受使用政策"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "針對『入侵既有特權帳號』,考綱給的緩解正是強驗證(強密碼＋多因子),加上管理員僅在特定任務使用特權帳號(降低暴露面)。對症下藥:風險是帳號被盜,就強化登入防護與使用紀律。",
+    "why_wrong_zh": {
+      "B": "帳號審查針對的是權限擴張與未授權變更(偵測性),對『既有帳號被盜』的預防效果間接且頻率太低。",
+      "C": "停用閒置帳號是好習慣,但題幹的風險是『使用中的』特權帳號被入侵。",
+      "D": "AUP 是行政管理控制,規範使用者行為,擋不住攻擊者竊取帳號憑證。"
+    },
+    "id": "D6-0010",
+    "domain": "D6",
+    "topic": "d6-p1",
+    "unit": "P1-D6-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-030.html",
+    "unit_title_zh": "管理審查與度量"
+  },
+  {
+    "stem_en": "During an authorized penetration test, a tester discovers indicators that a real attacker has already compromised the target server and appears to be actively exfiltrating data. What should the tester do FIRST?",
+    "stem_zh": "在一次已授權的滲透測試中,測試者發現跡象顯示真實攻擊者已入侵目標伺服器,且似乎正在外傳資料。測試者『首先』應該怎麼做?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Halt testing and immediately notify the designated contact defined in the rules of engagement",
+        "text_zh": "停止測試,立即通知 ROE 中指定的聯絡人"
+      },
+      {
+        "key": "B",
+        "text_en": "Continue the test as planned and document the finding for the final report",
+        "text_zh": "依計畫繼續測試,將發現記錄於最終報告"
+      },
+      {
+        "key": "C",
+        "text_en": "Attempt to remove the attacker's access to contain the damage",
+        "text_zh": "嘗試移除攻擊者的存取以控制損害"
+      },
+      {
+        "key": "D",
+        "text_en": "Expand the test scope to trace the attacker's entry point",
+        "text_zh": "擴大測試範圍以追查攻擊者的入侵點"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "ROE 除了界定範圍與可用手段,也應約定『發現真實入侵時的處置程序』——正確做法是立即停止測試並通報 ROE 指定聯絡人,讓組織啟動事件回應。滲透測試是演習,真實入侵是事件,兩者混在一起會污染證據,延誤回應。記憶:測試中撞見真攻擊→停,通報,交給 IR。",
+    "why_wrong_zh": {
+      "B": "真實入侵必須即時通報,等到最終報告才提,會讓攻擊者多出數週的活動時間,且測試流量會與攻擊行為混雜。",
+      "C": "圍堵是事件回應團隊依授權與程序執行的工作,測試者擅自處置可能破壞證據,也超出測試授權。",
+      "D": "擴大範圍違反 ROE/scope,未經授權的存取即使出於善意也可能構成違法。"
+    },
+    "id": "D6-0011",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-066.html",
+    "unit_title_zh": "弱點評估與滲透測試深入"
+  },
+  {
+    "stem_en": "A quarterly vulnerability scan of a large enterprise returns thousands of findings, far more than the remediation team can address this quarter. Which approach is BEST for prioritizing remediation?",
+    "stem_zh": "大型企業的季度弱點掃描回報數千筆發現,遠超過修補團隊本季能處理的量。哪種做法『最適合』用來排定修補優先序?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Remediate findings in the order they appear in the scanner report",
+        "text_zh": "依掃描報告列出的順序逐筆修補"
+      },
+      {
+        "key": "B",
+        "text_en": "Remediate only the vulnerabilities covered in recent news reports",
+        "text_zh": "只修補近期新聞報導提及的弱點"
+      },
+      {
+        "key": "C",
+        "text_en": "Remediate strictly from the highest to the lowest CVSS base score",
+        "text_zh": "嚴格依 CVSS 基本分數由高至低修補"
+      },
+      {
+        "key": "D",
+        "text_en": "Rank findings by combining CVSS severity with each asset's value and exposure",
+        "text_zh": "結合 CVSS 嚴重度與各資產的價值,曝險程度來排序"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "弱點管理本質是風險管理:同一弱點在『網際網路可達的關鍵資料庫』與『隔離的測試機』上,風險天差地遠。CVSS 量化技術嚴重度,但必須結合資產價值與曝險程度(弱點管理循環:資產盤點→估值→找弱點→持續複評)才是風險導向的優先序。Think like a manager:排序看風險,不只看分數。",
+    "why_wrong_zh": {
+      "A": "報告順序與風險無關,等於放棄排序。",
+      "B": "新聞熱度≠自家環境的風險,會漏掉未被報導但對組織高風險的弱點。",
+      "C": "只看 CVSS 基本分忽略資產重要性與可達性,可能先修隔離測試機,卻晚修對外的關鍵系統。"
+    },
+    "id": "D6-0012",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-066.html",
+    "unit_title_zh": "弱點評估與滲透測試深入"
+  },
+  {
+    "stem_en": "A vulnerability scanner reports a critical flaw on a production server, but the system administrator insists the patch was applied last month. What is the BEST next step for the security analyst?",
+    "stem_zh": "弱點掃描器回報正式伺服器有一個嚴重弱點,但系統管理員堅稱上個月已套用修補。安全分析師『最佳』的下一步是?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Accept the administrator's statement and close the finding",
+        "text_zh": "採信管理員說法,直接將該發現結案"
+      },
+      {
+        "key": "B",
+        "text_en": "Manually verify the finding to determine whether it is a false positive",
+        "text_zh": "人工驗證該發現,判斷是否為誤報"
+      },
+      {
+        "key": "C",
+        "text_en": "Immediately reapply the patch to the server",
+        "text_zh": "立即對伺服器重新套用修補"
+      },
+      {
+        "key": "D",
+        "text_en": "Escalate the discrepancy to senior management for a decision",
+        "text_zh": "將分歧上報高階主管裁決"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "掃描器會有誤報(false positive),管理員的記憶或版本判斷也可能有誤——兩造衝突時的正解是人工驗證(檢查實際版本與設定,或用另一工具/手法複核),用證據取代各說各話。掃描結果本來就『需人工驗證後』才能據以行動,這也是弱點評估的基本紀律。",
+    "why_wrong_zh": {
+      "A": "未驗證就結案,若掃描器是對的(例如修補未生效,需重開機),等於留下已知的洞。",
+      "C": "未確認根因就重複動作:若是誤報則白做,若修補真的未生效也查不出原因。",
+      "D": "這是技術驗證層級就能解決的問題,直接上報是層級錯置,管理層也無從裁決技術事實。"
+    },
+    "id": "D6-0013",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-066.html",
+    "unit_title_zh": "弱點評估與滲透測試深入"
+  },
+  {
+    "stem_en": "An organization deploys a commercial web application purchased from a vendor that will not provide source code. Which testing technique is MOST appropriate for the organization to evaluate the application's security?",
+    "stem_zh": "組織部署一套向廠商採購的商用網頁應用程式,廠商不提供原始碼。哪種測試技術『最適合』組織用來評估該應用程式的安全性?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Static application security testing (SAST)",
+        "text_zh": "靜態應用程式安全測試"
+      },
+      {
+        "key": "B",
+        "text_en": "A formal Fagan code inspection",
+        "text_zh": "正式的 Fagan 程式碼審查"
+      },
+      {
+        "key": "C",
+        "text_en": "Dynamic application security testing (DAST)",
+        "text_zh": "動態應用程式安全測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Mutation testing of the application's code",
+        "text_zh": "對應用程式的程式碼做變異測試"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "DAST 在執行期(runtime)評估軟體安全,完全不需要原始碼——考綱明言 DAST『常是部署他人所寫應用程式的組織唯一的選項』。買來的軟體拿不到碼,只能從外部測試執行中的應用。記憶:沒有碼→只能動態打。",
+    "why_wrong_zh": {
+      "A": "SAST 靠分析原始碼(不執行)找漏洞,無碼可用即無從靜態分析。",
+      "B": "Fagan 審查是最正式的六步驟程式碼同儕審查,同樣需要原始碼。",
+      "D": "變異測試要小幅修改程式產生變異版本來驗證測試品質,是開發方才能做的技術。"
+    },
+    "id": "D6-0014",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-067.html",
+    "unit_title_zh": "動態/靜態/介面測試深入"
+  },
+  {
+    "stem_en": "A software tester builds a library of test inputs from data models that describe the application's expected input formats, then uses those inputs to probe for unexpected behavior. Which technique is the tester using?",
+    "stem_zh": "一位軟體測試員根據描述應用程式預期輸入格式的資料模型建立測試輸入庫,再用這些輸入探測非預期行為。這位測試員使用的是哪種技術?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Mutation (dumb) fuzzing",
+        "text_zh": "變異式(dumb)模糊測試"
+      },
+      {
+        "key": "B",
+        "text_en": "Generational (intelligent) fuzzing",
+        "text_zh": "生成式(intelligent)模糊測試"
+      },
+      {
+        "key": "C",
+        "text_en": "Misuse case testing",
+        "text_zh": "誤用案例測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Interface testing",
+        "text_zh": "介面測試"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "模糊測試分兩型:generational(intelligent)fuzzing 依『預期輸入的模型』產生輸入;mutation(dumb)fuzzing 則是修改『既有的已知輸入』合成新輸入。題幹關鍵字『從資料模型建立』→ 生成式。記憶:mutation 改舊料,generational 照模型造新料。",
+    "why_wrong_zh": {
+      "A": "變異式的起點是『已知輸入』,加以修改;不是依模型從頭生成。",
+      "C": "誤用案例測試先列舉已知濫用情境再嘗試利用,重點在攻擊者行為,不是靠輸入模型產生資料。",
+      "D": "介面測試驗證 API/UI/實體介面符合規格,與測試輸入的產生方式無關。"
+    },
+    "id": "D6-0015",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-067.html",
+    "unit_title_zh": "動態/靜態/介面測試深入"
+  },
+  {
+    "stem_en": "A development team is planning interface testing for an application that controls robotic machinery on a factory floor. Which type of interface deserves the MOST careful attention from testers?",
+    "stem_zh": "開發團隊為一套控制工廠機器手臂的應用程式規劃介面測試。測試者『最』應審慎關注哪一類介面?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The application programming interfaces exposed as web services",
+        "text_zh": "以 web service 對外開放的 API"
+      },
+      {
+        "key": "B",
+        "text_en": "The graphical user interface used by operators",
+        "text_zh": "操作員使用的圖形化介面"
+      },
+      {
+        "key": "C",
+        "text_en": "The command-line interface used by administrators",
+        "text_zh": "管理員使用的命令列介面"
+      },
+      {
+        "key": "D",
+        "text_en": "The physical interfaces that manipulate the machinery",
+        "text_zh": "操縱機械的實體介面"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "介面測試三類:API,UI,physical interface(實體介面)。考綱特別提醒:操縱機械,邏輯控制器等實體介面失效的後果可能傷及人身與設備,測試者須特別小心——人命與實體安全永遠最優先,這正是 CISSP 的判斷邏輯。",
+    "why_wrong_zh": {
+      "A": "API 當然要測(確保強制執行安全要求),但失效後果通常不直接危及人身安全。",
+      "B": "GUI 屬 UI 測試範圍,重要性次於會實際驅動機械的實體介面。",
+      "C": "CLI 同屬 UI 類介面,理由同上。"
+    },
+    "id": "D6-0016",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-067.html",
+    "unit_title_zh": "動態/靜態/介面測試深入"
+  },
+  {
+    "stem_en": "An online banking service sees almost no traffic between 2 a.m. and 5 a.m., yet management wants assurance that the service is functioning correctly during those hours, before any customer is affected. Which monitoring approach BEST meets this requirement?",
+    "stem_zh": "某網路銀行服務凌晨 2 點到 5 點幾乎沒有流量,但管理層希望在任何客戶受影響之前,就能確認服務在該時段運作正常。哪種監控方式『最能』滿足此需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Real user monitoring (RUM)",
+        "text_zh": "真實使用者監測"
+      },
+      {
+        "key": "B",
+        "text_en": "Daily review of application logs",
+        "text_zh": "每日審查應用程式日誌"
+      },
+      {
+        "key": "C",
+        "text_en": "Synthetic transactions executed on a schedule",
+        "text_zh": "依排程執行的合成交易"
+      },
+      {
+        "key": "D",
+        "text_en": "A breach and attack simulation (BAS) platform",
+        "text_zh": "入侵與攻擊模擬平台"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "合成交易(synthetic/active monitoring)以腳本主動模擬使用者操作並比對預期結果,即使『沒有真實使用者』也能持續驗證可用性與功能,在客戶受影響前先發現問題——正中題幹『低流量時段』與『事前發現』兩個條件。記憶:沒人用也要測→合成(主動)。",
+    "why_wrong_zh": {
+      "A": "RUM 是被動觀測真實流量,凌晨沒人用就沒有資料;等有資料時已有使用者受影響。",
+      "B": "每日日誌審查是事後檢視,無法在凌晨即時發現服務異常。",
+      "D": "BAS 驗證的是『偵測與控制會不會被觸發』,不是服務功能與可用性監控。"
+    },
+    "id": "D6-0017",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-068.html",
+    "unit_title_zh": "日誌/合成監控與 BAS"
+  },
+  {
+    "stem_en": "During an incident investigation, SOC analysts find that firewall, server, and application events cannot be assembled into a coherent timeline because their timestamps disagree by several minutes. Which control would BEST prevent this problem?",
+    "stem_zh": "事件調查期間,SOC 分析師發現防火牆,伺服器與應用程式的事件因時間戳相差數分鐘而無法組成一致的時間軸。哪個控制『最能』預防此問題?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Increasing the log retention period",
+        "text_zh": "延長日誌保存期限"
+      },
+      {
+        "key": "B",
+        "text_en": "Enabling log normalization on the SIEM",
+        "text_zh": "在 SIEM 上啟用日誌正規化"
+      },
+      {
+        "key": "C",
+        "text_en": "Collecting logs from additional sources",
+        "text_zh": "蒐集更多來源的日誌"
+      },
+      {
+        "key": "D",
+        "text_en": "Synchronizing all log sources and the SIEM using NTP",
+        "text_zh": "以 NTP 同步所有日誌來源與 SIEM 的時鐘"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "考綱明言:日誌系統應使用 NTP(Network Time Protocol),讓『送出日誌的系統』與『SIEM 本身』時鐘同步,確保多來源資訊有一致的時間軸。時鐘不同步,再多日誌也拼不出攻擊鏈——關聯分析的前提是共同的時間基準。",
+    "why_wrong_zh": {
+      "A": "保存期限解決『留多久』,不解決時間戳彼此不一致。",
+      "B": "正規化統一的是格式與欄位,無法修正來源時鐘本身的偏差。",
+      "C": "來源更多但時鐘仍亂,時間軸問題只會更嚴重。"
+    },
+    "id": "D6-0018",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-068.html",
+    "unit_title_zh": "日誌/合成監控與 BAS"
+  },
+  {
+    "stem_en": "Investigators suspect that an attacker moved laterally between internal hosts and exfiltrated a large volume of data to an external address. Which log source would be MOST useful for reconstructing these network communications?",
+    "stem_zh": "調查人員懷疑攻擊者曾在內部主機間橫向移動,並將大量資料外傳至外部位址。哪種日誌來源『最有助於』重建這些網路通訊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Change management logs",
+        "text_zh": "變更管理日誌"
+      },
+      {
+        "key": "B",
+        "text_en": "Windows Group Policy Object (GPO) settings Windows",
+        "text_zh": "群組原則(GPO)設定"
+      },
+      {
+        "key": "C",
+        "text_en": "Application error logs",
+        "text_zh": "應用程式錯誤日誌"
+      },
+      {
+        "key": "D",
+        "text_en": "Network flow (NetFlow) records",
+        "text_zh": "網路流量(NetFlow)紀錄"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "考綱明言:NetFlow 紀錄對調查安全事件特別有用——它記錄『誰跟誰,何時,傳了多少量』的連線中繼資料,正適合重建橫向移動路徑與辨識異常的大量外傳流量。",
+    "why_wrong_zh": {
+      "A": "變更管理日誌追蹤系統變更與核准,與網路通訊軌跡無關。",
+      "B": "GPO 是集中部署日誌政策的工具,本身不是通訊紀錄。",
+      "C": "應用程式錯誤日誌只看單一應用的異常,拼不出跨主機的流向與流量。"
+    },
+    "id": "D6-0019",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-068.html",
+    "unit_title_zh": "日誌/合成監控與 BAS"
+  },
+  {
+    "stem_en": "A payroll processing service provider is asked by its customers' financial statement auditors for assurance over controls that could impact the accuracy of customers' financial reporting, covering an extended period of time. Which engagement BEST fits this request?",
+    "stem_zh": "一家薪資處理服務供應商被客戶的財務報表稽核員要求,就『可能影響客戶財務報導正確性』的控制提供涵蓋一段期間的保證。哪種查核『最符合』此需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SOC 2 Type II",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SOC 3",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "SOC 1 Type II",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "ISO 27001 certification audit ISO 27001",
+        "text_zh": "認證稽核"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "題幹有兩個關鍵字:『影響財務報導正確性』→ SOC 1;『涵蓋一段期間的運作有效性』→ Type II。薪資處理直接影響客戶帳務,客戶的財務稽核員要的正是 SOC 1 Type II。記憶:SOC 1＝財報內控,Type II＝期間有效性。",
+    "why_wrong_zh": {
+      "A": "SOC 2 針對安全等五大信任服務準則,不是財報內控,無法支持財務稽核。",
+      "B": "SOC 3 是供公開揭露的行銷摘要,細節與證據力皆不足。",
+      "D": "ISO 27001 驗證 ISMS 符合標準,同樣不對財報相關內控出具意見。"
+    },
+    "id": "D6-0020",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-069.html",
+    "unit_title_zh": "稽核類型與 SOC 報告深入"
+  },
+  {
+    "stem_en": "A cloud provider's sales team wants a document that can be posted openly on the company website to demonstrate the security of its services to any potential customer, without requiring an NDA. Which report should the provider obtain?",
+    "stem_zh": "雲端供應商的業務團隊想要一份可公開放在官網,不需簽 NDA 就能向任何潛在客戶展示服務安全性的文件。供應商應取得哪種報告?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SOC 1 Type I",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SOC 2 Type II",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "An internal audit report",
+        "text_zh": "內部稽核報告"
+      },
+      {
+        "key": "D",
+        "text_en": "SOC 3",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "SOC 3 的定位就是公開揭露(public disclosure):評估影響安全與隱私的控制,但結果可公開,主要被視為行銷工具,常直接放在官網。記憶:SOC 2 深而保密(要 NDA),SOC 3 淺而公開(給大家看)。",
+    "why_wrong_zh": {
+      "A": "SOC 1 針對財報內控,供客戶的財務稽核使用,不是公開文件。",
+      "B": "SOC 2 內容機密,通常須簽 NDA 才對外提供,不能公開張貼。",
+      "C": "內部稽核缺乏獨立性,對外部潛在客戶沒有公信力。"
+    },
+    "id": "D6-0021",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-069.html",
+    "unit_title_zh": "稽核類型與 SOC 報告深入"
+  },
+  {
+    "stem_en": "While reviewing a critical vendor's SOC 2 Type II report, a security manager notices several exceptions where controls failed during the audit period. What is the BEST course of action?",
+    "stem_zh": "安全經理審閱關鍵供應商的 SOC 2 Type II 報告時,注意到查核期間有數項控制失效的例外事項。『最佳』做法是?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Assess each exception's impact on the services used, review compensating controls, and request a remediation plan",
+        "text_zh": "評估各例外對所用服務的影響,檢視補償控制,並要求改善計畫"
+      },
+      {
+        "key": "B",
+        "text_en": "Terminate the vendor relationship immediately to eliminate the risk",
+        "text_zh": "立即終止與該供應商的關係以消除風險"
+      },
+      {
+        "key": "C",
+        "text_en": "Accept the report as-is because the vendor completed the audit",
+        "text_zh": "因供應商已完成稽核,照單接受報告"
+      },
+      {
+        "key": "D",
+        "text_en": "Request the vendor's SOC 3 report to confirm the exceptions",
+        "text_zh": "索取供應商的 SOC 3 報告以確認例外"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "SOC 報告要『讀懂』而非『收集』:例外≠自動不合格。正解是風險導向處理——先評估例外是否影響你實際使用的服務,有無補償控制,再要求供應商提出改善計畫並追蹤。Think like a manager:先評估影響再決定行動,不因單一發現直接砍合約。",
+    "why_wrong_zh": {
+      "B": "未評估影響就終止是過度反應,可能造成不必要的營運中斷與轉換成本。",
+      "C": "『有報告』不等於『沒風險』,忽略例外正是最常見的審閱錯誤。",
+      "D": "SOC 3 只是公開摘要,細節比 SOC 2 更少,無助於釐清例外。"
+    },
+    "id": "D6-0022",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-069.html",
+    "unit_title_zh": "稽核類型與 SOC 報告深入"
+  },
+  {
+    "stem_en": "A CISO makes 'number of tickets closed per month' the security team's primary KPI. Within a quarter, analysts begin closing tickets without fully resolving the underlying issues, and the metric looks excellent. What is the BEST way to address this problem?",
+    "stem_zh": "CISO 將『每月結案工單數』訂為安全團隊的主要 KPI。一季之內,分析師開始未徹底解決根本問題就結案,指標數字非常漂亮。『最佳』的解決方式是?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Raise the monthly ticket-closure target to encourage more effort",
+        "text_zh": "提高每月結案目標以激勵團隊更努力"
+      },
+      {
+        "key": "B",
+        "text_en": "Tie the metric directly to individual performance bonuses",
+        "text_zh": "將該指標直接連動個人績效獎金"
+      },
+      {
+        "key": "C",
+        "text_en": "Stop measuring the security team's performance altogether",
+        "text_zh": "完全停止衡量安全團隊的績效"
+      },
+      {
+        "key": "D",
+        "text_en": "Redesign the measurement using a combination of outcome-focused metrics",
+        "text_zh": "改用一組聚焦結果(outcome)的組合指標重新設計度量"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "這是古德哈特定律:『當度量變成目標,它就不再是好度量』。單一產出型(output)指標容易被操弄;正解是組合指標＋關注結果(如問題重複發生率,重複稽核發現,真正解決時間),讓灌水失去意義。度量的目的在驅動正確行動,而非讓數字好看。",
+    "why_wrong_zh": {
+      "A": "提高目標只會加劇灌水,問題出在指標設計而非努力不足。",
+      "B": "把可操弄的指標綁上獎金,只會強化操弄誘因,使行為更扭曲。",
+      "C": "因噎廢食;沒有度量就無法管理與改善,該修的是『怎麼量』而不是『不量』。"
+    },
+    "id": "D6-0023",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-070.html",
+    "unit_title_zh": "KPI/KRI 與計畫評估"
+  },
+  {
+    "stem_en": "A DRP coordinator is selecting a test type for the annual disaster recovery exercise. Management asks which option carries the HIGHEST risk of disrupting normal production operations. What should the coordinator answer?",
+    "stem_zh": "DRP 協調員正在為年度災難復原演練挑選測試類型。管理層詢問哪個選項對正常正式營運的中斷風險『最高』。協調員應如何回答?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Parallel test",
+        "text_zh": "平行測試"
+      },
+      {
+        "key": "B",
+        "text_en": "Full-interruption test",
+        "text_zh": "全中斷測試"
+      },
+      {
+        "key": "C",
+        "text_en": "Simulation test",
+        "text_zh": "模擬測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Tabletop exercise",
+        "text_zh": "桌面演練"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "五種 DRP 測試由淺到深,風險遞增:read-through/checklist → walkthrough/tabletop → simulation → parallel → full-interruption。全中斷測試真正切換到備援環境,最真實,但切換或切回失敗就是真實的營運中斷,故對正式環境風險最高,須管理層核准且通常在演練成熟後才做(P2-D7-5 將深入)。",
+    "why_wrong_zh": {
+      "A": "平行測試讓備援站並行運作但不切換正式環境,能驗證備援可用而風險低。",
+      "C": "模擬測試依災難情境演走流程,不會動到正式系統。",
+      "D": "桌面演練是純紙上情境討論,對營運零中斷,風險最低的動員型演練。"
+    },
+    "id": "D6-0024",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-070.html",
+    "unit_title_zh": "KPI/KRI 與計畫評估"
+  },
+  {
+    "stem_en": "An organization has thousands of user accounts, and the security team lacks the time to review every account's permissions each quarter. Which approach BEST balances assurance with the limited resources?",
+    "stem_zh": "組織有數千個使用者帳號,安全團隊沒有時間每季逐一複核所有帳號的權限。哪種做法『最能』在有限資源下兼顧保證?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Skip the review this quarter and rely on the IAM system's automation",
+        "text_zh": "本季跳過審查,信賴 IAM 系統的自動化"
+      },
+      {
+        "key": "B",
+        "text_en": "Fully review all highly privileged accounts and apply truly random sampling to the rest",
+        "text_zh": "完整複核所有高特權帳號,其餘帳號採真正隨機的抽樣"
+      },
+      {
+        "key": "C",
+        "text_en": "Let each department manager choose which of their accounts to review",
+        "text_zh": "由各部門主管自行挑選要審查的帳號"
+      },
+      {
+        "key": "D",
+        "text_en": "Review only the accounts created during the current quarter",
+        "text_zh": "只審查本季新建立的帳號"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "考綱的做法:全面複核太耗時,通常只對高特權帳號做完整審查(風險最高,值得投入);其餘帳號可用抽樣,但抽樣必須真正隨機才有統計代表性。以風險為導向分配有限的審查資源,正是 think like a manager 的答案。",
+    "why_wrong_zh": {
+      "A": "IAM 自動化輔助生命週期管理,但不能取代定期人為複核;權限蔓延與未授權變更仍會發生。",
+      "C": "主管自選樣本是 judgement sampling,失去隨機性,且有不揭自家問題的利益衝突。",
+      "D": "只看新帳號會漏掉既有帳號的權限擴張與未授權修改,而後者才是審查要抓的主要風險。"
+    },
+    "id": "D6-0025",
+    "domain": "D6",
+    "topic": "d6-p2",
+    "unit": "P2-D6-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-070.html",
+    "unit_title_zh": "KPI/KRI 與計畫評估"
+  },
+  {
+    "stem_en": "Management wants to know which known weaknesses exist across all servers, but does NOT want any exploitation. Which activity is MOST appropriate?",
+    "stem_zh": "管理層想知道所有伺服器上存在哪些已知弱點,但『不希望進行任何利用』。哪個活動最適合?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Penetration test",
+        "text_zh": "滲透測試"
+      },
+      {
+        "key": "B",
+        "text_en": "Vulnerability assessment",
+        "text_zh": "弱點評估"
+      },
+      {
+        "key": "C",
+        "text_en": "Red team engagement",
+        "text_zh": "紅隊演練"
+      },
+      {
+        "key": "D",
+        "text_en": "Social engineering test",
+        "text_zh": "社交工程測試"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "要『找出並列出弱點而不利用』＝弱點評估(廣度掃描、不 exploit)。",
+    "why_wrong_zh": {
+      "A": "滲透測試會實際利用弱點,違反『不利用』要求。",
+      "C": "紅隊會模擬攻擊並利用,範圍更廣。",
+      "D": "社交工程是利用人,非列舉系統弱點。"
+    },
+    "id": "D6-0026",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-106.html",
+    "unit_title_zh": "考點：弱點 vs 滲透"
+  },
+  {
+    "stem_en": "A penetration tester is given NO prior information about the target environment, simulating an external attacker. This is known as:",
+    "stem_zh": "滲透測試人員未獲任何目標環境資訊,模擬外部攻擊者。這稱為:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "White box",
+        "text_zh": "白箱"
+      },
+      {
+        "key": "B",
+        "text_en": "Gray box",
+        "text_zh": "灰箱"
+      },
+      {
+        "key": "C",
+        "text_en": "Black box",
+        "text_zh": "黑箱"
+      },
+      {
+        "key": "D",
+        "text_en": "Crystal box",
+        "text_zh": "透明箱"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "無任何內部資訊、模擬外部攻擊者＝黑箱(black box)。",
+    "why_wrong_zh": {
+      "A": "白箱是完全掌握架構/原始碼。",
+      "B": "灰箱是部分資訊。",
+      "D": "transparent/crystal box 即白箱別稱(全知),非無資訊。"
+    },
+    "id": "D6-0027",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-106.html",
+    "unit_title_zh": "考點：弱點 vs 滲透"
+  },
+  {
+    "stem_en": "What MUST be obtained before conducting a penetration test to ensure it is legal?",
+    "stem_zh": "進行滲透測試前,為確保合法『必須』取得什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A vulnerability scan report",
+        "text_zh": "弱點掃描報告"
+      },
+      {
+        "key": "B",
+        "text_en": "Written authorization and rules of engagement",
+        "text_zh": "書面授權與交戰規則"
+      },
+      {
+        "key": "C",
+        "text_en": "A SOC 2 report SOC 2",
+        "text_zh": "報告"
+      },
+      {
+        "key": "D",
+        "text_en": "An incident response plan",
+        "text_zh": "事件回應計畫"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "滲透測試必須有書面授權(get-out-of-jail letter)與 ROE(界定範圍/時間/手段),否則等同非法入侵。",
+    "why_wrong_zh": {
+      "A": "掃描報告非合法前提。",
+      "C": "SOC 2 與滲透授權無關。",
+      "D": "IR 計畫不是滲透測試的法律授權。"
+    },
+    "id": "D6-0028",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-106.html",
+    "unit_title_zh": "考點：弱點 vs 滲透"
+  },
+  {
+    "stem_en": "During an authorized penetration test conducted under agreed rules of engagement, the tester discovers evidence that a REAL attacker has already compromised the target server. What should the tester do FIRST?",
+    "stem_zh": "在依約定交戰規則進行的授權滲透測試中,測試人員發現目標伺服器『已被真實攻擊者入侵』的證據。測試人員應『首先』怎麼做?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Continue the test and include the finding in the final report",
+        "text_zh": "繼續測試,將發現寫入期末報告"
+      },
+      {
+        "key": "B",
+        "text_en": "Exploit the attacker's backdoor to gather more evidence",
+        "text_zh": "利用攻擊者留下的後門蒐集更多證據"
+      },
+      {
+        "key": "C",
+        "text_en": "Pause testing and immediately notify the designated contact per the RoE",
+        "text_zh": "依 RoE 暫停測試並立即通報指定窗口"
+      },
+      {
+        "key": "D",
+        "text_en": "Remove the attacker's malware to protect the client",
+        "text_zh": "移除攻擊者的惡意程式以保護客戶"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "發現真實入侵＝進行中的事件,已超出演練範疇;RoE 應定義此情況的緊急通報程序,測試人員須暫停測試、立即依 RoE 升級通報,讓客戶啟動事件回應。記憶法:演習中遇到真火,先報警再演。",
+    "why_wrong_zh": {
+      "A": "等到期末報告會延誤真實事件的應變時機。",
+      "B": "動用攻擊者後門超出授權範圍,且可能破壞鑑識證據。",
+      "D": "逕自清除會破壞證據,應變處置屬客戶 IR 流程的決策,非測試人員。"
+    },
+    "id": "D6-0029",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-106.html",
+    "unit_title_zh": "考點：弱點 vs 滲透"
+  },
+  {
+    "stem_en": "A CISO wants CONTINUOUS, automated validation that detection and prevention controls actually trigger when threat indicators appear on systems, without hiring a dedicated offensive team. Which approach BEST meets this need?",
+    "stem_zh": "CISO 想要『持續、自動化』地驗證:當威脅指標出現在系統上時,偵測與防禦控制是否真的會觸發,且不想聘請專職攻擊團隊。哪種做法最能滿足需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Annual red team engagement",
+        "text_zh": "年度紅隊演練"
+      },
+      {
+        "key": "B",
+        "text_en": "Breach and attack simulation (BAS) platform",
+        "text_zh": "入侵與攻擊模擬平台"
+      },
+      {
+        "key": "C",
+        "text_en": "Quarterly external penetration test",
+        "text_zh": "每季外部滲透測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Monthly vulnerability scans",
+        "text_zh": "每月弱點掃描"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "BAS 結合紅隊(攻擊)與藍隊(防禦)技術加上自動化,主動注入威脅指標(如在伺服器放置可疑檔案)以驗證偵測/防禦控制是否即時觸發,可持續、可重複執行——正中『持續自動化驗證控制』的需求。",
+    "why_wrong_zh": {
+      "A": "紅隊演練深度高但一年一次且靠人力,非持續自動化。",
+      "C": "滲透測試同樣是週期性、人工的時點活動。",
+      "D": "弱點掃描只列弱點,不會驗證偵測控制是否真的觸發告警。"
+    },
+    "id": "D6-0030",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-106.html",
+    "unit_title_zh": "考點：弱點 vs 滲透"
+  },
+  {
+    "stem_en": "A security manager notes that unauthenticated network vulnerability scans miss configuration flaws and produce many false positives. Exploitation is NOT permitted in this environment. What is the BEST way to improve scan accuracy?",
+    "stem_zh": "安全經理發現『未驗證』的網路弱點掃描漏掉組態缺陷且誤報很多。此環境『不允許』任何利用行為。改善掃描準確度的最佳方式是?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Run authenticated (credentialed) scans using a read-only account",
+        "text_zh": "以唯讀帳號執行驗證(憑證)掃描"
+      },
+      {
+        "key": "B",
+        "text_en": "Commission a penetration test to confirm each finding",
+        "text_zh": "委託滲透測試逐一確認發現"
+      },
+      {
+        "key": "C",
+        "text_en": "Increase the frequency of the same unauthenticated scans",
+        "text_zh": "提高相同未驗證掃描的頻率"
+      },
+      {
+        "key": "D",
+        "text_en": "Switch to an external black-box scan",
+        "text_zh": "改為外部黑箱掃描"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "驗證(credentialed)掃描以有效憑證(常用唯讀帳號)登入目標,能讀取組態檔、深入系統內層,提高準確度、降低誤報,且仍不做任何利用——同時滿足準確度與『不利用』兩個限制。",
+    "why_wrong_zh": {
+      "B": "滲透測試會實際利用弱點,違反『不允許利用』的限制(典型「技術上有效但違反前提」陷阱)。",
+      "C": "提高頻率不會改善單次掃描的深度與準確度。",
+      "D": "黑箱掃描資訊更少,漏報與誤報反而更多。"
+    },
+    "id": "D6-0031",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-106.html",
+    "unit_title_zh": "考點：弱點 vs 滲透"
+  },
+  {
+    "stem_en": "Developers want to find vulnerabilities by analyzing the application's source code WITHOUT running it. Which technique is this?",
+    "stem_zh": "開發者想在『不執行程式』下,藉由分析應用原始碼來找漏洞。這是哪種技術?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "DAST",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SAST",
+        "text_zh": "靜態應用安全測試"
+      },
+      {
+        "key": "C",
+        "text_en": "Fuzzing",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Penetration test",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SAST 在不執行下分析原始碼找漏洞(早期、白箱),能定位到行號根因。",
+    "why_wrong_zh": {
+      "A": "DAST 是執行中攻擊應用(不看原始碼)。",
+      "C": "Fuzzing 餵異常輸入給執行中程式。",
+      "D": "滲透測試針對執行中系統。"
+    },
+    "id": "D6-0032",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-107.html",
+    "unit_title_zh": "考點：測試技術選用"
+  },
+  {
+    "stem_en": "An organization wants to detect outages of its e-commerce checkout flow even during off-peak hours when few real users are active. Which technique is BEST?",
+    "stem_zh": "某組織想偵測其結帳流程的故障,即使在離峰、少有真實使用者時也要偵測。哪種技術最佳?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Real User Monitoring (RUM)",
+        "text_zh": "真實使用者監測"
+      },
+      {
+        "key": "B",
+        "text_en": "Synthetic transaction monitoring",
+        "text_zh": "合成交易監測"
+      },
+      {
+        "key": "C",
+        "text_en": "SAST",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Log retention",
+        "text_zh": "日誌保存"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "合成交易主動模擬使用者操作,即使無真實流量時也能持續監測可用性/效能。",
+    "why_wrong_zh": {
+      "A": "RUM 被動觀測真實流量,離峰無人時無資料。",
+      "C": "SAST 是程式碼分析,非可用性監測。",
+      "D": "日誌保存非主動偵測故障。"
+    },
+    "id": "D6-0033",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-107.html",
+    "unit_title_zh": "考點：測試技術選用"
+  },
+  {
+    "stem_en": "Which technique is specifically used to identify known vulnerabilities in third-party and open-source dependencies?",
+    "stem_zh": "哪種技術專門用於辨識第三方與開源『相依套件』中的已知漏洞?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SAST",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "DAST",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "SCA",
+        "text_zh": "軟體組成分析"
+      },
+      {
+        "key": "D",
+        "text_en": "Synthetic transaction",
+        "text_zh": "合成交易"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "SCA 掃描第三方/開源相依的已知漏洞(配合 SBOM);SAST/DAST 找的是你自己寫的程式漏洞。",
+    "why_wrong_zh": {
+      "D": "合成交易是可用性監測。"
+    },
+    "id": "D6-0034",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-107.html",
+    "unit_title_zh": "考點：測試技術選用"
+  },
+  {
+    "stem_en": "A QA team reports that every line of code was executed at least once during testing, yet a security defect later appeared in an untested ELSE path. Which coverage criterion would MOST likely have caught this gap?",
+    "stem_zh": "QA 團隊回報測試時每一行程式碼都至少執行過一次,但之後仍在未測到的 ELSE 路徑出現安全缺陷。哪種涵蓋率準則最可能抓到這個缺口?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Statement coverage",
+        "text_zh": "敘述涵蓋率"
+      },
+      {
+        "key": "B",
+        "text_en": "Loop coverage",
+        "text_zh": "迴圈涵蓋率"
+      },
+      {
+        "key": "C",
+        "text_en": "Functional coverage",
+        "text_zh": "功能涵蓋率"
+      },
+      {
+        "key": "D",
+        "text_en": "Branch coverage",
+        "text_zh": "分支涵蓋率"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Branch coverage 要求每個 IF 都在 IF 與 ELSE 兩種條件下各執行過;statement coverage 只要求「每行跑過」,可能走單一路徑就達標而漏掉 ELSE 分支。記憶法:行數跑過≠每條路都走過。",
+    "why_wrong_zh": {
+      "A": "敘述涵蓋率正是題目已達成卻仍漏掉缺陷的準則,層次不足。",
+      "B": "迴圈涵蓋率驗證迴圈執行 0/1/多次,與 IF/ELSE 無關。",
+      "C": "功能涵蓋率只確認每個函式被呼叫並回傳結果。"
+    },
+    "id": "D6-0035",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-107.html",
+    "unit_title_zh": "考點：測試技術選用"
+  },
+  {
+    "stem_en": "A software security team wants to fuzz a new protocol parser by generating synthetic inputs based on MODELS of the expected input format, rather than modifying captured samples. Which technique is this?",
+    "stem_zh": "軟體安全團隊想對新的協定解析器做模糊測試,做法是依『預期輸入格式的模型』產生合成輸入,而非改造既有樣本。這是哪種技術?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Mutation (dumb) fuzzing",
+        "text_zh": "變異(啞)模糊測試"
+      },
+      {
+        "key": "B",
+        "text_en": "Misuse case testing",
+        "text_zh": "誤用案例測試"
+      },
+      {
+        "key": "C",
+        "text_en": "Generational (intelligent) fuzzing",
+        "text_zh": "世代(智慧)模糊測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Regression testing",
+        "text_zh": "迴歸測試"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Generational (intelligent) fuzzing 依預期輸入的模型從零開發輸入;mutation fuzzing 則是修改已知輸入產生變體。題幹關鍵字「models of expected inputs」→ generational。",
+    "why_wrong_zh": {
+      "A": "mutation 是改造既有樣本,與題幹「非改造樣本」相反。",
+      "B": "誤用案例測試是從敵意行為出發的測試策略,非輸入產生方法。",
+      "D": "迴歸測試驗證改動未破壞既有功能,與 fuzzing 無關。"
+    },
+    "id": "D6-0036",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-107.html",
+    "unit_title_zh": "考點：測試技術選用"
+  },
+  {
+    "stem_en": "Management complains that DAST findings cannot pinpoint the vulnerable line of code, while SAST alone misses runtime issues. Source code and a test environment are BOTH available. Which technique BEST combines runtime accuracy with code-level visibility?",
+    "stem_zh": "管理層抱怨 DAST 的發現無法定位到有漏洞的程式碼行,而單用 SAST 又漏掉執行期問題。原始碼與測試環境『都有』。哪種技術最能兼顧執行期準確度與程式碼層可見性?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "IAST",
+        "text_zh": "互動式應用安全測試"
+      },
+      {
+        "key": "B",
+        "text_en": "DAST with a broader scan policy",
+        "text_zh": "擴大掃描政策的 DAST"
+      },
+      {
+        "key": "C",
+        "text_en": "SCA",
+        "text_zh": "軟體組成分析"
+      },
+      {
+        "key": "D",
+        "text_en": "RUM",
+        "text_zh": "真實使用者監測"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "IAST 在應用執行期從內部插樁分析程式碼,同時具備 SAST 的碼層定位與 DAST 的執行期真實行為,結果更準確——正是「兩者都要」情境的最佳解。",
+    "why_wrong_zh": {
+      "B": "再怎麼擴大 DAST 政策,仍是黑箱視角,看不到程式碼行號。",
+      "C": "SCA 只查第三方相依的已知漏洞,不分析自寫程式的執行期行為。",
+      "D": "RUM 是被動的效能/行為監測,不是安全測試技術。"
+    },
+    "id": "D6-0037",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-107.html",
+    "unit_title_zh": "考點：測試技術選用"
+  },
+  {
+    "stem_en": "A company is evaluating a SaaS vendor's SECURITY controls and wants evidence they operated effectively over the past year. Which report is MOST appropriate?",
+    "stem_zh": "某公司要評估 SaaS 供應商的『資安』控制,並想要過去一年運作有效的證據。哪份報告最適合?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SOC 1 Type I",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SOC 2 Type II",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "SOC 3",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "SOC 1 Type II",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "評估資安→SOC 2;要一段期間運作有效的證據→Type II。故 SOC 2 Type II。",
+    "why_wrong_zh": {
+      "A": "SOC 1 是財報內控,且 Type I 只是時間點快照。",
+      "C": "SOC 3 只是公開摘要,細節不足以評估。",
+      "D": "SOC 1 是財報,非資安。"
+    },
+    "id": "D6-0038",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-108.html",
+    "unit_title_zh": "考點：SOC 報告判斷"
+  },
+  {
+    "stem_en": "What is the key difference between a SOC 2 Type I and Type II report?",
+    "stem_zh": "SOC 2 Type I 與 Type II 報告的關鍵差異是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Type I covers finances, Type II covers security",
+        "text_zh": "型一財務、型二資安"
+      },
+      {
+        "key": "B",
+        "text_en": "Type I assesses design at a point in time; Type II assesses operating effectiveness over a period",
+        "text_zh": "型一某時間點設計、型二一段期間運作有效"
+      },
+      {
+        "key": "C",
+        "text_en": "Type I is public, Type II is private",
+        "text_zh": "型一公開、型二保密"
+      },
+      {
+        "key": "D",
+        "text_en": "There is no difference",
+        "text_zh": "沒有差別"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Type I＝某時間點控制『設計是否適當』;Type II＝一段期間控制『是否持續有效運作』(證據力強)。",
+    "why_wrong_zh": {
+      "A": "兩者都是 SOC 2(資安),差別不在財務 vs 資安。",
+      "C": "兩者都屬保密報告。",
+      "D": "兩者差別明確(設計 vs 運作)。"
+    },
+    "id": "D6-0039",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-108.html",
+    "unit_title_zh": "考點：SOC 報告判斷"
+  },
+  {
+    "stem_en": "In a SOC 2 report, controls that the customer themselves must implement for the overall system to be secure are called:",
+    "stem_zh": "在 SOC 2 報告中,『客戶自己必須落實、整個系統才安全』的控制稱為:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Complementary User Entity Controls (CUECs)",
+        "text_zh": "使用者實體控制"
+      },
+      {
+        "key": "B",
+        "text_en": "Trust Services Criteria",
+        "text_zh": "信任服務準則"
+      },
+      {
+        "key": "C",
+        "text_en": "Exceptions",
+        "text_zh": "例外事項"
+      },
+      {
+        "key": "D",
+        "text_en": "Management assertions",
+        "text_zh": "管理層聲明"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "CUEC 是『客戶端須自行落實的補充控制』;有供應商 SOC 2 不代表你全免責,仍須做好 CUEC。",
+    "why_wrong_zh": {
+      "B": "信任服務準則是 SOC 2 評估的五大面向。",
+      "C": "例外事項是稽核發現的控制失效。",
+      "D": "管理層聲明是服務商對控制的聲明。"
+    },
+    "id": "D6-0040",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-108.html",
+    "unit_title_zh": "考點：SOC 報告判斷"
+  },
+  {
+    "stem_en": "A SaaS provider wants an attestation it can post PUBLICLY on its website to reassure prospective customers, without disclosing detailed control descriptions or requiring an NDA. Which report BEST fits this purpose?",
+    "stem_zh": "某 SaaS 供應商想要一份可『公開張貼』在官網、讓潛在客戶安心的證明,且不揭露控制細節、不需簽 NDA。哪份報告最符合目的?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SOC 2 Type II",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SOC 3",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "SOC 1 Type II",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "SOC 2 Type I",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SOC 3 專為公開揭露設計,是可自由散布的摘要報告,主要作為行銷工具;題目關鍵字「公開張貼、不揭露細節、不需 NDA」直接對應 SOC 3。",
+    "why_wrong_zh": {
+      "A": "SOC 2 Type II 證據力最強,但屬機密報告,通常須 NDA 才能分享(「更好的報告」陷阱,不符合公開用途)。",
+      "C": "SOC 1 是財報內控,對象是財務稽核員,亦非公開報告。",
+      "D": "SOC 2 不論 Type I/II 都屬機密,不能公開張貼。"
+    },
+    "id": "D6-0041",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-108.html",
+    "unit_title_zh": "考點：SOC 報告判斷"
+  },
+  {
+    "stem_en": "A payroll service organization receives audit requests from dozens of customers, each wanting to send in its own assessors. According to SSAE 18, what is the MOST efficient way to satisfy these customers?",
+    "stem_zh": "某薪資服務組織收到數十家客戶的稽核要求,每家都想派自己的評估人員進場。依 SSAE 18,滿足這些客戶最有效率的方式是?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Allow each customer to perform its own on-site audit",
+        "text_zh": "讓每家客戶各自到場稽核"
+      },
+      {
+        "key": "B",
+        "text_en": "Undergo a single SOC engagement and share the resulting report with customers",
+        "text_zh": "進行一次 SOC 稽核,將報告分享給客戶"
+      },
+      {
+        "key": "C",
+        "text_en": "Require every customer to sign a liability waiver instead",
+        "text_zh": "改要求每家客戶簽署免責聲明"
+      },
+      {
+        "key": "D",
+        "text_en": "Publish internal audit results on the company website",
+        "text_zh": "將內部稽核結果公佈於官網"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SSAE 18(美國以外為 ISAE 3402)的設計目的,就是讓服務組織進行一次外部評估(SOC 稽核),再把報告分享給客戶與潛在客戶,取代多次重複的第三方評估——一次稽核,多方採信。",
+    "why_wrong_zh": {
+      "A": "數十次重複稽核成本高、干擾營運,正是 SSAE 18 要解決的痛點。",
+      "C": "免責聲明不提供任何控制有效性的保證。",
+      "D": "內部稽核缺乏獨立性,且機密內容不宜公開。"
+    },
+    "id": "D6-0042",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-108.html",
+    "unit_title_zh": "考點：SOC 報告判斷"
+  },
+  {
+    "stem_en": "The financial statement auditors of a customer need assurance over a payment processing provider's controls that could affect the ACCURACY of the customer's financial reporting over the past year. Which report should they request?",
+    "stem_zh": "某客戶的財報簽證會計師,需要就支付處理供應商『可能影響客戶財報正確性』的控制,取得涵蓋過去一年的保證。應索取哪份報告?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SOC 1 Type II",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SOC 2 Type II",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "SOC 3",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "A vulnerability assessment report",
+        "text_zh": "弱點評估報告"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "關鍵字「影響財報正確性的控制」→ SOC 1;需要「過去一年運作有效」→ Type II。別因為「資安人偏好 SOC 2」反射作答——這題的使用者是財報簽證會計師,考的是報告用途對應。",
+    "why_wrong_zh": {
+      "B": "SOC 2 針對資安/信任服務準則,非財報內控(高鑑別度陷阱)。",
+      "C": "SOC 3 是公開摘要,細節不足以支持財報簽證。",
+      "D": "弱點評估報告與財報內控保證無關。"
+    },
+    "id": "D6-0043",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-108.html",
+    "unit_title_zh": "考點：SOC 報告判斷"
+  },
+  {
+    "stem_en": "Why should an internal auditor NOT audit a process they personally designed and operate?",
+    "stem_zh": "為何內部稽核員不應稽核自己親自設計並操作的流程?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It takes too long",
+        "text_zh": "太花時間"
+      },
+      {
+        "key": "B",
+        "text_en": "It violates auditor independence/objectivity",
+        "text_zh": "違反稽核獨立性/客觀性"
+      },
+      {
+        "key": "C",
+        "text_en": "It requires special tools",
+        "text_zh": "需要特殊工具"
+      },
+      {
+        "key": "D",
+        "text_en": "It is more expensive",
+        "text_zh": "較昂貴"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "稽核者查核自己負責的工作會喪失獨立性與客觀性(球員兼裁判),屬職責分離的延伸。",
+    "why_wrong_zh": {},
+    "id": "D6-0044",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-109.html",
+    "unit_title_zh": "考點：稽核獨立性與度量"
+  },
+  {
+    "stem_en": "Which metric is FORWARD-looking and designed to provide an early warning that risk is increasing?",
+    "stem_zh": "哪種指標是『前瞻性』的,旨在提供風險上升的早期預警?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "KPI",
+        "text_zh": "關鍵績效指標"
+      },
+      {
+        "key": "B",
+        "text_en": "KRI",
+        "text_zh": "關鍵風險指標"
+      },
+      {
+        "key": "C",
+        "text_en": "ROI",
+        "text_zh": "投資報酬率"
+      },
+      {
+        "key": "D",
+        "text_en": "SLA",
+        "text_zh": "服務水準協議"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "KRI(關鍵風險指標)是前瞻性的風險預警(如未修補高風險弱點數趨勢);KPI 衡量過去/現在績效。",
+    "why_wrong_zh": {
+      "A": "KPI 是回顧型績效衡量。",
+      "C": "ROI 是財務報酬。",
+      "D": "SLA 是服務水準約定。"
+    },
+    "id": "D6-0045",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-109.html",
+    "unit_title_zh": "考點：稽核獨立性與度量"
+  },
+  {
+    "stem_en": "An organization wants an assessment of its security controls that will carry credibility with external customers. Who should perform it?",
+    "stem_zh": "某組織想要一份對外部客戶具公信力的安全控制評估。應由誰執行?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The internal IT team",
+        "text_zh": "內部 IT 團隊"
+      },
+      {
+        "key": "B",
+        "text_en": "The system owner",
+        "text_zh": "系統擁有者"
+      },
+      {
+        "key": "C",
+        "text_en": "An independent third-party auditor",
+        "text_zh": "獨立第三方稽核員"
+      },
+      {
+        "key": "D",
+        "text_en": "The development team",
+        "text_zh": "開發團隊"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "要對外具公信力,應由獨立第三方稽核員執行(獨立性提供客觀保證)。",
+    "why_wrong_zh": {},
+    "id": "D6-0046",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-109.html",
+    "unit_title_zh": "考點：稽核獨立性與度量"
+  },
+  {
+    "stem_en": "An ISMS follows the ISO Plan-Do-Check-Act loop. The annual security assessment and testing cycle has just been completed as the 'Check' phase. In which phase does the FORMAL management review of the results belong?",
+    "stem_zh": "某 ISMS 遵循 ISO PDCA 循環。年度安全評估與測試剛以『Check』階段完成。針對結果的『正式管理審查』屬於哪個階段?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Plan",
+        "text_zh": "規劃"
+      },
+      {
+        "key": "B",
+        "text_en": "Do",
+        "text_zh": "執行"
+      },
+      {
+        "key": "C",
+        "text_en": "Check",
+        "text_zh": "查核"
+      },
+      {
+        "key": "D",
+        "text_en": "Act",
+        "text_zh": "行動"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "ISO PDCA 中:Plan 訂目標與政策、Do 是安全營運、Check 是安全評估與測試,而正式進行管理審查屬於 Act——管理層依 Check 的結果做出改善決策,驅動下一輪循環。記憶法:查完(Check)才審(Act)。",
+    "why_wrong_zh": {
+      "A": "Plan 是訂定目標與政策的起點,尚無結果可審。",
+      "B": "Do 是日常安全營運的執行。",
+      "C": "Check 產出評估結果,管理審查發生在其後(最強干擾項)。"
+    },
+    "id": "D6-0047",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-109.html",
+    "unit_title_zh": "考點：稽核獨立性與度量"
+  },
+  {
+    "stem_en": "An organization needs security audits that can quickly reschedule failed assessment components and leverage deep insider knowledge of its systems; it explicitly accepts lower external validity. Which audit approach BEST fits these requirements?",
+    "stem_zh": "某組織需要的安全稽核,要能快速重排失敗的評估項目、善用對自家系統的深入內部知識,且明確接受較低的對外效度。哪種稽核最符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Third-party audit",
+        "text_zh": "第三方稽核"
+      },
+      {
+        "key": "B",
+        "text_en": "External (business partner) audit",
+        "text_zh": "外部(業務夥伴)稽核"
+      },
+      {
+        "key": "C",
+        "text_en": "Internal audit",
+        "text_zh": "內部稽核"
+      },
+      {
+        "key": "D",
+        "text_en": "Regulatory examination",
+        "text_zh": "主管機關檢查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "內部稽核的優勢正是:敏捷(可快速重排失敗項目)、具內部知識可深入所有系統、成本低;代價是獨立性與對外公信力較低——題目已明說可接受。別被「第三方比較獨立」反射作答,先看題目要的是什麼。",
+    "why_wrong_zh": {
+      "A": "第三方公信力高但昂貴、排程僵硬,與題目需求相反(高鑑別度陷阱)。",
+      "B": "external 稽核由業務夥伴發動,範圍限縮於合約,非組織自主安排。",
+      "D": "主管機關檢查的時程與範圍都不由組織調度。"
+    },
+    "id": "D6-0048",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-109.html",
+    "unit_title_zh": "考點：稽核獨立性與度量"
+  },
+  {
+    "stem_en": "A business partner invokes its contractual right to audit and asks to review ALL of the organization's internal systems, including those unrelated to the contracted services. How should the organization BEST respond?",
+    "stem_zh": "某業務夥伴行使合約稽核權,要求檢視組織『所有』內部系統,包括與合約服務無關者。組織最佳的回應方式是?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Grant full access to demonstrate transparency",
+        "text_zh": "全面開放以展現透明"
+      },
+      {
+        "key": "B",
+        "text_en": "Refuse the audit entirely",
+        "text_zh": "完全拒絕稽核"
+      },
+      {
+        "key": "C",
+        "text_en": "Offer a public SOC 3 report instead",
+        "text_zh": "改提供公開的 SOC 3 報告"
+      },
+      {
+        "key": "D",
+        "text_en": "Scope the audit to the contractual obligations only",
+        "text_zh": "將稽核範圍限縮於合約義務"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "external(第二方)稽核依定義應僅涵蓋雙方的合約義務範圍;超出範圍會暴露無關的機敏資訊、擴大風險。正確做法是依合約界定並限縮稽核範圍——既履約又控管風險,是管理者思維。",
+    "why_wrong_zh": {
+      "A": "全面開放超出契約義務,徒增機敏資訊外洩風險。",
+      "B": "對方擁有合約稽核權,完全拒絕構成違約。",
+      "C": "SOC 3 只是公開摘要,無法履行合約約定的稽核義務。"
+    },
+    "id": "D6-0049",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-109.html",
+    "unit_title_zh": "考點：稽核獨立性與度量"
+  },
+  {
+    "stem_en": "An organization performs nightly backups but has never attempted to restore from them. What is the GREATEST risk?",
+    "stem_zh": "某組織每晚備份,但從未嘗試還原。最大的風險是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Backups use too much storage",
+        "text_zh": "備份佔太多儲存"
+      },
+      {
+        "key": "B",
+        "text_en": "The backups may be unusable when needed",
+        "text_zh": "需要時備份可能無法使用"
+      },
+      {
+        "key": "C",
+        "text_en": "Backups take too long",
+        "text_zh": "備份太久"
+      },
+      {
+        "key": "D",
+        "text_en": "Backups are encrypted",
+        "text_zh": "備份被加密"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "未經還原測試的備份,可能損毀/不完整/設定錯誤,需要時才發現救不回——這是最大風險(呼應勒索情境)。",
+    "why_wrong_zh": {
+      "D": "備份加密是好事,非風險。"
+    },
+    "id": "D6-0050",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-110.html",
+    "unit_title_zh": "考點：D6 綜合 + 刷題"
+  },
+  {
+    "stem_en": "Which DR test validates failover to the backup site by running it in parallel with production WITHOUT shutting down the primary system?",
+    "stem_zh": "哪種 DR 測試在『不關閉主系統』下,讓備援站與正式環境並行運作以驗證切換?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Checklist review",
+        "text_zh": "清單審查"
+      },
+      {
+        "key": "B",
+        "text_en": "Tabletop exercise",
+        "text_zh": "桌面演練"
+      },
+      {
+        "key": "C",
+        "text_en": "Parallel test",
+        "text_zh": "平行測試"
+      },
+      {
+        "key": "D",
+        "text_en": "Full interruption test",
+        "text_zh": "全中斷測試"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Parallel test:備援站並行運作但不切換正式環境,風險低、可驗證備援可用性。",
+    "why_wrong_zh": {
+      "A": "清單審查只是文件檢視。",
+      "B": "桌面演練是紙上討論。",
+      "D": "全中斷會真正關閉主系統(高風險)。"
+    },
+    "id": "D6-0051",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-110.html",
+    "unit_title_zh": "考點：D6 綜合 + 刷題"
+  },
+  {
+    "stem_en": "Which DR test is the MOST realistic but also carries the HIGHEST risk of disrupting business operations?",
+    "stem_zh": "哪種 DR 測試最真實,但中斷營運的風險也最高?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Tabletop exercise",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "Walkthrough",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "Parallel test",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Full interruption test",
+        "text_zh": "全中斷測試"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Full interruption test 真正關閉主系統、切換到備援,最真實但風險最高(可能造成真實中斷),通常成熟後才做。",
+    "why_wrong_zh": {
+      "C": "平行測試不切換主系統,風險低於全中斷。"
+    },
+    "id": "D6-0052",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-110.html",
+    "unit_title_zh": "考點：D6 綜合 + 刷題"
+  },
+  {
+    "stem_en": "During an authorized penetration test, the testing team discovers evidence that a real attacker has already compromised the target server and is actively exfiltrating data. According to the rules of engagement (RoE), what should the testers do FIRST?",
+    "stem_zh": "在一次獲授權的滲透測試中,測試團隊發現目標伺服器早已被真實攻擊者入侵,且正在外洩資料。依交戰規則 (RoE),測試人員應「首先」怎麼做?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Continue the test as planned and document the compromise in the final report",
+        "text_zh": "依原計畫繼續測試,將入侵寫入期末報告"
+      },
+      {
+        "key": "B",
+        "text_en": "Immediately remove the attacker's malware and close the backdoor",
+        "text_zh": "立即移除攻擊者惡意程式並關閉後門"
+      },
+      {
+        "key": "C",
+        "text_en": "Expand the test scope to trace the attacker's entry point",
+        "text_zh": "擴大測試範圍追查攻擊者入侵路徑"
+      },
+      {
+        "key": "D",
+        "text_en": "Halt testing and immediately notify the designated point of contact as defined in the RoE",
+        "text_zh": "停止測試,並依 RoE 立即通報指定聯絡窗口"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "RoE 應事先定義「發現真實入侵指標 (IoC) 時」的處置程序:停止測試、立即通報指定窗口,讓組織啟動正式事件回應 (incident response)。測試人員的授權僅限於「模擬攻擊」,真實事件的處置權責在組織,而且繼續測試會污染證據、干擾應變。記憶法:遇真事,先停手、再通報。",
+    "why_wrong_zh": {
+      "A": "延到期末報告才揭露,會讓攻擊者持續外洩資料,通報時效是關鍵。",
+      "B": "清除動作屬事件回應,超出測試授權,且會破壞鑑識證據。",
+      "C": "擅自擴大範圍違反 RoE 的 scope 約定,可能產生法律責任。"
+    },
+    "id": "D6-0053",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-110.html",
+    "unit_title_zh": "考點：D6 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A CISO wants continuous, automated validation that detection and prevention controls can identify advanced persistent threat (APT) techniques between the annual penetration tests. Which approach BEST meets this requirement?",
+    "stem_zh": "CISO 希望在年度滲透測試之間,能「持續、自動化」驗證偵測與防禦控制是否能識別 APT 攻擊技術。哪個做法「最」符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Commission an additional red team engagement each quarter",
+        "text_zh": "每季加做一次紅隊演練"
+      },
+      {
+        "key": "B",
+        "text_en": "Increase the frequency of authenticated vulnerability scans",
+        "text_zh": "提高授權弱點掃描的頻率"
+      },
+      {
+        "key": "C",
+        "text_en": "Run quarterly tabletop exercises with the incident response team",
+        "text_zh": "與 IR 團隊每季做桌面演練"
+      },
+      {
+        "key": "D",
+        "text_en": "Deploy a breach and attack simulation (BAS) platform",
+        "text_zh": "部署 BAS 入侵與攻擊模擬平台"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "BAS (Breach and Attack Simulation) 結合紅隊 (攻) 與藍隊 (守) 技術加上自動化,持續在環境中注入威脅指標 (如在伺服器放置可疑檔案) 模擬 APT,驗證偵測/防禦控制是否即時觸發——正對題幹的「持續、自動化、驗證控制」三個關鍵字。判斷邏輯:紅隊是「人工、時間點」,BAS 是「自動、持續」。",
+    "why_wrong_zh": {
+      "A": "紅隊是人工、單次時間點的演練,成本高且無法「持續」覆蓋。",
+      "B": "弱點掃描找的是「弱點存在與否」,不會實際模擬攻擊行為來驗證偵測控制是否觸發。",
+      "C": "桌面演練是紙上流程討論,不會對技術控制做實際驗證。"
+    },
+    "id": "D6-0054",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-110.html",
+    "unit_title_zh": "考點：D6 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A security manager is mapping the organization's ISMS activities to the ISO 9000 Plan-Do-Check-Act (PDCA) loop. Security assessment and testing activities BEST correspond to which phase?",
+    "stem_zh": "安全經理正將組織 ISMS 活動對應到 ISO 9000 的 PDCA 循環。安全評估與測試活動「最」對應哪個階段?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Plan — establishing ISMS goals and policies",
+        "text_zh": "規劃:訂定 ISMS 目標與政策"
+      },
+      {
+        "key": "B",
+        "text_en": "Do — day-to-day security operations",
+        "text_zh": "執行:日常安全維運"
+      },
+      {
+        "key": "C",
+        "text_en": "Check — verifying that controls operate as intended",
+        "text_zh": "查核:驗證控制如預期運作"
+      },
+      {
+        "key": "D",
+        "text_en": "Act — conducting the formal management review",
+        "text_zh": "行動:進行正式管理審查"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "在 PDCA 循環中:Plan 訂目標與政策、Do 是日常維運、Check 就是安全評估與測試 (驗證控制是否有效)、Act 才是正式的管理審查 (依評估結果做決策與改善)。高鑑別點:很多人把「評估」和「管理審查」混在同一格——評估產生資料 (Check),管理審查消化資料並拍板 (Act),先 Check 後 Act。",
+    "why_wrong_zh": {
+      "A": "Plan 是 ISMS 的基礎,決定目標並驅動政策,尚未涉及驗證。",
+      "B": "Do 是安全維運本身,評估是對維運結果的檢驗,不是維運。",
+      "D": "Act 是管理審查——它「使用」評估與測試的產出,但評估活動本身屬 Check。"
+    },
+    "id": "D6-0055",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D6-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-110.html",
+    "unit_title_zh": "考點：D6 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A consulting firm has been hired to perform a penetration test on a client's production systems. What MUST be obtained FIRST, before any testing activity begins?",
+    "stem_zh": "一家顧問公司受聘對客戶的正式系統執行滲透測試。任何測試活動開始前,『必須首先』取得什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A list of known vulnerabilities from the client's last scan",
+        "text_zh": "客戶上次掃描的已知弱點清單"
+      },
+      {
+        "key": "B",
+        "text_en": "Administrative credentials for the target systems",
+        "text_zh": "目標系統的管理者帳號"
+      },
+      {
+        "key": "C",
+        "text_en": "The client's network topology diagrams",
+        "text_zh": "客戶的網路拓撲圖"
+      },
+      {
+        "key": "D",
+        "text_en": "Signed management authorization defining the scope and rules of engagement",
+        "text_zh": "由管理層簽署、界定範圍與交戰規則的書面授權"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "沒有書面授權的滲透測試就是非法入侵。開始任何測試前,必須先取得管理層簽署的授權書(俗稱 get-out-of-jail-free letter),明訂範圍、時間窗、允許手法、緊急聯絡與中止條件(rules of engagement)。法律保障先於一切技術準備。",
+    "why_wrong_zh": {
+      "A": "弱點清單是測試的參考輸入,沒有授權時連看的立場都沒有。",
+      "B": "是否提供帳號取決於測試型態(黑箱不給),且絕非「必須首先」。",
+      "C": "拓撲圖同為選擇性輸入,授權未定前不應交付。"
+    },
+    "id": "D6-0056",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "A cloud provider's enterprise customers demand evidence that its security controls operated effectively over the past 12 months. Which report BEST satisfies this demand?",
+    "stem_zh": "雲端供應商的企業客戶要求證明其安全控制在過去 12 個月有效運作。哪份報告『最能』滿足此要求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SOC 2 Type II report SOC 2",
+        "text_zh": "第二型報告"
+      },
+      {
+        "key": "B",
+        "text_en": "SOC 2 Type I report SOC 2",
+        "text_zh": "第一型報告"
+      },
+      {
+        "key": "C",
+        "text_en": "SOC 1 report SOC 1",
+        "text_zh": "報告"
+      },
+      {
+        "key": "D",
+        "text_en": "SOC 3 general-use report SOC 3",
+        "text_zh": "通用報告"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "兩個關鍵:安全控制(→SOC 2,信任服務準則)與一段期間的運作有效性(→Type II,涵蓋 6–12 個月的運作測試)。記憶法:「Type I 看某一天的設計,Type II 看一段期間的運作」;「SOC 1 管財報,SOC 2 管安全,SOC 3 是對外摘要」。",
+    "why_wrong_zh": {
+      "B": "Type I 只評估「某個時間點」的控制設計,不驗證期間運作有效性。",
+      "C": "SOC 1 針對影響客戶「財務報告」的控制,不是安全控制。",
+      "D": "SOC 3 是可公開的摘要版,缺乏測試細節,無法滿足企業客戶的查證需求。"
+    },
+    "id": "D6-0057",
+    "domain": "D6",
+    "topic": "d6-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  }
+]

@@ -107,7 +107,7 @@ def main():
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{escape(pod['title'])}</title>
-<link rel="stylesheet" href="../assets/sc200.css">
+<link rel="stylesheet" href="../../assets/study.css">
 <link rel="alternate" type="application/rss+xml" title="{escape(pod['title'])}" href="../podcast.xml">
 </head>
 <body>

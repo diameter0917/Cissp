@@ -1,0 +1,2679 @@
+[
+  {
+    "stem_en": "In a typical commercial data classification scheme, which label represents the MOST sensitive level of data?",
+    "stem_zh": "在典型的商業資料分類制度中,哪個標籤代表最敏感的資料等級?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Confidential/Proprietary",
+        "text_zh": "機密/專有"
+      },
+      {
+        "key": "B",
+        "text_en": "Private",
+        "text_zh": "私有"
+      },
+      {
+        "key": "C",
+        "text_en": "Sensitive",
+        "text_zh": "敏感"
+      },
+      {
+        "key": "D",
+        "text_en": "Public",
+        "text_zh": "公開"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "商業分類由高至低:Confidential/Proprietary ＞ Private ＞ Sensitive ＞ Public。Confidential/Proprietary 僅限組織內部使用,未授權揭露會造成嚴重後果,故為最高級。記憶法:商業版的『Top Secret』就是 Confidential/Proprietary。",
+    "why_wrong_zh": {
+      "B": "Private 多為個資/財務資料,等級次於 Confidential/Proprietary。",
+      "C": "Sensitive 需要額外保護,但排序低於前兩者。",
+      "D": "Public 可對外公開,揭露不會造成損害,為最低級。"
+    },
+    "id": "D2-0001",
+    "domain": "D2",
+    "topic": "d2-p1",
+    "unit": "P1-D2-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-006.html",
+    "unit_title_zh": "Domain 2 全景與資料分類"
+  },
+  {
+    "stem_en": "A security manager discovers that a server processing Top Secret data has been labeled and protected only as an Unclassified asset. Which of the following is the BEST course of action?",
+    "stem_zh": "安全經理發現一台處理 Top Secret 資料的伺服器,被標示且僅以 Unclassified 資產的等級保護。下列何者是最佳做法?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Encrypt all data stored on the server",
+        "text_zh": "將伺服器上所有資料加密"
+      },
+      {
+        "key": "B",
+        "text_en": "Move the Top Secret data to another unclassified server",
+        "text_zh": "把 Top Secret 資料移到另一台未分類伺服器"
+      },
+      {
+        "key": "C",
+        "text_en": "Reclassify the server to match the highest classification of data it processes",
+        "text_zh": "將伺服器重新分類至其處理資料的最高等級"
+      },
+      {
+        "key": "D",
+        "text_en": "Restrict physical access to the server room",
+        "text_zh": "限制機房的實體進出"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "資產分類必須與資料分類一致——處理 Top Secret 資料的系統,就應被分類並保護為 Top Secret 資產。先把分類改對,加密、存取、實體等整組控制才會依級自動套用;這是『分類驅動控制』的管理面答案,而非單點技術補救。",
+    "why_wrong_zh": {
+      "A": "加密只是單一技術控制,未修正根因（分類錯誤）,其他等級對應控制仍不到位。",
+      "B": "把高機密資料移到另一台未分類伺服器,問題原封不動,暴露面甚至更大。",
+      "D": "實體管制同樣只是局部控制,無法取代正確分類帶動的完整保護。"
+    },
+    "id": "D2-0002",
+    "domain": "D2",
+    "topic": "d2-p1",
+    "unit": "P1-D2-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-006.html",
+    "unit_title_zh": "Domain 2 全景與資料分類"
+  },
+  {
+    "stem_en": "Which data role is PRIMARILY delegated the day-to-day tasks of storing and protecting data, such as performing backups and configuring access permissions?",
+    "stem_zh": "哪個資料角色主要被委派日常的資料儲存與保護工作,例如執行備份與設定存取權限?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data owner",
+        "text_zh": "資料擁有者"
+      },
+      {
+        "key": "B",
+        "text_en": "Data custodian",
+        "text_zh": "資料保管者"
+      },
+      {
+        "key": "C",
+        "text_en": "Data controller",
+        "text_zh": "資料控管者"
+      },
+      {
+        "key": "D",
+        "text_en": "Data steward",
+        "text_zh": "資料管家"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Custodian（保管者,通常是 IT/DBA）受委派負責備份、封存、防止遺失毀損與復原等日常保護工作。記憶法:Owner 決定、Custodian 動手——當責（accountability）留在 Owner,日常執行（responsibility）交給 Custodian。",
+    "why_wrong_zh": {
+      "A": "Owner 決定分類與保護需求,會委派執行但不做日常操作。",
+      "C": "Controller 是法律上決定個資處理目的與方式的主體,不是技術執行者。",
+      "D": "Steward 負責資料品質與業務意涵,不做備份等技術維運。"
+    },
+    "id": "D2-0003",
+    "domain": "D2",
+    "topic": "d2-p1",
+    "unit": "P1-D2-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-007.html",
+    "unit_title_zh": "資料角色與擁有權"
+  },
+  {
+    "stem_en": "A company hires a payroll firm to process employee data. The payroll firm later begins analyzing that data for its own product research, without instructions from the company. Under GDPR, what does the payroll firm BEST become with respect to this new processing?",
+    "stem_zh": "某公司委託薪資外包商處理員工個資。外包商後來未經公司指示,擅自將資料用於自家產品研究。依 GDPR,就這項新的處理而言,外包商最適合被視為什麼角色?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It remains a data processor acting on the company's behalf",
+        "text_zh": "仍是代該公司行事的資料處理者"
+      },
+      {
+        "key": "B",
+        "text_en": "A data controller, because it now decides the purpose and means of processing",
+        "text_zh": "成為資料控管者,因為它自行決定了處理的目的與方式"
+      },
+      {
+        "key": "C",
+        "text_en": "A data custodian responsible only for technical safeguards",
+        "text_zh": "成為僅負責技術保護的資料保管者"
+      },
+      {
+        "key": "D",
+        "text_en": "A data subject with rights over the information",
+        "text_zh": "成為對該資料享有權利的當事人"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Controller 與 Processor 的分界就是『誰決定目的與方式』。Processor 只能依 Controller 指示處理個資;一旦超出指示、自定目的（自家研究）,它就該項處理而言成為 Controller,必須自行承擔合法性基礎、告知當事人等完整義務。",
+    "why_wrong_zh": {
+      "A": "自定目的已超出『solely on behalf of the controller』的定義,不再只是 Processor。",
+      "C": "Custodian 是組織內控語彙（技術執行）,不是 GDPR 的法律角色。",
+      "D": "Data Subject 是資料所描述的本人,外包商顯然不是。"
+    },
+    "id": "D2-0004",
+    "domain": "D2",
+    "topic": "d2-p1",
+    "unit": "P1-D2-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-007.html",
+    "unit_title_zh": "資料角色與擁有權"
+  },
+  {
+    "stem_en": "Which of the following BEST describes data in use?",
+    "stem_zh": "下列何者最能描述使用中資料 data in use?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data loaded in memory and being processed by an application",
+        "text_zh": "載入記憶體、正被應用程式處理的資料"
+      },
+      {
+        "key": "B",
+        "text_en": "Data stored on backup tapes in an offsite vault",
+        "text_zh": "存放於異地保管庫備份磁帶上的資料"
+      },
+      {
+        "key": "C",
+        "text_en": "Data moving across a VPN tunnel between two sites",
+        "text_zh": "透過 VPN 隧道在兩站點間傳輸的資料"
+      },
+      {
+        "key": "D",
+        "text_en": "Data archived to long-term cold storage",
+        "text_zh": "封存至長期冷儲存的資料"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Data in use＝在記憶體中被應用程式處理的資料。因為運算前必須解密,傳統加密保護不了這一態,所以它是三態中最難保護的。判斷口訣:存著＝at rest、走網路＝in transit、在記憶體算＝in use。",
+    "why_wrong_zh": {
+      "B": "備份磁帶是儲存媒體上的資料,屬 data at rest。",
+      "C": "在網路上移動的資料屬 data in transit（in motion）。",
+      "D": "封存仍是儲存狀態,屬 at rest（生命週期的 archive 階段）。"
+    },
+    "id": "D2-0005",
+    "domain": "D2",
+    "topic": "d2-p1",
+    "unit": "P1-D2-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-008.html",
+    "unit_title_zh": "資料生命週期與狀態"
+  },
+  {
+    "stem_en": "A project team is about to launch a new CRM system that will collect customer data. To manage the data lifecycle properly, when should the data FIRST be classified?",
+    "stem_zh": "專案團隊即將上線新 CRM 系統並開始蒐集客戶資料。為妥善管理資料生命週期,資料最早應在何時被分類?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "When the data is shared with external partners",
+        "text_zh": "與外部夥伴分享資料時"
+      },
+      {
+        "key": "B",
+        "text_en": "During the annual security review",
+        "text_zh": "年度安全審查時"
+      },
+      {
+        "key": "C",
+        "text_en": "As soon as the data is created or collected",
+        "text_zh": "資料建立或蒐集的當下"
+      },
+      {
+        "key": "D",
+        "text_en": "Just before the data is archived",
+        "text_zh": "資料封存之前"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "生命週期是『從搖籃到墳墓（cradle to grave）』的保護,起點就是在建立/蒐集當下即分類——之後的儲存加密、存取控制、保存與銷毀才能依級套用。越晚分類,資料『裸奔』的窗口越大。",
+    "why_wrong_zh": {
+      "A": "等到分享時才分類,資料在儲存與使用階段已缺乏對應保護。",
+      "B": "年度審查只是補救時點,不符『最早』且不合生命週期管理。",
+      "D": "封存前才分類,前面所有階段都失去分類驅動的控制。"
+    },
+    "id": "D2-0006",
+    "domain": "D2",
+    "topic": "d2-p1",
+    "unit": "P1-D2-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-008.html",
+    "unit_title_zh": "資料生命週期與狀態"
+  },
+  {
+    "stem_en": "A technician overwrites a hard drive with a fixed pattern so the data cannot be recovered using normal software recovery utilities, though laboratory techniques might still succeed. Which sanitization level BEST describes this?",
+    "stem_zh": "技術人員以固定模式覆寫硬碟,使資料無法以一般軟體救援工具復原,但實驗室技術仍可能救回。這最符合哪一個清除等級?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Erasing",
+        "text_zh": "刪除"
+      },
+      {
+        "key": "B",
+        "text_en": "Clearing",
+        "text_zh": "清除"
+      },
+      {
+        "key": "C",
+        "text_en": "Purging",
+        "text_zh": "清洗"
+      },
+      {
+        "key": "D",
+        "text_en": "Destruction",
+        "text_zh": "摧毀"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Clearing＝覆寫資料,防『一般軟體復原工具』但不保證擋得住實驗室級技術;Purging 才是以『任何已知技術都無法復原』為目標。判斷關鍵字:題幹說一般工具救不回、實驗室可能可以——正是 Clearing 的定義邊界。",
+    "why_wrong_zh": {
+      "A": "Erasing 只是刪除操作,留下大量殘留,連一般復原工具都擋不住。",
+      "C": "Purging 目標是連實驗室技術都無法復原（如消磁、加密抹除）,強度高於題幹描述。",
+      "D": "Destruction 是實體銷毀,介質報廢,保證最高,與『覆寫後仍可再用』不符。"
+    },
+    "id": "D2-0007",
+    "domain": "D2",
+    "topic": "d2-p1",
+    "unit": "P1-D2-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-009.html",
+    "unit_title_zh": "資料保存、銷毀與殘留"
+  },
+  {
+    "stem_en": "A security manager finds that a critical production server runs an operating system that reached End-of-Support (EOS) a year ago, so the vendor no longer provides security patches. The system cannot be replaced immediately. What is the BEST course of action?",
+    "stem_zh": "安全經理發現一台關鍵正式伺服器的作業系統已於一年前 End-of-Support（EOS,停止支援）,廠商不再提供安全修補,且系統無法立即汰換。下列何者是最佳做法?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Accept the situation, since the system is still functioning normally",
+        "text_zh": "系統仍正常運作,維持現狀即可"
+      },
+      {
+        "key": "B",
+        "text_en": "Immediately shut down and decommission the server",
+        "text_zh": "立即關閉並除役該伺服器"
+      },
+      {
+        "key": "C",
+        "text_en": "Assess the risk and apply compensating controls such as network isolation, while planning replacement",
+        "text_zh": "評估風險並施加網路隔離等補償控制,同時規劃汰換"
+      },
+      {
+        "key": "D",
+        "text_en": "Ask the vendor to release a one-time security patch",
+        "text_zh": "要求廠商釋出一次性安全修補"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "EOS 之後系統不再有修補,每個新漏洞都成為永久破口——但 CISSP 的答案永遠是風險導向:先評估風險,用補償控制（隔離、加強監控、限縮存取）把風險降到可接受,並把汰換排入計畫。Think like a manager:既不是放著不管,也不是衝動關機。",
+    "why_wrong_zh": {
+      "A": "『還能動』不等於風險可接受,未經評估就默認接受風險是失職。",
+      "B": "未評估營運衝擊就關閉關鍵系統,可用性損失可能比原風險更大。",
+      "D": "EOS 的定義就是廠商已停止支援,一次性修補通常不可得,不是可依賴的策略。"
+    },
+    "id": "D2-0008",
+    "domain": "D2",
+    "topic": "d2-p1",
+    "unit": "P1-D2-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-009.html",
+    "unit_title_zh": "資料保存、銷毀與殘留"
+  },
+  {
+    "stem_en": "Which type of Data Loss Prevention (DLP) solution BEST prevents users from copying sensitive files to removable USB storage?",
+    "stem_zh": "哪一種 DLP 方案最能防止使用者將敏感檔案複製到 USB 等可移除儲存裝置?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Network-based DLP",
+        "text_zh": "網路型 DLP"
+      },
+      {
+        "key": "B",
+        "text_en": "Cloud-based DLP",
+        "text_zh": "雲端型 DLP"
+      },
+      {
+        "key": "C",
+        "text_en": "Cloud Access Security Broker (CASB)",
+        "text_zh": "雲端存取安全代理"
+      },
+      {
+        "key": "D",
+        "text_en": "Endpoint-based DLP",
+        "text_zh": "端點型 DLP"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "複製到 USB 發生在使用者的端點裝置上,流量不經過網路邊界——只有安裝在裝置上的 Endpoint-based DLP 能掃描本機檔案,並阻擋複製到可移除媒體或列印。判斷邏輯:先看『資料外流的通道在哪』,再選部署位置對應的 DLP 類型。",
+    "why_wrong_zh": {
+      "A": "網路型 DLP 部署在網路邊界掃描出站流量,看不到本機的 USB 複製行為。",
+      "B": "雲端型 DLP 針對雲原生環境的資料,管不到本機裝置。",
+      "C": "CASB 位於使用者與雲端服務之間,USB 複製不會經過它。"
+    },
+    "id": "D2-0009",
+    "domain": "D2",
+    "topic": "d2-p1",
+    "unit": "P1-D2-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-010.html",
+    "unit_title_zh": "資料保護技術與基準"
+  },
+  {
+    "stem_en": "An organization must share confidential design documents with external partners, but wants the files to remain protected—unable to be printed or forwarded—even AFTER they leave the corporate network. Which solution BEST meets this requirement?",
+    "stem_zh": "某組織必須與外部夥伴分享機密設計文件,但希望檔案離開公司網路之後仍受保護——無法被列印或轉寄。哪個方案最符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Network-based DLP",
+        "text_zh": "網路型 DLP"
+      },
+      {
+        "key": "B",
+        "text_en": "Digital Rights Management (DRM)",
+        "text_zh": "數位版權管理"
+      },
+      {
+        "key": "C",
+        "text_en": "Full-disk encryption",
+        "text_zh": "全磁碟加密"
+      },
+      {
+        "key": "D",
+        "text_en": "TLS encryption for file transfer",
+        "text_zh": "以 TLS 加密檔案傳輸"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "關鍵字是『離開網路之後仍要受控』——DRM 的保護跟著檔案走（travels with the data）,可持續限制開啟、複製、列印、轉寄,正是『檔案到哪都受控』。DLP 是出口把關,檔案一旦被允許送出就管不到後續了。",
+    "why_wrong_zh": {
+      "A": "網路型 DLP 只能決定『放不放行』,無法控制已送出檔案的後續使用。",
+      "C": "全磁碟加密保護的是自家磁碟上的 at-rest 資料,檔案交給夥伴後即失效。",
+      "D": "TLS 只保護傳輸過程（in transit）,檔案送達對方後便不再受控。"
+    },
+    "id": "D2-0010",
+    "domain": "D2",
+    "topic": "d2-p1",
+    "unit": "P1-D2-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-010.html",
+    "unit_title_zh": "資料保護技術與基準"
+  },
+  {
+    "stem_en": "During an internal audit, a reviewer discovers that a file server processing Confidential customer data is inventoried and protected as a standard low-value IT asset. Which corrective action BEST aligns with asset classification principles?",
+    "stem_zh": "內部稽核時,稽核員發現一台處理 Confidential(機密)客戶資料的檔案伺服器,在資產清冊中僅列為一般低價值 IT 資產並依此保護。哪個矯正措施最符合資產分級原則?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Rely on network segmentation to compensate for the server's lower protection level",
+        "text_zh": "以網路分段補償該伺服器較低的保護等級"
+      },
+      {
+        "key": "B",
+        "text_en": "Downgrade the data classification to match the protection the server already receives",
+        "text_zh": "調降資料分級,以符合伺服器現有的保護等級"
+      },
+      {
+        "key": "C",
+        "text_en": "Move the data to encrypted removable media and keep the server classification unchanged",
+        "text_zh": "把資料搬到加密可攜媒體,伺服器分級維持不變"
+      },
+      {
+        "key": "D",
+        "text_en": "Classify and protect the server at the level of the MOST sensitive data it processes",
+        "text_zh": "依該伺服器所處理『最敏感資料』的等級來分級與保護"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "考綱明確要求資產分級應對齊資料分級(asset classifications should match data classification):處理 Top Secret 資料的電腦就是 Top Secret 資產。伺服器承載 Confidential 資料,就必須以 Confidential 等級盤點與保護,後續控制才會正確配置。記憶:資產跟著資料走,保護跟著分級走。",
+    "why_wrong_zh": {
+      "A": "網路分段只是單一補償控制,沒有解決『資產分級錯誤』的根因,其他控制仍會依錯誤分級配置。",
+      "B": "為遷就現況而調降資料分級是本末倒置;分級應依資料價值與外洩衝擊決定,不是依現有保護能力。",
+      "C": "搬移資料治標不治本,還引入可攜媒體遺失的新風險,伺服器上的殘留資料也仍在。"
+    },
+    "id": "D2-0011",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-046.html",
+    "unit_title_zh": "分類分級制度設計"
+  },
+  {
+    "stem_en": "A records manager finds that 15-year-old product design documents are still classified Confidential and consume costly secure storage, even though the designs were long ago publicly disclosed in patent filings. Which action BEST addresses this situation?",
+    "stem_zh": "文件管理員發現 15 年前的產品設計文件至今仍列為 Confidential(機密),持續占用昂貴的安全儲存,但這些設計早已因專利申請而公開。哪個做法最能處理這個狀況?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Establish a periodic declassification review so data whose sensitivity has declined can be formally downgraded",
+        "text_zh": "建立定期解密降級(declassification)審查,讓敏感度已下降的資料依程序正式降級"
+      },
+      {
+        "key": "B",
+        "text_en": "Destroy the archived documents to eliminate the storage cost",
+        "text_zh": "銷毀這批歸檔文件以消除儲存成本"
+      },
+      {
+        "key": "C",
+        "text_en": "Immediately reclassify all archived data as Public to reduce cost",
+        "text_zh": "立即把所有歸檔資料重新分類為 Public 以降低成本"
+      },
+      {
+        "key": "D",
+        "text_en": "Keep the current classification because lowering a label always increases risk",
+        "text_zh": "維持現有分級,因為調降標示必然增加風險"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "完整的分類制度必須包含 Declassification(解密降級)機制:資料敏感度會隨時間下降,應依正式程序定期審查並降級,避免『過度保護』造成的成本與摩擦。這正是分類制度需要動態維護,而非一次貼標就永久不變的原因。",
+    "why_wrong_zh": {
+      "B": "文件可能仍有業務價值或法定保存義務;為省儲存費而銷毀是犧牲業務與法遵需求。",
+      "C": "未經審查就全部改 Public,可能誤放其中仍敏感的資料;降級必須逐案依程序進行。",
+      "D": "過度分類本身就是制度失敗:成本暴增,人員對標示麻木,真正機密反而被雜訊淹沒。"
+    },
+    "id": "D2-0012",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-046.html",
+    "unit_title_zh": "分類分級制度設計"
+  },
+  {
+    "stem_en": "A security officer at a U.S. federal agency is assigning Low, Moderate, or High impact values to an information system based on the potential effect of a loss of confidentiality, integrity, or availability, as required by FIPS 199. Which process is the officer performing?",
+    "stem_zh": "美國聯邦機構的安全官依 FIPS 199 要求,根據機密性,完整性,可用性喪失的潛在衝擊,為資訊系統指定 Low/Moderate/High 衝擊等級。這位安全官正在執行什麼流程?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data classification based on sensitivity labels",
+        "text_zh": "依敏感度標籤進行的資料分類(classification)"
+      },
+      {
+        "key": "B",
+        "text_en": "Security categorization",
+        "text_zh": "安全分類定級(categorization)"
+      },
+      {
+        "key": "C",
+        "text_en": "Asset valuation",
+        "text_zh": "資產估值"
+      },
+      {
+        "key": "D",
+        "text_en": "Labeling",
+        "text_zh": "標示"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Categorization(FIPS 199 / NIST SP 800-60)是依 C/I/A 衝擊把系統定為 Low/Moderate/High;Classification 則是依敏感度貼 Top Secret/Confidential 等標籤。題幹出現『衝擊等級 Low/Mod/High』就是 categorization 的招牌特徵,這是兩者最快的鑑別點。",
+    "why_wrong_zh": {
+      "A": "Classification 使用敏感度標籤(政府 TS/S/C/U 或商業四級),不是 Low/Mod/High 衝擊值。",
+      "C": "資產估值是計算資產的貨幣或業務價值(供風險分析用),不是指定衝擊等級。",
+      "D": "Labeling 是把『已決定』的分類以機器可讀方式附加到資料上,發生在定級之後。"
+    },
+    "id": "D2-0013",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-046.html",
+    "unit_title_zh": "分類分級制度設計"
+  },
+  {
+    "stem_en": "A fast-growing health-tech company processes special categories of personal data (health records) of EU residents on a large scale. Which statement BEST describes the company's obligation regarding a Data Protection Officer (DPO)?",
+    "stem_zh": "一家快速成長的健康科技公司大規模處理歐盟居民的特種個資(健康紀錄)。關於資料保護長(DPO),下列敘述何者最正確?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It must appoint a DPO who acts independently, reports to top management, and serves as the contact point for supervisory authorities and data subjects",
+        "text_zh": "必須設置 DPO,且其須獨立運作,直接向最高管理層報告,並作為主管機關與當事人的聯絡窗口"
+      },
+      {
+        "key": "B",
+        "text_en": "A DPO is only required for public authorities, so a private company is exempt",
+        "text_zh": "只有公務機關才須設置 DPO,私人公司可豁免"
+      },
+      {
+        "key": "C",
+        "text_en": "The CISO should automatically take on the DPO role to save cost",
+        "text_zh": "應由 CISO 直接兼任 DPO 以節省成本"
+      },
+      {
+        "key": "D",
+        "text_en": "A DPO is unnecessary as long as a DPA is signed with every processor",
+        "text_zh": "只要與每個處理者都簽了 DPA 就不需要 DPO"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "GDPR Art.37-39 規定:大規模處理特種個資(健康資料)是『強制』設置 DPO 的情形之一;且 DPO 必須獨立(不受指示,不因履行職務被解任),直接向最高管理層報告,並擔任主管機關與當事人的聯絡窗口。三個要件(設置義務,獨立性,聯絡窗口)齊備的只有此選項。",
+    "why_wrong_zh": {
+      "B": "公務機關只是強制情形『之一』;大規模特種個資與大規模系統性監控同樣觸發設置義務。",
+      "C": "DPO 須獨立且避免利益衝突;CISO 自己決定安全處理方式再自己監督自己,有角色衝突。",
+      "D": "DPA 處理的是 Controller-Processor 間的合約義務,與是否須設置 DPO 是兩回事。"
+    },
+    "id": "D2-0014",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-047.html",
+    "unit_title_zh": "資料角色與責任深入"
+  },
+  {
+    "stem_en": "A hospital nurse uses legitimate system credentials to look up a celebrity patient's medical record out of curiosity, with no work-related need. Which statement BEST describes the roles and liability involved?",
+    "stem_zh": "一名護理師出於好奇,以合法系統帳號查閱名人病患的病歷,並無任何工作上的需要。下列何者最能描述其中的角色與法律責任?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The nurse became an independent data controller by deciding to access the record",
+        "text_zh": "護理師因自行決定存取而成為獨立的 Data Controller"
+      },
+      {
+        "key": "B",
+        "text_en": "The nurse is an authorized user who exceeded authorization and may face personal legal liability, while the hospital as controller must still review its safeguards",
+        "text_zh": "護理師是逾越授權的授權使用者(user),可能自負個人法律責任;醫院作為 Controller 仍須檢討自身防護措施"
+      },
+      {
+        "key": "C",
+        "text_en": "Only the hospital is liable because employees always act on the organization's behalf",
+        "text_zh": "只有醫院須負責,因為員工行為一律歸屬組織"
+      },
+      {
+        "key": "D",
+        "text_en": "The nurse acted as a data processor and is protected by the hospital's DPA",
+        "text_zh": "護理師屬於 Data Processor,受醫院簽訂的 DPA 保護"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "員工是代表組織(Controller)處理資料的授權使用者(user),不是獨立的 Controller/Processor;但當員工逾越授權濫用個資(偷查病歷),可能自負個人法律責任,同時醫院也須檢討最小權限與存取監控是否失靈。責任是雙軌的:個人究責+組織改善。",
+    "why_wrong_zh": {
+      "A": "Controller 是『決定處理目的與方式』的法律主體(通常是組織);員工私自查閱不會使其變成 Controller。",
+      "C": "員工『在授權範圍內』的行為歸組織;逾越授權的濫用可個人究責,並非組織單方吸收全部責任。",
+      "D": "Processor 是受託處理的外部法律主體,DPA 是 Controller 與 Processor 間的合約,都與內部員工無關。"
+    },
+    "id": "D2-0015",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-047.html",
+    "unit_title_zh": "資料角色與責任深入"
+  },
+  {
+    "stem_en": "A company is about to outsource payroll processing to a SaaS vendor that will process employee personal data strictly on the company's instructions. Procurement proposes signing only a generic service contract. What should the privacy officer require BEFORE processing begins?",
+    "stem_zh": "公司即將把薪資作業外包給 SaaS 廠商,廠商將完全依公司指示處理員工個資。採購部門提議只簽一般服務合約。隱私長應在處理開始『之前』要求什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A joint controller arrangement allocating shared decision-making",
+        "text_zh": "簽訂共同控管者協議以分配共同決策責任"
+      },
+      {
+        "key": "B",
+        "text_en": "A data processing agreement (DPA) defining security measures, breach notification, and subprocessor rules",
+        "text_zh": "簽訂資料處理協議(DPA),明定安全措施,外洩通報與子處理者規則"
+      },
+      {
+        "key": "C",
+        "text_en": "Written consent from every employee approving the outsourcing",
+        "text_zh": "取得每位員工同意外包的書面同意"
+      },
+      {
+        "key": "D",
+        "text_en": "Appointment of the vendor as the company's DPO",
+        "text_zh": "指定該廠商擔任公司的 DPO"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "一方決定目的與方式,一方依指示執行=Controller-Processor 關係;GDPR Art.28 要求雙方必須簽訂 DPA,寫明處理範圍,安全措施,通報義務,子處理者與稽核權。一般服務合約不含這些法定條款——外包出事時,DPA 有沒有簽,責任有沒有寫清楚就是關鍵證據。",
+    "why_wrong_zh": {
+      "A": "廠商只依指示執行,並未共同決定處理目的與方式,不構成 Joint Controllers。",
+      "C": "薪資處理通常以履行契約/法定義務為合法基礎;逐一取得員工同意非必要,也不能取代 DPA。",
+      "D": "DPO 是獨立監督職位;由受監督的外包廠商兼任,存在根本的利益衝突。"
+    },
+    "id": "D2-0016",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-047.html",
+    "unit_title_zh": "資料角色與責任深入"
+  },
+  {
+    "stem_en": "A multinational plans to consolidate all employee data into a single cloud region abroad. Legal counsel in one country objects, citing a national law that requires citizens' personal data to be stored on servers physically located within that country's borders. Which requirement does the counsel describe?",
+    "stem_zh": "跨國企業計畫把所有員工資料整併到境外單一雲端 region。某國法務提出異議,指出該國法律要求公民個資必須儲存在境內的實體伺服器。法務描述的是哪種要求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data residency",
+        "text_zh": "資料存放地(residency)"
+      },
+      {
+        "key": "B",
+        "text_en": "Data localization",
+        "text_zh": "資料在地化(localization)"
+      },
+      {
+        "key": "C",
+        "text_en": "Data sovereignty",
+        "text_zh": "資料主權(sovereignty)"
+      },
+      {
+        "key": "D",
+        "text_en": "Purpose limitation",
+        "text_zh": "目的拘束"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Data localization(在地化)=法規強制個資留在境內,是一種合規義務。判斷關鍵字:『法律要求』+『必須存放境內』。Residency 是描述性的(資料實際存哪),localization 是強制性的(法律要求存哪)——一字之差,考的就是這個。",
+    "why_wrong_zh": {
+      "A": "Residency 描述資料『實際』儲存的地理位置與 region 選擇,本身不是法律強制要求。",
+      "C": "Sovereignty 講資料受所在地/供應商母國『法律管轄』,關注誰能合法調取,而非強制留境內。",
+      "D": "目的拘束是不得逾原蒐集目的使用個資,與資料儲存位置無關。"
+    },
+    "id": "D2-0017",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-048.html",
+    "unit_title_zh": "資料生命週期與落地主權"
+  },
+  {
+    "stem_en": "A SaaS provider acting for an EU controller receives a verified erasure request. The data subject's records exist in the production database, in encrypted long-term backups, and at two subprocessors. Which approach BEST fulfills the deletion obligation?",
+    "stem_zh": "一家為歐盟 Controller 服務的 SaaS 收到經確認的刪除請求。當事人資料同時存在於正式資料庫,加密長期備份,以及兩家子處理者。哪個做法最能完整履行刪除義務?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Delete the production record and let backups age out silently without tracking",
+        "text_zh": "刪除正式環境紀錄,備份放著自然過期即可,不需追蹤"
+      },
+      {
+        "key": "B",
+        "text_en": "Anonymize the production record and leave backup and subprocessor copies unchanged",
+        "text_zh": "將正式環境紀錄匿名化,備份與子處理者副本維持不變"
+      },
+      {
+        "key": "C",
+        "text_en": "Delete production copies, apply crypto-shredding to render backup data unreadable, and contractually require subprocessors to confirm deletion",
+        "text_zh": "刪除正式環境副本,對備份採 crypto-shredding 使其不可解讀,並依契約要求子處理者確認刪除"
+      },
+      {
+        "key": "D",
+        "text_en": "Reject the request because data in backups is technically impossible to erase",
+        "text_zh": "以備份技術上無法刪除為由拒絕請求"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "真正落實刪除要能定位所有副本:正式環境直接刪;難以逐筆改寫的加密備份用 crypto-shredding(銷毀金鑰)做邏輯刪除;子處理者則依 DPA 連動刪除並回報確認。三個面向(線上,備份,第三方)缺一不可,這正是雲端刪除的難題與解法。",
+    "why_wrong_zh": {
+      "A": "沒有追蹤,也沒涵蓋子處理者;備份在過期前仍可還原資料,刪除義務並未履行。",
+      "B": "只處理了一個副本;備份與子處理者仍持有可識別個資,等於沒刪。",
+      "D": "技術困難不構成拒絕理由;crypto-shredding 與備份輪替刪除是業界已成熟的做法。"
+    },
+    "id": "D2-0018",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-048.html",
+    "unit_title_zh": "資料生命週期與落地主權"
+  },
+  {
+    "stem_en": "A product team designs a new registration form that collects national ID number, birth date, and household income 'in case they become useful for future features.' Applying the data minimization principle, what should the privacy officer recommend FIRST?",
+    "stem_zh": "產品團隊設計新的註冊表單,蒐集身分證字號,出生日期與家庭收入,理由是『以後功能也許用得到』。依資料最小化原則,隱私長應『首先』建議什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Collect only the fields required for the current, stated purpose and drop the rest",
+        "text_zh": "只蒐集現行特定目的所需的欄位,其餘一律不蒐集"
+      },
+      {
+        "key": "B",
+        "text_en": "Encrypt all collected fields at rest and in transit",
+        "text_zh": "對所有蒐集欄位做靜態與傳輸加密"
+      },
+      {
+        "key": "C",
+        "text_en": "Obtain broad consent covering all possible future uses",
+        "text_zh": "取得涵蓋所有未來可能用途的概括同意"
+      },
+      {
+        "key": "D",
+        "text_en": "Shorten the retention period for the extra fields",
+        "text_zh": "縮短多餘欄位的保存期間"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Collection limitation(蒐集最小化):只蒐集特定目的所需的最少資料。『以後也許用得到』正是最小化要禁止的心態——沒蒐集的資料不會外洩,最少資料=最小攻擊面與最低法遵風險。FIRST 該做的是從源頭砍欄位,而不是事後補控制。",
+    "why_wrong_zh": {
+      "B": "加密保護的是『已蒐集』的資料,技術上正確但不能正當化過度蒐集本身(層級錯)。",
+      "C": "概括同意違反目的明確原則;同意不能治癒『沒有特定目的的蒐集』。",
+      "D": "縮短保存只是下游補救;資料一旦蒐集,風險與法遵義務已經產生。"
+    },
+    "id": "D2-0019",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-048.html",
+    "unit_title_zh": "資料生命週期與落地主權"
+  },
+  {
+    "stem_en": "A company plans to donate 200 used laptops with magnetic hard drives to local schools. The drives previously stored sensitive business data, and the laptops must remain fully functional. According to NIST SP 800-88, which sanitization approach is MOST appropriate?",
+    "stem_zh": "公司計畫把 200 台配備磁性硬碟的舊筆電捐給在地學校。硬碟曾儲存敏感商業資料,且筆電必須保持完整可用。依 NIST SP 800-88,哪種消毒方式最合適?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Perform a standard format of each drive before donation",
+        "text_zh": "捐贈前對每顆硬碟做標準格式化"
+      },
+      {
+        "key": "B",
+        "text_en": "Clear the drives with a single overwrite, sufficient for any transfer",
+        "text_zh": "以單次覆寫做 Clear,任何轉移情境都足夠"
+      },
+      {
+        "key": "C",
+        "text_en": "Purge the drives (e.g., firmware Secure Erase) because the media is leaving organizational control",
+        "text_zh": "對硬碟執行 Purge(如韌體 Secure Erase),因為媒體將脫離組織控制"
+      },
+      {
+        "key": "D",
+        "text_en": "Degauss the drives to guarantee the data cannot be recovered",
+        "text_zh": "對硬碟消磁以保證資料不可復原"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "800-88 決策邏輯:看資料機密性+媒體是否脫離組織控制+是否再用。敏感資料+媒體將『離開組織控制』(捐贈)→ 至少要 Purge(防實驗室級復原);又必須保持可用 → 韌體 Secure Erase 是能同時滿足兩個條件的 purge 手段。",
+    "why_wrong_zh": {
+      "A": "Format 只移除索引,資料殘留仍可用一般工具復原;format/delete 永遠不是『不可復原』的答案。",
+      "B": "Clear 只防『一般軟體工具』復原;媒體要脫離組織控制時,這個保證等級不足。",
+      "D": "消磁雖達 Purge 等級,但會破壞硬碟韌體與伺服馬達資訊使其不可再用,違背『筆電須保持可用』的前提。"
+    },
+    "id": "D2-0020",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-049.html",
+    "unit_title_zh": "殘留、銷毀標準與媒體管理"
+  },
+  {
+    "stem_en": "A hospital discovers that a critical medical imaging workstation runs an operating system that has passed its End-of-Support (EOS/EOSL) date: the vendor no longer issues security patches, and budget to replace the system will not be available for 18 months. What should the security manager do FIRST?",
+    "stem_zh": "醫院發現一台關鍵醫療影像工作站的作業系統已過 End-of-Support(EOS/EOSL):廠商不再提供安全修補,而汰換預算要 18 個月後才會到位。安全經理應『首先』怎麼做?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Immediately power off the workstation until it can be replaced",
+        "text_zh": "立即關閉該工作站直到完成汰換"
+      },
+      {
+        "key": "B",
+        "text_en": "Perform a risk assessment, then apply compensating controls such as network isolation and enhanced monitoring while tracking a funded replacement plan",
+        "text_zh": "先做風險評估,再施加網段隔離,強化監控等補償控制,並持續追蹤已排定的汰換計畫"
+      },
+      {
+        "key": "C",
+        "text_en": "Continue normal operations since the system has run reliably for years",
+        "text_zh": "系統多年運作穩定,維持現狀即可"
+      },
+      {
+        "key": "D",
+        "text_en": "Ask the vendor to reclassify the product as End-of-Life (EOL) so support resumes",
+        "text_zh": "要求廠商把產品重新歸類為 EOL 以恢復支援"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "EOS/EOSL 後不再有安全修補,風險急升,但關鍵醫療系統不能說關就關(可用性攸關病患安全)。正確處置順序:風險評估 → 補償控制(隔離/虛擬補丁/加強監控)→ 汰換計畫。Think like a manager:先量化風險,用控制把風險壓到可接受,同時推進根本解(汰換)。",
+    "why_wrong_zh": {
+      "A": "未經風險評估就停機,可能中斷醫療服務,危及病患安全——人命與可用性優先,處置要先評估。",
+      "C": "『一直沒出事』不是風險處置;無修補的已知漏洞會持續累積,這是未經評估的風險接受。",
+      "D": "混淆名詞:EOL 是『停售』,發生在 EOS『停止支援』之前;重新歸類不會讓安全修補復活。"
+    },
+    "id": "D2-0021",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-049.html",
+    "unit_title_zh": "殘留、銷毀標準與媒體管理"
+  },
+  {
+    "stem_en": "A financial firm outsourced the destruction of retired hard drives containing customer PII. Six months later, several of those drives — with data fully intact — are found for sale on an online marketplace. Which control failure MOST likely allowed this to happen?",
+    "stem_zh": "金融公司把含客戶 PII 的退役硬碟外包銷毀。半年後,其中數顆硬碟(資料完好無缺)出現在網路二手市場求售。最可能是哪項控制失效所致?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Failure to maintain chain of custody and obtain a verified certificate of destruction",
+        "text_zh": "未維護監管鏈(chain of custody),也未取得經驗證的銷毀證明"
+      },
+      {
+        "key": "B",
+        "text_en": "Use of a three-pass overwrite instead of a seven-pass pattern",
+        "text_zh": "覆寫時採用三次而非七次的寫入模式"
+      },
+      {
+        "key": "C",
+        "text_en": "Choosing shredding instead of degaussing as the destruction method",
+        "text_zh": "銷毀方法選了粉碎而非消磁"
+      },
+      {
+        "key": "D",
+        "text_en": "Missing classification labels on the drive enclosures",
+        "text_zh": "硬碟外殼缺少分級標籤"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "資料『完好無缺』流入市場,代表硬碟根本沒被銷毀就中途流出——問題不在銷毀技術,而在託管流程:從退役到銷毀全程要有監管鏈,取得含序號,方法,日期,見證的銷毀證明,並抽樣驗證。外包銷毀,當責仍在委託方,流程證據就是防線。",
+    "why_wrong_zh": {
+      "B": "覆寫次數之爭已過時(800-88 下一次完整覆寫即達 Clear);且資料完好顯示任何銷毀程序都沒執行。",
+      "C": "粉碎本身就是最高保證的 Destroy 方法;方法沒選錯,是根本沒執行到。",
+      "D": "標籤有助於正確處理,但缺標籤不會直接導致『已交付銷毀的硬碟』流入二手市場。"
+    },
+    "id": "D2-0022",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-049.html",
+    "unit_title_zh": "殘留、銷毀標準與媒體管理"
+  },
+  {
+    "stem_en": "An investigation reveals that employees in a design department are copying confidential drawings to personal USB drives and printing them at office printers. Which DLP deployment BEST addresses this specific leakage channel?",
+    "stem_zh": "調查發現設計部門員工把機密圖檔複製到私人 USB 隨身碟,並在辦公室印表機列印。哪種 DLP 部署最能處理這種特定外洩管道?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Network DLP at the internet egress",
+        "text_zh": "部署於網際網路出口的 Network DLP"
+      },
+      {
+        "key": "B",
+        "text_en": "Storage/discovery DLP scanning file repositories",
+        "text_zh": "掃描檔案儲存庫的 Storage/Discovery DLP"
+      },
+      {
+        "key": "C",
+        "text_en": "Endpoint DLP agents on the department's workstations",
+        "text_zh": "在該部門工作站安裝 Endpoint DLP 代理程式"
+      },
+      {
+        "key": "D",
+        "text_en": "A CASB monitoring sanctioned SaaS applications",
+        "text_zh": "監控已核准 SaaS 應用的 CASB"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "USB 複製與列印發生在端點,屬於資料使用中(in use)的狀態,只有 Endpoint DLP 能在裝置上攔截複製到隨身碟,列印,剪貼等動作。記憶:三種 DLP 對應資料三狀態——網路(in transit),端點(in use),儲存(at rest);先辨識外洩管道在哪一層,再選部署。",
+    "why_wrong_zh": {
+      "A": "Network DLP 只看得到『經網路外送』的流量;USB 複製與本機列印根本不經過網路出口。",
+      "B": "Storage DLP 是掃描靜止資料,找出未受保護的敏感檔,無法即時攔截端點上的動作。",
+      "D": "CASB 管的是雲端服務的可視化與管控,與 USB/列印這類本機管道無關。"
+    },
+    "id": "D2-0023",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-050.html",
+    "unit_title_zh": "DLP/DRM/CASB 與隱私設計"
+  },
+  {
+    "stem_en": "A CISO discovers through expense reports that business units have subscribed to dozens of unsanctioned SaaS applications where corporate files are being shared. Which solution BEST provides visibility into this shadow IT and enforces the organization's cloud usage policy?",
+    "stem_zh": "CISO 從報帳紀錄發現各事業單位自行訂閱了數十個未核准的 SaaS,公司檔案正在其中流通。哪個方案最能提供影子 IT 的可視性,並執行組織的雲端使用政策?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Endpoint DLP to block file copies to USB media",
+        "text_zh": "以 Endpoint DLP 阻擋檔案複製到 USB"
+      },
+      {
+        "key": "B",
+        "text_en": "DRM to attach usage rights to every corporate document",
+        "text_zh": "以 DRM 為每份公司文件附加使用權限"
+      },
+      {
+        "key": "C",
+        "text_en": "A firewall rule blocking all cloud storage domains",
+        "text_zh": "以防火牆規則封鎖所有雲端儲存網域"
+      },
+      {
+        "key": "D",
+        "text_en": "A CASB positioned between users and cloud services",
+        "text_zh": "部署介於使用者與雲端服務之間的 CASB"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "CASB 邏輯上位於使用者與雲端服務之間,四支柱的第一項就是可視化(含影子 IT 發現),再配合合規,資料安全(DLP/加密),威脅防護,對雲端使用執行政策——正是為『發現並治理未核准 SaaS』而生的方案。",
+    "why_wrong_zh": {
+      "A": "Endpoint DLP 管 USB/列印等端點管道,無法盤點與治理雲端 SaaS 的整體使用。",
+      "B": "DRM 保護單一檔案本身,但不能發現有哪些影子 IT,也無法管控 SaaS 使用行為。",
+      "C": "全面封鎖過於粗暴會癱瘓合法業務,使用者將改走個人裝置繞過,可視性反而更差。"
+    },
+    "id": "D2-0024",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-050.html",
+    "unit_title_zh": "DLP/DRM/CASB 與隱私設計"
+  },
+  {
+    "stem_en": "A retailer wants to shrink its PCI DSS assessment scope. It plans to replace stored card numbers with surrogate values that have no mathematical relationship to the originals and can only be mapped back through a secured lookup vault. Which technique does this describe?",
+    "stem_zh": "零售商想縮小 PCI DSS 評估範圍,計畫把儲存的卡號換成與原值『無數學關係』的替代值,且只能透過受保護的對照庫(vault)換回。這描述的是哪種技術?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Format-preserving encryption",
+        "text_zh": "保留格式加密"
+      },
+      {
+        "key": "B",
+        "text_en": "Tokenization",
+        "text_zh": "代碼化"
+      },
+      {
+        "key": "C",
+        "text_en": "One-way hashing",
+        "text_zh": "單向雜湊"
+      },
+      {
+        "key": "D",
+        "text_en": "Anonymization",
+        "text_zh": "匿名化"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Tokenization(代碼化)的招牌特徵:token 與原值無數學關係,靠查表(vault)還原。持卡資料以 token 取代後,多數系統不再接觸真卡號,有效縮小 PCI 範圍——這正是 PCI DSS 鼓勵代碼化的原因。判斷關鍵:數學轉換=加密;查表替換=代碼化。",
+    "why_wrong_zh": {
+      "A": "加密(含保留格式加密)是演算法+金鑰的數學轉換,密文與原值存在數學關係,與題幹矛盾。",
+      "C": "單向雜湊不可還原,無法透過對照庫換回原卡號,不符『可換回』的需求。",
+      "D": "匿名化是永久不可逆地移除可識別性,同樣無法還原,且是個資去識別概念而非替代值機制。"
+    },
+    "id": "D2-0025",
+    "domain": "D2",
+    "topic": "d2-p2",
+    "unit": "P2-D2-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-050.html",
+    "unit_title_zh": "DLP/DRM/CASB 與隱私設計"
+  },
+  {
+    "stem_en": "Who is PRIMARILY responsible for determining the classification level of a dataset?",
+    "stem_zh": "誰主要負責決定一份資料集的分類等級?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The data custodian",
+        "text_zh": "保管者"
+      },
+      {
+        "key": "B",
+        "text_en": "The data owner",
+        "text_zh": "資料擁有者"
+      },
+      {
+        "key": "C",
+        "text_en": "The security administrator",
+        "text_zh": "安全管理員"
+      },
+      {
+        "key": "D",
+        "text_en": "The end user",
+        "text_zh": "終端使用者"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Data Owner(業務擁有者)最了解資料價值與用途,負責決定分類等級;這是當責、不可下授。",
+    "why_wrong_zh": {
+      "A": "Custodian(IT)只負責『執行』擁有者所定的保護,不決定分類。",
+      "C": "安全管理員提供技術支援,非分類決策者。",
+      "D": "使用者依政策使用資料,無分類決定權。"
+    },
+    "id": "D2-0026",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-086.html",
+    "unit_title_zh": "考點：分類分級與角色"
+  },
+  {
+    "stem_en": "An IT administrator performs daily backups and configures encryption for a financial database according to policy. This person is acting as the:",
+    "stem_zh": "一位 IT 管理員依政策為財務資料庫執行每日備份並設定加密。此人扮演的角色是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data owner",
+        "text_zh": "資料擁有者"
+      },
+      {
+        "key": "B",
+        "text_en": "Data custodian",
+        "text_zh": "保管者"
+      },
+      {
+        "key": "C",
+        "text_en": "Data controller",
+        "text_zh": "控管者"
+      },
+      {
+        "key": "D",
+        "text_en": "Data subject",
+        "text_zh": "當事人"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "依擁有者所定要求執行備份、加密等技術保護＝Data Custodian(保管者)。",
+    "why_wrong_zh": {
+      "A": "擁有者『決定』分類與保護需求,不親自執行技術操作。",
+      "C": "Controller 是 GDPR 中決定處理目的的法律主體,非此情境。",
+      "D": "當事人是資料所描述的本人。"
+    },
+    "id": "D2-0027",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-086.html",
+    "unit_title_zh": "考點：分類分級與角色"
+  },
+  {
+    "stem_en": "A hospital uses an external billing company that processes patient data strictly according to the hospital's instructions. Under privacy law, the billing company is the:",
+    "stem_zh": "一家醫院委託外部帳務公司,嚴格依醫院指示處理病患資料。隱私法下,該帳務公司是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data controller",
+        "text_zh": "控管者"
+      },
+      {
+        "key": "B",
+        "text_en": "Data processor",
+        "text_zh": "處理者"
+      },
+      {
+        "key": "C",
+        "text_en": "Data owner",
+        "text_zh": "資料擁有者"
+      },
+      {
+        "key": "D",
+        "text_en": "Joint controller",
+        "text_zh": "共同控管者"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "帳務公司依醫院指示處理資料、不自行決定目的＝Processor;醫院決定目的＝Controller。",
+    "why_wrong_zh": {
+      "A": "決定處理目的的是醫院(Controller),非帳務公司。",
+      "C": "Owner 是內部角色,此題問隱私法的法律角色。",
+      "D": "共同控管需『共同決定目的』,此處帳務公司只是照指示,非共同決定。"
+    },
+    "id": "D2-0028",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-086.html",
+    "unit_title_zh": "考點：分類分級與角色"
+  },
+  {
+    "stem_en": "According to NIST SP 800-18, a new HR application is being deployed. Who is PRIMARILY responsible for developing the system security plan and ensuring that users and support personnel receive the requisite security training?",
+    "stem_zh": "依 NIST SP 800-18,某新 HR 應用系統即將部署。誰主要負責制定系統安全計畫(system security plan),並確保使用者與支援人員接受必要的安全訓練?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The data owner",
+        "text_zh": "資料擁有者"
+      },
+      {
+        "key": "B",
+        "text_en": "The information system owner",
+        "text_zh": "資訊系統擁有者"
+      },
+      {
+        "key": "C",
+        "text_en": "The data custodian",
+        "text_zh": "資料保管者"
+      },
+      {
+        "key": "D",
+        "text_en": "The security administrator",
+        "text_zh": "安全管理員"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "NIST SP 800-18 明定 System Owner(系統擁有者)負責儲存/處理資料之系統的安全:制定並維護系統安全計畫、確保系統依安全要求部署營運、確保使用者與支援人員受訓。記憶法:Data Owner 管『資料』的分類,System Owner 管『系統』的安全計畫。",
+    "why_wrong_zh": {
+      "A": "Data Owner 負責資料的分類與存取核准,系統安全計畫屬 System Owner。",
+      "C": "Custodian 受委派執行日常儲存/備份等保護作業,不制定安全計畫。",
+      "D": "安全管理員負責整體基礎設施的防護工具(防火牆/防毒等),非特定系統的安全計畫。"
+    },
+    "id": "D2-0029",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-086.html",
+    "unit_title_zh": "考點：分類分級與角色"
+  },
+  {
+    "stem_en": "A bank assigns a business manager responsibility for the quality, metadata definitions, and governance compliance of its customer dataset, with no hands-on technical duties. This role is BEST described as the:",
+    "stem_zh": "某銀行指派一位業務主管負責客戶資料集的資料品質、metadata 定義與治理合規,不含任何技術操作職責。此角色最貼切的描述是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data custodian",
+        "text_zh": "資料保管者"
+      },
+      {
+        "key": "B",
+        "text_en": "Data steward",
+        "text_zh": "資料管家"
+      },
+      {
+        "key": "C",
+        "text_en": "Data processor",
+        "text_zh": "資料處理者"
+      },
+      {
+        "key": "D",
+        "text_en": "System owner",
+        "text_zh": "系統擁有者"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "對資料負業務面責任——資料品質、治理、合規、metadata 定義＝Data Steward(資料管家)。與 Custodian 的分野:Steward 管『資料內容好不好』(業務),Custodian 管『資料存得安不安全』(技術)。",
+    "why_wrong_zh": {
+      "A": "Custodian 是技術面的日常保護(備份/儲存),題目明說不含技術操作。",
+      "C": "Processor 是替 Controller 處理個資的外部實體(GDPR 語境),非內部治理角色。",
+      "D": "System owner 負責系統的營運維護與安全計畫,非資料品質與治理。"
+    },
+    "id": "D2-0030",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-086.html",
+    "unit_title_zh": "考點：分類分級與角色"
+  },
+  {
+    "stem_en": "A file server stores mostly Public marketing material but also a small set of documents classified as Confidential. When classifying the server as an asset, which approach is MOST appropriate?",
+    "stem_zh": "某檔案伺服器主要存放 Public 行銷素材,但也存有少量 Confidential 等級文件。將該伺服器作為資產分類時,最適當的做法是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Classify the server at Confidential, matching the highest classification of data it handles",
+        "text_zh": "依其處理資料的最高等級,將伺服器分類為 Confidential"
+      },
+      {
+        "key": "B",
+        "text_en": "Classify the server at Public, matching the majority of the data",
+        "text_zh": "依多數資料將伺服器分類為 Public"
+      },
+      {
+        "key": "C",
+        "text_en": "Assign an average classification between the two levels",
+        "text_zh": "取兩級之間的平均分類"
+      },
+      {
+        "key": "D",
+        "text_en": "Leave the server unclassified because it stores mixed data",
+        "text_zh": "因存放混合資料而不予分類"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "資產分級須對齊資料分級:系統處理到哪一級資料,就應以其中最高等級分類保護(處理 top secret 資料的電腦就是 top secret 資產)。少量高敏資料同樣會從最弱環節外洩,不能以多數決或平均稀釋保護。",
+    "why_wrong_zh": {
+      "B": "以多數決會讓 Confidential 文件只受 Public 等級保護,形成保護缺口。",
+      "C": "分類沒有『平均』的概念,平均等級仍不足以保護最高等級資料。",
+      "D": "未分類等於未定義處理要求(handling),是最糟的做法。"
+    },
+    "id": "D2-0031",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-086.html",
+    "unit_title_zh": "考點：分類分級與角色"
+  },
+  {
+    "stem_en": "Which method is MOST appropriate to sanitize a solid-state drive (SSD) containing highly sensitive data before disposal?",
+    "stem_zh": "處置含高敏感資料的固態硬碟(SSD)前,最適合的清除方法是?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Degaussing",
+        "text_zh": "消磁"
+      },
+      {
+        "key": "B",
+        "text_en": "Single-pass overwrite",
+        "text_zh": "單次覆寫"
+      },
+      {
+        "key": "C",
+        "text_en": "Cryptographic erase or physical destruction",
+        "text_zh": "加密抹除或實體銷毀"
+      },
+      {
+        "key": "D",
+        "text_en": "Quick format",
+        "text_zh": "快速格式化"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "SSD 因非磁性且有 wear-leveling,消磁無效、覆寫不可靠;應用 crypto-erase/Secure Erase 或實體銷毀。",
+    "why_wrong_zh": {
+      "A": "消磁(degaussing)對 SSD 無效——SSD 非磁性介質。",
+      "B": "因 wear-leveling,覆寫無法保證蓋到每個區塊,不可靠。",
+      "D": "快速格式化只移除索引,資料仍可復原。"
+    },
+    "id": "D2-0032",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-087.html",
+    "unit_title_zh": "考點：資料殘留與銷毀方法"
+  },
+  {
+    "stem_en": "An organization wants to reuse hard disk drives internally but must ensure data cannot be recovered even with laboratory techniques. Which sanitization level is required?",
+    "stem_zh": "某組織想在內部重複使用硬碟,但須確保即使用實驗室技術也無法復原資料。需要哪個清除等級?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Clear",
+        "text_zh": "清除"
+      },
+      {
+        "key": "B",
+        "text_en": "Purge",
+        "text_zh": "清洗"
+      },
+      {
+        "key": "C",
+        "text_en": "Destroy",
+        "text_zh": "摧毀"
+      },
+      {
+        "key": "D",
+        "text_en": "Delete",
+        "text_zh": "刪除"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "要『介質可再用』且『防實驗室級復原』＝Purge(清洗,如消磁/多次覆寫/Secure Erase)。",
+    "why_wrong_zh": {
+      "A": "Clear 只防一般工具復原,擋不住實驗室級。",
+      "C": "Destroy 會使介質報廢,但題目要『再用』。",
+      "D": "Delete 最弱,資料仍在。"
+    },
+    "id": "D2-0033",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-087.html",
+    "unit_title_zh": "考點：資料殘留與銷毀方法"
+  },
+  {
+    "stem_en": "Data stored in a cloud service must be rendered unrecoverable, but the customer has no physical access to the storage media. What is the BEST approach?",
+    "stem_zh": "儲存在雲端服務的資料須變得不可復原,但客戶無法實體接觸儲存媒體。最佳做法為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Degaussing",
+        "text_zh": "消磁"
+      },
+      {
+        "key": "B",
+        "text_en": "Cryptographic erasure (crypto-shredding)",
+        "text_zh": "銷毀加密金鑰"
+      },
+      {
+        "key": "C",
+        "text_en": "Physical shredding",
+        "text_zh": "實體粉碎"
+      },
+      {
+        "key": "D",
+        "text_en": "Single overwrite",
+        "text_zh": "單次覆寫"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "雲端無法實體接觸介質,crypto-shredding(銷毀加密金鑰)使加密資料永久無法解讀,是最佳邏輯銷毀法。",
+    "why_wrong_zh": {
+      "D": "雲端多副本/備份,單次覆寫不可靠且未必有權限。"
+    },
+    "id": "D2-0034",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-087.html",
+    "unit_title_zh": "考點：資料殘留與銷毀方法"
+  },
+  {
+    "stem_en": "A batch of magnetic backup tapes containing Top Secret data has reached the end of its retention period and will never be reused. Which disposition is MOST appropriate?",
+    "stem_zh": "一批含 Top Secret 資料的磁性備份磁帶已達保存期限,永不再使用。最適當的處置為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Degauss the tapes with an approved degausser",
+        "text_zh": "以核可的消磁機消磁"
+      },
+      {
+        "key": "B",
+        "text_en": "Overwrite the tapes with multiple passes",
+        "text_zh": "對磁帶多次覆寫"
+      },
+      {
+        "key": "C",
+        "text_en": "Physically destroy the tapes by incineration or pulverizing",
+        "text_zh": "以焚化或粉碎實體銷毀"
+      },
+      {
+        "key": "D",
+        "text_en": "Cryptographically erase the tape contents",
+        "text_zh": "對磁帶內容做加密抹除"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Purging(含消磁)不被接受用於 Top Secret 資料——purge 無法保證抵擋所有進階復原技術;媒體既已報廢不再用,最高敏感度＋最高保證＝Destroy(實體銷毀)。判斷式:報廢＋最高機密→一律銷毀。",
+    "why_wrong_zh": {
+      "A": "消磁對磁帶有效且屬 Purge 級,但 Top Secret 不接受僅 purge——這是本題陷阱。",
+      "B": "覆寫僅達 Clear/Purge 級,保證更低。",
+      "D": "crypto-erase 需資料原本已全程加密且依賴金鑰確實銷毀,對報廢的 TS 磁帶非最高保證做法。"
+    },
+    "id": "D2-0035",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-087.html",
+    "unit_title_zh": "考點：資料殘留與銷毀方法"
+  },
+  {
+    "stem_en": "An organization outsources the destruction of decommissioned drives to a third-party vendor. Which practice BEST ensures the destruction is legally defensible?",
+    "stem_zh": "某組織將退役硬碟的銷毀外包給第三方廠商。哪個做法最能確保銷毀具法律可辯護性(defensible destruction)?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Selecting a vendor with a strong market reputation",
+        "text_zh": "選擇市場信譽良好的廠商"
+      },
+      {
+        "key": "B",
+        "text_en": "Witnessing the destruction and obtaining a certificate of destruction",
+        "text_zh": "見證銷毀過程並取得銷毀證明"
+      },
+      {
+        "key": "C",
+        "text_en": "Adding a confidentiality clause to the vendor contract",
+        "text_zh": "在廠商合約中加入保密條款"
+      },
+      {
+        "key": "D",
+        "text_en": "Requiring the vendor to hold a security certification",
+        "text_zh": "要求廠商具備安全認證"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Defensible destruction＝以受控、法律上可辯護、符合法規的方式銷毀資料;關鍵在可證明——親自(或指派)見證銷毀,並取得 Certificate of Destruction(銷毀證明,記錄方法、日期、見證人),才能在稽核或訴訟中舉證。",
+    "why_wrong_zh": {
+      "A": "信譽不是證據,無法證明『這批硬碟』確實被銷毀。",
+      "C": "保密條款只約束洩密責任,不能證明銷毀已發生。",
+      "D": "認證代表廠商具備能力,仍不構成對特定媒體的銷毀證據。"
+    },
+    "id": "D2-0036",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-087.html",
+    "unit_title_zh": "考點：資料殘留與銷毀方法"
+  },
+  {
+    "stem_en": "A drive was prepared for donation using a standard delete-and-format procedure. A researcher later recovers intact files from the drive's raw data based on file structure and content. Which technique did the researcher MOST likely use?",
+    "stem_zh": "某硬碟以一般刪除＋格式化程序準備捐贈。研究人員之後憑檔案結構與內容,從硬碟原始資料中復原出完整檔案。研究人員最可能使用哪種技術?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Degaussing",
+        "text_zh": "消磁"
+      },
+      {
+        "key": "B",
+        "text_en": "Steganography",
+        "text_zh": "隱寫術"
+      },
+      {
+        "key": "C",
+        "text_en": "File carving",
+        "text_zh": "檔案雕復"
+      },
+      {
+        "key": "D",
+        "text_en": "Rainbow table attack",
+        "text_zh": "彩虹表攻擊"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "File carving(檔案雕復)是電腦鑑識技術:不依賴檔案系統索引,直接依檔案結構與內容特徵從原始資料復原檔案——正是 delete/format 只移除索引、留下資料殘留(remanence)時的典型復原手法。教訓:捐贈/轉售前至少要做到 Purge 等級。",
+    "why_wrong_zh": {
+      "A": "消磁是『銷毀』磁性資料的手段,不是復原技術。",
+      "B": "隱寫術是把訊息藏入媒體,與復原刪除檔無關。",
+      "D": "彩虹表用於破解雜湊密碼,非檔案復原技術。"
+    },
+    "id": "D2-0037",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-087.html",
+    "unit_title_zh": "考點：資料殘留與銷毀方法"
+  },
+  {
+    "stem_en": "Which control BEST protects data in transit between a web browser and a server?",
+    "stem_zh": "哪個控制最能保護瀏覽器與伺服器間『傳輸中』的資料?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Full-disk encryption",
+        "text_zh": "全磁碟加密"
+      },
+      {
+        "key": "B",
+        "text_en": "TLS",
+        "text_zh": "傳輸層安全"
+      },
+      {
+        "key": "C",
+        "text_en": "Database access controls",
+        "text_zh": "資料庫存取控制"
+      },
+      {
+        "key": "D",
+        "text_en": "File hashing",
+        "text_zh": "檔案雜湊"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "傳輸中(in transit)資料用 TLS(或 IPsec/VPN)加密通道保護。",
+    "why_wrong_zh": {
+      "A": "全磁碟加密保護的是『靜止』資料(at rest),非傳輸。",
+      "C": "存取控制保護儲存的資料,非傳輸通道。",
+      "D": "雜湊驗完整性,不提供傳輸機密性。"
+    },
+    "id": "D2-0038",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-088.html",
+    "unit_title_zh": "考點：資料狀態與保護"
+  },
+  {
+    "stem_en": "An organization wants to detect and block sensitive files from being uploaded to personal cloud storage from employee laptops. Which DLP deployment is MOST appropriate?",
+    "stem_zh": "某組織想偵測並阻擋員工筆電將敏感檔上傳到個人雲端。最適合的 DLP 部署為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Network DLP",
+        "text_zh": "網路 DLP"
+      },
+      {
+        "key": "B",
+        "text_en": "Endpoint DLP",
+        "text_zh": "端點 DLP"
+      },
+      {
+        "key": "C",
+        "text_en": "Storage/Discovery DLP",
+        "text_zh": "儲存掃描 DLP"
+      },
+      {
+        "key": "D",
+        "text_en": "Database encryption",
+        "text_zh": "資料庫加密"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "要在端點管控本機操作(上傳/USB/列印)＝Endpoint DLP;它能在資料離開裝置前攔截。",
+    "why_wrong_zh": {
+      "A": "Network DLP 在網路出口攔截,對加密的雲端上傳或離線端點較難掌握。",
+      "C": "Storage DLP 掃描靜止資料庫存,非即時阻擋端點上傳。",
+      "D": "資料庫加密保護儲存,非阻擋端點外傳。"
+    },
+    "id": "D2-0039",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-088.html",
+    "unit_title_zh": "考點：資料狀態與保護"
+  },
+  {
+    "stem_en": "Which data state is generally the MOST difficult to protect because the data must be decrypted to be processed?",
+    "stem_zh": "因為資料必須解密才能處理,哪個資料狀態通常最難保護?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data at rest",
+        "text_zh": "靜止"
+      },
+      {
+        "key": "B",
+        "text_en": "Data in transit",
+        "text_zh": "傳輸中"
+      },
+      {
+        "key": "C",
+        "text_en": "Data in use",
+        "text_zh": "使用中"
+      },
+      {
+        "key": "D",
+        "text_en": "Archived data",
+        "text_zh": "封存"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "In Use(使用中)資料須在記憶體解密才能運算,故最難保護;機密運算(enclave)正是為補此落差。",
+    "why_wrong_zh": {
+      "A": "靜止資料用儲存加密即可有效保護。",
+      "B": "傳輸中用 TLS/IPsec 保護成熟。",
+      "D": "封存屬於 at rest 的一種,可加密保護。"
+    },
+    "id": "D2-0040",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-088.html",
+    "unit_title_zh": "考點：資料狀態與保護"
+  },
+  {
+    "stem_en": "A company distributes confidential pricing documents to external partners and must prevent recipients from printing, copying, or forwarding them even after the files leave the corporate network. Which control BEST meets this requirement?",
+    "stem_zh": "某公司將機密報價文件發給外部夥伴,且須在檔案離開公司網路之後,仍能阻止收件者列印、複製或轉寄。哪個控制最能滿足此需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Network DLP at the egress point",
+        "text_zh": "部署於出口的網路 DLP"
+      },
+      {
+        "key": "B",
+        "text_en": "Digital Rights Management (DRM)",
+        "text_zh": "數位版權管理"
+      },
+      {
+        "key": "C",
+        "text_en": "TLS encryption for all file transfers",
+        "text_zh": "所有檔案傳輸皆用 TLS 加密"
+      },
+      {
+        "key": "D",
+        "text_en": "Full-disk encryption on file servers",
+        "text_zh": "檔案伺服器全磁碟加密"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "DRM 隨資料移動(travels with the data):保護與檔案綁定,不論資料狀態或所在裝置,離開網路後仍能限制列印/複製/轉寄——這是 DLP 與通道加密都做不到的『邊界外持續管控』。判斷式:要管到『對方拿到檔案之後』→ DRM。",
+    "why_wrong_zh": {
+      "A": "Network DLP 只能在自家網路出口攔截,檔案送出後即失去控制。",
+      "C": "TLS 只保護傳輸通道,送達後收件者可任意處理檔案。",
+      "D": "全磁碟加密保護伺服器上的靜止資料,對已分享出去的檔案無作用。"
+    },
+    "id": "D2-0041",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-088.html",
+    "unit_title_zh": "考點：資料狀態與保護"
+  },
+  {
+    "stem_en": "A CISO discovers employees are using dozens of unsanctioned SaaS applications. The organization needs visibility into cloud app usage and a single enforcement point that applies its security policies between users and all cloud services. Which solution BEST fits?",
+    "stem_zh": "某 CISO 發現員工使用數十個未經核准的 SaaS 應用。組織需要掌握雲端應用使用狀況,並在使用者與所有雲端服務之間建立單一政策執行點。哪個方案最適合?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Endpoint DLP",
+        "text_zh": "端點 DLP"
+      },
+      {
+        "key": "B",
+        "text_en": "Next-generation firewall",
+        "text_zh": "次世代防火牆"
+      },
+      {
+        "key": "C",
+        "text_en": "Digital Rights Management (DRM)",
+        "text_zh": "數位版權管理"
+      },
+      {
+        "key": "D",
+        "text_en": "Cloud Access Security Broker (CASB)",
+        "text_zh": "雲端存取安全代理"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "CASB 邏輯上位於使用者與雲端資源之間,確保雲端資源享有與內網相同的保護,並作為安全政策的執行點;四大基石:可視性(visibility)、資料安全、威脅偵測、合規——『發現影子 IT＋雲端政策執行』正是 CASB 的適用邊界。",
+    "why_wrong_zh": {
+      "A": "Endpoint DLP 管端點的外傳行為(列印/USB/上傳),無法提供跨雲端服務的整體可視性與政策執行。",
+      "B": "防火牆過濾網路流量,難以辨識並細緻管控各 SaaS 應用的使用。",
+      "C": "DRM 保護『文件本身』的使用權,不管理雲端應用存取。"
+    },
+    "id": "D2-0042",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-088.html",
+    "unit_title_zh": "考點：資料狀態與保護"
+  },
+  {
+    "stem_en": "A DLP rule inspects outbound email and blocks any message containing numbers matching a social security number pattern. Which DLP type and data state does this control address?",
+    "stem_zh": "某 DLP 規則檢查外寄郵件,阻擋內含符合 SSN(社會安全號碼)樣式數字的訊息。此控制屬於哪種 DLP 類型,並對應哪種資料狀態?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Network-based DLP protecting data in transit",
+        "text_zh": "網路 DLP,保護傳輸中資料"
+      },
+      {
+        "key": "B",
+        "text_en": "Endpoint-based DLP protecting data in use",
+        "text_zh": "端點 DLP,保護使用中資料"
+      },
+      {
+        "key": "C",
+        "text_en": "Storage/discovery DLP protecting data at rest",
+        "text_zh": "儲存掃描 DLP,保護靜止資料"
+      },
+      {
+        "key": "D",
+        "text_en": "Cloud-based DLP protecting data at rest",
+        "text_zh": "雲端 DLP,保護靜止資料"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "部署在網路邊界、掃描所有外送資料(on the wire)並依規則(如 SSN 樣式)阻擋傳輸＝Network-based DLP;郵件正在線路上流動＝data in transit。配對式考法:部署點(網路出口)與資料狀態(傳輸中)要同時答對。",
+    "why_wrong_zh": {
+      "B": "端點 DLP 在裝置上管列印/USB/複製,本題的攔截點在網路郵件流。",
+      "C": "Storage/discovery DLP 掃描檔案庫中的靜止資料,不做即時外送攔截。",
+      "D": "雲端 DLP 針對雲原生環境;且外寄郵件屬傳輸中,非靜止。"
+    },
+    "id": "D2-0043",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-088.html",
+    "unit_title_zh": "考點：資料狀態與保護"
+  },
+  {
+    "stem_en": "A company stores EU personal data in a US cloud provider's European data center. Which concept explains why the data may still be subject to US legal demands?",
+    "stem_zh": "某公司把歐盟個資存於美商雲的歐洲資料中心。哪個概念解釋為何資料仍可能受美國法律要求約束?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data residency",
+        "text_zh": "資料存放地"
+      },
+      {
+        "key": "B",
+        "text_en": "Data sovereignty",
+        "text_zh": "資料主權"
+      },
+      {
+        "key": "C",
+        "text_en": "Data minimization",
+        "text_zh": "資料最小化"
+      },
+      {
+        "key": "D",
+        "text_en": "Data classification",
+        "text_zh": "資料分類"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "資料主權:資料受其所在地與供應商母國法律管轄;美商受美國 CLOUD Act,故即使存歐盟仍可能被美方要求調取。",
+    "why_wrong_zh": {
+      "A": "Residency 只指『存放在哪』,不解釋管轄權問題。",
+      "C": "最小化是蒐集原則,與管轄無關。",
+      "D": "分類是敏感度分級,與此無關。"
+    },
+    "id": "D2-0044",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-089.html",
+    "unit_title_zh": "考點：資料主權與保存"
+  },
+  {
+    "stem_en": "A regulation requires financial records be retained for 7 years, while privacy law requires deleting personal data once its purpose is fulfilled. What is the BEST approach?",
+    "stem_zh": "某法規要求財務紀錄保存 7 年,而隱私法要求個資目的達成即刪除。最佳做法為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Delete everything after purpose is met",
+        "text_zh": "目的達成即全刪"
+      },
+      {
+        "key": "B",
+        "text_en": "Keep everything for 7 years",
+        "text_zh": "全部保存 7 年"
+      },
+      {
+        "key": "C",
+        "text_en": "Define retention policies per data category",
+        "text_zh": "依資料類別分別訂定保存政策"
+      },
+      {
+        "key": "D",
+        "text_en": "Ignore the privacy requirement",
+        "text_zh": "忽略隱私要求"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "兩要求衝突時,須依資料類別分別訂定保存政策(財務紀錄留 7 年、其餘個資目的達成即刪),不能一刀切。",
+    "why_wrong_zh": {
+      "A": "會違反財務紀錄的法定保存年限。",
+      "B": "對非財務的個資過度保存,違反最小化/限期。",
+      "D": "忽略隱私要求屬違法。"
+    },
+    "id": "D2-0045",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-089.html",
+    "unit_title_zh": "考點：資料主權與保存"
+  },
+  {
+    "stem_en": "Which term describes a legal requirement that certain data must physically remain within a country's borders?",
+    "stem_zh": "哪個術語描述『某些資料必須實體留在一國境內』的法律要求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data sovereignty",
+        "text_zh": "資料主權"
+      },
+      {
+        "key": "B",
+        "text_en": "Data localization",
+        "text_zh": "資料在地化"
+      },
+      {
+        "key": "C",
+        "text_en": "Data residency",
+        "text_zh": "資料存放地"
+      },
+      {
+        "key": "D",
+        "text_en": "Data portability",
+        "text_zh": "資料可攜"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "法規強制資料留境內＝Data Localization(在地化)。",
+    "why_wrong_zh": {
+      "A": "主權是『受誰管轄』,非強制留境內的要求本身。",
+      "C": "Residency 是描述『存放在哪』的事實,非法律強制。",
+      "D": "可攜是當事人取得/轉移自身資料的權利。"
+    },
+    "id": "D2-0046",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-089.html",
+    "unit_title_zh": "考點：資料主權與保存"
+  },
+  {
+    "stem_en": "A multinational group needs a lawful mechanism to routinely transfer EU employee data among its own subsidiaries located in countries without an adequacy decision. Which transfer mechanism is MOST appropriate?",
+    "stem_zh": "某跨國集團需要一個合法機制,在位於『無充足性認定』國家的自家子公司之間,例行傳輸歐盟員工個資。最適當的傳輸機制為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Relying on an adequacy decision",
+        "text_zh": "依賴充足性認定"
+      },
+      {
+        "key": "B",
+        "text_en": "Standard Contractual Clauses (SCC) signed with each external vendor",
+        "text_zh": "與各外部廠商簽署標準契約條款"
+      },
+      {
+        "key": "C",
+        "text_en": "Obtaining employee consent for every transfer",
+        "text_zh": "每次傳輸皆取得員工同意"
+      },
+      {
+        "key": "D",
+        "text_en": "Binding Corporate Rules (BCR)",
+        "text_zh": "有拘束力的公司規則"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "BCR 是為『集團內部』跨境傳輸設計的機制:經主管機關核准後,對集團全球子公司具拘束力,最適合例行性、多國之間的內部傳輸。判斷式:集團內→BCR;與外部第三方→SCC。",
+    "why_wrong_zh": {
+      "A": "題目已說明對方國家『沒有』充足性認定,此依據不存在。",
+      "B": "SCC 主要用於與外部實體的傳輸;集團內多對多逐一簽約繁瑣,且題目情境是內部傳輸。",
+      "C": "同意可隨時撤回,且僱傭關係權力不對等,不適合作為例行傳輸的依據。"
+    },
+    "id": "D2-0047",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-089.html",
+    "unit_title_zh": "考點：資料主權與保存"
+  },
+  {
+    "stem_en": "A vendor announces that the operating system running a critical business application will reach End-of-Support (EOS) in six months, after which no security patches will be released. What should the security manager do FIRST?",
+    "stem_zh": "廠商宣布某關鍵業務應用所用的作業系統將於六個月後到達 End-of-Support(EOS),之後不再發布安全修補。安全經理應『首先』做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Immediately decommission the system",
+        "text_zh": "立即讓系統退役"
+      },
+      {
+        "key": "B",
+        "text_en": "Purchase extended support without further analysis",
+        "text_zh": "不經分析直接購買延伸支援"
+      },
+      {
+        "key": "C",
+        "text_en": "Isolate the system from the network right away",
+        "text_zh": "立刻將系統從網路隔離"
+      },
+      {
+        "key": "D",
+        "text_en": "Assess the risk and develop a migration or mitigation plan",
+        "text_zh": "評估風險並制定遷移或緩解計畫"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Think like a manager:EOS 之後漏洞無修補、風險持續累積,但系統仍支撐關鍵業務——第一步永遠是風險評估,再據以決定遷移、購買延伸支援或部署補償控制及其時程。先評估,後行動。",
+    "why_wrong_zh": {
+      "A": "關鍵業務仍依賴該系統,未經評估即退役會造成營運中斷。",
+      "B": "延伸支援只是可能的處置之一,未評估就花錢是本末倒置。",
+      "C": "隔離可能中斷業務,屬於評估之後才考慮的補償控制。"
+    },
+    "id": "D2-0048",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-089.html",
+    "unit_title_zh": "考點：資料主權與保存"
+  },
+  {
+    "stem_en": "A regulation requires an organization to retain records for 10 years. Nine years in, an audit finds the tape drives needed to read the archived tapes are no longer maintained, and no current staff know the restore procedures. What is the PRIMARY lesson?",
+    "stem_zh": "法規要求某組織保存紀錄 10 年。到第九年時,稽核發現讀取封存磁帶所需的磁帶機已無人維護,現職員工也沒有人會還原程序。主要教訓為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Retention periods should be shortened to reduce cost",
+        "text_zh": "應縮短保存期限以降低成本"
+      },
+      {
+        "key": "B",
+        "text_en": "All archives should be converted to paper records",
+        "text_zh": "所有封存應改為紙本"
+      },
+      {
+        "key": "C",
+        "text_en": "Retention requires maintaining the hardware and trained personnel needed to read the data",
+        "text_zh": "保存必須同時維持能讀取資料的硬體與受訓人員"
+      },
+      {
+        "key": "D",
+        "text_en": "Encryption should be removed from archives to simplify recovery",
+        "text_zh": "移除封存加密以簡化復原"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "保存(retention)不只是『留著』:即使資料留滿法定年限,沒有能讀取資料的硬體、也沒有會執行還原程序的人員,保存形同無效。保存政策必須同時涵蓋資料/媒體、硬體與人員。",
+    "why_wrong_zh": {
+      "A": "保存年限是法規要求,不能為了省成本縮短。",
+      "B": "紙本另有保存空間與檢索難題;重點在『可讀取』而非媒體形式。",
+      "D": "移除加密會犧牲機密性;正確做法是把金鑰管理一併納入保存計畫。"
+    },
+    "id": "D2-0049",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-089.html",
+    "unit_title_zh": "考點：資料主權與保存"
+  },
+  {
+    "stem_en": "When applying a security control baseline, removing controls that do not apply to a specific system is known as:",
+    "stem_zh": "套用安全控制基準時,移除不適用於特定系統的控制,稱為:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Tailoring",
+        "text_zh": "客製調整"
+      },
+      {
+        "key": "B",
+        "text_en": "Scoping",
+        "text_zh": "範圍裁定"
+      },
+      {
+        "key": "C",
+        "text_en": "Hardening",
+        "text_zh": "強化"
+      },
+      {
+        "key": "D",
+        "text_en": "Accreditation",
+        "text_zh": "認可"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "從基準中選用/排除適用本系統的控制＝Scoping;之後再依風險『調整參數/補強』＝Tailoring。",
+    "why_wrong_zh": {
+      "A": "Tailoring 是『調整/補強已選控制』,在 scoping 之後。",
+      "C": "Hardening 是強化系統設定,非基準裁定。",
+      "D": "Accreditation 是管理層授權系統上線。"
+    },
+    "id": "D2-0050",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-090.html",
+    "unit_title_zh": "考點：D2 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A new app is configured by default to collect only the minimum data and to set the strictest privacy options unless the user opts in. This BEST demonstrates:",
+    "stem_zh": "某新 App 預設只蒐集最少資料,並採最嚴隱私設定,除非使用者主動放寬。這最能展現:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Privacy by Default",
+        "text_zh": "預設即隱私"
+      },
+      {
+        "key": "B",
+        "text_en": "Data portability",
+        "text_zh": "資料可攜"
+      },
+      {
+        "key": "C",
+        "text_en": "Pseudonymization",
+        "text_zh": "假名化"
+      },
+      {
+        "key": "D",
+        "text_en": "Aggregation",
+        "text_zh": "聚合"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "預設即採最小蒐集與最嚴隱私設定＝Privacy by Default(GDPR Art.25),屬 Privacy by Design 核心。",
+    "why_wrong_zh": {
+      "B": "可攜是當事人取得/轉移資料的權利,非預設設定。",
+      "C": "假名化是替換識別資訊的技術,非預設隱私設定。",
+      "D": "聚合是多筆合併致更敏感,與此無關。"
+    },
+    "id": "D2-0051",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-090.html",
+    "unit_title_zh": "考點：D2 綜合 + 刷題"
+  },
+  {
+    "stem_en": "Which technique IRREVERSIBLY removes the ability to identify individuals, so the data generally falls outside GDPR scope?",
+    "stem_zh": "哪種技術『不可逆』地移除識別個人的能力,使資料一般落在 GDPR 範圍之外?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Pseudonymization",
+        "text_zh": "假名化"
+      },
+      {
+        "key": "B",
+        "text_en": "Anonymization",
+        "text_zh": "匿名化"
+      },
+      {
+        "key": "C",
+        "text_en": "Tokenization",
+        "text_zh": "代碼化"
+      },
+      {
+        "key": "D",
+        "text_en": "Encryption",
+        "text_zh": "加密"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "匿名化(Anonymization)不可逆、無法重新識別,資料脫離個資範疇;假名化/代碼化/加密皆可逆、仍屬個資。",
+    "why_wrong_zh": {
+      "A": "假名化可逆(持金鑰可還原),仍屬個資受 GDPR。",
+      "C": "代碼化可經查表還原,仍可識別。",
+      "D": "加密可解密還原,仍屬個資。"
+    },
+    "id": "D2-0052",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-090.html",
+    "unit_title_zh": "考點：D2 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A retailer wants to remove cardholder data from most systems' compliance scope while still supporting purchases. Each card number is replaced with a random value, and the real number is kept only in a secure vault. This technique is:",
+    "stem_zh": "某零售商想讓多數系統脫離持卡人資料的合規範圍,但仍能支援消費交易。每個卡號被換成一個隨機值,真實卡號只保存在安全保險庫(vault)中。此技術為:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Field-level encryption",
+        "text_zh": "欄位層級加密"
+      },
+      {
+        "key": "B",
+        "text_en": "Data masking",
+        "text_zh": "資料遮罩"
+      },
+      {
+        "key": "C",
+        "text_en": "Tokenization",
+        "text_zh": "代碼化"
+      },
+      {
+        "key": "D",
+        "text_en": "Hashing",
+        "text_zh": "雜湊"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "以與原值無數學關聯的隨機字串(token)替代真值、原值僅存於 tokenization vault,POS 等系統只接觸 token——token 被竊也無價值,故能縮小合規範圍。與加密之別:token 無法被『解』回原值,只能透過 vault 查表對應。",
+    "why_wrong_zh": {
+      "A": "加密值與原值有數學關係,金鑰外洩即可還原,系統仍在合規範圍內。",
+      "B": "遮罩(如只顯示末四碼)用於展示層,遮罩後的資料無法再用於交易授權。",
+      "D": "雜湊不可逆,授權時無法還原卡號完成交易流程。"
+    },
+    "id": "D2-0053",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-090.html",
+    "unit_title_zh": "考點：D2 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A development team completes a new customer portal, then asks the privacy team to 'add privacy controls' before launch. Which Privacy by Design principle does this approach violate MOST directly?",
+    "stem_zh": "某開發團隊完成新客戶入口網站後,才請隱私團隊在上線前『加上隱私控制』。此做法最直接違反哪項 Privacy by Design 原則?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data minimization",
+        "text_zh": "資料最小化"
+      },
+      {
+        "key": "B",
+        "text_en": "Transparency and notice",
+        "text_zh": "透明與告知"
+      },
+      {
+        "key": "C",
+        "text_en": "Data portability",
+        "text_zh": "資料可攜"
+      },
+      {
+        "key": "D",
+        "text_en": "Privacy embedded into design, proactive not reactive",
+        "text_zh": "隱私內建於設計,主動而非事後補救"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "PbD 的核心:隱私必須在設計階段就內建(embedded)、主動預防(proactive),而不是系統完工後才『外掛』補上——事後補救成本高、覆蓋不全,正是本情境違反之處。",
+    "why_wrong_zh": {
+      "A": "題目未顯示過度蒐集;違反點在『時機』,不在『數量』。",
+      "B": "透明是對當事人的告知義務,與開發流程的時機無關。",
+      "C": "可攜是當事人取得/轉移自身資料的權利,與此情境無關。"
+    },
+    "id": "D2-0054",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-090.html",
+    "unit_title_zh": "考點：D2 綜合 + 刷題"
+  },
+  {
+    "stem_en": "An organization launches a project that will collect large volumes of customer data. Before selecting encryption, DLP rules, or a control baseline, what should be done FIRST?",
+    "stem_zh": "某組織啟動一個將蒐集大量客戶資料的專案。在選擇加密、DLP 規則或控制基準之前,應『首先』做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Encrypt all data by default",
+        "text_zh": "預設加密所有資料"
+      },
+      {
+        "key": "B",
+        "text_en": "Deploy DLP at the network egress",
+        "text_zh": "在網路出口部署 DLP"
+      },
+      {
+        "key": "C",
+        "text_en": "Identify and classify the data to be collected",
+        "text_zh": "識別並分類將蒐集的資料"
+      },
+      {
+        "key": "D",
+        "text_en": "Apply the most stringent control baseline available",
+        "text_zh": "套用現有最嚴格的控制基準"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "D2 主線:先分類,後依分類決定處理與保護強度。資料生命週期最前段的步驟就是識別與分類——不知道資料多敏感,就無從決定加密等級、DLP 規則或基準選擇。FIRST 題要選『建立後續決策依據』的那一步。",
+    "why_wrong_zh": {
+      "A": "全面加密未必必要且有成本,加密強度應依分類決定。",
+      "B": "DLP 規則必須先知道『哪些資料算敏感』才能設定。",
+      "D": "一律套最嚴基準會過度保護低敏資料、浪費資源;基準應依分類/衝擊等級選擇。"
+    },
+    "id": "D2-0055",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D2-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-090.html",
+    "unit_title_zh": "考點：D2 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A new customer analytics dataset has been created. Who is PRIMARILY responsible for determining its classification level?",
+    "stem_zh": "一份新的客戶分析資料集剛建立。誰『主要』負責決定它的分類等級?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The data owner",
+        "text_zh": "資料擁有者"
+      },
+      {
+        "key": "B",
+        "text_en": "The data custodian",
+        "text_zh": "資料保管者"
+      },
+      {
+        "key": "C",
+        "text_en": "The security administrator",
+        "text_zh": "資安管理員"
+      },
+      {
+        "key": "D",
+        "text_en": "The end users of the dataset",
+        "text_zh": "資料集的終端使用者"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "資料擁有者(data owner)——通常是對該業務資料當責的管理階層——負責決定分類等級、核准存取規則;保管者(custodian)依 owner 的決定執行備份、加密等日常保護。記憶法:「owner 決定,custodian 執行,user 遵守」。",
+    "why_wrong_zh": {
+      "B": "custodian 負責依分類實施技術保護,不決定分類。",
+      "C": "資安管理員提供框架與工具支援,分類決定權在業務端 owner。",
+      "D": "使用者只需依標示遵守處理規則,無決定權。"
+    },
+    "id": "D2-0056",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "A batch of solid-state drives (SSDs) containing highly confidential data is being decommissioned and will leave the organization's control. Which sanitization method provides the MOST reliable protection?",
+    "stem_zh": "一批含高機密資料的 SSD 即將除役並脫離組織控制。哪種銷毀方法提供『最可靠』的保護?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Physical destruction of the drives",
+        "text_zh": "實體銷毀硬碟"
+      },
+      {
+        "key": "B",
+        "text_en": "Multiple-pass overwriting of all sectors",
+        "text_zh": "對所有磁區多次覆寫"
+      },
+      {
+        "key": "C",
+        "text_en": "Degaussing the drives",
+        "text_zh": "對硬碟消磁"
+      },
+      {
+        "key": "D",
+        "text_en": "Performing a full format of each drive",
+        "text_zh": "對每顆硬碟完整格式化"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "兩個關鍵條件:SSD + 脫離組織控制 + 高機密。SSD 的磨損平均(wear leveling)與備用區塊使覆寫無法保證觸及所有實體儲存單元;消磁對快閃記憶體完全無效。媒體將離開控制範圍時,最高保證等級就是實體銷毀(destroy)。",
+    "why_wrong_zh": {
+      "B": "覆寫在 SSD 上因 wear leveling 無法覆蓋所有區塊,保證不足。",
+      "C": "消磁只對磁性媒體有效,SSD 是快閃記憶體,消磁無效。",
+      "D": "格式化只重建檔案系統結構,資料可輕易還原,連 clearing 都稱不上。"
+    },
+    "id": "D2-0057",
+    "domain": "D2",
+    "topic": "d2-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  }
+]

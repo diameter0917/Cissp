@@ -1,0 +1,3004 @@
+[
+  {
+    "stem_en": "Which secure design principle states that organizations do not operate in isolation—everyone holds some level of security responsibility, and in the cloud this duty is divided between the provider and the customer?",
+    "stem_zh": "哪一項安全設計原則指出組織並非孤立運作—人人都負有一定的安全責任,且在雲端中此責任由供應商與客戶共同分擔?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Defense in depth",
+        "text_zh": "縱深防禦"
+      },
+      {
+        "key": "B",
+        "text_en": "Least privilege",
+        "text_zh": "最小權限"
+      },
+      {
+        "key": "C",
+        "text_en": "Separation of duties",
+        "text_zh": "職責分離"
+      },
+      {
+        "key": "D",
+        "text_en": "Shared responsibility",
+        "text_zh": "共同責任"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "『組織不孤立運作、人人有責』＋『供應商與客戶分工』正是 Shared Responsibility 的定義。雲端口訣:CSP 管 security OF the cloud,客戶管 security IN the cloud（資料、身分、設定）。",
+    "why_wrong_zh": {
+      "A": "縱深防禦講多層串聯控制、防單點失效,與『責任如何分配』無關。",
+      "B": "最小權限講只授予完成任務所需的權限,是授權範圍問題。",
+      "C": "職責分離是把關鍵任務拆給多人以防舞弊,不是供應商與客戶間的責任劃分。"
+    },
+    "id": "D3-0001",
+    "domain": "D3",
+    "topic": "d3-p1",
+    "unit": "P1-D3-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-011.html",
+    "unit_title_zh": "Domain 3 全景與安全設計原則"
+  },
+  {
+    "stem_en": "A perimeter firewall at a financial services company crashes unexpectedly during a power fluctuation. According to the fail securely principle, which behavior is BEST while the device recovers?",
+    "stem_zh": "某金融服務公司的邊界防火牆在電力波動時無預警當機。依 fail securely（安全失效）原則,設備恢復期間哪種行為最佳?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deny all traffic by default until the firewall is restored and verified",
+        "text_zh": "預設拒絕所有流量,直到防火牆恢復並驗證正常"
+      },
+      {
+        "key": "B",
+        "text_en": "Allow all traffic to pass so business operations are not interrupted",
+        "text_zh": "放行所有流量以避免營運中斷"
+      },
+      {
+        "key": "C",
+        "text_en": "Forward existing sessions without inspection to preserve user experience",
+        "text_zh": "不經檢查繼續轉送既有連線以維持使用體驗"
+      },
+      {
+        "key": "D",
+        "text_en": "Restore vendor factory settings and immediately resume operation",
+        "text_zh": "回復原廠設定並立即恢復運作"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Fail securely＝系統失效時不得洩漏敏感資訊,也不得比正常運作時更不安全;對防火牆這類數位控制而言,就是『失效即預設拒絕（fail closed）』。例外是涉及人命的實體情境（如火災時的門禁）才 fail-safe 開門保命。",
+    "why_wrong_zh": {
+      "B": "這是 fail open,失效期間比正常更不安全,正好違反 fail securely。",
+      "C": "未經檢查的流量使防護低於正常水準,仍屬不安全的失效方式。",
+      "D": "原廠設定常含預設密碼等弱點;secure defaults 指『預設組態即最安全』的設計要求,不等於恢復原廠就安全。"
+    },
+    "id": "D3-0002",
+    "domain": "D3",
+    "topic": "d3-p1",
+    "unit": "P1-D3-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-011.html",
+    "unit_title_zh": "Domain 3 全景與安全設計原則"
+  },
+  {
+    "stem_en": "In the Bell-LaPadula model, which property prevents a subject from writing information to an object at a LOWER classification level?",
+    "stem_zh": "在 Bell-LaPadula 模型中,哪一條性質防止主體將資訊寫入密級較「低」的物件?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The * (star) property",
+        "text_zh": "星性質"
+      },
+      {
+        "key": "B",
+        "text_en": "The simple security property",
+        "text_zh": "簡單安全性質"
+      },
+      {
+        "key": "C",
+        "text_en": "The strong * property",
+        "text_zh": "強星性質"
+      },
+      {
+        "key": "D",
+        "text_en": "The simple integrity property",
+        "text_zh": "簡單完整性性質"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "BLP 的 *(star) property＝no write down（又稱 confinement property）,防止高密級資訊被『往下寫』而洩漏,守護機密性。記憶:BLP 怕往下洩→no write down。",
+    "why_wrong_zh": {
+      "B": "simple security property 是 no read up,管『讀』不管『寫』。",
+      "C": "strong * property 限制只能在同一密級讀寫,比題目所問更嚴,非專指防 write down 的性質。",
+      "D": "simple integrity property 屬 Biba（no read down）,保完整性而非機密性。"
+    },
+    "id": "D3-0003",
+    "domain": "D3",
+    "topic": "d3-p1",
+    "unit": "P1-D3-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-012.html",
+    "unit_title_zh": "安全模型輪廓"
+  },
+  {
+    "stem_en": "A bank designs its core system so tellers can never modify account records directly; all changes must go through an approved application that enforces well-formed transactions and separation of duties. Which security model does this design BEST implement?",
+    "stem_zh": "某銀行設計核心系統,櫃員不能直接修改帳務資料,所有變更都必須經過強制執行 well-formed transactions 與職責分離的核准程式。此設計最符合哪個安全模型?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Bell-LaPadula",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "Brewer-Nash",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "Biba",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Clark-Wilson",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "『使用者不能直接動資料、必須透過程式（TP）操作受限資料（CDI）』＋ well-formed transactions ＋職責分離,正是 Clark-Wilson 的 subject-program-object 三元組特徵,目的在保護完整性。看到『必須經程式/交易改資料』就想 Clark-Wilson。",
+    "why_wrong_zh": {
+      "A": "BLP 管機密分級（no read up / no write down）,與交易完整性無關。",
+      "B": "Brewer-Nash（ethical wall）防利益衝突,依存取歷史動態阻擋競爭對手資料。",
+      "C": "Biba 也保完整性,但用層級規則（no read down / no write up）,沒有『必須經程式與交易』的機制。"
+    },
+    "id": "D3-0004",
+    "domain": "D3",
+    "topic": "d3-p1",
+    "unit": "P1-D3-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-012.html",
+    "unit_title_zh": "安全模型輪廓"
+  },
+  {
+    "stem_en": "Which key does a sender use to CREATE a digital signature on a message?",
+    "stem_zh": "寄件者要對訊息「建立」數位簽章,應使用哪把金鑰?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The sender's public key",
+        "text_zh": "寄件者的公鑰"
+      },
+      {
+        "key": "B",
+        "text_en": "The recipient's public key",
+        "text_zh": "收件者的公鑰"
+      },
+      {
+        "key": "C",
+        "text_en": "The sender's private key",
+        "text_zh": "寄件者的私鑰"
+      },
+      {
+        "key": "D",
+        "text_en": "The recipient's private key",
+        "text_zh": "收件者的私鑰"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "簽章＝用自己的私鑰簽,收件者用寄件者的公鑰驗;因為私鑰只有本人持有,才能提供完整性、真實性與不可否認。記憶:『私鑰簽、公鑰驗』,與加密方向相反（加密用收件者公鑰、解密用收件者私鑰）。",
+    "why_wrong_zh": {
+      "A": "寄件者公鑰是給別人『驗章』用的,人人可取得,無法證明身分。",
+      "B": "收件者公鑰用於加密要給對方的機密訊息,與簽章無關。",
+      "D": "收件者私鑰只用於解密自己收到的訊息,寄件者根本不應持有。"
+    },
+    "id": "D3-0005",
+    "domain": "D3",
+    "topic": "d3-p1",
+    "unit": "P1-D3-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-013.html",
+    "unit_title_zh": "密碼學輪廓"
+  },
+  {
+    "stem_en": "A security engineer must send several terabytes of sensitive archives to a business partner over an untrusted network. Which approach is BEST?",
+    "stem_zh": "安全工程師必須透過不受信任的網路,傳送數 TB 的敏感封存資料給合作夥伴。哪種做法最佳?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Encrypt the entire archive with the partner's RSA public key",
+        "text_zh": "以夥伴的 RSA 公鑰加密整批資料"
+      },
+      {
+        "key": "B",
+        "text_en": "Encrypt with AES and send the key in the same message",
+        "text_zh": "以 AES 加密並在同一訊息附上金鑰"
+      },
+      {
+        "key": "C",
+        "text_en": "Encrypt the data with an AES session key, then exchange that key using asymmetric cryptography",
+        "text_zh": "以 AES session key 加密資料,再用非對稱加密安全交換金鑰"
+      },
+      {
+        "key": "D",
+        "text_en": "Compute a SHA-256 hash of the archives to keep them confidential",
+        "text_zh": "對資料計算 SHA-256 雜湊以保護機密性"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "混合加密（hybrid）取兩者之長:對稱（AES）快、適合大量資料;非對稱解決『金鑰如何安全交換』的難題。TLS 正是這個模式——先用非對稱協商 session key,再用對稱加密資料。",
+    "why_wrong_zh": {
+      "A": "非對稱運算慢,直接加密數 TB 資料不切實際。",
+      "B": "金鑰與密文同通道傳送,攻擊者攔截即可全解,加密形同虛設。",
+      "D": "雜湊是單向的完整性工具,不可逆也不是加密,無法提供機密性。"
+    },
+    "id": "D3-0006",
+    "domain": "D3",
+    "topic": "d3-p1",
+    "unit": "P1-D3-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-013.html",
+    "unit_title_zh": "密碼學輪廓"
+  },
+  {
+    "stem_en": "Which hardware component is a chip embedded on a computer's motherboard that stores cryptographic keys and supports full-disk encryption such as BitLocker?",
+    "stem_zh": "哪個硬體元件是內建於電腦主機板的晶片,負責保管加密金鑰並支援 BitLocker 等全磁碟加密?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "HSM",
+        "text_zh": "硬體安全模組"
+      },
+      {
+        "key": "B",
+        "text_en": "TPM",
+        "text_zh": "信賴平台模組"
+      },
+      {
+        "key": "C",
+        "text_en": "Smart card",
+        "text_zh": "智慧卡"
+      },
+      {
+        "key": "D",
+        "text_en": "Security token",
+        "text_zh": "安全權杖"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "TPM（Trusted Platform Module）是焊在主機板上、與該平台綁定的安全晶片,負責保管金鑰並支援開機完整性量測與全磁碟加密。記憶:TPM＝『單機內建』,HSM＝『獨立設備』。",
+    "why_wrong_zh": {
+      "A": "HSM 是獨立的高強度金鑰管理設備（常用於 CA/資料中心）,不是主機板內建晶片。",
+      "C": "智慧卡是隨身攜帶的身分/金鑰載具,不綁定主機板。",
+      "D": "安全權杖用於使用者驗證（如 OTP）,與磁碟加密金鑰保管無關。"
+    },
+    "id": "D3-0007",
+    "domain": "D3",
+    "topic": "d3-p1",
+    "unit": "P1-D3-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-014.html",
+    "unit_title_zh": "系統與雲端架構弱點"
+  },
+  {
+    "stem_en": "A security manager finds that factory ICS controllers run firmware that cannot be patched without halting production, and several still use vendor default passwords. Which action is BEST to reduce the risk?",
+    "stem_zh": "安全經理發現工廠 ICS 控制器的韌體無法在不停產的情況下修補,且部分仍使用原廠預設密碼。哪個行動最能降低風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Patch all controllers immediately during production hours",
+        "text_zh": "在生產時段立即修補所有控制器"
+      },
+      {
+        "key": "B",
+        "text_en": "Replace the ICS equipment with new IoT devices",
+        "text_zh": "將 ICS 設備全面更換為新的 IoT 裝置"
+      },
+      {
+        "key": "C",
+        "text_en": "Accept the risk because ICS networks are isolated by design",
+        "text_zh": "接受風險,因為 ICS 網路本來就是隔離的"
+      },
+      {
+        "key": "D",
+        "text_en": "Change the default credentials and segment the ICS network as compensating controls",
+        "text_zh": "更改預設密碼,並以網路分段隔離 ICS 作為補償性控制"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "無法立即修補時,風險導向的做法是先消除最便宜、最有效的弱點（預設密碼）,再用補償性控制（網路分段/隔離）降低暴露。ICS 的典型弱點正是『難修補＋預設密碼＋生命週期長』,補償性控制是標準解法。",
+    "why_wrong_zh": {
+      "A": "生產時段強行修補可能造成停產甚至工安事故,違反可用性與人員安全優先。",
+      "B": "全面汰換成本極高,且 IoT 同樣有預設密碼/難修補問題,並非更安全。",
+      "C": "『天生隔離』是未驗證的假設;未評估就接受風險是管理失職。"
+    },
+    "id": "D3-0008",
+    "domain": "D3",
+    "topic": "d3-p1",
+    "unit": "P1-D3-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-014.html",
+    "unit_title_zh": "系統與雲端架構弱點"
+  },
+  {
+    "stem_en": "In CPTED, which of the following BEST illustrates the concept of natural surveillance?",
+    "stem_zh": "在 CPTED 中,下列何者最能說明「自然監視（natural surveillance）」的概念?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Designing open sightlines and good lighting so activity around the facility is easily observed",
+        "text_zh": "設計開闊視線與良好照明,使場所周遭活動容易被看見"
+      },
+      {
+        "key": "B",
+        "text_en": "Installing CCTV cameras monitored by security guards",
+        "text_zh": "安裝由警衛監看的 CCTV 攝影機"
+      },
+      {
+        "key": "C",
+        "text_en": "Using low fences and signage to mark the property boundary",
+        "text_zh": "以矮圍籬與標示界定場所範圍"
+      },
+      {
+        "key": "D",
+        "text_en": "Landscaping that guides all visitors toward a single controlled entrance",
+        "text_zh": "以景觀動線引導訪客走向單一管制入口"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Natural surveillance＝靠「環境設計本身」（視線、照明、窗戶配置）讓正常使用者自然看得見異常,提高犯罪被發現的風險。判斷關鍵是 natural（設計使然）,不是靠技術設備或人力。",
+    "why_wrong_zh": {
+      "B": "CCTV＋警衛屬技術/人員監視控制,不是『自然』監視。",
+      "C": "界線與標示屬 territoriality（領域感）。",
+      "D": "動線引導屬 natural access control（自然存取控制）。"
+    },
+    "id": "D3-0009",
+    "domain": "D3",
+    "topic": "d3-p1",
+    "unit": "P1-D3-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-015.html",
+    "unit_title_zh": "實體與場所安全"
+  },
+  {
+    "stem_en": "During a heat wave, servers in a facility keep rebooting because of prolonged periods of reduced voltage. What is this power condition, and which control BEST keeps systems running?",
+    "stem_zh": "熱浪期間,某設施的伺服器因長時間電壓不足而反覆重開機。這是哪種電力狀況?哪個控制最能維持系統運作?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Sag (momentary low voltage); add surge protectors",
+        "text_zh": "瞬時低壓,加裝突波保護器"
+      },
+      {
+        "key": "B",
+        "text_en": "Blackout (complete power loss); redesign hot/cold aisles",
+        "text_zh": "完全停電,重新設計冷熱通道"
+      },
+      {
+        "key": "C",
+        "text_en": "Brownout (prolonged low voltage); deploy a UPS backed by a generator",
+        "text_zh": "持續低壓,部署 UPS 並以發電機支援"
+      },
+      {
+        "key": "D",
+        "text_en": "Surge (prolonged high voltage); install a power conditioner",
+        "text_zh": "持續高壓,安裝電源調節器"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "『長時間』電壓不足＝brownout（sag 是瞬時低壓）。UPS 先撐住短時間並穩壓,發電機接手長時間供電,是維持運作的正確組合。記憶:瞬時＝fault/sag/spike,持續＝blackout/brownout/surge。",
+    "why_wrong_zh": {
+      "A": "sag 是『瞬時』低壓,與題目的『長時間』不符;突波保護器針對高壓事件。",
+      "B": "blackout 是完全斷電;冷熱通道是散熱設計,與電力供應無關。",
+      "D": "surge 是持續『高』壓,方向相反;電源調節器也非對付長期低壓的最佳解。"
+    },
+    "id": "D3-0010",
+    "domain": "D3",
+    "topic": "d3-p1",
+    "unit": "P1-D3-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-015.html",
+    "unit_title_zh": "實體與場所安全"
+  },
+  {
+    "stem_en": "A defense contractor's multilevel secure system blocks a user with a Secret clearance from saving a report to an Unclassified file share, yet still allows the same user to read Unclassified files. Which security model property BEST explains this behavior?",
+    "stem_zh": "某國防承包商的多層級安全系統阻止具 Secret 授權的使用者將報告存入 Unclassified 共享區,但仍允許他讀取 Unclassified 檔案。哪個安全模型性質最能解釋此行為?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Biba simple integrity property（no read down）Biba",
+        "text_zh": "簡單完整性"
+      },
+      {
+        "key": "B",
+        "text_en": "Biba star (*) integrity property（no write up）Biba",
+        "text_zh": "星號完整性"
+      },
+      {
+        "key": "C",
+        "text_en": "Bell-LaPadula simple security property（no read up）BLP",
+        "text_zh": "簡單安全性"
+      },
+      {
+        "key": "D",
+        "text_en": "Bell-LaPadula star (*) security property（no write down）BLP",
+        "text_zh": "星號安全性"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "系統擋的是『把高機密內容寫到低層級』＝防洩漏機密,正是 BLP 的 * property（no write down,又稱 confinement property）;讀取低層級不受限,因 BLP 只禁 read up。記憶:simple＝讀、star(*)＝寫;保機密＝BLP。",
+    "why_wrong_zh": {
+      "A": "Biba 保完整性且 simple 講『讀』,與本題的寫入限制無關。",
+      "B": "no write up 防低完整性資料污染高層級,方向相反且目標是完整性非機密性。",
+      "C": "simple security 禁『讀上』,本情境被擋的是『寫下』。"
+    },
+    "id": "D3-0011",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-051.html",
+    "unit_title_zh": "安全模型與評估準則深入"
+  },
+  {
+    "stem_en": "A bank requires that tellers modify account balances only through a certified transaction application, never by editing the database directly, and every change must be verified by a second employee. Which security model BEST matches these requirements?",
+    "stem_zh": "某銀行要求櫃員只能透過認證過的交易程式修改帳戶餘額,不得直接編輯資料庫,且每筆變更須由第二位員工覆核。哪個安全模型最符合這些要求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Bell-LaPadula",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "Clark-Wilson",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "Biba",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Brewer-Nash",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "『只能經認證程式（TP,受限介面）存取受保護資料（CDI）』＝良構交易（well-formed transaction）,『第二人覆核』＝職責分離（SoD）——正是 Clark-Wilson 的三元組（主體-程式-物件）。記憶:看到『必須經程式/介面改資料＋SoD』就選 Clark-Wilson。",
+    "why_wrong_zh": {
+      "A": "BLP 保機密性,只有讀寫層級規則,沒有交易與 SoD 概念。",
+      "C": "Biba 也保完整性,但只靠 no read down/no write up 的層級規則,沒有『經程式存取』與覆核機制。",
+      "D": "Brewer-Nash 防利益衝突,依存取歷史動態調整,與本情境無關。"
+    },
+    "id": "D3-0012",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-051.html",
+    "unit_title_zh": "安全模型與評估準則深入"
+  },
+  {
+    "stem_en": "An organization is procuring a firewall evaluated under Common Criteria. The security team has documented the organization's own security needs and now wants to compare them against the vendor's documented claims about the product's security functions. Which Common Criteria artifact contains the VENDOR's claims?",
+    "stem_zh": "某組織依 Common Criteria 採購防火牆。安全團隊已寫好描述自身安全需求的文件,現在要與『廠商』對產品安全功能的聲明文件比對。哪個 CC 文件包含廠商的聲明?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Protection Profile（PP）",
+        "text_zh": "保護輪廓"
+      },
+      {
+        "key": "B",
+        "text_en": "Target of Evaluation（TOE）",
+        "text_zh": "評估標的"
+      },
+      {
+        "key": "C",
+        "text_en": "Security Target（ST）",
+        "text_zh": "安全標的"
+      },
+      {
+        "key": "D",
+        "text_en": "Evaluation Assurance Level（EAL）",
+        "text_zh": "評估保證等級"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "ST（Security Target）＝廠商對 TOE 內建安全功能的聲明文件;採購流程是拿組織的 PP（需求）去比對各廠商的 ST,選最接近者。記憶:PP＝客戶的『I wants』,ST＝廠商的『claims』。",
+    "why_wrong_zh": {
+      "A": "PP 是『客戶需求』文件,正是題目中組織自己寫的那份。",
+      "B": "TOE 是被評估的產品本身,不是聲明文件。",
+      "D": "EAL 是衡量驗證嚴謹度的等級數字,非聲明文件。"
+    },
+    "id": "D3-0013",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-051.html",
+    "unit_title_zh": "安全模型與評估準則深入"
+  },
+  {
+    "stem_en": "During a security review, an engineer finds a legacy application encrypting database records with AES in ECB mode, and identical records produce identical ciphertext blocks. The team also wants the encrypted data to be protected against undetected tampering. Which mode of operation is the BEST replacement?",
+    "stem_zh": "安全審查發現舊系統以 AES-ECB 模式加密資料庫記錄,相同記錄產生相同密文區塊;團隊同時希望加密資料能防範未被察覺的竄改。哪個運作模式是最佳替代方案?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "CBC（Cipher Block Chaining）",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "GCM（Galois/Counter Mode）",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "CTR（Counter Mode）",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "ECB with a longer key",
+        "text_zh": "以更長金鑰續用 ECB"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "GCM＝CTR＋Galois 認證,同時提供機密性＋完整性/來源鑑別,且快、可平行、NIST 推薦——正好同時滿足『隱藏樣式』與『偵測竄改』兩個需求。判斷邏輯:題目要求兩種保護,只有認證加密模式（GCM/CCM）兩者兼備。",
+    "why_wrong_zh": {
+      "A": "CBC 能隱藏明文樣式,但不提供完整性保護,且有 POODLE 類攻擊風險。",
+      "C": "CTR 快且可平行,但本身缺完整性,需另配雜湊才完整。",
+      "D": "ECB 的問題在模式本身（相同明文→相同密文）,金鑰再長也無法解決。"
+    },
+    "id": "D3-0014",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-052.html",
+    "unit_title_zh": "對稱與非對稱密碼學"
+  },
+  {
+    "stem_en": "A company is deploying thousands of battery-powered smart sensors with very limited CPU and memory. The design requires asymmetric cryptography for device authentication, using the smallest possible key size at equivalent strength. Which algorithm BEST fits this requirement?",
+    "stem_zh": "某公司部署數千個電池供電、CPU 與記憶體極有限的智慧感測器,設計上需要非對稱密碼進行裝置鑑別,且要求同等強度下金鑰越短越好。哪個演算法最符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "RSA with 3072-bit keys（3072",
+        "text_zh": "位元 RSA）"
+      },
+      {
+        "key": "B",
+        "text_en": "ElGamal",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "ECC with 256-bit keys（256",
+        "text_zh": "位元橢圓曲線密碼）"
+      },
+      {
+        "key": "D",
+        "text_en": "RSA with 2048-bit keys（2048",
+        "text_zh": "位元 RSA）"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "ECC 基於橢圓曲線離散對數問題,在同等強度下金鑰遠短於 RSA（256-bit ECC ≈ 3072-bit RSA）,運算量、儲存與功耗都更省——受限的行動/IoT 裝置首選。判斷邏輯:題目關鍵字是『非對稱＋最短金鑰＋受限裝置』→ ECC。",
+    "why_wrong_zh": {
+      "A": "3072-bit RSA 強度相當,但金鑰長 12 倍,運算與儲存負擔對受限裝置太重。",
+      "B": "ElGamal 是 Diffie-Hellman 的延伸,密文會膨脹（約兩倍）且金鑰不短。",
+      "D": "2048-bit RSA 強度低於 256-bit ECC,且運算成本仍高。"
+    },
+    "id": "D3-0015",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-052.html",
+    "unit_title_zh": "對稱與非對稱密碼學"
+  },
+  {
+    "stem_en": "A company operates a two-tier PKI with an offline root CA and an online issuing (intermediate) CA. Forensics confirms the intermediate CA's private key has been compromised. What should the security team do FIRST?",
+    "stem_zh": "某公司採兩層 PKI:離線 root CA＋線上簽發用中繼 CA。鑑識確認中繼 CA 的私鑰已外洩。安全團隊應『首先』做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Rebuild the root CA and redistribute new trust anchors",
+        "text_zh": "重建 root CA 並重新散布信任根"
+      },
+      {
+        "key": "B",
+        "text_en": "Revoke the intermediate CA certificate and publish the revocation via CRL/OCSP",
+        "text_zh": "撤銷中繼 CA 憑證並透過 CRL/OCSP 發布"
+      },
+      {
+        "key": "C",
+        "text_en": "Reissue all end-entity certificates from the same intermediate CA",
+        "text_zh": "由同一中繼 CA 重發所有終端憑證"
+      },
+      {
+        "key": "D",
+        "text_en": "Switch affected servers to self-signed certificates",
+        "text_zh": "讓受影響伺服器改用自簽憑證"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "私鑰外洩的第一要務是讓全世界『停止信任』該 CA——撤銷其憑證並經 CRL/OCSP 發布,立刻阻斷攻擊者用外洩私鑰簽發偽憑證冒充信任鏈;之後才由（未受影響的）root CA 建立新中繼並重發憑證。判斷邏輯:FIRST＝先止血（遏制）,再重建。",
+    "why_wrong_zh": {
+      "A": "root CA 離線且未外洩,重建信任根代價極大且非必要。",
+      "C": "該中繼已不可信,由它重發的憑證同樣不可信,順序錯誤。",
+      "D": "自簽憑證拋棄整個信任鏈,引發更多信任警告,不是解法。"
+    },
+    "id": "D3-0016",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-052.html",
+    "unit_title_zh": "對稱與非對稱密碼學"
+  },
+  {
+    "stem_en": "A security engineer discovers that the company's code-signing pipeline still hashes software releases with SHA-1 before signing them. Management asks what an attacker could realistically achieve. Which attack is MOST directly enabled by this weakness?",
+    "stem_zh": "安全工程師發現公司的程式碼簽章流程仍以 SHA-1 產生摘要後簽章。管理層詢問攻擊者實際能做到什麼。此弱點『最直接』使哪種攻擊成為可能?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Brute-forcing the code-signing private key",
+        "text_zh": "暴力破解簽章私鑰"
+      },
+      {
+        "key": "B",
+        "text_en": "Crafting a malicious file whose digest collides with a legitimately signed file",
+        "text_zh": "製造與合法簽署檔案摘要碰撞的惡意檔案"
+      },
+      {
+        "key": "C",
+        "text_en": "Replaying captured TLS sessions",
+        "text_zh": "重放攔截到的 TLS 會談"
+      },
+      {
+        "key": "D",
+        "text_en": "Extracting the key through a timing side channel",
+        "text_zh": "以時間旁通道萃取金鑰"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "數位簽章簽的是『摘要』,SHA-1 的抗碰撞性已被實際攻破;攻擊者可製造摘要相同的惡意檔案,使合法簽章『轉嫁』到惡意檔上（Flame 對 MD5 憑證即是如此）。判斷邏輯:弱雜湊的直接後果＝碰撞→簽章與 PKI 信任瓦解。",
+    "why_wrong_zh": {
+      "A": "私鑰強度取決於非對稱演算法與金鑰長度,與雜湊演算法無關。",
+      "C": "重放攻擊靠攔截重送,與雜湊碰撞無關。",
+      "D": "旁通道攻擊打『實作』,與 SHA-1 的數學弱點是不同攻擊面。"
+    },
+    "id": "D3-0017",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-053.html",
+    "unit_title_zh": "雜湊、簽章與金鑰管理"
+  },
+  {
+    "stem_en": "An auditor discovers that production database encryption keys are stored in cleartext configuration files inside a source-code repository accessible to all developers. What is the BEST long-term remediation?",
+    "stem_zh": "稽核發現正式環境的資料庫加密金鑰以明文存放在原始碼儲存庫的設定檔中,所有開發者皆可存取。最佳的長期矯正措施是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Restrict repository access to senior developers only",
+        "text_zh": "將儲存庫權限限縮給資深開發者"
+      },
+      {
+        "key": "B",
+        "text_en": "Encrypt the config files with another key kept in the same repository",
+        "text_zh": "用另一把存放在同儲存庫的金鑰加密設定檔"
+      },
+      {
+        "key": "C",
+        "text_en": "Move key generation and storage into an HSM/KMS and rotate all exposed keys",
+        "text_zh": "將金鑰生成與儲存移入 HSM/KMS 並輪替所有已曝光金鑰"
+      },
+      {
+        "key": "D",
+        "text_en": "Ask developers to delete the files from their local copies",
+        "text_zh": "要求開發者刪除本機副本"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "金鑰在整個生命週期都必須受保護,『不得以明文存在於密碼設備之外』;正解同時處理根因（金鑰集中到 HSM/KMS 安全生成與儲存）與既成事實（已曝光的金鑰視同外洩,必須輪替）。判斷邏輯:BEST＋長期＝治本＋處置已曝險資產。",
+    "why_wrong_zh": {
+      "A": "金鑰仍是明文,且儲存庫歷史紀錄早已曝光給所有人。",
+      "B": "『加密金鑰的金鑰』放在同一處,等於沒有保護。",
+      "D": "版本庫歷史與遠端仍保有金鑰,治標不治本。"
+    },
+    "id": "D3-0018",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-053.html",
+    "unit_title_zh": "雜湊、簽章與金鑰管理"
+  },
+  {
+    "stem_en": "An organization implements key escrow so that lost encryption keys can be recovered. The CISO is concerned that a single rogue administrator could secretly recover keys and decrypt sensitive data. Which control BEST addresses this risk?",
+    "stem_zh": "組織建立金鑰託管以復原遺失的加密金鑰。CISO 擔心單一惡意管理員可能私自復原金鑰並解密敏感資料。哪個控制最能因應此風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Storing escrowed keys in an HSM",
+        "text_zh": "將託管金鑰存於 HSM"
+      },
+      {
+        "key": "B",
+        "text_en": "m of n control requiring multiple recovery agents to act together",
+        "text_zh": "以 m of n 控制要求多位復原代理人共同執行"
+      },
+      {
+        "key": "C",
+        "text_en": "Shortening the key rotation interval",
+        "text_zh": "縮短金鑰輪替週期"
+      },
+      {
+        "key": "D",
+        "text_en": "Logging all recovery operations for later review",
+        "text_zh": "記錄所有復原操作供事後審查"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "m of n（多方金鑰復原）指定 n 位復原代理人,且至少需 m 人共同參與才能復原金鑰——從機制上消除『單人可獨自復原』,屬預防性控制,直接對應題目風險。類似概念:split custody（金鑰分持）。",
+    "why_wrong_zh": {
+      "A": "HSM 保護金鑰儲存,但獲授權的單一管理員仍可能獨自執行復原。",
+      "C": "輪替縮短單把金鑰的暴露期間,無法阻止單人復原行為本身。",
+      "D": "日誌是偵測性控制,只能事後發現,不能防止資料已被解密。"
+    },
+    "id": "D3-0019",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-053.html",
+    "unit_title_zh": "雜湊、簽章與金鑰管理"
+  },
+  {
+    "stem_en": "To strengthen a legacy system, an architect proposes encrypting data twice with DES using two different 56-bit keys (2DES), claiming an effective strength of 112 bits. Why does the security reviewer reject this claim?",
+    "stem_zh": "為強化舊系統,架構師提議用兩把不同的 56-bit 金鑰對資料做兩次 DES 加密（2DES）,宣稱有效強度可達 112-bit。安全審查者為何否決此宣稱?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A birthday attack can find hash collisions in 2DES",
+        "text_zh": "生日攻擊可找出 2DES 的雜湊碰撞"
+      },
+      {
+        "key": "B",
+        "text_en": "A meet-in-the-middle attack reduces the effective strength to roughly single DES",
+        "text_zh": "中間相遇攻擊使有效強度僅約等於單一 DES"
+      },
+      {
+        "key": "C",
+        "text_en": "Frequency analysis can defeat any substitution-based cipher",
+        "text_zh": "頻率分析可破解任何替換式密碼"
+      },
+      {
+        "key": "D",
+        "text_en": "A chosen-ciphertext attack can recover both keys directly",
+        "text_zh": "選擇密文攻擊可直接還原兩把金鑰"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Meet-in-the-middle 是典型的已知明文攻擊:攻擊者從明文端『加密』、密文端『解密』同時進行兩個較小的暴力搜尋,在中間比對結果——把 2DES 的有效強度打回約 2^57,幾乎等於單一 DES。這正是業界跳過 2DES、直接採用 3DES 的原因。記憶:兩次加密≠強度相加,中間會『相遇』。",
+    "why_wrong_zh": {
+      "A": "生日攻擊針對『雜湊碰撞』機率,與區塊加密的金鑰強度無關。",
+      "C": "頻率分析針對簡單替換式密碼,對 DES 這類現代區塊加密無效。",
+      "D": "選擇密文是一種攻擊『模型』（可取得解密結果）,並不能直接還原 2DES 金鑰;2DES 的致命傷是 meet-in-the-middle。"
+    },
+    "id": "D3-0020",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-054.html",
+    "unit_title_zh": "密碼分析攻擊與 IoT/ICS"
+  },
+  {
+    "stem_en": "A penetration tester finds a web service that encrypts any attacker-supplied input with the server's secret key and returns the resulting ciphertext. The tester submits carefully crafted inputs and studies the outputs to deduce information about the key. Which attack model does this BEST describe?",
+    "stem_zh": "滲透測試員發現某網路服務會用伺服器的密鑰加密攻擊者提交的任意輸入並回傳密文。測試員提交精心設計的輸入並分析輸出,以推導金鑰資訊。這最符合哪種攻擊模型?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Ciphertext-only attack",
+        "text_zh": "唯密文攻擊"
+      },
+      {
+        "key": "B",
+        "text_en": "Known-plaintext attack",
+        "text_zh": "已知明文攻擊"
+      },
+      {
+        "key": "C",
+        "text_en": "Chosen-ciphertext attack",
+        "text_zh": "選擇密文攻擊"
+      },
+      {
+        "key": "D",
+        "text_en": "Chosen-plaintext attack",
+        "text_zh": "選擇明文攻擊"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "攻擊者能『自選任意明文』並取得對應密文（一個加密 oracle）＝選擇明文攻擊（CPA）;強度排序:唯密文 < 已知明文 < 選擇明文 < 選擇密文。differential cryptanalysis 即屬 CPA。判斷關鍵:誰『選』了輸入?選的是明文還是密文?",
+    "why_wrong_zh": {
+      "A": "唯密文攻擊手上只有密文,無法自選輸入。",
+      "B": "已知明文是『被動取得』明密文對;本題攻擊者可主動選擇明文,更強。",
+      "C": "選擇密文要能提交『密文』並取得『解密結果』;此服務只提供加密方向。"
+    },
+    "id": "D3-0021",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-054.html",
+    "unit_title_zh": "密碼分析攻擊與 IoT/ICS"
+  },
+  {
+    "stem_en": "A critical vulnerability is announced for the PLCs controlling a manufacturing line. The vendor has released a patch, but the operations team warns that unplanned downtime could create safety hazards and halt production. What is the BEST course of action?",
+    "stem_zh": "控制產線的 PLC 被公告存在重大漏洞,廠商已釋出修補程式,但營運團隊警告非計畫性停機可能造成安全危害並中斷生產。最佳做法是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Apply the patch to all PLCs immediately during production",
+        "text_zh": "立即在生產中對所有 PLC 套用修補"
+      },
+      {
+        "key": "B",
+        "text_en": "Rely on the existing air gap and skip the patch",
+        "text_zh": "依賴既有 air gap 而不修補"
+      },
+      {
+        "key": "C",
+        "text_en": "Replace the PLCs with general-purpose IT servers",
+        "text_zh": "以一般用途 IT 伺服器汰換 PLC"
+      },
+      {
+        "key": "D",
+        "text_en": "Apply compensating controls (segmentation, monitoring) now, and deploy the vendor-approved patch in a planned maintenance window",
+        "text_zh": "先實施補償性控制（分段/監控）,再於排定維護窗口套用廠商核可的修補"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "OT/ICS 以可用性與人身安全（safety）優先:先以網路分段、強化監控等補償性控制降低暴露,再於排定的維護窗口套用『廠商核可』的修補（ICS 只用 vendor-approved patch）——同時管理資安風險與營運/安全風險,是 think-like-a-manager 的答案。",
+    "why_wrong_zh": {
+      "A": "生產中貿然修補可能導致停機與安全事故,違反 OT 的優先序。",
+      "B": "Stuxnet 已證明 air gap 非絕對安全,對重大漏洞不作為等於接受過高風險。",
+      "C": "PLC 是特殊用途的工控設備,一般 IT 伺服器無法取代,且引入更大的變更風險。"
+    },
+    "id": "D3-0022",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-054.html",
+    "unit_title_zh": "密碼分析攻擊與 IoT/ICS"
+  },
+  {
+    "stem_en": "Servers in a branch office keep rebooting on summer afternoons. The facilities team confirms that utility voltage stays noticeably below normal for hours at a time but never fully drops out. Which power condition is occurring, and what is the BEST mitigation?",
+    "stem_zh": "分公司伺服器在夏季午後反覆重啟。設施團隊確認市電電壓連續數小時明顯偏低,但從未完全中斷。這是哪種電力狀況?最佳因應是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Blackout — deploy a backup generator",
+        "text_zh": "完全停電,部署備援發電機"
+      },
+      {
+        "key": "B",
+        "text_en": "Spike — install surge protectors",
+        "text_zh": "電壓尖突,安裝突波保護器"
+      },
+      {
+        "key": "C",
+        "text_en": "Fault — shorten the UPS transfer time",
+        "text_zh": "瞬間斷電,縮短 UPS 切換時間"
+      },
+      {
+        "key": "D",
+        "text_en": "Brownout — use a UPS with line conditioning to stabilize input voltage",
+        "text_zh": "電壓持續過低,以 UPS/線路調節穩定輸入電壓"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "『電壓長時間持續偏低、未完全中斷』＝brownout（常見於用電高峰,如夏季午後空調負載）;對策是 UPS 搭配穩壓/線路調節,讓設備獲得穩定電壓。判斷邏輯:先分類（持續偏低 vs 瞬斷 vs 突升）,再對應控制。",
+    "why_wrong_zh": {
+      "A": "blackout 是完全停電,與『未中斷』的情境不符。",
+      "B": "spike 是瞬間電壓突升,方向與情境相反。",
+      "C": "fault 是瞬間斷電,情境是長時間電壓偏低。"
+    },
+    "id": "D3-0023",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-055.html",
+    "unit_title_zh": "實體控制與資料庫安全"
+  },
+  {
+    "stem_en": "A data analyst has read access to individual sales records, each classified as low sensitivity. Using SQL functions, the analyst combines millions of these records into a nationwide revenue and customer dataset that the company classifies as highly sensitive. Which database threat does this BEST illustrate?",
+    "stem_zh": "資料分析師對單筆低敏感度的銷售記錄有讀取權。他利用 SQL 函數彙整數百萬筆記錄,產出公司列為高敏感的全國營收與客戶資料集。這最能說明哪種資料庫威脅?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Inference attack",
+        "text_zh": "推論攻擊"
+      },
+      {
+        "key": "B",
+        "text_en": "SQL injection SQL",
+        "text_zh": "注入"
+      },
+      {
+        "key": "C",
+        "text_en": "Aggregation attack",
+        "text_zh": "聚合攻擊"
+      },
+      {
+        "key": "D",
+        "text_en": "Privilege escalation",
+        "text_zh": "權限提升"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "聚合（aggregation）＝利用資料庫的數學/函數能力『彙整』多筆低敏資料,使整體敏感度高於個別部分;對策是依『整體』敏感度控管存取。記憶:聚合靠彙整（math）、推論靠人為推理（deduction）——本題是直接用 SQL 函數合併,屬聚合。",
+    "why_wrong_zh": {
+      "A": "推論是從間接線索『推導』出未授權機密,靠人的演繹能力;本題是直接彙整資料本身。",
+      "B": "SQL 注入是利用輸入驗證漏洞;分析師使用的是合法查詢。",
+      "D": "分析師並未取得超出授權的權限,風險發生在授權範圍之內。"
+    },
+    "id": "D3-0024",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-055.html",
+    "unit_title_zh": "實體控制與資料庫安全"
+  },
+  {
+    "stem_en": "During routine maintenance, a fire breaks out inside an energized electrical distribution panel next to the server racks. Staff must choose a hand-held extinguisher. Which fire class rating is MOST appropriate?",
+    "stem_zh": "例行維護時,伺服器機架旁『通電中』的配電盤內部起火,人員須選用手提滅火器。哪個火災等級的滅火器最合適?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Class A（ordinary combustibles, water-based",
+        "text_zh": "普通可燃物,水基）"
+      },
+      {
+        "key": "B",
+        "text_en": "Class C（electrical fires",
+        "text_zh": "電氣火災）"
+      },
+      {
+        "key": "C",
+        "text_en": "Class B（flammable liquids",
+        "text_zh": "可燃液體）"
+      },
+      {
+        "key": "D",
+        "text_en": "Class K（kitchen grease",
+        "text_zh": "廚房油脂）"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "通電中的電氣設備火災屬 Class C,必須使用不導電滅火劑（CO₂、乾粉、潔淨氣體）;用水基滅火劑會導電,危及救火人員——人身安全永遠最優先。記憶:A 普通、B 液體、C 電氣、D 金屬、K 廚房。",
+    "why_wrong_zh": {
+      "A": "水基滅火劑導電,對通電設備火災極度危險。",
+      "C": "Class B 針對汽油/溶劑等可燃液體火災。",
+      "D": "Class K 針對廚房油脂火災,與電氣火災無關。"
+    },
+    "id": "D3-0025",
+    "domain": "D3",
+    "topic": "d3-p2",
+    "unit": "P2-D3-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-055.html",
+    "unit_title_zh": "實體控制與資料庫安全"
+  },
+  {
+    "stem_en": "In the Bell-LaPadula model, the *-property (star property) states that a subject cannot:",
+    "stem_zh": "在 Bell-LaPadula 模型中,*(星)規則指出主體不可:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Read data at a higher classification",
+        "text_zh": "讀取更高密級資料"
+      },
+      {
+        "key": "B",
+        "text_en": "Write data to a lower classification",
+        "text_zh": "寫入更低密級"
+      },
+      {
+        "key": "C",
+        "text_en": "Read data at a lower classification",
+        "text_zh": "讀取更低密級"
+      },
+      {
+        "key": "D",
+        "text_en": "Write data to a higher classification",
+        "text_zh": "寫入更高密級"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "BLP 保機密性,*(star)規則＝no write down(不可寫到更低密級,以免機密下洩)。simple 規則才是 no read up。",
+    "why_wrong_zh": {
+      "A": "『不可讀更高』是 simple property(no read up),非 star。",
+      "C": "BLP 允許讀更低密級(read down 不洩密)。",
+      "D": "BLP 允許寫到更高密級(write up),不違反機密性。"
+    },
+    "id": "D3-0026",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-091.html",
+    "unit_title_zh": "考點：安全模型規則"
+  },
+  {
+    "stem_en": "Which model is designed to protect data INTEGRITY using rules such as 'no write up' and 'no read down'?",
+    "stem_zh": "哪個模型以『no write up』與『no read down』等規則來保護資料『完整性』?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Bell-LaPadula",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "Biba",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "Clark-Wilson",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Brewer-Nash",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Biba 保完整性:no read down(不讀低完整性以免被污染)、no write up(不寫高完整性以免越級竄改)。",
+    "why_wrong_zh": {
+      "A": "BLP 保機密性,規則方向相反。",
+      "C": "Clark-Wilson 也保完整,但靠『良構交易+SoD』而非 read/write up-down 規則。",
+      "D": "Brewer-Nash 處理利益衝突,非此規則。"
+    },
+    "id": "D3-0027",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-091.html",
+    "unit_title_zh": "考點：安全模型規則"
+  },
+  {
+    "stem_en": "A consultant who has accessed Bank A's confidential data is automatically prevented from accessing competitor Bank B's data. Which model is this?",
+    "stem_zh": "一位已存取過 A 銀行機密的顧問,被自動禁止存取競爭對手 B 銀行的資料。這是哪個模型?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Biba",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "Clark-Wilson",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "Brewer-Nash (Chinese Wall)",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Bell-LaPadula",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Brewer-Nash(Chinese Wall):存取權依存取歷史動態變化,防利益衝突——看過 A 就不能看其競爭對手 B。",
+    "why_wrong_zh": {
+      "B": "Clark-Wilson 處理交易完整性,非利益衝突隔離。"
+    },
+    "id": "D3-0028",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-091.html",
+    "unit_title_zh": "考點：安全模型規則"
+  },
+  {
+    "stem_en": "A security engineer is concerned that low-security users could infer a high-security process's activity by observing changes in system behavior, creating a covert channel. Which security model MOST directly addresses this concern?",
+    "stem_zh": "一名安全工程師擔心低安全等級使用者可藉由觀察系統行為變化,推斷高安全等級程序的活動,形成隱蔽通道。哪個安全模型最直接處理此疑慮?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Noninterference model",
+        "text_zh": "非干擾模型"
+      },
+      {
+        "key": "B",
+        "text_en": "Information flow model",
+        "text_zh": "資訊流模型"
+      },
+      {
+        "key": "C",
+        "text_en": "Bell-LaPadula model Bell-LaPadula",
+        "text_zh": "模型"
+      },
+      {
+        "key": "D",
+        "text_en": "Clark-Wilson model Clark-Wilson",
+        "text_zh": "模型"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "非干擾模型(Noninterference)確保高安全等級的動作不影響低安全等級可觀察的行為——直接防止透過系統狀態變化『推斷』高層資訊(隱蔽通道式洩漏)。判斷邏輯:題幹關鍵是『高層活動被低層觀察推斷』,不是讀寫規則,故非干擾最直接。記憶:高層做什麼,低層『看不出來也感覺不到』。",
+    "why_wrong_zh": {
+      "B": "資訊流模型是較廣的上位概念(BLP/Biba 的設計基礎),管『流動方向』;題幹問的是『高層行為不得被低層觀察到影響』,非干擾更直接——兩個都『對』,考最直接。",
+      "C": "BLP 只定義讀寫規則,官方筆記明言它『不處理 covert channels』。",
+      "D": "Clark-Wilson 管交易完整性(良構交易+SoD),與隱蔽通道無關。"
+    },
+    "id": "D3-0029",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-091.html",
+    "unit_title_zh": "考點：安全模型規則"
+  },
+  {
+    "stem_en": "Under a strict MAC implementation, a subject is permitted to read and write ONLY at its own security level — never above or below. Which Bell-LaPadula property does this describe?",
+    "stem_zh": "在嚴格的 MAC 實作下,主體『只能』在自己所屬的安全等級讀與寫,不得向上或向下。這描述 Bell-LaPadula 的哪個性質?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Strong star property",
+        "text_zh": "強星規則"
+      },
+      {
+        "key": "B",
+        "text_en": "Star (*) property",
+        "text_zh": "星規則"
+      },
+      {
+        "key": "C",
+        "text_en": "Simple security property",
+        "text_zh": "簡單安全規則"
+      },
+      {
+        "key": "D",
+        "text_en": "Discretionary security property",
+        "text_zh": "自主安全規則"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Strong Star Property(強星規則):主體讀與寫都只能在自己的密級層(read/write only in their own layer of secrecy)。判斷邏輯:一般 star 只禁『寫低』(仍可寫高),題幹連『寫高、讀低』都禁止→是更嚴格的 strong star。記憶:strong=『鎖死在本層』。",
+    "why_wrong_zh": {
+      "B": "星規則只有 no write down,仍允許 write up 與 read down——與題幹『只能本層』不符,是本題最強干擾項。",
+      "C": "簡單安全規則只管讀(no read up),未限制寫。",
+      "D": "自主安全規則指以存取矩陣(need to know)控管,與層級讀寫限制無關。"
+    },
+    "id": "D3-0030",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-091.html",
+    "unit_title_zh": "考點：安全模型規則"
+  },
+  {
+    "stem_en": "A core banking system requires that account records be modified ONLY through certified transaction programs enforcing well-formed transactions; users can never manipulate the records directly. This is an implementation of which model?",
+    "stem_zh": "核心銀行系統要求帳戶紀錄『只能』透過經認證、強制良構交易的交易程式修改,使用者永遠不能直接操作紀錄。這是哪個模型的實作?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Clark-Wilson",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "Biba",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "Bell-LaPadula",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Graham-Denning",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "主體與物件之間有『中介程式保護完整性』→就是 Clark-Wilson:存取三元組(subject/program/object),受限資料項(CDI)只能由轉換程序(TP)操作,並強制良構交易與 SoD。記憶:看到『只能透過程式/介面改資料』一律選 Clark-Wilson。",
+    "why_wrong_zh": {
+      "B": "Biba 也保完整性,但靠層級讀寫規則(no read down/no write up),沒有『中介程式』概念——兩者都『保完整』,鑑別點在機制。",
+      "C": "BLP 保機密性,與交易完整性無關。",
+      "D": "Graham-Denning 管主體/物件的安全建立、刪除與權限授予(8 條規則),非交易完整性。"
+    },
+    "id": "D3-0031",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-091.html",
+    "unit_title_zh": "考點：安全模型規則"
+  },
+  {
+    "stem_en": "Alice wants to send a confidential message that only Bob can read. Which key should she use to encrypt it?",
+    "stem_zh": "Alice 想送一則只有 Bob 能讀的機密訊息。她該用哪把鑰加密?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Alice's private key Alice",
+        "text_zh": "的私鑰"
+      },
+      {
+        "key": "B",
+        "text_en": "Alice's public key Alice",
+        "text_zh": "的公鑰"
+      },
+      {
+        "key": "C",
+        "text_en": "Bob's public key Bob",
+        "text_zh": "的公鑰"
+      },
+      {
+        "key": "D",
+        "text_en": "Bob's private key Bob",
+        "text_zh": "的私鑰"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "要確保只有 Bob 能解,用 Bob 的公鑰加密——只有 Bob 的私鑰能解開(機密性)。",
+    "why_wrong_zh": {
+      "A": "用 Alice 私鑰是『簽章』用途,任何人用她公鑰都能解,不保機密。",
+      "B": "用 Alice 自己的公鑰,只有 Alice 能解,Bob 解不開。",
+      "D": "別人無法取得 Bob 的私鑰來加密。"
+    },
+    "id": "D3-0032",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-092.html",
+    "unit_title_zh": "考點：對稱 vs 非對稱選用"
+  },
+  {
+    "stem_en": "Which is the BEST reason TLS uses asymmetric encryption to exchange a symmetric session key, rather than using asymmetric encryption for all data?",
+    "stem_zh": "為何 TLS 用非對稱加密交換一把對稱會談金鑰,而非全程用非對稱加密所有資料? 最佳理由是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Asymmetric is more secure",
+        "text_zh": "非對稱更安全"
+      },
+      {
+        "key": "B",
+        "text_en": "Symmetric encryption is much faster for bulk data",
+        "text_zh": "對稱加密大量資料快得多"
+      },
+      {
+        "key": "C",
+        "text_en": "Symmetric keys never expire",
+        "text_zh": "對稱金鑰永不過期"
+      },
+      {
+        "key": "D",
+        "text_en": "Asymmetric cannot encrypt data",
+        "text_zh": "非對稱無法加密資料"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "非對稱運算昂貴、慢,不適合大量資料;故用非對稱安全交換一把對稱會談金鑰,再用對稱(快)加密大量資料——混合加密兼得安全與效能。",
+    "why_wrong_zh": {
+      "A": "兩者安全性取決於正確使用,非『非對稱一定更安全』;選此誤解了原因。",
+      "C": "對稱金鑰也應輪替,非永不過期。",
+      "D": "非對稱可以加密資料,只是慢、有大小限制。"
+    },
+    "id": "D3-0033",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-092.html",
+    "unit_title_zh": "考點：對稱 vs 非對稱選用"
+  },
+  {
+    "stem_en": "In a group of 10 people who all need to communicate securely using ONLY symmetric encryption, how many unique keys are required?",
+    "stem_zh": "10 人全部需用『純對稱加密』兩兩安全通訊,需要幾把獨特金鑰?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "10",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "20",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "45",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "100",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "對稱兩兩通訊金鑰數＝n(n-1)/2 = 10×9/2 = 45。這也說明對稱金鑰分發隨人數快速膨脹的問題。",
+    "why_wrong_zh": {
+      "A": "10 是人數,非金鑰數。",
+      "B": "20 為計算錯誤。",
+      "D": "100 是 n² ,未除以 2 且含自身配對。"
+    },
+    "id": "D3-0034",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-092.html",
+    "unit_title_zh": "考點：對稱 vs 非對稱選用"
+  },
+  {
+    "stem_en": "A legacy system \"strengthens\" DES by encrypting each block twice with two different 56-bit keys (2DES). Which attack explains why this does NOT provide the expected 112-bit security?",
+    "stem_zh": "某舊系統以兩把不同的 56 位元金鑰對每個區塊加密兩次(2DES)來『強化』DES。哪種攻擊解釋了為何這無法提供預期的 112 位元安全強度?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Frequency analysis",
+        "text_zh": "頻率分析"
+      },
+      {
+        "key": "B",
+        "text_en": "Birthday attack",
+        "text_zh": "生日攻擊"
+      },
+      {
+        "key": "C",
+        "text_en": "Side-channel attack",
+        "text_zh": "旁通道攻擊"
+      },
+      {
+        "key": "D",
+        "text_en": "Meet-in-the-middle attack",
+        "text_zh": "中間相遇攻擊"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Meet-in-the-middle(中間相遇)是已知明文攻擊:同時『從明文往前加密』與『從密文往後解密』各做一次較小的暴力搜尋,在中間比對結果找出兩把金鑰——使 2DES 有效強度僅約 57 bits,這正是業界跳過 2DES 直接採 3DES 的原因。記憶:『兩段式加密→中間相遇』。",
+    "why_wrong_zh": {
+      "A": "頻率分析利用語言字母出現頻率,只對簡單替換密碼有效,打不動 DES 這類現代區塊密碼。",
+      "B": "生日攻擊利用機率找『雜湊碰撞』,針對雜湊函數而非重複加密結構。",
+      "C": "旁通道攻擊量測功耗/時間打『實作』,與 2DES 的結構性弱點無關。"
+    },
+    "id": "D3-0035",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-092.html",
+    "unit_title_zh": "考點：對稱 vs 非對稱選用"
+  },
+  {
+    "stem_en": "A department of 20 employees communicates using only pairwise symmetric keys. When ONE new employee joins, how many NEW keys must be generated so everyone can communicate securely?",
+    "stem_zh": "某部門 20 人全用兩兩對稱金鑰通訊。新進 1 人後,需要『新增』幾把金鑰才能讓所有人安全通訊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "1",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "20",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "21",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "210",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "新成員須與既有 20 人各建立一把共享金鑰→新增 20 把。驗算:總數由 20×19/2=190 變成 21×20/2=210,差正好 20。判斷邏輯:考的是 n(n-1)/2 的『增量』——第 n+1 人加入,新增 n 把;這也是對稱金鑰管理不可擴展的核心原因。",
+    "why_wrong_zh": {
+      "A": "一把金鑰給所有人共用會變成群組金鑰,失去兩兩通訊的機密性。",
+      "C": "21 是新的總人數,不是新增金鑰數。",
+      "D": "210 是新的『總』金鑰數(21×20/2),題目問的是新增數。"
+    },
+    "id": "D3-0036",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-092.html",
+    "unit_title_zh": "考點：對稱 vs 非對稱選用"
+  },
+  {
+    "stem_en": "A security architect must implement digital signatures on battery-powered IoT sensors with very limited CPU and memory. Which algorithm is the BEST choice?",
+    "stem_zh": "安全架構師須在 CPU 與記憶體都非常有限的電池供電 IoT 感測器上實作數位簽章。最佳的演算法選擇為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "RSA-4096",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "AES-256",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "ECDSA (elliptic curve)",
+        "text_zh": "橢圓曲線簽章"
+      },
+      {
+        "key": "D",
+        "text_en": "SHA-256 alone",
+        "text_zh": "單獨使用 SHA-256"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "ECC 在同等安全強度下金鑰短得多、運算量低,最適合資源受限的行動/IoT 裝置;ECDSA 也是 FIPS 186-5 認可的簽章演算法。判斷邏輯:題幹兩個關鍵——『數位簽章』(需非對稱)+『資源受限』(選 ECC)。",
+    "why_wrong_zh": {
+      "A": "RSA-4096 也『能』簽,但金鑰長、運算昂貴,在受限裝置上不是『最佳』——技術上對但優先序錯,是本題最強干擾項。",
+      "B": "AES 是對稱加密,金鑰雙方共享,無法提供簽章所需的不可否認。",
+      "D": "單純雜湊無身分綁定,任何人都能重算,不構成簽章。"
+    },
+    "id": "D3-0037",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-092.html",
+    "unit_title_zh": "考點：對稱 vs 非對稱選用"
+  },
+  {
+    "stem_en": "To verify that a downloaded file has not been altered, a user compares its SHA-256 value. Which security property does this provide?",
+    "stem_zh": "為驗證下載檔案未被竄改,使用者比對其 SHA-256 值。這提供哪個安全性質?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Confidentiality",
+        "text_zh": "機密性"
+      },
+      {
+        "key": "B",
+        "text_en": "Integrity",
+        "text_zh": "完整性"
+      },
+      {
+        "key": "C",
+        "text_en": "Availability",
+        "text_zh": "可用性"
+      },
+      {
+        "key": "D",
+        "text_en": "Non-repudiation",
+        "text_zh": "不可否認"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "雜湊(SHA-256)比對驗證資料未被更動＝完整性(Integrity);雜湊不提供機密性。",
+    "why_wrong_zh": {
+      "A": "雜湊不加密、不提供機密性。",
+      "C": "與可用性無關。",
+      "D": "單純雜湊無身分綁定,不提供不可否認(需數位簽章)。"
+    },
+    "id": "D3-0038",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-093.html",
+    "unit_title_zh": "考點：雜湊與 PKI"
+  },
+  {
+    "stem_en": "Which provides BOTH integrity and non-repudiation?",
+    "stem_zh": "下列何者同時提供完整性『與』不可否認?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Symmetric encryption",
+        "text_zh": "對稱加密"
+      },
+      {
+        "key": "B",
+        "text_en": "Hashing alone",
+        "text_zh": "單純雜湊"
+      },
+      {
+        "key": "C",
+        "text_en": "HMAC",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Digital signature",
+        "text_zh": "數位簽章"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "數位簽章用私鑰簽(只有持有者能簽)→提供完整性＋不可否認＋真實性。",
+    "why_wrong_zh": {
+      "A": "對稱加密提供機密性,非不可否認。",
+      "B": "單純雜湊只驗完整性,無身分。",
+      "C": "HMAC 用共享密鑰,雙方皆能產生→無不可否認。"
+    },
+    "id": "D3-0039",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-093.html",
+    "unit_title_zh": "考點：雜湊與 PKI"
+  },
+  {
+    "stem_en": "A server wants browsers to check a certificate's revocation status in real time for a single certificate. Which mechanism is MOST appropriate?",
+    "stem_zh": "伺服器希望瀏覽器即時查詢單張憑證的撤銷狀態。最適合的機制為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "CRL",
+        "text_zh": "憑證撤銷清單"
+      },
+      {
+        "key": "B",
+        "text_en": "OCSP",
+        "text_zh": "線上憑證狀態協定"
+      },
+      {
+        "key": "C",
+        "text_en": "HSTS",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "DNSSEC",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "OCSP 即時查詢單張憑證狀態;CRL 是定期發布的整份清單(較舊、延遲)。OCSP Stapling 可再省查詢、護隱私。",
+    "why_wrong_zh": {
+      "A": "CRL 是清單式、有延遲,非即時單張查詢的最佳解。",
+      "C": "HSTS 強制 HTTPS,與撤銷查詢無關。",
+      "D": "DNSSEC 保護 DNS,非憑證撤銷。"
+    },
+    "id": "D3-0040",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-093.html",
+    "unit_title_zh": "考點：雜湊與 PKI"
+  },
+  {
+    "stem_en": "A penetration test finds that a web application stores passwords as unsalted SHA-256 hashes, exposing them to rainbow table attacks. What is the BEST remediation?",
+    "stem_zh": "滲透測試發現某 Web 應用以『未加鹽的 SHA-256』儲存密碼,暴露於彩虹表攻擊。最佳的修補方式為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Add a unique per-user salt and use a key-stretching algorithm such as bcrypt",
+        "text_zh": "每使用者獨立鹽值+bcrypt 等金鑰延伸演算法"
+      },
+      {
+        "key": "B",
+        "text_en": "Encrypt the passwords with AES-256 instead",
+        "text_zh": "改以 AES-256 加密儲存"
+      },
+      {
+        "key": "C",
+        "text_en": "Switch to unsalted SHA-512",
+        "text_zh": "改用未加鹽的 SHA-512"
+      },
+      {
+        "key": "D",
+        "text_en": "Hash each password twice with SHA-256",
+        "text_zh": "以 SHA-256 對每組密碼雜湊兩次"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "鹽值(salting)讓每筆雜湊獨一無二,直接廢掉預計算的彩虹表;金鑰延伸(key stretching,如 bcrypt/PBKDF2/scrypt)再把每次雜湊刻意變慢,大幅拉高暴力破解成本——兩者合璧才是密碼儲存的業界標準。記憶:鹽值抗『查表』,延伸抗『硬算』。",
+    "why_wrong_zh": {
+      "B": "加密是可逆的,金鑰一旦外洩所有密碼可被還原;密碼應存『加鹽雜湊』而非加密——聽起來安全但方向錯,是本題最強干擾項。",
+      "C": "換更長的雜湊仍未加鹽,攻擊者可對 SHA-512 重建預計算表。",
+      "D": "雜湊兩次仍是固定函數,同樣可預計算,也沒有解決雜湊過快的問題。"
+    },
+    "id": "D3-0041",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-093.html",
+    "unit_title_zh": "考點：雜湊與 PKI"
+  },
+  {
+    "stem_en": "A large enterprise is deploying an internal PKI. To offload the task of verifying the identity of employees who request certificates, which PKI component should be implemented?",
+    "stem_zh": "大型企業部署內部 PKI。為分擔『驗證申請憑證員工身分』的工作,應建置哪個 PKI 元件?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Issuing CA",
+        "text_zh": "簽發憑證機構"
+      },
+      {
+        "key": "B",
+        "text_en": "CRL distribution point CRL",
+        "text_zh": "發布點"
+      },
+      {
+        "key": "C",
+        "text_en": "Registration Authority (RA)",
+        "text_zh": "註冊機構"
+      },
+      {
+        "key": "D",
+        "text_en": "OCSP responder OCSP",
+        "text_zh": "回應伺服器"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "RA(Registration Authority)專責驗證憑證申請者的身分,驗畢再交由 CA 簽發——正是為了替 CA 分擔身分查驗工作而存在的元件。記憶:RA 驗身分、CA 發與撤。",
+    "why_wrong_zh": {
+      "A": "CA 負責簽發/撤銷憑證;身分查驗可以(且大型環境通常)委由 RA 執行——題幹問的正是『分擔查驗』,選 CA 是層級錯的干擾項。",
+      "B": "CRL 發布點提供撤銷清單下載,與申請時的身分驗證無關。",
+      "D": "OCSP 回應伺服器提供即時撤銷狀態查詢,也與身分驗證無關。"
+    },
+    "id": "D3-0042",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-093.html",
+    "unit_title_zh": "考點：雜湊與 PKI"
+  },
+  {
+    "stem_en": "An organization escrows its encryption keys and requires that NO single administrator can recover a key alone; any 3 of 5 designated recovery agents must participate together. What is this control called?",
+    "stem_zh": "某組織託管(escrow)其加密金鑰,並要求任何單一管理員都不能獨自復原金鑰,必須由 5 位指定復原代理人中的任 3 位共同參與。這種控制稱為?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Key stretching",
+        "text_zh": "金鑰延伸"
+      },
+      {
+        "key": "B",
+        "text_en": "Zero-knowledge proof",
+        "text_zh": "零知識證明"
+      },
+      {
+        "key": "C",
+        "text_en": "Split custody",
+        "text_zh": "分持保管"
+      },
+      {
+        "key": "D",
+        "text_en": "m of n control m of n",
+        "text_zh": "控制"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "m of n control:指定 n 位復原代理人,只需其中任 m 位(此例 3 of 5)即可復原金鑰——同時防單人濫權(至少 3 人)並保可用性(不必全員到齊)。記憶:『n 取 m 的門檻制』。",
+    "why_wrong_zh": {
+      "A": "金鑰延伸是刻意放慢密碼雜湊,與金鑰復原無關。",
+      "B": "零知識證明是『不透露秘密本身』的驗證方法,非復原控制。",
+      "C": "split custody 是固定的『各持一半』分持(例如兩人各持半組密碼),沒有『任 m 位即可』的門檻彈性——與 m of n 最接近,是本題鑑別點。"
+    },
+    "id": "D3-0043",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-093.html",
+    "unit_title_zh": "考點：雜湊與 PKI"
+  },
+  {
+    "stem_en": "An attacker measures the power consumption and timing of a smart card's cryptographic operations to recover the key. This is a:",
+    "stem_zh": "攻擊者量測智慧卡密碼運算的功耗與時間以還原金鑰。這是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Brute-force attack",
+        "text_zh": "暴力攻擊"
+      },
+      {
+        "key": "B",
+        "text_en": "Side-channel attack",
+        "text_zh": "旁通道攻擊"
+      },
+      {
+        "key": "C",
+        "text_en": "Birthday attack",
+        "text_zh": "生日攻擊"
+      },
+      {
+        "key": "D",
+        "text_en": "Dictionary attack",
+        "text_zh": "字典攻擊"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "由實體量測(功耗/時間/電磁)推測金鑰＝旁通道攻擊;它打『實作』而非演算法數學。",
+    "why_wrong_zh": {
+      "A": "暴力是窮舉金鑰,非量測物理特徵。",
+      "C": "生日攻擊針對雜湊碰撞。",
+      "D": "字典攻擊試常見密碼。"
+    },
+    "id": "D3-0044",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-094.html",
+    "unit_title_zh": "考點：密碼攻擊與實體安全"
+  },
+  {
+    "stem_en": "Which fire suppression approach is MOST appropriate for a data center to avoid damaging equipment?",
+    "stem_zh": "為避免損壞設備,資料中心最適合的滅火方式為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Wet pipe sprinklers",
+        "text_zh": "濕式撒水"
+      },
+      {
+        "key": "B",
+        "text_en": "Clean agent gas (e.g., FM-200)",
+        "text_zh": "潔淨氣體"
+      },
+      {
+        "key": "C",
+        "text_en": "Water deluge",
+        "text_zh": "大量灑水"
+      },
+      {
+        "key": "D",
+        "text_en": "Foam",
+        "text_zh": "泡沫"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "機房應用潔淨氣體(FM-200/Inergen)滅火,不損電子設備且不水損;水/泡沫會毀設備。",
+    "why_wrong_zh": {
+      "D": "泡沫殘留會損壞設備,不適合機房。"
+    },
+    "id": "D3-0045",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-094.html",
+    "unit_title_zh": "考點：密碼攻擊與實體安全"
+  },
+  {
+    "stem_en": "A birthday attack is MOST directly a threat to which cryptographic component?",
+    "stem_zh": "生日攻擊最直接威脅哪個密碼學元件?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Symmetric key length",
+        "text_zh": "對稱金鑰長度"
+      },
+      {
+        "key": "B",
+        "text_en": "Hash function collision resistance",
+        "text_zh": "雜湊函數抗碰撞性"
+      },
+      {
+        "key": "C",
+        "text_en": "Random number generation",
+        "text_zh": "亂數產生"
+      },
+      {
+        "key": "D",
+        "text_en": "Certificate validity period",
+        "text_zh": "憑證有效期"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "生日攻擊利用機率尋找雜湊碰撞,直接威脅雜湊的抗碰撞性;故需足夠長的雜湊(SHA-256+)。",
+    "why_wrong_zh": {
+      "A": "金鑰長度主要對抗暴力攻擊。",
+      "C": "亂數品質影響金鑰可預測性,非生日攻擊核心。",
+      "D": "與憑證有效期無關。"
+    },
+    "id": "D3-0046",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-094.html",
+    "unit_title_zh": "考點：密碼攻擊與實體安全"
+  },
+  {
+    "stem_en": "During a cryptanalysis engagement, an attacker is able to submit arbitrary plaintexts of her own choosing to the encryption system and collect the resulting ciphertexts to deduce information about the key. Which attack model is this?",
+    "stem_zh": "密碼分析演練中,攻擊者可『自行選定』任意明文送入加密系統,並收集對應密文以推導金鑰資訊。這是哪種攻擊模型?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Known-plaintext attack",
+        "text_zh": "已知明文攻擊"
+      },
+      {
+        "key": "B",
+        "text_en": "Chosen-plaintext attack",
+        "text_zh": "選擇明文攻擊"
+      },
+      {
+        "key": "C",
+        "text_en": "Ciphertext-only attack",
+        "text_zh": "唯密文攻擊"
+      },
+      {
+        "key": "D",
+        "text_en": "Pass-the-hash attack",
+        "text_zh": "傳遞雜湊攻擊"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "關鍵字『可自行選定(chosen)任意明文並取得對應密文』→ 選擇明文攻擊(CPA);它比已知明文更強(攻擊者能主動控制輸入),差分密碼分析即屬此類。記憶:能『選』=chosen,只是『有』=known。",
+    "why_wrong_zh": {
+      "A": "已知明文是攻擊者『手上剛好有』明密文對,無法自選明文——與 chosen 只差一字,是本題最強干擾項。",
+      "C": "唯密文攻擊只有密文可用,是最弱的攻擊模型。",
+      "D": "Pass-the-Hash 是竊取密碼雜湊直接用於認證,屬憑證攻擊而非密碼分析模型。"
+    },
+    "id": "D3-0047",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-094.html",
+    "unit_title_zh": "考點：密碼攻擊與實體安全"
+  },
+  {
+    "stem_en": "A defense facility processing classified data is concerned that attackers in a nearby building could reconstruct screen contents from electromagnetic emanations. Which countermeasure BEST addresses this risk?",
+    "stem_zh": "某處理機密資料的國防設施擔心鄰棟攻擊者可由電磁洩漏重建螢幕內容。哪個對策最能處理此風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Full-disk encryption",
+        "text_zh": "全磁碟加密"
+      },
+      {
+        "key": "B",
+        "text_en": "TEMPEST-rated shielding (e.g., Faraday cage) TEMPEST",
+        "text_zh": "等級屏蔽(如法拉第籠)"
+      },
+      {
+        "key": "C",
+        "text_en": "Upgrading to AES-256 encryption",
+        "text_zh": "升級至 AES-256 加密"
+      },
+      {
+        "key": "D",
+        "text_en": "Network intrusion detection system",
+        "text_zh": "網路入侵偵測系統"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "電磁洩漏(emanation)攻擊擷取的是顯示/處理中的明文訊號,加密幫不上忙;對策是 TEMPEST 等級設備、屏蔽線材/法拉第籠、白噪音與管制區(control zone)。判斷邏輯:威脅在『物理訊號外洩』,就要用物理屏蔽對付。",
+    "why_wrong_zh": {
+      "A": "磁碟加密保護『靜態儲存』;螢幕顯示時資料已解密,電磁訊號照樣洩漏——聽起來對但保護錯層,是本題最強干擾項。",
+      "C": "加密演算法強度與空中電磁洩漏無關。",
+      "D": "NIDS 監看網路流量,偵測不到不經網路的電磁側漏。"
+    },
+    "id": "D3-0048",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-094.html",
+    "unit_title_zh": "考點：密碼攻擊與實體安全"
+  },
+  {
+    "stem_en": "A fire alarm triggers in a data center protected by a CO2 flooding suppression system. What is the FIRST priority before the agent discharges?",
+    "stem_zh": "資料中心的 CO₂ 全區滅火系統因火警觸發。在氣體釋放前的『第一』優先事項是?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Gracefully shut down critical servers",
+        "text_zh": "優雅關閉關鍵伺服器"
+      },
+      {
+        "key": "B",
+        "text_en": "Ensure all personnel have evacuated the room",
+        "text_zh": "確認所有人員已撤離該區"
+      },
+      {
+        "key": "C",
+        "text_en": "Notify senior management",
+        "text_zh": "通報高階主管"
+      },
+      {
+        "key": "D",
+        "text_en": "Fail over to the disaster recovery site",
+        "text_zh": "切換至災難復原站點"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "CO₂ 靠排除氧氣滅火,對人員致命——因此釋放前必須先確認人員撤離。判斷邏輯:CISSP 鐵律『人命安全永遠優先於資產與營運』,任何實體安全情境題先想 people first。",
+    "why_wrong_zh": {
+      "A": "保護設備排在保護人命之後——技術上合理但優先序錯,是本題最強干擾項。",
+      "C": "通報屬後續溝通程序,非釋放前第一優先。",
+      "D": "營運持續(切換 DR)是火災處理後段的動作。"
+    },
+    "id": "D3-0049",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-094.html",
+    "unit_title_zh": "考點：密碼攻擊與實體安全"
+  },
+  {
+    "stem_en": "Under the cloud shared responsibility model for IaaS, who is responsible for securing the customer's data and managing access controls?",
+    "stem_zh": "在 IaaS 的雲端共同責任模型下,誰負責保護客戶資料與管理存取控制?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The cloud provider",
+        "text_zh": "雲端服務商"
+      },
+      {
+        "key": "B",
+        "text_en": "The customer",
+        "text_zh": "客戶"
+      },
+      {
+        "key": "C",
+        "text_en": "Shared equally and automatically",
+        "text_zh": "自動均分"
+      },
+      {
+        "key": "D",
+        "text_en": "The internet service provider",
+        "text_zh": "網路服務商"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "共同責任下,資料、存取控制、加密金鑰、合規屬客戶責任(『雲中的安全』);雲商負責底層基礎設施(『雲的安全』)。",
+    "why_wrong_zh": {
+      "A": "雲商負責實體/虛擬化底層,非客戶資料與存取。",
+      "C": "責任是依服務模型『劃分』而非自動均分。",
+      "D": "ISP 與雲端責任模型無關。"
+    },
+    "id": "D3-0050",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-095.html",
+    "unit_title_zh": "考點：D3 綜合 + 刷題"
+  },
+  {
+    "stem_en": "Which device is specifically designed to securely generate, store, and manage cryptographic keys, often used to offload crypto operations?",
+    "stem_zh": "哪個裝置專門用於安全地產生、儲存與管理加密金鑰,常用來分擔密碼運算?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "TPM",
+        "text_zh": "信賴平台模組"
+      },
+      {
+        "key": "B",
+        "text_en": "HSM",
+        "text_zh": "硬體安全模組"
+      },
+      {
+        "key": "C",
+        "text_en": "NIC",
+        "text_zh": "網路卡"
+      },
+      {
+        "key": "D",
+        "text_en": "GPU",
+        "text_zh": "圖形處理器"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "HSM 專為安全產生/儲存/管理金鑰並執行密碼運算而設計(企業級、可分擔運算)。",
+    "why_wrong_zh": {
+      "A": "TPM 是主機板上的信任根(綁定單機、安全開機),非企業級金鑰管理裝置。"
+    },
+    "id": "D3-0051",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-095.html",
+    "unit_title_zh": "考點：D3 綜合 + 刷題"
+  },
+  {
+    "stem_en": "Which cloud service model leaves the customer responsible for securing the operating system, runtime, and applications?",
+    "stem_zh": "哪種雲端服務模型讓客戶須負責保護作業系統、執行環境與應用程式?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SaaS",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "PaaS",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "IaaS",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "FaaS",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "IaaS 客戶責任最多:雲商只提供底層運算/儲存/網路,客戶須管 OS、執行環境、應用、資料。",
+    "why_wrong_zh": {
+      "A": "SaaS 客戶責任最少(主要是資料與存取設定)。",
+      "B": "PaaS 雲商管到執行環境,客戶管應用與資料。",
+      "D": "FaaS(函式即服務)客戶責任更少,只管程式碼與資料。"
+    },
+    "id": "D3-0052",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-095.html",
+    "unit_title_zh": "考點：D3 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A security architect is designing badge-controlled doors for a server room that stores highly sensitive data. Management asks how the doors should behave if the electronic access control system loses power. Which design is BEST?",
+    "stem_zh": "安全架構師為存放高敏感資料的機房設計刷卡門禁,管理層詢問:電子門禁系統斷電時,門應如何動作?哪個設計最佳?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Configure the doors to fail-secure at all times, because protecting highly sensitive assets is the primary goal",
+        "text_zh": "全時 fail-secure,以保護高敏感資產為第一目標"
+      },
+      {
+        "key": "B",
+        "text_en": "Configure the doors to fail-open at all times to preserve availability",
+        "text_zh": "全時 fail-open 以維持可用性"
+      },
+      {
+        "key": "C",
+        "text_en": "Have the doors fail-safe in the direction of egress to protect human life, with compensating controls such as guards to protect the assets",
+        "text_zh": "逃生方向 fail-safe 保護人命,並以警衛等補償控制保護資產"
+      },
+      {
+        "key": "D",
+        "text_en": "Keep the doors locked in their last state until power is restored",
+        "text_zh": "維持斷電前狀態直到復電"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "實體安全的鐵律:人命安全永遠優先於資產保護。實體 fail-safe(逃生方向解鎖)保護人,資產缺口再用警衛、監視等補償控制補上。記憶法:Physical 的 fail-safe/fail-open 保「人」,fail-secure/fail-closed 保「資產」;兩者衝突時人命勝出。",
+    "why_wrong_zh": {
+      "A": "典型陷阱——技術上「保護資產」沒錯,但斷電時把人困在機房內,違反人命優先原則。",
+      "B": "全時 fail-open 讓任何人可進入,完全放棄機密性,矯枉過正。",
+      "D": "維持原狀態不可預期,可能把人鎖在裡面,也可能把門敞開,兩頭落空。"
+    },
+    "id": "D3-0053",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-095.html",
+    "unit_title_zh": "考點：D3 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A security manager must choose between two firewall products, both certified at Common Criteria EAL4. To determine which product actually satisfies the organization's security requirements, what should the manager do FIRST?",
+    "stem_zh": "安全經理要在兩款皆通過 Common Criteria EAL4 認證的防火牆中選型,要判斷哪個產品真正符合組織的安全需求,首先應該做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Rely on the shared EAL4 rating, since it proves both products provide equivalent and sufficient security functionality",
+        "text_zh": "直接依 EAL4 認證,因它證明兩產品安全功能相同且足夠"
+      },
+      {
+        "key": "B",
+        "text_en": "Request each vendor's Authorization to Operate (ATO) documentation",
+        "text_zh": "要求各廠商提供 ATO(營運授權)文件"
+      },
+      {
+        "key": "C",
+        "text_en": "Compare the organization's Protection Profile (PP) against each product's Security Target (ST)",
+        "text_zh": "將組織的 Protection Profile(PP)與各產品的 Security Target(ST)逐一比對"
+      },
+      {
+        "key": "D",
+        "text_en": "Commission an independent penetration test of both products",
+        "text_zh": "委外對兩產品進行獨立滲透測試"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Common Criteria 的選型邏輯:PP 是組織的「需求清單」(I wants),ST 是廠商對其 TOE 的「安全承諾」;拿自己的 PP 去比對各廠商的 ST,最接近者中選。EAL 只衡量「評估過程的嚴謹度」(EAL1 功能測試→EAL7 形式化驗證),不代表功能強弱、更不代表符合你的需求。記憶法:PP=我要什麼、ST=廠商給什麼、EAL=驗得多嚴。",
+    "why_wrong_zh": {
+      "A": "高鑑別陷阱——EAL 相同只代表兩者受過同等嚴謹的「評估」,不保證功能相同,也不保證符合組織需求。",
+      "B": "ATO 是組織自己的授權官(AO)對系統上線的風險核可,不是廠商產品選型文件。",
+      "D": "滲透測試有價值但成本高且非 CC 架構下的第一步,應先完成 PP 對 ST 的需求比對。"
+    },
+    "id": "D3-0054",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-095.html",
+    "unit_title_zh": "考點：D3 綜合 + 刷題"
+  },
+  {
+    "stem_en": "An analyst with access only to several unclassified databases — shipping schedules, catering orders, and travel bookings — correctly deduces the date and location of a classified operation. Which attack does this scenario BEST describe?",
+    "stem_zh": "一名分析師僅能存取幾個非機密資料庫——運輸排程、餐飲訂單與差旅訂位,卻正確推斷出一項機密行動的日期與地點。此情境最符合哪種攻擊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Aggregation attack, because database functions combined multiple records into useful information",
+        "text_zh": "聚合攻擊(資料庫函數把多筆紀錄合併成有用資訊)"
+      },
+      {
+        "key": "B",
+        "text_en": "Privilege escalation, because the analyst obtained information above his clearance",
+        "text_zh": "權限提升(取得了超出其許可等級的資訊)"
+      },
+      {
+        "key": "C",
+        "text_en": "Inference attack, because human deduction combined nonsensitive information to derive classified information",
+        "text_zh": "推論攻擊(以人的推理結合非敏感資訊,得出機密資訊)"
+      },
+      {
+        "key": "D",
+        "text_en": "Covert channel exploitation, because information flowed outside authorized paths",
+        "text_zh": "隱蔽通道利用(資訊經未授權路徑流出)"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "推論(Inference)靠「人的演繹推理」:把多筆各自非敏感的資訊拼湊,推導出本應屬更高機密等級的結論。與聚合(Aggregation)的分界是「誰在組合」——聚合是資料庫的數學/SQL 函數在組合紀錄,推論是人腦在推理。記憶法:Inference=人腦推、Aggregation=資料庫算。",
+    "why_wrong_zh": {
+      "A": "高鑑別陷阱——聚合是基於數學、由 SQL 函數合併紀錄產生資訊;本題是人以常識推理拼湊,屬推論。",
+      "B": "分析師從頭到尾只用自己被授權的存取,沒有取得更高權限帳號或系統權限。",
+      "D": "隱蔽通道需存在一條隱藏的通訊路徑(如 timing/storage channel),本題資訊全來自正常授權查詢。"
+    },
+    "id": "D3-0055",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-095.html",
+    "unit_title_zh": "考點：D3 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A CISO is redesigning security architecture after attackers breached the perimeter and moved laterally for months. Which approach BEST implements a zero trust design principle?",
+    "stem_zh": "攻擊者突破邊界後在內網橫向移動數月,CISO 要重新設計安全架構。哪個做法『最能』落實零信任設計原則?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Continuously verify every access request based on identity and device posture, regardless of network location",
+        "text_zh": "不論網路位置,依身分與裝置狀態持續驗證每一次存取請求"
+      },
+      {
+        "key": "B",
+        "text_en": "Deploy a next-generation firewall at the network perimeter",
+        "text_zh": "在網路邊界部署次世代防火牆"
+      },
+      {
+        "key": "C",
+        "text_en": "Require all remote users to connect through a full-tunnel VPN",
+        "text_zh": "要求所有遠端使用者一律走 full-tunnel VPN"
+      },
+      {
+        "key": "D",
+        "text_en": "Authenticate users once at login and trust the session all day",
+        "text_zh": "登入時驗證一次,整天信任該工作階段"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "零信任核心是 never trust, always verify:不以網路位置為信任依據,對每一次請求依身分與裝置狀態持續驗證授權——這正是防止橫向移動的根本解。記憶法:題目看到『橫向移動 + 最能落實零信任』,選『持續驗證/身分中心』,不選『加強邊界』。",
+    "why_wrong_zh": {
+      "B": "更強的邊界防火牆仍是 castle-and-moat 思維,擋不住已入內網的橫向移動。",
+      "C": "VPN 通了隧道即給整個內網存取,屬過度授權,與零信任相悖。",
+      "D": "驗證一次就長期信任,違反『持續驗證』原則。"
+    },
+    "id": "D3-0056",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-121.html",
+    "unit_title_zh": "加強：零信任架構深入（NIST SP 800-207）"
+  },
+  {
+    "stem_en": "An architect is deploying zero trust per NIST SP 800-207. Which component sits in the data path and actually enables, monitors, and terminates each connection between a subject and a resource?",
+    "stem_zh": "依 NIST SP 800-207 部署零信任,哪個元件位於資料路徑上,實際負責放行、監控與終止主體到資源的每一條連線?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Policy Engine",
+        "text_zh": "政策引擎"
+      },
+      {
+        "key": "B",
+        "text_en": "Policy Administrator",
+        "text_zh": "政策管理器"
+      },
+      {
+        "key": "C",
+        "text_en": "Policy Enforcement Point",
+        "text_zh": "政策執行點"
+      },
+      {
+        "key": "D",
+        "text_en": "Policy Decision Point",
+        "text_zh": "政策決策點"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "PEP（Policy Enforcement Point）是資料平面上的守門員,位於主體與資源之間,依控制平面的指令實際執行放行/監控/切斷連線。記憶法:PE 決策、PA 下令、PEP 執行（法官、書記官、法警）。",
+    "why_wrong_zh": {
+      "A": "Policy Engine 在控制平面『做決策』,不在資料路徑上執行。",
+      "B": "Policy Administrator 負責把決策『下達』給 PEP,本身不擋流量。",
+      "D": "PDP = PE + PA 的合稱,屬控制平面,不是執行元件。"
+    },
+    "id": "D3-0057",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-121.html",
+    "unit_title_zh": "加強：零信任架構深入（NIST SP 800-207）"
+  },
+  {
+    "stem_en": "After a ransomware incident spread from one compromised server to dozens of others in the same data center, which control would BEST limit lateral movement in line with zero trust?",
+    "stem_zh": "勒索軟體從一台受駭伺服器擴散到同機房數十台主機。哪個控制『最能』依零信任精神限制橫向移動?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deploy a network intrusion detection system (NIDS)",
+        "text_zh": "部署網路入侵偵測系統"
+      },
+      {
+        "key": "B",
+        "text_en": "Move the servers into a hardened DMZ",
+        "text_zh": "把伺服器搬進強化的 DMZ"
+      },
+      {
+        "key": "C",
+        "text_en": "Separate servers into a few large VLANs",
+        "text_zh": "將伺服器劃分成幾個大型 VLAN"
+      },
+      {
+        "key": "D",
+        "text_en": "Implement microsegmentation with per-workload access policies",
+        "text_zh": "實施微分段,對每個工作負載套用個別存取政策"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Microsegmentation（微分段）把安全邊界縮到單一工作負載,東西向流量逐一過政策檢查——即使一台被攻陷,也無法自由連到鄰居,是圍堵橫向移動的最佳答案。判斷邏輯:『限制 lateral movement』幾乎等於在點名微分段。",
+    "why_wrong_zh": {
+      "A": "NIDS 只能『偵測』,不能阻斷擴散（偵測性 vs 預防性控制）。",
+      "B": "DMZ 是對外服務的邊界概念,無助於內部東西向流量管控。",
+      "C": "大型 VLAN 段內仍互信,勒索軟體照樣在段內橫掃,粒度不足。"
+    },
+    "id": "D3-0058",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-121.html",
+    "unit_title_zh": "加強：零信任架構深入（NIST SP 800-207）"
+  },
+  {
+    "stem_en": "A security architect is designing a new payment platform expected to operate for 15 years. Which approach BEST achieves cryptographic agility?",
+    "stem_zh": "安全架構師正在設計一個預計運行 15 年的支付平台。哪個做法『最能』達成加密敏捷性?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Standardize on AES-256 and hard-code it into every module",
+        "text_zh": "全平台標準化採用 AES-256 並寫死在每個模組中"
+      },
+      {
+        "key": "B",
+        "text_en": "Double all key lengths currently in use",
+        "text_zh": "把現行所有金鑰長度加倍"
+      },
+      {
+        "key": "C",
+        "text_en": "Purchase quantum key distribution (QKD) hardware for all links",
+        "text_zh": "為所有線路採購量子金鑰分發（QKD）硬體"
+      },
+      {
+        "key": "D",
+        "text_en": "Abstract cryptographic functions behind a modular interface so algorithms and keys can be replaced without re-architecting",
+        "text_zh": "以模組化介面抽象化密碼功能,使演算法與金鑰可替換而不需重構系統"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Crypto agility 的定義就是快速替換演算法/金鑰/協定而不需大改架構的能力,實作關鍵是把密碼功能抽象化、模組化,不寫死在程式裡。判斷邏輯:題目問的是「敏捷性」（換得快）,不是「強度」（夠不夠硬)——凡是選「某個特定強演算法」的選項都答非所問。",
+    "why_wrong_zh": {
+      "A": "寫死（hard-code）正是敏捷性的反面——AES-256 再強,寫死就換不掉。",
+      "B": "加大金鑰是提升強度,不解決「演算法被破解時如何替換」的問題。",
+      "C": "QKD 是金鑰分發技術,需要專用量子硬體,昂貴且與敏捷性無關。"
+    },
+    "id": "D3-0059",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-7",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-122.html",
+    "unit_title_zh": "加強：加密敏捷性與後量子密碼"
+  },
+  {
+    "stem_en": "A risk committee asks the CISO to summarize the impact of large-scale quantum computers on the organization's cryptography. Which statement is MOST accurate?",
+    "stem_zh": "風險委員會請 CISO 總結大型量子電腦對組織密碼系統的衝擊。哪個敘述『最』正確?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Shor's algorithm breaks RSA and ECC outright, while Grover's algorithm only halves effective symmetric strength, so AES-256 remains secure Shor",
+        "text_zh": "演算法徹底破解 RSA 與 ECC,而 Grover 僅使對稱強度等效減半,故 AES-256 仍安全"
+      },
+      {
+        "key": "B",
+        "text_en": "Grover's algorithm breaks RSA, so doubling RSA key sizes restores security Grover",
+        "text_zh": "演算法破解 RSA,因此 RSA 金鑰加倍即可恢復安全"
+      },
+      {
+        "key": "C",
+        "text_en": "Quantum computers break all cryptography equally, so every algorithm must be replaced",
+        "text_zh": "量子電腦對所有密碼技術的破壞力相同,所有演算法都必須汰換"
+      },
+      {
+        "key": "D",
+        "text_en": "Symmetric ciphers are hit hardest, so AES should be replaced with elliptic curve algorithms",
+        "text_zh": "對稱式加密受創最深,應以橢圓曲線演算法取代 AES"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "這是量子威脅的標準結論:Shor 在多項式時間內解決因數分解與離散對數,RSA/DH/ECC 整批陣亡;Grover 只提供平方加速,等效砍半金鑰強度,AES-256 剩等效 128 位元依然足夠。記憶法:『Shor 殺非對稱,Grover 砍對稱一半』。",
+    "why_wrong_zh": {
+      "B": "張冠李戴——破 RSA 的是 Shor 不是 Grover,且 Shor 是指數級突破,加大金鑰救不了 RSA。",
+      "C": "衝擊程度天差地遠:非對稱需汰換,對稱只需加大金鑰,並非「一視同仁」。",
+      "D": "完全顛倒——受創最深的是非對稱;ECC 本身就是 Shor 的受害者,不能當替代品。"
+    },
+    "id": "D3-0060",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-7",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-122.html",
+    "unit_title_zh": "加強：加密敏捷性與後量子密碼"
+  },
+  {
+    "stem_en": "A health agency transmits genomic records that must remain confidential for 30 years over TLS using RSA key exchange. Threat intelligence indicates a nation-state adversary is recording the agency's encrypted traffic. What is the MOST appropriate response?",
+    "stem_zh": "衛生機關以 RSA 金鑰交換的 TLS 傳輸須保密 30 年的基因資料。威脅情資顯示國家級對手正在側錄該機關的加密流量。哪個回應『最』適當?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Take no action because RSA cannot be broken with today's computers",
+        "text_zh": "不採取行動,因為現今電腦無法破解 RSA"
+      },
+      {
+        "key": "B",
+        "text_en": "Begin migrating now to a hybrid key exchange that combines a classical algorithm with ML-KEM (FIPS 203)",
+        "text_zh": "立即啟動遷移,採用結合傳統演算法與 ML-KEM（FIPS 203）的混合金鑰交換"
+      },
+      {
+        "key": "C",
+        "text_en": "Increase the RSA key size from 2048 to 4096 bits",
+        "text_zh": "將 RSA 金鑰長度由 2048 提高到 4096 位元"
+      },
+      {
+        "key": "D",
+        "text_en": "Wait until a cryptographically relevant quantum computer is publicly demonstrated before migrating",
+        "text_zh": "等到具密碼破解能力的量子電腦公開展示後再遷移"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "這是典型的 Harvest Now, Decrypt Later 情境:資料機密性壽命長達 30 年,對手今天側錄、未來用量子電腦解密——所以現在就要遷移。混合模式（傳統 + ML-KEM）是 NIST 建議的過渡做法:即使 PQC 尚未久經考驗,雙演算法互為保險,兼顧相容與抗量子。判斷邏輯:『長壽命資料 + 流量被蒐集』→ 立即行動,不等威脅成真。",
+    "why_wrong_zh": {
+      "A": "忽略 HNDL——今天破不了不代表 30 年內破不了,被側錄的資料已在對手手上。",
+      "C": "Shor 對 RSA 是指數級突破,4096 位元只是杯水車薪,不改變被淘汰的命運。",
+      "D": "等量子電腦公開展示才動手,已側錄的 30 年壽命資料早已全數暴露,為時已晚。"
+    },
+    "id": "D3-0061",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D3-7",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-122.html",
+    "unit_title_zh": "加強：加密敏捷性與後量子密碼"
+  },
+  {
+    "stem_en": "A military system must ensure that users cannot read documents classified above their clearance level and cannot write information down to lower classification levels. Which security model BEST enforces these requirements?",
+    "stem_zh": "一套軍事系統必須確保使用者不能讀取高於其許可等級的文件,也不能把資訊寫入較低的機密等級。哪個安全模型『最能』落實這些要求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Bell-LaPadula",
+        "text_zh": "貝爾-拉帕杜拉模型"
+      },
+      {
+        "key": "B",
+        "text_en": "Biba",
+        "text_zh": "畢巴模型"
+      },
+      {
+        "key": "C",
+        "text_en": "Clark-Wilson",
+        "text_zh": "克拉克-威爾遜模型"
+      },
+      {
+        "key": "D",
+        "text_en": "Brewer-Nash",
+        "text_zh": "布魯爾-納許模型"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "題幹描述的正是 Bell-LaPadula 的兩條規則:simple security property(no read up)+star property(no write down)——為機密性而生的模型,軍事情境是它的招牌。記憶法:「BLP 保密:不上讀、不下寫」。",
+    "why_wrong_zh": {
+      "B": "Biba 保完整性,規則相反(no read down / no write up)。",
+      "C": "Clark-Wilson 用良構交易與職務分工保商業完整性,無分級讀寫規則。",
+      "D": "Brewer-Nash(Chinese Wall)防利益衝突,依存取歷史動態限制,與分級無關。"
+    },
+    "id": "D3-0062",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "An organization must send contracts to many external partners with both confidentiality and non-repudiation of origin. Which approach BEST meets both requirements?",
+    "stem_zh": "組織須將合約傳送給多個外部夥伴,同時要求機密性與來源不可否認性。哪種做法『最能』同時滿足兩者?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Sign with the sender's private key, then encrypt with each recipient's public key",
+        "text_zh": "用寄件者私鑰簽章,再用各收件者公鑰加密"
+      },
+      {
+        "key": "B",
+        "text_en": "Encrypt with a symmetric key shared among all partners",
+        "text_zh": "用所有夥伴共享的對稱金鑰加密"
+      },
+      {
+        "key": "C",
+        "text_en": "Attach a hash of the contract to the plaintext message",
+        "text_zh": "在明文訊息附上合約的雜湊值"
+      },
+      {
+        "key": "D",
+        "text_en": "Use a message authentication code (MAC) with a shared secret",
+        "text_zh": "使用共享密鑰的訊息鑑別碼 MAC"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "拆需求:機密性→用收件者公鑰加密(只有其私鑰能解);來源不可否認→用寄件者私鑰簽章(只有寄件者能產生,第三方可驗證)。兩者疊加就是標準的「簽章+加密」混合流程。記憶法:「加密用對方的公鑰,簽名用自己的私鑰」。",
+    "why_wrong_zh": {
+      "B": "共享對稱金鑰有機密性但無不可否認——任何持鑰者都可能是來源。",
+      "C": "明文附雜湊只驗完整性,無機密性也無來源證明,且雜湊可被連同訊息一起替換。",
+      "D": "MAC 提供完整性與驗證,但共享密鑰使雙方都能產生,無法對第三方證明來源。"
+    },
+    "id": "D3-0063",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "A company is selecting a fire suppression system for a data center where operations staff are regularly present. Which system is MOST appropriate?",
+    "stem_zh": "公司要為一座維運人員經常在場的資料中心選擇滅火系統。哪種系統『最』合適?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Wet-pipe water sprinkler system",
+        "text_zh": "濕式水噴灑系統"
+      },
+      {
+        "key": "B",
+        "text_en": "Clean-agent gas suppression system (e.g., FM-200)",
+        "text_zh": "潔淨氣體滅火系統(如 FM-200)"
+      },
+      {
+        "key": "C",
+        "text_en": "Carbon dioxide (CO2) flooding system",
+        "text_zh": "二氧化碳全區放射系統"
+      },
+      {
+        "key": "D",
+        "text_en": "Dry-powder extinguishing system",
+        "text_zh": "乾粉滅火系統"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "兩個限制條件:有人在場(排除危及人命的選項)+電子設備(排除毀損設備的選項)。潔淨氣體(FM-200/HFC-227ea、Novec 等)在設計濃度下對人體相對安全、不導電、不留殘留物,是有人資料中心的標準答案——再次呼應「人命 > 資產」。",
+    "why_wrong_zh": {
+      "A": "水對人安全但會毀掉帶電設備,是最後手段而非首選。",
+      "C": "CO2 靠排擠氧氣滅火,對在場人員有窒息致命風險,適合無人空間。",
+      "D": "乾粉殘留物具腐蝕性,會嚴重損壞電子設備,不適合資料中心。"
+    },
+    "id": "D3-0064",
+    "domain": "D3",
+    "topic": "d3-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  }
+]

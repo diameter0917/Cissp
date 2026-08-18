@@ -11,9 +11,23 @@
 (function () {
   'use strict';
 
+  // 課程參數由同目錄的 quiz-config.json 提供，讓 SC-200 與 CISSP 共用同一支引擎。
+  // 取不到設定時退回 SC-200 的預設值。
   var DOMAIN_ZH = { D1: '管理安全性作業環境', D2: '回應安全性事件', D3: '執行威脅搜捕' };
   var WEIGHTS = { D1: 0.43, D2: 0.36, D3: 0.21 };
   var MOCK_MINUTES = 100;
+  var NS = 'sc200';                 // localStorage 命名空間（兩套課程各自獨立）
+  var PASS_SCALED = 700;
+
+  function applyConfig(cfg) {
+    if (!cfg) return;
+    if (cfg.domains) DOMAIN_ZH = cfg.domains;
+    if (cfg.weights) WEIGHTS = cfg.weights;
+    if (cfg.mock && cfg.mock.minutes) MOCK_MINUTES = cfg.mock.minutes;
+    if (cfg.mock && cfg.mock.pass_scaled) PASS_SCALED = cfg.mock.pass_scaled;
+    if (cfg.namespace) NS = cfg.namespace;
+    if (cfg.modes) MODES = cfg.modes;
+  }
 
   var BANK = { practice: [], mocks: {} };   // practice: d1+d2+d3 合併
   var state = null;                          // 當前 session
@@ -24,10 +38,10 @@
     try { return JSON.parse(localStorage.getItem(k)) || dflt; } catch (e) { return dflt; }
   }
   function lsSet(k, v) { localStorage.setItem(k, JSON.stringify(v)); }
-  function getWrong() { return lsGet('sc200.wrong', {}); }
-  function getStats() { return lsGet('sc200.stats', { attempts: [] }); }
-  function getMock() { return lsGet('sc200.mock', { results: [] }); }
-  function getLang() { return localStorage.getItem('sc200.lang') || 'both'; }
+  function getWrong() { return lsGet(NS + '.wrong', {}); }
+  function getStats() { return lsGet(NS + '.stats', { attempts: [] }); }
+  function getMock() { return lsGet(NS + '.mock', { results: [] }); }
+  function getLang() { return localStorage.getItem(NS + '.lang') || 'both'; }
 
   function esc(s) {
     return String(s == null ? '' : s).replace(/[&<>"]/g, function (c) {
@@ -40,7 +54,7 @@
     var st = getStats();
     st.attempts.push({ id: q.id, ok: ok, domain: q.domain, topic: q.topic || '', mode: mode, ts: Date.now() });
     if (st.attempts.length > 5000) st.attempts = st.attempts.slice(-5000);
-    lsSet('sc200.stats', st);
+    lsSet(NS + '.stats', st);
     var w = getWrong();
     if (ok) {
       if (w[q.id]) {
@@ -50,7 +64,7 @@
     } else {
       w[q.id] = { wrong: ((w[q.id] || {}).wrong || 0) + 1, streak: 0, ts: Date.now() };
     }
-    lsSet('sc200.wrong', w);
+    lsSet(NS + '.wrong', w);
   }
 
   /* ---------- 題庫載入 ---------- */
@@ -175,7 +189,7 @@
     }
     refreshLang();
     lt.onclick = function () {
-      localStorage.setItem('sc200.lang', getLang() === 'both' ? 'en' : 'both');
+      localStorage.setItem(NS + '.lang', getLang() === 'both' ? 'en' : 'both');
       refreshLang();
       if (state && state.questions.length) renderQuestion();
     };
@@ -351,19 +365,19 @@
     });
     var pct = qs.length ? Math.round(correctN / qs.length * 100) : 0;
     var scaled = Math.round(pct * 10);   // 近似量尺：% × 10
-    var pass = scaled >= 700;
+    var pass = scaled >= PASS_SCALED;
     var usedMin = Math.round((Date.now() - state.startTs) / 60000);
 
     var mk = getMock();
     var params = new URLSearchParams(location.search);
     mk.results.push({ set: params.get('set') || '1', pct: pct, scaled: scaled,
       perDomain: perDom, minutes: usedMin, ts: Date.now() });
-    lsSet('sc200.mock', mk);
+    lsSet(NS + '.mock', mk);
 
     var html = '<div class="masthead" style="margin-bottom:14px"><div class="kicker">模擬考結果' +
       (timeout ? '（時間到自動交卷）' : '') + '</div><h1>' + esc(state.title) + '</h1></div>';
     html += '<div class="result-grid">' +
-      tile(scaled, '量尺分數（及格 700）', pass ? 'pass' : 'fail') +
+      tile(scaled, '量尺分數（及格 ' + PASS_SCALED + '）', pass ? 'pass' : 'fail') +
       tile(correctN + ' / ' + qs.length, '答對題數') +
       tile(pct + '%', '正確率', pct >= 70 ? 'pass' : 'fail') +
       tile(usedMin + ' 分', '作答時間') + '</div>';
@@ -507,7 +521,11 @@
 
   fetch('schedule.json').then(function (r) { return r.json(); }).then(function (s) { CFG = s; }).catch(function () {});
 
-  loadBank().then(function () {
+  fetch('quiz-config.json')
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .catch(function () { return null; })
+    .then(applyConfig)
+    .then(loadBank).then(function () {
     var params = new URLSearchParams(location.search);
     var mode = params.get('mode') || (params.get('unit') ? 'unit' : 'home');
     if (mode === 'home') renderHome();

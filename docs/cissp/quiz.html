@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CISSP 刷題</title>
+<link rel="stylesheet" href="../assets/study.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="masthead" id="qHeader">
+    <div class="kicker">CISSP · 刷題 APP</div>
+    <h1 id="qTitle">選擇練習模式</h1>
+    <p class="sub" id="qSub">題庫載入中…</p>
+  </header>
+
+  <div id="viewHome">
+    <div class="quiz-modes" id="modeCards"></div>
+    <div class="info-box">
+      💡 <strong>題目從哪來</strong>：這些題目就是 126 封電子報裡的實戰考題，全部抽出來做成可練習的題庫——
+      每題都保留原本的中英對照、正解與「為何其他選項錯」的解析。
+      答錯會自動進<strong>錯題本</strong>，連續答對 2 次才會移出。
+    </div>
+    <div class="controls">
+      <span class="chip" id="langToggle">題幹語言：中英對照</span>
+      <a class="chip" href="../index.html" style="text-decoration:none">← 回追蹤索引</a>
+    </div>
+  </div>
+
+  <div id="viewQuiz" class="hide">
+    <div class="quiz-topbar">
+      <span class="qt-pos" id="qPos"></span>
+      <span class="qt-timer hide" id="qTimer"></span>
+      <span>
+        <button class="qbtn" id="btnPrev">← 上一題</button>
+        <button class="qbtn" id="btnNext">下一題 →</button>
+        <button class="qbtn warn hide" id="btnSubmitMock">交卷</button>
+        <button class="qbtn" id="btnQuit">結束</button>
+      </span>
+    </div>
+    <div class="q-card" id="qBody"></div>
+  </div>
+
+  <div id="viewResult" class="hide"></div>
+
+  <footer class="colophon">
+    CISSP 刷題 App · <a href="../index.html">追蹤索引</a> · 資料存於此裝置瀏覽器（localStorage）
+  </footer>
+</div>
+<script src="../assets/quiz.js"></script>
+</body>
+</html>
