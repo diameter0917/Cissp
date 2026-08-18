@@ -1,0 +1,51 @@
+name: CISSP Validate
+
+# cissp/ 內容變動時檢查題庫與站台同步（不影響 CISSP 每日寄信的 daily.yml）。
+
+on:
+  push:
+    branches: ['main', 'claude/**']
+    paths:
+      - 'cissp/**'
+      - 'tools/**'
+      - 'docs/assets/**'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: cissp-validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate JSON sources
+        run: |
+          for f in cissp/site_config.json docs/cissp/quiz-config.json docs/sc200/quiz-config.json; do
+            python -m json.tool "$f" > /dev/null && echo "OK $f"
+          done
+
+      - name: Validate question bank
+        run: python cissp/scripts/validate_questions.py
+
+      - name: Rebuild quiz site and check it is in sync
+        run: |
+          python cissp/scripts/build_quiz_site.py
+          if ! git diff --quiet -- docs/cissp/bank; then
+            echo "✗ docs/cissp/bank 與 cissp/bank 不同步——請在本機跑 build_quiz_site.py 後 commit"
+            git diff --stat -- docs/cissp/bank
+            exit 1
+          fi
+          echo "✅ 題庫已同步"
+
+      - name: Check the shared quiz engine parses
+        run: node --check docs/assets/quiz.js && node --check docs/assets/study.js

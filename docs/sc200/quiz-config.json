@@ -1,0 +1,11 @@
+{
+  "namespace": "sc200",
+  "title": "SC-200 刷題",
+  "domains": {
+    "D1": "管理安全性作業環境",
+    "D2": "回應安全性事件",
+    "D3": "執行威脅搜捕"
+  },
+  "weights": { "D1": 0.43, "D2": 0.36, "D3": 0.21 },
+  "mock": { "minutes": 100, "questions": 55, "pass_scaled": 700 }
+}

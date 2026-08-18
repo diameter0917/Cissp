@@ -11,7 +11,7 @@
     <itunes:explicit>false</itunes:explicit>
     <item>
       <title>EP1｜SC-200 考試全景與 Microsoft 安全生態系</title>
-      <description>SC-200 速成 Day 對應單元：P1-W1-1。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W1-1。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-001.mp3" length="2420889" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-001</guid>
       <pubDate>Tue, 18 Aug 2026 07:00:00 +0800</pubDate>
@@ -20,7 +20,7 @@
     </item>
     <item>
       <title>EP2｜KQL 基礎 I：查詢結構與三大運算子</title>
-      <description>SC-200 速成 Day 對應單元：P1-W1-2。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W1-2。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-002.mp3" length="2413542" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-002</guid>
       <pubDate>Wed, 19 Aug 2026 07:00:00 +0800</pubDate>
@@ -29,7 +29,7 @@
     </item>
     <item>
       <title>EP3｜KQL 基礎 II：join、union 與時間序列</title>
-      <description>SC-200 速成 Day 對應單元：P1-W1-3。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W1-3。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-003.mp3" length="2663093" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-003</guid>
       <pubDate>Thu, 20 Aug 2026 07:00:00 +0800</pubDate>
@@ -38,7 +38,7 @@
     </item>
     <item>
       <title>EP4｜Defender XDR 統一入口與 RBAC</title>
-      <description>SC-200 速成 Day 對應單元：P1-W1-4。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W1-4。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-004.mp3" length="2705994" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-004</guid>
       <pubDate>Fri, 21 Aug 2026 07:00:00 +0800</pubDate>
@@ -47,7 +47,7 @@
     </item>
     <item>
       <title>EP5｜Defender for Endpoint 部署實戰</title>
-      <description>SC-200 速成 Day 對應單元：P1-W1-5。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W1-5。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-005.mp3" length="2575531" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-005</guid>
       <pubDate>Mon, 24 Aug 2026 07:00:00 +0800</pubDate>
@@ -56,7 +56,7 @@
     </item>
     <item>
       <title>EP6｜Sentinel 工作區設計與成本管理</title>
-      <description>SC-200 速成 Day 對應單元：P1-W2-1。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W2-1。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-006.mp3" length="2949216" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-006</guid>
       <pubDate>Tue, 25 Aug 2026 07:00:00 +0800</pubDate>
@@ -65,7 +65,7 @@
     </item>
     <item>
       <title>EP7｜資料連接器與 DCR</title>
-      <description>SC-200 速成 Day 對應單元：P1-W2-2。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W2-2。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-007.mp3" length="2991103" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-007</guid>
       <pubDate>Wed, 26 Aug 2026 07:00:00 +0800</pubDate>
@@ -74,7 +74,7 @@
     </item>
     <item>
       <title>EP8｜Syslog、CEF 與 ASIM 正規化</title>
-      <description>SC-200 速成 Day 對應單元：P1-W2-3。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W2-3。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-008.mp3" length="2600872" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-008</guid>
       <pubDate>Thu, 27 Aug 2026 07:00:00 +0800</pubDate>
@@ -83,7 +83,7 @@
     </item>
     <item>
       <title>EP9｜威脅情報與 Watchlists</title>
-      <description>SC-200 速成 Day 對應單元：P1-W2-4。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W2-4。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-009.mp3" length="2679491" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-009</guid>
       <pubDate>Fri, 28 Aug 2026 07:00:00 +0800</pubDate>
@@ -92,7 +92,7 @@
     </item>
     <item>
       <title>EP10｜Sentinel data lake 與 Summary Rules</title>
-      <description>SC-200 速成 Day 對應單元：P1-W2-5。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W2-5。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-010.mp3" length="2736239" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-010</guid>
       <pubDate>Mon, 31 Aug 2026 07:00:00 +0800</pubDate>
@@ -101,7 +101,7 @@
     </item>
     <item>
       <title>EP11｜Security Copilot 設定與管理</title>
-      <description>SC-200 速成 Day 對應單元：P1-W3-1。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W3-1。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-011.mp3" length="2703547" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-011</guid>
       <pubDate>Tue, 01 Sep 2026 07:00:00 +0800</pubDate>
@@ -110,7 +110,7 @@
     </item>
     <item>
       <title>EP12｜Defender XDR 事件分診</title>
-      <description>SC-200 速成 Day 對應單元：P1-W3-2。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W3-2。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-012.mp3" length="3198180" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-012</guid>
       <pubDate>Wed, 02 Sep 2026 07:00:00 +0800</pubDate>
@@ -119,7 +119,7 @@
     </item>
     <item>
       <title>EP13｜MDE 裝置回應與 Live Response</title>
-      <description>SC-200 速成 Day 對應單元：P1-W3-3。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W3-3。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-013.mp3" length="2599580" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-013</guid>
       <pubDate>Thu, 03 Sep 2026 07:00:00 +0800</pubDate>
@@ -128,7 +128,7 @@
     </item>
     <item>
       <title>EP14｜電子郵件威脅回應（MDO）</title>
-      <description>SC-200 速成 Day 對應單元：P1-W3-4。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W3-4。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-014.mp3" length="2703980" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-014</guid>
       <pubDate>Fri, 04 Sep 2026 07:00:00 +0800</pubDate>
@@ -137,7 +137,7 @@
     </item>
     <item>
       <title>EP15｜身分威脅：MDI 與 Entra ID Protection</title>
-      <description>SC-200 速成 Day 對應單元：P1-W3-5。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W3-5。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-015.mp3" length="2848997" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-015</guid>
       <pubDate>Mon, 07 Sep 2026 07:00:00 +0800</pubDate>
@@ -146,7 +146,7 @@
     </item>
     <item>
       <title>EP16｜Defender for Cloud 警示回應</title>
-      <description>SC-200 速成 Day 對應單元：P1-W4-1。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W4-1。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-016.mp3" length="2898234" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-016</guid>
       <pubDate>Tue, 08 Sep 2026 07:00:00 +0800</pubDate>
@@ -155,7 +155,7 @@
     </item>
     <item>
       <title>EP17｜Sentinel 分析規則 I：Scheduled 與 NRT</title>
-      <description>SC-200 速成 Day 對應單元：P1-W4-2。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W4-2。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-017.mp3" length="2922582" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-017</guid>
       <pubDate>Wed, 09 Sep 2026 07:00:00 +0800</pubDate>
@@ -164,7 +164,7 @@
     </item>
     <item>
       <title>EP18｜Fusion、UEBA 與異常偵測</title>
-      <description>SC-200 速成 Day 對應單元：P1-W4-3。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W4-3。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-018.mp3" length="2913208" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-018</guid>
       <pubDate>Thu, 10 Sep 2026 07:00:00 +0800</pubDate>
@@ -173,7 +173,7 @@
     </item>
     <item>
       <title>EP19｜Sentinel 自動化：規則與 Playbook</title>
-      <description>SC-200 速成 Day 對應單元：P1-W4-4。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W4-4。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-019.mp3" length="2930498" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-019</guid>
       <pubDate>Fri, 11 Sep 2026 07:00:00 +0800</pubDate>
@@ -182,7 +182,7 @@
     </item>
     <item>
       <title>EP20｜Purview 威脅調查與 Copilot 引導式回應</title>
-      <description>SC-200 速成 Day 對應單元：P1-W4-5。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W4-5。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-020.mp3" length="2975146" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-020</guid>
       <pubDate>Mon, 14 Sep 2026 07:00:00 +0800</pubDate>
@@ -191,7 +191,7 @@
     </item>
     <item>
       <title>EP21｜Advanced Hunting 與自訂偵測</title>
-      <description>SC-200 速成 Day 對應單元：P1-W5-1。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W5-1。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-021.mp3" length="2840491" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-021</guid>
       <pubDate>Tue, 15 Sep 2026 07:00:00 +0800</pubDate>
@@ -200,7 +200,7 @@
     </item>
     <item>
       <title>EP22｜Sentinel 威脅搜捕：Hunts 與 Livestream</title>
-      <description>SC-200 速成 Day 對應單元：P1-W5-2。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W5-2。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-022.mp3" length="2755255" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-022</guid>
       <pubDate>Wed, 16 Sep 2026 07:00:00 +0800</pubDate>
@@ -209,7 +209,7 @@
     </item>
     <item>
       <title>EP23｜假說驅動搜捕與 MITRE ATT&amp;CK</title>
-      <description>SC-200 速成 Day 對應單元：P1-W5-3。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W5-3。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-023.mp3" length="3087453" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-023</guid>
       <pubDate>Thu, 17 Sep 2026 07:00:00 +0800</pubDate>
@@ -218,7 +218,7 @@
     </item>
     <item>
       <title>EP24｜Sentinel Graph、MCP Server 與 data lake 搜捕（2026 新考點）</title>
-      <description>SC-200 速成 Day 對應單元：P1-W5-4。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W5-4。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-024.mp3" length="2694079" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-024</guid>
       <pubDate>Fri, 18 Sep 2026 07:00:00 +0800</pubDate>
@@ -227,7 +227,7 @@
     </item>
     <item>
       <title>EP25｜五週總複習與考試策略</title>
-      <description>SC-200 速成 Day 對應單元：P1-W5-5。雙主持人帶你複習當日考點。</description>
+      <description>對應單元：P1-W5-5。雙主持人帶你複習當日考點。</description>
       <enclosure url="https://diameter0917.github.io/Cissp/sc200/podcast/ep-025.mp3" length="2790521" type="audio/mpeg"/>
       <guid isPermaLink="false">sc200-ep-025</guid>
       <pubDate>Mon, 21 Sep 2026 07:00:00 +0800</pubDate>

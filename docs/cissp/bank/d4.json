@@ -1,0 +1,2720 @@
+[
+  {
+    "stem_en": "Which OSI layer is PRIMARILY responsible for reliable end-to-end delivery, including segmentation, sequencing, and error checking?",
+    "stem_zh": "哪一個 OSI 層主要負責可靠的端到端傳遞,包含分段、排序與錯誤檢查?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Network Layer",
+        "text_zh": "網路層"
+      },
+      {
+        "key": "B",
+        "text_en": "Session Layer",
+        "text_zh": "會議層"
+      },
+      {
+        "key": "C",
+        "text_en": "Data Link Layer",
+        "text_zh": "資料連結層"
+      },
+      {
+        "key": "D",
+        "text_en": "Transport Layer",
+        "text_zh": "傳輸層"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "分段（segmentation）、排序（sequencing）與錯誤檢查都發生在 L4 Transport,由 TCP 以三向交握與重送提供可靠的端到端連線。記憶:看到『segment／端到端可靠』→ L4。",
+    "why_wrong_zh": {
+      "A": "L3 負責邏輯定址與路由,提供傳遞指引但不保證送達。",
+      "B": "L5 負責會話的建立、維持與終止,不做分段與重送。",
+      "C": "L2 負責訊框與 MAC 定址,只管同網段內節點對節點的傳輸。"
+    },
+    "id": "D4-0001",
+    "domain": "D4",
+    "topic": "d4-p1",
+    "unit": "P1-D4-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-016.html",
+    "unit_title_zh": "Domain 4 全景與 OSI/TCP-IP"
+  },
+  {
+    "stem_en": "A security analyst reviewing a network capture isolates a PDU that contains source and destination IP addresses but no port numbers. The analyst is MOST likely examining which protocol data unit?",
+    "stem_zh": "資安分析師檢視網路側錄時,取出一個含來源/目的 IP 位址、但沒有埠號的 PDU。他最可能在看哪一種協定資料單元?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Frame at Layer 2",
+        "text_zh": "第二層的訊框"
+      },
+      {
+        "key": "B",
+        "text_en": "Segment at Layer 4",
+        "text_zh": "第四層的段"
+      },
+      {
+        "key": "C",
+        "text_en": "Packet at Layer 3",
+        "text_zh": "第三層的封包"
+      },
+      {
+        "key": "D",
+        "text_en": "Data stream at Layer 7",
+        "text_zh": "第七層的資料流"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "IP 位址是 L3 Network 層的邏輯位址,L3 的 PDU 稱為 packet（封包）。判斷邏輯:標頭含什麼位址,就對應哪一層——IP→L3 packet。記憶:bit/frame/packet/segment 由下而上。",
+    "why_wrong_zh": {
+      "A": "frame 的標頭是 MAC 位址（硬體位址）,不是 IP。",
+      "B": "segment 屬 L4,標頭含來源/目的埠號,題幹明說沒有埠號。",
+      "D": "L7 處理應用資料流,不以 IP 位址為標頭欄位。"
+    },
+    "id": "D4-0002",
+    "domain": "D4",
+    "topic": "d4-p1",
+    "unit": "P1-D4-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-016.html",
+    "unit_title_zh": "Domain 4 全景與 OSI/TCP-IP"
+  },
+  {
+    "stem_en": "Which statement BEST describes how HTTPS (HTTP over TLS) protects a web session?",
+    "stem_zh": "下列哪一項最能正確描述 HTTPS（HTTP over TLS）如何保護網頁會話?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The entire session is encrypted with asymmetric cryptography for maximum strength",
+        "text_zh": "全程使用非對稱加密以求最高強度"
+      },
+      {
+        "key": "B",
+        "text_en": "Asymmetric cryptography exchanges an ephemeral session key, then symmetric encryption protects the rest of the session",
+        "text_zh": "以非對稱加密交換臨時會話金鑰,其後改用對稱加密保護會話（混合式）"
+      },
+      {
+        "key": "C",
+        "text_en": "A hash function encrypts all transmitted data",
+        "text_zh": "以雜湊函數加密所有傳輸資料"
+      },
+      {
+        "key": "D",
+        "text_en": "Pre-shared symmetric keys are manually distributed to every browser",
+        "text_zh": "預先以人工方式把共享對稱金鑰發給每個瀏覽器"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "TLS 採混合式密碼學（hybrid cryptography）:非對稱加密安全但慢,只用來交換臨時（ephemeral）會話金鑰;之後改用快速的對稱加密保護大量資料。記憶:『非對稱交鑰匙,對稱跑長途』。",
+    "why_wrong_zh": {
+      "A": "非對稱加密運算成本高,全程使用效能不可行,實務只用於金鑰交換與驗證。",
+      "C": "雜湊是單向、不可逆的完整性機制,不是加密,無法還原資料。",
+      "D": "人工預先發送金鑰無法擴展到全球網站與瀏覽器,也不安全。"
+    },
+    "id": "D4-0003",
+    "domain": "D4",
+    "topic": "d4-p1",
+    "unit": "P1-D4-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-017.html",
+    "unit_title_zh": "核心協定與安全協定"
+  },
+  {
+    "stem_en": "A network engineer must build a site-to-site VPN between two branch gateways so that the entire original IP packet, including its header, is encrypted while crossing the internet. Which IPsec configuration BEST meets this requirement?",
+    "stem_zh": "網路工程師要在兩個分公司閘道間建站對站 VPN,要求整個原始 IP 封包（含標頭）在通過網際網路時都被加密。哪種 IPsec 組態最符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "AH in transport mode",
+        "text_zh": "傳輸模式的 AH"
+      },
+      {
+        "key": "B",
+        "text_en": "ESP in transport mode",
+        "text_zh": "傳輸模式的 ESP"
+      },
+      {
+        "key": "C",
+        "text_en": "AH in tunnel mode",
+        "text_zh": "隧道模式的 AH"
+      },
+      {
+        "key": "D",
+        "text_en": "ESP in tunnel mode",
+        "text_zh": "隧道模式的 ESP"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "兩個條件缺一不可:要加密（機密性）→ 只有 ESP 提供;要加密整個封包含標頭且是閘道對閘道 → tunnel mode。記憶:『tunnel 包全包,ESP 才加密』。",
+    "why_wrong_zh": {
+      "A": "AH 只提供驗證/完整性/防重放,不加密;transport 模式也不保護標頭。",
+      "B": "ESP 有加密,但 transport 模式只加密 payload、不含原始標頭,適合點對點而非閘道對閘道。",
+      "C": "即使用 tunnel 模式,AH 仍不提供加密,無法滿足機密性要求。"
+    },
+    "id": "D4-0004",
+    "domain": "D4",
+    "topic": "d4-p1",
+    "unit": "P1-D4-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-017.html",
+    "unit_title_zh": "核心協定與安全協定"
+  },
+  {
+    "stem_en": "Which firewall type BEST describes making filtering decisions by tracking the state of active connections, rather than evaluating each packet in isolation?",
+    "stem_zh": "哪一種防火牆最符合『依據連線狀態追蹤做過濾決策,而非孤立地檢視每個封包』的描述?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Static packet-filtering firewall",
+        "text_zh": "靜態封包過濾防火牆"
+      },
+      {
+        "key": "B",
+        "text_en": "Application-level proxy firewall",
+        "text_zh": "應用層代理防火牆"
+      },
+      {
+        "key": "C",
+        "text_en": "Web Application Firewall (WAF)",
+        "text_zh": "網頁應用防火牆"
+      },
+      {
+        "key": "D",
+        "text_en": "Stateful inspection firewall",
+        "text_zh": "狀態化檢測防火牆"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Stateful firewall 維護連線狀態表,知道封包屬於哪條已建立的會話（例如已完成三向交握的回應流量可放行）,而非逐包孤立判斷。記憶:看到『track connection state』→ stateful。",
+    "why_wrong_zh": {
+      "A": "靜態封包過濾是無狀態的,只逐包比對 IP/埠/協定規則。",
+      "B": "應用層代理是代替兩端連線的中介,判斷依據是應用內容,不是連線狀態表的定義。",
+      "C": "WAF 專注過濾 HTTP/S 的網頁攻擊（如 SQLi/XSS）,與題幹描述無關。"
+    },
+    "id": "D4-0005",
+    "domain": "D4",
+    "topic": "d4-p1",
+    "unit": "P1-D4-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-018.html",
+    "unit_title_zh": "網路設備與防禦"
+  },
+  {
+    "stem_en": "A SOC discovers its network IDS failed to alert on a zero-day attack because the sensor only compares traffic against a database of known attack patterns. Which approach would BEST improve detection of previously unknown attacks?",
+    "stem_zh": "SOC 發現其網路 IDS 沒有對一起零時差攻擊告警,因為感測器只將流量與已知攻擊特徵庫比對。哪個做法最能改善對未知攻擊的偵測?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Add more signatures to the existing database",
+        "text_zh": "為既有特徵庫增加更多特徵"
+      },
+      {
+        "key": "B",
+        "text_en": "Deploy signature-based sensors on more network segments",
+        "text_zh": "在更多網段部署特徵式感測器"
+      },
+      {
+        "key": "C",
+        "text_en": "Move the sensor inline to operate as an IPS",
+        "text_zh": "將感測器改為串接運作的 IPS"
+      },
+      {
+        "key": "D",
+        "text_en": "Add anomaly-based detection that baselines normal behavior",
+        "text_zh": "加入以正常行為基線的異常式偵測"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "特徵式偵測只認得已知攻擊;異常式（行為式）偵測先學習正常流量基線,偏離基線即告警,因此能發現沒有特徵的新攻擊（代價是誤報較高）。判斷邏輯:問題出在『偵測原理』,就要換原理,不是加大同一套。",
+    "why_wrong_zh": {
+      "A": "零時差攻擊尚無特徵可加,特徵庫永遠落後於新攻擊。",
+      "B": "增加部署位置不改變『只認已知特徵』的根本限制。",
+      "C": "IPS 只是把『告警』升級為『阻擋』,若仍靠特徵比對,一樣看不見未知攻擊。"
+    },
+    "id": "D4-0006",
+    "domain": "D4",
+    "topic": "d4-p1",
+    "unit": "P1-D4-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-018.html",
+    "unit_title_zh": "網路設備與防禦"
+  },
+  {
+    "stem_en": "Which technology BEST describes checking a device's security posture, such as patch level and antivirus status, before granting network access, and quarantining noncompliant devices?",
+    "stem_zh": "哪一項技術最符合『在授予網路存取前檢查裝置的安全狀態（修補程度、防毒狀態）,並將不合規裝置導入隔離區』的描述?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Network Access Control (NAC)",
+        "text_zh": "網路准入控制"
+      },
+      {
+        "key": "B",
+        "text_en": "802.1X port-based authentication 802.1X",
+        "text_zh": "埠級驗證"
+      },
+      {
+        "key": "C",
+        "text_en": "TLS VPN",
+        "text_zh": "加密通道"
+      },
+      {
+        "key": "D",
+        "text_en": "Network IDS",
+        "text_zh": "網路入侵偵測系統"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "NAC 的核心正是接入前的裝置健康/合規檢查（patch、防毒、設定）,不合規者導入隔離網段修補後再放行。判斷邏輯:題幹關鍵字是『裝置健康＋隔離區』,這是 NAC 的定義。",
+    "why_wrong_zh": {
+      "B": "802.1X 驗的是身分（經 RADIUS）,不檢查裝置健康;它常是 NAC 方案的一個元件,但本身不做合規檢查。",
+      "C": "VPN 是在不可信網路上建加密通道,不做接入前的合規檢查。",
+      "D": "IDS 是接入後的偵測告警,屬事中/事後控制,非准入控制。"
+    },
+    "id": "D4-0007",
+    "domain": "D4",
+    "topic": "d4-p1",
+    "unit": "P1-D4-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-019.html",
+    "unit_title_zh": "無線、行動與遠端"
+  },
+  {
+    "stem_en": "An organization must give external business partners browser-based remote access to a single internal web application, without installing any client software on partner devices. Which remote access solution BEST fits this requirement?",
+    "stem_zh": "組織需讓外部商業夥伴以瀏覽器遠端存取單一內部網頁應用,且不能在夥伴裝置上安裝任何用戶端軟體。哪個遠端存取方案最符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "TLS/SSL VPN（clientless）",
+        "text_zh": "瀏覽器式 TLS VPN"
+      },
+      {
+        "key": "B",
+        "text_en": "IPsec site-to-site VPN",
+        "text_zh": "站對站 IPsec VPN"
+      },
+      {
+        "key": "C",
+        "text_en": "L2TP without IPsec",
+        "text_zh": "未搭配 IPsec 的 L2TP"
+      },
+      {
+        "key": "D",
+        "text_en": "PPTP VPN",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "TLS/SSL VPN 用瀏覽器即可建立加密連線、免安裝用戶端,且可只發布特定應用——同時滿足『瀏覽器、免安裝、單一應用』三個條件,也符合最小權限。記憶:『瀏覽器友善 → TLS VPN;站對站 → IPsec』。",
+    "why_wrong_zh": {
+      "B": "站對站 VPN 連接的是兩個網路,需閘道設備且開放範圍過大,違反最小權限,也不符『夥伴個別裝置經瀏覽器存取』。",
+      "C": "L2TP 本身不提供加密,必須搭配 IPsec 才安全,且需要用戶端設定。",
+      "D": "PPTP 加密薄弱、已過時淘汰,不應選用。"
+    },
+    "id": "D4-0008",
+    "domain": "D4",
+    "topic": "d4-p1",
+    "unit": "P1-D4-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-019.html",
+    "unit_title_zh": "無線、行動與遠端"
+  },
+  {
+    "stem_en": "Which email authentication mechanism BEST verifies message integrity and sender authenticity by attaching a digital signature that recipients validate with a public key published in DNS?",
+    "stem_zh": "哪一個郵件驗證機制以附加數位簽章的方式驗證郵件完整性與寄件者真實性,並由收件端用發布在 DNS 的公鑰驗證?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SPF",
+        "text_zh": "寄件者政策框架"
+      },
+      {
+        "key": "B",
+        "text_en": "DMARC",
+        "text_zh": "網域訊息驗證"
+      },
+      {
+        "key": "C",
+        "text_en": "DKIM",
+        "text_zh": "網域金鑰識別郵件"
+      },
+      {
+        "key": "D",
+        "text_en": "STARTTLS",
+        "text_zh": "傳輸加密升級"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "DKIM 由寄件伺服器以私鑰對郵件簽章,收件端用發布在 DNS 的公鑰驗證,確認郵件來自授權來源且未被竄改。判斷邏輯:題幹關鍵字『數位簽章＋DNS 公鑰＋完整性』=DKIM。記憶:SPF 看 IP、DKIM 看簽章、DMARC 定政策。",
+    "why_wrong_zh": {
+      "A": "SPF 只驗『寄件 IP 是否在網域授權清單』,不驗郵件內容完整性,也沒有簽章。",
+      "B": "DMARC 是建立在 SPF/DKIM 之上的對齊、處置政策與報表機制,本身不做簽章驗證。",
+      "D": "STARTTLS 是把郵件傳輸連線升級為 TLS 加密,保護傳輸過程,不驗證寄件者身分。"
+    },
+    "id": "D4-0009",
+    "domain": "D4",
+    "topic": "d4-p1",
+    "unit": "P1-D4-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-020.html",
+    "unit_title_zh": "郵件安全與網路攻擊"
+  },
+  {
+    "stem_en": "Branch office employees report certificate warnings on internal sites. Investigation shows an attacker on the local network is intercepting traffic by sending forged replies that map the attacker's MAC address to the default gateway's IP address. Which control would BEST prevent this attack?",
+    "stem_zh": "分公司員工反映連內部網站出現憑證警告。調查發現內網有攻擊者發送偽造回應,把自己的 MAC 位址對應到預設閘道的 IP,藉此攔截流量。哪個控制最能防止此攻擊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Publish stricter SPF records",
+        "text_zh": "發布更嚴格的 SPF 紀錄"
+      },
+      {
+        "key": "B",
+        "text_en": "Deploy a CDN with rate limiting",
+        "text_zh": "部署 CDN 與速率限制"
+      },
+      {
+        "key": "C",
+        "text_en": "Enforce a stronger Wi-Fi password policy",
+        "text_zh": "強化 Wi-Fi 密碼原則"
+      },
+      {
+        "key": "D",
+        "text_en": "Dynamic ARP Inspection with switch port security",
+        "text_zh": "動態 ARP 檢測搭配交換器埠安全"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "偽造『IP↔MAC 對應』指向閘道,是典型的 ARP 欺騙（L2 中間人）。對症下藥要在 L2:交換器的動態 ARP 檢測（DAI）會核對 ARP 回應合法性,搭配埠安全限制惡意主機。判斷邏輯:先定位攻擊層（L2）,再選同層防禦。",
+    "why_wrong_zh": {
+      "A": "SPF 防的是郵件網域冒名,與內網 ARP 攻擊無關。",
+      "B": "CDN/速率限制是 DDoS 的緩解手段,擋不了 L2 位址偽造。",
+      "C": "攻擊者已在內網發動 ARP 欺騙,Wi-Fi 密碼強度無法阻止已接入者的 L2 攻擊。"
+    },
+    "id": "D4-0010",
+    "domain": "D4",
+    "topic": "d4-p1",
+    "unit": "P1-D4-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-020.html",
+    "unit_title_zh": "郵件安全與網路攻擊"
+  },
+  {
+    "stem_en": "A SOC analyst observes that a public web server has become unresponsive. Packet captures show thousands of TCP SYN packets from spoofed sources, and the server's connection table is filled with half-open sessions. At which OSI layer does this attack PRIMARILY operate?",
+    "stem_zh": "SOC 分析師發現對外 Web 伺服器無回應。封包擷取顯示來自偽造來源的數千個 TCP SYN 封包,且伺服器連線表塞滿半開連線。此攻擊主要發生在 OSI 哪一層?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Application Layer (Layer 7)",
+        "text_zh": "應用層（第 7 層）"
+      },
+      {
+        "key": "B",
+        "text_en": "Network Layer (Layer 3)",
+        "text_zh": "網路層（第 3 層）"
+      },
+      {
+        "key": "C",
+        "text_en": "Data Link Layer (Layer 2)",
+        "text_zh": "資料連結層（第 2 層）"
+      },
+      {
+        "key": "D",
+        "text_en": "Transport Layer (Layer 4)",
+        "text_zh": "傳輸層（第 4 層）"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "SYN flood 濫用的是 TCP 三次握手（SYN→SYN-ACK→ACK）:攻擊者只送 SYN 不回 ACK,讓半開連線耗盡連線表。TCP 屬 L4 傳輸層,故攻擊主要在 L4。判斷邏輯:歸層看『被濫用的機制』——看到 TCP/UDP/埠/握手,一律歸 L4。記憶法:握手在傳輸層,『SYN 洪水淹 L4』。",
+    "why_wrong_zh": {
+      "A": "HTTP flood 等應用層 DoS 才屬 L7,本題濫用的是 TCP 握手而非應用內容。",
+      "B": "來源偽造雖涉及 L3 的 IP 位址,但攻擊機制（半開連線耗盡）發生在 TCP,層級判斷以機制為準。",
+      "C": "L2 的代表性攻擊是 ARP 欺騙/MAC flooding,與 TCP 握手無關。"
+    },
+    "id": "D4-0011",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-056.html",
+    "unit_title_zh": "OSI 分層與封裝深入"
+  },
+  {
+    "stem_en": "A security engineer reviewing border router logs discovers inbound packets arriving from the internet with source addresses in the 10.0.0.0/8 range. Which of the following is the BEST response?",
+    "stem_zh": "安全工程師檢視邊界路由器日誌,發現來自網際網路的入站封包,其來源位址屬於 10.0.0.0/8 範圍。下列何者是最佳處置?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Apply ingress filtering to drop the packets, because private addresses are not routable on the public internet and are likely spoofed",
+        "text_zh": "實施入口過濾將封包丟棄,因為私有位址不可路由於公網,極可能是偽造"
+      },
+      {
+        "key": "B",
+        "text_en": "Forward the packets normally because 10.0.0.0/8 belongs to the internal network",
+        "text_zh": "照常轉送,因為 10.0.0.0/8 屬於內部網路"
+      },
+      {
+        "key": "C",
+        "text_en": "Translate the addresses with NAT so the packets can reach internal hosts",
+        "text_zh": "以 NAT 轉換位址讓封包能到達內部主機"
+      },
+      {
+        "key": "D",
+        "text_en": "Allow the packets only if the TCP three-way handshake completes successfully",
+        "text_zh": "僅在 TCP 三次握手成功完成時允許"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "私有位址（10/8、172.16/12、192.168/16）依 RFC 1918 不可路由於公網;從外部介面到達的此類封包必為偽造,常見於 DoS 的來源偽冒。最佳處置是在邊界做 ingress filtering（入口過濾）直接丟棄。判斷邏輯:『設計上不該存在的來源』就該在邊界預設拒絕,這是風險導向的邊界防禦基本功。",
+    "why_wrong_zh": {
+      "B": "位址雖屬私有範圍,但方向是『從網際網路入站』,合法內部流量不會從外部介面進來。",
+      "C": "NAT 是讓內部私有位址對外通訊的機制,不是處理外來偽造封包的工具。",
+      "D": "等握手完成才判斷,等於放任偽造來源的 SYN 半開連線持續消耗資源。"
+    },
+    "id": "D4-0012",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-056.html",
+    "unit_title_zh": "OSI 分層與封裝深入"
+  },
+  {
+    "stem_en": "An organization is planning its migration to IPv6. Management asks the security architect how IPv6 will change the security posture. Which statement BEST describes the impact?",
+    "stem_zh": "組織正規劃移轉到 IPv6。管理層詢問安全架構師 IPv6 將如何改變安全態勢。下列敘述何者最正確?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "IPv6 includes built-in support for IPsec, but protections such as encryption must still be explicitly configured and managed IPv6",
+        "text_zh": "內建 IPsec 支援,但加密等保護仍須明確設定與管理"
+      },
+      {
+        "key": "B",
+        "text_en": "IPv6 encrypts all traffic by default, so TLS is no longer required IPv6",
+        "text_zh": "預設加密所有流量,因此不再需要 TLS"
+      },
+      {
+        "key": "C",
+        "text_en": "IPv6 eliminates spoofing because its 128-bit addresses cannot be forged IPv6",
+        "text_zh": "的 128-bit 位址無法偽造,因此消除了欺騙攻擊"
+      },
+      {
+        "key": "D",
+        "text_en": "NAT must still be deployed in IPv6 to provide address confidentiality",
+        "text_zh": "在 IPv6 仍必須部署 NAT 以提供位址機密性"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "IPv6 為 128-bit,設計上內建 IPsec 支援、無需 NAT——但『內建支援』不等於『自動啟用』,加密與鑑別仍要由組織明確配置、管理與監控。判斷邏輯:CISSP 常考『協定能力 vs 實際配置』的落差,最佳答案是帶保留條件的精確敘述,而非把能力誇大為預設保護。",
+    "why_wrong_zh": {
+      "B": "IPv6 不會預設加密流量,應用/傳輸層保護（TLS）仍然必要。",
+      "C": "位址長度與可否偽造無關,IPv6 環境的 spoofing 依然存在。",
+      "D": "IPv6 位址空間近乎無限,設計上無需 NAT;位址機密性也非 NAT 的安全目的。"
+    },
+    "id": "D4-0013",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-056.html",
+    "unit_title_zh": "OSI 分層與封裝深入"
+  },
+  {
+    "stem_en": "During a penetration test, an organization's public web server is found to still accept SSL 3.0 and TLS 1.0 connections that were kept for compatibility with older clients. The tester demonstrates that an on-path attacker can force browsers to negotiate the weakest protocol. Which of the following is the BEST remediation?",
+    "stem_zh": "滲透測試發現,組織的對外 Web 伺服器為相容舊用戶端仍接受 SSL 3.0 與 TLS 1.0 連線。測試員展示路徑上的攻擊者可強迫瀏覽器協商到最弱協定。下列何者是最佳補救措施?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Disable SSL 3.0/TLS 1.0-1.1 and weak cipher suites on the server, and enable downgrade protection such as TLS_FALLBACK_SCSV",
+        "text_zh": "在伺服器停用 SSL 3.0/TLS 1.0-1.1 與弱加密套件,並啟用 TLS_FALLBACK_SCSV 等降級保護"
+      },
+      {
+        "key": "B",
+        "text_en": "Replace the server certificate with one using a longer RSA key",
+        "text_zh": "更換為使用更長 RSA 金鑰的伺服器憑證"
+      },
+      {
+        "key": "C",
+        "text_en": "Require users to upgrade their browsers before connecting",
+        "text_zh": "要求使用者連線前先升級瀏覽器"
+      },
+      {
+        "key": "D",
+        "text_en": "Migrate the website from TLS to an IPsec tunnel",
+        "text_zh": "將網站由 TLS 移轉為 IPsec 通道"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "降級攻擊（如 POODLE）的根因是『為相容而保留弱協定』——只要伺服器還接受 SSL 3.0/TLS 1.0,攻擊者就能強迫協商到弱版本再利用其漏洞。最佳補救是直接消除根因:停用弱版本與弱套件,並啟用 TLS_FALLBACK_SCSV 等降級保護。判斷邏輯:修補『根因』永遠優於補強周邊環節。記憶法:『保留弱選項,本身就是漏洞』。",
+    "why_wrong_zh": {
+      "B": "SSL 3.0 的弱點在協定設計本身,金鑰長度再長也擋不住降級後的協定層攻擊。",
+      "C": "依賴使用者行為不可控;只要伺服器仍接受弱協定,攻擊者就能誘導降級。",
+      "D": "IPsec 不適用一般大眾瀏覽器存取的公開網站,且換協定並未處理『保留弱版本』的根因。"
+    },
+    "id": "D4-0014",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-057.html",
+    "unit_title_zh": "安全協定與 DNS 深入"
+  },
+  {
+    "stem_en": "A network architect must protect routing protocol updates exchanged between two internal routers. Compliance requires source authentication and integrity so that forged updates are rejected, but the packet contents must remain readable for troubleshooting, and encryption is explicitly NOT required. Which IPsec option BEST meets these requirements?",
+    "stem_zh": "網路架構師須保護兩台內部路由器間交換的路由協定更新。法遵要求來源鑑別與完整性以拒絕偽造更新,但封包內容須保持可讀以利除錯,且明確不需要加密。哪個 IPsec 選項最符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "ESP in tunnel mode ESP",
+        "text_zh": "通道模式"
+      },
+      {
+        "key": "B",
+        "text_en": "ESP in transport mode ESP",
+        "text_zh": "傳輸模式"
+      },
+      {
+        "key": "C",
+        "text_en": "AH in transport mode AH",
+        "text_zh": "傳輸模式"
+      },
+      {
+        "key": "D",
+        "text_en": "TLS sessions between the routers",
+        "text_zh": "於路由器之間改用 TLS 會談"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "先列需求再對映元件:要『來源鑑別＋完整性』且『不加密、內容可讀』——這正是 AH（Authentication Header）的定義:提供鑑別、完整性與防重放,但不加密。兩台路由器端對端通訊用 transport 模式即可。判斷邏輯:CISSP 常反向出題——大家記得『要加密選 ESP』,這題考的是『明確不要機密性』時,AH 才是精準選擇,ESP 反而超出需求。記憶法:AH 像『官方認證章』,蓋章但不封口,誰都能讀。",
+    "why_wrong_zh": {
+      "A": "ESP 會加密 payload,違反『內容須可讀』的需求;tunnel 模式是閘道對閘道用,場景也不符。",
+      "B": "模式正確但元件錯:ESP 仍會加密內容,不符『明確不需加密』的條件。",
+      "D": "TLS 保護的是 TCP 應用會談,不適合 L3 路由協定更新的逐封包保護。"
+    },
+    "id": "D4-0015",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-057.html",
+    "unit_title_zh": "安全協定與 DNS 深入"
+  },
+  {
+    "stem_en": "Users at a financial services firm report being redirected to a fraudulent website even though they typed the correct URL. Investigation shows the internal recursive resolver's cache contains forged records for the bank's domain. Which control would BEST prevent this attack from succeeding in the future?",
+    "stem_zh": "金融服務公司的使用者回報,即使輸入正確網址仍被導向詐騙網站。調查發現內部遞迴解析器的快取存有該銀行網域的偽造紀錄。哪個控制最能防止此攻擊再次得逞?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Encrypt all DNS queries with DNS over HTTPS (DoH)",
+        "text_zh": "以 DNS over HTTPS（DoH）加密所有 DNS 查詢"
+      },
+      {
+        "key": "B",
+        "text_en": "Block outbound UDP port 53 at the perimeter firewall",
+        "text_zh": "在邊界防火牆封鎖出站 UDP 53 埠"
+      },
+      {
+        "key": "C",
+        "text_en": "Enable DNSSEC validation so DNS responses are verified with digital signatures",
+        "text_zh": "啟用 DNSSEC 驗證,以數位簽章驗證 DNS 回應"
+      },
+      {
+        "key": "D",
+        "text_en": "Increase the TTL of cached DNS records",
+        "text_zh": "增加 DNS 快取紀錄的 TTL"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "症狀（正確網址被導向假站、快取有偽造紀錄）就是 DNS 快取毒化（cache poisoning）,根因是傳統 DNS 回應缺乏驗證。DNSSEC 以數位簽章提供來源鑑別與完整性,偽造紀錄因簽章驗不過而被拒收。判斷邏輯:攻擊利用『無驗證』,對策就是『加上驗證』;注意 DNSSEC 提供的是完整性/鑑別,不是加密。記憶法:DNSSEC＝『簽章防偽,不封口』。",
+    "why_wrong_zh": {
+      "A": "DoH 加密的是查詢通道（機密性）,不驗證紀錄本身真偽,解析器快取仍可能被毒化。",
+      "B": "封鎖 53 埠會癱瘓正常名稱解析,是斷服務而非控制措施。",
+      "D": "拉長 TTL 反而讓已被毒化的紀錄在快取中存留更久,惡化問題。"
+    },
+    "id": "D4-0016",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-057.html",
+    "unit_title_zh": "安全協定與 DNS 深入"
+  },
+  {
+    "stem_en": "An online retailer's web application keeps receiving SQL injection attempts that pass through the perimeter stateful firewall because they arrive over allowed HTTPS connections. Which control would BEST protect the application?",
+    "stem_zh": "線上零售商的 Web 應用持續遭受 SQL injection 攻擊;由於攻擊透過被允許的 HTTPS 連線進入,邊界的狀態防火牆無法阻擋。哪個控制最能保護該應用?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deploy a web application firewall (WAF) to inspect Layer 7 content and block injection patterns",
+        "text_zh": "部署 WAF 檢視 L7 應用內容並阻擋注入樣式"
+      },
+      {
+        "key": "B",
+        "text_en": "Tighten the packet filter rules to allow only ports 80 and 443",
+        "text_zh": "收緊封包過濾規則,僅允許 80/443 埠"
+      },
+      {
+        "key": "C",
+        "text_en": "Add a network IDS to alert on suspicious traffic",
+        "text_zh": "加裝網路 IDS 對可疑流量告警"
+      },
+      {
+        "key": "D",
+        "text_en": "Move the web server into a separate VLAN",
+        "text_zh": "將 Web 伺服器移入獨立 VLAN"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "攻擊藏在『被允許的 L7 內容』裡,只看 L3/L4 標頭與連線狀態的防火牆天生看不到;WAF 專為 Web 應用設計,檢視 HTTP 請求內容並阻擋 SQLi/XSS 等注入樣式。判斷邏輯:控制的『檢視層級』必須對得上攻擊『所在層級』——應用層攻擊要用應用層控制。記憶法:『擋 SQLi/XSS,找 WAF』。",
+    "why_wrong_zh": {
+      "B": "攻擊本來就走 443 進來,收緊埠規則對『合法埠上的惡意內容』無效。",
+      "C": "IDS 只告警不阻擋,且未必能解密檢視 HTTPS 內容,保護力不如在線阻擋的 WAF。",
+      "D": "分段限制的是入侵後的橫向移動,無法阻止對應用本身的注入攻擊。"
+    },
+    "id": "D4-0017",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-058.html",
+    "unit_title_zh": "防火牆/IDS/分段深入"
+  },
+  {
+    "stem_en": "After deploying an inline anomaly-based IPS, a company's order-processing traffic is repeatedly blocked during month-end peaks, disrupting the business; the signature engine is unaffected. What is the security manager's BEST course of action?",
+    "stem_zh": "公司部署在線異常偵測 IPS 後,月底高峰期的訂單處理流量屢次被阻擋而干擾業務;特徵引擎不受影響。安全經理的最佳做法為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Permanently switch the device to passive IDS mode",
+        "text_zh": "將設備永久改為被動 IDS 模式"
+      },
+      {
+        "key": "B",
+        "text_en": "Disable anomaly detection and rely on signatures only",
+        "text_zh": "停用異常偵測,只依賴特徵比對"
+      },
+      {
+        "key": "C",
+        "text_en": "Add the entire internal network to the IPS allow list",
+        "text_zh": "將整個內部網路加入 IPS 允許清單"
+      },
+      {
+        "key": "D",
+        "text_en": "Re-baseline the anomaly profile to include peak periods, and run the affected rules in alert-only mode while tuning",
+        "text_zh": "重新建立涵蓋高峰期的行為基線,調校期間將受影響規則暫改為僅告警"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "異常偵測依賴『正常行為基線』;基線若沒涵蓋月底業務尖峰,正常高峰流量就會被判為異常（false positive）而遭在線阻擋。最佳做法是重建涵蓋尖峰的基線,並在調校期間把受影響規則改為僅告警——既恢復業務可用性,又保留偵測與其餘防禦能力。判斷邏輯:think like a manager——面對誤報,答案是『調校』而非『棄守』,在誤報與漏報之間取得平衡,不犧牲整個防禦層。",
+    "why_wrong_zh": {
+      "A": "全面永久改 IDS 就喪失所有在線阻擋能力,為局部誤報放棄整體防禦,因小失大。",
+      "B": "只剩特徵比對會抓不到未知攻擊,漏報（false negative）風險上升——漏報比誤報更危險。",
+      "C": "把整個內網加入允許清單等於自廢武功,攻擊者一旦進入內網即暢行無阻。"
+    },
+    "id": "D4-0018",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-058.html",
+    "unit_title_zh": "防火牆/IDS/分段深入"
+  },
+  {
+    "stem_en": "A ransomware incident showed that once a single server in the flat data-center network was compromised, the malware spread laterally to hundreds of workloads behind the same perimeter NGFW. The CISO wants a modern architecture that limits lateral movement between individual workloads. Which approach BEST meets this goal?",
+    "stem_zh": "一次勒索軟體事件顯示,扁平的資料中心網路中只要單一伺服器被入侵,惡意程式就能橫向擴散到同一邊界 NGFW 後方的數百個工作負載。CISO 希望採用能限制個別工作負載間橫向移動的現代架構。哪個做法最能達成目標?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Upgrade the perimeter NGFW and enable its IPS module",
+        "text_zh": "升級邊界 NGFW 並啟用其 IPS 模組"
+      },
+      {
+        "key": "B",
+        "text_en": "Implement micro-segmentation using SDN-based distributed firewalls that enforce policy at each workload's virtual interface",
+        "text_zh": "以 SDN 為基礎的分散式防火牆實作微分段,在每個工作負載的虛擬介面上落實政策"
+      },
+      {
+        "key": "C",
+        "text_en": "Split the data center into two large VLANs separated by an ACL",
+        "text_zh": "將資料中心切成兩個大型 VLAN 並以 ACL 區隔"
+      },
+      {
+        "key": "D",
+        "text_en": "Deploy an anomaly-based IDS inside the data center",
+        "text_zh": "在資料中心內部署異常偵測 IDS"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "橫向移動走的是資料中心內部的東西向（east-west）流量,再強的邊界設備也管不到。微分段（micro-segmentation）把每個工作負載視為獨立安全區,透過 SDN 的集中控制面與分散式防火牆,在每個 VM/容器的虛擬介面層級落實政策,正是零信任『永不信任、持續驗證』的網路落地（2024 考綱 §4.1.11、NIST SP 800-207）。判斷邏輯:題目要的是『工作負載層級』的隔離顆粒度,只有微分段做得到。",
+    "why_wrong_zh": {
+      "A": "邊界防禦再強也看不到、管不到內部的東西向流量,對橫向移動無能為力。",
+      "C": "兩個大 VLAN 顆粒度太粗,同一 VLAN 內的數百個工作負載之間仍可自由橫移。",
+      "D": "IDS 只偵測告警,不能阻止擴散;且未改變扁平架構這個根因。"
+    },
+    "id": "D4-0019",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-058.html",
+    "unit_title_zh": "防火牆/IDS/分段深入"
+  },
+  {
+    "stem_en": "Several employees working from a café connected to a Wi-Fi network broadcasting the corporate SSID, and their domain credentials were later found for sale online. The access point turned out to be an attacker's evil twin. Which control would BEST prevent employees' devices from authenticating to such rogue access points?",
+    "stem_zh": "多名員工在咖啡店連上廣播公司 SSID 的 Wi-Fi 後,其網域帳密被發現在網路上兜售;該熱點其實是攻擊者的 evil twin。哪個控制最能防止員工裝置向這類假 AP 完成認證?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deploy WPA3/WPA2-Enterprise with 802.1X/EAP mutual authentication, requiring clients to validate the authentication server's certificate",
+        "text_zh": "部署 WPA3/WPA2-Enterprise（802.1X/EAP）雙向鑑別,要求用戶端驗證認證伺服器的憑證"
+      },
+      {
+        "key": "B",
+        "text_en": "Switch the corporate WLAN to WPA3-Personal with a longer passphrase",
+        "text_zh": "將公司 WLAN 改為 WPA3-Personal 並加長密碼"
+      },
+      {
+        "key": "C",
+        "text_en": "Stop broadcasting the corporate SSID",
+        "text_zh": "停止廣播公司 SSID"
+      },
+      {
+        "key": "D",
+        "text_en": "Enforce MAC address filtering on all corporate access points",
+        "text_zh": "在所有公司 AP 上強制 MAC 位址過濾"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "evil twin 得逞的關鍵是『裝置無法辨別 AP 真偽』。802.1X/EAP 的雙向鑑別讓用戶端在送出帳密前先驗證認證伺服器的憑證——假 AP 拿不出合法憑證,認證不會完成,帳密也不會外洩。判斷邏輯:對『冒名』的解法是『相互鑑別』,而不是把密碼變強或把名字藏起來。記憶法:『你驗我、我也驗你,假 AP 現形』。",
+    "why_wrong_zh": {
+      "B": "PSK 再長,員工仍會連上同名假 AP 並暴露資訊;密碼強度不解決冒名問題。",
+      "C": "隱藏 SSID 只是隱晦式安全,攻擊者仍可廣播同名 SSID 誘騙已設定過的裝置。",
+      "D": "MAC 過濾設定在公司 AP 上,管不到攻擊者自架的假 AP,且 MAC 位址可輕易偽造。"
+    },
+    "id": "D4-0020",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-059.html",
+    "unit_title_zh": "無線/VPN/NAC 深入"
+  },
+  {
+    "stem_en": "A visiting contractor plugged a personal laptop into an Ethernet jack in a conference room and immediately reached internal file servers. A later audit found the laptop was missing months of security patches. Which control would BEST prevent this situation from recurring?",
+    "stem_zh": "來訪承包商將個人筆電接上會議室的網路孔後,立即能存取內部檔案伺服器;事後稽核發現該筆電已數月未安裝安全修補。哪個控制最能防止此情況再次發生?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Implement NAC with 802.1X port authentication and posture assessment, quarantining non-compliant devices",
+        "text_zh": "導入 NAC,結合 802.1X 埠認證與合規態勢檢查,並隔離不合規裝置"
+      },
+      {
+        "key": "B",
+        "text_en": "Require all visitors to sign an acceptable use policy before entering",
+        "text_zh": "要求所有訪客進入前簽署可接受使用政策"
+      },
+      {
+        "key": "C",
+        "text_en": "Install a network IDS to detect malicious traffic from visitor devices",
+        "text_zh": "安裝網路 IDS 偵測訪客裝置的惡意流量"
+      },
+      {
+        "key": "D",
+        "text_en": "Disable all unused switch ports throughout the building",
+        "text_zh": "停用大樓內所有未使用的交換器埠"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "這個場景有兩層破口:未經認證的裝置能連上網（802.1X 埠級存取控制解決『能否連』）,以及不合規的裝置能碰內部資源（NAC 態勢檢查解決『健康與否』）。NAC＋802.1X 在連網前先驗身分、再驗裝置合規態勢（修補/防毒/設定）,不合規者隔離或導向修補區。判斷邏輯:預防性技術控制優於事後偵測;同時覆蓋兩層破口的選項最完整。記憶法:802.1X 驗『人』,NAC 再驗『機』。",
+    "why_wrong_zh": {
+      "B": "行政控制無法即時阻止技術層面的接入,簽了政策照樣能插線上網。",
+      "C": "IDS 是事後偵測、只告警不阻擋,此時裝置已在內網。",
+      "D": "會議室網路孔是『使用中』的埠,停用未使用埠防不了這個場景（雖是好習慣但非最佳解）。"
+    },
+    "id": "D4-0021",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-059.html",
+    "unit_title_zh": "無線/VPN/NAC 深入"
+  },
+  {
+    "stem_en": "A company allows split tunneling on its remote-access VPN. The security team discovers that malware on a remote laptop communicated directly with the internet, bypassing the corporate web proxy and monitoring stack, while the laptop's VPN session to headquarters remained active. Which change would BEST address this risk?",
+    "stem_zh": "公司的遠端存取 VPN 允許 split tunneling。安全團隊發現某遠端筆電上的惡意程式直接與網際網路通訊,繞過公司的 Web 代理與監控機制,而該筆電連往總部的 VPN 會談仍保持連線。哪項變更最能處理此風險?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Increase the VPN encryption from AES-128 to AES-256",
+        "text_zh": "將 VPN 加密由 AES-128 升級為 AES-256"
+      },
+      {
+        "key": "B",
+        "text_en": "Replace the IPsec VPN with an SSL/TLS VPN",
+        "text_zh": "將 IPsec VPN 更換為 SSL/TLS VPN"
+      },
+      {
+        "key": "C",
+        "text_en": "Shorten the VPN session timeout",
+        "text_zh": "縮短 VPN 會談逾時時間"
+      },
+      {
+        "key": "D",
+        "text_en": "Enforce full-tunnel VPN so all remote traffic is routed through the corporate security stack for inspection",
+        "text_zh": "強制 full tunnel,使所有遠端流量都經由公司安全堆疊檢查"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "split tunnel 讓『非公司目的地』的流量直接出網,繞過企業的代理、DLP 與監控,形成可視性盲區——這正是本案惡意程式得以隱身的原因。改為 full tunnel 把所有遠端流量導回公司安全堆疊檢查,恢復可視性與控制。判斷邏輯:風險出在『流量繞過檢查路徑』,對策就是『收回路徑』;加密強度或協定種類都不是問題所在。記憶法:『分流方便,全隧道可控』。",
+    "why_wrong_zh": {
+      "A": "問題不是加密強度,惡意流量根本沒有進入公司的檢查路徑。",
+      "B": "IPsec 換成 SSL/TLS VPN 只是換通道技術,不改變分流繞檢的行為。",
+      "C": "縮短逾時無助於會談存活期間的繞過行為,惡意通訊仍在監控之外。"
+    },
+    "id": "D4-0022",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-059.html",
+    "unit_title_zh": "無線/VPN/NAC 深入"
+  },
+  {
+    "stem_en": "A partner reports that an organization's legitimate newsletters are marked as suspicious after being relayed through the partner's mailing list, while the same messages delivered directly always pass. The DKIM signatures on the relayed messages still verify successfully. Which mechanism is MOST likely failing, and why?",
+    "stem_zh": "合作夥伴回報,組織的正常電子報經其郵件清單轉寄後被標示為可疑,直接寄達的同一封信則一律通過;轉寄郵件上的 DKIM 簽章仍能成功驗證。最可能失敗的機制與原因為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "DKIM, because forwarding always re-signs the message body DKIM",
+        "text_zh": "因為轉寄必定會重簽內文"
+      },
+      {
+        "key": "B",
+        "text_en": "DMARC, because mailing lists strip the From header DMARC",
+        "text_zh": "因為郵件清單會移除 From 標頭"
+      },
+      {
+        "key": "C",
+        "text_en": "DNSSEC, because the relaying server cannot validate the domain DNSSEC",
+        "text_zh": "因為轉寄伺服器無法驗證網域"
+      },
+      {
+        "key": "D",
+        "text_en": "SPF, because relaying changes the sending server, so the connecting IP is no longer in the domain's authorized list SPF",
+        "text_zh": "因為轉寄改變了實際寄出的伺服器,連線 IP 已不在網域的授權清單內"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "SPF 驗的是『這封信的連線來源 IP 是否在寄件網域 DNS 公布的授權清單內』。郵件一經轉寄,實際寄出的變成轉寄（郵件清單）伺服器,其 IP 不在原網域的 SPF 清單裡,比對自然失敗;DKIM 簽在內容與被簽標頭上,只要未被改動,轉寄後仍可通過。判斷邏輯:『直寄過、轉寄掛、DKIM 仍過』的組合正是 SPF 斷鏈的教科書症狀。記憶法:SPF 驗『路徑（IP）』,DKIM 驗『內容（簽章）』,轉寄斷路徑不斷內容。",
+    "why_wrong_zh": {
+      "A": "轉寄不會重簽,且題幹已明說 DKIM 驗證成功,與事實矛盾。",
+      "B": "郵件清單通常保留 From 標頭;DMARC 的結果取決於 SPF/DKIM 對齊,此處根因在 SPF 失敗而非 From 被移除。",
+      "C": "DNSSEC 保護的是 DNS 回應的完整性,與郵件轉寄的驗證失敗無關。"
+    },
+    "id": "D4-0023",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-060.html",
+    "unit_title_zh": "郵件驗證與網路攻擊深入"
+  },
+  {
+    "stem_en": "A university's internet link is saturated by a flood of large DNS response packets arriving from hundreds of open resolvers around the world, yet the university's systems never sent the corresponding queries. Which attack BEST explains these observations?",
+    "stem_zh": "某大學的網際網路線路被來自全球數百台開放解析器的大量大型 DNS 回應封包灌爆,但校方系統從未送出對應的查詢。哪種攻擊最能解釋這些現象?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A reflection/amplification DDoS attack in which attackers spoofed the university's address when querying open resolvers",
+        "text_zh": "反射/放大式 DDoS 攻擊:攻擊者以偽造的校方位址向開放解析器發出查詢"
+      },
+      {
+        "key": "B",
+        "text_en": "DNS cache poisoning targeting the university's recursive resolver",
+        "text_zh": "針對校方遞迴解析器的 DNS 快取毒化"
+      },
+      {
+        "key": "C",
+        "text_en": "A man-in-the-middle attack intercepting the university's DNS traffic",
+        "text_zh": "攔截校方 DNS 流量的中間人攻擊"
+      },
+      {
+        "key": "D",
+        "text_en": "A SYN flood exhausting the DNS server's connection table",
+        "text_zh": "以 SYN flood 耗盡 DNS 伺服器的連線表"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "兩個關鍵症狀:『沒發查詢卻收到大量回應』＝反射（攻擊者偽造受害者位址發查詢,回應被『反射』到受害者）;『回應封包大、來源是眾多開放服務』＝放大（小查詢換大回應,倍增攻擊流量）。與 Smurf 攻擊同族,打的是可用性（頻寬）。判斷邏輯:從流量方向與封包特徵反推機制——受害者收到的是『別人替它問來的答案』。記憶法:『借刀殺人＝反射,小換大＝放大』。",
+    "why_wrong_zh": {
+      "B": "快取毒化的目的是把使用者導向假站,不會造成線路頻寬飽和。",
+      "C": "MITM 是攔截/竄改通訊內容,特徵是竊聽與篡改,不是灌爆線路。",
+      "D": "SYN flood 用 TCP 半開連線耗盡伺服器資源;本案是 UDP DNS 回應灌滿頻寬,機制不同。"
+    },
+    "id": "D4-0024",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-060.html",
+    "unit_title_zh": "郵件驗證與網路攻擊深入"
+  },
+  {
+    "stem_en": "A company migrating to VoIP is concerned that calls could be eavesdropped on and that SIP signaling could be tampered with as traffic crosses shared network segments. Which combination of controls BEST addresses both concerns?",
+    "stem_zh": "公司正移轉至 VoIP,擔心通話內容遭竊聽,以及 SIP 信令在流量通過共用網段時被竄改。哪個控制組合最能同時處理這兩項疑慮?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Place phones on a dedicated voice VLAN and monitor it with an IDS",
+        "text_zh": "將話機放入專用語音 VLAN 並以 IDS 監控"
+      },
+      {
+        "key": "B",
+        "text_en": "Encrypt media streams with SRTP and protect SIP signaling with TLS, on top of voice VLAN segmentation",
+        "text_zh": "以 SRTP 加密媒體流、以 TLS 保護 SIP 信令,並輔以語音 VLAN 分段"
+      },
+      {
+        "key": "C",
+        "text_en": "Require all desk phones to connect through the corporate WPA3 wireless network",
+        "text_zh": "要求所有桌上話機經公司 WPA3 無線網路連線"
+      },
+      {
+        "key": "D",
+        "text_en": "Publish SPF and DKIM records for the SIP domain",
+        "text_zh": "為 SIP 網域發布 SPF 與 DKIM 紀錄"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "把兩項需求逐一對映到控制:通話竊聽→SRTP 加密媒體流（機密性）;信令竄改→SIP over TLS（完整性與鑑別）;語音 VLAN 分段則是縱深防禦的輔助層。判斷邏輯:題目問『同時處理兩項疑慮』,只有涵蓋『媒體加密＋信令保護』兩者的組合才完整——單一控制都只解一半。記憶法:『SRTP 保聲音,TLS 保信令』。",
+    "why_wrong_zh": {
+      "A": "分段＋IDS 都不加密,路徑上或同網段內仍可竊聽,IDS 也只告警、擋不了竄改。",
+      "C": "WPA3 只保護無線這一跳,之後的有線路徑上語音與信令仍是明文。",
+      "D": "SPF/DKIM 是郵件寄件驗證機制,與 SIP/RTP 語音通訊無關。"
+    },
+    "id": "D4-0025",
+    "domain": "D4",
+    "topic": "d4-p2",
+    "unit": "P2-D4-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-060.html",
+    "unit_title_zh": "郵件驗證與網路攻擊深入"
+  },
+  {
+    "stem_en": "At which OSI layer does ARP spoofing operate?",
+    "stem_zh": "ARP 欺騙在哪個 OSI 層運作?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Layer 2 (Data Link)",
+        "text_zh": "資料連結層"
+      },
+      {
+        "key": "B",
+        "text_en": "Layer 3 (Network)",
+        "text_zh": "網路層"
+      },
+      {
+        "key": "C",
+        "text_en": "Layer 4 (Transport)",
+        "text_zh": "傳輸層"
+      },
+      {
+        "key": "D",
+        "text_en": "Layer 7 (Application)",
+        "text_zh": "應用層"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "ARP 解析 IP↔MAC,屬L2(資料連結層);ARP 欺騙在 L2 進行 MITM。",
+    "why_wrong_zh": {
+      "B": "IP 欺騙才在 L3。",
+      "C": "L4 是 TCP/UDP/埠相關攻擊(如 SYN flood)。",
+      "D": "L7 是應用層(HTTP/DNS)。"
+    },
+    "id": "D4-0026",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-096.html",
+    "unit_title_zh": "考點：OSI 分層判斷"
+  },
+  {
+    "stem_en": "A SYN flood attack that exhausts a server's connection table operates primarily at which layer?",
+    "stem_zh": "耗盡伺服器連線表的 SYN flood 攻擊,主要在哪一層運作?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Layer 2",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "Layer 3",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "Layer 4 (Transport)",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Layer 7",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "SYN flood 濫用 TCP 三次握手,屬L4(傳輸層)攻擊。",
+    "why_wrong_zh": {
+      "A": "L2 是 ARP/MAC 相關。",
+      "B": "L3 是 IP/ICMP。",
+      "D": "L7 是應用層攻擊(如 HTTP flood,雖也算 DDoS 但機制不同)。"
+    },
+    "id": "D4-0027",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-096.html",
+    "unit_title_zh": "考點：OSI 分層判斷"
+  },
+  {
+    "stem_en": "A Web Application Firewall (WAF) that blocks SQL injection operates at which OSI layer?",
+    "stem_zh": "阻擋 SQL 注入的 Web 應用防火牆(WAF)在哪個 OSI 層運作?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Layer 3",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "Layer 4",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "Layer 7 (Application)",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Layer 2",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "WAF 檢視應用層內容(HTTP 請求/payload)以擋 SQLi/XSS,屬 L7。",
+    "why_wrong_zh": {
+      "D": "L2 與應用內容無關。"
+    },
+    "id": "D4-0028",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-096.html",
+    "unit_title_zh": "考點：OSI 分層判斷"
+  },
+  {
+    "stem_en": "A protocol analyst reviews functions such as data compression, character-set conversion, and formatting of encrypted data (e.g., JPEG, ASCII). In the OSI model, at which layer are these functions BEST categorized?",
+    "stem_zh": "協定分析師檢視資料壓縮、字元集轉換與加密資料格式(如 JPEG、ASCII)等功能。在 OSI 模型中,這些功能最應歸在哪一層?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Layer 5 (Session)",
+        "text_zh": "會談層"
+      },
+      {
+        "key": "B",
+        "text_en": "Layer 6 (Presentation)",
+        "text_zh": "表達層"
+      },
+      {
+        "key": "C",
+        "text_en": "Layer 4 (Transport)",
+        "text_zh": "傳輸層"
+      },
+      {
+        "key": "D",
+        "text_en": "Layer 7 (Application)",
+        "text_zh": "應用層"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "L6 表達層負責資料表示、字元轉換、壓縮與加密格式,JPEG/ASCII/MIME/TLS 加密格式都歸於此。判斷邏輯:凡是問「資料長什麼樣子/如何呈現」就歸 L6;記憶法:Presentation=呈現格式。",
+    "why_wrong_zh": {
+      "A": "L5 負責建立/維護/終止會談(simplex/half-duplex/full-duplex),與資料格式無關。",
+      "C": "L4 管 TCP/UDP 分段與端對端傳輸;TLS 名稱含 Transport 是常見誤導。",
+      "D": "L7 是應用服務介接(HTTP/DNS),不負責格式轉換與壓縮本身。"
+    },
+    "id": "D4-0029",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-096.html",
+    "unit_title_zh": "考點：OSI 分層判斷"
+  },
+  {
+    "stem_en": "A network engineer at an ISP must select a routing protocol to exchange routing and reachability information between different autonomous systems (AS) on the internet. Which protocol is the BEST choice?",
+    "stem_zh": "ISP 的網路工程師需選擇路由協定,在網際網路上不同自治系統(AS)之間交換路由與可達性資訊。哪個協定最適合?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "BGP (Border Gateway Protocol)",
+        "text_zh": "邊界閘道協定"
+      },
+      {
+        "key": "B",
+        "text_en": "OSPF (Open Shortest Path First)",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "RIP (Routing Information Protocol)",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "EIGRP (Enhanced Interior Gateway Routing Protocol)",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "BGP 是 path vector 的外部(exterior)路由協定,是網際網路上自治系統之間交換路由的主要協定。判斷邏輯:「跨 AS/網際網路級」→exterior→BGP;單一 AS 內部才用 interior 協定。",
+    "why_wrong_zh": {
+      "B": "OSPF 是 link-state 的內部(interior)協定,用於單一 AS 內。",
+      "C": "RIP 是過時的 distance-vector 內部協定,以 hop 數為度量。",
+      "D": "EIGRP 也是內部協定(且源自 Cisco 專屬),不用於 AS 之間。"
+    },
+    "id": "D4-0030",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-096.html",
+    "unit_title_zh": "考點：OSI 分層判斷"
+  },
+  {
+    "stem_en": "A development team is building a real-time voice application where low latency matters MORE than guaranteed delivery of every packet. Which transport-layer protocol is the BEST fit?",
+    "stem_zh": "開發團隊打造即時語音應用,低延遲比每個封包保證送達更重要。哪個傳輸層協定最合適?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "TCP",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "UDP",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "ICMP",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "IP",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "UDP 是非連線導向、best-effort 的快速傳輸協定,適合即時語音/串流——掉一兩個封包比重傳造成的延遲更可接受。判斷邏輯:「速度優先、可容忍遺失」→UDP;「必須完整可靠」→TCP。",
+    "why_wrong_zh": {
+      "A": "TCP 可靠但握手/重傳/排序都增加延遲,即時語音不需要保證送達。",
+      "C": "ICMP 是 L3 的錯誤與控制訊息(Ping/Traceroute),不是資料傳輸協定。",
+      "D": "IP 是 L3 的定址與路由,根本不在傳輸層。"
+    },
+    "id": "D4-0031",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-096.html",
+    "unit_title_zh": "考點：OSI 分層判斷"
+  },
+  {
+    "stem_en": "An administrator needs to securely manage a remote Linux server via command line. Which protocol is MOST appropriate?",
+    "stem_zh": "管理員需透過命令列安全管理遠端 Linux 伺服器。最適合的協定為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Telnet",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SSH",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "FTP",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "SNMPv1",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SSH(埠 22)提供加密的遠端命令列管理,取代不安全的 Telnet。",
+    "why_wrong_zh": {
+      "A": "Telnet 明文傳輸,不安全。",
+      "C": "FTP 明文檔案傳輸,非安全管理。",
+      "D": "SNMPv1 無加密,且用於監控非命令列管理。"
+    },
+    "id": "D4-0032",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-097.html",
+    "unit_title_zh": "考點：安全協定選用"
+  },
+  {
+    "stem_en": "Which protocol provides encryption at the network layer (Layer 3) and is commonly used for site-to-site VPNs?",
+    "stem_zh": "哪個協定在網路層(L3)提供加密,常用於站對站 VPN?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "TLS",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "SSH",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "IPsec",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "S/MIME",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "IPsec 在 L3 加密,常用於站對站 VPN(ESP＋Tunnel 模式加密整個封包)。",
+    "why_wrong_zh": {
+      "A": "TLS 在傳輸層之上保護應用通道(如 HTTPS),非 L3。",
+      "B": "SSH 用於遠端管理/隧道,非典型站對站 VPN 標準。",
+      "D": "S/MIME 用於郵件加密簽章。"
+    },
+    "id": "D4-0033",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-097.html",
+    "unit_title_zh": "考點：安全協定選用"
+  },
+  {
+    "stem_en": "Which port is used by HTTPS by default?",
+    "stem_zh": "HTTPS 預設使用哪個埠?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "80",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "22",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "443",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "53",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "HTTPS(HTTP over TLS)預設埠為 443;HTTP 為 80、SSH 22、DNS 53。",
+    "why_wrong_zh": {
+      "A": "80 是明文 HTTP。",
+      "B": "22 是 SSH。",
+      "D": "53 是 DNS。"
+    },
+    "id": "D4-0034",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-097.html",
+    "unit_title_zh": "考點：安全協定選用"
+  },
+  {
+    "stem_en": "During a packet-capture review, an auditor finds a site-to-site IPsec VPN provides integrity and origin authentication, but the payload is transmitted in cleartext. Which IPsec protocol was MOST likely configured?",
+    "stem_zh": "稽核員檢視封包側錄時發現,站對站 IPsec VPN 提供完整性與來源驗證,但承載內容(payload)以明文傳輸。最可能設定了哪個 IPsec 協定?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "AH (Authentication Header)",
+        "text_zh": "驗證標頭"
+      },
+      {
+        "key": "B",
+        "text_en": "ESP (Encapsulating Security Payload)",
+        "text_zh": "封裝安全承載"
+      },
+      {
+        "key": "C",
+        "text_en": "IKE (Internet Key Exchange)",
+        "text_zh": "網際網路金鑰交換"
+      },
+      {
+        "key": "D",
+        "text_en": "L2TP (Layer 2 Tunneling Protocol)",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "AH 提供驗證、完整性與不可否認,但不加密——像蓋了官方驗證章、內容卻人人可讀。判斷邏輯:「有驗證、沒加密」直接對應 AH;要機密性必須改用(或加上)ESP。",
+    "why_wrong_zh": {
+      "B": "ESP 加密 payload 提供機密性,若用 ESP 側錄不會看到明文。",
+      "C": "IKE 負責協商金鑰與 SA,不是保護資料的協定本身。",
+      "D": "L2TP 是 L2 隧道協定且本身不加密,但它不屬於 IPsec 套件內的協定。"
+    },
+    "id": "D4-0035",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-097.html",
+    "unit_title_zh": "考點：安全協定選用"
+  },
+  {
+    "stem_en": "A privacy officer requires that employees' DNS queries be encrypted in transit so on-path eavesdroppers cannot read them. Which solution BEST meets the requirement?",
+    "stem_zh": "隱私長要求員工的 DNS 查詢在傳輸中加密,使路徑上的竊聽者無法讀取。哪個方案最符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deploy DNSSEC on all zones",
+        "text_zh": "全面部署 DNSSEC"
+      },
+      {
+        "key": "B",
+        "text_en": "Point clients to an internal recursive resolver",
+        "text_zh": "將用戶端指向內部遞迴解析器"
+      },
+      {
+        "key": "C",
+        "text_en": "Protect queries with IPsec AH",
+        "text_zh": "以 IPsec AH 保護查詢"
+      },
+      {
+        "key": "D",
+        "text_en": "Use DNS over HTTPS (DoH)",
+        "text_zh": "使用 DoH 加密查詢"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "DoH(或 DoT)把 DNS 查詢放進加密通道,才能防竊聽。判斷關鍵:DNSSEC=驗證真偽(完整性/來源),DoH/DoT=加密(機密性)——兩者目的完全不同,題目要的是機密性。",
+    "why_wrong_zh": {
+      "A": "DNSSEC 只做簽章驗證防偽造,查詢內容仍是明文,防不了竊聽。",
+      "B": "改用內部解析器不改變「查詢在線路上明文傳輸」的事實。",
+      "C": "AH 只驗證不加密,無法提供機密性。"
+    },
+    "id": "D4-0036",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-097.html",
+    "unit_title_zh": "考點：安全協定選用"
+  },
+  {
+    "stem_en": "While troubleshooting an IPsec VPN, an engineer confirms the peers have already established a secure, authenticated management channel. At which stage are the Security Associations (SAs) that protect the actual user data negotiated?",
+    "stem_zh": "工程師排查 IPsec VPN 時確認雙方已建立安全且經驗證的管理通道。用來保護實際使用者資料的安全關聯(SA)是在哪個階段協商?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "IKE Phase 1",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "IKE Phase 2",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "TCP three-way handshake TCP",
+        "text_zh": "三次握手"
+      },
+      {
+        "key": "D",
+        "text_en": "TLS handshake TLS",
+        "text_zh": "握手"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "IKE 分兩階段:Phase 1 建立安全且經驗證的管理通道(ISAKMP SA);Phase 2 在該通道內協商保護實際資料的 IPsec SA(供 ESP/AH 使用)。題目說管理通道已建立=Phase 1 完成,資料 SA 在 Phase 2 協商。",
+    "why_wrong_zh": {
+      "A": "Phase 1 只建立管理通道本身,不協商保護資料的 IPsec SA。",
+      "C": "TCP 握手是傳輸層連線建立,與 IPsec SA 協商無關。",
+      "D": "TLS 握手屬 TLS/HTTPS 體系,不是 IPsec 的流程。"
+    },
+    "id": "D4-0037",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-097.html",
+    "unit_title_zh": "考點：安全協定選用"
+  },
+  {
+    "stem_en": "A device sits inline and actively blocks detected malicious traffic in real time. This is a(n):",
+    "stem_zh": "某設備在線部署,即時主動阻擋偵測到的惡意流量。這是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "IDS",
+        "text_zh": "入侵偵測系統"
+      },
+      {
+        "key": "B",
+        "text_en": "IPS",
+        "text_zh": "入侵防禦系統"
+      },
+      {
+        "key": "C",
+        "text_en": "Passive sniffer",
+        "text_zh": "被動側錄器"
+      },
+      {
+        "key": "D",
+        "text_en": "Syslog server",
+        "text_zh": "日誌伺服器"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "在線＋主動阻擋＝IPS;IDS 是旁路、只告警不阻擋。",
+    "why_wrong_zh": {
+      "A": "IDS 旁路被動、只告警。",
+      "C": "側錄器只擷取流量,不阻擋。",
+      "D": "日誌伺服器收集日誌,非阻擋設備。"
+    },
+    "id": "D4-0038",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-098.html",
+    "unit_title_zh": "考點：防火牆與 IDS"
+  },
+  {
+    "stem_en": "An IDS fails to alert on an actual intrusion. This error is called a:",
+    "stem_zh": "某 IDS 對一次真實入侵未發出告警。這種錯誤稱為:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "False positive",
+        "text_zh": "誤報"
+      },
+      {
+        "key": "B",
+        "text_en": "False negative",
+        "text_zh": "漏報"
+      },
+      {
+        "key": "C",
+        "text_en": "True positive",
+        "text_zh": "真陽性"
+      },
+      {
+        "key": "D",
+        "text_en": "Clipping level",
+        "text_zh": "裁切門檻"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "真實攻擊未被偵測＝False Negative(漏報),是最危險的錯誤類型。",
+    "why_wrong_zh": {
+      "A": "誤報是把正常當攻擊(發了不該發的告警)。",
+      "C": "真陽性是正確偵測到攻擊。",
+      "D": "裁切門檻是觸發告警的閾值設定。"
+    },
+    "id": "D4-0039",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-098.html",
+    "unit_title_zh": "考點：防火牆與 IDS"
+  },
+  {
+    "stem_en": "Which control is specifically designed to inspect HTTP traffic and block application-layer attacks like SQL injection and XSS?",
+    "stem_zh": "哪個控制專門檢視 HTTP 流量並阻擋 SQL 注入、XSS 等應用層攻擊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Packet-filter firewall",
+        "text_zh": "封包過濾防火牆"
+      },
+      {
+        "key": "B",
+        "text_en": "Stateful firewall",
+        "text_zh": "狀態防火牆"
+      },
+      {
+        "key": "C",
+        "text_en": "Web Application Firewall (WAF)",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Network IDS",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "WAF 在 L7 檢視 HTTP 內容,專擋 SQLi/XSS 等應用層攻擊。",
+    "why_wrong_zh": {
+      "D": "NIDS 偵測告警,非專門阻擋應用層攻擊的內容過濾。"
+    },
+    "id": "D4-0040",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-098.html",
+    "unit_title_zh": "考點：防火牆與 IDS"
+  },
+  {
+    "stem_en": "An organization wants a device in front of its public web servers to distribute incoming internet traffic, hide backend server details, and terminate client connections at the perimeter. Which solution BEST fits?",
+    "stem_zh": "某組織想在對外 Web 伺服器前放一台設備,分散進入流量、隱藏後端伺服器細節,並在邊界終結用戶端連線。哪個方案最合適?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Forward proxy",
+        "text_zh": "正向代理"
+      },
+      {
+        "key": "B",
+        "text_en": "Transparent proxy",
+        "text_zh": "透明代理"
+      },
+      {
+        "key": "C",
+        "text_en": "Packet-filtering firewall",
+        "text_zh": "封包過濾防火牆"
+      },
+      {
+        "key": "D",
+        "text_en": "Reverse proxy",
+        "text_zh": "反向代理"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "反向代理部署在伺服器前(常位於周邊網路),代表伺服器接收網際網路流量,可負載平衡並隱藏後端細節。判斷邏輯:「代表/保護用戶端」=forward proxy;「代表/保護伺服器」=reverse proxy。",
+    "why_wrong_zh": {
+      "A": "正向代理在用戶端側,用於匿名化、快取與管制對外存取。",
+      "B": "透明代理攔截用戶端流量做監控/過濾,同屬用戶端側。",
+      "C": "封包過濾防火牆只依 L3/L4 規則放行,不終結連線也不做負載平衡。"
+    },
+    "id": "D4-0041",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-098.html",
+    "unit_title_zh": "考點：防火牆與 IDS"
+  },
+  {
+    "stem_en": "A security manager is concerned that an attacker who fully compromises a critical server could discover and disable the monitoring installed on it. Which detection control BEST addresses this concern?",
+    "stem_zh": "安全主管擔心攻擊者完全入侵關鍵伺服器後,會發現並停用其上安裝的監控。哪個偵測控制最能因應這個疑慮?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "HIDS on each server",
+        "text_zh": "每台伺服器安裝 HIDS"
+      },
+      {
+        "key": "B",
+        "text_en": "Host-based firewall",
+        "text_zh": "主機型防火牆"
+      },
+      {
+        "key": "C",
+        "text_en": "Network-based IDS (NIDS)",
+        "text_zh": "網路型入侵偵測系統"
+      },
+      {
+        "key": "D",
+        "text_en": "More frequent antivirus scans",
+        "text_zh": "提高防毒掃描頻率"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "NIDS 部署在網路上(SPAN/TAP)監看流量,不駐留在被入侵的主機上,攻擊者不易發現、也無法從主機上停用。判斷邏輯:HIDS 的教科書缺點正是「主機被拿下後可被發現並關閉」,NIDS 恰好補上。",
+    "why_wrong_zh": {
+      "A": "HIDS 裝在主機上,正是題目擔心會被入侵者停用的控制。",
+      "B": "主機型防火牆同樣駐留主機,取得權限後即可關閉。",
+      "D": "防毒也在主機上執行,提高頻率不解決「被停用」的根本問題。"
+    },
+    "id": "D4-0042",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-098.html",
+    "unit_title_zh": "考點：防火牆與 IDS"
+  },
+  {
+    "stem_en": "During a firewall audit, a reviewer finds the ruleset ends with a rule permitting all remaining traffic, relying on earlier rules to block known-bad sources. Which configuration stance SHOULD the firewall follow instead?",
+    "stem_zh": "防火牆稽核發現規則集最後一條是放行所有剩餘流量,僅靠前面規則封鎖已知惡意來源。防火牆應改採哪種設定原則?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Default permit with an updated blocklist",
+        "text_zh": "預設允許並持續更新封鎖清單"
+      },
+      {
+        "key": "B",
+        "text_en": "Permit all outbound, deny all inbound",
+        "text_zh": "出站全放行、入站全拒絕"
+      },
+      {
+        "key": "C",
+        "text_en": "Default deny—block everything not explicitly permitted",
+        "text_zh": "預設拒絕—未明確允許即封鎖"
+      },
+      {
+        "key": "D",
+        "text_en": "Mirror all traffic to an IDS for alerting",
+        "text_zh": "將全部流量鏡射給 IDS 告警"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "防火牆應採 default deny(隱含拒絕):只放行明確允許的流量,其餘一律封鎖。判斷邏輯:封鎖清單永遠追不上「未知」威脅,白名單(允許清單)思維才是安全預設。",
+    "why_wrong_zh": {
+      "A": "預設允許+黑名單只能擋已知惡意,新的未知威脅會全數放行。",
+      "B": "出站全放行會讓 C2 回連與資料外洩暢通,仍違反最小化原則。",
+      "D": "IDS 只告警不阻擋,無法取代防火牆的預設拒絕策略。"
+    },
+    "id": "D4-0043",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-098.html",
+    "unit_title_zh": "考點：防火牆與 IDS"
+  },
+  {
+    "stem_en": "Which email authentication mechanism verifies that the message content has not been altered and originates from the claimed domain using a digital signature?",
+    "stem_zh": "哪個郵件驗證機制用數位簽章確認郵件內容未被竄改且來自所聲稱的網域?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SPF",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "DKIM",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "DMARC",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "TLS",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "DKIM 以網域私鑰簽章郵件內容、公鑰(DNS)驗證,確認內容完整與來源網域。",
+    "why_wrong_zh": {
+      "A": "SPF 驗『寄件來源 IP 是否獲授權』,不驗內容。",
+      "C": "DMARC 是對齊 SPF/DKIM 並定政策,不自己做簽章。",
+      "D": "TLS 加密傳輸通道,非郵件來源/內容驗證。"
+    },
+    "id": "D4-0044",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-099.html",
+    "unit_title_zh": "考點：無線與郵件安全"
+  },
+  {
+    "stem_en": "An organization wants to ensure that emails spoofing its domain in the From header are rejected by receivers. Which is required?",
+    "stem_zh": "某組織想確保偽冒其網域 From 標頭的郵件被收件方拒收。需要什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SPF only",
+        "text_zh": "只用 SPF"
+      },
+      {
+        "key": "B",
+        "text_en": "DKIM only",
+        "text_zh": "只用 DKIM"
+      },
+      {
+        "key": "C",
+        "text_en": "DMARC with a reject policy DMARC",
+        "text_zh": "並設 reject 政策"
+      },
+      {
+        "key": "D",
+        "text_en": "An SLA",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "要讓收件方拒收偽冒 From 的信,需部署 DMARC 並設 p=reject(對齊 SPF/DKIM)。單用 SPF/DKIM 仍可能被 From 偽冒繞過。",
+    "why_wrong_zh": {
+      "D": "SLA 與郵件驗證無關。"
+    },
+    "id": "D4-0045",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-099.html",
+    "unit_title_zh": "考點：無線與郵件安全"
+  },
+  {
+    "stem_en": "Which wireless security option provides the STRONGEST protection against offline password-cracking for a personal Wi-Fi network?",
+    "stem_zh": "對個人 Wi-Fi 網路,哪個無線安全選項對『離線密碼破解』提供最強防護?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "WEP",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "WPA2-Personal",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "WPA3-Personal (SAE)",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Open network",
+        "text_zh": "開放網路"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "WPA3-Personal(SAE) 以 SAE 握手抗離線字典攻擊並提供前向保密,優於 WPA2-PSK。",
+    "why_wrong_zh": {
+      "A": "WEP 早已破解,最弱。",
+      "B": "WPA2-PSK 易被離線字典/KRACK 攻擊。",
+      "D": "開放網路無加密,毫無保護。"
+    },
+    "id": "D4-0046",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-099.html",
+    "unit_title_zh": "考點：無線與郵件安全"
+  },
+  {
+    "stem_en": "A 500-employee company secures its corporate Wi-Fi with WPA2-Personal and one shared passphrase. Departing employees still know the passphrase, and rotating it disrupts everyone. What is the BEST long-term solution?",
+    "stem_zh": "某 500 人企業的公司 Wi-Fi 使用 WPA2-Personal 單一共用密碼。離職員工仍知道密碼,而輪換密碼又影響所有人。最佳的長期解法為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Rotate the shared passphrase monthly",
+        "text_zh": "每月輪換共用密碼"
+      },
+      {
+        "key": "B",
+        "text_en": "Deploy WPA3-Enterprise with 802.1X/EAP per-user authentication",
+        "text_zh": "部署 WPA3-Enterprise 並以 802.1X/EAP 個別認證"
+      },
+      {
+        "key": "C",
+        "text_en": "Enable MAC address filtering",
+        "text_zh": "啟用 MAC 位址過濾"
+      },
+      {
+        "key": "D",
+        "text_en": "Hide the SSID",
+        "text_zh": "隱藏 SSID"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "企業環境應用 Enterprise 模式(802.1X/EAP+認證伺服器如 RADIUS),每人使用自己的帳號憑證,離職時停用個人帳號即可,不影響其他人。判斷邏輯:「共用密碼的生命週期管理問題」→改為個別認證,而不是更勤快地換共用密碼。",
+    "why_wrong_zh": {
+      "A": "治標不治本,輪換的仍是所有人共用的密碼,離職議題依舊。",
+      "C": "MAC 位址可被偽造,只是識別不是認證。",
+      "D": "隱藏 SSID 只是隱蔽(security through obscurity),無認證與加密強度可言。"
+    },
+    "id": "D4-0047",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-099.html",
+    "unit_title_zh": "考點：無線與郵件安全"
+  },
+  {
+    "stem_en": "An organization is publishing its first DMARC record and wants to avoid legitimate mail being quarantined or rejected while it validates SPF/DKIM alignment across all senders. What should it do FIRST?",
+    "stem_zh": "某組織首次發布 DMARC 紀錄,希望在驗證所有寄件來源的 SPF/DKIM 對齊前,避免合法郵件被隔離或拒收。應該先做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Publish p=reject immediately for maximum protection",
+        "text_zh": "直接發布 p=reject 以求最大保護"
+      },
+      {
+        "key": "B",
+        "text_en": "Publish p=quarantine as a compromise",
+        "text_zh": "折衷先設 p=quarantine"
+      },
+      {
+        "key": "C",
+        "text_en": "Skip DMARC and rely on SPF hard fail (-all)",
+        "text_zh": "跳過 DMARC,改靠 SPF hard fail"
+      },
+      {
+        "key": "D",
+        "text_en": "Publish p=none, analyze aggregate reports, then escalate to quarantine and reject",
+        "text_zh": "先發布 p=none 並分析彙總報告,再逐步升級到 quarantine/reject"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "DMARC 部署採政策遞進:none→quarantine→reject。先用 p=none(純監控)收集彙總報告,找出尚未對齊的合法寄件來源(如行銷平台、系統通知),修正後再逐步升級。FIRST 考的是流程順序:先看清楚再執法,而非一步到最強政策。",
+    "why_wrong_zh": {
+      "A": "reject 最強但直接上線會拒收尚未完成對齊的合法郵件(兩個都對,輸在順序)。",
+      "B": "quarantine 同樣會把合法信送進垃圾匣,仍屬過早執法。",
+      "C": "SPF -all 沒有 From 對齊與回報機制,不能取代 DMARC。"
+    },
+    "id": "D4-0048",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-099.html",
+    "unit_title_zh": "考點：無線與郵件安全"
+  },
+  {
+    "stem_en": "Recipients report that legitimate messages relayed through a third-party mail-forwarding service now fail SPF checks. What is the MOST likely reason?",
+    "stem_zh": "收件方回報,經第三方轉寄服務轉送的合法郵件現在 SPF 檢查失敗。最可能的原因為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "SPF validates the connecting server's IP, and the forwarder's IP is not in the sender domain's SPF record SPF",
+        "text_zh": "驗的是連線伺服器 IP,轉寄伺服器不在寄件網域的授權清單內"
+      },
+      {
+        "key": "B",
+        "text_en": "The message body was modified, invalidating SPF's digital signature",
+        "text_zh": "郵件內容被修改,使 SPF 的數位簽章失效"
+      },
+      {
+        "key": "C",
+        "text_en": "The forwarding server does not support STARTTLS",
+        "text_zh": "轉寄伺服器不支援 STARTTLS"
+      },
+      {
+        "key": "D",
+        "text_en": "The sender's DMARC policy is set to p=none",
+        "text_zh": "寄件方 DMARC 政策設為 p=none"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "SPF 只驗最後連線的寄件伺服器 IP 是否在網域 DNS 授權清單內;郵件經轉寄後,來源 IP 變成轉寄伺服器,自然驗不過——教科書級的「轉寄破壞 SPF」。相對地,DKIM 簽章隨信件走,較能在轉寄後存活。",
+    "why_wrong_zh": {
+      "B": "SPF 沒有數位簽章,內容簽章是 DKIM 的機制(最常見的混淆陷阱)。",
+      "C": "STARTTLS 是傳輸加密,與 SPF 來源驗證無關。",
+      "D": "p=none 只影響 DMARC 的處置方式,不會造成 SPF 失敗。"
+    },
+    "id": "D4-0049",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-099.html",
+    "unit_title_zh": "考點：無線與郵件安全"
+  },
+  {
+    "stem_en": "After an attacker breaches a perimeter firewall, which strategy MOST effectively limits their ability to move laterally to other systems?",
+    "stem_zh": "攻擊者攻破邊界防火牆後,哪個策略最能有效限制其橫向移動到其他系統?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A stronger perimeter firewall",
+        "text_zh": "更強的邊界防火牆"
+      },
+      {
+        "key": "B",
+        "text_en": "Network segmentation / micro-segmentation",
+        "text_zh": "網路分段/微分段"
+      },
+      {
+        "key": "C",
+        "text_en": "Longer passwords",
+        "text_zh": "更長的密碼"
+      },
+      {
+        "key": "D",
+        "text_en": "Antivirus updates",
+        "text_zh": "更新防毒"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "分段/微分段把網路切成隔離區,即使邊界被破,攻擊者也難橫向移動到其他區段(限制爆炸半徑)。",
+    "why_wrong_zh": {
+      "A": "邊界已被突破,再強的邊界對『內部橫向』無幫助。"
+    },
+    "id": "D4-0050",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-100.html",
+    "unit_title_zh": "考點：D4 綜合 + 刷題"
+  },
+  {
+    "stem_en": "Which mitigation BEST addresses ARP poisoning on a switched LAN?",
+    "stem_zh": "在交換式區網上,哪個緩解措施最能對付 ARP 毒化?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "DNSSEC",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "Dynamic ARP Inspection (DAI)",
+        "text_zh": "動態 ARP 檢測"
+      },
+      {
+        "key": "C",
+        "text_en": "TLS 1.3",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Port 443 filtering",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "動態 ARP 檢測(DAI)＋DHCP snooping/靜態綁定可驗證 ARP 回應,防 ARP 毒化(L2 MITM)。",
+    "why_wrong_zh": {
+      "A": "DNSSEC 對付 DNS spoofing,非 ARP。",
+      "C": "TLS 保護應用通道,不防 L2 ARP 欺騙本身。",
+      "D": "埠過濾與 ARP 無關。"
+    },
+    "id": "D4-0051",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-100.html",
+    "unit_title_zh": "考點：D4 綜合 + 刷題"
+  },
+  {
+    "stem_en": "What distinguishes a DDoS attack from a DoS attack?",
+    "stem_zh": "DDoS 攻擊與 DoS 攻擊的區別是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "DDoS targets databases",
+        "text_zh": "針對資料庫"
+      },
+      {
+        "key": "B",
+        "text_en": "DDoS uses many distributed sources",
+        "text_zh": "使用大量分散來源"
+      },
+      {
+        "key": "C",
+        "text_en": "DDoS only affects wireless",
+        "text_zh": "只影響無線"
+      },
+      {
+        "key": "D",
+        "text_en": "DDoS is always encrypted",
+        "text_zh": "一定加密"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "DDoS 來自大量分散的來源(殭屍網路),比單一來源的 DoS 更難緩解與封鎖。",
+    "why_wrong_zh": {
+      "A": "兩者都針對可用性,非特定資料庫。",
+      "C": "不限無線。",
+      "D": "與是否加密無關。"
+    },
+    "id": "D4-0052",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-100.html",
+    "unit_title_zh": "考點：D4 綜合 + 刷題"
+  },
+  {
+    "stem_en": "An organization adopting zero trust wants every critical workload in its own zone, with policy enforced at each connection point—including east-west traffic between servers in the same subnet. Department-level VLANs already exist. Which approach BEST meets this goal?",
+    "stem_zh": "採行零信任的組織希望每個關鍵工作負載都在自己的區域內,並在每個連接點執行政策——包含同子網伺服器間的東西向流量。部門層級 VLAN 已存在。哪個做法最能達成目標?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Create more department-level VLANs",
+        "text_zh": "增設更多部門層級 VLAN"
+      },
+      {
+        "key": "B",
+        "text_en": "Upgrade the perimeter to a next-generation firewall",
+        "text_zh": "將邊界升級為次世代防火牆"
+      },
+      {
+        "key": "C",
+        "text_en": "Require full-tunnel VPN for all users",
+        "text_zh": "要求所有使用者改走 full-tunnel VPN"
+      },
+      {
+        "key": "D",
+        "text_en": "Micro-segmentation with distributed firewalls per workload",
+        "text_zh": "微分段,搭配每個工作負載的分散式防火牆"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "微分段把網路切到「單一工作負載/伺服器」等級,由分散式防火牆在每個連接點執行各自政策,才能管控同網段內的東西向流量——這正是零信任「永不信任、持續驗證」的落地方式。判斷邏輯:VLAN 與微分段都是分段,差在粒度與段內信任:VLAN 段內流量仍互信,微分段不留隱含信任。",
+    "why_wrong_zh": {
+      "A": "VLAN 是部門級粗粒度隔離,同 VLAN 內的橫向流量不受控(對但粒度不夠)。",
+      "B": "邊界 NGFW 管南北向流量,看不到也管不到內部東西向。",
+      "C": "VPN 解決遠端接入加密,與內部工作負載間的隔離無關。"
+    },
+    "id": "D4-0053",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-100.html",
+    "unit_title_zh": "考點：D4 綜合 + 刷題"
+  },
+  {
+    "stem_en": "Incident responders find a victim host overwhelmed by ICMP echo replies from many hosts on the local network, after an attacker sent echo requests to the network broadcast address using the victim's spoofed source address. Which attack is this?",
+    "stem_zh": "事件應變人員發現,攻擊者以受害者的偽造來源位址向網路廣播位址發送 echo 請求後,受害主機被同網路大量主機的 ICMP echo 回覆淹沒。這是哪種攻擊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Smurf attack Smurf",
+        "text_zh": "攻擊"
+      },
+      {
+        "key": "B",
+        "text_en": "SYN flood SYN",
+        "text_zh": "洪水"
+      },
+      {
+        "key": "C",
+        "text_en": "DNS amplification DNS",
+        "text_zh": "放大攻擊"
+      },
+      {
+        "key": "D",
+        "text_en": "Ping of death",
+        "text_zh": "死亡之 Ping"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Smurf=「ICMP echo 請求送到廣播位址+偽造受害者為來源」,全網主機同時回覆 echo reply 灌爆受害者,是利用放大網路(amplification network)的 DoS。記憶關鍵字:ICMP+broadcast+spoofed source=Smurf。",
+    "why_wrong_zh": {
+      "B": "SYN flood 濫用 TCP 三次握手耗盡連線表,與 ICMP 廣播無關。",
+      "C": "DNS 放大同樣偽造來源,但靠 DNS 解析器的大型回應放大,不是 ICMP 廣播。",
+      "D": "Ping of death 是送出超大/畸形 ICMP 封包使系統當機,不是放大流量。"
+    },
+    "id": "D4-0054",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-100.html",
+    "unit_title_zh": "考點：D4 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A penetration test shows that an attacker on an access port can craft frames to reach a VLAN they are not assigned to (VLAN hopping). Which is the BEST mitigation?",
+    "stem_zh": "滲透測試顯示,接在存取埠的攻擊者可偽造訊框跳到未被指派的 VLAN(VLAN hopping)。最佳緩解措施為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Enable DHCP snooping",
+        "text_zh": "啟用 DHCP snooping"
+      },
+      {
+        "key": "B",
+        "text_en": "Place a NIDS on the core switch",
+        "text_zh": "在核心交換器部署 NIDS"
+      },
+      {
+        "key": "C",
+        "text_en": "Encrypt inter-VLAN traffic with TLS",
+        "text_zh": "以 TLS 加密跨 VLAN 流量"
+      },
+      {
+        "key": "D",
+        "text_en": "Harden switch ports—disable auto-trunk negotiation and enable port security",
+        "text_zh": "強化交換器埠—停用自動 trunk 協商並啟用 port security"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "VLAN hopping 靠濫用交換器的 trunk 自動協商/雙重標籤,屬 L2 攻擊,必須在交換器層面治理:存取埠明確設定、停用自動 trunking、啟用 port security。判斷邏輯:L2 攻擊用 L2 控制解,選「對得上機制」的對策。",
+    "why_wrong_zh": {
+      "A": "DHCP snooping 防 DHCP 欺騙(也是 DAI 的前提),但擋不住 trunk 協商濫用(同圈陷阱)。",
+      "B": "NIDS 只能偵測告警,無法阻止跳躍發生。",
+      "C": "加密保護內容機密性,擋不住攻擊者「進入」該 VLAN。"
+    },
+    "id": "D4-0055",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D4-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-100.html",
+    "unit_title_zh": "考點：D4 綜合 + 刷題"
+  },
+  {
+    "stem_en": "A network team detects that an attacker on the local network is intercepting traffic between workstations and the default gateway by sending forged ARP replies. Which control BEST mitigates this attack?",
+    "stem_zh": "網路團隊偵測到內網攻擊者透過偽造 ARP 回應,攔截工作站與預設閘道之間的流量。哪個控制『最能』緩解此攻擊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deploy a signature-based NIDS at the perimeter",
+        "text_zh": "在邊界部署特徵式 NIDS"
+      },
+      {
+        "key": "B",
+        "text_en": "Enable dynamic ARP inspection with DHCP snooping on switches",
+        "text_zh": "在交換器啟用動態 ARP 檢測搭配 DHCP snooping"
+      },
+      {
+        "key": "C",
+        "text_en": "Increase the frequency of vulnerability scans",
+        "text_zh": "提高弱點掃描頻率"
+      },
+      {
+        "key": "D",
+        "text_en": "Require complex passwords on all workstations",
+        "text_zh": "要求所有工作站使用複雜密碼"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "題幹是教科書式的 ARP spoofing / on-path(MITM)攻擊。動態 ARP 檢測(DAI)以 DHCP snooping 建立的 IP-MAC 綁定表驗證每個 ARP 封包,直接在攻擊發生的第二層阻斷偽造回應——對症下藥的預防性控制。",
+    "why_wrong_zh": {
+      "A": "邊界 NIDS 看不到內網交換的第二層流量,且偵測不等於阻止。",
+      "C": "弱點掃描找設定與軟體弱點,對進行中的 ARP 攻擊無緩解作用。",
+      "D": "密碼強度與第二層流量攔截完全無關。"
+    },
+    "id": "D4-0056",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "Two branch offices need a permanent site-to-site tunnel over the Internet that provides confidentiality, integrity, and origin authentication for all traffic between them. Which solution BEST meets the requirement?",
+    "stem_zh": "兩個分公司需要一條經網際網路的常設站對站通道,為兩地間所有流量提供機密性、完整性與來源鑑別。哪個方案『最』符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A GRE tunnel between the two gateways",
+        "text_zh": "兩閘道間建立 GRE 通道"
+      },
+      {
+        "key": "B",
+        "text_en": "PPTP with MS-CHAPv2 authentication",
+        "text_zh": "使用 MS-CHAPv2 驗證的 PPTP"
+      },
+      {
+        "key": "C",
+        "text_en": "A TLS portal for users to access applications",
+        "text_zh": "供使用者存取應用的 TLS 入口網站"
+      },
+      {
+        "key": "D",
+        "text_en": "An IPsec VPN using ESP in tunnel mode",
+        "text_zh": "使用 ESP 通道模式的 IPsec VPN"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "需求關鍵:站對站、所有流量、機密+完整+來源鑑別。IPsec ESP 同時提供加密、完整性與鑑別;tunnel mode 封裝整個原始 IP 封包,正是 gateway-to-gateway 的標準架構,對兩地所有流量透明生效。",
+    "why_wrong_zh": {
+      "A": "GRE 只做封裝,本身不加密、不驗證,三項需求全不滿足。",
+      "B": "PPTP/MS-CHAPv2 有已知重大弱點,早已不建議用於安全通道。",
+      "C": "TLS 入口保護的是使用者到應用的個別連線,不是兩站間全流量的常設通道。"
+    },
+    "id": "D4-0057",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "After a ransomware infection spread rapidly from one workstation to servers across the entire flat network, management asks how to limit lateral movement in the future. Which architectural change BEST addresses this?",
+    "stem_zh": "勒索軟體從一台工作站迅速擴散到整個扁平網路上的伺服器後,管理層詢問未來如何限制橫向移動。哪個架構性變更『最能』解決此問題?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deploy a stronger antivirus product on all endpoints",
+        "text_zh": "在所有端點部署更強的防毒產品"
+      },
+      {
+        "key": "B",
+        "text_en": "Increase the frequency of full backups",
+        "text_zh": "提高完整備份的頻率"
+      },
+      {
+        "key": "C",
+        "text_en": "Add an additional perimeter firewall",
+        "text_zh": "增加一道邊界防火牆"
+      },
+      {
+        "key": "D",
+        "text_en": "Segment the network into zones with controlled traffic between them",
+        "text_zh": "將網路分割為多個區段,並管制區段間流量"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "題幹點名兩個關鍵:flat network(擴散的根因)與限制橫向移動(目標),又指定要架構性(architectural)變更——答案就是網路分段/微分段:把網路切成受控區域,區段間流量須經過濾,單點淪陷不再等於全網淪陷。",
+    "why_wrong_zh": {
+      "A": "防毒是端點控制,不是架構變更,對零時差勒索軟體的橫向移動幫助有限。",
+      "B": "備份改善復原能力,不能限制擴散——答非所問。",
+      "C": "邊界防火牆管內外流量,對「內網之間」的橫向移動無能為力。"
+    },
+    "id": "D4-0058",
+    "domain": "D4",
+    "topic": "d4-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  }
+]

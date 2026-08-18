@@ -1,0 +1,3004 @@
+[
+  {
+    "stem_en": "Which of the following BEST describes the security concept of authenticity?",
+    "stem_zh": "下列何者最能描述 authenticity(真實性)這個安全概念?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Ensuring that data has not been altered by unauthorized subjects",
+        "text_zh": "確保資料未被未授權者竄改"
+      },
+      {
+        "key": "B",
+        "text_en": "Verifying that a transmission, message, or sender is legitimate and genuinely who or what it claims to be",
+        "text_zh": "驗證傳輸,訊息或寄件者是合法的,確為其所宣稱的本尊"
+      },
+      {
+        "key": "C",
+        "text_en": "Ensuring that the subject of an activity cannot deny that the event occurred",
+        "text_zh": "確保行為主體無法否認事件曾發生"
+      },
+      {
+        "key": "D",
+        "text_en": "Preventing the unauthorized disclosure of sensitive information",
+        "text_zh": "防止敏感資訊被未授權揭露"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "真實性(Authenticity)關注的是「來源是不是本尊」——確認傳輸,訊息或寄件者確為其所宣稱者,例如用數位憑證確認你連到的網站不是釣魚站。判斷邏輯:先問「這個概念在保什麼」,保的是「來源身分」就是真實性。記憶:完整性管「內容沒被改」,真實性管「來源是真的」——資料可以「完整地」來自一個「假冒」的來源,兩者必須分開看。",
+    "why_wrong_zh": {
+      "A": "這是 Integrity(完整性)的定義,管的是內容未被竄改,不管來源真偽。",
+      "C": "這是 Non-repudiation(不可否認性),重點在「做了賴不掉」,而非「驗明正身」。",
+      "D": "這是 Confidentiality(機密性),防的是揭露,與來源驗證無關。"
+    },
+    "id": "D1-0001",
+    "domain": "D1",
+    "topic": "d1-p1",
+    "unit": "P1-D1-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-001.html",
+    "unit_title_zh": "Domain 1 全景與 CIA 鐵三角"
+  },
+  {
+    "stem_en": "A customer of an online brokerage denies having submitted a large stock trade, even though records show the trade originated from the customer's authenticated session. Which security concept, if properly implemented, would BEST enable the firm to prove the customer performed the transaction?",
+    "stem_zh": "一位網路券商客戶否認曾送出一筆大額股票交易,即使紀錄顯示該筆交易來自其通過鑑別的連線。若妥善實作,哪個安全概念最能讓券商證明交易確為該客戶所為?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Integrity",
+        "text_zh": "完整性,確保交易紀錄未被竄改"
+      },
+      {
+        "key": "B",
+        "text_en": "Confidentiality",
+        "text_zh": "機密性,確保交易內容不被未授權者看到"
+      },
+      {
+        "key": "C",
+        "text_en": "Non-repudiation",
+        "text_zh": "不可否認性,讓行為人事後無法否認其作為"
+      },
+      {
+        "key": "D",
+        "text_en": "Availability",
+        "text_zh": "可用性,確保交易系統隨時可供存取"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "題目考的是「事後賴不掉」——透過數位簽章與完整的 AAA 鏈(識別,鑑別,授權,稽核,當責),讓行為主體無法否認事件曾發生,這正是 Non-repudiation(不可否認性)。判斷邏輯:題幹看到「否認(deny)」這個關鍵字,直接對應不可否認性;它是五大支柱中專門為「舉證與課責」而生的那一根。",
+    "why_wrong_zh": {
+      "A": "完整性只能證明「紀錄沒被改」,無法證明「這件事是誰做的」。",
+      "B": "機密性防未授權揭露,與客戶否認行為的舉證無關。",
+      "D": "可用性確保要用時用得到,與事後舉證無關。"
+    },
+    "id": "D1-0002",
+    "domain": "D1",
+    "topic": "d1-p1",
+    "unit": "P1-D1-1",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-001.html",
+    "unit_title_zh": "Domain 1 全景與 CIA 鐵三角"
+  },
+  {
+    "stem_en": "Which of the following is the BEST indicator that an organization's security governance is effective?",
+    "stem_zh": "下列何者是組織安全治理有效的最佳指標?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The security team has deployed the latest security technologies",
+        "text_zh": "安全團隊已部署最新的安全技術"
+      },
+      {
+        "key": "B",
+        "text_en": "Security activities align with and support the organization's business objectives",
+        "text_zh": "安全活動與組織的商業目標對齊並支持之"
+      },
+      {
+        "key": "C",
+        "text_en": "The IT department has full authority over all security decisions IT",
+        "text_zh": "部門對所有安全決策有完整決定權"
+      },
+      {
+        "key": "D",
+        "text_en": "No security incidents were reported during the past year",
+        "text_zh": "過去一年沒有任何資安事件被通報"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "治理(Governance)的核心定義,就是「確保安全活動支持並對齊商業目標」的由上而下監督機制。判斷邏輯:think like a manager——治理好不好,看的不是技術新不新,而是安全是否服務於業務方向,並由高層定調(tone at the top),管理層當責。安全是管理問題,不是技術問題。",
+    "why_wrong_zh": {
+      "A": "技術新舊與治理無關;沒有對齊業務目標,再新的技術也可能是錯置資源。",
+      "C": "正好相反——治理要求由董事會/高階主管由上而下主導,IT 只是執行末端。",
+      "D": "零通報可能代表偵測能力或通報文化失靈,不能證明治理有效。"
+    },
+    "id": "D1-0003",
+    "domain": "D1",
+    "topic": "d1-p1",
+    "unit": "P1-D1-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-002.html",
+    "unit_title_zh": "安全治理與角色權責"
+  },
+  {
+    "stem_en": "After a data breach, a court must decide whether the organization was negligent. Which of the following would BEST demonstrate that the organization exercised due care?",
+    "stem_zh": "一次資料外洩後,法院要判斷該組織是否有過失(negligence)。下列哪項作為最能證明組織已善盡 due care(應盡注意)?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The organization subscribed to threat intelligence feeds and regularly reviewed industry risk reports",
+        "text_zh": "組織訂閱威脅情資並定期研讀產業風險報告"
+      },
+      {
+        "key": "B",
+        "text_en": "The organization documented all identified risks in a corporate risk register",
+        "text_zh": "組織將所有已識別的風險登載於公司風險登錄冊"
+      },
+      {
+        "key": "C",
+        "text_en": "The organization purchased a comprehensive cyber insurance policy after the breach",
+        "text_zh": "組織在外洩發生後購買了完整的資安保險"
+      },
+      {
+        "key": "D",
+        "text_en": "The organization had implemented the reasonable safeguards that a prudent organization in its industry would implement",
+        "text_zh": "組織事前已實作同業審慎組織會採取的合理防護措施"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Due care 是「行動」——實際採取一個審慎之人(prudent person)會採取的合理保護措施;法院判斷是否有過失,看的正是「有沒有做了該做的」。記憶法:Due Diligence＝調查/思考(蒐集資訊,評估風險),Due Care＝行動(依評估結果實際做防護);先 diligence 才能 care,但能免除過失責任的抗辯核心是 care。",
+    "why_wrong_zh": {
+      "A": "訂閱情資,研讀報告屬於 Due Diligence(持續了解風險),還停在「知道」,尚未「動手防護」。",
+      "B": "登錄風險仍是「了解與記錄」的階段;只有文件而沒有部署合理控制,反而可能證明「知情卻未行動」。",
+      "C": "保險是風險轉移,且發生在外洩之後,無法證明事前已善盡注意。"
+    },
+    "id": "D1-0004",
+    "domain": "D1",
+    "topic": "d1-p1",
+    "unit": "P1-D1-2",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-002.html",
+    "unit_title_zh": "安全治理與角色權責"
+  },
+  {
+    "stem_en": "A retail store installs visible security cameras that record all activity so that footage can be reviewed after an incident. When used to determine what happened after an incident, the cameras are BEST classified as which type of control?",
+    "stem_zh": "一家零售店安裝醒目的監視攝影機錄下所有活動,以便事件發生後調閱影像。當用於「事後釐清發生了什麼」時,這些攝影機最適合歸類為哪種控制?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deterrent control",
+        "text_zh": "嚇阻控制"
+      },
+      {
+        "key": "B",
+        "text_en": "Preventive control",
+        "text_zh": "預防控制"
+      },
+      {
+        "key": "C",
+        "text_en": "Detective control",
+        "text_zh": "偵測控制"
+      },
+      {
+        "key": "D",
+        "text_en": "Corrective control",
+        "text_zh": "矯正控制"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "分類控制要看「題目描述的用途」:錄影供事後調閱,是在事件發生後「發現與識別」異常,屬 Detective(偵測)控制。判斷邏輯:同一個控制可因用途不同而歸類不同——醒目的攝影機「掛在那裡讓人不敢犯案」時是嚇阻,但本題明確問「事後釐清經過」這個功能,故選偵測。這正是控制類型題最常見的陷阱:別背裝置,要讀情境。",
+    "why_wrong_zh": {
+      "A": "嚇阻靠的是「被看見」讓人打消念頭;本題問的是事後調閱功能,不是心理嚇阻。",
+      "B": "攝影機無法實體阻止行為發生(門禁,圍籬才是預防),它只能記錄。",
+      "D": "矯正控制是事件後「把系統修回正常」(如還原備份),攝影機不做這件事。"
+    },
+    "id": "D1-0005",
+    "domain": "D1",
+    "topic": "d1-p1",
+    "unit": "P1-D1-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-003.html",
+    "unit_title_zh": "風險管理輪廓"
+  },
+  {
+    "stem_en": "A risk assessment shows that mitigating a particular low-impact risk would cost far more each year than the expected annual loss, and the remaining risk already falls within the organization's risk appetite. What is the BEST risk response?",
+    "stem_zh": "風險評鑑顯示,緩解某個低衝擊風險的年成本遠高於其預期年損失,且該風險已落在組織的風險胃納(risk appetite)之內。最佳的風險回應是?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Mitigate the risk by deploying additional security controls",
+        "text_zh": "部署更多安全控制以緩解該風險"
+      },
+      {
+        "key": "B",
+        "text_en": "Avoid the risk by discontinuing the related business activity",
+        "text_zh": "停止相關業務活動以規避該風險"
+      },
+      {
+        "key": "C",
+        "text_en": "Transfer the risk by purchasing an insurance policy",
+        "text_zh": "購買保險以轉移該風險"
+      },
+      {
+        "key": "D",
+        "text_en": "Have management formally accept the risk",
+        "text_zh": "由管理層正式簽署接受該風險"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "資安要划算,不是零風險:當控制成本大於潛在損失,且風險已在風險胃納內,最佳回應就是 Accept(接受)——但必須由「管理層」知情後正式簽署,不是工程師自行決定。判斷邏輯:先比「控制成本 vs 潛在損失」,再看「是否在胃納內」;兩個條件都滿足,再花錢處理反而是浪費資源。",
+    "why_wrong_zh": {
+      "A": "控制成本已超過預期損失,再砸錢緩解違反成本效益原則。",
+      "B": "為一個低衝擊風險停掉整個業務,犧牲遠大於風險本身,規避不成比例。",
+      "C": "保險同樣有成本;風險已在胃納內,無須再花錢轉移。"
+    },
+    "id": "D1-0006",
+    "domain": "D1",
+    "topic": "d1-p1",
+    "unit": "P1-D1-3",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-003.html",
+    "unit_title_zh": "風險管理輪廓"
+  },
+  {
+    "stem_en": "Under the GDPR, which party determines the purposes and means of processing personal data?",
+    "stem_zh": "依 GDPR,哪一方「決定」個人資料處理的目的與方式?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The data controller",
+        "text_zh": "資料控管者"
+      },
+      {
+        "key": "B",
+        "text_en": "The data processor",
+        "text_zh": "資料處理者"
+      },
+      {
+        "key": "C",
+        "text_en": "The data custodian",
+        "text_zh": "資料保管者"
+      },
+      {
+        "key": "D",
+        "text_en": "The supervisory authority",
+        "text_zh": "監管機關"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "GDPR 明確區分兩種核心角色:Data Controller(控管者)「決定」個資處理的目的與方式;Data Processor(處理者)只是「代」控管者執行處理(如雲端服務商)。判斷邏輯:看到「決定目的與方式」就對應控管者,看到「代他人處理」就對應處理者——義務與罰責的分配都從這個區分出發。",
+    "why_wrong_zh": {
+      "B": "處理者依控管者的指示行事,不決定處理的目的與方式。",
+      "C": "Custodian 是資安治理裡的角色(執行備份,加密,設定),不是 GDPR 定義的法律角色。",
+      "D": "監管機關負責執法與裁罰(如愛爾蘭 DPC 對 Meta 開罰 12 億歐元),不參與決定個資處理目的。"
+    },
+    "id": "D1-0007",
+    "domain": "D1",
+    "topic": "d1-p1",
+    "unit": "P1-D1-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-004.html",
+    "unit_title_zh": "法律、合規、隱私與倫理輪廓"
+  },
+  {
+    "stem_en": "A securities regulator opens a formal inquiry into a brokerage firm suspected of violating financial rules. The firm is legally required to cooperate and must not conceal or destroy evidence. Which type of investigation is this?",
+    "stem_zh": "證券主管機關對一家涉嫌違反金融法規的券商展開正式調查,該公司依法必須配合,且不得隱匿或銷毀證據。這屬於哪種調查類型?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Administrative investigation",
+        "text_zh": "行政調查"
+      },
+      {
+        "key": "B",
+        "text_en": "Criminal investigation",
+        "text_zh": "刑事調查"
+      },
+      {
+        "key": "C",
+        "text_en": "Civil investigation",
+        "text_zh": "民事調查"
+      },
+      {
+        "key": "D",
+        "text_en": "Regulatory investigation",
+        "text_zh": "法規調查"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "由主管機關(如 SEC,FINRA,金管會)對涉嫌違規的組織發動,且組織「必須配合,不得隱匿或銷毀證據」——這正是 Regulatory(法規調查)的定義特徵。記憶法:四種調查依「誰發動,為了什麼」區分:組織內部自查＝行政;執法機關辦罪＝刑事;私人間求償＝民事;主管機關查違規＝法規。",
+    "why_wrong_zh": {
+      "A": "行政調查是「組織內部」查政策違規或營運問題,正式程度最低;本題發動者是外部主管機關。",
+      "B": "刑事調查由執法機關針對「犯罪」進行,證據標準最高(beyond a reasonable doubt 排除合理懷疑);本題是違反金融法規,非刑事罪名。",
+      "C": "民事調查處理私人間的求償糾紛,採 preponderance of evidence(證據優勢)標準,發動者不是主管機關。"
+    },
+    "id": "D1-0008",
+    "domain": "D1",
+    "topic": "d1-p1",
+    "unit": "P1-D1-4",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-004.html",
+    "unit_title_zh": "法律、合規、隱私與倫理輪廓"
+  },
+  {
+    "stem_en": "Which control is PRIMARILY designed to ensure that no single employee can both execute a critical transaction and conceal wrongdoing on their own?",
+    "stem_zh": "哪種控制的主要設計目的,是確保沒有任何單一員工能「獨力」完成關鍵交易並同時隱匿弊端?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Least privilege",
+        "text_zh": "最小權限"
+      },
+      {
+        "key": "B",
+        "text_en": "Mandatory vacation",
+        "text_zh": "強制休假"
+      },
+      {
+        "key": "C",
+        "text_en": "Separation of duties",
+        "text_zh": "職責分離"
+      },
+      {
+        "key": "D",
+        "text_en": "Pre-employment background check",
+        "text_zh": "任用前背景查核"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "職責分離(Separation of Duties, SoD)把關鍵任務拆給多人,讓「執行」與「核准/隱匿」無法由同一人獨力完成——例如請款與核准分屬不同人,舞弊必須共謀才可能發生,難度大增。判斷邏輯:題幹關鍵字是「單一人無法獨力完成」,這正是 SoD 的結構性定義,屬事前預防。",
+    "why_wrong_zh": {
+      "A": "最小權限限縮「權限範圍」,但員工在自己的權限內仍可能獨力舞弊並隱匿。",
+      "B": "強制休假是「事後偵測」——他人接手時容易發現異常,但不能從結構上讓單一人做不成。",
+      "D": "背景查核是任用前的篩選控制,篩掉高風險的人,而非拆分任務結構。"
+    },
+    "id": "D1-0009",
+    "domain": "D1",
+    "topic": "d1-p1",
+    "unit": "P1-D1-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-005.html",
+    "unit_title_zh": "BCP、人員、供應鏈與意識"
+  },
+  {
+    "stem_en": "A company is about to sign a contract with a cloud service provider that will host sensitive customer data. What should the security manager do FIRST?",
+    "stem_zh": "公司即將與一家雲端服務商簽約,由其代管敏感的客戶資料。安全經理應該「首先」做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Purchase cyber insurance to cover losses caused by the provider",
+        "text_zh": "購買資安保險以涵蓋服務商造成的損失"
+      },
+      {
+        "key": "B",
+        "text_en": "Perform due diligence on the provider, such as reviewing its SOC 2 report, before signing",
+        "text_zh": "在簽約前對服務商進行盡職調查,例如審閱其 SOC 2 報告"
+      },
+      {
+        "key": "C",
+        "text_en": "Require the provider to sign an NDA covering the customer data",
+        "text_zh": "要求服務商簽署涵蓋客戶資料的保密協議"
+      },
+      {
+        "key": "D",
+        "text_en": "Schedule a security audit of the provider after the first year of service",
+        "text_zh": "安排在服務滿一年後對服務商進行安全稽核"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "供應鏈風險的鐵則:「事前把關優於事後補救」。簽約前先做盡職調查(due diligence)——審閱 SOC 2 報告,評估其安全態勢,再把安全要求與稽核權寫進合約。判斷邏輯:題目問 FIRST,流程上「先了解對方」永遠排在買保險,簽文件,排稽核之前;你的安全,受限於最弱的供應商。",
+    "why_wrong_zh": {
+      "A": "保險是風險轉移,不能取代事前評估,且應在了解風險大小後才決定是否投保。",
+      "C": "NDA 只是法律義務,無法證明對方「有能力」保護資料;它是盡職調查後的配套,不是第一步。",
+      "D": "等滿一年才稽核是事後補救,破口可能早已發生;稽核權應在簽約前就寫入合約。"
+    },
+    "id": "D1-0010",
+    "domain": "D1",
+    "topic": "d1-p1",
+    "unit": "P1-D1-5",
+    "set": "A",
+    "difficulty": 1,
+    "type": "single",
+    "tags": [
+      "P1"
+    ],
+    "source": "emails/day-005.html",
+    "unit_title_zh": "BCP、人員、供應鏈與意識"
+  },
+  {
+    "stem_en": "A security manager wants every newly built server in the organization to start from the same minimum security configuration, and plans to use a configuration management tool to detect systems that drift from it. Which type of governance document BEST captures this requirement?",
+    "stem_zh": "安全經理希望組織內每台新建伺服器都從相同的『最低安全組態』開始,並計畫用組態管理工具偵測偏離的系統。哪一類治理文件最能承載這項要求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Standard",
+        "text_zh": "標準"
+      },
+      {
+        "key": "B",
+        "text_en": "Baseline",
+        "text_zh": "基準"
+      },
+      {
+        "key": "C",
+        "text_en": "Procedure",
+        "text_zh": "程序"
+      },
+      {
+        "key": "D",
+        "text_en": "Guideline",
+        "text_zh": "指引"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Baseline(基準)定義全組織每個系統都必須達到的最低安全水準,通常是 system-specific(如伺服器建置的組態清單),並常以 GPO 或組態管理工具落實與偵測偏離——題幹的『最低安全組態＋每台伺服器一致＋工具偵測 drift』正是 baseline 的教科書定義。記憶:baseline＝最低起點設定。",
+    "why_wrong_zh": {
+      "A": "Standard 規範軟硬體與控制的一致性要求(如『一律用 AES-256』),但『每台系統的最低組態範本』這個層次更精準對應 baseline。",
+      "C": "Procedure 是逐步操作的 SOP,說明『怎麼把設定做出來』,不是定義最低組態要求本身。",
+      "D": "Guideline 是唯一非強制的建議性文件,無法承載『必須遵守』的最低安全要求。"
+    },
+    "id": "D1-0011",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-041.html",
+    "unit_title_zh": "治理文件層級與框架"
+  },
+  {
+    "stem_en": "The board of directors asks the CIO to adopt a framework that focuses on enterprise IT governance, keeps IT activities aligned with business strategy, and is commonly used by auditors for compliance reviews. Which framework BEST fits these requirements?",
+    "stem_zh": "董事會要求 CIO 導入一個聚焦企業 IT 治理,使 IT 活動與業務策略對齊,且常被稽核人員用於合規審查的框架。哪個框架最符合需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "ISO/IEC 27002",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "NIST Cybersecurity Framework (CSF)",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "COBIT",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "ITIL",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "COBIT 由 ISACA 制定,核心正是企業 IT 治理與『IT 對齊業務策略』,且實務上常被當作稽核/合規框架使用;其六大原則包含 provide stakeholder value 與 governance distinct from management。判斷關鍵字:『IT 治理＋業務對齊＋稽核』→ COBIT。",
+    "why_wrong_zh": {
+      "A": "ISO 27002 是 27001 控制的實作指引,焦點在資安控制細節,不在企業 IT 治理與業務對齊。",
+      "B": "NIST CSF 是風險導向的網路安全框架(六功能),用於管理網安風險,不是以 IT 治理與稽核為核心。",
+      "D": "ITIL 是 IT 服務管理(ITSM)最佳實務,對齊的是服務交付與業務需求,不是治理稽核框架。"
+    },
+    "id": "D1-0012",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-041.html",
+    "unit_title_zh": "治理文件層級與框架"
+  },
+  {
+    "stem_en": "A hospital's compliance team drafts an information security policy specifically because a healthcare law legally requires the organization to have one, and the policy's content mirrors the statute's mandates. Which type of policy is this?",
+    "stem_zh": "某醫院法遵團隊起草一份資訊安全政策,原因是醫療法律明文要求組織必須具備,政策內容也對應法條的強制要求。這屬於哪一種政策型態?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Advisory policy",
+        "text_zh": "建議型政策"
+      },
+      {
+        "key": "B",
+        "text_en": "Informative policy",
+        "text_zh": "資訊型政策"
+      },
+      {
+        "key": "C",
+        "text_en": "Regulatory policy",
+        "text_zh": "法規型政策"
+      },
+      {
+        "key": "D",
+        "text_en": "Organizational security policy",
+        "text_zh": "組織安全政策"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "為了符合法律/法規而制定的政策是 Regulatory(法規型)政策,常見於金融,醫療等受高度監管產業。判斷關鍵:制定動機來自『法律強制要求』而非管理層自主意志——先看『為什麼要有這份政策』,再對應政策型態。",
+    "why_wrong_zh": {
+      "A": "Advisory 是組織自行『強烈建議』遵循並說明違反後果的政策,動機是內部管理,不是法律強制。",
+      "B": "Informative 純屬告知性質,不具強制力,與法遵要求的強制本質不符。",
+      "D": "組織安全政策泛指界定安全範圍與目標的高階文件,是統稱,沒有點出『因法規而生』這個關鍵屬性。"
+    },
+    "id": "D1-0013",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-1",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-041.html",
+    "unit_title_zh": "治理文件層級與框架"
+  },
+  {
+    "stem_en": "A risk analyst values a manufacturing company's ERP system at $400,000. A ransomware event is expected to destroy 25% of the asset's value, and threat intelligence indicates such an event occurs about once every four years. What is the annualized loss expectancy (ALE) for this risk?",
+    "stem_zh": "風險分析師評估某製造公司 ERP 系統的資產價值為 $400,000。勒索軟體事件預估會毀損資產價值的 25%,威脅情資顯示此類事件約每 4 年發生一次。此風險的 ALE(年化損失期望)是多少?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "$100,000",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "$400,000",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "$10,000",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "$25,000",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "先算 SLE = AV × EF = 400,000 × 0.25 = $100,000;『每 4 年一次』換算 ARO = 1/4 = 0.25;ALE = SLE × ARO = 100,000 × 0.25 = $25,000/年。口訣:先 SLE(AV×EF),再乘 ARO 得 ALE;看到『每 N 年一次』先換算成 1/N。",
+    "why_wrong_zh": {
+      "A": "$100,000 是 SLE(單次損失),忘了乘上 ARO 年化。",
+      "B": "$400,000 是資產價值 AV 本身,不是任何損失期望值。",
+      "C": "$10,000 是把 ARO 誤代為 0.1(小數點錯位)的常見計算錯誤。"
+    },
+    "id": "D1-0014",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-042.html",
+    "unit_title_zh": "定量風險計算"
+  },
+  {
+    "stem_en": "A datacenter is valued at $2,000,000. The risk assessment team estimates that a major flood would destroy 40% of the facility. Which value should the analyst record as the exposure factor (EF) for this scenario?",
+    "stem_zh": "某資料中心價值 $2,000,000。風險評估團隊預估一場大洪水會摧毀設施的 40%。分析師應把哪個數值記為此情境的 EF(暴露係數)?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "0.40",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "$800,000",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "0.60",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "$1,200,000",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "EF 是單次事件造成資產損失的『百分比』,題幹直接給出『摧毀 40%』→ EF = 0.40。EF 是比例(無單位),不是金額;金額要到 SLE 才出現(SLE = 2,000,000 × 0.4 = $800,000)。別把 EF(%)與 SLE($)或 ARO(次/年)代錯位置。",
+    "why_wrong_zh": {
+      "B": "$800,000 是 SLE(單次損失金額 AV×EF),不是暴露係數。",
+      "C": "0.60 是『倖存比例』,把沒被摧毀的部分誤當成損失。",
+      "D": "$1,200,000 是倖存價值(60% × AV),既非 EF 也非 SLE。"
+    },
+    "id": "D1-0015",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-042.html",
+    "unit_title_zh": "定量風險計算"
+  },
+  {
+    "stem_en": "A proposed security control costs $40,000 per year to operate and is expected to reduce the ALE of a key system by $100,000. Using the return on security investment (ROSI) formula, what is the ROSI of this control?",
+    "stem_zh": "一項擬議的安全控制年營運成本為 $40,000,預期可使關鍵系統的 ALE 降低 $100,000。依 ROSI(資安投資報酬)公式,此控制的 ROSI 是多少?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "250%",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "40%",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "150%",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "60%",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "ROSI = (降低的 ALE − 控制成本) / 控制成本 = (100,000 − 40,000) / 40,000 = 1.5 = 150%。ROSI 為正代表投資划算,這也是 CISO 向管理層辯護資安預算的共同語言——把『要不要買』變成可量化的商業決策。",
+    "why_wrong_zh": {
+      "A": "250% 是漏減控制成本(直接算 100,000 / 40,000)的結果,分子應是『淨效益』。",
+      "B": "40% 是把公式顛倒(40,000 / 100,000)的算法,分母應是控制成本。",
+      "D": "60% 是把淨效益除以 ALE 降低額(60,000 / 100,000),分母代錯了。"
+    },
+    "id": "D1-0016",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-2",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-042.html",
+    "unit_title_zh": "定量風險計算"
+  },
+  {
+    "stem_en": "After an intrusion alert on a file server, the administrator removes the malware, restores the damaged files from backup, and applies the missing patch so the server returns to its normal state. Which control function BEST describes these actions?",
+    "stem_zh": "檔案伺服器發出入侵警報後,管理員清除惡意程式,從備份還原受損檔案,並補上缺漏的修補程式,使伺服器回到正常狀態。這些行動最符合哪種控制功能?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Corrective",
+        "text_zh": "矯正"
+      },
+      {
+        "key": "B",
+        "text_en": "Recovery",
+        "text_zh": "復原"
+      },
+      {
+        "key": "C",
+        "text_en": "Detective",
+        "text_zh": "偵測"
+      },
+      {
+        "key": "D",
+        "text_en": "Compensating",
+        "text_zh": "補償"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "事件發生『後』把受影響的系統修好,回到正常狀態——清惡意碼,還原備份,打修補——正是 Corrective(矯正)控制的定義。判斷關鍵:對象是『這台系統』的修復(修好這個),而非整體營運的災後重建(恢復營運)。",
+    "why_wrong_zh": {
+      "B": "Recovery 針對『災後恢復營運能力』(備援站點,DR 計畫),範圍是業務/站點層級;題幹只是修復單一伺服器。",
+      "C": "Detective 是發出警報,發現事件那一步;題幹問的是警報之後的處置行動。",
+      "D": "Compensating 是主控制無法實施時的等效替代方案,與事件後修復無關。"
+    },
+    "id": "D1-0017",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-043.html",
+    "unit_title_zh": "控制功能與類別、風險框架"
+  },
+  {
+    "stem_en": "A government agency has categorized a new information system, selected and implemented the controls, and just received the independent assessment results. Before the system goes live, a senior official must formally determine that the remaining risk is acceptable. Under the NIST RMF, which step should occur NEXT?",
+    "stem_zh": "某政府機關已完成新資訊系統的定級,控制的選擇與實作,並剛收到獨立評估結果。系統上線前,須由高階官員正式判定剩餘風險可接受。依 NIST RMF,下一步應執行哪個步驟?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Monitor",
+        "text_zh": "監控"
+      },
+      {
+        "key": "B",
+        "text_en": "Assess",
+        "text_zh": "評估"
+      },
+      {
+        "key": "C",
+        "text_en": "Select",
+        "text_zh": "選擇控制"
+      },
+      {
+        "key": "D",
+        "text_en": "Authorize",
+        "text_zh": "授權"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "RMF 循環步驟:Categorize → Select → Implement → Assess → Authorize → Monitor(SP 800-37 另有 Prepare 前置步驟)。評估完成後,由高階官員(Authorizing Official)基於剩餘風險是否可接受正式授權系統上線——這正體現『風險由管理層當責接受』,不是技術人員說了算。",
+    "why_wrong_zh": {
+      "A": "Monitor 是授權『之後』的持續監控與回報,順序未到。",
+      "B": "Assess 題幹已完成(獨立評估結果已出爐)。",
+      "C": "Select 在 Categorize 之後早已完成,不會回頭重選。"
+    },
+    "id": "D1-0018",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-043.html",
+    "unit_title_zh": "控制功能與類別、風險框架"
+  },
+  {
+    "stem_en": "To reduce the success rate of phishing attacks, a security manager rolls out mandatory security awareness training for all employees. How should this control be classified by function and by category?",
+    "stem_zh": "為降低釣魚攻擊的成功率,安全經理對全體員工推行強制的安全意識訓練。此控制的『功能』與『類別』應如何分類?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deterrent, administrative",
+        "text_zh": "嚇阻,管理"
+      },
+      {
+        "key": "B",
+        "text_en": "Preventive, technical",
+        "text_zh": "預防,技術"
+      },
+      {
+        "key": "C",
+        "text_en": "Preventive, administrative",
+        "text_zh": "預防,管理"
+      },
+      {
+        "key": "D",
+        "text_en": "Detective, administrative",
+        "text_zh": "偵測,管理"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "意識訓練透過教育提升員工辨識能力,事前降低事件發生機率(讓員工不上鉤)→ 功能是 Preventive;其形式屬人員/流程/訓練 → 類別是 Administrative。記住:一個控制要同時貼『功能 × 類別』兩個標籤,題目常兩個維度一起考。",
+    "why_wrong_zh": {
+      "A": "嚇阻(deterrent)作用於攻擊者或違規者的『意圖/心理』;訓練是提升員工的防禦能力,不是施加心理壓力。",
+      "B": "訓練不是軟硬體機制,類別不是技術(technical)。",
+      "D": "訓練不負責『發現已發生的事件』,不是偵測控制。"
+    },
+    "id": "D1-0019",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-3",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-043.html",
+    "unit_title_zh": "控制功能與類別、風險框架"
+  },
+  {
+    "stem_en": "A beverage company develops a unique syrup formula and wants legal protection that can last indefinitely, but refuses to publicly disclose the recipe through any registration process. Which form of intellectual property protection BEST meets these requirements?",
+    "stem_zh": "某飲料公司研發出獨家糖漿配方,希望法律保護能無限期延續,但拒絕透過任何註冊程序公開配方。哪種智慧財產保護最符合這些需求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Trade secret",
+        "text_zh": "營業秘密"
+      },
+      {
+        "key": "B",
+        "text_en": "Patent",
+        "text_zh": "專利"
+      },
+      {
+        "key": "C",
+        "text_en": "Copyright",
+        "text_zh": "著作權"
+      },
+      {
+        "key": "D",
+        "text_en": "Trademark",
+        "text_zh": "商標"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "營業秘密以『保密』換取『無限期』保護,且無需註冊或公開;只要維持祕密性,具經濟價值並採取合理保密措施,保護即持續(可口可樂配方是經典案例)。判斷關鍵字:『不公開＋無限期』兩個條件同時指向 trade secret。",
+    "why_wrong_zh": {
+      "B": "專利是『公開換約 20 年獨佔』,與『拒絕公開』和『無限期』兩個條件都直接衝突。",
+      "C": "著作權保護原創的『表達』,配方本身屬概念/事實,不在著作權保護範圍。",
+      "D": "商標保護的是品牌識別(名稱,標誌),不保護配方內容本身。"
+    },
+    "id": "D1-0020",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-044.html",
+    "unit_title_zh": "智財、跨境資料與隱私法條"
+  },
+  {
+    "stem_en": "A European company stores its customer data in the EU region of a cloud provider headquartered in the United States. Legal counsel warns that despite the data's physical location, it could still be subject to access demands under U.S. law. Which concept BEST describes this concern?",
+    "stem_zh": "某歐洲公司把客戶資料存放在一家美國總部雲端供應商的歐盟區域。法務提醒,儘管資料的實體位置在歐盟,仍可能因美國法律面臨調取要求。哪個概念最能描述這項疑慮?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data localization",
+        "text_zh": "資料在地化"
+      },
+      {
+        "key": "B",
+        "text_en": "Data residency",
+        "text_zh": "資料存放地"
+      },
+      {
+        "key": "C",
+        "text_en": "Data sovereignty",
+        "text_zh": "資料主權"
+      },
+      {
+        "key": "D",
+        "text_en": "Adequacy decision",
+        "text_zh": "充足性認定"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Data sovereignty(資料主權)談的是資料受哪國法律管轄——不只看存放地,還受供應商母國法令(如美國 CLOUD Act)影響。題幹核心正是『實體在歐盟,仍受美國法觸及』,即 residency ≠ sovereignty 的經典情境;雲端選商因此是法遵決策。",
+    "why_wrong_zh": {
+      "A": "在地化是法規『要求個資留在境內』的義務(如中國,俄羅斯);題幹資料已存放歐盟,爭點不在存放義務。",
+      "B": "Residency 只描述『資料實際存放的地理位置』;題幹的疑慮恰恰是存放地無法決定管轄權。",
+      "D": "充足性認定是歐盟對第三國保護水準的認可機制,處理的是跨境傳輸合法性,不是母國法令調取問題。"
+    },
+    "id": "D1-0021",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-044.html",
+    "unit_title_zh": "智財、跨境資料與隱私法條"
+  },
+  {
+    "stem_en": "A software vendor discovers that a competitor studied its product's behavior and released a rival application implementing the same algorithm with entirely independently written source code. Why is the vendor's copyright infringement claim MOST likely to fail?",
+    "stem_zh": "某軟體商發現競爭者研究其產品行為後,以完全獨立撰寫的原始碼實作相同演算法並推出競品。為何該軟體商的著作權侵權主張最可能不成立?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Copyright protects the expression of the code, not the underlying algorithm or idea",
+        "text_zh": "著作權保護程式碼的『表達』,不及於底層演算法或概念"
+      },
+      {
+        "key": "B",
+        "text_en": "The vendor failed to register the software with a copyright office",
+        "text_zh": "軟體商未向著作權主管機關完成登記"
+      },
+      {
+        "key": "C",
+        "text_en": "Software can only be protected by patents, not copyright",
+        "text_zh": "軟體只能以專利保護,不受著作權保護"
+      },
+      {
+        "key": "D",
+        "text_en": "The competitor's larger market share establishes fair use",
+        "text_zh": "競爭者較大的市占構成合理使用"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "著作權保護原創的『表達』(這段程式碼怎麼寫),不保護背後的概念/演算法;競爭者獨立撰寫程式碼,並未重製受保護的表達,著作權主張自然難以成立。想保護演算法概念,應評估專利(公開換獨佔)或營業秘密(保密防洩)。",
+    "why_wrong_zh": {
+      "B": "著作權於創作完成時自動發生,登記不是保護要件(登記多為訴訟便利)。",
+      "C": "軟體程式碼本身即受著作權保護,說法錯誤;專利只是保護演算法概念的另一途徑。",
+      "D": "合理使用(fair use)與市占無關,且對方根本沒有重製任何受保護的表達。"
+    },
+    "id": "D1-0022",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-4",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-044.html",
+    "unit_title_zh": "智財、跨境資料與隱私法條"
+  },
+  {
+    "stem_en": "The BIA for an e-commerce order database establishes an RPO of 4 hours, but the database is currently protected only by a nightly full backup. Which action would BEST bring the environment into line with the BIA?",
+    "stem_zh": "電商訂單資料庫的 BIA 訂出 RPO 為 4 小時,但目前僅靠每晚一次的完整備份保護。哪個行動最能使環境符合 BIA 的要求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Shorten the RTO by pre-staging a warm standby server",
+        "text_zh": "以預先就緒的暖備援伺服器縮短 RTO"
+      },
+      {
+        "key": "B",
+        "text_en": "Keep nightly backups because the RTO target is still met",
+        "text_zh": "維持每晚備份,因為 RTO 目標仍可達成"
+      },
+      {
+        "key": "C",
+        "text_en": "Ask management to extend the MTD for the order process",
+        "text_zh": "請管理層延長訂單流程的 MTD"
+      },
+      {
+        "key": "D",
+        "text_en": "Increase backup or replication frequency so no more than 4 hours of data can be lost",
+        "text_zh": "提高備份/複寫頻率,使資料遺失不超過 4 小時"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "RPO 是『可容忍的資料遺失量』,直接決定備份頻率:RPO 4 小時代表最後一次可用備份距故障點不得超過 4 小時;每晚一次(最多丟 24 小時)明顯不符,必須把備份/複寫頻率提高到至少每 4 小時。判斷關鍵:題目談『能丟多少資料』→ RPO → 備份頻率,時間軸看『過去』。",
+    "why_wrong_zh": {
+      "A": "RTO 處理『系統多快回來』(時間軸看未來);加快復原無法減少已經遺失的資料。",
+      "B": "RTO 達標與 RPO 是兩個獨立指標,24 小時的潛在資料損失仍違反 RPO 要求。",
+      "C": "MTD 是業務中斷的上限,與資料遺失量無關;改指標遷就現狀更是本末倒置。"
+    },
+    "id": "D1-0023",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-045.html",
+    "unit_title_zh": "BCP/BIA、人員、供應鏈、威脅建模"
+  },
+  {
+    "stem_en": "A bank uncovers a multi-year fraud scheme run by an accountant who single-handedly controlled every step of the payment process and had not taken a vacation in years. Which combination of personnel security controls would MOST likely have detected this scheme earlier?",
+    "stem_zh": "某銀行揭發一起多年的舞弊案,涉案會計師獨自掌控付款流程的每個步驟,且多年未曾休假。哪種人員安全控制組合最可能提早偵測出這起舞弊?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Stricter pre-employment background checks",
+        "text_zh": "更嚴格的任用前背景查核"
+      },
+      {
+        "key": "B",
+        "text_en": "Separation of duties combined with mandatory vacations",
+        "text_zh": "職務分離搭配強制休假"
+      },
+      {
+        "key": "C",
+        "text_en": "A signed nondisclosure agreement (NDA)",
+        "text_zh": "簽署保密協議"
+      },
+      {
+        "key": "D",
+        "text_en": "Annual security awareness training",
+        "text_zh": "年度安全意識訓練"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "職務分離(SoD)讓單人無法獨立完成整個敏感流程,舞弊必須共謀才可能;強制休假(mandatory vacation)迫使他人代理其職務,長期舞弊會在代理期間曝光——兩者正是針對『一人掌控全流程＋從不休假』這組紅旗設計的人員控制。Think like a manager:流程設計面的控制,勝過事後補救。",
+    "why_wrong_zh": {
+      "A": "背景查核只能過濾任用『前』已知的不良紀錄,擋不住到職後才開始的舞弊。",
+      "C": "NDA 管的是資訊保密義務,與偵測財務舞弊無關。",
+      "D": "意識訓練提升整體防禦意識,對內部人蓄意舞弊幾乎沒有偵測效果。"
+    },
+    "id": "D1-0024",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-045.html",
+    "unit_title_zh": "BCP/BIA、人員、供應鏈、威脅建模"
+  },
+  {
+    "stem_en": "A security architect wants a threat modeling methodology that is attacker-centric, proceeds through seven defined stages, and ties simulated attacks back to business impact so that results can be prioritized as risk. Which methodology BEST fits?",
+    "stem_zh": "安全架構師想採用一套以攻擊者為中心,依七個明確階段進行,並把模擬攻擊連結回業務衝擊,使結果能以風險排序的威脅建模方法。哪個方法最符合?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "STRIDE",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "DREAD",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "PASTA",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "MITRE ATT&CK",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "PASTA(Process for Attack Simulation and Threat Analysis)是七階段,風險/攻擊者導向的威脅建模方法,從定義風險分析目標一路走到攻擊模擬(AMS)與風險分析管理(RAM),核心正是『攻擊模擬＋業務影響』。判斷關鍵字:『七階段＋攻擊模擬＋以風險排序』→ PASTA。",
+    "why_wrong_zh": {
+      "A": "STRIDE 是六類威脅『分類法』,幫設計期系統化找威脅,不是七階段的風險導向流程。",
+      "B": "DREAD 是五構面的風險『評分』模型,用來排優先序,本身不含攻擊模擬流程。",
+      "D": "MITRE ATT&CK 是真實攻擊者 TTP 的知識庫,常用於偵測與對照,不是威脅建模方法論。"
+    },
+    "id": "D1-0025",
+    "domain": "D1",
+    "topic": "d1-p2",
+    "unit": "P2-D1-5",
+    "set": "A",
+    "difficulty": 2,
+    "type": "single",
+    "tags": [
+      "P2"
+    ],
+    "source": "emails/day-045.html",
+    "unit_title_zh": "BCP/BIA、人員、供應鏈、威脅建模"
+  },
+  {
+    "stem_en": "An organization conducts regular risk assessments and reviews vendor security reports before signing contracts. Which concept does this BEST represent?",
+    "stem_zh": "某組織定期執行風險評估,並在簽約前審查供應商安全報告。這最能代表哪個概念?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Due care",
+        "text_zh": "應盡注意"
+      },
+      {
+        "key": "B",
+        "text_en": "Due diligence",
+        "text_zh": "盡職調查"
+      },
+      {
+        "key": "C",
+        "text_en": "Separation of duties",
+        "text_zh": "職責分離"
+      },
+      {
+        "key": "D",
+        "text_en": "Defense in depth",
+        "text_zh": "縱深防禦"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "評估、查證、審查報告屬於『持續了解與調查風險』＝Due Diligence。記憶:Diligence＝investigate/think。",
+    "why_wrong_zh": {
+      "A": "Due care 是『依評估採取保護行動』(部署控制),此題在『調查』階段。",
+      "C": "職責分離是防舞弊的人事控制,與此情境無關。",
+      "D": "縱深防禦是多層控制策略,非『調查』行為。"
+    },
+    "id": "D1-0026",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-081.html",
+    "unit_title_zh": "考點：due care/diligence 與倫理準則"
+  },
+  {
+    "stem_en": "A CISSP discovers that a client's product has a critical flaw that could endanger public safety, but the client asks to keep it quiet. According to the (ISC)² Code of Ethics, what should the CISSP prioritize?",
+    "stem_zh": "一位 CISSP 發現客戶產品有可能危及公共安全的重大缺陷,但客戶要求保密。依 (ISC)² 倫理準則,應優先考量什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Maintain client confidentiality",
+        "text_zh": "維護客戶機密"
+      },
+      {
+        "key": "B",
+        "text_en": "Protect society and the common good",
+        "text_zh": "保護社會與公共利益"
+      },
+      {
+        "key": "C",
+        "text_en": "Advance the profession",
+        "text_zh": "促進專業"
+      },
+      {
+        "key": "D",
+        "text_en": "Avoid liability",
+        "text_zh": "避免自身責任"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "(ISC)² 準則順序即優先序,第一條『Protect society, the common good...』高於對委託人的義務。公共安全優先於客戶保密要求。",
+    "why_wrong_zh": {
+      "A": "對委託人盡責(含保密)排序在『保護社會』之後,衝突時讓位。",
+      "C": "促進專業是第四條,優先序最低。",
+      "D": "避免自身責任非倫理準則的考量重點,且不應凌駕公共安全。"
+    },
+    "id": "D1-0027",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-081.html",
+    "unit_title_zh": "考點：due care/diligence 與倫理準則"
+  },
+  {
+    "stem_en": "After a breach, investigators find the company had documented security policies but never implemented or tested them. In legal terms, the company most likely failed to exercise:",
+    "stem_zh": "外洩後,調查發現公司有書面安全政策卻從未落實或測試。法律上,公司最可能未善盡:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Due diligence",
+        "text_zh": "盡職調查"
+      },
+      {
+        "key": "B",
+        "text_en": "Due care",
+        "text_zh": "應盡注意"
+      },
+      {
+        "key": "C",
+        "text_en": "Separation of duties",
+        "text_zh": "職責分離"
+      },
+      {
+        "key": "D",
+        "text_en": "Least privilege",
+        "text_zh": "最小權限"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "有政策卻不落實＝未採取合理保護『行動』＝未盡 Due Care,可能構成過失(negligence)。Due care 強調『實際做到』。",
+    "why_wrong_zh": {
+      "A": "Due diligence 是『調查了解』;公司其實有政策(已了解),問題在未『行動』。"
+    },
+    "id": "D1-0028",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-081.html",
+    "unit_title_zh": "考點：due care/diligence 與倫理準則"
+  },
+  {
+    "stem_en": "A CISSP consultant located in Country A performs security services remotely for a client in Country B. A regulation in Country B conflicts with the law of Country A. According to (ISC)² ethics guidance on acting legally, which law should the consultant prioritize?",
+    "stem_zh": "一位人在 A 國的 CISSP 顧問,遠端為 B 國客戶提供安全服務。B 國某法規與 A 國法律衝突。依 (ISC)² 倫理準則對『合法行事』的指引,顧問應優先遵循哪個法律?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The law of Country B, because serving the principal's interests comes first",
+        "text_zh": "優先 B 國法律,委託人利益至上"
+      },
+      {
+        "key": "B",
+        "text_en": "Whichever law imposes the stricter requirement",
+        "text_zh": "以要求較嚴格者為準"
+      },
+      {
+        "key": "C",
+        "text_en": "The law of Country A, the local jurisdiction from which the services are performed",
+        "text_zh": "優先 A 國法律(實際執行服務所在的當地管轄)"
+      },
+      {
+        "key": "D",
+        "text_en": "The (ISC)² Code of Ethics, which overrides both national laws",
+        "text_zh": "以 (ISC)² 倫理準則凌駕兩國法律"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "Canon II(Act honorably...legally)的官方指引:跨國/跨管轄法律衝突時,應優先『執行服務所在地(local jurisdiction from which you are performing the services)』的法律。顧問人在 A 國執行服務,故 A 國法律優先。記憶:『人在哪裡做,就先守哪裡的法』。",
+    "why_wrong_zh": {
+      "A": "對委託人盡責(Canon III)排在 Act legally(Canon II)之後,不能以客戶利益作為選法依據。",
+      "B": "『較嚴格者為準』是常見的合規實務直覺,但 (ISC)² 指引明確以『執行服務所在地』為優先,非嚴格程度。",
+      "D": "倫理準則要求你守法,但它本身不是法律,不能凌駕國家法律。"
+    },
+    "id": "D1-0029",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-081.html",
+    "unit_title_zh": "考點：due care/diligence 與倫理準則"
+  },
+  {
+    "stem_en": "An organization has already implemented security controls required by its policies. To BEST defend against a future claim of negligence, which ongoing activity should the security manager prioritize?",
+    "stem_zh": "某組織已依政策部署必要的安全控制。為了將來能對抗『過失(negligence)』指控,安全經理最應優先持續進行哪項活動?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Continuously monitor, audit, and document that controls remain effective",
+        "text_zh": "持續監控稽核控制有效性並留存紀錄"
+      },
+      {
+        "key": "B",
+        "text_en": "Deploy additional preventive controls to reduce risk further",
+        "text_zh": "加碼部署更多預防控制以進一步降風險"
+      },
+      {
+        "key": "C",
+        "text_en": "Purchase cyber liability insurance to transfer legal exposure",
+        "text_zh": "購買資安責任險轉移法律風險"
+      },
+      {
+        "key": "D",
+        "text_en": "Require all employees to re-sign the security policy annually",
+        "text_zh": "要求全員每年重簽安全政策"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "考綱筆記關鍵句:『Due diligence is the ability to prove due care』——部署控制是 due care,而『持續驗證並能證明有做』是 due diligence。面對過失指控,法庭看的是你能否舉證持續盡責,因此持續監控＋稽核＋留存紀錄最優先。",
+    "why_wrong_zh": {
+      "B": "加控制也是好事(due care 的延伸),但沒有驗證與紀錄,仍無法『證明』盡責——鑑別點在舉證能力。",
+      "C": "保險轉移財務衝擊,不能證明你有盡責,也不阻卻過失認定。",
+      "D": "簽署政策只是形式承諾,day-081 Q3 的教訓:有政策沒落實反而構成未盡 due care。"
+    },
+    "id": "D1-0030",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-081.html",
+    "unit_title_zh": "考點：due care/diligence 與倫理準則"
+  },
+  {
+    "stem_en": "A company appoints a CISO with full functional responsibility for the security program. After a major breach, regulators ask who is ULTIMATELY accountable for the organization's security. The BEST answer is:",
+    "stem_zh": "某公司任命 CISO 全權負責安全計畫的執行。重大外洩後,監管機關詢問誰對組織安全負最終當責。最佳答案是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The CISO, who runs the security program day to day",
+        "text_zh": "日常主導安全計畫的 CISO"
+      },
+      {
+        "key": "B",
+        "text_en": "Senior management, because accountability for security cannot be delegated",
+        "text_zh": "高階管理層,安全當責不可下授"
+      },
+      {
+        "key": "C",
+        "text_en": "The data custodian who operated the affected system",
+        "text_zh": "營運受害系統的資料保管者"
+      },
+      {
+        "key": "D",
+        "text_en": "The external auditor who last reviewed the controls",
+        "text_zh": "最近一次審查控制的外部稽核員"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "Responsibility(執行責任)可以委派,accountability(最終當責)不行。Senior management 對組織安全負最終當責,即使已任命 CISO 執行——這正是 due care/diligence 落在管理層的原因。Think like a manager:看到 ULTIMATELY 就往最高層找。",
+    "why_wrong_zh": {
+      "A": "CISO 承接的是 functional responsibility(執行),不是最終 accountability——這是本題的高誘答陷阱。",
+      "C": "Custodian 只依政策執行保護作業,層級更低。",
+      "D": "稽核員負責驗證控制落實,不承擔組織安全的當責。"
+    },
+    "id": "D1-0031",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-1",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-081.html",
+    "unit_title_zh": "考點：due care/diligence 與倫理準則"
+  },
+  {
+    "stem_en": "An asset is valued at $1,000,000. A single fire is estimated to destroy 40% of it, and such a fire is expected once every 10 years. What is the ALE?",
+    "stem_zh": "某資產價值 $1,000,000。一次火災估計毀損其 40%,且此類火災預期每 10 年發生一次。ALE 是多少?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "$40,000",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "$400,000",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "$4,000",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "$100,000",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "SLE = AV × EF = 1,000,000 × 0.4 = $400,000;ARO = 1/10 = 0.1;ALE = SLE × ARO = 400,000 × 0.1 = $40,000。",
+    "why_wrong_zh": {
+      "B": "$400,000 是 SLE(單次損失),不是年化的 ALE(漏乘 ARO)。",
+      "C": "$4,000 是把 ARO 誤算或多除一位。",
+      "D": "$100,000 與題目數據不符(EF 用錯)。"
+    },
+    "id": "D1-0032",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-082.html",
+    "unit_title_zh": "考點：定量風險計算題"
+  },
+  {
+    "stem_en": "Given an ALE of $50,000, a proposed safeguard costs $60,000 per year and would reduce the ALE to near zero. What is the BEST recommendation?",
+    "stem_zh": "已知 ALE 為 $50,000,某防護方案年成本 $60,000 可將 ALE 降至近乎零。最佳建議為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Implement the safeguard",
+        "text_zh": "部署該控制"
+      },
+      {
+        "key": "B",
+        "text_en": "Accept the risk",
+        "text_zh": "接受風險"
+      },
+      {
+        "key": "C",
+        "text_en": "Buy more insurance",
+        "text_zh": "加買保險至全額"
+      },
+      {
+        "key": "D",
+        "text_en": "Transfer all risk to a vendor",
+        "text_zh": "全數轉移給廠商"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "控制年成本($60,000) > 它能降低的 ALE($50,000),不划算;理性選擇是接受(或尋找更便宜的控制)。資安要划算,非零風險。",
+    "why_wrong_zh": {
+      "A": "花 $60,000 省 $50,000 是淨虧損,不應部署。",
+      "C": "保費合理上限應低於 ALE($50,000),$60,000 同樣不划算。",
+      "D": "轉移仍有成本,且通常不會優於『接受』一個低於控制成本的風險。"
+    },
+    "id": "D1-0033",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-082.html",
+    "unit_title_zh": "考點：定量風險計算題"
+  },
+  {
+    "stem_en": "A safeguard reduces ARO from 0.5 to 0.1 for a risk with SLE of $200,000, and costs $50,000 per year. What is the net annual benefit?",
+    "stem_zh": "某控制使一個 SLE 為 $200,000 的風險,其 ARO 由 0.5 降到 0.1,年成本 $50,000。淨年度效益為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "$30,000",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "$80,000",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "$130,000",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "$20,000",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "舊 ALE = 200,000×0.5 = $100,000;新 ALE = 200,000×0.1 = $20,000;降低 $80,000;淨效益 = 80,000 − 50,000(成本) = $30,000。",
+    "why_wrong_zh": {
+      "B": "$80,000 是 ALE 降低額,尚未扣控制成本。",
+      "C": "$130,000 為加總錯誤。",
+      "D": "$20,000 是新 ALE,非淨效益。"
+    },
+    "id": "D1-0034",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-082.html",
+    "unit_title_zh": "考點：定量風險計算題"
+  },
+  {
+    "stem_en": "A risk has an SLE of $200,000 and an ARO of 0.4. Safeguard X costs $30,000 per year and reduces the ARO to 0.1. Safeguard Y costs $10,000 per year and reduces the SLE to $120,000. To MAXIMIZE net annual benefit, which safeguard should the security manager recommend?",
+    "stem_zh": "某風險 SLE 為 $200,000、ARO 為 0.4。方案 X 年成本 $30,000,可將 ARO 降至 0.1;方案 Y 年成本 $10,000,可將 SLE 降至 $120,000。若要讓年化淨效益最大,安全經理應建議哪個方案?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Safeguard X, because its net annual benefit of $30,000 exceeds Y's $22,000",
+        "text_zh": "方案 X,淨年效益 $30,000 高於 Y 的 $22,000"
+      },
+      {
+        "key": "B",
+        "text_en": "Safeguard Y, because it has the lowest annual cost",
+        "text_zh": "方案 Y,年成本最低"
+      },
+      {
+        "key": "C",
+        "text_en": "Safeguard Y, because its benefit-to-cost ratio is higher",
+        "text_zh": "方案 Y,效益成本比較高"
+      },
+      {
+        "key": "D",
+        "text_en": "Implement both safeguards to eliminate the risk entirely",
+        "text_zh": "兩案並行以完全消除風險"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "原 ALE = 200,000×0.4 = $80,000。X:新 ALE = 200,000×0.1 = $20,000,降低 $60,000,淨效益 = 60,000−30,000 = $30,000。Y:新 ALE = 120,000×0.4 = $48,000,降低 $32,000,淨效益 = 32,000−10,000 = $22,000。題目問的是『淨效益最大(絕對金額)』→ 選 X。先看清楚題目要的指標,再套公式:舊 ALE−新 ALE−年成本。",
+    "why_wrong_zh": {
+      "B": "成本低不等於淨效益高;決策依據是『降低額減成本』,不是成本本身。",
+      "C": "Y 的效益成本比確實較高(220% vs 100%)——敘述為真,但題目明確問淨年效益最大,X 的 $30,000 > Y 的 $22,000,故 C 是『對的事實、錯的答案』。",
+      "D": "兩案效果不可直接相加,且『完全消除風險』不是定量決策的目標;疊加後成本 $40,000 也未必划算。"
+    },
+    "id": "D1-0035",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-082.html",
+    "unit_title_zh": "考點：定量風險計算題"
+  },
+  {
+    "stem_en": "After a set of safeguards is implemented, management asks the risk team to express the risk that remains. Which formula BEST represents residual risk?",
+    "stem_zh": "部署一批控制後,管理層要求風險團隊表達『剩下的風險』。哪個公式最能代表剩餘風險(residual risk)?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Total risk − controls gap",
+        "text_zh": "總風險 − 控制缺口"
+      },
+      {
+        "key": "B",
+        "text_en": "Threats × vulnerabilities × asset value",
+        "text_zh": "威脅 × 弱點 × 資產價值"
+      },
+      {
+        "key": "C",
+        "text_en": "SLE × ARO",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "ALE before safeguard − ALE after safeguard",
+        "text_zh": "控制前 ALE − 控制後 ALE"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "考綱公式:total risk − controls gap = residual risk。Total risk 是完全不設防時的風險;controls gap 是控制『吃掉』的那部分;剩下的就是管理層選擇承擔的剩餘風險。",
+    "why_wrong_zh": {
+      "B": "threats × vulnerabilities × asset value 是 total risk(總風險)的概念公式,不是剩餘風險。",
+      "C": "SLE × ARO 是 ALE(年化損失期望),量測單一風險的年損失,非控制後的剩餘概念。",
+      "D": "控制前後 ALE 之差是『ALE 降低額』(≈controls gap 的量化),恰好是被消除的部分——與剩餘風險正好相反。"
+    },
+    "id": "D1-0036",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-082.html",
+    "unit_title_zh": "考點：定量風險計算題"
+  },
+  {
+    "stem_en": "A safeguard costs $25,000 per year and reduces the ALE of a risk from $90,000 to $30,000. Expressed as a percentage of the safeguard's cost, what is the return on security investment (ROSI)?",
+    "stem_zh": "某控制年成本 $25,000,可將某風險的 ALE 從 $90,000 降至 $30,000。以控制成本為基準的投資報酬率(ROSI)是多少?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "240%",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "100%",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "140%",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "58%",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "ALE 降低額 = 90,000−30,000 = $60,000;ROSI = (ALE 降低額 − 控制年成本) ÷ 控制年成本 = (60,000−25,000) ÷ 25,000 = 35,000 ÷ 25,000 = 140%。步驟:①算降低額 ②扣成本得淨效益 ③除以成本化成百分比。",
+    "why_wrong_zh": {
+      "A": "240% 是 60,000÷25,000——忘了先扣除控制成本(分子用毛效益)。",
+      "B": "100% 是憑直覺湊整,無對應計算路徑。",
+      "D": "58% 是 35,000÷60,000——分母誤用 ALE 降低額而非控制成本。"
+    },
+    "id": "D1-0037",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-2",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-082.html",
+    "unit_title_zh": "考點：定量風險計算題"
+  },
+  {
+    "stem_en": "A company installs CCTV cameras at data center entrances. In terms of control FUNCTION, this is primarily a:",
+    "stem_zh": "公司在資料中心入口裝設 CCTV。就控制『功能』而言,這主要屬於:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Preventive control",
+        "text_zh": "預防控制"
+      },
+      {
+        "key": "B",
+        "text_en": "Detective control",
+        "text_zh": "偵測控制"
+      },
+      {
+        "key": "C",
+        "text_en": "Corrective control",
+        "text_zh": "矯正控制"
+      },
+      {
+        "key": "D",
+        "text_en": "Compensating control",
+        "text_zh": "補償控制"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "CCTV 記錄並協助『發現』已發生/正在發生的事件＝Detective(偵測)。就類別而言它是 Physical/Technical。",
+    "why_wrong_zh": {
+      "A": "預防是『阻止事件發生』(如門鎖);CCTV 本身不阻止入侵,僅記錄偵測。",
+      "C": "矯正是事件後修復(如還原),非偵測。",
+      "D": "補償是主控制不可行時的替代,此題無此情境。"
+    },
+    "id": "D1-0038",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-083.html",
+    "unit_title_zh": "考點：控制分類與風險回應"
+  },
+  {
+    "stem_en": "An organization decides to stop offering a high-risk online service entirely because the risk cannot be reduced cost-effectively. This is an example of risk:",
+    "stem_zh": "某組織因無法以合理成本降低風險,決定完全停止提供某高風險線上服務。這是哪種風險回應?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Mitigation",
+        "text_zh": "降低"
+      },
+      {
+        "key": "B",
+        "text_en": "Transfer",
+        "text_zh": "轉移"
+      },
+      {
+        "key": "C",
+        "text_en": "Avoidance",
+        "text_zh": "規避"
+      },
+      {
+        "key": "D",
+        "text_en": "Acceptance",
+        "text_zh": "接受"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "停止該活動以消除風險來源＝Risk Avoidance(規避)。",
+    "why_wrong_zh": {
+      "A": "降低是部署控制把風險壓低,但仍繼續該活動。",
+      "B": "轉移是把損失移給第三方(保險/外包),活動仍在。",
+      "D": "接受是繼續承擔風險,與『停止服務』相反。"
+    },
+    "id": "D1-0039",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-083.html",
+    "unit_title_zh": "考點：控制分類與風險回應"
+  },
+  {
+    "stem_en": "A legacy system cannot be patched without breaking operations. The team isolates it on a separate VLAN and adds enhanced monitoring. This additional control is BEST described as:",
+    "stem_zh": "某老舊系統無法在不影響營運下修補,團隊將其隔離於獨立 VLAN 並加強監控。這個額外控制最適合稱為:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Preventive control",
+        "text_zh": "預防控制"
+      },
+      {
+        "key": "B",
+        "text_en": "Compensating control",
+        "text_zh": "補償控制"
+      },
+      {
+        "key": "C",
+        "text_en": "Deterrent control",
+        "text_zh": "嚇阻控制"
+      },
+      {
+        "key": "D",
+        "text_en": "Recovery control",
+        "text_zh": "復原控制"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "當原本要求的控制(修補)因營運限制無法實施,以等效替代(隔離＋監控)填補＝Compensating Control(補償控制)。",
+    "why_wrong_zh": {
+      "A": "雖然隔離有預防成分,但此情境的關鍵是『替代無法實施的主控制』＝補償。",
+      "C": "嚇阻作用於人的意圖,與技術隔離無關。",
+      "D": "復原是災後恢復營運,非此情境。"
+    },
+    "id": "D1-0040",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-083.html",
+    "unit_title_zh": "考點：控制分類與風險回應"
+  },
+  {
+    "stem_en": "A company configures every system to display a logon banner stating that unauthorized access is prohibited and that all activity is monitored and may be prosecuted. In terms of control FUNCTION, the banner is BEST classified as:",
+    "stem_zh": "公司在所有系統設定登入告示,聲明禁止未經授權存取、所有活動皆受監控並可能被起訴。就控制『功能』而言,此告示最適合歸類為:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Preventive control",
+        "text_zh": "預防控制"
+      },
+      {
+        "key": "B",
+        "text_en": "Detective control",
+        "text_zh": "偵測控制"
+      },
+      {
+        "key": "C",
+        "text_en": "Deterrent control",
+        "text_zh": "嚇阻控制"
+      },
+      {
+        "key": "D",
+        "text_en": "Corrective control",
+        "text_zh": "矯正控制"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "告示本身不會阻擋任何人的『能力』——按下 Enter 依然進得去;它作用在意圖/心理(讓人打消念頭並喪失『不知者無罪』的抗辯)＝Deterrent。判斷口訣:擋『能力』＝Preventive(門鎖/ACL);擋『意圖』＝Deterrent(警告牌/告示)。",
+    "why_wrong_zh": {
+      "A": "高誘答陷阱——『阻止入侵』聽起來像預防,但告示沒有任何技術性阻擋能力,依賴違規者『自己被說服』,故屬嚇阻。",
+      "B": "告示不記錄也不發現事件;真正偵測的是背後的監控機制,不是告示本身。",
+      "D": "矯正是事件後修復(還原/修補),與事前告示無關。"
+    },
+    "id": "D1-0041",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-083.html",
+    "unit_title_zh": "考點：控制分類與風險回應"
+  },
+  {
+    "stem_en": "After mitigating ransomware risk as far as is cost-effective, an organization purchases a cyber insurance policy to cover the remaining potential financial loss and continues the business activity. The insurance purchase is BEST described as risk:",
+    "stem_zh": "某組織已將勒索軟體風險降到符合成本效益的程度後,再購買資安保險以涵蓋剩餘的潛在財務損失,並持續營運。購買保險的行為最適合描述為哪種風險回應?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Mitigation",
+        "text_zh": "降低"
+      },
+      {
+        "key": "B",
+        "text_en": "Transfer",
+        "text_zh": "轉移"
+      },
+      {
+        "key": "C",
+        "text_en": "Avoidance",
+        "text_zh": "規避"
+      },
+      {
+        "key": "D",
+        "text_en": "Acceptance",
+        "text_zh": "接受"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "保險不會讓風險消失或變小——事件照樣可能發生,只是財務衝擊由第三方(保險公司)承擔＝Transfer。一個情境可以混用多種回應:前段部署控制是 Mitigation,買保險這個『動作本身』是 Transfer,題目問的是後者。",
+    "why_wrong_zh": {
+      "A": "Mitigation 是以控制降低可能性或衝擊;保險不改變事件的發生機率與技術衝擊,只轉嫁損失——『減輕財務痛苦』≠降低風險本身。",
+      "C": "規避是停止該活動消除風險源;組織仍持續營運,並未規避。",
+      "D": "接受是自己承擔剩餘損失;此處損失已由保險承擔,故是轉移(保險理賠範圍外的部分才是接受)。"
+    },
+    "id": "D1-0042",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-083.html",
+    "unit_title_zh": "考點：控制分類與風險回應"
+  },
+  {
+    "stem_en": "A department head is informed of an identified risk but refuses to evaluate it, saying \"we have never been attacked, so there is nothing to decide.\" No analysis is performed and no sign-off is recorded. This response is BEST described as risk:",
+    "stem_zh": "部門主管被告知一項已識別的風險,卻拒絕評估,聲稱『我們從沒被攻擊過,沒什麼好決定的』。既無分析,也無簽核紀錄。這種回應最適合描述為哪種風險回應?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Acceptance",
+        "text_zh": "接受"
+      },
+      {
+        "key": "B",
+        "text_en": "Rejection",
+        "text_zh": "拒絕(忽視)"
+      },
+      {
+        "key": "C",
+        "text_en": "Deterrence",
+        "text_zh": "嚇阻"
+      },
+      {
+        "key": "D",
+        "text_en": "Avoidance",
+        "text_zh": "規避"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "否認風險存在、不評估、不留紀錄＝Risk Rejection(拒絕/忽視風險),考綱明言這不是合乎 due care/due diligence 的正當回應。與 Acceptance 的分水嶺:接受必須是知情(有分析)＋管理層正式簽核的決策;沒走這個流程的『不管它』就是 Rejection。",
+    "why_wrong_zh": {
+      "A": "高誘答陷阱——表面上像『接受』,但缺少知情評估與正式簽核,不構成合法的 Acceptance。",
+      "C": "嚇阻是對『違規者』部署威懾手段,與主管忽視風險無關。",
+      "D": "規避是評估後決定停止活動以消除風險源;此處連評估都沒有做。"
+    },
+    "id": "D1-0043",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-3",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-083.html",
+    "unit_title_zh": "考點：控制分類與風險回應"
+  },
+  {
+    "stem_en": "A retailer uses a cloud email-marketing provider to send campaigns to its customers. Under GDPR, the cloud provider acts as the:",
+    "stem_zh": "某零售商使用雲端郵件行銷服務商向其客戶寄送活動信。GDPR 下,該雲端服務商的角色是:",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Data controller",
+        "text_zh": "控管者"
+      },
+      {
+        "key": "B",
+        "text_en": "Data processor",
+        "text_zh": "處理者"
+      },
+      {
+        "key": "C",
+        "text_en": "Data subject",
+        "text_zh": "當事人"
+      },
+      {
+        "key": "D",
+        "text_en": "Supervisory authority",
+        "text_zh": "監管機關"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "零售商決定處理目的與方式(寄行銷信)＝Controller;雲端商依指示代為處理＝Processor,須簽 DPA。",
+    "why_wrong_zh": {
+      "A": "決定目的的是零售商,才是 Controller。",
+      "C": "當事人是被行銷的客戶本人。",
+      "D": "監管機關是資料保護主管機關,非服務商。"
+    },
+    "id": "D1-0044",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-084.html",
+    "unit_title_zh": "考點：法規與隱私情境題"
+  },
+  {
+    "stem_en": "Under GDPR, after becoming aware of a personal data breach that poses a risk to individuals, the controller must notify the supervisory authority within:",
+    "stem_zh": "GDPR 下,控管者在知悉一個對個人構成風險的個資外洩後,必須在多久內通報主管機關?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "24 hours 24",
+        "text_zh": "小時"
+      },
+      {
+        "key": "B",
+        "text_en": "48 hours 48",
+        "text_zh": "小時"
+      },
+      {
+        "key": "C",
+        "text_en": "72 hours 72",
+        "text_zh": "小時"
+      },
+      {
+        "key": "D",
+        "text_en": "30 days 30",
+        "text_zh": "天"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "GDPR Art.33 要求控管者在『知悉後 72 小時內』通報主管機關;若對當事人有高風險,另須『不無故拖延』通知當事人(Art.34)。",
+    "why_wrong_zh": {
+      "D": "30 天過長,不符 GDPR 的 72 小時要求。"
+    },
+    "id": "D1-0045",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-084.html",
+    "unit_title_zh": "考點：法規與隱私情境題"
+  },
+  {
+    "stem_en": "A European company wants to transfer personal data to a processor located in a country without an EU adequacy decision. Which mechanism is MOST appropriate to enable a lawful transfer?",
+    "stem_zh": "一家歐洲公司想把個資傳給位於無歐盟充足性認定國家的處理者。哪個機制最適合促成合法傳輸?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Standard Contractual Clauses (SCC)",
+        "text_zh": "標準契約條款"
+      },
+      {
+        "key": "B",
+        "text_en": "A nondisclosure agreement (NDA)",
+        "text_zh": "保密協議"
+      },
+      {
+        "key": "C",
+        "text_en": "Data classification policy",
+        "text_zh": "資料分類政策"
+      },
+      {
+        "key": "D",
+        "text_en": "A service-level agreement (SLA)",
+        "text_zh": "服務水準協議"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "傳到無 adequacy 的國家,GDPR 要求適當保障措施,SCC(或 BCR)＋補充措施是標準的合法傳輸機制。",
+    "why_wrong_zh": {
+      "B": "NDA 是一般保密,不滿足 GDPR 跨境傳輸的法定保障要求。",
+      "C": "分類政策是內部控制,與跨境合法性無關。",
+      "D": "SLA 規範服務品質,非個資跨境傳輸的合法機制。"
+    },
+    "id": "D1-0046",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-084.html",
+    "unit_title_zh": "考點：法規與隱私情境題"
+  },
+  {
+    "stem_en": "A cloud service provider acting as a GDPR data processor detects a personal data breach affecting its client's customer records. What must the processor do FIRST?",
+    "stem_zh": "一家作為 GDPR 處理者(processor)的雲端服務商,偵測到影響其客戶之顧客個資的外洩事件。該處理者必須首先做什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Notify the supervisory authority within 72 hours",
+        "text_zh": "於 72 小時內通報主管機關"
+      },
+      {
+        "key": "B",
+        "text_en": "Notify the affected data subjects directly",
+        "text_zh": "直接通知受影響當事人"
+      },
+      {
+        "key": "C",
+        "text_en": "Remediate the vulnerability and document internally before informing anyone",
+        "text_zh": "先修補並內部記錄,再對外通知"
+      },
+      {
+        "key": "D",
+        "text_en": "Notify the data controller without undue delay",
+        "text_zh": "不無故拖延地通知控管者(controller)"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "GDPR 的通報義務依角色分工:Processor 知悉外洩後,義務是不無故拖延地通知 Controller;向主管機關的 72 小時通報與(高風險時)通知當事人,都是 Controller 的義務。看到通報題先問:『題目主角是誰?』——角色決定義務。",
+    "why_wrong_zh": {
+      "A": "高誘答陷阱——『72 小時通報主管機關』是對的規定,但義務主體是 Controller,不是 Processor。",
+      "B": "通知當事人(高風險時)也是 Controller 的義務。",
+      "C": "先修補再說會延誤法定通知,違反『不無故拖延』的要求。"
+    },
+    "id": "D1-0047",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-084.html",
+    "unit_title_zh": "考點：法規與隱私情境題"
+  },
+  {
+    "stem_en": "A controller outsources payroll processing to a processor under a signed DPA. The processor later suffers a breach caused by its own negligence. Regarding GDPR accountability toward the supervisory authority, which statement is BEST?",
+    "stem_zh": "某控管者依已簽署的 DPA 將薪資處理外包給處理者。之後處理者因自身疏失發生外洩。就對主管機關的 GDPR 當責而言,下列敘述何者最佳?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Only the processor is accountable because the breach was its fault",
+        "text_zh": "外洩是處理者的錯,僅處理者當責"
+      },
+      {
+        "key": "B",
+        "text_en": "The signed DPA transferred all controller obligations to the processor",
+        "text_zh": "簽了 DPA,控管者義務已全數移轉"
+      },
+      {
+        "key": "C",
+        "text_en": "The DPO personally assumes liability for the breach DPO",
+        "text_zh": "個人承擔此次外洩責任"
+      },
+      {
+        "key": "D",
+        "text_en": "The controller remains accountable and cannot outsource its responsibility",
+        "text_zh": "控管者仍負當責,不能藉外包卸責"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Controller 決定處理目的與方式,即負主要義務:選任與監督 Processor、確保 72 小時通報等義務被履行——外包處理『作業』,不外包『當責』。Processor 可因自身違規另被追責,但這不解除 Controller 的當責。",
+    "why_wrong_zh": {
+      "A": "高誘答陷阱——Processor 確實可能因自身疏失被罰(敘述部分為真),但『僅』字錯:Controller 的當責不因對方過錯而消失。",
+      "B": "DPA 界定分工與指示,不是責任讓渡契約;法定義務不能靠契約整批移轉。",
+      "C": "DPO 是獨立的監督與諮詢角色,不因外洩承擔組織的法律責任。"
+    },
+    "id": "D1-0048",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-084.html",
+    "unit_title_zh": "考點：法規與隱私情境題"
+  },
+  {
+    "stem_en": "A laptop containing customer personal data is stolen. The data was protected with strong encryption and the keys were not compromised. Under GDPR, what is the BEST position on notifying the affected data subjects?",
+    "stem_zh": "一台含顧客個資的筆電失竊。資料以強加密保護,金鑰未外洩。GDPR 下,關於通知受影響當事人,最佳立場為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Notify all data subjects immediately as a precaution",
+        "text_zh": "預防起見立即通知所有當事人"
+      },
+      {
+        "key": "B",
+        "text_en": "Subject notification is not required because the data is unintelligible, but the breach must still be assessed and documented",
+        "text_zh": "資料不可讀故無須通知當事人,但仍須評估並記錄該事件"
+      },
+      {
+        "key": "C",
+        "text_en": "No obligations arise at all because no risk exists",
+        "text_zh": "完全無任何義務,因為不存在風險"
+      },
+      {
+        "key": "D",
+        "text_en": "Data subjects must always be notified within 72 hours",
+        "text_zh": "一律於 72 小時內通知當事人"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "通知當事人的門檻是『對其權利有高風險』;資料經強加密且金鑰未失,對當事人不可讀(unintelligible),高風險不成立,故可免通知當事人——但控管者仍須進行風險評估、留存外洩紀錄(必要時仍評估是否通報主管機關)。加密是免通知的法定安全閥,不是免責的免死金牌。",
+    "why_wrong_zh": {
+      "A": "高誘答陷阱——『通知總是比較安全』聽起來穩妥,但 GDPR 以風險為門檻;無高風險而全面通知不是法規要求的最佳做法。",
+      "C": "『完全無義務』過頭:評估、記錄與內部佐證仍是義務,監管機關可查閱紀錄。",
+      "D": "72 小時是通報『主管機關』的時限;對當事人是『不無故拖延』且僅限高風險,且非『一律』。"
+    },
+    "id": "D1-0049",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-4",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-084.html",
+    "unit_title_zh": "考點：法規與隱私情境題"
+  },
+  {
+    "stem_en": "What is the FIRST step when developing a Business Continuity Plan (BCP)?",
+    "stem_zh": "制定營運持續計畫(BCP)的第一步是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Select an alternate site",
+        "text_zh": "選擇備援站點"
+      },
+      {
+        "key": "B",
+        "text_en": "Conduct a Business Impact Analysis",
+        "text_zh": "進行營運衝擊分析"
+      },
+      {
+        "key": "C",
+        "text_en": "Purchase insurance",
+        "text_zh": "購買保險"
+      },
+      {
+        "key": "D",
+        "text_en": "Write recovery procedures",
+        "text_zh": "撰寫復原程序"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "BCP 必須先做 BIA:辨識關鍵流程、評估中斷衝擊、決定 MTD/RTO/RPO——它驅動後續所有策略選擇。",
+    "why_wrong_zh": {
+      "A": "站點選擇是 BIA 定出 RTO/成本需求『之後』的決策。",
+      "C": "保險是風險轉移手段,非 BCP 第一步。",
+      "D": "復原程序在策略確定後才撰寫。"
+    },
+    "id": "D1-0050",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-085.html",
+    "unit_title_zh": "考點：BCP/BIA 與威脅建模 + 刷題"
+  },
+  {
+    "stem_en": "Which relationship between Recovery Time Objective (RTO) and Maximum Tolerable Downtime (MTD) must always hold?",
+    "stem_zh": "復原時間目標(RTO)與最大可容忍中斷(MTD)之間,必須恆成立的關係為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "RTO must be greater than MTD",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "RTO must equal RPO",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "RTO must be less than or equal to MTD",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "RTO is unrelated to MTD",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "MTD 是業務能撐的上限,RTO 是復原目標,必須 RTO ≤ MTD(且 RTO+WRT ≤ MTD),否則尚未復原業務就已垮。",
+    "why_wrong_zh": {
+      "A": "RTO 大於 MTD 代表復原太慢、業務已撐不住,屬設計錯誤。",
+      "B": "RTO(時間)與 RPO(資料量)是不同維度,不需相等。",
+      "D": "兩者高度相關,RTO 受 MTD 約束。"
+    },
+    "id": "D1-0051",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-085.html",
+    "unit_title_zh": "考點：BCP/BIA 與威脅建模 + 刷題"
+  },
+  {
+    "stem_en": "In STRIDE threat modeling, a 'Tampering' threat most directly violates which security goal?",
+    "stem_zh": "在 STRIDE 威脅建模中,『Tampering(竄改)』威脅最直接違反哪個安全目標?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Confidentiality",
+        "text_zh": "機密性"
+      },
+      {
+        "key": "B",
+        "text_en": "Integrity",
+        "text_zh": "完整性"
+      },
+      {
+        "key": "C",
+        "text_en": "Availability",
+        "text_zh": "可用性"
+      },
+      {
+        "key": "D",
+        "text_en": "Non-repudiation",
+        "text_zh": "不可否認"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "STRIDE 中 Tampering↔Integrity(完整性)。其餘對應:Spoofing↔真實性、Info disclosure↔機密性、DoS↔可用性、Repudiation↔不可否認、Elevation↔授權。",
+    "why_wrong_zh": {
+      "A": "機密性對應 Information Disclosure。",
+      "C": "可用性對應 Denial of Service。",
+      "D": "不可否認對應 Repudiation。"
+    },
+    "id": "D1-0052",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-085.html",
+    "unit_title_zh": "考點：BCP/BIA 與威脅建模 + 刷題"
+  },
+  {
+    "stem_en": "A BIA establishes an RPO of 2 hours for a critical customer database, but backups currently run only once every 24 hours. What is the BEST course of action?",
+    "stem_zh": "BIA 為某關鍵顧客資料庫訂出 2 小時的 RPO,但目前備份每 24 小時才執行一次。最佳做法為何?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Increase backup or replication frequency so potential data loss cannot exceed 2 hours",
+        "text_zh": "提高備份/複寫頻率,使資料損失不超過 2 小時"
+      },
+      {
+        "key": "B",
+        "text_en": "Revise the RPO to 24 hours to match current backup capability",
+        "text_zh": "把 RPO 改成 24 小時以符合現行備份能力"
+      },
+      {
+        "key": "C",
+        "text_en": "Shorten the RTO to compensate for the potential data loss",
+        "text_zh": "縮短 RTO 以彌補資料損失"
+      },
+      {
+        "key": "D",
+        "text_en": "Accept the gap since daily backups are an industry norm",
+        "text_zh": "每日備份是業界常態,接受此落差"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "RPO 決定備份頻率,不是反過來。RPO 出自 BIA 的『業務可容忍資料損失』,是業務需求;技術能力(每 24 小時備份)必須追上需求,而非把需求改低遷就技術。RPO 2 小時→至少每 2 小時做一次備份/複寫。",
+    "why_wrong_zh": {
+      "B": "高誘答陷阱——看似『務實』,但復原目標由業務衝擊決定;為遷就 IT 現況而改 RPO,等於默默讓業務承受 24 小時資料損失。",
+      "C": "RTO 是『多快復原(時間)』、RPO 是『可丟多少(資料)』,不同維度,救不了資料損失。",
+      "D": "接受須經知情的管理層決策,且『業界常態』不是理由——本題已有明確的業務需求(RPO 2 小時)未被滿足。"
+    },
+    "id": "D1-0053",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-085.html",
+    "unit_title_zh": "考點：BCP/BIA 與威脅建模 + 刷題"
+  },
+  {
+    "stem_en": "A development team has used STRIDE to identify and categorize threats against a new application. Which methodology is BEST suited to rate and prioritize those identified threats NEXT?",
+    "stem_zh": "開發團隊已用 STRIDE 對新應用程式的威脅完成識別與分類。接下來最適合用哪個方法對這些威脅評分並排定優先序?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "PASTA",
+        "text_zh": ""
+      },
+      {
+        "key": "B",
+        "text_en": "VAST",
+        "text_zh": ""
+      },
+      {
+        "key": "C",
+        "text_en": "DREAD",
+        "text_zh": ""
+      },
+      {
+        "key": "D",
+        "text_en": "Trike",
+        "text_zh": ""
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "經典搭配:STRIDE 負責『識別/分類』,DREAD 負責『評分/排序』(Damage、Reproducibility、Exploitability、Affected users、Discoverability 五項打分),兩者常一起使用。題幹已完成識別,下一步就是用 DREAD 排優先序,先處理最嚴重的威脅。",
+    "why_wrong_zh": {
+      "A": "高誘答陷阱——PASTA 是完整的七階段風險導向方法論,若要用它應從頭走全流程,不是接在 STRIDE 之後做評分的工具。",
+      "B": "VAST 是把威脅建模整合進 Agile 並強調規模化的概念,非威脅評分法。",
+      "D": "Trike 是開源的風險基礎威脅建模/稽核框架,同樣是獨立方法論而非 STRIDE 的排序配套。"
+    },
+    "id": "D1-0054",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-085.html",
+    "unit_title_zh": "考點：BCP/BIA 與威脅建模 + 刷題"
+  },
+  {
+    "stem_en": "An organization wants threat modeling to deliver the GREATEST security benefit at the LOWEST remediation cost for a new system. At which point should threat modeling be performed?",
+    "stem_zh": "某組織希望對新系統的威脅建模能以最低的修復成本帶來最大安全效益。應在哪個時間點執行威脅建模?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "During early design and development, as a proactive defensive approach",
+        "text_zh": "在設計開發早期,採主動防禦式做法"
+      },
+      {
+        "key": "B",
+        "text_en": "After deployment, through adversarial testing such as penetration tests",
+        "text_zh": "部署後以滲透測試等對抗式方法進行"
+      },
+      {
+        "key": "C",
+        "text_en": "Only after a security incident confirms a real threat",
+        "text_zh": "待資安事件證實威脅存在後再做"
+      },
+      {
+        "key": "D",
+        "text_en": "During the annual external audit cycle",
+        "text_zh": "配合年度外部稽核週期執行"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "威脅建模有兩種取徑:proactive/defensive(設計開發早期預測威脅並內建防禦)與 reactive/adversarial(產品部署後)。題目關鍵字是『最低修復成本』——越早發現設計缺陷,修復越便宜;上線後才改,成本呈倍數增加。安全要『內建(built-in)』,不是『外掛(bolted-on)』。",
+    "why_wrong_zh": {
+      "B": "高誘答陷阱——部署後的對抗式(reactive)威脅建模是真實且有價值的做法,但屬事後驗證,修復成本遠高於設計期,不符題目的成本條件。",
+      "C": "等事件發生才建模等於用損失換教訓,完全喪失預防價值。",
+      "D": "稽核是驗證合規的週期性活動,與系統設計時程脫鉤,無法在最便宜的階段介入。"
+    },
+    "id": "D1-0055",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-5",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-085.html",
+    "unit_title_zh": "考點：BCP/BIA 與威脅建模 + 刷題"
+  },
+  {
+    "stem_en": "A candidate taking the English CISSP CAT exam sees the exam end abruptly at question 100 with over an hour remaining. What does this MOST likely indicate?",
+    "stem_zh": "一位考英文版 CISSP CAT 的考生,在第 100 題時考試突然結束,時間還剩超過一小時。這『最可能』代表什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The candidate has definitely failed the exam",
+        "text_zh": "考生必定未通過"
+      },
+      {
+        "key": "B",
+        "text_en": "The candidate has definitely passed the exam",
+        "text_zh": "考生必定通過"
+      },
+      {
+        "key": "C",
+        "text_en": "A technical error terminated the exam session",
+        "text_zh": "技術錯誤導致考試中斷"
+      },
+      {
+        "key": "D",
+        "text_en": "The scoring engine reached a statistically confident pass/fail decision about the candidate's ability",
+        "text_zh": "計分引擎已對考生能力做出具統計信心的通過/未通過判定"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "CAT 在第 100 題後,只要能力估計以足夠統計信心高於「或」低於及格線,就會提前結束——提前結束本身不透露方向,穩過與穩不過都會在第 100 題附近收掉。記憶法:『早收 ≠ 好壞,只代表系統已經很確定』。",
+    "why_wrong_zh": {
+      "C": "第 100 題正是 CAT 判定門檻的起點,是正常機制而非故障。"
+    },
+    "id": "D1-0056",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-124.html",
+    "unit_title_zh": "考試機制：CAT 自適應測驗與考場全流程"
+  },
+  {
+    "stem_en": "Which time-management strategy BEST fits the CISSP CAT exam format?",
+    "stem_zh": "哪一種時間管理策略『最』適合 CISSP CAT 考試形式?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Maintain a steady pace, decide each question once within about two minutes, and never look back",
+        "text_zh": "維持穩定節奏,每題約兩分鐘內下一次決定,絕不回想上一題"
+      },
+      {
+        "key": "B",
+        "text_en": "Answer the first 100 questions as fast as possible to bank time for the final 50",
+        "text_zh": "前 100 題盡量快答,把時間留給最後 50 題"
+      },
+      {
+        "key": "C",
+        "text_en": "Flag difficult questions and return to them during a final review pass",
+        "text_zh": "標記難題,最後統一回頭檢查"
+      },
+      {
+        "key": "D",
+        "text_en": "Spend extra time on early questions because later questions carry less weight",
+        "text_zh": "前面的題多花時間,因為後面的題權重較低"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "CAT 平均每題只有 72–108 秒,且不能回頭——最佳策略是穩定節奏、每題當下決斷、送出即放下。前 100 題求快反而增加失誤,而 CAT 的能力估計對每題都敏感。",
+    "why_wrong_zh": {
+      "B": "可能只考 100 題就結束,「留時間給後 50 題」的前提不成立,且趕答傷正確率。",
+      "C": "CAT 沒有標記回顧功能,不能回頭。",
+      "D": "CAT 沒有「後面權重較低」的規則,每題都影響能力估計。"
+    },
+    "id": "D1-0057",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-124.html",
+    "unit_title_zh": "考試機制：CAT 自適應測驗與考場全流程"
+  },
+  {
+    "stem_en": "During the CAT exam, a candidate encounters a question on a topic they barely remember. What should the candidate do FIRST?",
+    "stem_zh": "CAT 考試中,考生遇到一題幾乎沒印象的主題。考生應『首先』怎麼做?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Skip the question and return to it later",
+        "text_zh": "跳過這題,稍後再回來作答"
+      },
+      {
+        "key": "B",
+        "text_en": "Spend as much time as needed until certain of the answer",
+        "text_zh": "花多少時間都要想到確定為止"
+      },
+      {
+        "key": "C",
+        "text_en": "Eliminate clearly wrong options, choose the best remaining answer, and move on",
+        "text_zh": "先刪去明顯錯誤的選項,從剩下的選出最佳答案後前進"
+      },
+      {
+        "key": "D",
+        "text_en": "Select an answer at random without reading the options to save time",
+        "text_zh": "為省時間,不看選項直接隨機選一個"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "CAT 不能跳題也不能回頭,遇到不會的題,正確做法是刪去法:先剔除明顯錯的 1–2 個選項,把猜對機率從 25% 拉到 50%,選出最佳者後果斷前進。這也可能是未計分的預試題,不值得耗損時間。",
+    "why_wrong_zh": {
+      "A": "CAT 沒有跳題功能,必須當下作答。",
+      "B": "單題耗時過久會壓縮後面所有題目的時間,得不償失。",
+      "D": "連讀都不讀就隨機選,放棄了刪去法能爭取的機率優勢。"
+    },
+    "id": "D1-0058",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-124.html",
+    "unit_title_zh": "考試機制：CAT 自適應測驗與考場全流程"
+  },
+  {
+    "stem_en": "A CISO is asked by the board of directors to justify next year's security budget. Which approach would BEST support the request?",
+    "stem_zh": "董事會要求 CISO 說明明年度資安預算的正當性。哪種做法『最能』支持這項要求?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Present a risk-based analysis linking each investment to business impact",
+        "text_zh": "提出風險導向分析,把每項投資連結到業務衝擊"
+      },
+      {
+        "key": "B",
+        "text_en": "Provide a detailed list of unpatched technical vulnerabilities",
+        "text_zh": "提供未修補技術弱點的詳細清單"
+      },
+      {
+        "key": "C",
+        "text_en": "Cite recent high-profile breaches reported in the news",
+        "text_zh": "引用近期新聞報導的重大資安事件"
+      },
+      {
+        "key": "D",
+        "text_en": "Show that competitors spend a similar amount on security",
+        "text_zh": "顯示競爭對手的資安支出金額相近"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "五步法:①角色是 CISO,對象是董事會——要用業務語言;②鑑別詞 BEST=最完整涵蓋;③刪 C(恐嚇式舉例,與本組織風險無直接關聯)、刪 D(同業支出不代表本組織的風險狀況);④剩 A、B:技術弱點清單「事實正確」但層級錯——董事會聽不懂也不需要聽 CVE 編號;風險導向、連結業務衝擊的 A 才是管理層語言,涵蓋面也最完整;⑤果斷送出。",
+    "why_wrong_zh": {
+      "B": "技術正確但層級錯——弱點清單是輸入,要轉成風險與業務衝擊才對董事會有意義。",
+      "C": "他人事件不等於本組織的風險,缺乏對本業務的分析基礎。",
+      "D": "模仿同業不是風險導向決策,支出多寡應由自身風險胃納決定。"
+    },
+    "id": "D1-0059",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-7",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-125.html",
+    "unit_title_zh": "考試策略：Think Like a Manager 與最佳答案五步法"
+  },
+  {
+    "stem_en": "A fire alarm activates in a data center while a critical end-of-quarter financial batch job is running. What is the MOST important immediate priority?",
+    "stem_zh": "資料中心火警警報響起,此時季末關鍵財務批次作業正在執行。『最重要』的即時優先事項是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Complete the financial batch job before shutdown",
+        "text_zh": "先跑完財務批次作業再關機"
+      },
+      {
+        "key": "B",
+        "text_en": "Activate the disaster recovery plan",
+        "text_zh": "啟動災難復原計畫"
+      },
+      {
+        "key": "C",
+        "text_en": "Ensure all personnel evacuate the facility safely",
+        "text_zh": "確保所有人員安全撤離"
+      },
+      {
+        "key": "D",
+        "text_en": "Secure backup media before leaving the building",
+        "text_zh": "離開前先保護備份媒體"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "五步法:①角色不限,階段是「災害發生當下」;②鑑別詞 MOST important=權衡下的最高優先;③刪 A(為營運冒生命危險,絕對錯)、刪 D(為資產延誤撤離,同樣把物排在人前);④剩 B、C:DRP 該啟動沒錯,但「人命 > 法規 > 營運」是鐵律——人身安全永遠是第一優先,DRP 是人員安全確保後的下一步;⑤選 C 送出。這是 Domain 1 與 Domain 7 反覆出現的經典裁決。",
+    "why_wrong_zh": {
+      "A": "把營運排在人命之前,違反最高優先序,屬「絕對錯」可先刪。",
+      "B": "正確但時序在後——人員安全確保之後才輪到 DRP 啟動。",
+      "D": "資產保護排在人身安全之後,災害當下不應為媒體延誤撤離。"
+    },
+    "id": "D1-0060",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-7",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-125.html",
+    "unit_title_zh": "考試策略：Think Like a Manager 與最佳答案五步法"
+  },
+  {
+    "stem_en": "An organization outsources its security monitoring to a managed security service provider (MSSP). Who remains ultimately accountable for protecting the organization's information assets?",
+    "stem_zh": "組織將資安監控外包給 MSSP。對組織資訊資產的保護,『最終當責』仍在誰身上?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The MSSP, as defined in the service contract",
+        "text_zh": "依服務合約規定,由 MSSP 負責"
+      },
+      {
+        "key": "B",
+        "text_en": "The security operations team",
+        "text_zh": "資安維運團隊"
+      },
+      {
+        "key": "C",
+        "text_en": "The contract manager who signed the agreement",
+        "text_zh": "簽署合約的合約管理人"
+      },
+      {
+        "key": "D",
+        "text_en": "The organization's senior management",
+        "text_zh": "組織的高階管理層"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "五步法:①角色視角是治理層,主題是外包後的責任歸屬;②沒有大寫鑑別詞,但 ultimately accountable 就是鑑別點——問當責而非日常執行;③刪 B、C(執行團隊與合約管理人只承擔被委派的 responsibility,層級太低);④剩 A、D:合約確實把「工作」轉給 MSSP,但當責不可下授——外包轉移的是責任與部分風險,最終對股東、客戶、監理機關當責的永遠是高階管理層;⑤選 D。記憶法:「工作可以外包,挨罰的還是自己」。",
+    "why_wrong_zh": {
+      "A": "合約能委派執行責任與求償依據,無法轉移最終當責。",
+      "B": "維運團隊承擔的是被委派的執行責任,不是最終當責。",
+      "C": "合約管理人管理供應商關係,層級不足以承擔組織整體當責。"
+    },
+    "id": "D1-0061",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D1-7",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-125.html",
+    "unit_title_zh": "考試策略：Think Like a Manager 與最佳答案五步法"
+  },
+  {
+    "stem_en": "An organization plans to adopt a SaaS provider that will process customer PII. Which action provides the BEST assurance of the provider's security posture before signing the contract?",
+    "stem_zh": "組織計畫採用一家將處理客戶個資的 SaaS 供應商。簽約前,哪個做法『最能』確保供應商的安全狀況?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Ask the provider to complete a self-assessment questionnaire",
+        "text_zh": "請供應商填寫自評問卷"
+      },
+      {
+        "key": "B",
+        "text_en": "Run a penetration test against the provider's production environment",
+        "text_zh": "對供應商的正式環境執行滲透測試"
+      },
+      {
+        "key": "C",
+        "text_en": "Review the provider's independent third-party audit report and include a right-to-audit clause",
+        "text_zh": "審閱供應商的獨立第三方稽核報告,並在合約納入稽核權條款"
+      },
+      {
+        "key": "D",
+        "text_en": "Verify that the provider's marketing materials mention encryption",
+        "text_zh": "確認供應商行銷資料有提到加密"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "供應鏈風險管理(SCRM)的核心是獨立、可驗證的保證(assurance):第三方稽核報告(如 SOC 2)由獨立稽核員出具,可信度遠高於自評;稽核權條款則確保簽約後仍有持續驗證的手段——事前調查+持續監督,正是 due diligence 的完整體現。",
+    "why_wrong_zh": {
+      "A": "自評問卷是供應商自己說了算,缺乏獨立性,只能當輔助。",
+      "B": "未經授權對他人環境滲透測試不合法也不可行,SaaS 多租戶環境通常禁止。",
+      "D": "行銷資料不是保證機制,無稽核價值。"
+    },
+    "id": "D1-0062",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "A quantitative risk analysis shows the annualized loss expectancy (ALE) of a threat is $20,000, while the only effective control costs $45,000 per year. What is the BEST course of action?",
+    "stem_zh": "定量風險分析顯示某威脅的年化損失期望值 ALE 為 2 萬美元,而唯一有效的控制措施每年要價 4.5 萬美元。『最佳』做法是什麼?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Implement the control to eliminate the risk",
+        "text_zh": "導入該控制以消除風險"
+      },
+      {
+        "key": "B",
+        "text_en": "Formally accept the risk and document the decision",
+        "text_zh": "正式接受該風險並記錄決策"
+      },
+      {
+        "key": "C",
+        "text_en": "Ignore the risk since the control is too expensive",
+        "text_zh": "控制太貴,直接忽略該風險"
+      },
+      {
+        "key": "D",
+        "text_en": "Implement the control anyway to demonstrate due care",
+        "text_zh": "為展現 due care 仍導入該控制"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "控制成本($45,000)大於風險本身($20,000),導入控制不符成本效益——風險導向的正確處置是風險接受(risk acceptance),且必須正式決策、書面記錄、由適當層級核准。接受是四種風險處置(降低/轉移/接受/迴避)中完全合法的一種,前提是「有意識地決定」。",
+    "why_wrong_zh": {
+      "A": "花 4.5 萬防 2 萬的損失不符成本效益,且「消除風險」是絕對詞——風險無法歸零。",
+      "C": "「忽略」與「接受」的差別在於是否經過分析、決策與記錄——忽略永遠是錯的。",
+      "D": "due care 是採取「合理」的保護,明知不符成本效益仍硬上,反而不合理。"
+    },
+    "id": "D1-0063",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  },
+  {
+    "stem_en": "Senior management approved a strong security policy two years ago but has never reviewed compliance reports or followed up on audit findings since. Which concept has management MOST clearly failed to demonstrate?",
+    "stem_zh": "高階管理層兩年前核准了完善的安全政策,但此後從未檢視合規報告或追蹤稽核發現。管理層『最明顯』未能展現哪個概念?",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Due care",
+        "text_zh": "應盡注意"
+      },
+      {
+        "key": "B",
+        "text_en": "Separation of duties",
+        "text_zh": "職務分工"
+      },
+      {
+        "key": "C",
+        "text_en": "Least privilege",
+        "text_zh": "最小權限"
+      },
+      {
+        "key": "D",
+        "text_en": "Due diligence",
+        "text_zh": "應盡調查"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "核准並建立政策是 due care(採取合理保護行動,do correct);持續檢視、監督、追蹤成效則是 due diligence(do detect)。題幹說管理層「做了政策」但「從不監督」——care 有做,diligence 沒做。這是 Day 125 陷阱表裡「due care/diligence 對調」的標準考法。",
+    "why_wrong_zh": {
+      "A": "due care 是建立合理保護——政策已核准,這部分有做到。",
+      "B": "職務分工是防止單人舞弊的控制設計,與題幹的「不監督」無關。",
+      "C": "最小權限是存取控制原則,與管理層的治理義務無關。"
+    },
+    "id": "D1-0064",
+    "domain": "D1",
+    "topic": "d1-p3",
+    "unit": "P3-D8-6",
+    "set": "A",
+    "difficulty": 3,
+    "type": "single",
+    "tags": [
+      "P3"
+    ],
+    "source": "emails/day-126.html",
+    "unit_title_zh": "總驗收：跨域模擬考 20 題（依官方權重）"
+  }
+]

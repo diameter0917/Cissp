@@ -59,8 +59,8 @@ jobs:
             git fetch origin "${GITHUB_REF_NAME}"
             git reset --hard "origin/${GITHUB_REF_NAME}"
 
-            python sc200/scripts/gen_podcast.py ${{ inputs.episodes }} ${{ inputs.force == true && '--force' || '' }}
-            python sc200/scripts/build_rss.py
+            python tools/gen_podcast.py --project sc200 ${{ inputs.episodes }} ${{ inputs.force == true && '--force' || '' }}
+            python tools/build_rss.py --project sc200
 
             git add docs/sc200/podcast docs/sc200/podcast.xml sc200/podcast/episodes.json
             if git diff --cached --quiet; then

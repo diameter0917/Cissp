@@ -1,0 +1,17 @@
+{
+  "base_url": "https://diameter0917.github.io/Cissp",
+  "site_root": "/Cissp/cissp",
+  "podcast": {
+    "title": "CISSP 螺旋電台",
+    "headline": "用聽的走完 CISSP 八大領域",
+    "subtitle": "一週一集，把當週五封電子報串成一個主題",
+    "blurb": "螺旋式三階段：先建輪廓、再深入細節、最後聚焦考點。通勤時把整週進度聽一遍。",
+    "author": "CISSP 學習專案（AI 生成）",
+    "language": "zh-TW",
+    "category": "Education",
+    "voice_host_f": "zh-TW-HsiaoChenNeural",
+    "voice_host_m": "zh-TW-YunJheNeural",
+    "bitrate": "48k",
+    "sample_rate": 24000
+  }
+}

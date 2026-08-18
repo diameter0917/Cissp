@@ -1,0 +1,80 @@
+name: CISSP Podcast
+
+# Podcast 腳本 push 後自動合成音檔（edge-tts 需連微軟語音端點，
+# 開發環境 proxy 會擋，所以放在 Actions runner 執行）。
+
+on:
+  workflow_dispatch:
+    inputs:
+      episodes:
+        description: '集數（空白分隔，如 "1 2 3"）；留空＝全部缺漏'
+        type: string
+        default: ''
+      force:
+        description: '忽略 manifest 全部重做'
+        type: boolean
+        default: false
+  push:
+    branches: ['main', 'claude/**']
+    paths:
+      - 'cissp/podcast/scripts/**'
+      - 'tools/gen_podcast.py'
+      - '.github/workflows/cissp-podcast.yml'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cissp-podcast
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install edge-tts and ffmpeg
+        run: |
+          pip install "edge-tts>=7"
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg
+
+      # 音檔、manifest、RSS、節目頁都是「生成物」，不該用 rebase 去合併——
+      # 併行的兩次合成會在 episodes.json / index.html 撞出衝突而讓 job 死掉。
+      # 因此改成：先同步到遠端最新狀態，再在其上合成（依腳本 sha256 增量、
+      # 只補缺的集數），推送被拒就重跑迴圈——重跑時遠端已含對方的音檔，
+      # 所以第二輪幾乎不需重新合成。
+      - name: Render and publish audio
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          for attempt in 1 2 3; do
+            echo "── 第 $attempt 次嘗試 ──"
+            git fetch origin "${GITHUB_REF_NAME}"
+            git reset --hard "origin/${GITHUB_REF_NAME}"
+
+            python tools/gen_podcast.py --project cissp ${{ inputs.episodes }} ${{ inputs.force == true && '--force' || '' }}
+            python tools/build_rss.py --project cissp
+
+            git add docs/cissp/podcast docs/cissp/podcast.xml cissp/podcast/episodes.json
+            if git diff --cached --quiet; then
+              echo "沒有音檔變更，結束。"
+              exit 0
+            fi
+            git commit -m "chore(cissp): render podcast audio [skip ci]"
+
+            if git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "✅ 已推送音檔。"
+              exit 0
+            fi
+            echo "⚠️ 推送被拒（遠端有新提交），重新同步後再試。"
+          done
+
+          echo "✗ 三次嘗試皆被拒，放棄。"
+          exit 1

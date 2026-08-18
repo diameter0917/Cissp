@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CISSP 螺旋電台</title>
+    <link>https://diameter0917.github.io/Cissp/cissp/podcast/index.html</link>
+    <description>一週一集，把當週五封電子報串成一個主題</description>
+    <language>zh-TW</language>
+    <atom:link href="https://diameter0917.github.io/Cissp/cissp/podcast.xml" rel="self" type="application/rss+xml"/>
+    <itunes:author>CISSP 學習專案（AI 生成）</itunes:author>
+    <itunes:category text="Education"/>
+    <itunes:explicit>false</itunes:explicit>
+    <item>
+      <title>EP1｜Domain 1 輪廓：治理、風險與合規的全景</title>
+      <description>對應單元：W01。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/cissp/podcast/ep-001.mp3" length="3830938" type="audio/mpeg"/>
+      <guid isPermaLink="false">cissp-ep-001</guid>
+      <pubDate>Tue, 18 Aug 2026 16:25:08 +0800</pubDate>
+      <itunes:duration>10:38</itunes:duration>
+      <itunes:episode>1</itunes:episode>
+    </item>
+    <item>
+      <title>EP9｜Domain 1 細節：文件層級、定量風險與控制分類</title>
+      <description>對應單元：W09。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/cissp/podcast/ep-009.mp3" length="4328467" type="audio/mpeg"/>
+      <guid isPermaLink="false">cissp-ep-009</guid>
+      <pubDate>Tue, 18 Aug 2026 16:25:08 +0800</pubDate>
+      <itunes:duration>12:01</itunes:duration>
+      <itunes:episode>9</itunes:episode>
+    </item>
+    <item>
+      <title>EP17｜Domain 1 考點：最佳答案怎麼選</title>
+      <description>對應單元：W17。雙主持人帶你複習當日考點。</description>
+      <enclosure url="https://diameter0917.github.io/Cissp/cissp/podcast/ep-017.mp3" length="4014384" type="audio/mpeg"/>
+      <guid isPermaLink="false">cissp-ep-017</guid>
+      <pubDate>Tue, 18 Aug 2026 16:25:08 +0800</pubDate>
+      <itunes:duration>11:09</itunes:duration>
+      <itunes:episode>17</itunes:episode>
+    </item>
+  </channel>
+</rss>
