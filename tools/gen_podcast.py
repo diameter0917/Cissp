@@ -49,11 +49,16 @@ SPEECH_SUBS = [
     ("ISO 27001", "I S O 二七零零一"), ("ISO 27034", "I S O 二七零三四"),
     ("ISO 27037", "I S O 二七零三七"), ("SW-CMM", "S W C M M"),
     ("SC-200", "S C 二零零"), ("ISO 27002", "I S O 二七零零二"),
+    # SOC 1/2/3 的數字若留給中文 TTS 會唸成「SOCK 二 Type two」，前後語言打架
+    ("SOC 1", "SOCK one"), ("SOC 2", "SOCK two"), ("SOC 3", "SOCK three"),
+    ("FIPS 203", "FIPS 二零三"), ("FIPS 204", "FIPS 二零四"),
+    ("FIPS 205", "FIPS 二零五"), ("S/MIME", "S MIME"),
     # NIST SP 800 系列：連字號通則會把它變成「八百 八十八」，
     # 明列成「八零零之八八」才是這份標準平常被唸出來的樣子。
     ("800-18", "八零零之一八"), ("800-53", "八零零之五三"),
     ("800-60", "八零零之六零"), ("800-86", "八零零之八六"),
-    ("800-88", "八零零之八八"),
+    ("800-63", "八零零之六三"), ("800-88", "八零零之八八"),
+    ("800-207", "八零零之二零七"),
     # 第二次提到時常省略 ISO 前綴，光一串數字會被唸成「兩萬七千零二」
     ("27001", "二七零零一"), ("27002", "二七零零二"),
     ("27034", "二七零三四"), ("27037", "二七零三七"),
@@ -157,6 +162,35 @@ SPEECH_SUBS = [
     # 業界當單字唸的，明列成不變動，免得日後有人以為漏收了
     ("BOLA", "BOLA"), ("STIG", "STIG"), ("RASP", "RASP"), ("SLSA", "SLSA"),
     ("SAMM", "SAMM"), ("COTS", "COTS"), ("SCADA", "SCADA"), ("FedRAMP", "FedRAMP"),
+    # 密碼學與 PKI（EP19、EP25）
+    ("SHA-256", "SHA 二五六"), ("SHA-512", "SHA 五一二"),
+    ("2DES", "two DES"), ("3DES", "three DES"),
+    # 後量子那三支必須排在 DSA 之前：連字號不是英數字，邊界判斷會放行，
+    # DSA 規則若先套用會把 ML-DSA 切成「ML D S A」。
+    ("ML-KEM", "M L KEM"), ("ML-DSA", "M L D S A"), ("SLH-DSA", "S L H D S A"),
+    ("ECDSA", "E C D S A"), ("DSA", "D S A"), ("RSA", "R S A"), ("DH", "D H"),
+    ("OCSP", "O C S P"), ("CRL", "C R L"), ("BLP", "B L P"), ("RA", "R A"),
+    ("PQC", "P Q C"), ("QKD", "Q K D"),
+    # 網路（EP20）
+    ("BGP", "B G P"), ("OSPF", "O S P F"), ("EIGRP", "E I G R P"),
+    ("RIP", "R I P"), ("DHCP", "D H C P"), ("HIDS", "H I D S"),
+    ("NIDS", "N I D S"), ("IKE", "I K E"), ("LDAPS", "L DAPS"),
+    ("LDAP", "L DAP"), ("RDP", "R D P"), ("SMTP", "S M T P"), ("SA", "S A"),
+    # 身分、開發與零信任（EP21、EP24、EP25）
+    ("krbtgt", "K R B T G T"), ("WebAuthn", "Web Auth N"),
+    ("HttpOnly", "H T T P Only"), ("IDOR", "I D O R"),
+    ("ZTNA", "Z T N A"), ("ZTA", "Z T A"), ("C2", "C 二"),
+    ("IaaS", "I A A S"), ("PaaS", "P A A S"),
+    # 零信任的三個零件，兩個字母全靠邊界判斷
+    ("PE", "P E"), ("PA", "P A"),
+    # CAT 不明列會被唸成英文單字 cat
+    ("CAT", "C A T"),
+    # Kerberos 的鑑別伺服器。兩個字母，不明列會被唸成英文的 as
+    ("AS", "A S"),
+    # 羅馬數字比照既有的 Type II
+    ("Schrems II", "Schrems two"),
+    # 業界當單字唸的
+    ("OWASP", "OWASP"), ("PIN", "PIN"),
 ]
 
 # 集數、Domain 代號與 OSI 層數：直接唸 "EP12" 會變成「E P 一二」，
