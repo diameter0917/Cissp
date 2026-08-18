@@ -1,0 +1,279 @@
+{
+  "episode": 2,
+  "unit": "W02",
+  "title_zh": "Domain 2 輪廓：資料分類、角色與生命週期",
+  "dialogue": [
+    {
+      "speaker": "host_f",
+      "text": "哈囉，歡迎收聽 CISSP 螺旋電台第二集，我是曉臻。旁邊這位一樣是等一下會一直問你「這要花多少錢、誰扛責任」的雲哲。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "大家好，我是雲哲。上一集我們把 Domain 1 的地基打完，結論是安全是管理問題；這週就把那套風險思維，壓到一個最具體的對象上——資料。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "這週是 Domain 2 資產安全，考試佔 10%，只有 Domain 1 的一半，但位置很關鍵。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "它整個 Domain 的骨幹就一句話：你得先盤點手上有哪些資產、判斷它值多少，才有辦法決定該投多少資源去守。而上一集出現過的 Data Owner，這週會被整個放大來看。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "對，Domain 1 只告訴你 Owner 決定分類；這週要看的是他決定完之後，資料一路到被銷毀為止都發生了什麼事。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "一樣提醒你，這是螺旋的第一圈，只求你把地圖畫出來，不求背熟，細節第二圈再挖。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那先給你這週的地圖，五封信，一封一句話。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Day 6 是 Domain 2 的全景跟資料分類：政府軍方一套標籤、商業一套標籤，還有為什麼分類要排在所有控制的最前面。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "Day 7 是資料角色與擁有權，六個角色講清楚誰決定、誰執行、誰的資料、誰代為處理。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Day 8 是資料生命週期跟資料三態：從建立到銷毀的時間軸，加上 at rest、in transit、in use 三種當下的存在形式。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "Day 9 講資料的下半生：該留多久、怎麼刪才刪得乾淨，還有最愛考的資料殘留。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Day 10 收尾，把前面全部落地成技術：DLP、DRM、CASB 三個工具，再加上安全基準跟 scoping、tailoring 怎麼裁控制。五封串起來就是一條線，今天挑四段最容易混、也最常考的來拆。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第一段，資料分類。這件事聽起來很行政，為什麼考試把它擺在第一步？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "因為等級沒先定下來，後面每一個控制都只能靠直覺。題目問「保護資料的第一步是什麼」，答案永遠是識別並分類，不是加密、也不是設存取控制——你不知道等級，就不知道該套多強的控制。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "兩套標籤幫大家排一次吧。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "政府軍方由高到低是 Top Secret、Secret、Confidential、Unclassified；商業版是 Confidential 或 Proprietary、Private、Sensitive、Public。最常錯的是以為 Private 最高，其實商業版的天花板是 Confidential 或 Proprietary。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那到底該分幾級才對？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "層數不是重點，每一級對應到什麼保護要求才是；分太多級沒人執行得動，實務上三到四級最實際。台灣個資法的特種個資，本質上就是被放到更高的一級。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "接下來這組我每次都卡：sensitivity 跟 criticality。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "敏感度問「外洩會多嚴重」，偏機密性；關鍵性問「沒了它營運多痛」，偏可用性。官網的公開頁面敏感度接近零，可是換成金流系統，關鍵性就極高——同一個資產，這兩個分數可以差很遠。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那 classification 跟 categorization 呢？長得也很像。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Classification 是依敏感度指派等級，就是剛剛那兩套標籤；categorization 比較是 NIST 的做法，用 Low、Moderate、High 的衝擊等級去對系統定性。兩個字考試都會出現。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "管理視角上，分類真正的價值在哪？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "它是自動套用正確保護的開關。雲端儲存桶被設成公開那種外洩，根因幾乎都是資料從頭就沒被正確分類，未分類就等於預設裸奔。附帶一個考點：一台機器只要跑的是 Top Secret 資料，它自己就該被列為 Top Secret 資產；發現兩邊對不上，先把分類改對，而不是急著去加密那一台。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二段，角色。上一集講過 Owner 跟 Custodian，這週多了兩個法律味很重的。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Controller 跟 Processor。先收掉內控那組：Owner 決定分類跟誰能存取，通常是業務主管，題目只要問誰來定等級，答案就是 Owner；Custodian 執行備份、加密、設權限，通常是 IT 或 DBA。責任可以下授，當責留在 Owner。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那 Controller 跟 Owner 又差在哪？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Owner 是組織內部的責任分工，Controller 則是個資法規眼中要負責的那個法律主體，通常就是整間公司。考內控用 Owner 跟 Custodian，考個資法或 GDPR，語彙就換成 Controller 跟 Processor。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "Controller 跟 Processor 的分界線呢？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "決定為什麼處理、怎麼處理的是 Controller，照指示做事的是 Processor。公司用一套雲端 CRM 寄行銷信，公司是 Controller，那家廠商是 Processor；但只要廠商偷偷把名單拿去做自家研究，就那項處理而言，它自己就變成 Controller 了。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那它要扛的東西就完全不一樣了。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "對，合法性基礎、告知當事人這些義務全部得自己來，這題非常愛考。剩下三個角色一句話：Data Subject 就是資料講的那個人本人，Data Steward 管資料品質跟業務意涵，DPO 是特定情形下必須設置的資料保護長。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那外包商出包的時候，責任怎麼算？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "兩邊都跑不掉：Controller 被追未善盡選任與監督，Processor 被追未依約落實安全措施，但主要義務永遠在 Controller。所以 GDPR 第 28 條硬性要求雙方簽 DPA——資料可以外包，責任沒辦法一起外包出去。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三段，資料是會動的。生命週期先排一次。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "建立或蒐集、儲存、使用、分享、封存、銷毀，六個階段。每一段的控制都不一樣：蒐集要最小化，儲存要加密跟備份，分享要管通道，最後要確保真的刪得掉。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那什麼時候該分類？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "建立或蒐集的當下，越早越好。晚一天分類，資料就多裸奔一天，後面的加密、權限、保存期限全都沒有依據，這是很標準的順序題。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "三態跟生命週期是同一回事嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "不是。生命週期是時間軸，從搖籃到墳墓；三態是資料此刻的存在形式。同一個階段可以橫跨好幾態，你在使用一份檔案，它可能同時 in use 又 in transit。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "三態各自靠什麼保護？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "At rest 靠儲存加密、全磁碟加密加上存取控制；in transit 靠 TLS、IPsec、VPN；in use 最難，只能靠存取控制跟安全編碼，新一點的做法是用硬體 enclave 做機密運算。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "為什麼 in use 特別難？只做 at rest 加密不夠嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "因為資料要被運算，就一定得在記憶體裡解開，加密在那一刻幫不上忙。只鎖一道門也是最常見的外洩模式：資料庫加密了、備份檔沒加密被搬走，網站上了 TLS、後端卻明文存——壞人只會挑你沒鎖的那一面進來。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第四段，也是這週最愛考的：資料要留多久，還有怎麼刪才算刪乾淨。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "保存政策的原則是最短必要期限，不是越久越好；留越久外洩面越大、日後調閱的成本也越高。但財務、醫療常有法定最低年限，個資又受目的達成就該刪的最小化原則拘束，所以要一類一類訂。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那為什麼刪了還會留下東西？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "這叫資料殘留。一般刪除或快速格式化只是把索引拿掉，資料本體還躺在介質上，救援工具撈得回來；所以考題問「確保不可復原」，選 delete 或 format 一定是錯的。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "三個強度等級幫大家排一下。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Clearing 是覆寫，擋得住一般軟體救援，介質還能再用；purging 是消磁或加密抹除這類，目標是連實驗室級技術都救不回來；destruction 是粉碎、焚化、熔毀，介質直接報廢，保證最高。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "實務上怎麼選？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "先問一句：這個介質還要不要再用。要再用就在 clearing 跟 purging 之間挑，要報廢又要最高保證就 destruction；而且 Top Secret 等級的資料，不接受只做 purging。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "SSD 那個陷阱一定要講。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "消磁對 SSD 完全無效，因為它根本不是磁性介質；而且 SSD 有 wear leveling，覆寫也不保證蓋到每個區塊。正解是加密抹除，把金鑰銷毀讓資料永遠讀不回來，或者直接實體銷毀，這一整套的權威標準是 NIST SP 800-88。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "銷毀完，還要留什麼給管理層？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "銷毀證明。用一個受控、法律上站得住的方式處理掉，這叫可辯護的銷毀，出事的時候你要拿得出證據。二手硬碟被撈出前主人的醫療紀錄，這種研究每隔幾年就再出現一次。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "Day 10 那些工具今天沒深挖，有沒有一定要先記住的？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "三句話：防檔案被寄出去是 DLP，檔案離開公司之後還要管開啟跟列印是 DRM，看見並管控員工在各種雲端服務的行為是 CASB。順序也考：依分類挑基準，先 scoping 去掉不適用的控制，再 tailoring 依風險調整補強。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "好，快問快答三題。第一題：一家公司委託 SaaS 廠商代寄客戶名單的行銷信，依 GDPR，這家廠商是什麼角色？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Processor，處理者，委託它的那家公司才是 Controller。判準只有一條——決定目的跟方式的是 Controller，照指示執行的是 Processor，而且 Controller 的主要義務不會因為外包就消失。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二題：技術人員用固定模式覆寫了一顆硬碟，一般救援軟體救不回來，但實驗室技術還有機會。這屬於哪一級？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Clearing。它的定義邊界就在這裡：防一般工具，不保證擋得住實驗室；要連實驗室都救不回，那是 purging；要介質報廢、保證最高，才是 destruction。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三題：一台關鍵伺服器的作業系統已經 End of Support 一年，廠商不再出安全修補，又不能馬上汰換，你會怎麼做？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "先評估風險，再用補償控制壓下來，例如網路隔離、加強監控、限縮存取，同時把汰換排進計畫。不是放著不管，也不是衝動關機——關掉關鍵系統造成的可用性損失，可能比原本的風險更大。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "三題其實是同一個味道：先看等級、先評風險，再決定手段。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "這就是 Think Like a Manager。一句話總結這週：分類是引擎，角色決定誰扛責任，三態決定你要鎖幾道門，而銷毀是最後一道、也最常被忘記的控制。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "下週進 Domain 3，安全架構與工程的輪廓：安全模型、加密基礎，還有系統本身的弱點；今天講的三態保護，到那邊會被拆得更細。第二集就到這裡，我們下週見！"
+    },
+    {
+      "speaker": "host_m",
+      "text": "下週見！"
+    }
+  ]
+}

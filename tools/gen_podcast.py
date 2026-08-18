@@ -48,6 +48,23 @@ SPEECH_SUBS = [
     ("DAD", "D A D"), ("AAA", "triple A"), ("NDA", "N D A"), ("AUP", "A U P"),
     ("DBA", "D B A"), ("CEO", "C E O"), ("CIO", "C I O"), ("CSO", "C S O"),
     ("CISO", "C I S O"), ("COO", "C O O"),
+    # Domain 2 資產安全
+    ("CASB", "C A S B"), ("DLP", "D L P"), ("DRM", "D R M"), ("DPA", "D P A"),
+    ("DPO", "D P O"), ("SSD", "S S D"), ("CRM", "C R M"), ("SaaS", "SASS"),
+    ("CISSP", "C I S S P"), ("IT", "I T"), ("SP", "S P"),
+    # Domain 3/4 網路與密碼學
+    ("OSI", "O S I"), ("TLS", "T L S"), ("SSL", "S S L"), ("SSH", "S S H"),
+    ("DNSSEC", "D N S SEC"), ("DNS", "D N S"), ("DoH", "D O H"), ("DoT", "D O T"),
+    ("IPsec", "I P sec"), ("AH", "A H"), ("ESP", "E S P"),
+    ("IDS", "I D S"), ("IPS", "I P S"), ("NAC", "N A C"), ("NGFW", "N G F W"),
+    ("VPN", "V P N"), ("VLAN", "V LAN"), ("DMZ", "D M Z"), ("DAI", "D A I"),
+    ("SPF", "S P F"), ("DKIM", "D KIM"), ("DMARC", "D MARC"),
+    ("ARP", "A R P"), ("ICMP", "I C M P"), ("SYN", "SIN"), ("PDU", "P D U"),
+    ("TCP", "T C P"), ("UDP", "U D P"), ("SNMP", "S N M P"),
+    ("FTPS", "F T P S"), ("SFTP", "S F T P"), ("FTP", "F T P"),
+    ("WPA3", "W P A 3"), ("WPA2", "W P A 2"), ("SAE", "S A E"),
+    ("802.1X", "八零二點一 X"), ("IoT", "I O T"), ("AP", "A P"),
+    ("SQL", "S Q L"), ("DoS", "DOS"), ("SOC", "SOCK"),
     # CISSP 常用縮寫
     ("BIA", "B I A"), ("RTO", "R T O"), ("RPO", "R P O"), ("MTD", "M T D"),
     ("SOD", "S O D"), ("DAC", "D A C"), ("MAC", "M A C"), ("RBAC", "R BACK"),
@@ -63,9 +80,18 @@ SPEECH_SUBS = [
 ]
 
 
+# 邊界感知的替換樣式快取：只有前後不是英數字時才換，
+# 才不會把 API 裡的 AP、SHA 裡的 AH、IPsec 裡的 IPS 誤換掉。
+# 有了邊界判斷，DNS 也不會誤傷 DNSSEC，替換表就不必再依長度排序。
+_SUB_PATTERNS = [
+    (re.compile(r"(?<![A-Za-z0-9])" + re.escape(src) + r"(?![A-Za-z0-9])"), dst)
+    for src, dst in SPEECH_SUBS
+]
+
+
 def speech_text(text):
-    for src, dst in SPEECH_SUBS:
-        text = text.replace(src, dst)
+    for pattern, dst in _SUB_PATTERNS:
+        text = pattern.sub(dst, text)
     return text
 
 
