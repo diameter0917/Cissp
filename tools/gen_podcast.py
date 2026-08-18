@@ -42,6 +42,12 @@ VOICES = {"host_f": CONFIG["voice_host_f"], "host_m": CONFIG["voice_host_m"]}
 
 # 發音替換表（見 SC200_CONTENT_SPEC.md §3；只影響 TTS，不影響顯示文字）
 SPEECH_SUBS = [
+    # 注意：這是依序套用的字串取代，長的要排在短的前面
+    # （例如 DDoS 必須在 DoS 之前，否則會被切成 "D DoS"）。
+    ("DDoS", "D DOS"), ("(ISC)²", "I S C squared"), ("ISC2", "I S C squared"),
+    ("DAD", "D A D"), ("AAA", "triple A"), ("NDA", "N D A"), ("AUP", "A U P"),
+    ("DBA", "D B A"), ("CEO", "C E O"), ("CIO", "C I O"), ("CSO", "C S O"),
+    ("CISO", "C I S O"), ("COO", "C O O"),
     # CISSP 常用縮寫
     ("BIA", "B I A"), ("RTO", "R T O"), ("RPO", "R P O"), ("MTD", "M T D"),
     ("SOD", "S O D"), ("DAC", "D A C"), ("MAC", "M A C"), ("RBAC", "R BACK"),
