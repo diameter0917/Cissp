@@ -1,0 +1,279 @@
+{
+  "episode": 10,
+  "unit": "W10",
+  "title_zh": "Domain 2 細節：分類制度、責任鏈與可辯護的銷毀",
+  "dialogue": [
+    {
+      "speaker": "host_f",
+      "text": "哈囉大家好，歡迎回到 CISSP 螺旋電台，我是曉臻。第十集，我們把上一集算的那些數字先收起來。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "我是雲哲。EP09 我們在 Domain 1 的細節裡算 ALE、幫每個控制貼兩個標籤；這一集換 Domain 2 資產安全，而且是第二次見面了。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二次的意思是，EP02 已經把資料分類、角色、生命週期的輪廓畫過一遍，所以今天不重講定義。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "對。這一輪要問的是制度怎麼設計、標準怎麼引用——分幾級、誰簽名、銷毀要拿什麼證明、背後是哪一條在撐。你會聽到很多編號，FIPS 199、NIST SP 800-88、GDPR 第二十五條跟第二十八條。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "老規矩，先給本週地圖，五封信一句話帶過，順便說今天主體挑哪幾塊。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "週一是分類分級制度設計；週二把角色的法律責任講深，加上 RACI；週三是資料最小化跟資料主權；週四是殘留、銷毀標準跟媒體管理；週五收在 DLP、DRM、CASB 加 Privacy by Design。主體挑四塊：分類制度怎麼落地、責任鏈跟跨境、什麼叫可辯護的銷毀，還有三個工具各補哪個破口。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那從分類制度開始。第一輪只講「分類驅動控制」，這輪要自己設計一套，第一個決定是什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "分幾級，而且答案比想像中少，多數商業組織三到四級就夠。分越細不等於越精準：每多一級就多一整套控制、訓練跟標示成本，而且什麼都標機密，人會麻木、開始繞過流程，真正的機密反而藏在雜訊裡。記住，過度分類跟分類不足，兩個都是制度設計失敗。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那一套及格的制度要有哪些零件？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "四個：每一級的判定準則、標示、處理要求，還有解密降級程序。沒有判定準則，分類就變主觀；處理要求是各級的儲存、傳輸、存取、銷毀規定，它是分類通往控制的那座橋，少了它，分類只是一張貼紙。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "標示這裡有一組雙胞胎，考試很愛考。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Labeling 是給機器讀的，metadata 或 tag，DLP 就靠它自動執行；Marking 是給人讀的，文件頁首頁尾那兩個字。題目說「供系統自動執行的分類資訊」，答 Labeling。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那標示沒落實會怎樣？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "制度寫在政策裡很漂亮，分類卻沒黏到資料本身，DLP 讀不到標籤，含個資的匯出檔就被當一般檔案放行。分類沒落到每一筆資料上，等於沒有。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "解密降級、聚合、推論這三個，是這一輪才補上的。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "十五年前的產品設計圖早就隨專利公開了，還鎖在昂貴的安全儲存裡，那就該依程序降級。聚合是多筆低敏資料合起來變敏感，單一筆訂單沒事、全公司客戶清單就不一樣；推論是從拿得到的資料推導出更敏感的結論，所以定級要看整體。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "最後一組混淆：Classification 跟 Categorization。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Classification 依敏感度貼標籤；Categorization 走 FIPS 199 跟 NIST SP 800-60，依機密性、完整性、可用性的衝擊定 Low、Moderate、High，題幹出現這三級就是它。再送你一句稽核最愛的：資產分級要對齊資料分級，處理 Top Secret 資料的電腦就是 Top Secret 資產。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二塊，角色。第一輪我們認得 owner、custodian、controller、processor、subject，這輪要看的是責任。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "先把兩個世界分開。Owner 是組織內部角色，負責分類跟核准存取；Controller 是法律主體，通常就是公司本身，決定為什麼處理、怎麼處理。內控語境用 Owner，法遵語境用 Controller。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "這週還用 RACI 來釐清權責，重點在哪？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "誰做、誰扛、誰問、誰知。實務上最常見的病是兩個 A 或沒有 A——Accountable 必須唯一，正好呼應 Domain 1 那句：責任可以分，當責不能下授。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那 Joint Controllers 怎麼判？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "看誰在決定「為什麼處理」。兩方共同決定目的跟方式，是 Joint Controllers，平行關係，要用協議劃分責任；一方決定、一方照指示做，是 Controller 對 Processor，上下關係，必須簽 DPA。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "DPO 讓 CISO 兼任省成本，行嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "不行。DPO 要獨立、直接向最高管理層報告、當主管機關跟當事人的窗口，自己決定安全怎麼做再自己監督自己，是角色衝突。另外，大規模處理健康這種特種個資，就是強制設置 DPO 的情形之一。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "真的外洩了，責任怎麼分？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "企業說是廠商系統的漏洞，廠商說我只是照指示做，然後互踢皮球。GDPR 的設計是兩邊都會被追責：Controller 選任監督不周，Processor 沒落實約定的安全，關鍵證據就是 DPA 有沒有簽。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "所以外包出去也甩不掉。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "合約能移轉工作，移轉不了當責。順帶一提，一般員工只是代表組織處理資料的授權使用者，不是獨立的 Controller；但逾越授權去偷查名人病歷，可能要自負個人法律責任。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "接著跨境。EP09 提過 residency 不等於 sovereignty，這週把它補完整了。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "三個詞：Residency 是資料實際存在哪，就是你選的 region；Sovereignty 是受誰的法律管轄，包含供應商的母國；Localization 是法規強制個資留在境內。題幹出現「法律要求必須存放境內」，答 localization。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "所以放在歐盟 region 的美商雲，還是有事？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "存放地在歐盟，管轄一樣搆得到，因為供應商受美國 CLOUD Act 管，這就是 Schrems II 爭議的核心，補充措施是金鑰握在自己手上。共同責任模型也一樣，雲商只負責雲本身的安全，資料分類、存取控制、金鑰跟合規還是客戶的事。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "這週還有一個很實務的衝突：法定保存年限跟資料最小化。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "法規要你至少留七年，隱私原則要你目的達成就刪，兩邊會打架。解法不是一刀切，是逐類資料分別訂保存政策。而且別忘了源頭那句：沒蒐集的資料不會外洩。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三塊，銷毀。第一輪背過 clearing、purging、destruction 三個字，這輪要會選。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "標準是 NIST SP 800-88。Clear 是標準覆寫，防一般軟體工具復原；Purge 是消磁、加密抹除、韌體 Secure Erase，防到實驗室級；Destroy 是粉碎、焚化、熔毀，介質直接報廢。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "選的時候看什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "三個問題：資料多機密、介質會不會脫離組織控制、之後還要不要再用。舊筆電要捐給學校，敏感又離開組織，至少要 Purge；但消磁雖然也算 Purge，會把伺服資訊一起毀掉讓機器報廢，所以正解是韌體 Secure Erase。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那 SSD 要怎麼清？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "消磁對 SSD 跟光碟完全無效，它們根本不是磁性介質。SSD 要用 crypto-erase、Secure Erase 或實體銷毀，純覆寫不可靠是因為 wear-leveling 會把寫入分散掉。光碟只能碎解、紙本 cross-cut、雲端用 crypto-shredding 銷金鑰；delete 跟 format 永遠不是答案。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那所謂「可辯護的銷毀」，要辯的是什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "要能證明它真的被銷毀了。監管鏈要從退役一路可追溯到銷毀現場，委外銷毀要拿到銷毀證明，上面有序號、方法、日期跟見證人，事後還要抽樣驗證。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那些外包銷毀卻在二手市場出現的硬碟，就是敗在這裡吧。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "資料完好無缺，代表根本沒銷毀就中途流出，問題不在覆寫幾次，在託管流程。盤點還有兩個盲點：多功能影印機裡有硬碟，手機跟記憶卡也存過資料，清冊沒涵蓋，銷毀政策就有洞。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "週四最後還冒出 EOL 跟 EOS，一句話分清楚。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "EOL 是廠商停售，之後通常還有一段支援期；EOS 是停止支援、不再發安全修補。過了 EOS 的關鍵系統不能說關就關，順序是先做風險評估，再上網段隔離跟強化監控這類補償控制，同時推汰換計畫。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "最後一塊，DLP、DRM、CASB 各補哪一個破口？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "先看 DLP 的三種部署，剛好對上資料的三個狀態：Network DLP 在網路出口管傳輸中；Endpoint DLP 在端點管使用中，像複製到隨身碟跟列印；Storage DLP 掃儲存庫，找靜止中沒受保護的敏感檔。它是靠分類標示加內容比對在判斷，所以週一那套分類做得好，DLP 才會準。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那 DRM 補的是哪一段？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "檔案離開之後那一段。DLP 是在出口攔，攔不住就沒了；DRM 把保護綁在檔案本身，加密加上使用權限，外寄之後還能限制開啟、複製、列印跟有效期限。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "CASB 呢？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "管雲端。四個支柱是可視化、合規、資料安全、威脅防護，可視化那項還包含找出影子 IT。事業單位自己刷卡訂了幾十個沒核准的 SaaS，那就是 CASB 的題目，而不是拿防火牆全封——全封只會逼大家改用個人裝置，可視性更差。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "週五最後還有隱私設計。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Privacy by Design 的精髓就兩句：內建而不是事後補，還有預設即隱私——新帳號預設就是最小蒐集、最嚴設定，要更開放得使用者自己去動。GDPR 第二十五條把它從善意變成法律義務。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "去識別化那三個也很容易反過來。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "匿名化不可逆，資料脫離個資範疇；假名化可逆，金鑰在手上就能還原，所以仍然算個資，還要防重新識別；代碼化是查表替換，token 跟原值沒有數學關係。跟加密的分界線是：數學轉換是加密，查表替換是代碼化。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "進考點快問快答，三題。第一題：公司要把兩百台配磁性硬碟的舊筆電捐給學校，硬碟存過敏感商業資料，而且筆電必須保持可用。依 NIST SP 800-88 該怎麼做？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "做 Purge，用韌體 Secure Erase。判斷式是介質要脫離組織控制、資料又敏感，Clear 的保證等級不夠；消磁雖然也算 Purge，卻會讓硬碟報廢，違反「保持可用」；format 永遠不是答案。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二題：設計部門把機密圖檔複製到私人隨身碟，還在辦公室印表機列印。哪一種 DLP 部署最對症？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Endpoint DLP。複製跟列印都發生在端點，屬於使用中的資料，流量根本不經過網路出口，所以 Network DLP 看不到；Storage DLP 只掃靜止資料，攔不了端點上的即時動作。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三題：跨國公司要把員工資料整併到境外單一 region，某國法務反對，說該國法律要求公民個資必須存放在境內伺服器。這是哪一種要求？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Data localization，在地化。關鍵字是「法律要求」加「必須存境內」。Residency 只是描述資料實際存在哪、不帶強制；sovereignty 講的是受誰管轄、誰能合法調取。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "三題都打在這週的核心上。幫今天做個總結？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "分類制度要有判定準則、標示、處理要求跟降級程序，過度分類也是失敗；當責唯一，外包移轉不了 Controller 的責任；存放地不等於管轄權；銷毀依介質選方法，再加監管鏈跟銷毀證明。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "工具那塊我補一句：DLP 擋外流、DRM 讓檔案到哪都受控、CASB 管雲端，隱私要內建、預設即隱私。下一集 EP11，我們進 Domain 3，安全架構與工程的細節。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "我們下週見！"
+    }
+  ]
+}

@@ -5,8 +5,8 @@
       "unit": "W01",
       "title_zh": "Domain 1 輪廓：治理、風險與合規的全景",
       "file": "ep-001.mp3",
-      "bytes": 3830938,
-      "duration_sec": 638,
+      "bytes": 3841882,
+      "duration_sec": 640,
       "script_sha256": "ecd59e1fcb331c1fad092275b9acd32548a64638755185a8cb4d6d04ad5073c1"
     },
     "009": {
@@ -14,8 +14,8 @@
       "unit": "W09",
       "title_zh": "Domain 1 細節：文件層級、定量風險與控制分類",
       "file": "ep-009.mp3",
-      "bytes": 4328467,
-      "duration_sec": 721,
+      "bytes": 4340419,
+      "duration_sec": 723,
       "script_sha256": "cdaf58c3b522490f9410234c440672594efaf39e3b08e0d1a934e8ed1d52c69c"
     },
     "017": {
@@ -23,9 +23,216 @@
       "unit": "W17",
       "title_zh": "Domain 1 考點：最佳答案怎麼選",
       "file": "ep-017.mp3",
-      "bytes": 4014384,
-      "duration_sec": 669,
-      "script_sha256": "c0e1b450f3ab682ab8a6f30e8a888de40abd46486939db0f87741deb6c587c61"
+      "bytes": 4020288,
+      "duration_sec": 670,
+      "script_sha256": "c4c1577a7755037ea7147c4d3e68961a9ed59caef23f195d15bf1938f15a2931"
+    },
+    "002": {
+      "episode": 2,
+      "unit": "W02",
+      "title_zh": "Domain 2 輪廓：資料分類、角色與生命週期",
+      "file": "ep-002.mp3",
+      "bytes": 4029949,
+      "duration_sec": 672,
+      "script_sha256": "2f9cd3942ae17618cf969d0c7fa3a8cf95fda63855de4d87339875f10d39ba22"
+    },
+    "003": {
+      "episode": 3,
+      "unit": "W03",
+      "title_zh": "Domain 3 輪廓：把安全蓋進系統裡",
+      "file": "ep-003.mp3",
+      "bytes": 4602337,
+      "duration_sec": 767,
+      "script_sha256": "d9ff05041945db533b37f5be28bb38ae5dc61ed67027cbbdaf37923062924cd6"
+    },
+    "004": {
+      "episode": 4,
+      "unit": "W04",
+      "title_zh": "Domain 4 輪廓：先定位層，再選防禦",
+      "file": "ep-004.mp3",
+      "bytes": 4257316,
+      "duration_sec": 709,
+      "script_sha256": "9b9bedc6df489d60328cede9d79783daf5d719800830896e255515cb4d3ac0e5"
+    },
+    "005": {
+      "episode": 5,
+      "unit": "W05",
+      "title_zh": "Domain 5 輪廓：身分與存取管理的第一道防線",
+      "file": "ep-005.mp3",
+      "bytes": 4374544,
+      "duration_sec": 729,
+      "script_sha256": "55acb1526e45c44f289d8e4203be6eda67cc8fde250b699e1baddfc2b0b6b43f"
+    },
+    "006": {
+      "episode": 6,
+      "unit": "W06",
+      "title_zh": "Domain 6 輪廓：把「有控制」證明成「控制有效」",
+      "file": "ep-006.mp3",
+      "bytes": 4086118,
+      "duration_sec": 681,
+      "script_sha256": "efeb6ed289de677dbbf131e98c7b2bcdbe3710255835e3dc918c01cadd9ce950"
+    },
+    "007": {
+      "episode": 7,
+      "unit": "W07",
+      "title_zh": "Domain 7 輪廓：出事之後，順序決定損失",
+      "file": "ep-007.mp3",
+      "bytes": 4431850,
+      "duration_sec": 739,
+      "script_sha256": "af1a50540e8f83deb233857b1995def290acc24de13ba58608c06ba5e875b27c"
+    },
+    "008": {
+      "episode": 8,
+      "unit": "W08",
+      "title_zh": "Domain 8 輪廓：把安全內建進開發流程",
+      "file": "ep-008.mp3",
+      "bytes": 4240759,
+      "duration_sec": 707,
+      "script_sha256": "386acf1cb682db4622f2a59487f450474a0e0b761c7dad2cd692be87cda770ce"
+    },
+    "010": {
+      "episode": 10,
+      "unit": "W10",
+      "title_zh": "Domain 2 細節：分類制度、責任鏈與可辯護的銷毀",
+      "file": "ep-010.mp3",
+      "bytes": 4414872,
+      "duration_sec": 736,
+      "script_sha256": "6773d4ee9887ed42fad5639bd53b5e7b8268418fb170fe16ebd470aef273e57c"
+    },
+    "011": {
+      "episode": 11,
+      "unit": "W11",
+      "title_zh": "Domain 3 細節：模型方向、混合加密與金鑰管理",
+      "file": "ep-011.mp3",
+      "bytes": 4231701,
+      "duration_sec": 705,
+      "script_sha256": "7b87f4fbb7c1b9d8706b2e5ab4d990130e4693f4c9b1b17e25afbb8edc5cd660"
+    },
+    "012": {
+      "episode": 12,
+      "unit": "W12",
+      "title_zh": "Domain 4 細節：模式選擇、部署位置與接入三關",
+      "file": "ep-012.mp3",
+      "bytes": 4870485,
+      "duration_sec": 812,
+      "script_sha256": "c15cfe8b3a8e982a9866b3870d29771ee6870cb0aff7b7a1875b45a50770a491"
+    },
+    "013": {
+      "episode": 13,
+      "unit": "W13",
+      "title_zh": "Domain 5 細節：保證等級、Token 驗證、Kerberos 票證與零常駐特權",
+      "file": "ep-013.mp3",
+      "bytes": 4073466,
+      "duration_sec": 679,
+      "script_sha256": "82b3770c6ece9d7f1065129f9976e39e04dca3a7fc5d12fd8d0544e089038480"
+    },
+    "014": {
+      "episode": 14,
+      "unit": "W14",
+      "title_zh": "Domain 6 細節：滲透階段、軟體測試與 SOC 報告",
+      "file": "ep-014.mp3",
+      "bytes": 4195124,
+      "duration_sec": 699,
+      "script_sha256": "44b2be9b992be7346ebd6b21a5b065a4208d5184a16078c1e1d427f32b994eea"
+    },
+    "015": {
+      "episode": 15,
+      "unit": "W15",
+      "title_zh": "Domain 7 細節：證據怎麼站得住，修補怎麼排順序",
+      "file": "ep-015.mp3",
+      "bytes": 4230264,
+      "duration_sec": 705,
+      "script_sha256": "381976e687a5d1a9aaf98c1e90fa93416b0d6363a66bc9dd7200953dd4ae8e47"
+    },
+    "016": {
+      "episode": 16,
+      "unit": "W16",
+      "title_zh": "Domain 8 細節：成熟度模型、管線關卡與輸出編碼",
+      "file": "ep-016.mp3",
+      "bytes": 4244664,
+      "duration_sec": 707,
+      "script_sha256": "ce596ef6a109127576bd01873dde9945ec878c4b6faa4b05152241c76f4bc1a9"
+    },
+    "018": {
+      "episode": 18,
+      "unit": "W18",
+      "title_zh": "Domain 2 考點：近義詞怎麼刪",
+      "file": "ep-018.mp3",
+      "bytes": 4076301,
+      "duration_sec": 679,
+      "script_sha256": "2012331d806108ff83e1711a3794f545570ccd93bddaef547df825e92d006636"
+    },
+    "019": {
+      "episode": 19,
+      "unit": "W19",
+      "title_zh": "Domain 3 考點：方向反了就全錯",
+      "file": "ep-019.mp3",
+      "bytes": 4053120,
+      "duration_sec": 675,
+      "script_sha256": "20b6f4e7d9b614624df0b267ee6fdcb8fd03e738a52a3a609549df4e3c8bfb7e"
+    },
+    "020": {
+      "episode": 20,
+      "unit": "W20",
+      "title_zh": "Domain 4 考點：歸錯層就買錯控制",
+      "file": "ep-020.mp3",
+      "bytes": 4605363,
+      "duration_sec": 767,
+      "script_sha256": "bb2ae5a27ba455bc5ae5cc44da9c524b60d2404eb2ce3fd2beb706d308e6ac8a"
+    },
+    "021": {
+      "episode": 21,
+      "unit": "W21",
+      "title_zh": "Domain 5 考點：這題在問哪一段",
+      "file": "ep-021.mp3",
+      "bytes": 4611408,
+      "duration_sec": 769,
+      "script_sha256": "ecacdee87a78c5ea12f005ccec263f382dc073ee7bb8eeaeb15d5ad2166aab26"
+    },
+    "022": {
+      "episode": 22,
+      "unit": "W22",
+      "title_zh": "Domain 6 考點：誰讀這份報告",
+      "file": "ep-022.mp3",
+      "bytes": 4210797,
+      "duration_sec": 702,
+      "script_sha256": "207010876eb75f4d899e2fc7fd0319d66997ac40006b555ddfbcd847210647ce"
+    },
+    "023": {
+      "episode": 23,
+      "unit": "W23",
+      "title_zh": "Domain 7 考點：先後順序怎麼排",
+      "file": "ep-023.mp3",
+      "bytes": 3911568,
+      "duration_sec": 652,
+      "script_sha256": "c18d670a33a163111a8ce7be4b803ee2c5e7f08c20c6b179f7302e550506182c"
+    },
+    "024": {
+      "episode": 24,
+      "unit": "W24",
+      "title_zh": "Domain 8 考點：對的控制、錯的病",
+      "file": "ep-024.mp3",
+      "bytes": 4273443,
+      "duration_sec": 712,
+      "script_sha256": "401176f960afad36c6adb996a816ff9d34b94ef0c6a287bbaa68e63d62d5c9b3"
+    },
+    "025": {
+      "episode": 25,
+      "unit": "W25",
+      "title_zh": "加強週與考試策略：補最後的洞，然後學會怎麼考",
+      "file": "ep-025.mp3",
+      "bytes": 4656363,
+      "duration_sec": 776,
+      "script_sha256": "7d6d8e13dc62b99814a3fd2f40f3401ec9cffbeddc9663fcd757c748f7faec34"
+    },
+    "026": {
+      "episode": 26,
+      "unit": "W26",
+      "title_zh": "總驗收：跨域 20 題怎麼拆",
+      "file": "ep-026.mp3",
+      "bytes": 4078027,
+      "duration_sec": 680,
+      "script_sha256": "c8258198f7d462115c73197e47818571a0566fd67c3ae0fa24bb7e99592bb09b"
     }
   }
 }

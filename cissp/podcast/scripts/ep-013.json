@@ -1,0 +1,271 @@
+{
+  "episode": 13,
+  "unit": "W13",
+  "title_zh": "Domain 5 細節：保證等級、Token 驗證、Kerberos 票證與零常駐特權",
+  "dialogue": [
+    {
+      "speaker": "host_f",
+      "text": "哈囉大家好，歡迎回到 CISSP 螺旋電台，我是曉臻。第十三集，我們繞回 Domain 5，身分與存取管理。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "我是雲哲。第五集我們畫過這個 Domain 的輪廓，這一週是第二圈——同一個題目，這次要鑽進去。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那我先問一個大家一定會有的疑問：這跟第五集講的輪廓，到底差在哪？我不是已經知道 IAAA、也知道 MFA 要跨類別了嗎？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "差在提問的方式。輪廓那一輪回答的是 what——這東西叫什麼、大概在做什麼；細節這一輪回答的是 how 跟 why 會考——它實際怎麼跑，以及考題會從哪個縫隙切進去。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "舉個例子我比較有感。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "第五集我說「Kerberos 是內網的票證式登入」，你聽懂了；這一週你要講得出 TGT 跟 service ticket 差在哪、為什麼非要時間同步、krbtgt 被偷會發生什麼事。輪廓讓你認得選項，細節才讓你說得出為什麼是這個選項。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "懂了，這一輪是把名詞拆開來看裡面的零件。老規矩，先給本週地圖。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "週一是 AAA 與鑑別因子深入，重點在抗釣魚的 FIDO2 跟生物特徵那三個指標；週二是身分生命週期與身分證明，帶出 NIST 的 IAL、AAL、FAL 三個保證等級。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "週三是 SAML、OAuth、OIDC 三大協定跟 token 安全；週四是 Kerberos 與目錄服務，票證流程加上 Golden Ticket 那些著名攻擊。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "週五收尾，四大存取控制模型的細節跟 PAM。今天主體挑四塊：鑑別與保證等級、聯合協定與 token、Kerberos 票證、授權模型與特權。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第一塊。第五集講過 MFA 要跨類別，細節這一輪要加什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "加一句話：有 MFA 不代表擋得住釣魚。問題從「有沒有 MFA」變成「這個 MFA 抗不抗釣魚」，關鍵是看攻擊者拿走的是什麼。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "拿走什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "AiTM 即時釣魚代理，會把你輸入的 OTP 跟會談 cookie 原封不動轉發給真站台；推播轟炸則是煩到你自己按同意。這兩種偷的都是「你輸入或按下的東西」。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "所以換成 TOTP 驗證器 App 也躲不掉？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "躲不掉，一樣要手動輸入，代理站照樣即時轉發；number matching 也只解決推播轟炸那一半。正解是 FIDO2 跟 passkey，私鑰不離開裝置、簽章綁定來源網域。記法是：AiTM 攔得到你輸入的東西，攔不到綁網域的簽章。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "生物特徵這一輪也有新問法：稽核發現冒充者被放進來，經理把指紋門禁的靈敏度調高，副作用是什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "FAR 下去、FRR 上來，合法員工開始被擋在門外。而且 CER 不會因為你調門檻就變好，它是那台設備固有的準確度，是拿來比較不同系統用的。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "換到週二。IAL、AAL、FAL 這三個等級，我第一次看到就頭大。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "拆成三個問題就好。IAL 問「你是不是這個人」，管的是註冊當下身分證明的嚴謹度；AAL 問「你怎麼證明是你」，管的是每次登入的鑑別強度；FAL 管跨組織那張斷言夠不夠安全。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "所以身分證明是註冊時做一次，鑑別是之後每次登入都做。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "對。網路銀行遠端開戶，詐騙集團用社群媒體查得到的資料就答過了安全問題，該補的是 IAL——證件驗真、活體偵測、比對權威資料庫。這時候去加強登入的 MFA 屬於 AAL 軸，擋不住一開始就用假身分合法註冊進來的人。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二塊，聯合身分。第五集只教我們用途判別，這次深到哪？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "深到流程跟 token。用途再複習一次：SAML 用 XML 斷言、是企業 Web SSO 的老將；OAuth 是授權，把存取資源的權限委派出去；OIDC 蓋在 OAuth 上面、發 ID token，那才是鑑別。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "流程長什麼樣子？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "SAML 是使用者找上 SP、被重導到 IdP 鑑別，IdP 發出斷言，SP 選擇相信。OAuth 走授權碼流程：你按同意，授權伺服器先發一個 code，App 再拿 code 去換 access token，然後帶著 token 打 API。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "為什麼要繞一圈用 code 換，不直接發 token？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "為了不讓 token 暴露在網址列跟日誌裡。行動 App 跟單頁應用還要再加 PKCE，防的是授權碼在回傳途中被攔走；OAuth 2.1 乾脆把 PKCE 列為必要，implicit flow 淘汰。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "token 這邊最常考什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "驗四件事：簽章、發行者 iss、受眾 aud、過期 exp，而考題最愛挑 aud。少驗 aud，發給人資系統的 token 薪資 API 也照收——簽章對、也還沒過期，可是沒有人問「這張票是發給誰用的」。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "還有一個我覺得很陰險的攻擊，同意釣魚。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "consent phishing。員工在惡意 App 的 OAuth 同意畫面按下接受，就把信箱讀取權限交出去了。密碼沒被偷、MFA 也沒被繞過，因為攻擊者要的是授權，不是憑證。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那密碼政策跟 MFA 都救不了，控制要下在哪裡？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "下在同意流程本身：只能同意經過驗證的發行者、敏感 scope 一律要管理員核准、監控異常授權，再配上最小 scope 跟短壽命 token。對著攻擊路徑下控制，才叫對症下藥。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三塊，Kerberos。這塊第五集只提了名字。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "所以今天從零件講起。KDC 是可信第三方，裡面有 AS 鑑別伺服器跟 TGS 票證授予伺服器。你先向 AS 認證拿到 TGT，再拿 TGT 跟 TGS 換某個服務的 service ticket，最後拿 service ticket 去存取那個服務。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "一句話分辨 TGT 跟 service ticket。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "TGT 是身分證，用來向 TGS 證明你已經認證過；service ticket 是進某一扇門的門票。先有身分證，才換得到門票。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "為什麼非要時間同步不可？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "票證裡有時戳、用來防重放，client 跟 KDC 的時鐘差超過容許值，預設大約五分鐘，認證就會失敗。順便記住：走 port 88、用對稱式加密，而且密碼從頭到尾不會在網路上傳輸。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那 Golden Ticket 呢？這個大家都聽過。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "它能從剛剛的流程直接推出來：簽 TGT 的金鑰來自 krbtgt 這個帳號，所以只要偷到網域控制器上 krbtgt 的雜湊，就能離線偽造任何人的 TGT，包括網域管理員，還能設超長有效期，等於網域的萬能鑰匙，而且極難偵測。Silver Ticket 是小號版，偽造的只是單一服務的票。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "另外兩個攻擊呢？Kerberoasting 跟 Pass-the-Hash。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Kerberoasting 是用低權限帳號索取一堆服務票證、帶回去離線破解服務帳號密碼，對策是改用密碼長、隨機、自動輪換的受管服務帳號。Pass-the-Hash 則是直接拿記憶體裡撈到的雜湊認證，根本不需要明文。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "所以 Pass-the-Hash 的最佳解不是把密碼改長。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "密碼再長都沒用，人家用的是雜湊本身。正解是分層管理，禁止網域管理員登入低信任的工作站，讓高權限憑證根本不會落在那台機器的記憶體裡，再搭配 Credential Guard 保護 LSASS。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "最後一塊，授權。四個模型第五集講過了，這次的細節在哪？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "在模型自己也會壞掉。RBAC 很好用，可是養了十年常常出現角色爆炸——四千人養出兩千六百個角色，審查的人根本看不出每個角色到底給了什麼。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那要怎麼救？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "角色探勘：分析實際的權限使用、整併重疊的角色、建立角色階層，情境化的例外交給 ABAC 規則，再靠定期 recertification 清理。重點是治理這個模型，不是放棄它——退回 DAC 逐案授權只會更散。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "再補兩個第五集沒講到的名詞吧。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "Rule-based 是全域規則套用到所有主體，像防火牆 ACL 或時段限制，常跟 RBAC 併用；SoD 要嵌在授權設計裡，互斥的角色不能同時給同一個人，像請款跟核款。另外 PDP 負責做決策、PEP 負責執行決策，這兩個縮寫要認得。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "PAM 這邊呢？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "核心只有一句話：零常駐特權。特權的風險跟它存在的時間窗口成正比，常駐的全域管理員等於二十四小時都能被竊用；JIT 把窗口從「永遠」縮到「核准後的幾小時」。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "那密碼庫本身呢？把所有特權憑證集中在一起，聽起來也很可怕。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "所以 2022 年 LastPass 那件事要記住：攻擊者從一名工程師的存取打進去，最後偷走了客戶加密的密碼庫備份，主密碼弱的人就面臨離線破解。保管一切的東西，正是攻擊者最想要的東西，所以 vault 本身要用全組織最高等級的控制保護；break-glass 緊急憑證也別放在同一個 vault，那會變成循環依賴。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "進考點快問快答，三題。第一題：滲透測試發現，發給人資應用的 JWT，薪資 API 也接受，簽章跟過期都驗過了。少了哪一步？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "沒驗 aud，也就是受眾。沒有人問「這張票是發給誰用的」，一張合法 token 就變成跨服務的萬用票。干擾項會拿 PKCE 出來，可是 PKCE 管的是授權碼交換那一段，跟 API 端驗 token 是兩個環節。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第二題：應變團隊確認攻擊者偷走 krbtgt 雜湊、偽造了 Golden Ticket，驅離之後要做什麼，才能讓殘存的偽票失效？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "連續重設兩次 krbtgt 密碼，把現任跟前任兩代金鑰一起換掉，只重設一次的話舊金鑰簽的偽票還是有效。重設全員密碼跟 krbtgt 金鑰無關；封鎖 88 端口更慘，內網照樣用偽票，還會把正常認證一起打死。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "第三題：雲端工程師全天候掛著全域管理員權限，實際上每個月只用幾小時。最該做什麼？"
+    },
+    {
+      "speaker": "host_m",
+      "text": "改成 JIT 即時提權，核准之後給有時限的權限，用完收回。輪換密碼不改變「隨時擁有特權」這件事；工作階段錄製是偵測性控制，能事後追查，卻擋不住當下被濫用。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "幫今天做個總結。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "鑑別要挑抗釣魚的形式；IAL 管證明、AAL 管鑑別，別下錯軸；token 記得驗 aud；Kerberos 先 TGT 再 service ticket，krbtgt 是網域的命根子；授權模型自己也要治理，特權則要零常駐。"
+    },
+    {
+      "speaker": "host_f",
+      "text": "也回頭回答開場那個問題：輪廓那一輪讓你聽得懂這些名詞，這一輪讓你在四個選項都看起來對的時候，說得出為什麼只有一個對。下一集 EP14 進 Domain 6 的細節，安全評鑑與測試。"
+    },
+    {
+      "speaker": "host_m",
+      "text": "你會發現這一週講的存取審查，到那邊會換個身分再出現一次，變成稽核要看的證據。下週見！"
+    }
+  ]
+}
