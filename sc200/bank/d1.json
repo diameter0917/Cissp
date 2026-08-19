@@ -2097,5 +2097,1789 @@
     "tags": [
       "2026"
     ]
+  },
+  {
+    "id": "D1-1001",
+    "domain": "D1",
+    "topic": "unified-rbac",
+    "unit": "P1-W1-4",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You enabled Microsoft Defender XDR unified role-based access control. The security team reports that the custom roles they had configured in Microsoft Defender for Endpoint no longer take effect. Why?",
+    "stem_zh": "你啟用了 Microsoft Defender XDR 統一角色型存取控制（統一 RBAC）。資安小組回報，他們原本在 Microsoft Defender for Endpoint 裡設定的自訂角色不再生效。原因是什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The custom roles must be reassigned in Microsoft Entra ID before they apply",
+        "text_zh": "自訂角色必須先在 Microsoft Entra ID 中重新指派才會套用"
+      },
+      {
+        "key": "B",
+        "text_en": "Once unified RBAC is activated for a workload, it replaces that workload's existing permission model",
+        "text_zh": "統一 RBAC 一旦對某個工作負載啟用，就會取代該工作負載原有的權限模型"
+      },
+      {
+        "key": "C",
+        "text_en": "Custom roles in Defender for Endpoint support read-only permissions only",
+        "text_zh": "Defender for Endpoint 的自訂角色只支援唯讀權限"
+      },
+      {
+        "key": "D",
+        "text_en": "Unified RBAC applies only to Microsoft Defender for Office 365",
+        "text_zh": "統一 RBAC 只適用於 Microsoft Defender for Office 365"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "統一 RBAC 把 XDR 各工作負載的權限收斂成單一模型。一旦對某個工作負載啟用，該工作負載原本的授權來源（MDE 的角色與裝置群組權限、MDO 的 Exchange 角色）就不再作數，改由統一 RBAC 的角色與範圍決定。正確的遷移順序是先建好對等的統一角色再啟用，否則會出現權限落差。",
+    "why_wrong_zh": {
+      "A": "重新指派不會讓它恢復。啟用之後，MDE 原本那套自訂角色整組不再作為授權來源，問題不在指派動作。",
+      "C": "MDE 自訂角色本來就能授予調查與回應等寫入權限，唯讀不是它的限制。",
+      "D": "統一 RBAC 涵蓋 Defender for Endpoint、Defender for Office 365、Defender for Identity 等多個工作負載，可逐一啟用。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/manage-rbac",
+    "tags": []
+  },
+  {
+    "id": "D1-1002",
+    "domain": "D1",
+    "topic": "device-groups",
+    "unit": "P1-W1-5",
+    "set": "B",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "Your organization has OT workstations on the plant floor that must never be isolated automatically, while office devices should be remediated automatically. How should you configure Microsoft Defender for Endpoint?",
+    "stem_zh": "你的組織在廠區有 OT 工作站，這些裝置絕不能被自動隔離；其餘辦公裝置則希望自動修復。你應該如何設定 Microsoft Defender for Endpoint？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Apply an exclusion tag to the OT devices and turn off automated investigation in the portal",
+        "text_zh": "對 OT 裝置套用排除標籤，並在入口網站關閉自動調查"
+      },
+      {
+        "key": "B",
+        "text_en": "Remove the OT devices from Defender for Endpoint onboarding scope",
+        "text_zh": "把 OT 裝置移出 Defender for Endpoint 的上線範圍"
+      },
+      {
+        "key": "C",
+        "text_en": "Create two device groups and set the OT group's automation level to no automated remediation, and the office group's to full automation",
+        "text_zh": "建立兩個裝置群組，OT 群組的自動化層級設為不自動修復，辦公群組設為完全自動修復"
+      },
+      {
+        "key": "D",
+        "text_en": "Create a suppression rule that suppresses all alerts from OT devices",
+        "text_zh": "建立隱藏規則抑制 OT 裝置的所有警示"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "自動調查與修復的層級是綁在裝置群組上的，不同群組可以有不同層級。把 OT 工作站放進獨立群組設成不自動修復，警示與調查照常產生，但不會自動隔離或移除檔案；辦公裝置另立群組設為完全自動修復。看到「某一群裝置要有不同的處理方式」，答案幾乎都在裝置群組。",
+    "why_wrong_zh": {
+      "A": "標籤只是分類與篩選用的中繼資料，不會改變自動化層級；而在入口網站關閉自動調查是整個租用戶的設定，會連辦公裝置一起關掉。",
+      "B": "移出範圍等於放棄可見度。題目要的是不自動修復，不是不監控。",
+      "D": "隱藏規則會讓警示不再顯示，等於把 OT 區域變成盲區；題目只要求不自動採取修復動作。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/machine-groups",
+    "tags": []
+  },
+  {
+    "id": "D1-1003",
+    "domain": "D1",
+    "topic": "mde-onboarding",
+    "unit": "P1-W1-5",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You must onboard 300 Windows 11 devices that are already managed by Microsoft Intune to Microsoft Defender for Endpoint, without touching each device. What should you do?",
+    "stem_zh": "你要把 300 台已由 Microsoft Intune 管理的 Windows 11 裝置上線到 Microsoft Defender for Endpoint，且不必逐台操作。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Export the local onboarding script and deploy it through a Group Policy logon script",
+        "text_zh": "匯出本機上線指令碼，透過群組原則的登入指令碼派送"
+      },
+      {
+        "key": "B",
+        "text_en": "Run WindowsDefenderATPOnboardingScript.cmd on each device",
+        "text_zh": "在每台裝置上執行 WindowsDefenderATPOnboardingScript.cmd"
+      },
+      {
+        "key": "C",
+        "text_en": "Use the VDI onboarding package",
+        "text_zh": "使用 VDI 上線套件"
+      },
+      {
+        "key": "D",
+        "text_en": "Create an endpoint detection and response policy in Intune and assign it to the device group",
+        "text_zh": "在 Intune 建立端點偵測與回應（EDR）原則，指派給該裝置群組"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "裝置已由 Intune 管理時，最省事的上線路徑就是用 Intune 的端點安全性／EDR 原則把上線設定推下去：不必接觸單機，還能在主控台看到部署進度。選上線方式的判準是「這批裝置現在由誰管」——Intune 管就走 Intune，純 AD 就走 GPO，少量或臨時就走本機指令碼。",
+    "why_wrong_zh": {
+      "A": "本機指令碼加群組原則是給「有 AD 網域、沒有 Intune」的環境用的。裝置既然已在 Intune 內，繞回 GPO 只是多繞一圈，也看不到集中的部署狀態。",
+      "B": "逐台執行是為少量裝置或測試設計的，300 台不切實際，而且無法集中追蹤上線狀態。",
+      "C": "VDI 套件處理的是非持續性虛擬桌面每次重建時的身分問題，不適用於實體 Windows 11 端點。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/onboard-configure",
+    "tags": []
+  },
+  {
+    "id": "D1-1004",
+    "domain": "D1",
+    "topic": "asr-rules",
+    "unit": "P1-W1-5",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You plan to enable an attack surface reduction rule that blocks Office applications from creating child processes, but you are concerned about business-critical macros. What should you do first?",
+    "stem_zh": "你打算啟用一條 ASR 規則，封鎖 Office 應用程式建立子處理程序，但擔心影響業務用的巨集。第一步應該做什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Set the rule to audit mode first and review the events it generates before switching to block",
+        "text_zh": "先把規則設為稽核模式，檢視一段期間產生的事件後再決定是否切換為封鎖"
+      },
+      {
+        "key": "B",
+        "text_en": "Set the rule to block and add the finance department to the exclusion list",
+        "text_zh": "直接設為封鎖，並把財務部門加入排除清單"
+      },
+      {
+        "key": "C",
+        "text_en": "Enable the rule in a test tenant first, then copy the configuration to production",
+        "text_zh": "先在測試租用戶啟用，再把設定複製到正式環境"
+      },
+      {
+        "key": "D",
+        "text_en": "Enable the rule and forward the audit logs to Microsoft Sentinel for later investigation",
+        "text_zh": "啟用規則並把稽核記錄轉送到 Microsoft Sentinel 以便事後調查"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "ASR 的標準導入流程是稽核 → 檢視實際觸發 → 針對必要路徑或應用程式建立排除 → 再切封鎖。稽核模式會產生與封鎖模式相同的事件卻不實際阻擋，因此能在不影響使用者的前提下量測衝擊。題目只要出現「不影響使用者」或「先評估衝擊」，答案就是稽核模式。",
+    "why_wrong_zh": {
+      "B": "還沒有資料就先封鎖、再用部門劃界，等於用猜的界定影響範圍；其他部門一樣可能被擋。",
+      "C": "測試租用戶的應用程式與巨集行為和正式環境不同，反映不出真實衝擊。稽核模式就是為了在正式環境安全地量測而存在。",
+      "D": "轉送記錄有助於事後追查，但規則已經在封鎖了，衝擊已經造成——順序反了。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/attack-surface-reduction",
+    "tags": []
+  },
+  {
+    "id": "D1-1005",
+    "domain": "D1",
+    "topic": "workspace-design",
+    "unit": "P1-W2-1",
+    "set": "B",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A multinational company requires that logs from EU employees remain within the EU, while the SOC in the United States must be able to query across all regions. Which Microsoft Sentinel workspace design meets both requirements?",
+    "stem_zh": "一家跨國企業要求歐盟員工的記錄必須留在歐盟境內，同時位於美國的 SOC 需要跨區查詢。哪一種 Microsoft Sentinel 工作區設計同時滿足兩項需求？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Deploy a single workspace in the United States and enable customer-managed keys for the EU data",
+        "text_zh": "只部署一個美國工作區，並對歐盟資料啟用客戶管理金鑰"
+      },
+      {
+        "key": "B",
+        "text_en": "Deploy one workspace in the EU and one in the United States, and have the SOC use cross-workspace queries",
+        "text_zh": "在歐盟與美國各部署一個工作區，SOC 以跨工作區查詢彙整結果"
+      },
+      {
+        "key": "C",
+        "text_en": "Deploy a single workspace in the EU and let US analysts access it through Azure Lighthouse",
+        "text_zh": "只部署一個歐盟工作區，美國分析師透過 Azure Lighthouse 存取"
+      },
+      {
+        "key": "D",
+        "text_en": "Deploy a workspace in the EU and use a summary rule to copy aggregates to a US workspace",
+        "text_zh": "在歐盟部署工作區，再用 summary rule 把摘要複製到美國工作區"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "資料落在哪裡是由工作區所在區域決定的，因為記錄就存在工作區裡。要同時滿足落地與跨區調查，標準做法是每個受管轄區域各一個工作區，再用跨工作區查詢或 Sentinel 的多工作區檢視把結果併起來。看到「資料不得離境」就先想工作區的區域，而不是加密或權限。",
+    "why_wrong_zh": {
+      "A": "客戶管理金鑰處理的是「誰能解密」，不改變資料實際存放的區域，滿足不了落地要求。",
+      "C": "Lighthouse 解決的是跨租用戶的授權委派，不解決落地；而且把美國的記錄也塞進歐盟工作區，反而製造反向的落地問題。",
+      "D": "摘要仍是原始記錄的衍生資料，複製到美國同樣構成資料離境，而且分析師拿不到明細。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/design-your-workspace-architecture",
+    "tags": []
+  },
+  {
+    "id": "D1-1006",
+    "domain": "D1",
+    "topic": "cost-management",
+    "unit": "P1-W2-1",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Your workspace ingests a steady 180 GB per day and currently uses pay-as-you-go pricing. What is the most direct way to reduce cost?",
+    "stem_zh": "你的工作區每天穩定擷取約 180 GB，目前使用隨用隨付定價。降低成本最直接的做法是什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Reduce the retention period from 90 days to 30 days",
+        "text_zh": "把保留期從 90 天縮短為 30 天"
+      },
+      {
+        "key": "B",
+        "text_en": "Convert all tables to Basic Logs",
+        "text_zh": "把所有資料表都改成基本記錄（Basic Logs）"
+      },
+      {
+        "key": "C",
+        "text_en": "Switch to a commitment tier that covers the daily ingestion volume",
+        "text_zh": "改用涵蓋日常擷取量的承諾層級（commitment tier）"
+      },
+      {
+        "key": "D",
+        "text_en": "Enable summary rules to compress the raw logs",
+        "text_zh": "啟用 summary rule 以壓縮原始記錄"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "承諾層級與保留期是成本的兩個旋鈕：承諾層級管「每天進來多少」的單價，保留期管「留多久」的儲存費。每天穩定 180 GB 屬於量大且可預測，選一個貼近日常量的承諾層級就是最直接的節省。看到「每天」往承諾層級想，看到「幾個月、幾年」才往保留期想。",
+    "why_wrong_zh": {
+      "A": "縮短保留期省的是儲存費用。題目說的是每天擷取 180 GB，主要成本在擷取端，這個旋鈕轉錯了。",
+      "B": "基本記錄單價確實較低，但它限制查詢功能與保留能力，也不是每張表都支援；全部改過去會犧牲偵測與分析。",
+      "D": "summary rule 是把已經寫入的原始記錄整理成摘要表，加速查詢並降低長期查詢成本，它不會減少擷取量。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/billing",
+    "tags": []
+  },
+  {
+    "id": "D1-1007",
+    "domain": "D1",
+    "topic": "sentinel-rbac",
+    "unit": "P1-W2-1",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "A new analyst must investigate incidents, change incident status, and add bookmarks, but must not be able to create or modify analytics rules. Which role should you assign?",
+    "stem_zh": "一位新進分析師需要調查事件、變更事件狀態並加入書籤，但不得建立或修改分析規則。應指派哪個角色？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Microsoft Sentinel Reader",
+        "text_zh": "Microsoft Sentinel Reader"
+      },
+      {
+        "key": "B",
+        "text_en": "Microsoft Sentinel Contributor",
+        "text_zh": "Microsoft Sentinel Contributor"
+      },
+      {
+        "key": "C",
+        "text_en": "Log Analytics Contributor",
+        "text_zh": "Log Analytics Contributor"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Sentinel Responder",
+        "text_zh": "Microsoft Sentinel Responder"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Responder 等於 Reader 加上事件管理（指派、變更狀態與嚴重性）與書籤，正好對應「調查」這件事，而且不含建立或編輯分析規則的權限。Sentinel 的三個層級記法：Reader 看、Responder 處理事件、Contributor 改內容。",
+    "why_wrong_zh": {
+      "A": "Reader 只能讀，無法變更事件狀態或加入書籤，不足以完成調查工作。",
+      "B": "Contributor 可以建立與修改分析規則、playbook 與活頁簿，超出題目要求的最小權限。",
+      "C": "這是工作區層級的資料與設定權限，範圍過大，也不對應 Sentinel 的事件管理動作。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/roles",
+    "tags": []
+  },
+  {
+    "id": "D1-1008",
+    "domain": "D1",
+    "topic": "content-hub",
+    "unit": "P1-W2-2",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "You install a Content hub solution to collect Microsoft Entra ID sign-in logs. What must you do after installing the solution before data starts flowing?",
+    "stem_zh": "你從 Content Hub 安裝了一個解決方案來收集 Microsoft Entra ID 的登入記錄。安裝之後還必須做什麼，資料才會開始流入？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Configure and connect the data connector that the solution installed",
+        "text_zh": "到該解決方案安裝的資料連接器頁面完成設定並連線"
+      },
+      {
+        "key": "B",
+        "text_en": "Create the corresponding custom table in the workspace",
+        "text_zh": "在工作區建立對應的自訂資料表"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a data collection rule for the connector",
+        "text_zh": "為該連接器建立資料收集規則（DCR）"
+      },
+      {
+        "key": "D",
+        "text_en": "Enable the matching analytics rule templates",
+        "text_zh": "啟用對應的分析規則範本"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "Content Hub 的解決方案是一包內容——連接器、分析規則範本、活頁簿、搜捕查詢。安裝只是把內容放進工作區，資料要流動一定得回到連接器頁面完成設定並連線。「裝了卻沒資料」的第一個檢查點永遠是連接器有沒有真的連上。",
+    "why_wrong_zh": {
+      "B": "第一方連接器會自動建立所需的資料表結構，不需要手動建表。",
+      "C": "DCR 用於以 Azure Monitor Agent 收集的來源，例如 Syslog、Windows 事件或自訂記錄。Entra ID 登入記錄走的是第一方診斷設定，不需要 DCR。",
+      "D": "啟用規則是產生事件的步驟，與資料是否流入無關；沒有資料時規則也不會有結果。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/sentinel-solutions-deploy",
+    "tags": []
+  },
+  {
+    "id": "D1-1009",
+    "domain": "D1",
+    "topic": "dcr",
+    "unit": "P1-W2-2",
+    "set": "B",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A custom log table collected through Azure Monitor Agent contains about 70 percent debug rows that have no detection value. You must reduce ingestion volume without affecting the remaining rows. What should you do?",
+    "stem_zh": "一張以 Azure Monitor Agent 收集的自訂記錄表中，約 70% 的資料列是除錯訊息，對偵測沒有價值。你要在不影響其餘資料的前提下降低擷取量。應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Convert the table to Basic Logs",
+        "text_zh": "把該資料表改為基本記錄（Basic Logs）"
+      },
+      {
+        "key": "B",
+        "text_en": "Add a filter to the DCR transformation so the debug rows are dropped before ingestion",
+        "text_zh": "在 DCR 的轉換中加入篩選條件，讓除錯資料列在擷取前就被捨棄"
+      },
+      {
+        "key": "C",
+        "text_en": "Configure a shorter retention period for the table",
+        "text_zh": "為該資料表設定較短的保留期"
+      },
+      {
+        "key": "D",
+        "text_en": "Create a summary rule that keeps only the non-debug rows",
+        "text_zh": "建立 summary rule 只保留非除錯的資料列"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "DCR 的轉換在資料寫入工作區「之前」執行，可以直接用 where 把不需要的資料列濾掉——沒寫進去就不計擷取費用，也不占查詢範圍。只要題目出現「擷取前」「存入前」要改內容或減量，答案就往 DCR 的轉換想。",
+    "why_wrong_zh": {
+      "A": "基本記錄只降低單價，資料量不變，而且會限制查詢與保留能力。",
+      "C": "保留期影響的是儲存成本與可查詢期間，擷取的量與費用完全不變。",
+      "D": "summary rule 在資料已經寫入之後才彙整，擷取費用早就產生了。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/azure-monitor/essentials/data-collection-transformations",
+    "tags": []
+  },
+  {
+    "id": "D1-1010",
+    "domain": "D1",
+    "topic": "syslog-cef",
+    "unit": "P1-W2-3",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "A firewall sends CEF messages to a Linux forwarder, but in Microsoft Sentinel the messages appear only as raw entries in the Syslog table and CommonSecurityLog is empty. What is the most likely cause?",
+    "stem_zh": "一台防火牆以 CEF 格式送到 Linux 轉送器，但在 Microsoft Sentinel 裡訊息只出現在 Syslog 資料表的原始字串中，CommonSecurityLog 是空的。最可能的原因是什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The CEF version emitted by the firewall is not supported",
+        "text_zh": "防火牆送出的 CEF 版本不受支援"
+      },
+      {
+        "key": "B",
+        "text_en": "The Common Event Format solution is not installed in the workspace",
+        "text_zh": "工作區尚未安裝 Common Event Format 解決方案"
+      },
+      {
+        "key": "C",
+        "text_en": "CEF collection is not configured on the forwarder, so the messages are handled as plain Syslog",
+        "text_zh": "轉送器上的 CEF 收集設定未生效，訊息被當成一般 Syslog 處理"
+      },
+      {
+        "key": "D",
+        "text_en": "A DCR transformation is filtering out the CEF fields",
+        "text_zh": "DCR 的轉換把 CEF 欄位過濾掉了"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "CEF 本質上是走 Syslog 傳輸的，要落進 CommonSecurityLog 必須由轉送器上的 CEF 收集設定辨識並剖析。設定沒生效時，訊息仍會以未剖析的原始字串進入 Syslog 資料表——「Syslog 有、CommonSecurityLog 沒有」正是這個症狀的指紋。",
+    "why_wrong_zh": {
+      "A": "版本問題通常表現為欄位剖析不完整，而不是整批訊息改落到 Syslog 資料表。",
+      "B": "解決方案提供的是分析規則與活頁簿等內容；訊息能不能被剖析取決於轉送器上的收集設定。",
+      "D": "若真的被 DCR 濾掉，結果會是兩張表都看不到這批訊息，而不是改落到 Syslog。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/connect-cef-syslog-ama",
+    "tags": []
+  },
+  {
+    "id": "D1-1011",
+    "domain": "D1",
+    "topic": "asim",
+    "unit": "P1-W2-3",
+    "set": "B",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "Your environment has firewalls from three different vendors, each with its own field names. You must write one detection query that covers all three with the lowest ongoing maintenance. What should you do?",
+    "stem_zh": "你的環境同時有三家廠牌的防火牆，各自的欄位名稱都不同。你要寫一份能一次涵蓋三者、且後續維護成本最低的偵測查詢。應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Write one query per source table and combine them with union",
+        "text_zh": "為三張來源資料表各寫一段查詢，再用 union 合併"
+      },
+      {
+        "key": "B",
+        "text_en": "Create a summary rule that consolidates the three tables into one table",
+        "text_zh": "建立 summary rule 把三張表整理成同一張摘要表"
+      },
+      {
+        "key": "C",
+        "text_en": "Rename the vendor fields to a common schema in the DCR",
+        "text_zh": "在 DCR 中把三家廠牌的欄位改名成一致的名稱"
+      },
+      {
+        "key": "D",
+        "text_en": "Query the ASIM normalized network session parser",
+        "text_zh": "查詢 ASIM 的網路工作階段正規化剖析器"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "ASIM 的正規化剖析器把不同來源對應到同一組結構描述，查一次就涵蓋所有已支援的來源；日後新增廠牌，只要它有對應的剖析器，查詢完全不必改。看到「多個來源、一份查詢、維護成本最低」，就是 ASIM。",
+    "why_wrong_zh": {
+      "A": "可行，但每多一家廠牌就要改一次查詢，維護成本正是題目要避開的。",
+      "B": "摘要表做得出來，但欄位對應仍要你自己定義與維護，等於自建一套簡化版的 ASIM。",
+      "C": "同樣要為每家廠牌各維護一份轉換，而且改動原始欄位會犧牲資料的忠實度。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/normalization",
+    "tags": []
+  },
+  {
+    "id": "D1-1012",
+    "domain": "D1",
+    "topic": "watchlists",
+    "unit": "P1-W2-4",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You must exclude a list of about 200 known vulnerability-scanner source IP addresses, updated monthly, from your detection logic. What should you use?",
+    "stem_zh": "你要在偵測邏輯中排除一份約 200 筆、每月更新一次的已知弱點掃描來源 IP 清單。應該使用什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A watchlist that the analytics rule references for exclusion",
+        "text_zh": "建立 watchlist 存放清單，並在分析規則中以它做排除"
+      },
+      {
+        "key": "B",
+        "text_en": "Threat intelligence indicators marked as false positive",
+        "text_zh": "把這些 IP 加入威脅情報指標並標記為誤判"
+      },
+      {
+        "key": "C",
+        "text_en": "One suppression rule per IP address",
+        "text_zh": "為每個 IP 各建立一條隱藏規則"
+      },
+      {
+        "key": "D",
+        "text_en": "A DCR transformation that drops records from those source IPs",
+        "text_zh": "在 DCR 中把這些來源 IP 的記錄濾掉"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "watchlist 就是為「相對靜態、由你維護的參考清單」而生的：資產清單、VIP 帳號、已知掃描來源。清單以 CSV 更新，查詢中用 join 或 in 排除，規則本身不必動。判準是「這份清單是我維護的事實，不是威脅情報」。",
+    "why_wrong_zh": {
+      "B": "威脅情報指標代表「這是壞的」，把已知良性來源放進去語意相反，也會污染 TI 比對結果。",
+      "C": "200 條規則無法維護，而且隱藏規則作用在事件產生之後，雜訊還是照樣產生。",
+      "D": "這會讓這些流量完全沒有記錄，日後要調查掃描行為本身時無資料可查。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/watchlists",
+    "tags": []
+  },
+  {
+    "id": "D1-1013",
+    "domain": "D1",
+    "topic": "threat-intel",
+    "unit": "P1-W2-4",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You must import threat indicators from an ISAC that publishes them over TAXII. What information does the connector require?",
+    "stem_zh": "你要從一個以 TAXII 發布指標的 ISAC 匯入威脅情報。設定連接器時需要提供什麼資訊？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The file path of the ISAC's STIX package",
+        "text_zh": "ISAC 的 STIX 套件檔案路徑"
+      },
+      {
+        "key": "B",
+        "text_en": "The TAXII server API root URL and the collection ID",
+        "text_zh": "TAXII 伺服器的 API 根 URL 與要訂閱的集合 ID"
+      },
+      {
+        "key": "C",
+        "text_en": "The workspace data collection endpoint and the DCR immutable ID",
+        "text_zh": "工作區的資料收集端點與 DCR 不可變 ID"
+      },
+      {
+        "key": "D",
+        "text_en": "A service principal certificate with Microsoft Sentinel Contributor rights",
+        "text_zh": "具備 Microsoft Sentinel Contributor 權限的服務主體憑證"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "TAXII 是拉取型的傳輸協定：Sentinel 定期去伺服器取指標。設定時要給 API 根 URL、要訂閱的集合 ID，以及該來源要求的認證資訊。記住三條路線的差別——TAXII 拉、上傳 API 推、STIX 檔案手動匯入。",
+    "why_wrong_zh": {
+      "A": "檔案路徑是離線匯入 STIX 檔案的做法；TAXII 是持續向遠端伺服器輪詢。",
+      "C": "這兩個是威脅情報「上傳 API」路線用的參數，不是 TAXII 連接器需要的。",
+      "D": "服務主體憑證同樣屬於上傳 API 的驗證方式；TAXII 用的是該伺服器自己的認證機制。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/understand-threat-intelligence",
+    "tags": []
+  },
+  {
+    "id": "D1-1014",
+    "domain": "D1",
+    "topic": "promptbooks",
+    "unit": "P1-W3-1",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "You want every analyst in the SOC to get consistently formatted output when they ask Microsoft Security Copilot to summarize an incident. What should you do?",
+    "stem_zh": "你希望 SOC 每位分析師請 Microsoft Security Copilot 摘要事件時，都得到格式一致的輸出。應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Increase the SCU capacity to make responses more consistent",
+        "text_zh": "增加 SCU 容量以提高回應的一致性"
+      },
+      {
+        "key": "B",
+        "text_en": "Enable the Microsoft Defender XDR plugin in Copilot",
+        "text_zh": "在 Copilot 中啟用 Microsoft Defender XDR 外掛"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a promptbook that captures the sequence of prompts for that scenario",
+        "text_zh": "建立 promptbook，把該情境的一連串提示存成可重複執行的流程"
+      },
+      {
+        "key": "D",
+        "text_en": "Create custom roles that limit which prompts each analyst can use",
+        "text_zh": "為每位分析師建立自訂角色，限制他們能用哪些提示"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "promptbook 把一組經過驗證的提示固定成可重複執行的流程，誰執行都走同一條路徑、輸出結構一致，正好解決「每個人問法不同、結果品質不一」。Copilot 的三個旋鈕要分清楚：外掛決定看得到什麼、SCU 決定跑得動多少、promptbook 決定怎麼問。",
+    "why_wrong_zh": {
+      "A": "SCU 是運算容量，影響的是跑不跑得動與跑多快，不決定輸出格式。",
+      "B": "外掛決定 Copilot 能取用哪些資料來源，是能力問題。沒有外掛連事件資料都拿不到，但有了也不會讓格式統一。",
+      "D": "角色管的是誰能用什麼，與輸出格式無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/copilot/security/using-promptbooks",
+    "tags": []
+  },
+  {
+    "id": "D1-1015",
+    "domain": "D1",
+    "topic": "xdr-portal",
+    "unit": "P1-W1-4",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "In the Microsoft Defender portal, where do alerts from Defender for Endpoint, Defender for Office 365, and Defender for Identity that relate to the same attack appear together?",
+    "stem_zh": "在 Microsoft Defender 入口網站中，來自 Defender for Endpoint、Defender for Office 365 與 Defender for Identity、且屬於同一起攻擊的警示，會一起出現在哪裡？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "In the unified alerts queue, sorted by severity",
+        "text_zh": "在統一警示佇列中，依嚴重性排序"
+      },
+      {
+        "key": "B",
+        "text_en": "In the advanced hunting AlertInfo table",
+        "text_zh": "在進階搜捕的 AlertInfo 資料表中"
+      },
+      {
+        "key": "C",
+        "text_en": "In the action center, grouped by remediation action",
+        "text_zh": "在動作中心，依修復動作分組"
+      },
+      {
+        "key": "D",
+        "text_en": "In a single incident that correlates the related alerts",
+        "text_zh": "在同一個事件（incident）中，由關聯機制把相關警示收在一起"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "Defender XDR 的核心價值就是跨工作負載關聯：把同一起攻擊在信箱、端點、身分留下的警示收斂成一個事件，讓你看到完整攻擊鏈而不是一堆零散警示。分診時的第一個動作永遠是看事件，不是逐條看警示。",
+    "why_wrong_zh": {
+      "A": "警示佇列是把警示攤平列出，不會把屬於同一起攻擊的警示綁在一起；關聯是事件在做的事。",
+      "B": "AlertInfo 讓你查得到警示，但那是查詢介面，不是入口網站呈現關聯結果的地方。",
+      "C": "動作中心呈現的是已採取或待核准的修復動作，不是攻擊的關聯視圖。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/incidents-overview",
+    "tags": []
+  },
+  {
+    "id": "D1-1016",
+    "domain": "D1",
+    "topic": "multi-tenant",
+    "unit": "P1-W1-4",
+    "set": "B",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "An MSSP analyst must investigate incidents in five customer tenants without switching browser sessions for each one. What should you configure?",
+    "stem_zh": "一位 MSSP 分析師需要調查五個客戶租用戶的事件，且不想為每一個各切一次瀏覽器工作階段。應該設定什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Multi-tenant management in the Microsoft Defender portal",
+        "text_zh": "在 Microsoft Defender 入口網站設定多租用戶管理"
+      },
+      {
+        "key": "B",
+        "text_en": "A guest account for the analyst in each customer tenant",
+        "text_zh": "在每個客戶租用戶為該分析師建立來賓帳戶"
+      },
+      {
+        "key": "C",
+        "text_en": "Cross-tenant synchronization in Microsoft Entra ID",
+        "text_zh": "在 Microsoft Entra ID 設定跨租用戶同步"
+      },
+      {
+        "key": "D",
+        "text_en": "A separate Microsoft Sentinel workspace that ingests all five tenants' logs",
+        "text_zh": "另建一個 Microsoft Sentinel 工作區，把五個租用戶的記錄全部收進來"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "多租用戶管理讓 MSSP 或跨租用戶的團隊在單一畫面看到多個租用戶的事件與裝置，不必反覆切換。跨租用戶的題目要先分辨問的是「看得到嗎」（多租用戶管理／Lighthouse）還是「使用者物件怎麼同步」（Entra 跨租用戶同步）。",
+    "why_wrong_zh": {
+      "B": "來賓帳戶做得到存取，但分析師還是得逐一切換租用戶，正是題目要避免的操作。",
+      "C": "跨租用戶同步處理的是使用者物件在租用戶之間的佈建，與資安入口網站的多租用戶調查視圖無關。",
+      "D": "把客戶資料集中到單一工作區會踩到資料隔離與落地問題，而且題目問的是 Defender 入口網站的調查體驗。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/mto-overview",
+    "tags": []
+  },
+  {
+    "id": "D1-1017",
+    "domain": "D1",
+    "topic": "data-lake",
+    "unit": "P1-W2-5",
+    "set": "B",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "For cost reasons, twelve months of firewall logs are retained only in the Microsoft Sentinel data lake tier. An auditor asks for every record involving one public IP address across that period. What should you do?",
+    "stem_zh": "基於成本考量，十二個月的防火牆記錄只保留在 Microsoft Sentinel 的 data lake 層。稽核人員要求調出這段期間內某個公用 IP 位址的全部記錄。你應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Create a scheduled analytics rule that queries the last twelve months",
+        "text_zh": "建立一條排程分析規則，查詢過去十二個月"
+      },
+      {
+        "key": "B",
+        "text_en": "Run a KQL job against the data lake tier to extract the matching records",
+        "text_zh": "對 data lake 層執行 KQL job，把符合條件的記錄撈出來"
+      },
+      {
+        "key": "C",
+        "text_en": "Restore the data to the analytics tier and query it with a workbook",
+        "text_zh": "把資料還原到分析層，再用活頁簿查詢"
+      },
+      {
+        "key": "D",
+        "text_en": "Use a summary rule to aggregate the twelve months into a summary table",
+        "text_zh": "用 summary rule 把十二個月彙整成一張摘要表"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "分析層與 data lake 層是 2026 新考點的分水嶺：分析層放你要天天查、要跑規則的資料，data lake 層放便宜留著、偶爾才翻的資料。要在 data lake 上做一次性的大範圍檢索，工具是 KQL job。看到「十二個月」「稽核」「為省錢只留在 data lake」，就往 data lake 的工具想。",
+    "why_wrong_zh": {
+      "A": "分析規則跑在分析層，撈不到只存在 data lake 的資料，而且分析規則是用來產生事件的，不是拿來做一次性取證。",
+      "C": "還原可行但成本與時間都高；題目是一次性的稽核取證，KQL job 直接在 data lake 上跑就夠了。",
+      "D": "摘要會把明細壓掉，而稽核要的正是逐筆明細。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/kql-jobs",
+    "tags": []
+  },
+  {
+    "id": "D1-1018",
+    "domain": "D1",
+    "topic": "summary-rules",
+    "unit": "P1-W2-5",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Analysts complain that a dashboard querying six months of high-volume network logs takes several minutes to load. You must speed it up while keeping the raw data available. What should you do?",
+    "stem_zh": "分析師抱怨一個查詢六個月大量網路記錄的儀表板要花好幾分鐘才載入。你要在保留原始資料的前提下加快它。應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Move the raw table to the data lake tier",
+        "text_zh": "把原始資料表移到 data lake 層"
+      },
+      {
+        "key": "B",
+        "text_en": "Increase the workspace commitment tier",
+        "text_zh": "提高工作區的承諾層級"
+      },
+      {
+        "key": "C",
+        "text_en": "Create a summary rule that aggregates the logs into a summary table and point the dashboard at it",
+        "text_zh": "建立 summary rule 把記錄彙整成摘要表，並讓儀表板改查該摘要表"
+      },
+      {
+        "key": "D",
+        "text_en": "Shorten the retention period to three months",
+        "text_zh": "把保留期縮短為三個月"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "summary rule 定期把大量原始記錄壓成小的摘要表，儀表板與長期趨勢查詢改查摘要表就會快得多，而原始記錄仍在原處可供逐筆調查。它的定位是加速與省查詢成本，不是即時偵測，也不是減少擷取量。",
+    "why_wrong_zh": {
+      "A": "移到 data lake 會讓儀表板更慢也更難查，方向相反。",
+      "B": "承諾層級是定價機制，與查詢效能無關。",
+      "D": "縮短保留期等於丟掉資料，違反「保留原始資料」的前提，也只是讓查詢範圍變小而不是變快。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/summary-rules",
+    "tags": []
+  },
+  {
+    "id": "D1-1019",
+    "domain": "D1",
+    "topic": "scu-capacity",
+    "unit": "P1-W3-1",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "During peak hours, Microsoft Security Copilot sessions in your SOC are queued or fail to complete. What should you adjust?",
+    "stem_zh": "在尖峰時段，你的 SOC 中 Microsoft Security Copilot 的工作階段會排隊或跑不完。你應該調整什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Reduce the number of enabled plugins",
+        "text_zh": "減少啟用的外掛數量"
+      },
+      {
+        "key": "B",
+        "text_en": "Convert the prompts into promptbooks",
+        "text_zh": "把提示改寫成 promptbook"
+      },
+      {
+        "key": "C",
+        "text_en": "Assign the Copilot owner role to more analysts",
+        "text_zh": "把 Copilot 擁有者角色指派給更多分析師"
+      },
+      {
+        "key": "D",
+        "text_en": "Provision additional security compute units (SCUs)",
+        "text_zh": "增加佈建的安全性運算單位（SCU）"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "SCU 是 Copilot 的運算容量單位，買的是每小時的處理量。出現排隊、逾時、跑不完，就是容量問題，解法是加 SCU（可設定為隨時間彈性調整）。把 Copilot 的三個旋鈕分清楚：外掛管看得到什麼、SCU 管跑得動多少、promptbook 管怎麼問。",
+    "why_wrong_zh": {
+      "A": "外掛決定 Copilot 能取用哪些資料來源，關掉只會削弱能力，不會解決容量不足。",
+      "B": "promptbook 讓流程可重複、輸出一致，不會增加可用的處理量。",
+      "C": "角色管的是誰能設定與使用，與尖峰處理量無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/copilot/security/manage-usage",
+    "tags": []
+  },
+  {
+    "id": "D1-1020",
+    "domain": "D1",
+    "topic": "mdti",
+    "unit": "P1-W2-4",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "An analyst must find out which other domains resolve to a suspicious IP address and who registered them, before deciding whether to block it. Which capability should the analyst use?",
+    "stem_zh": "一位分析師要在決定是否封鎖之前，先查出還有哪些網域解析到某個可疑 IP、以及是誰註冊的。該用哪一項功能？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Microsoft Defender Threat Intelligence",
+        "text_zh": "Microsoft Defender 威脅情報（MDTI）"
+      },
+      {
+        "key": "B",
+        "text_en": "A watchlist containing known malicious domains",
+        "text_zh": "一份含有已知惡意網域的 watchlist"
+      },
+      {
+        "key": "C",
+        "text_en": "The TI map analytics rule templates",
+        "text_zh": "TI map 分析規則範本"
+      },
+      {
+        "key": "D",
+        "text_en": "Advanced hunting against the DeviceNetworkEvents table",
+        "text_zh": "對 DeviceNetworkEvents 資料表執行進階搜捕"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "MDTI 提供的是微軟蒐集的外部情報：被動 DNS、註冊資訊、關聯的基礎架構。當題目要你「查這個 IP 或網域在外面還牽連到什麼」，那是 MDTI；要「拿指標比對我家記錄」才是 TI map 規則。",
+    "why_wrong_zh": {
+      "B": "watchlist 是你自己維護的清單，不會提供外部的解析歷史或註冊資訊。",
+      "C": "TI map 規則是把既有指標拿去比對你的記錄，它不做外部基礎架構的調查。",
+      "D": "這只能看到你自己環境內的連線紀錄，看不到該 IP 在外部的網域解析與註冊資料。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender/threat-intelligence/what-is-microsoft-defender-threat-intelligence-defender-ti",
+    "tags": []
+  },
+  {
+    "id": "D1-1021",
+    "domain": "D1",
+    "topic": "custom-logs",
+    "unit": "P1-W2-3",
+    "set": "B",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A legacy application writes security events to a plain text file on a Linux server. You must ingest only the lines that contain authentication failures into Microsoft Sentinel. What should you configure?",
+    "stem_zh": "一個舊系統會把資安事件寫進 Linux 伺服器上的純文字檔。你只需要把其中含有驗證失敗的資料列擷取到 Microsoft Sentinel。應該設定什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A Syslog data connector pointed at the log file",
+        "text_zh": "把 Syslog 資料連接器指向該記錄檔"
+      },
+      {
+        "key": "B",
+        "text_en": "A custom text log collection through Azure Monitor Agent, with a DCR transformation that filters the lines",
+        "text_zh": "以 Azure Monitor Agent 收集自訂文字記錄，並在 DCR 的轉換中篩選出需要的資料列"
+      },
+      {
+        "key": "C",
+        "text_en": "A Logstash pipeline writing to the CommonSecurityLog table",
+        "text_zh": "用 Logstash 管線寫入 CommonSecurityLog 資料表"
+      },
+      {
+        "key": "D",
+        "text_en": "A summary rule that extracts the authentication failures after ingestion",
+        "text_zh": "建立 summary rule 在擷取後萃取出驗證失敗的資料列"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "來源是伺服器上的文字檔時，路線是 AMA 的自訂文字記錄加上 DCR。篩選要放在 DCR 的轉換裡，因為轉換在寫入之前執行——只擷取需要的資料列，費用與雜訊都省下來。",
+    "why_wrong_zh": {
+      "A": "Syslog 連接器收的是 syslog 通訊協定送出的訊息，不會去讀伺服器上的任意文字檔。",
+      "C": "CommonSecurityLog 是 CEF 專用的結構描述，硬塞非 CEF 的自訂內容並不合適。",
+      "D": "那會先把整份檔案都收進來再篩，題目要的是只擷取需要的部分。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/azure-monitor/agents/data-collection-log-text",
+    "tags": []
+  },
+  {
+    "id": "D1-1022",
+    "domain": "D1",
+    "topic": "siem-vs-xdr",
+    "unit": "P1-W1-1",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Your SOC must correlate Microsoft 365 alerts with logs from an on-premises firewall and a third-party VPN appliance in a single investigation. Which platform is designed for this?",
+    "stem_zh": "你的 SOC 需要在同一次調查中，把 Microsoft 365 的警示與地端防火牆、第三方 VPN 設備的記錄關聯起來。哪一個平台是為此設計的？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Microsoft Defender XDR",
+        "text_zh": "Microsoft Defender XDR"
+      },
+      {
+        "key": "B",
+        "text_en": "Microsoft Defender for Cloud",
+        "text_zh": "Microsoft Defender for Cloud"
+      },
+      {
+        "key": "C",
+        "text_en": "Microsoft Sentinel",
+        "text_zh": "Microsoft Sentinel"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Purview",
+        "text_zh": "Microsoft Purview"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "分工要記牢：Defender XDR 是微軟生態系內的深度關聯，Sentinel 是雲端原生的 SIEM，負責把任何來源（含第三方與地端）的記錄收進來一起查。題目只要出現第三方設備或地端來源要一起關聯，答案就是 Sentinel。",
+    "why_wrong_zh": {
+      "A": "XDR 在微軟自家工作負載之間關聯得很好，但它不是拿來收第三方設備原始記錄的地方。",
+      "B": "它專注於雲端工作負載的態勢與威脅防護，不是跨來源的記錄關聯平台。",
+      "D": "Purview 處理的是資料治理、合規與內部風險，不是資安事件的跨來源關聯。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/overview",
+    "tags": []
+  },
+  {
+    "id": "D1-1023",
+    "domain": "D1",
+    "topic": "data-connectors",
+    "unit": "P1-W2-2",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Which component determines where log data enters Microsoft Sentinel from?",
+    "stem_zh": "在 Microsoft Sentinel 中，決定記錄資料「從哪裡進來」的是哪一個元件？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The data collection rule",
+        "text_zh": "資料收集規則（DCR）"
+      },
+      {
+        "key": "B",
+        "text_en": "The ASIM parser",
+        "text_zh": "ASIM 剖析器"
+      },
+      {
+        "key": "C",
+        "text_en": "The analytics rule",
+        "text_zh": "分析規則"
+      },
+      {
+        "key": "D",
+        "text_en": "The data connector",
+        "text_zh": "資料連接器"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "把資料流想成一條輸送帶：連接器決定東西從哪裡上車，DCR 決定路上做什麼加工，ASIM 決定下車後怎麼擺才找得到。這三層是 D1 最常被混在一起的一組，先把順序記牢，很多題目會自己解開。",
+    "why_wrong_zh": {
+      "A": "DCR 決定資料在路上要做什麼加工——篩選、轉換、送到哪張表，不決定來源本身。",
+      "B": "ASIM 是資料已經進來之後的正規化層，讓不同來源能用同一組欄位查詢。",
+      "C": "分析規則是在既有資料上跑偵測邏輯並產生事件，與資料如何進來無關。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/configure-data-connector",
+    "tags": []
+  },
+  {
+    "id": "D1-1024",
+    "domain": "D1",
+    "topic": "cost-management",
+    "unit": "P1-W2-1",
+    "set": "B",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A compliance requirement states that firewall logs must be retrievable for seven years, but analysts only query the last 90 days. You must minimize cost. What should you do?",
+    "stem_zh": "法遵要求防火牆記錄必須可供調閱七年，但分析師實際上只會查最近 90 天。你要讓成本最低。應該怎麼做？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Keep 90 days in the analytics tier and move the remainder to long-term retention in the data lake tier",
+        "text_zh": "分析層保留 90 天，其餘移到 data lake 層做長期保留"
+      },
+      {
+        "key": "B",
+        "text_en": "Keep all seven years in the analytics tier and rely on a commitment tier for the discount",
+        "text_zh": "七年全部留在分析層，靠承諾層級取得折扣"
+      },
+      {
+        "key": "C",
+        "text_en": "Keep 90 days in the analytics tier and export the rest to a separate Log Analytics workspace",
+        "text_zh": "分析層保留 90 天，其餘匯出到另一個 Log Analytics 工作區"
+      },
+      {
+        "key": "D",
+        "text_en": "Convert the table to Basic Logs and set retention to seven years",
+        "text_zh": "把資料表改為基本記錄，並將保留期設為七年"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "成本設計的通則是「依實際查詢頻率分層」：熱資料放分析層供日常偵測與查詢，冷資料放 data lake 層做長期保留，需要時再用 KQL job 撈。分析層與 data lake 層的取捨，正是 2026 版新增的考點。",
+    "why_wrong_zh": {
+      "B": "承諾層級折的是擷取單價，七年的分析層儲存費用仍然非常可觀，而且分析師根本用不到。",
+      "C": "另開工作區仍是同一種儲存層級，省不了多少，還多一套要管理的東西。",
+      "D": "基本記錄的保留能力與查詢功能都有限制，撐不起七年的合規調閱需求。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/data-lake-overview",
+    "tags": []
+  },
+  {
+    "id": "D1-1025",
+    "domain": "D1",
+    "topic": "dcr",
+    "unit": "P1-W2-2",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Compliance requires that the client IP address in the SigninLogs table be partially masked before the records are stored in the Microsoft Sentinel workspace. What should you configure?",
+    "stem_zh": "法遵要求 SigninLogs 資料表中的用戶端 IP 位址，必須在記錄存入 Microsoft Sentinel 工作區之前先部分遮罩。你應該設定什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "A workbook that displays the masked value to analysts",
+        "text_zh": "建立活頁簿，只把遮罩後的值顯示給分析師"
+      },
+      {
+        "key": "B",
+        "text_en": "A DCR transformation that rewrites the field during ingestion",
+        "text_zh": "在 DCR 的轉換中改寫該欄位，於擷取時完成遮罩"
+      },
+      {
+        "key": "C",
+        "text_en": "Column-level security on the SigninLogs table",
+        "text_zh": "對 SigninLogs 資料表套用資料行層級安全性"
+      },
+      {
+        "key": "D",
+        "text_en": "A summary rule that omits the client IP column",
+        "text_zh": "建立 summary rule，在摘要中略去用戶端 IP 欄位"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "凡是題目說「存入之前」「擷取時」就要改內容——遮罩、去識別化、丟棄欄位或資料列——答案都是 DCR 的轉換，因為它是唯一在資料落地前執行的環節。權限與呈現層的手段（資料行層級安全性、活頁簿）都只能遮住眼睛，遮不住資料。",
+    "why_wrong_zh": {
+      "A": "活頁簿只改變呈現方式，原始值仍完整存在工作區裡，不符合「存入之前」的要求。",
+      "C": "資料行層級安全性控制的是誰能看到那一欄，資料本身仍原樣存著。",
+      "D": "摘要另建一張表，原始表裡的完整 IP 依然存在。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/azure-monitor/essentials/data-collection-transformations",
+    "tags": []
+  },
+  {
+    "id": "D1-1026",
+    "domain": "D1",
+    "topic": "device-groups",
+    "unit": "P1-W1-5",
+    "set": "B",
+    "difficulty": 2,
+    "type": "single",
+    "stem_en": "Tier 1 analysts must be able to view and investigate devices belonging to the retail branch only. What should you configure in Microsoft Defender for Endpoint?",
+    "stem_zh": "Tier 1 分析師只能檢視與調查零售分店的裝置。你應該在 Microsoft Defender for Endpoint 設定什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Device tags applied to the retail devices",
+        "text_zh": "為零售分店的裝置套用裝置標籤"
+      },
+      {
+        "key": "B",
+        "text_en": "A custom detection rule limited to the retail devices",
+        "text_zh": "建立僅涵蓋零售裝置的自訂偵測規則"
+      },
+      {
+        "key": "C",
+        "text_en": "A device group scoped to the retail branch, with the Tier 1 role assigned to it",
+        "text_zh": "建立範圍為零售分店的裝置群組，並把 Tier 1 角色指派到該群組"
+      },
+      {
+        "key": "D",
+        "text_en": "Conditional Access policies targeting the Tier 1 analysts",
+        "text_zh": "針對 Tier 1 分析師套用條件式存取原則"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "MDE 的存取範圍是靠「裝置群組加角色」實作的：群組界定哪些裝置，角色界定能做什麼，兩者綁在一起才是權限。標籤是中繼資料，不具授權效力——這是很常見的誘答。",
+    "why_wrong_zh": {
+      "A": "標籤方便篩選與檢視，但它不是權限邊界，不會限制誰看得到什麼。",
+      "B": "自訂偵測規則產生的是警示，與存取範圍無關。",
+      "D": "條件式存取管的是登入時的條件（裝置、位置、風險），不決定登入後能看到哪些裝置的資料。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-endpoint/rbac",
+    "tags": []
+  },
+  {
+    "id": "D1-1027",
+    "domain": "D1",
+    "topic": "cross-domain",
+    "unit": "P1-W2-4",
+    "set": "B",
+    "difficulty": 3,
+    "type": "single",
+    "stem_en": "A TI map analytics rule you enabled two weeks ago has produced no incidents, although the ISAC feed shows indicators arriving in the ThreatIntelligenceIndicator table. What should you check first?",
+    "stem_zh": "你兩週前啟用的 TI map 分析規則一件事件都沒產生，但 ISAC 餵送的指標在 ThreatIntelligenceIndicator 資料表裡確實有進來。你應該先檢查什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Whether the workspace has enough commitment tier capacity",
+        "text_zh": "工作區的承諾層級容量是否足夠"
+      },
+      {
+        "key": "B",
+        "text_en": "Whether the analysts have the Microsoft Sentinel Responder role",
+        "text_zh": "分析師是否具備 Microsoft Sentinel Responder 角色"
+      },
+      {
+        "key": "C",
+        "text_en": "Whether automation rules are closing the incidents automatically",
+        "text_zh": "自動化規則是否自動把事件關掉了"
+      },
+      {
+        "key": "D",
+        "text_en": "Whether the indicators are still valid and whether the rule's mapped field matches the log data",
+        "text_zh": "指標是否仍在有效期內，以及規則對應的欄位是否真的對得上記錄中的資料"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "指標進得來，不代表比得中——這是兩件事。TI map 規則沒動靜時的檢查順序是：指標是否過期（多數餵送有有效期）、規則對應的欄位是否存在且格式一致、以及查詢的時間範圍是否涵蓋指標的有效期間。",
+    "why_wrong_zh": {
+      "A": "容量與定價無關偵測邏輯；資料進得來就代表擷取沒問題。",
+      "B": "角色影響的是誰看得到、能不能處理事件，不影響事件會不會被產生。",
+      "C": "若真是這樣，事件仍會出現在清單中只是狀態已關閉，而不是完全沒有。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/use-threat-indicators-in-analytics-rules",
+    "tags": []
+  },
+  {
+    "id": "D1-1028",
+    "domain": "D1",
+    "topic": "data-connectors",
+    "unit": "P1-W2-2",
+    "set": "B",
+    "difficulty": 2,
+    "type": "multi",
+    "stem_en": "Which two components are required to collect Syslog messages from Linux servers into Microsoft Sentinel by using Azure Monitor Agent? Each correct answer presents part of the solution.",
+    "stem_zh": "要以 Azure Monitor Agent 把 Linux 伺服器的 Syslog 訊息收進 Microsoft Sentinel，需要哪兩個元件？每個正確答案各是解決方案的一部分。",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Azure Monitor Agent installed on the Linux server",
+        "text_zh": "在 Linux 伺服器上安裝 Azure Monitor Agent"
+      },
+      {
+        "key": "B",
+        "text_en": "A data collection rule that specifies the facilities and severities to collect",
+        "text_zh": "一條資料收集規則，指定要收集的 facility 與嚴重性"
+      },
+      {
+        "key": "C",
+        "text_en": "A summary rule for the Syslog table",
+        "text_zh": "為 Syslog 資料表建立 summary rule"
+      },
+      {
+        "key": "D",
+        "text_en": "An ASIM parser for Syslog",
+        "text_zh": "為 Syslog 建立 ASIM 剖析器"
+      },
+      {
+        "key": "E",
+        "text_en": "A watchlist of Linux hostnames",
+        "text_zh": "一份 Linux 主機名稱的 watchlist"
+      }
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation_zh": "AMA 路線的兩個必要零件：代理程式負責在主機上收，DCR 負責定義收什麼、怎麼處理、送到哪張表。少了 DCR，代理程式不知道要收哪些 facility；少了代理程式，DCR 沒有東西可管。",
+    "why_wrong_zh": {
+      "C": "summary rule 是資料進來之後的彙整工具，與收集管線無關。",
+      "D": "ASIM 剖析器是查詢時的正規化層，沒有它資料照樣收得進來。",
+      "E": "watchlist 是給偵測邏輯用的參考清單，不參與資料收集。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/connect-cef-syslog-ama",
+    "tags": []
+  },
+  {
+    "id": "D1-1029",
+    "domain": "D1",
+    "topic": "exam-landscape",
+    "unit": "P1-W1-1",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Which Microsoft product is the cloud-native SIEM in the SC-200 exam scope?",
+    "stem_zh": "在 SC-200 的考試範圍中，哪一個 Microsoft 產品是雲端原生的 SIEM？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Microsoft Defender XDR",
+        "text_zh": "Microsoft Defender XDR"
+      },
+      {
+        "key": "B",
+        "text_en": "Microsoft Sentinel",
+        "text_zh": "Microsoft Sentinel"
+      },
+      {
+        "key": "C",
+        "text_en": "Microsoft Entra ID Protection",
+        "text_zh": "Microsoft Entra ID Protection"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Purview",
+        "text_zh": "Microsoft Purview"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "SC-200 涵蓋三大支柱：Defender XDR（生態系內的關聯與回應）、Microsoft Sentinel（雲端原生 SIEM 與 SOAR）、Security Copilot（生成式 AI 輔助）。認清各自的定位，很多「該用哪個產品」的題目就會自己解開。",
+    "why_wrong_zh": {
+      "A": "XDR 是延伸偵測與回應平台，負責微軟自家工作負載之間的深度關聯，不是 SIEM。",
+      "C": "它專責身分風險偵測，範圍限於身分，不是 SIEM。",
+      "D": "Purview 處理資料治理與合規，不是資安事件平台。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/overview",
+    "tags": []
+  },
+  {
+    "id": "D1-1030",
+    "domain": "D1",
+    "topic": "xdr-ecosystem",
+    "unit": "P1-W1-1",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Which Microsoft Defender workload protects against malicious email attachments and URLs?",
+    "stem_zh": "哪一個 Microsoft Defender 工作負載負責防護惡意的電子郵件附件與網址？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Microsoft Defender for Endpoint",
+        "text_zh": "Microsoft Defender for Endpoint"
+      },
+      {
+        "key": "B",
+        "text_en": "Microsoft Defender for Identity",
+        "text_zh": "Microsoft Defender for Identity"
+      },
+      {
+        "key": "C",
+        "text_en": "Microsoft Defender for Office 365",
+        "text_zh": "Microsoft Defender for Office 365"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Defender for Cloud",
+        "text_zh": "Microsoft Defender for Cloud"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "四個 Defender 各守一塊：Endpoint 守裝置、Office 365 守信箱與協作、Identity 守地端 AD、Cloud 守雲端工作負載。分診題只要看清「威脅出現在哪一層」，產品就選定了。",
+    "why_wrong_zh": {
+      "A": "它保護的是端點裝置本身，郵件在送達前的檢查不歸它管。",
+      "B": "它監控的是地端 Active Directory 的身分威脅。",
+      "D": "它保護雲端工作負載與基礎架構的態勢。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-office-365/mdo-about",
+    "tags": []
+  },
+  {
+    "id": "D1-1031",
+    "domain": "D1",
+    "topic": "soc-workflow",
+    "unit": "P1-W1-1",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "In a typical SOC workflow, what is the purpose of triage?",
+    "stem_zh": "在典型的 SOC 工作流程中，分診（triage）的目的是什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "To permanently remove malware from affected devices",
+        "text_zh": "從受影響的裝置上徹底移除惡意程式"
+      },
+      {
+        "key": "B",
+        "text_en": "To tune analytics rules so they generate fewer alerts",
+        "text_zh": "調整分析規則讓它產生較少警示"
+      },
+      {
+        "key": "C",
+        "text_en": "To document lessons learned after an incident closes",
+        "text_zh": "在事件結案後記錄學到的教訓"
+      },
+      {
+        "key": "D",
+        "text_en": "To decide which incidents warrant deeper investigation and in what order",
+        "text_zh": "決定哪些事件值得深入調查，以及先後順序"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "分診是把有限的人力放到最該看的地方：判斷真偽、評估影響範圍與急迫性、排出處理順序。它不解決問題，它決定先解決哪一個——這個定位在「下一步該做什麼」的題型裡很關鍵。",
+    "why_wrong_zh": {
+      "A": "那是修復階段的工作，發生在調查與判定之後。",
+      "B": "規則調校是偵測工程的持續改進工作，不是分診當下在做的事。",
+      "C": "那是事後檢討，屬於事件生命週期的最後一段。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender-xdr/incident-queue",
+    "tags": []
+  },
+  {
+    "id": "D1-1032",
+    "domain": "D1",
+    "topic": "sentinel-data-lake",
+    "unit": "P1-W2-5",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "What is the primary purpose of the Microsoft Sentinel data lake tier?",
+    "stem_zh": "Microsoft Sentinel 的 data lake 層主要的用途是什麼？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "To retain large volumes of low-frequency-access data at lower cost",
+        "text_zh": "以較低成本保留大量、不常查詢的資料"
+      },
+      {
+        "key": "B",
+        "text_en": "To run real-time detection rules with lower latency",
+        "text_zh": "以更低延遲執行即時偵測規則"
+      },
+      {
+        "key": "C",
+        "text_en": "To replace the need for data collection rules",
+        "text_zh": "取代資料收集規則的需求"
+      },
+      {
+        "key": "D",
+        "text_en": "To store normalized copies produced by ASIM parsers",
+        "text_zh": "存放 ASIM 剖析器產生的正規化副本"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "分析層放你要天天查、要跑規則的熱資料；data lake 層放便宜留著、偶爾才翻的冷資料，需要時用 KQL job 撈出來。這組取捨是 2026 版新增的考點，題目常以「合規要留很久但分析師只查近期」的情境出現。",
+    "why_wrong_zh": {
+      "B": "即時偵測跑在分析層；data lake 層不是為低延遲設計的。",
+      "C": "DCR 管的是擷取時的加工，與資料存放在哪一層是兩件事。",
+      "D": "ASIM 是查詢時套用的正規化，不會另外存一份副本。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/data-lake-overview",
+    "tags": []
+  },
+  {
+    "id": "D1-1033",
+    "domain": "D1",
+    "topic": "security-copilot",
+    "unit": "P1-W3-1",
+    "set": "B",
+    "difficulty": 2,
+    "type": "multi",
+    "stem_en": "Which two prerequisites must be in place before Microsoft Security Copilot can analyze Microsoft Defender XDR incidents? Each correct answer presents part of the solution.",
+    "stem_zh": "在 Microsoft Security Copilot 能分析 Microsoft Defender XDR 事件之前，必須先具備哪兩項前提？每個正確答案各是解決方案的一部分。",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Provisioned security compute unit (SCU) capacity",
+        "text_zh": "已佈建安全性運算單位（SCU）容量"
+      },
+      {
+        "key": "B",
+        "text_en": "The Microsoft Defender XDR plugin enabled in Copilot",
+        "text_zh": "在 Copilot 中啟用 Microsoft Defender XDR 外掛"
+      },
+      {
+        "key": "C",
+        "text_en": "A promptbook published to the SOC",
+        "text_zh": "已發布給 SOC 使用的 promptbook"
+      },
+      {
+        "key": "D",
+        "text_en": "Microsoft Sentinel data lake enabled",
+        "text_zh": "已啟用 Microsoft Sentinel data lake"
+      },
+      {
+        "key": "E",
+        "text_en": "A custom Copilot role for each analyst",
+        "text_zh": "為每位分析師建立自訂 Copilot 角色"
+      }
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation_zh": "Copilot 要動起來需要兩件事：有容量（SCU）能跑，以及有外掛能取用資料來源。外掛決定它看得到什麼，SCU 決定它跑得動多少——兩者缺一不可，其餘都是便利性或治理層面的加分項。",
+    "why_wrong_zh": {
+      "C": "promptbook 讓流程可重複、輸出一致，是便利性工具，不是分析事件的前提。",
+      "D": "data lake 與 Copilot 能否分析 XDR 事件無關。",
+      "E": "自訂角色管的是誰能用什麼，不影響 Copilot 能不能分析事件。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/copilot/security/plugin-overview",
+    "tags": []
+  },
+  {
+    "id": "D1-1034",
+    "domain": "D1",
+    "topic": "kql-jobs",
+    "unit": "P1-W2-5",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "What does a KQL job in Microsoft Sentinel do?",
+    "stem_zh": "Microsoft Sentinel 中的 KQL job 是做什麼的？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It converts analytics rules into playbooks",
+        "text_zh": "把分析規則轉換成 playbook"
+      },
+      {
+        "key": "B",
+        "text_en": "It streams query results to a third-party SIEM",
+        "text_zh": "把查詢結果串流到第三方 SIEM"
+      },
+      {
+        "key": "C",
+        "text_en": "It runs a KQL query over data in the data lake tier as a scheduled or on-demand job",
+        "text_zh": "以排程或隨選的方式，對 data lake 層的資料執行 KQL 查詢"
+      },
+      {
+        "key": "D",
+        "text_en": "It compresses raw logs before they are ingested",
+        "text_zh": "在記錄擷取前先壓縮"
+      }
+    ],
+    "answer": [
+      "C"
+    ],
+    "explanation_zh": "KQL job 是操作 data lake 層的工具：對那些為省錢而放在冷層、平常查不到的資料，跑一次大範圍的檢索或彙整。稽核調閱、回溯搜捕這類「翻很久以前的大量資料」情境，答案通常就落在它身上。",
+    "why_wrong_zh": {
+      "A": "規則與 playbook 之間是觸發關係，沒有這種轉換機制。",
+      "B": "資料匯出是另外的機制，不是 KQL job 的用途。",
+      "D": "擷取前的處理由 DCR 的轉換負責。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/datalake/kql-jobs",
+    "tags": []
+  },
+  {
+    "id": "D1-1035",
+    "domain": "D1",
+    "topic": "watchlists",
+    "unit": "P1-W2-4",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Which scenario is a Microsoft Sentinel watchlist best suited for?",
+    "stem_zh": "下列哪一個情境最適合使用 Microsoft Sentinel 的 watchlist？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Storing threat indicators received from a TAXII feed",
+        "text_zh": "存放從 TAXII 餵送收到的威脅指標"
+      },
+      {
+        "key": "B",
+        "text_en": "Filtering out debug rows before they are ingested",
+        "text_zh": "在擷取前把除錯資料列濾掉"
+      },
+      {
+        "key": "C",
+        "text_en": "Aggregating six months of logs for a dashboard",
+        "text_zh": "把六個月的記錄彙整供儀表板使用"
+      },
+      {
+        "key": "D",
+        "text_en": "Maintaining a list of high-value user accounts to enrich and prioritize alerts",
+        "text_zh": "維護一份高價值使用者帳號清單，用來豐富化警示並提高優先順序"
+      }
+    ],
+    "answer": [
+      "D"
+    ],
+    "explanation_zh": "watchlist 的定位是「你自己維護的事實清單」：VIP 帳號、關鍵資產、已知掃描來源、合併中的公司網段。它相對靜態、以 CSV 維護，在查詢中被 join 或 in 引用。跟威脅情報的差別是語意——watchlist 講的是「這是我們的東西」，TI 講的是「這是壞東西」。",
+    "why_wrong_zh": {
+      "A": "那些屬於威脅情報，會進 ThreatIntelligenceIndicator 資料表，由 TI 機制管理其有效期。",
+      "B": "擷取前的篩選是 DCR 轉換的工作。",
+      "C": "那是 summary rule 的用途。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/watchlists",
+    "tags": []
+  },
+  {
+    "id": "D1-1036",
+    "domain": "D1",
+    "topic": "mdti",
+    "unit": "P1-W2-4",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "What kind of information does Microsoft Defender Threat Intelligence primarily provide?",
+    "stem_zh": "Microsoft Defender 威脅情報（MDTI）主要提供哪一類資訊？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Externally observed intelligence about internet infrastructure, such as passive DNS and registration data",
+        "text_zh": "關於網際網路基礎架構的外部觀測情報，例如被動 DNS 與註冊資訊"
+      },
+      {
+        "key": "B",
+        "text_en": "A record of every connection made by your onboarded devices",
+        "text_zh": "你已上線裝置所發出的每一筆連線紀錄"
+      },
+      {
+        "key": "C",
+        "text_en": "The list of analytics rules that matched an indicator",
+        "text_zh": "比對到某個指標的分析規則清單"
+      },
+      {
+        "key": "D",
+        "text_en": "Compliance posture scores for your cloud workloads",
+        "text_zh": "你雲端工作負載的合規態勢分數"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "MDTI 補的是「牆外的視野」：這個 IP 還解析了哪些網域、誰註冊的、跟哪些已知活動有關。題目要你「查這個指標在外面牽連到什麼」是 MDTI；要「拿指標比對我家記錄」才是 TI map 規則。",
+    "why_wrong_zh": {
+      "B": "那是你自己環境的遙測，查進階搜捕的裝置網路事件即可，不需要外部情報。",
+      "C": "那是 TI map 規則執行後的結果，不是情報本身。",
+      "D": "那屬於 Defender for Cloud 的範疇。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/defender/threat-intelligence/what-is-microsoft-defender-threat-intelligence-defender-ti",
+    "tags": []
+  },
+  {
+    "id": "D1-1037",
+    "domain": "D1",
+    "topic": "workspace-design",
+    "unit": "P1-W2-1",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "Which factor primarily determines the geographic region in which Microsoft Sentinel log data is stored?",
+    "stem_zh": "Microsoft Sentinel 的記錄資料實際存放在哪一個地理區域，主要由什麼決定？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "The region of the Microsoft Entra ID tenant",
+        "text_zh": "Microsoft Entra ID 租用戶所在的區域"
+      },
+      {
+        "key": "B",
+        "text_en": "The region of the Log Analytics workspace",
+        "text_zh": "Log Analytics 工作區所在的區域"
+      },
+      {
+        "key": "C",
+        "text_en": "The location of the data connector's source system",
+        "text_zh": "資料連接器來源系統所在的位置"
+      },
+      {
+        "key": "D",
+        "text_en": "The region configured in the data collection rule",
+        "text_zh": "資料收集規則中設定的區域"
+      }
+    ],
+    "answer": [
+      "B"
+    ],
+    "explanation_zh": "資料落在哪裡，看的是工作區建在哪一區。所有跟資料落地、主權、跨境有關的題目，第一個要問的都是「工作區在哪」，而不是加密方式或存取權限——那兩者管的是誰能解密、誰能看，不管資料人在何處。",
+    "why_wrong_zh": {
+      "A": "租用戶區域影響的是目錄資料，不決定工作區記錄的存放位置。",
+      "C": "來源在哪裡不影響資料寫進哪個工作區，寫入目的地才是關鍵。",
+      "D": "DCR 需與工作區相容，但存放位置由工作區決定。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/design-your-workspace-architecture",
+    "tags": []
+  },
+  {
+    "id": "D1-1038",
+    "domain": "D1",
+    "topic": "cost-management",
+    "unit": "P1-W2-1",
+    "set": "B",
+    "difficulty": 3,
+    "type": "multi",
+    "stem_en": "Which two actions reduce Microsoft Sentinel ingestion cost without losing detection coverage for the data you keep? Each correct answer presents part of the solution.",
+    "stem_zh": "哪兩項做法能降低 Microsoft Sentinel 的擷取成本，同時不犧牲所保留資料的偵測涵蓋範圍？每個正確答案各是解決方案的一部分。",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "Filter out noise rows in a DCR transformation before ingestion",
+        "text_zh": "在 DCR 的轉換中，於擷取前濾掉雜訊資料列"
+      },
+      {
+        "key": "B",
+        "text_en": "Route high-volume, low-detection-value tables to the data lake tier",
+        "text_zh": "把高流量、偵測價值低的資料表導向 data lake 層"
+      },
+      {
+        "key": "C",
+        "text_en": "Shorten retention to 30 days for all tables",
+        "text_zh": "把所有資料表的保留期都縮短為 30 天"
+      },
+      {
+        "key": "D",
+        "text_en": "Disable analytics rules that rarely generate incidents",
+        "text_zh": "停用很少產生事件的分析規則"
+      },
+      {
+        "key": "E",
+        "text_en": "Reduce the number of onboarded devices",
+        "text_zh": "減少上線的裝置數量"
+      }
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation_zh": "降擷取成本的兩個正解都作用在「資料要不要進、進到哪一層」：轉換讓沒價值的資料列根本不寫進去，分層讓高流量低價值的資料落在便宜的層級但仍留得住。其餘選項不是省錯地方，就是拿偵測能力去換錢。",
+    "why_wrong_zh": {
+      "C": "縮短保留期省的是儲存費而非擷取費，而且會丟掉調查所需的歷史。",
+      "D": "停用規則完全不影響擷取量，只會讓偵測變少——正是題目要避免的。",
+      "E": "少上線裝置等於少可見度，直接犧牲偵測涵蓋範圍。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/billing-reduce-costs",
+    "tags": []
+  },
+  {
+    "id": "D1-1039",
+    "domain": "D1",
+    "topic": "asim",
+    "unit": "P1-W2-3",
+    "set": "B",
+    "difficulty": 2,
+    "type": "multi",
+    "stem_en": "Which two statements about the Advanced Security Information Model (ASIM) are correct? Each correct answer presents a complete solution.",
+    "stem_zh": "關於進階資安資訊模型（ASIM），下列哪兩項敘述正確？每個正確答案各自成立。",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "It normalizes data from different sources into a common schema",
+        "text_zh": "它把不同來源的資料正規化成共通的結構描述"
+      },
+      {
+        "key": "B",
+        "text_en": "Parsers are applied at query time rather than at ingestion time",
+        "text_zh": "剖析器是在查詢時套用，而非在擷取時套用"
+      },
+      {
+        "key": "C",
+        "text_en": "It reduces ingestion cost by dropping unused fields",
+        "text_zh": "它藉由捨棄未使用的欄位來降低擷取成本"
+      },
+      {
+        "key": "D",
+        "text_en": "It removes the need for data connectors",
+        "text_zh": "它讓資料連接器變得不再必要"
+      },
+      {
+        "key": "E",
+        "text_en": "It stores a normalized copy of the data in a separate table",
+        "text_zh": "它會把正規化後的副本另存到一張資料表"
+      }
+    ],
+    "answer": [
+      "A",
+      "B"
+    ],
+    "explanation_zh": "ASIM 是查詢時的一層抽象：原始資料照原樣存著，剖析器在你查詢的當下把欄位對應成共通結構。因此它能讓一份查詢涵蓋多個廠牌，卻不改變擷取量、不另存副本、也不取代任何收集元件。",
+    "why_wrong_zh": {
+      "C": "擷取前的減量是 DCR 轉換的工作，ASIM 完全不參與擷取。",
+      "D": "資料仍得靠連接器進來，ASIM 只處理進來之後怎麼查。",
+      "E": "ASIM 不另存副本，正規化發生在查詢當下。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/normalization",
+    "tags": []
+  },
+  {
+    "id": "D1-1040",
+    "domain": "D1",
+    "topic": "threat-intel",
+    "unit": "P1-W2-4",
+    "set": "B",
+    "difficulty": 1,
+    "type": "single",
+    "stem_en": "In Microsoft Sentinel, which table stores imported threat indicators?",
+    "stem_zh": "在 Microsoft Sentinel 中，匯入的威脅指標存放在哪一張資料表？",
+    "options": [
+      {
+        "key": "A",
+        "text_en": "ThreatIntelligenceIndicator",
+        "text_zh": "ThreatIntelligenceIndicator"
+      },
+      {
+        "key": "B",
+        "text_en": "CommonSecurityLog",
+        "text_zh": "CommonSecurityLog"
+      },
+      {
+        "key": "C",
+        "text_en": "SecurityAlert",
+        "text_zh": "SecurityAlert"
+      },
+      {
+        "key": "D",
+        "text_en": "Watchlist",
+        "text_zh": "Watchlist"
+      }
+    ],
+    "answer": [
+      "A"
+    ],
+    "explanation_zh": "指標不論從 TAXII 拉、用上傳 API 推，還是手動匯入 STIX 檔案，最後都落在 ThreatIntelligenceIndicator。要確認「情報到底有沒有進來」，第一個要查的就是這張表——而且要注意指標的有效期欄位，過期的指標比對不到東西。",
+    "why_wrong_zh": {
+      "B": "那是 CEF 訊息剖析後落腳的資料表。",
+      "C": "那存放的是各產品產生的警示，不是情報指標。",
+      "D": "watchlist 是你自己維護的參考清單，與威脅情報是不同的機制。"
+    },
+    "ms_learn_ref": "https://learn.microsoft.com/zh-tw/azure/sentinel/understand-threat-intelligence",
+    "tags": []
   }
 ]
