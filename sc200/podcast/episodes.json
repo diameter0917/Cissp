@@ -224,6 +224,15 @@
       "bytes": 2798297,
       "duration_sec": 466,
       "script_sha256": "ffc2ce077301108aea6ec83e1f5e66ec51670c0461ef01bada1f6c626ca9140e"
+    },
+    "026": {
+      "episode": 26,
+      "unit": "P2-W6-1",
+      "title_zh": "D1 題組 A 複習：收資料的三層與成本的兩個旋鈕",
+      "file": "ep-026.mp3",
+      "bytes": 2583338,
+      "duration_sec": 430,
+      "script_sha256": "beddf7196ad75e92e3588bd81892c752e0377a68ee7303a8102d1d9c3dcf3fd4"
     }
   }
 }
