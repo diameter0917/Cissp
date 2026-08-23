@@ -376,5 +376,14 @@
     "title_zh": "定量風險計算",
     "sent_at_utc": "2026-08-20T23:19:44Z",
     "status": "sent"
+  },
+  {
+    "seq": 43,
+    "date": "2026-08-24",
+    "code": "P2-D1-3",
+    "phase": "P2",
+    "title_zh": "控制功能與類別、風險框架",
+    "sent_at_utc": "2026-08-23T23:14:30Z",
+    "status": "sent"
   }
 ]
