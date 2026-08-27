@@ -403,5 +403,14 @@
     "title_zh": "BCP/BIA、人員、供應鏈、威脅建模",
     "sent_at_utc": "2026-08-25T23:19:27Z",
     "status": "sent"
+  },
+  {
+    "seq": 46,
+    "date": "2026-08-27",
+    "code": "P2-D2-1",
+    "phase": "P2",
+    "title_zh": "分類分級制度設計",
+    "sent_at_utc": "2026-08-27T04:10:43Z",
+    "status": "sent"
   }
 ]
