@@ -421,5 +421,14 @@
     "title_zh": "資料角色與責任深入",
     "sent_at_utc": "2026-08-28T06:27:28Z",
     "status": "sent"
+  },
+  {
+    "seq": 48,
+    "date": "2026-08-31",
+    "code": "P2-D2-3",
+    "phase": "P2",
+    "title_zh": "資料生命週期與落地主權",
+    "sent_at_utc": "2026-08-31T01:01:51Z",
+    "status": "sent"
   }
 ]
