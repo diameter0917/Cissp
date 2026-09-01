@@ -430,5 +430,14 @@
     "title_zh": "資料生命週期與落地主權",
     "sent_at_utc": "2026-08-31T01:01:51Z",
     "status": "sent"
+  },
+  {
+    "seq": 49,
+    "date": "2026-09-01",
+    "code": "P2-D2-4",
+    "phase": "P2",
+    "title_zh": "殘留、銷毀標準與媒體管理",
+    "sent_at_utc": "2026-09-01T01:32:21Z",
+    "status": "sent"
   }
 ]
