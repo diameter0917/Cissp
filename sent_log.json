@@ -439,5 +439,14 @@
     "title_zh": "殘留、銷毀標準與媒體管理",
     "sent_at_utc": "2026-09-01T01:32:21Z",
     "status": "sent"
+  },
+  {
+    "seq": 50,
+    "date": "2026-09-02",
+    "code": "P2-D2-5",
+    "phase": "P2",
+    "title_zh": "DLP/DRM/CASB 與隱私設計",
+    "sent_at_utc": "2026-09-02T00:45:35Z",
+    "status": "sent"
   }
 ]
