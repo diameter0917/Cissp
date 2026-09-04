@@ -457,5 +457,14 @@
     "title_zh": "安全模型與評估準則深入",
     "sent_at_utc": "2026-09-03T00:53:59Z",
     "status": "sent"
+  },
+  {
+    "seq": 52,
+    "date": "2026-09-04",
+    "code": "P2-D3-2",
+    "phase": "P2",
+    "title_zh": "對稱與非對稱密碼學",
+    "sent_at_utc": "2026-09-04T00:37:22Z",
+    "status": "sent"
   }
 ]
