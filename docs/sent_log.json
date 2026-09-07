@@ -466,5 +466,14 @@
     "title_zh": "對稱與非對稱密碼學",
     "sent_at_utc": "2026-09-04T00:37:22Z",
     "status": "sent"
+  },
+  {
+    "seq": 53,
+    "date": "2026-09-07",
+    "code": "P2-D3-3",
+    "phase": "P2",
+    "title_zh": "雜湊、簽章與金鑰管理",
+    "sent_at_utc": "2026-09-07T00:36:38Z",
+    "status": "sent"
   }
 ]
