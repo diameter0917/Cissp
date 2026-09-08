@@ -475,5 +475,14 @@
     "title_zh": "雜湊、簽章與金鑰管理",
     "sent_at_utc": "2026-09-07T00:36:38Z",
     "status": "sent"
+  },
+  {
+    "seq": 54,
+    "date": "2026-09-08",
+    "code": "P2-D3-4",
+    "phase": "P2",
+    "title_zh": "密碼分析攻擊與 IoT/ICS",
+    "sent_at_utc": "2026-09-08T00:51:30Z",
+    "status": "sent"
   }
 ]
