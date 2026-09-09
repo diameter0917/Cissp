@@ -484,5 +484,14 @@
     "title_zh": "密碼分析攻擊與 IoT/ICS",
     "sent_at_utc": "2026-09-08T00:51:30Z",
     "status": "sent"
+  },
+  {
+    "seq": 55,
+    "date": "2026-09-09",
+    "code": "P2-D3-5",
+    "phase": "P2",
+    "title_zh": "實體控制與資料庫安全",
+    "sent_at_utc": "2026-09-09T00:57:54Z",
+    "status": "sent"
   }
 ]
