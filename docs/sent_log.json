@@ -493,5 +493,14 @@
     "title_zh": "實體控制與資料庫安全",
     "sent_at_utc": "2026-09-09T00:57:54Z",
     "status": "sent"
+  },
+  {
+    "seq": 56,
+    "date": "2026-09-10",
+    "code": "P2-D4-1",
+    "phase": "P2",
+    "title_zh": "OSI 分層與封裝深入",
+    "sent_at_utc": "2026-09-10T00:45:08Z",
+    "status": "sent"
   }
 ]
