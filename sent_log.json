@@ -502,5 +502,14 @@
     "title_zh": "OSI 分層與封裝深入",
     "sent_at_utc": "2026-09-10T00:45:08Z",
     "status": "sent"
+  },
+  {
+    "seq": 57,
+    "date": "2026-09-11",
+    "code": "P2-D4-2",
+    "phase": "P2",
+    "title_zh": "安全協定與 DNS 深入",
+    "sent_at_utc": "2026-09-11T00:45:57Z",
+    "status": "sent"
   }
 ]
