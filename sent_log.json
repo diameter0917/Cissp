@@ -520,5 +520,14 @@
     "title_zh": "防火牆/IDS/分段深入",
     "sent_at_utc": "2026-09-14T00:35:36Z",
     "status": "sent"
+  },
+  {
+    "seq": 59,
+    "date": "2026-09-15",
+    "code": "P2-D4-4",
+    "phase": "P2",
+    "title_zh": "無線/VPN/NAC 深入",
+    "sent_at_utc": "2026-09-15T01:07:08Z",
+    "status": "sent"
   }
 ]
