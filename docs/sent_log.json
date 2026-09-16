@@ -529,5 +529,14 @@
     "title_zh": "無線/VPN/NAC 深入",
     "sent_at_utc": "2026-09-15T01:07:08Z",
     "status": "sent"
+  },
+  {
+    "seq": 60,
+    "date": "2026-09-16",
+    "code": "P2-D4-5",
+    "phase": "P2",
+    "title_zh": "郵件驗證與網路攻擊深入",
+    "sent_at_utc": "2026-09-16T00:57:42Z",
+    "status": "sent"
   }
 ]
