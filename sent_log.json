@@ -538,5 +538,14 @@
     "title_zh": "郵件驗證與網路攻擊深入",
     "sent_at_utc": "2026-09-16T00:57:42Z",
     "status": "sent"
+  },
+  {
+    "seq": 61,
+    "date": "2026-09-17",
+    "code": "P2-D5-1",
+    "phase": "P2",
+    "title_zh": "AAA 與鑑別因子深入",
+    "sent_at_utc": "2026-09-17T01:01:01Z",
+    "status": "sent"
   }
 ]
