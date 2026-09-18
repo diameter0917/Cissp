@@ -547,5 +547,14 @@
     "title_zh": "AAA 與鑑別因子深入",
     "sent_at_utc": "2026-09-17T01:01:01Z",
     "status": "sent"
+  },
+  {
+    "seq": 62,
+    "date": "2026-09-18",
+    "code": "P2-D5-2",
+    "phase": "P2",
+    "title_zh": "身分生命週期與證明深入",
+    "sent_at_utc": "2026-09-18T00:56:58Z",
+    "status": "sent"
   }
 ]
