@@ -556,5 +556,14 @@
     "title_zh": "身分生命週期與證明深入",
     "sent_at_utc": "2026-09-18T00:56:58Z",
     "status": "sent"
+  },
+  {
+    "seq": 63,
+    "date": "2026-09-21",
+    "code": "P2-D5-3",
+    "phase": "P2",
+    "title_zh": "SAML/OAuth/OIDC 深入",
+    "sent_at_utc": "2026-09-21T00:45:09Z",
+    "status": "sent"
   }
 ]
