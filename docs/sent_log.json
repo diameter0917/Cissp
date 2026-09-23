@@ -574,5 +574,14 @@
     "title_zh": "Kerberos 與目錄服務深入",
     "sent_at_utc": "2026-09-22T01:23:14Z",
     "status": "sent"
+  },
+  {
+    "seq": 65,
+    "date": "2026-09-23",
+    "code": "P2-D5-5",
+    "phase": "P2",
+    "title_zh": "存取控制模型與 PAM 深入",
+    "sent_at_utc": "2026-09-23T01:09:01Z",
+    "status": "sent"
   }
 ]
