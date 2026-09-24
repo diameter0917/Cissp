@@ -583,5 +583,14 @@
     "title_zh": "存取控制模型與 PAM 深入",
     "sent_at_utc": "2026-09-23T01:09:01Z",
     "status": "sent"
+  },
+  {
+    "seq": 66,
+    "date": "2026-09-24",
+    "code": "P2-D6-1",
+    "phase": "P2",
+    "title_zh": "弱點評估與滲透測試深入",
+    "sent_at_utc": "2026-09-24T00:59:42Z",
+    "status": "sent"
   }
 ]
