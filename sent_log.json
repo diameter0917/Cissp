@@ -610,5 +610,14 @@
     "title_zh": "日誌/合成監控與 BAS",
     "sent_at_utc": "2026-09-28T01:20:56Z",
     "status": "sent"
+  },
+  {
+    "seq": 69,
+    "date": "2026-09-29",
+    "code": "P2-D6-4",
+    "phase": "P2",
+    "title_zh": "稽核類型與 SOC 報告深入",
+    "sent_at_utc": "2026-09-29T02:26:50Z",
+    "status": "sent"
   }
 ]
