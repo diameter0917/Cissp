@@ -619,5 +619,14 @@
     "title_zh": "稽核類型與 SOC 報告深入",
     "sent_at_utc": "2026-09-29T02:26:50Z",
     "status": "sent"
+  },
+  {
+    "seq": 70,
+    "date": "2026-09-30",
+    "code": "P2-D6-5",
+    "phase": "P2",
+    "title_zh": "KPI/KRI 與計畫評估",
+    "sent_at_utc": "2026-09-30T01:47:01Z",
+    "status": "sent"
   }
 ]
