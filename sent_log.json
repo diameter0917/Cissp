@@ -646,5 +646,14 @@
     "title_zh": "SIEM/威脅情報/UEBA 深入",
     "sent_at_utc": "2026-10-02T01:55:45Z",
     "status": "sent"
+  },
+  {
+    "seq": 73,
+    "date": "2026-10-05",
+    "code": "P2-D7-3",
+    "phase": "P2",
+    "title_zh": "組態/變更/修補深入",
+    "sent_at_utc": "2026-10-05T01:29:00Z",
+    "status": "sent"
   }
 ]
