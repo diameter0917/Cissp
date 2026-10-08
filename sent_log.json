@@ -673,5 +673,14 @@
     "title_zh": "事件管理與 DR 深入",
     "sent_at_utc": "2026-10-07T01:58:02Z",
     "status": "sent"
+  },
+  {
+    "seq": 76,
+    "date": "2026-10-08",
+    "code": "P2-D8-1",
+    "phase": "P2",
+    "title_zh": "SDLC 模型與成熟度深入",
+    "sent_at_utc": "2026-10-08T02:23:29Z",
+    "status": "sent"
   }
 ]
