@@ -691,5 +691,14 @@
     "title_zh": "DevSecOps 與環境控制深入",
     "sent_at_utc": "2026-10-09T02:41:15Z",
     "status": "sent"
+  },
+  {
+    "seq": 78,
+    "date": "2026-10-12",
+    "code": "P2-D8-3",
+    "phase": "P2",
+    "title_zh": "注入/XSS/CSRF 與安全編碼深入",
+    "sent_at_utc": "2026-10-12T01:59:11Z",
+    "status": "sent"
   }
 ]
