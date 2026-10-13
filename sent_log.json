@@ -700,5 +700,14 @@
     "title_zh": "注入/XSS/CSRF 與安全編碼深入",
     "sent_at_utc": "2026-10-12T01:59:11Z",
     "status": "sent"
+  },
+  {
+    "seq": 79,
+    "date": "2026-10-13",
+    "code": "P2-D8-4",
+    "phase": "P2",
+    "title_zh": "SAST/DAST/SCA 與 API 深入",
+    "sent_at_utc": "2026-10-13T03:18:34Z",
+    "status": "sent"
   }
 ]
