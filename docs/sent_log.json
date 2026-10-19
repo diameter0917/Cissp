@@ -736,5 +736,14 @@
     "title_zh": "考點：定量風險計算題",
     "sent_at_utc": "2026-10-16T00:56:48Z",
     "status": "sent"
+  },
+  {
+    "seq": 83,
+    "date": "2026-10-19",
+    "code": "P3-D1-3",
+    "phase": "P3",
+    "title_zh": "考點：控制分類與風險回應",
+    "sent_at_utc": "2026-10-19T00:41:31Z",
+    "status": "sent"
   }
 ]
