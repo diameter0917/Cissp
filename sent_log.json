@@ -754,5 +754,14 @@
     "title_zh": "考點：法規與隱私情境題",
     "sent_at_utc": "2026-10-20T01:26:43Z",
     "status": "sent"
+  },
+  {
+    "seq": 85,
+    "date": "2026-10-21",
+    "code": "P3-D1-5",
+    "phase": "P3",
+    "title_zh": "考點：BCP/BIA 與威脅建模 + 刷題",
+    "sent_at_utc": "2026-10-21T01:10:58Z",
+    "status": "sent"
   }
 ]
