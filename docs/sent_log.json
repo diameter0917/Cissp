@@ -772,5 +772,14 @@
     "title_zh": "考點：分類分級與角色",
     "sent_at_utc": "2026-10-22T01:08:20Z",
     "status": "sent"
+  },
+  {
+    "seq": 87,
+    "date": "2026-10-23",
+    "code": "P3-D2-2",
+    "phase": "P3",
+    "title_zh": "考點：資料殘留與銷毀方法",
+    "sent_at_utc": "2026-10-23T01:07:55Z",
+    "status": "sent"
   }
 ]
