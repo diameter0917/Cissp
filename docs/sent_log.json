@@ -781,5 +781,14 @@
     "title_zh": "考點：資料殘留與銷毀方法",
     "sent_at_utc": "2026-10-23T01:07:55Z",
     "status": "sent"
+  },
+  {
+    "seq": 88,
+    "date": "2026-10-26",
+    "code": "P3-D2-3",
+    "phase": "P3",
+    "title_zh": "考點：資料狀態與保護",
+    "sent_at_utc": "2026-10-26T00:55:50Z",
+    "status": "sent"
   }
 ]
