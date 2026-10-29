@@ -808,5 +808,14 @@
     "title_zh": "考點：D2 綜合 + 刷題",
     "sent_at_utc": "2026-10-28T01:57:54Z",
     "status": "sent"
+  },
+  {
+    "seq": 91,
+    "date": "2026-10-29",
+    "code": "P3-D3-1",
+    "phase": "P3",
+    "title_zh": "考點：安全模型規則",
+    "sent_at_utc": "2026-10-29T02:01:57Z",
+    "status": "sent"
   }
 ]
