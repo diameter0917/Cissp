@@ -817,5 +817,14 @@
     "title_zh": "考點：安全模型規則",
     "sent_at_utc": "2026-10-29T02:01:57Z",
     "status": "sent"
+  },
+  {
+    "seq": 92,
+    "date": "2026-10-30",
+    "code": "P3-D3-2",
+    "phase": "P3",
+    "title_zh": "考點：對稱 vs 非對稱選用",
+    "sent_at_utc": "2026-10-30T02:19:18Z",
+    "status": "sent"
   }
 ]
