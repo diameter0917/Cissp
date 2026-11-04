@@ -844,5 +844,14 @@
     "title_zh": "考點：密碼攻擊與實體安全",
     "sent_at_utc": "2026-11-03T03:47:53Z",
     "status": "sent"
+  },
+  {
+    "seq": 95,
+    "date": "2026-11-04",
+    "code": "P3-D3-5",
+    "phase": "P3",
+    "title_zh": "考點：D3 綜合 + 刷題",
+    "sent_at_utc": "2026-11-04T02:51:20Z",
+    "status": "sent"
   }
 ]
