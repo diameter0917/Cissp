@@ -853,5 +853,14 @@
     "title_zh": "考點：D3 綜合 + 刷題",
     "sent_at_utc": "2026-11-04T02:51:20Z",
     "status": "sent"
+  },
+  {
+    "seq": 96,
+    "date": "2026-11-05",
+    "code": "P3-D4-1",
+    "phase": "P3",
+    "title_zh": "考點：OSI 分層判斷",
+    "sent_at_utc": "2026-11-05T03:00:30Z",
+    "status": "sent"
   }
 ]
