@@ -862,5 +862,14 @@
     "title_zh": "考點：OSI 分層判斷",
     "sent_at_utc": "2026-11-05T03:00:30Z",
     "status": "sent"
+  },
+  {
+    "seq": 97,
+    "date": "2026-11-06",
+    "code": "P3-D4-2",
+    "phase": "P3",
+    "title_zh": "考點：安全協定選用",
+    "sent_at_utc": "2026-11-06T03:01:48Z",
+    "status": "sent"
   }
 ]
