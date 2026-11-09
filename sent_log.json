@@ -871,5 +871,14 @@
     "title_zh": "考點：安全協定選用",
     "sent_at_utc": "2026-11-06T03:01:48Z",
     "status": "sent"
+  },
+  {
+    "seq": 98,
+    "date": "2026-11-09",
+    "code": "P3-D4-3",
+    "phase": "P3",
+    "title_zh": "考點：防火牆與 IDS",
+    "sent_at_utc": "2026-11-09T02:17:40Z",
+    "status": "sent"
   }
 ]
