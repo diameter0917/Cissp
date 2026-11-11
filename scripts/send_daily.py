@@ -26,6 +26,7 @@ import os
 import re
 import smtplib
 import sys
+import time
 from datetime import datetime, timezone, timedelta
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -124,12 +125,50 @@ def send_email(subject, html_body, gmail_user, app_password, recipient):
     msg.attach(MIMEText(text_body, "plain", "utf-8"))
     msg.attach(MIMEText(html_body, "html", "utf-8"))
 
-    with smtplib.SMTP("smtp.gmail.com", 587, timeout=60) as server:
-        server.ehlo()
-        server.starttls()
-        server.ehlo()
-        server.login(gmail_user, app_password)
-        server.sendmail(gmail_user, [recipient], msg.as_string())
+    raw = msg.as_string()
+    # Gmail 偶爾會在連線/握手階段直接斷線；重試並改走 465 SSL 備援。
+    attempts = [("starttls", 0), ("starttls", 20), ("ssl", 20), ("ssl", 60)]
+    errors = []
+    for i, (mode, wait) in enumerate(attempts, 1):
+        if wait:
+            time.sleep(wait)
+        try:
+            _smtp_send(mode, raw, gmail_user, app_password, recipient)
+            if errors:
+                log(f"第 {i} 次嘗試（{mode}）寄送成功。")
+            return
+        except smtplib.SMTPAuthenticationError as e:
+            raise RuntimeError(
+                f"Gmail 拒絕登入（{e.smtp_code}）：App Password 可能已失效，請重新產生並更新 GitHub Secret"
+            ) from e
+        except Exception as e:
+            log(f"第 {i}/{len(attempts)} 次嘗試失敗：{e}")
+            errors.append(str(e))
+    raise RuntimeError("所有嘗試皆失敗：" + " | ".join(errors))
+
+
+def _smtp_send(mode, raw, gmail_user, app_password, recipient):
+    step = "連線"
+    try:
+        if mode == "ssl":
+            server = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=60)
+        else:
+            server = smtplib.SMTP("smtp.gmail.com", 587, timeout=60)
+        with server:
+            step = "EHLO"
+            server.ehlo()
+            if mode == "starttls":
+                step = "STARTTLS"
+                server.starttls()
+                server.ehlo()
+            step = "登入"
+            server.login(gmail_user, app_password)
+            step = "傳送"
+            server.sendmail(gmail_user, [recipient], raw)
+    except smtplib.SMTPAuthenticationError:
+        raise
+    except Exception as e:
+        raise RuntimeError(f"{mode} 在「{step}」階段：{type(e).__name__}: {e}") from e
 
 
 # ---------- log 回寫 ----------
